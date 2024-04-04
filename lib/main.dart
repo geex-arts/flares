@@ -47,16 +47,22 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-print('sdf');
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = flaresSupabaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
 
+    //Shared: getInitialMedia https://www.instagram.com/p/C5D8JKCNkOZ/?igsh=MTBoZ2M4N3RscmZwbw==
+    //should open Create_wish screen with url props
     _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
         .listen((List<SharedFile> value) {
-      print("Shared: getMediaStream ${value.map((f) => f.value).join(",")}");
+      final url = value.map((f) => f.value).join(",");
+
+      print("Shared: getMediaStream ${url}");
+
+      _router.go('/createWish?url=${Uri.encodeComponent(url)}');
+
     }, onError: (err) {
       print("getIntentDataStream error: $err");
     });
@@ -64,6 +70,9 @@ print('sdf');
     // For sharing images coming from outside the app while the app is closed
     FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
       print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
+
+      final url = value.map((f) => f.value).join(",");
+      _router.go('/createWish?url=${Uri.encodeComponent(url)}');
     });
 
     Future.delayed(
