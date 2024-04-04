@@ -196,6 +196,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Create_Couple_Profile',
               path: 'createCoupleProfile',
               builder: (context, params) => const CreateCoupleProfileWidget(),
+            ),
+            FFRoute(
+              name: 'Create_wish',
+              path: 'createWish',
+              builder: (context, params) => CreateWishWidget(
+                url: params.getParam(
+                  'url',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

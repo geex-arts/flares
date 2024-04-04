@@ -35,3 +35,4 @@ export '/profile/profile/profile_widget.dart' show ProfileWidget;
 export '/profile/edit_profile/edit_profile_widget.dart' show EditProfileWidget;
 export '/profile/create_couple_profile/create_couple_profile_widget.dart'
     show CreateCoupleProfileWidget;
+export '/wishlist/create_wish/create_wish_widget.dart' show CreateWishWidget;
