@@ -70,8 +70,8 @@ class _CreateWishWidgetState extends State<CreateWishWidget> {
                 mainAxisSize: MainAxisSize.max,
                 children: [
                   Container(
-                    width: 100.0,
-                    height: 100.0,
+                    width: double.infinity,
+                    height: 200.0,
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                     ),
