@@ -1,0 +1,70 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/material.dart';
+import 'pink_button_model.dart';
+export 'pink_button_model.dart';
+
+class PinkButtonWidget extends StatefulWidget {
+  const PinkButtonWidget({
+    super.key,
+    required this.text,
+    required this.currentAction,
+  });
+
+  final String? text;
+  final Future Function()? currentAction;
+
+  @override
+  State<PinkButtonWidget> createState() => _PinkButtonWidgetState();
+}
+
+class _PinkButtonWidgetState extends State<PinkButtonWidget> {
+  late PinkButtonModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => PinkButtonModel());
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return FFButtonWidget(
+      onPressed: () async {
+        await widget.currentAction?.call();
+      },
+      text: widget.text!,
+      options: FFButtonOptions(
+        width: double.infinity,
+        height: 40.0,
+        padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+        iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        color: FlutterFlowTheme.of(context).pinkButton,
+        textStyle: FlutterFlowTheme.of(context).titleSmall.override(
+              fontFamily: 'Nuckle',
+              color: Colors.white,
+              letterSpacing: 0.0,
+              useGoogleFonts: false,
+            ),
+        borderSide: const BorderSide(
+          color: Colors.transparent,
+        ),
+        borderRadius: BorderRadius.circular(30.0),
+      ),
+    );
+  }
+}
