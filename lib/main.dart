@@ -72,7 +72,10 @@ class _MyAppState extends State<MyApp> {
       print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
 
       final url = value.map((f) => f.value).join(",");
-      _router.go('/createWish?url=${Uri.encodeComponent(url)}');
+
+      if (url.isNotEmpty) {
+        _router.go('/createWish?url=${Uri.encodeComponent(url)}');
+      }
     });
 
     Future.delayed(
