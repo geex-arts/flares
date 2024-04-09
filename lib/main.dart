@@ -1,3 +1,5 @@
+import '/custom_code/actions/index.dart' as actions;
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -7,16 +9,18 @@ import 'auth/supabase_auth/supabase_user_provider.dart';
 import 'auth/supabase_auth/auth_util.dart';
 
 import '/backend/supabase/supabase.dart';
+import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/nav/nav.dart';
-
-import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
-import 'package:flutter_sharing_intent/model/sharing_file.dart';
-import 'dart:async';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
+  await initFirebase();
+
+  // Start initial custom actions code
+  await actions.initializeFirebase();
+  // End initial custom actions code
 
   await SupaFlow.initialize();
 
@@ -35,8 +39,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late StreamSubscription _intentDataStreamSubscription;
-
   ThemeMode _themeMode = ThemeMode.system;
 
   late Stream<BaseAuthUser> userStream;
@@ -47,47 +49,16 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
     userStream = flaresSupabaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
-
-    //Shared: getInitialMedia https://www.instagram.com/p/C5D8JKCNkOZ/?igsh=MTBoZ2M4N3RscmZwbw==
-    //should open Create_wish screen with url props
-    _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
-        .listen((List<SharedFile> value) {
-      final url = value.map((f) => f.value).join(",");
-
-      print("Shared: getMediaStream ${url}");
-
-      _router.go('/createWish?url=${Uri.encodeComponent(url)}');
-
-    }, onError: (err) {
-      print("getIntentDataStream error: $err");
-    });
-
-    // For sharing images coming from outside the app while the app is closed
-    FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
-      print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
-
-      final url = value.map((f) => f.value).join(",");
-
-      if (url.isNotEmpty) {
-        _router.go('/createWish?url=${Uri.encodeComponent(url)}');
-      }
-    });
-
     Future.delayed(
       const Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
     );
-  }
-
-  @override
-  void dispose() {
-    _intentDataStreamSubscription.cancel();
-    super.dispose();
   }
 
   void setThemeMode(ThemeMode mode) => setState(() {

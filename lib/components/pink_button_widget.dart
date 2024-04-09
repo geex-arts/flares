@@ -57,7 +57,9 @@ class _PinkButtonWidgetState extends State<PinkButtonWidget> {
         textStyle: FlutterFlowTheme.of(context).titleSmall.override(
               fontFamily: 'Nuckle',
               color: Colors.white,
+              fontSize: 17.0,
               letterSpacing: 0.0,
+              fontWeight: FontWeight.w500,
               useGoogleFonts: false,
             ),
         borderSide: const BorderSide(

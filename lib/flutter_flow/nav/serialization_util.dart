@@ -207,8 +207,12 @@ dynamic deserializeParam<T>(
             return PairsInvitationsRow(data);
           case PairsRow:
             return PairsRow(data);
+          case NotificationsRow:
+            return NotificationsRow(data);
           case DiscoveryRow:
             return DiscoveryRow(data);
+          case AiCategoryRow:
+            return AiCategoryRow(data);
           case CollectionsRow:
             return CollectionsRow(data);
           case WishReactionsRow:

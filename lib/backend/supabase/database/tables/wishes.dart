@@ -46,4 +46,16 @@ class WishesRow extends SupabaseDataRow {
 
   String? get link => getField<String>('link');
   set link(String? value) => setField<String>('link', value);
+
+  String? get lowercaseCollectionName =>
+      getField<String>('lowercase_collection_name');
+  set lowercaseCollectionName(String? value) =>
+      setField<String>('lowercase_collection_name', value);
+
+  bool? get copied => getField<bool>('copied');
+  set copied(bool? value) => setField<bool>('copied', value);
+
+  String? get trueCollectionName => getField<String>('true_collection_name');
+  set trueCollectionName(String? value) =>
+      setField<String>('true_collection_name', value);
 }

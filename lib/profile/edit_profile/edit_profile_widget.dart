@@ -4,6 +4,7 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/upload_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -33,6 +34,72 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
+        ),
+      ],
+    ),
+    'circleImageOnPageLoadAnimation1': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 100.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 300.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+      ],
+    ),
+    'circleImageOnPageLoadAnimation2': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 200.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 100.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
+        ),
+        ShimmerEffect(
+          curve: Curves.easeInOut,
+          delay: 300.ms,
+          duration: 600.ms,
+          color: const Color(0x80FFFFFF),
+          angle: 0.524,
         ),
       ],
     ),
@@ -196,26 +263,116 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         'assets/images/prof4.webp',
                                         fit: BoxFit.cover,
                                       ),
-                                    ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'circleImageOnPageLoadAnimation1']!),
+                                    Container(
+                                      width: 120.0,
+                                      height: 120.0,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.memory(
+                                        _model.photoPS?.bytes ??
+                                            Uint8List.fromList([]),
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ).animateOnPageLoad(animationsMap[
+                                        'circleImageOnPageLoadAnimation2']!),
                                     Align(
                                       alignment: const AlignmentDirectional(1.0, 1.0),
-                                      child: Container(
-                                        width: 30.0,
-                                        height: 30.0,
-                                        decoration: BoxDecoration(
-                                          color: const Color(0xFFD886B1),
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            width: 2.0,
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          final selectedMedia =
+                                              await selectMediaWithSourceBottomSheet(
+                                            context: context,
+                                            imageQuality: 98,
+                                            allowPhoto: true,
+                                          );
+                                          if (selectedMedia != null &&
+                                              selectedMedia.every((m) =>
+                                                  validateFileFormat(
+                                                      m.storagePath,
+                                                      context))) {
+                                            setState(() =>
+                                                _model.isDataUploading = true);
+                                            var selectedUploadedFiles =
+                                                <FFUploadedFile>[];
+
+                                            try {
+                                              showUploadMessage(
+                                                context,
+                                                'Uploading file...',
+                                                showLoading: true,
+                                              );
+                                              selectedUploadedFiles =
+                                                  selectedMedia
+                                                      .map(
+                                                          (m) => FFUploadedFile(
+                                                                name: m
+                                                                    .storagePath
+                                                                    .split('/')
+                                                                    .last,
+                                                                bytes: m.bytes,
+                                                                height: m
+                                                                    .dimensions
+                                                                    ?.height,
+                                                                width: m
+                                                                    .dimensions
+                                                                    ?.width,
+                                                                blurHash:
+                                                                    m.blurHash,
+                                                              ))
+                                                      .toList();
+                                            } finally {
+                                              ScaffoldMessenger.of(context)
+                                                  .hideCurrentSnackBar();
+                                              _model.isDataUploading = false;
+                                            }
+                                            if (selectedUploadedFiles.length ==
+                                                selectedMedia.length) {
+                                              setState(() {
+                                                _model.uploadedLocalFile =
+                                                    selectedUploadedFiles.first;
+                                              });
+                                              showUploadMessage(
+                                                  context, 'Success!');
+                                            } else {
+                                              setState(() {});
+                                              showUploadMessage(context,
+                                                  'Failed to upload data');
+                                              return;
+                                            }
+                                          }
+
+                                          setState(() {
+                                            _model.photoPS =
+                                                _model.uploadedLocalFile;
+                                          });
+                                        },
+                                        child: Container(
+                                          width: 30.0,
+                                          height: 30.0,
+                                          decoration: BoxDecoration(
+                                            color: const Color(0xFFD886B1),
+                                            shape: BoxShape.circle,
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              width: 2.0,
+                                            ),
                                           ),
-                                        ),
-                                        child: Icon(
-                                          Icons.photo_camera_outlined,
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          size: 12.0,
+                                          child: Icon(
+                                            Icons.photo_camera_outlined,
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            size: 12.0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -315,7 +472,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         fillColor: const Color(0x0FFFFFFF),
                                         contentPadding:
                                             const EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 0.0, 20.0, 0.0),
+                                                20.0, 14.0, 20.0, 14.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -427,7 +584,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         fillColor: const Color(0x0FFFFFFF),
                                         contentPadding:
                                             const EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 0.0, 20.0, 0.0),
+                                                20.0, 14.0, 20.0, 14.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium

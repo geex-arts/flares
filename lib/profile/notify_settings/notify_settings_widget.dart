@@ -219,20 +219,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                          .dateinvItationsSwitchValue ??= true,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.dateinvItationsSwitchValue =
-                                                newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .dateinvItationsSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .dateinvItationsSwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -301,19 +306,24 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model.reactionsSwitchValue ??=
-                                          true,
-                                      onChanged: (newValue) async {
-                                        setState(() => _model
-                                            .reactionsSwitchValue = newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model.reactionsSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              _model.reactionsSwitchValue =
+                                                  newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -382,20 +392,24 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model.addedNewWishSwitchValue ??=
-                                          true,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.addedNewWishSwitchValue =
-                                                newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                            .addedNewWishSwitchValue ??= false,
+                                        onChanged: (newValue) async {
+                                          setState(() =>
+                                              _model.addedNewWishSwitchValue =
+                                                  newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -464,21 +478,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                              .pushRecommendationsSwitchValue ??=
-                                          true,
-                                      onChanged: (newValue) async {
-                                        setState(() => _model
-                                                .pushRecommendationsSwitchValue =
-                                            newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .pushRecommendationsSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .pushRecommendationsSwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -572,6 +590,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                 fontFamily: 'Nuckle',
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts: false,
+                                                lineHeight: 1.4,
                                               ),
                                         ),
                                       ),
@@ -639,20 +658,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                          .partnerActivitySwitchValue ??= true,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.partnerActivitySwitchValue =
-                                                newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .partnerActivitySwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .partnerActivitySwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -721,21 +745,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                              .dailyConversationsSwitchValue ??=
-                                          true,
-                                      onChanged: (newValue) async {
-                                        setState(() => _model
-                                                .dailyConversationsSwitchValue =
-                                            newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .dailyConversationsSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .dailyConversationsSwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -804,20 +832,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                          .streakRemindersSwitchValue ??= true,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.streakRemindersSwitchValue =
-                                                newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .streakRemindersSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .streakRemindersSwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -886,20 +919,25 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         ],
                                       ),
                                     ),
-                                    Switch.adaptive(
-                                      value: _model
-                                          .recommendationsSwitchValue ??= true,
-                                      onChanged: (newValue) async {
-                                        setState(() =>
-                                            _model.recommendationsSwitchValue =
-                                                newValue);
-                                      },
-                                      activeColor:
-                                          FlutterFlowTheme.of(context).info,
-                                      activeTrackColor: const Color(0xFFFF2C96),
-                                      inactiveTrackColor: const Color(0x51787880),
-                                      inactiveThumbColor:
-                                          FlutterFlowTheme.of(context).info,
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          4.0, 0.0, 0.0, 0.0),
+                                      child: Switch.adaptive(
+                                        value: _model
+                                                .recommendationsSwitchValue ??=
+                                            false,
+                                        onChanged: (newValue) async {
+                                          setState(() => _model
+                                                  .recommendationsSwitchValue =
+                                              newValue);
+                                        },
+                                        activeColor:
+                                            FlutterFlowTheme.of(context).info,
+                                        activeTrackColor: const Color(0xFFFF2C96),
+                                        inactiveTrackColor: const Color(0x51787880),
+                                        inactiveThumbColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
                                     ),
                                   ],
                                 ),

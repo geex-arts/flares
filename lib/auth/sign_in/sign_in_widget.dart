@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -240,7 +241,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                 filled: true,
                                 fillColor: const Color(0x0FFFFFFF),
                                 contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
+                                    20.0, 7.0, 20.0, 7.0),
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -324,7 +325,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                   fillColor: const Color(0x0FFFFFFF),
                                   contentPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 20.0, 0.0),
+                                          20.0, 13.0, 20.0, 13.0),
                                   suffixIcon: InkWell(
                                     onTap: () => setState(
                                       () => _model.passwordFieldVisibility =
@@ -482,6 +483,19 @@ class _SignInWidgetState extends State<SignInWidget>
                                       ),
                                     );
                                     shouldSetState = true;
+                                    await actions.getPushPermission();
+                                    _model.fcmToken =
+                                        await actions.getFCMToken();
+                                    shouldSetState = true;
+                                    await UsersTable().update(
+                                      data: {
+                                        'fcmToken': _model.fcmToken,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'id',
+                                        currentUserUid,
+                                      ),
+                                    );
                                     if (_model.userAuthCopyCopy?.first.pair !=
                                             null &&
                                         _model.userAuthCopyCopy?.first.pair !=
@@ -490,8 +504,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                           'My_Profile', context.mounted);
                                     } else {
                                       context.goNamedAuth(
-                                          'Create_Couple_Profile',
-                                          context.mounted);
+                                          'More', context.mounted);
                                     }
 
                                     if (shouldSetState) setState(() {});

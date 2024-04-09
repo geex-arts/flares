@@ -133,9 +133,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const PrivacyPolicyWidget(),
             ),
             FFRoute(
-              name: 'Invite_Partner',
-              path: 'invitePartner',
-              builder: (context, params) => const InvitePartnerWidget(),
+              name: 'Invite_Partner_Onb',
+              path: 'invitePartnerOnb',
+              builder: (context, params) => const InvitePartnerOnbWidget(),
             ),
             FFRoute(
               name: 'Language',
@@ -168,9 +168,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const CouplesProfileWidget(),
             ),
             FFRoute(
-              name: 'Category_Page',
-              path: 'categoryPage',
-              builder: (context, params) => const CategoryPageWidget(),
+              name: 'Category_P2',
+              path: 'categoryP2',
+              builder: (context, params) => const CategoryP2Widget(),
             ),
             FFRoute(
               name: 'Add_Wish_Reaction',
@@ -178,9 +178,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const AddWishReactionWidget(),
             ),
             FFRoute(
-              name: 'Add_To_Wishlist',
-              path: 'addToWishlist',
-              builder: (context, params) => const AddToWishlistWidget(),
+              name: 'Wish_Main',
+              path: 'wishMain',
+              builder: (context, params) => const WishMainWidget(),
             ),
             FFRoute(
               name: 'Profile',
@@ -206,6 +206,26 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'More',
+              path: 'more',
+              builder: (context, params) => const MoreWidget(),
+            ),
+            FFRoute(
+              name: 'Subscriptions',
+              path: 'subscriptions',
+              builder: (context, params) => const SubscriptionsWidget(),
+            ),
+            FFRoute(
+              name: 'Invite_Partner',
+              path: 'invitePartner',
+              builder: (context, params) => const InvitePartnerWidget(),
+            ),
+            FFRoute(
+              name: 'Category_P',
+              path: 'categoryP',
+              builder: (context, params) => const CategoryPWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

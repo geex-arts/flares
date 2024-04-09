@@ -27,6 +27,8 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   late PinkButtonModel nextButtonModel;
   // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
   List<UsersRow>? userAuthCopyCopy;
+  // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
+  String? fcmToken;
 
   @override
   void initState(BuildContext context) {

@@ -66,6 +66,8 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
+  // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
+  String? fcmToken;
 
   @override
   void initState(BuildContext context) {

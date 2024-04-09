@@ -1,3 +1,4 @@
+import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'onboarding_widget.dart' show OnboardingWidget;
 import 'package:flutter/material.dart';
@@ -14,12 +15,17 @@ class OnboardingModel extends FlutterFlowModel<OnboardingWidget> {
           pageViewController!.page != null
       ? pageViewController!.page!.round()
       : 0;
+  // Model for LogIn.
+  late PinkButtonModel logInModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    logInModel = createModel(context, () => PinkButtonModel());
+  }
 
   @override
   void dispose() {
     unfocusNode.dispose();
+    logInModel.dispose();
   }
 }

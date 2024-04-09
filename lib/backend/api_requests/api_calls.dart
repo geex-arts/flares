@@ -33,6 +33,72 @@ class ParseSiteCall {
   }
 }
 
+class GenerateAiWishCall {
+  static Future<ApiCallResponse> call({
+    String? city = '',
+    String? budget = '',
+    String? interest = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+ "city":"$city",
+ "interest": "$interest",
+ "budget":"$budget"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generateAiWish',
+      apiUrl:
+          'https://gkjpgyieiugznobskhlt.supabase.co/functions/v1/generate-ai-wish',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdranBneWllaXVnem5vYnNraGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc5ODQyMzUsImV4cCI6MjAyMzU2MDIzNX0.ulHur9jh5q99iNT1AcnjKD7f8JEQj52GPLz2NESiW64',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GenerateAiSimiliarWishCall {
+  static Future<ApiCallResponse> call({
+    String? budget = '',
+    String? city = '',
+    String? collectionId = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "budget": "$budget",
+  "city": "$city",
+  "collection_id": "$collectionId"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'generateAiSimiliarWish',
+      apiUrl:
+          'https://gkjpgyieiugznobskhlt.supabase.co/functions/v1/generate-ai-similiar-wishes',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdranBneWllaXVnem5vYnNraGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc5ODQyMzUsImV4cCI6MjAyMzU2MDIzNX0.ulHur9jh5q99iNT1AcnjKD7f8JEQj52GPLz2NESiW64',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

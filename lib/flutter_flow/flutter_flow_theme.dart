@@ -33,6 +33,7 @@ abstract class FlutterFlowTheme {
   late Color info;
 
   late Color pinkButton;
+  late Color pink;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -106,7 +107,7 @@ class LightModeTheme extends FlutterFlowTheme {
   Color get tertiaryColor => tertiary;
 
   late Color primary = const Color(0xFF4B39EF);
-  late Color secondary = const Color(0xFF39D2C0);
+  late Color secondary = const Color(0xFF7EFFF1);
   late Color tertiary = const Color(0xFFEE8B60);
   late Color alternate = const Color(0xFFE0E3E7);
   late Color primaryText = const Color(0xFF14181B);
@@ -123,6 +124,7 @@ class LightModeTheme extends FlutterFlowTheme {
   late Color info = const Color(0xFFFFFFFF);
 
   late Color pinkButton = const Color(0xFFE38DBA);
+  late Color pink = const Color(0xFFFF2C96);
 }
 
 abstract class Typography {

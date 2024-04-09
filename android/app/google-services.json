@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "589050000203",
+    "project_id": "flares-cf75c",
+    "storage_bucket": "flares-cf75c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:589050000203:android:9676cfcc4bb1ee80af2ece",
+        "android_client_info": {
+          "package_name": "com.flares"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDax2M0r15rC8eHNPTsfyCWs5zEBh0xw3s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

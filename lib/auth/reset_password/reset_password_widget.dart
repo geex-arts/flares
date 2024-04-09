@@ -218,49 +218,76 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 40.0,
-                          decoration: BoxDecoration(
-                            color: const Color(0x0CFFFFFF),
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                          child: TextFormField(
-                            controller: _model.emailFieldController,
-                            focusNode: _model.emailFieldFocusNode,
-                            autofocus: false,
-                            textInputAction: TextInputAction.send,
-                            obscureText: false,
-                            decoration: InputDecoration(
-                              hintText: 'Email',
-                              hintStyle: FlutterFlowTheme.of(context)
-                                  .labelMedium
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    color: const Color(0x9AFFFFFF),
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                              enabledBorder: InputBorder.none,
-                              focusedBorder: InputBorder.none,
-                              errorBorder: InputBorder.none,
-                              focusedErrorBorder: InputBorder.none,
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 0.0, 6.0),
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
+                        child: TextFormField(
+                          controller: _model.emailFieldController,
+                          focusNode: _model.emailFieldFocusNode,
+                          autofocus: false,
+                          textInputAction: TextInputAction.next,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                            isDense: false,
+                            hintText: 'Email',
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: FlutterFlowTheme.of(context).info,
+                                  color: const Color(0x98FFFFFF),
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
-                            minLines: null,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: _model.emailFieldControllerValidator
-                                .asValidator(context),
+                            errorStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Nuckle',
+                                  color: FlutterFlowTheme.of(context).error,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                color: Color(0x00000000),
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).pinkButton,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            errorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedErrorBorder: OutlineInputBorder(
+                              borderSide: BorderSide(
+                                color: FlutterFlowTheme.of(context).error,
+                                width: 1.0,
+                              ),
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            filled: true,
+                            fillColor: const Color(0x0FFFFFFF),
+                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 14.0, 20.0, 14.0),
                           ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Nuckle',
+                                    color: FlutterFlowTheme.of(context).info,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
+                                  ),
+                          minLines: null,
+                          keyboardType: TextInputType.emailAddress,
+                          cursorColor: FlutterFlowTheme.of(context).pinkButton,
+                          validator: _model.emailFieldControllerValidator
+                              .asValidator(context),
                         ),
                       ),
                       Padding(

@@ -7,7 +7,9 @@ export 'table.dart';
 
 export 'tables/pairs_invitations.dart';
 export 'tables/pairs.dart';
+export 'tables/notifications.dart';
 export 'tables/discovery.dart';
+export 'tables/ai_category.dart';
 export 'tables/collections.dart';
 export 'tables/wish_reactions.dart';
 export 'tables/dates.dart';

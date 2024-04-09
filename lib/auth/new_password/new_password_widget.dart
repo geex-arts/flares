@@ -204,8 +204,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                       ),
                       filled: true,
                       fillColor: const Color(0x0FFFFFFF),
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 14.0, 20.0, 14.0),
                       suffixIcon: InkWell(
                         onTap: () => setState(
                           () => _model.passwordFieldVisibility =
@@ -326,8 +326,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                       ),
                       filled: true,
                       fillColor: const Color(0x0FFFFFFF),
-                      contentPadding:
-                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                          20.0, 14.0, 20.0, 14.0),
                       suffixIcon: InkWell(
                         onTap: () => setState(
                           () => _model.rePasswordFieldVisibility =

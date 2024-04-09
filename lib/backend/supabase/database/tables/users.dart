@@ -37,4 +37,7 @@ class UsersRow extends SupabaseDataRow {
 
   String? get pair => getField<String>('pair');
   set pair(String? value) => setField<String>('pair', value);
+
+  String? get fcmToken => getField<String>('fcmToken');
+  set fcmToken(String? value) => setField<String>('fcmToken', value);
 }

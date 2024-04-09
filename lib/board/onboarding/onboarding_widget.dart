@@ -1,3 +1,4 @@
+import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -59,6 +60,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     'imageOnPageLoadAnimation2': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
+        VisibilityEffect(duration: 1.ms),
         FadeEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
@@ -69,7 +71,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 1200.ms,
+          duration: 1600.ms,
           begin: const Offset(0.0, 100.0),
           end: const Offset(0.0, 0.0),
         ),
@@ -117,11 +119,12 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     'iconOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
+        VisibilityEffect(duration: 1.ms),
         ScaleEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 2400.ms,
-          begin: const Offset(4.0, 4.0),
+          begin: const Offset(2.0, 2.0),
           end: const Offset(1.0, 1.0),
         ),
       ],
@@ -278,6 +281,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .info,
+                                                        fontSize: 15.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
                                                       ),
@@ -314,7 +318,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                       children: [
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 20.0),
+                              0.0, 0.0, 0.0, 16.0),
                           child: PageView(
                             controller: _model.pageViewController ??=
                                 PageController(initialPage: 0),
@@ -539,7 +543,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                       ),
                                       Padding(
                                         padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 11.0, 0.0, 0.0),
+                                            0.0, 8.0, 0.0, 0.0),
                                         child: Text(
                                           'You can find the pairing code in \nthe message your partner sent \nyou',
                                           textAlign: TextAlign.center,
@@ -560,10 +564,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  3.0, 36.0, 0.0, 0.0),
+                                                  3.0, 4.0, 0.0, 0.0),
                                           child: SizedBox(
                                             width: double.infinity,
-                                            height: 134.0,
+                                            height: 130.0,
                                             child: Stack(
                                               children: [
                                                 Align(
@@ -692,7 +696,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 24.0, 0.0, 0.0),
+                                                  0.0, 20.0, 0.0, 0.0),
                                           child: const Icon(
                                             FFIcons.kshape,
                                             color: Color(0xFFFF2C96),
@@ -873,35 +877,19 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 54.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
-                    Flexible(
-                      child: FFButtonWidget(
-                        onPressed: () async {
-                          context.pushNamed('Sign_In');
-                        },
-                        text: 'Log In',
-                        options: FFButtonOptions(
-                          width: double.infinity,
-                          height: 42.0,
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 0.0, 24.0, 0.0),
-                          iconPadding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).pinkButton,
-                          textStyle:
-                              FlutterFlowTheme.of(context).titleSmall.override(
-                                    fontFamily: 'Nuckle',
-                                    color: Colors.white,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                          borderSide: const BorderSide(
-                            color: Colors.transparent,
-                          ),
-                          borderRadius: BorderRadius.circular(21.0),
+                    Expanded(
+                      child: wrapWithModel(
+                        model: _model.logInModel,
+                        updateCallback: () => setState(() {}),
+                        child: PinkButtonWidget(
+                          text: 'Log In',
+                          currentAction: () async {
+                            context.pushNamed('Sign_In');
+                          },
                         ),
                       ),
                     ),
@@ -924,7 +912,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                               .override(
                                 fontFamily: 'Nuckle',
                                 color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 17.0,
                                 letterSpacing: 0.0,
+                                fontWeight: FontWeight.w500,
                                 useGoogleFonts: false,
                               ),
                           borderSide: const BorderSide(

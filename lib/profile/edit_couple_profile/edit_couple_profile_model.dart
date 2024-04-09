@@ -1,20 +1,31 @@
+import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'edit_couple_profile_widget.dart' show EditCoupleProfileWidget;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
+  ///  Local state fields for this page.
+
+  bool dateOn = false;
+
+  bool borderOn = false;
+
+  FFUploadedFile? photoPS;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
   // State field(s) for NamesField widget.
   FocusNode? namesFieldFocusNode;
   TextEditingController? namesFieldController;
   String? Function(BuildContext, String?)? namesFieldControllerValidator;
-  // State field(s) for SinceField widget.
-  FocusNode? sinceFieldFocusNode;
-  TextEditingController? sinceFieldController;
-  String? Function(BuildContext, String?)? sinceFieldControllerValidator;
+  DateTime? datePicked;
   // State field(s) for DropDown widget.
   String? dropDownValue1;
   FormFieldController<String>? dropDownValueController1;
@@ -24,9 +35,13 @@ class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue3;
   FormFieldController<String>? dropDownValueController3;
+  // Model for CreateCouple.
+  late PinkButtonModel createCoupleModel;
 
   @override
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    createCoupleModel = createModel(context, () => PinkButtonModel());
+  }
 
   @override
   void dispose() {
@@ -34,7 +49,6 @@ class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
     namesFieldFocusNode?.dispose();
     namesFieldController?.dispose();
 
-    sinceFieldFocusNode?.dispose();
-    sinceFieldController?.dispose();
+    createCoupleModel.dispose();
   }
 }

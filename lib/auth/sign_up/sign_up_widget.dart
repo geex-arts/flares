@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -243,7 +244,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   fillColor: const Color(0x0FFFFFFF),
                                   contentPadding:
                                       const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 20.0, 0.0),
+                                          20.0, 14.0, 20.0, 14.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -324,7 +325,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     fillColor: const Color(0x0FFFFFFF),
                                     contentPadding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
+                                            20.0, 14.0, 20.0, 14.0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
                                         () => _model.passwordFieldVisibility =
@@ -461,7 +462,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     fillColor: const Color(0x0FFFFFFF),
                                     contentPadding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 20.0, 0.0),
+                                            20.0, 14.0, 20.0, 14.0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
                                         () => _model.rePasswordFieldVisibility =
@@ -544,6 +545,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   child: PinkButtonWidget(
                                     text: 'Next',
                                     currentAction: () async {
+                                      var shouldSetState = false;
                                       if ((_model.emailFieldController
                                                       .text ==
                                                   '') &&
@@ -556,6 +558,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         setState(() {
                                           _model.passLength = false;
                                         });
+                                        if (shouldSetState) setState(() {});
                                         return;
                                       } else {
                                         if (_model.emailFieldController.text ==
@@ -566,6 +569,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           setState(() {
                                             _model.passLength = false;
                                           });
+                                          if (shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           if (_model.passwordFieldController
@@ -577,6 +581,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             setState(() {
                                               _model.passLength = false;
                                             });
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
                                             return;
                                           } else {
                                             if (functions.wordLength(_model
@@ -589,6 +596,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                               setState(() {
                                                 _model.passLength = true;
                                               });
+                                              if (shouldSetState) {
+                                                setState(() {});
+                                              }
                                               return;
                                             } else {
                                               if (_model.rePasswordFieldController
@@ -600,6 +610,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 setState(() {
                                                   _model.passLength = false;
                                                 });
+                                                if (shouldSetState) {
+                                                  setState(() {});
+                                                }
                                                 return;
                                               }
                                               setState(() {
@@ -612,6 +625,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       }
 
                                       HapticFeedback.lightImpact();
+                                      await actions.getPushPermission();
+                                      _model.fcmToken =
+                                          await actions.getFCMToken();
+                                      shouldSetState = true;
                                       GoRouter.of(context).prepareAuthEvent();
                                       if (_model.passwordFieldController.text !=
                                           _model
@@ -642,11 +659,14 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         'created_at': supaSerialize<DateTime>(
                                             getCurrentTimestamp),
                                         'email': currentUserEmail,
+                                        'fcmToken': _model.fcmToken,
                                       });
 
                                       context.goNamedAuth(
                                           'Create_Couple_Profile',
                                           context.mounted);
+
+                                      if (shouldSetState) setState(() {});
                                     },
                                   ),
                                 ),
