@@ -1,16 +1,25 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:share_plus/share_plus.dart';
 import 'invite_partner_onb_model.dart';
 export 'invite_partner_onb_model.dart';
 
 class InvitePartnerOnbWidget extends StatefulWidget {
-  const InvitePartnerOnbWidget({super.key});
+  const InvitePartnerOnbWidget({
+    super.key,
+    required this.pairInvitationRow,
+  });
+
+  final PairsInvitationsRow? pairInvitationRow;
 
   @override
   State<InvitePartnerOnbWidget> createState() => _InvitePartnerOnbWidgetState();
@@ -280,9 +289,13 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                           useGoogleFonts: false,
                                                         ),
                                               ),
-                                              const TextSpan(
-                                                text: 'FLARES990',
-                                                style: TextStyle(
+                                              TextSpan(
+                                                text: valueOrDefault<String>(
+                                                  widget.pairInvitationRow
+                                                      ?.pairCode,
+                                                  'FLARES990',
+                                                ),
+                                                style: const TextStyle(
                                                   color: Color(0xFFFF2C96),
                                                 ),
                                               )
@@ -296,14 +309,27 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 ),
                                           ),
                                         ),
-                                        const Padding(
+                                        Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 0.0, 0.0),
-                                          child: Icon(
-                                            Icons.content_copy,
-                                            color: Color(0xFFFF2C96),
-                                            size: 18.0,
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text: widget
+                                                          .pairInvitationRow!
+                                                          .pairCode!));
+                                            },
+                                            child: const Icon(
+                                              Icons.content_copy,
+                                              color: Color(0xFFFF2C96),
+                                              size: 18.0,
+                                            ),
                                           ),
                                         ),
                                       ],
@@ -320,7 +346,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           text: 'Share my invite link',
                                           currentAction: () async {
                                             await Share.share(
-                                              'FLARES990',
+                                              'flares://flares.com',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
@@ -506,24 +532,85 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           .asValidator(context),
                                     ),
                                   ),
-                                  Builder(
-                                    builder: (context) => Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 16.0, 0.0, 0.0),
-                                      child: wrapWithModel(
-                                        model: _model.sendPairingCodeModel,
-                                        updateCallback: () => setState(() {}),
-                                        child: PinkButtonWidget(
-                                          text: 'Send Pairing Code',
-                                          currentAction: () async {
-                                            await Share.share(
-                                              _model
-                                                  .sendCodeFieldController.text,
-                                              sharePositionOrigin:
-                                                  getWidgetBoundingBox(context),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 16.0, 0.0, 0.0),
+                                    child: wrapWithModel(
+                                      model: _model.sendPairingCodeModel,
+                                      updateCallback: () => setState(() {}),
+                                      child: PinkButtonWidget(
+                                        text: 'Send Pairing Code',
+                                        currentAction: () async {
+                                          _model.foundPairingRow =
+                                              await PairsInvitationsTable()
+                                                  .queryRows(
+                                            queryFn: (q) => q
+                                                .eq(
+                                                  'status',
+                                                  'pending',
+                                                )
+                                                .eq(
+                                                  'pair_code',
+                                                  _model.sendCodeFieldController
+                                                      .text,
+                                                ),
+                                          );
+                                          if (_model.foundPairingRow != null &&
+                                              (_model.foundPairingRow)!
+                                                  .isNotEmpty) {
+                                            unawaited(
+                                              () async {
+                                                await UsersTable().update(
+                                                  data: {
+                                                    'pair': _model
+                                                        .foundPairingRow
+                                                        ?.first
+                                                        .pair,
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+                                              }(),
                                             );
-                                          },
-                                        ),
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              context: context,
+                                              builder: (context) {
+                                                return GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: SizedBox(
+                                                      height: MediaQuery.sizeOf(
+                                                                  context)
+                                                              .height *
+                                                          0.85,
+                                                      child:
+                                                          const BSTurnNotificationsWidget(),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
+                                          }
+
+                                          setState(() {});
+                                        },
                                       ),
                                     ),
                                   ),

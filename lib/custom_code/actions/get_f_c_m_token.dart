@@ -8,16 +8,16 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_messaging/firebase_messaging.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<String?> getFCMToken() async {
-  NotificationSettings settings =
-      await FirebaseMessaging.instance.getNotificationSettings();
-  if (settings.authorizationStatus != AuthorizationStatus.authorized) {
-    return null;
-  }
-  String? fcmToken = await FirebaseMessaging.instance.getToken();
-  return fcmToken;
+  // NotificationSettings settings =
+  //     await FirebaseMessaging.instance.getNotificationSettings();
+  // if (settings.authorizationStatus != AuthorizationStatus.authorized) {
+  //   return null;
+  // }
+  // String? fcmToken = await FirebaseMessaging.instance.getToken();
+  // return fcmToken;
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

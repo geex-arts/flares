@@ -698,7 +698,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: const Icon(
-                                            FFIcons.kshape,
+                                            FFIcons.klike,
                                             color: Color(0xFFFF2C96),
                                             size: 22.0,
                                           ).animateOnPageLoad(animationsMap[

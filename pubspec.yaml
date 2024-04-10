@@ -75,6 +75,7 @@ dependencies:
   plugin_platform_interface: 2.1.8
   postgrest: 1.5.2
   provider: 6.0.5
+  purchases_flutter: 6.0.0
   realtime_client: 1.4.0
   rxdart: 0.27.7
   share_plus: 7.2.1

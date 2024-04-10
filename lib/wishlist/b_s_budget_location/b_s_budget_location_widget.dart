@@ -254,7 +254,28 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     context: context,
                                     phone: false,
                                   ))
-                                    Container(
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Container(
+                                        width: 26.0,
+                                        height: 18.0,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              FlutterFlowTheme.of(context).pink,
+                                          borderRadius:
+                                              BorderRadius.circular(9.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            width: 2.0,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  Align(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    child: Container(
                                       width: 26.0,
                                       height: 18.0,
                                       decoration: BoxDecoration(
@@ -269,35 +290,26 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                         ),
                                       ),
                                     ),
-                                  Container(
-                                    width: 26.0,
-                                    height: 18.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).pink,
-                                      borderRadius: BorderRadius.circular(9.0),
-                                      border: Border.all(
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        width: 2.0,
-                                      ),
-                                    ),
                                   ),
                                   if (responsiveVisibility(
                                     context: context,
                                     phone: false,
                                   ))
-                                    Container(
-                                      width: 26.0,
-                                      height: 18.0,
-                                      decoration: BoxDecoration(
-                                        color:
-                                            FlutterFlowTheme.of(context).pink,
-                                        borderRadius:
-                                            BorderRadius.circular(9.0),
-                                        border: Border.all(
+                                    Align(
+                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      child: Container(
+                                        width: 26.0,
+                                        height: 18.0,
+                                        decoration: BoxDecoration(
                                           color:
-                                              FlutterFlowTheme.of(context).info,
-                                          width: 2.0,
+                                              FlutterFlowTheme.of(context).pink,
+                                          borderRadius:
+                                              BorderRadius.circular(9.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            width: 2.0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -306,17 +318,28 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             ],
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 8.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
+                        Align(
+                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 8.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ))
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/slide.webp',
+                                      width: 29.0,
+                                      height: 11.0,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.asset(
@@ -326,29 +349,21 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(8.0),
-                                child: Image.asset(
-                                  'assets/images/slide.webp',
-                                  width: 29.0,
-                                  height: 11.0,
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                              if (responsiveVisibility(
-                                context: context,
-                                phone: false,
-                              ))
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  child: Image.asset(
-                                    'assets/images/slide.webp',
-                                    width: 29.0,
-                                    height: 11.0,
-                                    fit: BoxFit.cover,
+                                if (responsiveVisibility(
+                                  context: context,
+                                  phone: false,
+                                ))
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(8.0),
+                                    child: Image.asset(
+                                      'assets/images/slide.webp',
+                                      width: 29.0,
+                                      height: 11.0,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
-                                ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ],

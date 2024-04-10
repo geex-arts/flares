@@ -1,8 +1,12 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:async';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -246,7 +250,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.memory(
-                                  _model.uploadedLocalFile.bytes ??
+                                  _model.uploadedLocalFile1.bytes ??
                                       Uint8List.fromList([]),
                                   fit: BoxFit.cover,
                                 ),
@@ -271,7 +275,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                             validateFileFormat(
                                                 m.storagePath, context))) {
                                       setState(
-                                          () => _model.isDataUploading = true);
+                                          () => _model.isDataUploading1 = true);
                                       var selectedUploadedFiles =
                                           <FFUploadedFile>[];
 
@@ -288,12 +292,12 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                                 ))
                                             .toList();
                                       } finally {
-                                        _model.isDataUploading = false;
+                                        _model.isDataUploading1 = false;
                                       }
                                       if (selectedUploadedFiles.length ==
                                           selectedMedia.length) {
                                         setState(() {
-                                          _model.uploadedLocalFile =
+                                          _model.uploadedLocalFile1 =
                                               selectedUploadedFiles.first;
                                         });
                                       } else {
@@ -570,7 +574,88 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                           child: PinkButtonWidget(
                             text: 'Create Couple',
                             currentAction: () async {
-                              context.pushNamed('Invite_Partner_Onb');
+                              {
+                                setState(() => _model.isDataUploading2 = true);
+                                var selectedUploadedFiles = <FFUploadedFile>[];
+                                var selectedMedia = <SelectedFile>[];
+                                var downloadUrls = <String>[];
+                                try {
+                                  selectedUploadedFiles = _model
+                                          .uploadedLocalFile1.bytes!.isNotEmpty
+                                      ? [_model.uploadedLocalFile1]
+                                      : <FFUploadedFile>[];
+                                  selectedMedia =
+                                      selectedFilesFromUploadedFiles(
+                                    selectedUploadedFiles,
+                                    storageFolderPath: 'pairImages',
+                                  );
+                                  downloadUrls =
+                                      await uploadSupabaseStorageFiles(
+                                    bucketName: 'EdayBucket',
+                                    selectedFiles: selectedMedia,
+                                  );
+                                } finally {
+                                  _model.isDataUploading2 = false;
+                                }
+                                if (selectedUploadedFiles.length ==
+                                        selectedMedia.length &&
+                                    downloadUrls.length ==
+                                        selectedMedia.length) {
+                                  setState(() {
+                                    _model.uploadedLocalFile2 =
+                                        selectedUploadedFiles.first;
+                                    _model.uploadedFileUrl2 =
+                                        downloadUrls.first;
+                                  });
+                                } else {
+                                  setState(() {});
+                                  return;
+                                }
+                              }
+
+                              _model.newPairRow = await PairsTable().insert({
+                                'photo': _model.uploadedFileUrl2,
+                                'pair_name': _model.namesFieldController.text,
+                                'first_date':
+                                    supaSerialize<DateTime>(_model.datePicked),
+                              });
+                              unawaited(
+                                () async {
+                                  await UsersTable().update(
+                                    data: {
+                                      'pair': _model.newPairRow?.uuid,
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'email',
+                                      currentUserEmail,
+                                    ),
+                                  );
+                                }(),
+                              );
+                              _model.pairInvitationRow =
+                                  await PairsInvitationsTable().insert({
+                                'status': 'pending',
+                                'pair_code': random_data.randomString(
+                                  9,
+                                  9,
+                                  true,
+                                  true,
+                                  true,
+                                ),
+                                'pair': _model.newPairRow?.uuid,
+                              });
+
+                              context.pushNamed(
+                                'Invite_Partner_Onb',
+                                queryParameters: {
+                                  'pairInvitationRow': serializeParam(
+                                    _model.pairInvitationRow,
+                                    ParamType.SupabaseRow,
+                                  ),
+                                }.withoutNulls,
+                              );
+
+                              setState(() {});
                             },
                           ),
                         ),

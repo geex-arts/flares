@@ -292,7 +292,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                             alignment:
                                                 const AlignmentDirectional(0.0, 1.0),
                                             child: const Icon(
-                                              FFIcons.kshape,
+                                              FFIcons.klike,
                                               color: Color(0xFFFF2C96),
                                               size: 14.0,
                                             ).animateOnPageLoad(animationsMap[

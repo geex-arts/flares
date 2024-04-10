@@ -280,7 +280,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 0.0),
                             child: const Icon(
-                              FFIcons.kshape,
+                              FFIcons.kdocumentSearch,
                               color: Color(0xFFFF2C96),
                               size: 22.0,
                             ).animateOnPageLoad(

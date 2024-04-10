@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/card_widget.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/generate_with_a_i_widget.dart';
@@ -11,6 +12,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - Query Rows] action in My_Profile widget.
+  List<UsersRow>? currentUserRow;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.

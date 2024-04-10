@@ -294,7 +294,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         19.0, 43.0, 19.0, 0.0),
                                     child: const Icon(
-                                      FFIcons.kshape,
+                                      FFIcons.klike,
                                       color: Color(0xFFFF2C96),
                                       size: 18.0,
                                     ).animateOnPageLoad(animationsMap[

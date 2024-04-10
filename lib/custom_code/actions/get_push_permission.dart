@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_messaging/firebase_messaging.dart';
+//import 'package:firebase_messaging/firebase_messaging.dart';
 
 Future<void> getPushPermission() async {
-  await FirebaseMessaging.instance.requestPermission();
+  //await FirebaseMessaging.instance.requestPermission();
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

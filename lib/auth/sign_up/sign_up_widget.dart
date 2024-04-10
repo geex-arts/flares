@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/login_exists_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -536,35 +537,25 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     ],
                                   ),
                                 ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 26.0, 0.0, 0.0),
-                                child: wrapWithModel(
-                                  model: _model.nextButtonModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: PinkButtonWidget(
-                                    text: 'Next',
-                                    currentAction: () async {
-                                      var shouldSetState = false;
-                                      if ((_model.emailFieldController
-                                                      .text ==
-                                                  '') &&
-                                          (_model.passwordFieldController
-                                                      .text ==
-                                                  '')) {
-                                        setState(() {
-                                          _model.emptyFields = 2;
-                                        });
-                                        setState(() {
-                                          _model.passLength = false;
-                                        });
-                                        if (shouldSetState) setState(() {});
-                                        return;
-                                      } else {
-                                        if (_model.emailFieldController.text ==
-                                                '') {
+                              Builder(
+                                builder: (context) => Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 26.0, 0.0, 0.0),
+                                  child: wrapWithModel(
+                                    model: _model.nextButtonModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: PinkButtonWidget(
+                                      text: 'Next',
+                                      currentAction: () async {
+                                        var shouldSetState = false;
+                                        if ((_model.emailFieldController
+                                                        .text ==
+                                                    '') &&
+                                            (_model.passwordFieldController
+                                                        .text ==
+                                                    '')) {
                                           setState(() {
-                                            _model.emptyFields = 0;
+                                            _model.emptyFields = 2;
                                           });
                                           setState(() {
                                             _model.passLength = false;
@@ -572,11 +563,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           if (shouldSetState) setState(() {});
                                           return;
                                         } else {
-                                          if (_model.passwordFieldController
+                                          if (_model.emailFieldController
                                                       .text ==
                                                   '') {
                                             setState(() {
-                                              _model.emptyFields = 1;
+                                              _model.emptyFields = 0;
                                             });
                                             setState(() {
                                               _model.passLength = false;
@@ -586,88 +577,151 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             }
                                             return;
                                           } else {
-                                            if (functions.wordLength(_model
-                                                    .passwordFieldController
-                                                    .text) <
-                                                8) {
+                                            if (_model.passwordFieldController
+                                                        .text ==
+                                                    '') {
                                               setState(() {
                                                 _model.emptyFields = 1;
                                               });
                                               setState(() {
-                                                _model.passLength = true;
+                                                _model.passLength = false;
                                               });
                                               if (shouldSetState) {
                                                 setState(() {});
                                               }
                                               return;
                                             } else {
-                                              if (_model.rePasswordFieldController
-                                                          .text ==
-                                                      '') {
+                                              if (functions.wordLength(_model
+                                                      .passwordFieldController
+                                                      .text) <
+                                                  8) {
                                                 setState(() {
-                                                  _model.emptyFields = 4;
+                                                  _model.emptyFields = 1;
                                                 });
                                                 setState(() {
-                                                  _model.passLength = false;
+                                                  _model.passLength = true;
                                                 });
                                                 if (shouldSetState) {
                                                   setState(() {});
                                                 }
                                                 return;
+                                              } else {
+                                                if (_model.rePasswordFieldController
+                                                            .text ==
+                                                        '') {
+                                                  setState(() {
+                                                    _model.emptyFields = 4;
+                                                  });
+                                                  setState(() {
+                                                    _model.passLength = false;
+                                                  });
+                                                  if (shouldSetState) {
+                                                    setState(() {});
+                                                  }
+                                                  return;
+                                                }
+                                                setState(() {
+                                                  _model.emptyFields = null;
+                                                  _model.passLength = false;
+                                                });
                                               }
-                                              setState(() {
-                                                _model.emptyFields = null;
-                                                _model.passLength = false;
-                                              });
                                             }
                                           }
                                         }
-                                      }
 
-                                      HapticFeedback.lightImpact();
-                                      await actions.getPushPermission();
-                                      _model.fcmToken =
-                                          await actions.getFCMToken();
-                                      shouldSetState = true;
-                                      GoRouter.of(context).prepareAuthEvent();
-                                      if (_model.passwordFieldController.text !=
-                                          _model
-                                              .rePasswordFieldController.text) {
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                            content: Text(
-                                              'Passwords don\'t match!',
-                                            ),
+                                        HapticFeedback.lightImpact();
+                                        _model.existingUser =
+                                            await UsersTable().queryRows(
+                                          queryFn: (q) => q.eq(
+                                            'email',
+                                            _model.emailFieldController.text,
                                           ),
                                         );
-                                        return;
-                                      }
+                                        shouldSetState = true;
+                                        if (_model.existingUser != null &&
+                                            (_model.existingUser)!.isNotEmpty) {
+                                          showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: const AlignmentDirectional(
+                                                        0.0, -1.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child:
+                                                      const LoginExistsWarningWidget(),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
 
-                                      final user = await authManager
-                                          .createAccountWithEmail(
-                                        context,
-                                        _model.emailFieldController.text,
-                                        _model.passwordFieldController.text,
-                                      );
-                                      if (user == null) {
-                                        return;
-                                      }
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 3000));
 
-                                      await UsersTable().insert({
-                                        'id': currentUserUid,
-                                        'created_at': supaSerialize<DateTime>(
-                                            getCurrentTimestamp),
-                                        'email': currentUserEmail,
-                                        'fcmToken': _model.fcmToken,
-                                      });
+                                          context.goNamedAuth(
+                                              'Sign_In', context.mounted);
 
-                                      context.goNamedAuth(
-                                          'Create_Couple_Profile',
-                                          context.mounted);
+                                          if (shouldSetState) setState(() {});
+                                          return;
+                                        }
+                                        await actions.getPushPermission();
+                                        _model.fcmToken =
+                                            await actions.getFCMToken();
+                                        shouldSetState = true;
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        if (_model
+                                                .passwordFieldController.text !=
+                                            _model.rePasswordFieldController
+                                                .text) {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                              content: Text(
+                                                'Passwords don\'t match!',
+                                              ),
+                                            ),
+                                          );
+                                          return;
+                                        }
 
-                                      if (shouldSetState) setState(() {});
-                                    },
+                                        final user = await authManager
+                                            .createAccountWithEmail(
+                                          context,
+                                          _model.emailFieldController.text,
+                                          _model.passwordFieldController.text,
+                                        );
+                                        if (user == null) {
+                                          return;
+                                        }
+
+                                        await UsersTable().insert({
+                                          'id': currentUserUid,
+                                          'created_at': supaSerialize<DateTime>(
+                                              getCurrentTimestamp),
+                                          'email': currentUserEmail,
+                                          'fcmToken': _model.fcmToken,
+                                        });
+
+                                        context.goNamedAuth(
+                                            'Create_Couple_Profile',
+                                            context.mounted);
+
+                                        if (shouldSetState) setState(() {});
+                                      },
+                                    ),
                                   ),
                                 ),
                               ),

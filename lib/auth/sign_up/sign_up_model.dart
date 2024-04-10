@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'sign_up_widget.dart' show SignUpWidget;
@@ -66,6 +67,8 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
+  // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
+  List<UsersRow>? existingUser;
   // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
   String? fcmToken;
 

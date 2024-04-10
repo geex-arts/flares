@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
 
@@ -135,7 +136,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Invite_Partner_Onb',
               path: 'invitePartnerOnb',
-              builder: (context, params) => const InvitePartnerOnbWidget(),
+              builder: (context, params) => InvitePartnerOnbWidget(
+                pairInvitationRow: params.getParam<PairsInvitationsRow>(
+                  'pairInvitationRow',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Language',

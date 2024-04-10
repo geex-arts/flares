@@ -12,6 +12,7 @@ import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/nav/nav.dart';
+import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,6 +24,12 @@ void main() async {
   // End initial custom actions code
 
   await SupaFlow.initialize();
+
+  await revenue_cat.initialize(
+    "goog_YwrPlXjJHzkEKJPJGsDIWrubbCP",
+    "",
+    loadDataAfterLaunch: true,
+  );
 
   runApp(const MyApp());
 }

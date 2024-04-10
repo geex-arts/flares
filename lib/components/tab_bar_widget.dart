@@ -98,7 +98,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         Navigator.pop(context);
                       },
                       child: Icon(
-                        FFIcons.kchat,
+                        FFIcons.kfolderAdd,
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         size: 18.0,
                       ),
