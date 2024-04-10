@@ -1,4 +1,4 @@
-package com.flares
+package com.geexarts.flares
 
 import io.flutter.embedding.android.FlutterActivity
 

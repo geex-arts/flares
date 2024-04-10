@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:589050000203:android:9676cfcc4bb1ee80af2ece",
+        "mobilesdk_app_id": "1:589050000203:android:91563fb2be7ee9c8af2ece",
         "android_client_info": {
-          "package_name": "com.flares"
+          "package_name": "com.geexarts.flares"
         }
       },
       "oauth_client": [],
