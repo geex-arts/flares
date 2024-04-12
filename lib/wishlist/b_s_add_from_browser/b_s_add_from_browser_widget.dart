@@ -30,106 +30,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
   late BSAddFromBrowserModel _model;
 
   final animationsMap = {
-    'imageOnPageLoadAnimation1': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation2': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation3': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-    'imageOnPageLoadAnimation4': AnimationInfo(
+    'imageOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         ShimmerEffect(
@@ -586,606 +487,197 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                  child: SizedBox(
-                                    width: 119.0,
-                                    height: 177.0,
-                                    child: Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/417/600',
-                                            width: 119.0,
-                                            height: 177.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'imageOnPageLoadAnimation1']!),
-                                        Container(
-                                          width: 119.0,
-                                          height: 177.0,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: Image.network(
-                                                getJsonField(
-                                                  widget.parsedURLJson,
-                                                  r'''$.images[0]''',
-                                                ).toString(),
-                                              ).image,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 119.0,
-                                          height: 48.0,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                                Colors.transparent
-                                              ],
-                                              stops: const [0.0, 1.0],
-                                              begin: const AlignmentDirectional(
-                                                  0.0, -1.0),
-                                              end: const AlignmentDirectional(0, 1.0),
-                                            ),
-                                            borderRadius: const BorderRadius.only(
-                                              bottomLeft: Radius.circular(0.0),
-                                              bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(8.0),
-                                              topRight: Radius.circular(8.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Container(
-                                            width: 119.0,
-                                            height: 48.0,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.transparent,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground
-                                                ],
-                                                stops: const [0.0, 1.0],
-                                                begin: const AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                end: const AlignmentDirectional(
-                                                    0, 1.0),
+                          child: Builder(
+                            builder: (context) {
+                              final currentImage = getJsonField(
+                                widget.parsedURLJson,
+                                r'''$.image''',
+                              ).toList();
+                              return SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: List.generate(currentImage.length,
+                                          (currentImageIndex) {
+                                    final currentImageItem =
+                                        currentImage[currentImageIndex];
+                                    return Container(
+                                      decoration: const BoxDecoration(),
+                                      child: SizedBox(
+                                        width: 119.0,
+                                        height: 177.0,
+                                        child: Stack(
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.network(
+                                                currentImageItem.toString(),
+                                                width: 119.0,
+                                                height: 177.0,
+                                                fit: BoxFit.cover,
                                               ),
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(8.0),
-                                                bottomRight:
-                                                    Radius.circular(8.0),
-                                                topLeft: Radius.circular(0.0),
-                                                topRight: Radius.circular(0.0),
+                                            ).animateOnPageLoad(animationsMap[
+                                                'imageOnPageLoadAnimation']!),
+                                            Container(
+                                              width: 119.0,
+                                              height: 177.0,
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
                                               ),
                                             ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 10.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    Container(
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          width: 1.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
+                                            Container(
+                                              width: 119.0,
+                                              height: 48.0,
+                                              decoration: BoxDecoration(
+                                                gradient: LinearGradient(
+                                                  colors: [
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryBackground,
+                                                    Colors.transparent
                                                   ],
+                                                  stops: const [0.0, 1.0],
+                                                  begin: const AlignmentDirectional(
+                                                      0.0, -1.0),
+                                                  end: const AlignmentDirectional(
+                                                      0, 1.0),
                                                 ),
-                                                if (responsiveVisibility(
-                                                  context: context,
-                                                  phone: false,
-                                                ))
-                                                  Container(
-                                                    width: 20.0,
-                                                    height: 20.0,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(
-                                                        color:
-                                                            const Color(0x1AFFFFFF),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                  child: SizedBox(
-                                    width: 119.0,
-                                    height: 177.0,
-                                    child: Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/417/600',
-                                            width: 119.0,
-                                            height: 177.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'imageOnPageLoadAnimation2']!),
-                                        Container(
-                                          width: 119.0,
-                                          height: 177.0,
-                                          decoration: BoxDecoration(
-                                            image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: Image.network(
-                                                getJsonField(
-                                                  widget.parsedURLJson,
-                                                  r'''$.images[1]''',
-                                                ).toString(),
-                                              ).image,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 119.0,
-                                          height: 48.0,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                                Colors.transparent
-                                              ],
-                                              stops: const [0.0, 1.0],
-                                              begin: const AlignmentDirectional(
-                                                  0.0, -1.0),
-                                              end: const AlignmentDirectional(0, 1.0),
-                                            ),
-                                            borderRadius: const BorderRadius.only(
-                                              bottomLeft: Radius.circular(0.0),
-                                              bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(8.0),
-                                              topRight: Radius.circular(8.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Container(
-                                            width: 119.0,
-                                            height: 48.0,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.transparent,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground
-                                                ],
-                                                stops: const [0.0, 1.0],
-                                                begin: const AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                end: const AlignmentDirectional(
-                                                    0, 1.0),
-                                              ),
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(8.0),
-                                                bottomRight:
-                                                    Radius.circular(8.0),
-                                                topLeft: Radius.circular(0.0),
-                                                topRight: Radius.circular(0.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 10.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    Container(
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          width: 1.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
-                                                  ],
+                                                borderRadius: const BorderRadius.only(
+                                                  bottomLeft:
+                                                      Radius.circular(0.0),
+                                                  bottomRight:
+                                                      Radius.circular(0.0),
+                                                  topLeft: Radius.circular(8.0),
+                                                  topRight:
+                                                      Radius.circular(8.0),
                                                 ),
-                                                if (responsiveVisibility(
-                                                  context: context,
-                                                  phone: false,
-                                                ))
-                                                  Container(
-                                                    width: 20.0,
-                                                    height: 20.0,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(
-                                                        color:
-                                                            const Color(0x1AFFFFFF),
-                                                      ),
-                                                    ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 1.0),
+                                              child: Container(
+                                                width: 119.0,
+                                                height: 48.0,
+                                                decoration: BoxDecoration(
+                                                  gradient: LinearGradient(
+                                                    colors: [
+                                                      Colors.transparent,
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryBackground
+                                                    ],
+                                                    stops: const [0.0, 1.0],
+                                                    begin: const AlignmentDirectional(
+                                                        0.0, -1.0),
+                                                    end: const AlignmentDirectional(
+                                                        0, 1.0),
                                                   ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                  child: SizedBox(
-                                    width: 119.0,
-                                    height: 177.0,
-                                    child: Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/417/600',
-                                            width: 119.0,
-                                            height: 177.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'imageOnPageLoadAnimation3']!),
-                                        Container(
-                                          width: 119.0,
-                                          height: 177.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 119.0,
-                                          height: 48.0,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                                Colors.transparent
-                                              ],
-                                              stops: const [0.0, 1.0],
-                                              begin: const AlignmentDirectional(
-                                                  0.0, -1.0),
-                                              end: const AlignmentDirectional(0, 1.0),
-                                            ),
-                                            borderRadius: const BorderRadius.only(
-                                              bottomLeft: Radius.circular(0.0),
-                                              bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(8.0),
-                                              topRight: Radius.circular(8.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Container(
-                                            width: 119.0,
-                                            height: 48.0,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.transparent,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground
-                                                ],
-                                                stops: const [0.0, 1.0],
-                                                begin: const AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                end: const AlignmentDirectional(
-                                                    0, 1.0),
-                                              ),
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(8.0),
-                                                bottomRight:
-                                                    Radius.circular(8.0),
-                                                topLeft: Radius.circular(0.0),
-                                                topRight: Radius.circular(0.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 10.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    Container(
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          width: 1.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
-                                                  ],
+                                                  borderRadius:
+                                                      const BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(8.0),
+                                                    bottomRight:
+                                                        Radius.circular(8.0),
+                                                    topLeft:
+                                                        Radius.circular(0.0),
+                                                    topRight:
+                                                        Radius.circular(0.0),
+                                                  ),
                                                 ),
-                                                if (responsiveVisibility(
-                                                  context: context,
-                                                  phone: false,
-                                                ))
-                                                  Container(
-                                                    width: 20.0,
-                                                    height: 20.0,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(
-                                                        color:
-                                                            const Color(0x1AFFFFFF),
-                                                      ),
-                                                    ),
+                                              ),
+                                            ),
+                                            Align(
+                                              alignment: const AlignmentDirectional(
+                                                  1.0, -1.0),
+                                              child: Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 10.0, 10.0, 0.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    setState(() {
+                                                      _model.selectedImage =
+                                                          currentImageIndex;
+                                                    });
+                                                  },
+                                                  child: Builder(
+                                                    builder: (context) {
+                                                      if (currentImageIndex ==
+                                                          _model
+                                                              .selectedImage) {
+                                                        return Container(
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              width: 1.0,
+                                                            ),
+                                                          ),
+                                                          child: Align(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            child: Container(
+                                                              width: 12.0,
+                                                              height: 12.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      } else {
+                                                        return Container(
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: const Color(
+                                                                  0x1AFFFFFF),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      }
+                                                    },
                                                   ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Container(
-                                  decoration: const BoxDecoration(),
-                                  child: SizedBox(
-                                    width: 119.0,
-                                    height: 177.0,
-                                    child: Stack(
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.network(
-                                            'https://picsum.photos/seed/417/600',
-                                            width: 119.0,
-                                            height: 177.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'imageOnPageLoadAnimation4']!),
-                                        Container(
-                                          width: 119.0,
-                                          height: 177.0,
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                          ),
-                                        ),
-                                        Container(
-                                          width: 119.0,
-                                          height: 48.0,
-                                          decoration: BoxDecoration(
-                                            gradient: LinearGradient(
-                                              colors: [
-                                                FlutterFlowTheme.of(context)
-                                                    .primaryBackground,
-                                                Colors.transparent
-                                              ],
-                                              stops: const [0.0, 1.0],
-                                              begin: const AlignmentDirectional(
-                                                  0.0, -1.0),
-                                              end: const AlignmentDirectional(0, 1.0),
-                                            ),
-                                            borderRadius: const BorderRadius.only(
-                                              bottomLeft: Radius.circular(0.0),
-                                              bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(8.0),
-                                              topRight: Radius.circular(8.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
-                                          child: Container(
-                                            width: 119.0,
-                                            height: 48.0,
-                                            decoration: BoxDecoration(
-                                              gradient: LinearGradient(
-                                                colors: [
-                                                  Colors.transparent,
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryBackground
-                                                ],
-                                                stops: const [0.0, 1.0],
-                                                begin: const AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                end: const AlignmentDirectional(
-                                                    0, 1.0),
-                                              ),
-                                              borderRadius: const BorderRadius.only(
-                                                bottomLeft:
-                                                    Radius.circular(8.0),
-                                                bottomRight:
-                                                    Radius.circular(8.0),
-                                                topLeft: Radius.circular(0.0),
-                                                topRight: Radius.circular(0.0),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 10.0, 10.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    Container(
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      decoration: BoxDecoration(
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          width: 1.0,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      width: 12.0,
-                                                      height: 12.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        shape: BoxShape.circle,
-                                                      ),
-                                                    ),
-                                                  ],
                                                 ),
-                                                if (responsiveVisibility(
-                                                  context: context,
-                                                  phone: false,
-                                                ))
-                                                  Container(
-                                                    width: 20.0,
-                                                    height: 20.0,
-                                                    decoration: BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                      border: Border.all(
-                                                        color:
-                                                            const Color(0x1AFFFFFF),
-                                                      ),
-                                                    ),
-                                                  ),
-                                              ],
+                                              ),
                                             ),
-                                          ),
+                                          ],
                                         ),
-                                      ],
-                                    ),
-                                  ),
+                                      ),
+                                    );
+                                  })
+                                      .divide(const SizedBox(width: 8.0))
+                                      .addToStart(const SizedBox(width: 16.0))
+                                      .addToEnd(const SizedBox(width: 16.0)),
                                 ),
-                              ]
-                                  .divide(const SizedBox(width: 8.0))
-                                  .addToStart(const SizedBox(width: 16.0))
-                                  .addToEnd(const SizedBox(width: 16.0)),
-                            ),
+                              );
+                            },
                           ),
                         ),
                         Padding(

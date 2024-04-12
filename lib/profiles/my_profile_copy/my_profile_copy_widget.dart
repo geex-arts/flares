@@ -199,13 +199,12 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 1000));
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 2000),
+        duration: const Duration(milliseconds: 5000),
         callback: (timer) async {
           setState(() {
             _model.currentURL = widget.url;
           });
-          if ((_model.currentURL != null && _model.currentURL != '') &&
-              (_model.currentURL != _model.previousURL)) {
+          if (_model.currentURL != null && _model.currentURL != '') {
             _model.apiResultParseURL2 = await ParseSiteCall.call(
               url: _model.currentURL,
             );
