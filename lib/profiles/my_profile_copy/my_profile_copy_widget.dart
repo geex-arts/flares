@@ -201,11 +201,15 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 4000),
         callback: (timer) async {
-          setState(() {
-            _model.currentURL = widget.url;
-          });
-          if ((_model.currentURL != null && _model.currentURL != '') &&
-              (_model.currentURL != _model.previousURL)) {
+          if (widget.url != null && widget.url != '') {
+            setState(() {
+              _model.currentURL = widget.url;
+            });
+          } else {
+            return;
+          }
+
+          if (_model.currentURL != _model.previousURL) {
             _model.apiResultParseURL2 = await ParseSiteCall.call(
               url: _model.currentURL,
             );
@@ -216,9 +220,10 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
               _model.currentURL = null;
             });
             if ((_model.apiResultParseURL2?.succeeded ?? true)) {
-              await showModalBottomSheet(
+              showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
+                useSafeArea: true,
                 context: context,
                 builder: (context) {
                   return GestureDetector(
