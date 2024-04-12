@@ -86,7 +86,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'My_Profile',
               path: 'myProfile',
-              builder: (context, params) => const MyProfileWidget(),
+              builder: (context, params) => MyProfileWidget(
+                url: params.getParam(
+                  'url',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Splash',

@@ -15,7 +15,12 @@ import 'b_s_add_from_browser_model.dart';
 export 'b_s_add_from_browser_model.dart';
 
 class BSAddFromBrowserWidget extends StatefulWidget {
-  const BSAddFromBrowserWidget({super.key});
+  const BSAddFromBrowserWidget({
+    super.key,
+    required this.parsedURLJson,
+  });
+
+  final dynamic parsedURLJson;
 
   @override
   State<BSAddFromBrowserWidget> createState() => _BSAddFromBrowserWidgetState();
@@ -171,10 +176,18 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
     super.initState();
     _model = createModel(context, () => BSAddFromBrowserModel());
 
-    _model.nameFieldController ??= TextEditingController();
+    _model.nameFieldController ??= TextEditingController(
+        text: getJsonField(
+      widget.parsedURLJson,
+      r'''$.title''',
+    ).toString().toString());
     _model.nameFieldFocusNode ??= FocusNode();
 
-    _model.descriptionFieldController ??= TextEditingController();
+    _model.descriptionFieldController ??= TextEditingController(
+        text: getJsonField(
+      widget.parsedURLJson,
+      r'''$.description''',
+    ).toString().toString());
     _model.descriptionFieldFocusNode ??= FocusNode();
   }
 
@@ -599,6 +612,15 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                           width: 119.0,
                                           height: 177.0,
                                           decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.network(
+                                                getJsonField(
+                                                  widget.parsedURLJson,
+                                                  r'''$.images[0]''',
+                                                ).toString(),
+                                              ).image,
+                                            ),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -742,6 +764,15 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                           width: 119.0,
                                           height: 177.0,
                                           decoration: BoxDecoration(
+                                            image: DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: Image.network(
+                                                getJsonField(
+                                                  widget.parsedURLJson,
+                                                  r'''$.images[1]''',
+                                                ).toString(),
+                                              ).image,
+                                            ),
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                           ),
@@ -1168,6 +1199,10 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                   ? 'Save To Collection'
                                   : 'Create new collection',
                               currentAction: () async {
+                                if (_model.formKey.currentState == null ||
+                                    !_model.formKey.currentState!.validate()) {
+                                  return;
+                                }
                                 Navigator.pop(context);
                                 await showModalBottomSheet(
                                   isScrollControlled: true,

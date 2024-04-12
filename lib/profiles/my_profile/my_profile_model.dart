@@ -15,6 +15,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (parseSite)] action in My_Profile widget.
+  ApiCallResponse? apiResultParseURL;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.

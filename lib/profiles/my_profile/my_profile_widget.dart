@@ -8,10 +8,12 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +22,12 @@ import 'my_profile_model.dart';
 export 'my_profile_model.dart';
 
 class MyProfileWidget extends StatefulWidget {
-  const MyProfileWidget({super.key});
+  const MyProfileWidget({
+    super.key,
+    this.url,
+  });
+
+  final String? url;
 
   @override
   State<MyProfileWidget> createState() => _MyProfileWidgetState();
@@ -186,6 +193,35 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => MyProfileModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (widget.url != null && widget.url != '') {
+        _model.apiResultParseURL = await ParseSiteCall.call(
+          url: widget.url,
+        );
+        if ((_model.apiResultParseURL?.succeeded ?? true)) {
+          await showModalBottomSheet(
+            isScrollControlled: true,
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (context) {
+              return GestureDetector(
+                onTap: () => _model.unfocusNode.canRequestFocus
+                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                    : FocusScope.of(context).unfocus(),
+                child: Padding(
+                  padding: MediaQuery.viewInsetsOf(context),
+                  child: BSAddFromBrowserWidget(
+                    parsedURLJson: (_model.apiResultParseURL?.jsonBody ?? ''),
+                  ),
+                ),
+              );
+            },
+          ).then((value) => safeSetState(() {}));
+        }
+      }
+    });
   }
 
   @override
