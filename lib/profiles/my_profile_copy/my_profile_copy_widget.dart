@@ -8,7 +8,6 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/instant_timer.dart';
 import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
@@ -198,57 +197,50 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       await Future.delayed(const Duration(milliseconds: 500));
-      _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 4000),
-        callback: (timer) async {
-          if (widget.url != null && widget.url != '') {
-            setState(() {
-              _model.currentURL = widget.url;
-            });
-          } else {
-            return;
-          }
+      while (true) {
+        if (widget.url != null && widget.url != '') {
+          setState(() {
+            _model.currentURL = widget.url;
+          });
+        } else {
+          await Future.delayed(const Duration(milliseconds: 2000));
+          return;
+        }
 
-          if (_model.currentURL != _model.previousURL) {
-            _model.apiResultParseURL2 = await ParseSiteCall.call(
-              url: _model.currentURL,
-            );
-            setState(() {
-              _model.previousURL = _model.currentURL;
-            });
-            setState(() {
-              _model.currentURL = null;
-            });
-            if ((_model.apiResultParseURL2?.succeeded ?? true)) {
-              showModalBottomSheet(
-                isScrollControlled: true,
-                backgroundColor: Colors.transparent,
-                useSafeArea: true,
-                context: context,
-                builder: (context) {
-                  return GestureDetector(
-                    onTap: () => _model.unfocusNode.canRequestFocus
-                        ? FocusScope.of(context)
-                            .requestFocus(_model.unfocusNode)
-                        : FocusScope.of(context).unfocus(),
-                    child: Padding(
-                      padding: MediaQuery.viewInsetsOf(context),
-                      child: BSAddFromBrowserWidget(
-                        parsedURLJson:
-                            (_model.apiResultParseURL2?.jsonBody ?? ''),
-                      ),
-                    ),
-                  );
-                },
-              ).then((value) => safeSetState(() {}));
-            }
-          }
+        if (_model.currentURL != _model.previousURL) {
+          _model.apiResultParseURL = await ParseSiteCall.call(
+            url: _model.currentURL,
+          );
+          setState(() {
+            _model.previousURL = _model.currentURL;
+          });
           setState(() {
             _model.currentURL = null;
           });
-        },
-        startImmediately: true,
-      );
+          if ((_model.apiResultParseURL?.succeeded ?? true)) {
+            await showModalBottomSheet(
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              useSafeArea: true,
+              context: context,
+              builder: (context) {
+                return GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: BSAddFromBrowserWidget(
+                      parsedURLJson: (_model.apiResultParseURL?.jsonBody ?? ''),
+                    ),
+                  ),
+                );
+              },
+            ).then((value) => safeSetState(() {}));
+          }
+        }
+        await Future.delayed(const Duration(milliseconds: 1000));
+      }
     });
   }
 
