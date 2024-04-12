@@ -85,7 +85,7 @@ class _MyAppState extends State<MyApp> {
 
       print("Shared: getMediaStream ${url}");
 
-      _router.go('/createWish?url=${Uri.encodeComponent(url)}');
+      _router.go('/myProfile?url=${Uri.encodeComponent(url)}');
 
     }, onError: (err) {
       print("getIntentDataStream error: $err");
