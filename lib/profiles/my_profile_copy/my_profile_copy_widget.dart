@@ -212,6 +212,8 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
             );
             setState(() {
               _model.previousURL = _model.currentURL;
+            });
+            setState(() {
               _model.currentURL = null;
             });
             if ((_model.apiResultParseURL2?.succeeded ?? true)) {
