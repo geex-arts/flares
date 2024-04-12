@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
   ///  Local state fields for this component.
 
-  int selectedImage = 0;
+  String? selectedImage;
 
   ///  State fields for stateful widgets in this component.
 

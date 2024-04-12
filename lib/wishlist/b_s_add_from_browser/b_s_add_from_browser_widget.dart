@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
@@ -75,6 +77,22 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAddFromBrowserModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (getJsonField(
+            widget.parsedURLJson,
+            r'''$.image[0]''',
+          ) !=
+          null) {
+        setState(() {
+          _model.selectedImage = getJsonField(
+            widget.parsedURLJson,
+            r'''$.image[0]''',
+          ).toString().toString();
+        });
+      }
+    });
 
     _model.nameFieldController ??= TextEditingController(
         text: getJsonField(
@@ -607,14 +625,15 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                                   onTap: () async {
                                                     setState(() {
                                                       _model.selectedImage =
-                                                          currentImageIndex;
+                                                          currentImageItem
+                                                              .toString();
                                                     });
                                                   },
                                                   child: Builder(
                                                     builder: (context) {
-                                                      if (currentImageIndex ==
-                                                          _model
-                                                              .selectedImage) {
+                                                      if (_model
+                                                              .selectedImage ==
+                                                          currentImageItem) {
                                                         return Container(
                                                           width: 20.0,
                                                           height: 20.0,
@@ -695,6 +714,23 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
                                   return;
+                                }
+                                if (_model.dropDownValue != null &&
+                                    _model.dropDownValue != '') {
+                                  await WishesTable().insert({
+                                    'visibily': true,
+                                    'collection': _model.dropDownValue,
+                                    'pair': FFAppState().pairID,
+                                    'created_by': currentUserUid,
+                                    'name': _model.nameFieldController.text,
+                                    'description':
+                                        _model.descriptionFieldController.text,
+                                    'photo': _model.selectedImage,
+                                    'link': getJsonField(
+                                      widget.parsedURLJson,
+                                      r'''$.link''',
+                                    ).toString(),
+                                  });
                                 }
                                 Navigator.pop(context);
 
