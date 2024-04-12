@@ -70,6 +70,10 @@ class _CardWidgetState extends State<CardWidget> {
                     widget.currentWishRow,
                     ParamType.SupabaseRow,
                   ),
+                  'isProfile': serializeParam(
+                    widget.isMyProfile,
+                    ParamType.bool,
+                  ),
                 }.withoutNulls,
               );
             },

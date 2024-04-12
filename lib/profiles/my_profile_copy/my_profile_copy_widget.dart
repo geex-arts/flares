@@ -205,11 +205,13 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
             _model.currentURL =
                 widget.url != null && widget.url != '' ? widget.url : null;
           });
-          if (_model.currentURL != null && _model.currentURL != '') {
+          if ((_model.currentURL != null && _model.currentURL != '') &&
+              (_model.currentURL != _model.previousURL)) {
             _model.apiResultParseURL2 = await ParseSiteCall.call(
               url: _model.currentURL,
             );
             setState(() {
+              _model.previousURL = _model.currentURL;
               _model.currentURL = null;
             });
             if ((_model.apiResultParseURL2?.succeeded ?? true)) {

@@ -15,6 +15,8 @@ class MyProfileCopyModel extends FlutterFlowModel<MyProfileCopyWidget> {
 
   String? currentURL;
 
+  String? previousURL;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

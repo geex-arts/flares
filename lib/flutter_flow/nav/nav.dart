@@ -201,6 +201,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'selectedWishRow',
                   ParamType.SupabaseRow,
                 ),
+                isProfile: params.getParam(
+                  'isProfile',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(

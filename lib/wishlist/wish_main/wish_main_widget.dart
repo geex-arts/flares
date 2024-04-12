@@ -3,9 +3,12 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/wishlist/b_s_ask_day/b_s_ask_day_widget.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'wish_main_model.dart';
 export 'wish_main_model.dart';
@@ -14,9 +17,11 @@ class WishMainWidget extends StatefulWidget {
   const WishMainWidget({
     super.key,
     required this.selectedWishRow,
-  });
+    bool? isProfile,
+  }) : isProfile = isProfile ?? false;
 
   final WishesRow? selectedWishRow;
+  final bool isProfile;
 
   @override
   State<WishMainWidget> createState() => _WishMainWidgetState();
@@ -115,6 +120,8 @@ class _WishMainWidgetState extends State<WishMainWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -328,36 +335,111 @@ class _WishMainWidgetState extends State<WishMainWidget>
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
-                child: wrapWithModel(
-                  model: _model.addtoWishlistModel,
-                  updateCallback: () => setState(() {}),
-                  child: PinkButtonWidget(
-                    text: 'Add to Wishlist',
-                    currentAction: () async {
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return GestureDetector(
-                            onTap: () => _model.unfocusNode.canRequestFocus
-                                ? FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode)
-                                : FocusScope.of(context).unfocus(),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: SizedBox(
-                                height: MediaQuery.sizeOf(context).height * 0.6,
-                                child: BSSaveToCollectionWidget(
-                                  selectedWishRow: widget.selectedWishRow,
+                child: Stack(
+                  children: [
+                    wrapWithModel(
+                      model: _model.addtoWishlistModel,
+                      updateCallback: () => setState(() {}),
+                      child: PinkButtonWidget(
+                        text: 'Add to Wishlist',
+                        currentAction: () async {
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return GestureDetector(
+                                onTap: () => _model.unfocusNode.canRequestFocus
+                                    ? FocusScope.of(context)
+                                        .requestFocus(_model.unfocusNode)
+                                    : FocusScope.of(context).unfocus(),
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.6,
+                                    child: BSSaveToCollectionWidget(
+                                      selectedWishRow: widget.selectedWishRow,
+                                    ),
+                                  ),
                                 ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        },
+                      ),
+                    ),
+                    FutureBuilder<List<WishesRow>>(
+                      future: WishesTable().querySingleRow(
+                        queryFn: (q) => q
+                            .eq(
+                              'pair',
+                              FFAppState().pairID,
+                            )
+                            .eq(
+                              'copied_from',
+                              widget.selectedWishRow?.uuid,
+                            ),
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitPulse(
+                                color: FlutterFlowTheme.of(context).pinkButton,
+                                size: 50.0,
                               ),
                             ),
                           );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
-                  ),
+                        }
+                        List<WishesRow> askForADateWishesRowList =
+                            snapshot.data!;
+                        // Return an empty Container when the item does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final askForADateWishesRow =
+                            askForADateWishesRowList.isNotEmpty
+                                ? askForADateWishesRowList.first
+                                : null;
+                        return wrapWithModel(
+                          model: _model.askForADateModel,
+                          updateCallback: () => setState(() {}),
+                          child: PinkButtonWidget(
+                            text: 'Ask for a Date',
+                            currentAction: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) {
+                                  return GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: SizedBox(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.6,
+                                        child: const BSAskDayWidget(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            },
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ],
