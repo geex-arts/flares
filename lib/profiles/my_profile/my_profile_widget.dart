@@ -1584,17 +1584,26 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 0.0),
-                            child: Text(
-                              'Wishlist',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.4,
-                                  ),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                context.pushNamed('My_ProfileCopy');
+                              },
+                              child: Text(
+                                'Wishlist',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      useGoogleFonts: false,
+                                      lineHeight: 1.4,
+                                    ),
+                              ),
                             ),
                           ),
                         ),

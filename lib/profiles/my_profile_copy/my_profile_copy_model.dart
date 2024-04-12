@@ -4,6 +4,7 @@ import '/components/generate_with_a_i_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/instant_timer.dart';
 import 'my_profile_copy_widget.dart' show MyProfileCopyWidget;
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,7 @@ class MyProfileCopyModel extends FlutterFlowModel<MyProfileCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - API (parseSite)] action in My_ProfileCopy widget.
   ApiCallResponse? apiResultParseURL;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
@@ -46,6 +48,7 @@ class MyProfileCopyModel extends FlutterFlowModel<MyProfileCopyWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     wishesListMainModel.dispose();
     generateWithAIModel1.dispose();
     generateWithAIModel2.dispose();
