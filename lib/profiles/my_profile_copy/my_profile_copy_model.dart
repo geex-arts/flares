@@ -20,7 +20,7 @@ class MyProfileCopyModel extends FlutterFlowModel<MyProfileCopyWidget> {
   final unfocusNode = FocusNode();
   InstantTimer? instantTimer;
   // Stores action output result for [Backend Call - API (parseSite)] action in My_ProfileCopy widget.
-  ApiCallResponse? apiResultParseURL;
+  ApiCallResponse? apiResultParseURL2;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.

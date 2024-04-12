@@ -197,20 +197,22 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 1000));
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 3000),
+        duration: const Duration(milliseconds: 2000),
         callback: (timer) async {
           setState(() {
-            _model.currentURL = widget.url;
+            _model.currentURL =
+                widget.url != null && widget.url != '' ? widget.url : null;
           });
           if (_model.currentURL != null && _model.currentURL != '') {
-            _model.apiResultParseURL = await ParseSiteCall.call(
+            _model.apiResultParseURL2 = await ParseSiteCall.call(
               url: _model.currentURL,
             );
             setState(() {
               _model.currentURL = null;
             });
-            if ((_model.apiResultParseURL?.succeeded ?? true)) {
+            if ((_model.apiResultParseURL2?.succeeded ?? true)) {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
@@ -225,7 +227,7 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
                       padding: MediaQuery.viewInsetsOf(context),
                       child: BSAddFromBrowserWidget(
                         parsedURLJson:
-                            (_model.apiResultParseURL?.jsonBody ?? ''),
+                            (_model.apiResultParseURL2?.jsonBody ?? ''),
                       ),
                     ),
                   );

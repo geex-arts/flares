@@ -956,8 +956,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                     child: Container(
                                       height: 37.0,
                                       decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                        color: valueOrDefault<Color>(
+                                          _model.selectedCollectionID == null ||
+                                                  _model.selectedCollectionID ==
+                                                      ''
+                                              ? FlutterFlowTheme.of(context)
+                                                  .secondaryBackground
+                                              : const Color(0x18FFFFFF),
+                                          const Color(0x18FFFFFF),
+                                        ),
                                         borderRadius:
                                             BorderRadius.circular(100.0),
                                       ),
@@ -971,6 +978,20 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Nuckle',
+                                                color: valueOrDefault<Color>(
+                                                  _model.selectedCollectionID ==
+                                                              null ||
+                                                          _model.selectedCollectionID ==
+                                                              ''
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                                ),
                                                 fontSize: 12.0,
                                                 letterSpacing: 0.0,
                                                 fontWeight: FontWeight.w500,
@@ -1032,9 +1053,16 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             child: Container(
                                               height: 37.0,
                                               decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
+                                                color: valueOrDefault<Color>(
+                                                  _model.selectedCollectionID ==
+                                                          categoryRowCollectionsRow
+                                                              .uuid
+                                                      ? FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground
+                                                      : const Color(0x18FFFFFF),
+                                                  const Color(0x18FFFFFF),
+                                                ),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         100.0),
@@ -1051,18 +1079,37 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                         .name,
                                                     'Category',
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        useGoogleFonts: false,
-                                                        lineHeight: 1.4,
-                                                      ),
+                                                  style:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Nuckle',
+                                                            color:
+                                                                valueOrDefault<
+                                                                    Color>(
+                                                              _model.selectedCollectionID ==
+                                                                      categoryRowCollectionsRow
+                                                                          .uuid
+                                                                  ? FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .primaryText
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                              FlutterFlowTheme.of(
+                                                                      context)
+                                                                  .secondaryBackground,
+                                                            ),
+                                                            fontSize: 12.0,
+                                                            letterSpacing: 0.0,
+                                                            fontWeight:
+                                                                FontWeight.w500,
+                                                            useGoogleFonts:
+                                                                false,
+                                                            lineHeight: 1.4,
+                                                          ),
                                                 ),
                                               ),
                                             ),
