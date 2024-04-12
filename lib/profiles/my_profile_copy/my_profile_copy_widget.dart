@@ -202,8 +202,7 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
         duration: const Duration(milliseconds: 2000),
         callback: (timer) async {
           setState(() {
-            _model.currentURL =
-                widget.url != null && widget.url != '' ? widget.url : null;
+            _model.currentURL = widget.url;
           });
           if ((_model.currentURL != null && _model.currentURL != '') &&
               (_model.currentURL != _model.previousURL)) {

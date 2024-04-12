@@ -335,111 +335,101 @@ class _WishMainWidgetState extends State<WishMainWidget>
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
-                child: Stack(
-                  children: [
-                    wrapWithModel(
-                      model: _model.addtoWishlistModel,
+                child: FutureBuilder<List<WishesRow>>(
+                  future: WishesTable().querySingleRow(
+                    queryFn: (q) => q
+                        .eq(
+                          'pair',
+                          FFAppState().pairID,
+                        )
+                        .eq(
+                          'copied_from',
+                          widget.selectedWishRow?.uuid,
+                        ),
+                  ),
+                  builder: (context, snapshot) {
+                    // Customize what your widget looks like when it's loading.
+                    if (!snapshot.hasData) {
+                      return Center(
+                        child: SizedBox(
+                          width: 50.0,
+                          height: 50.0,
+                          child: SpinKitPulse(
+                            color: FlutterFlowTheme.of(context).pinkButton,
+                            size: 50.0,
+                          ),
+                        ),
+                      );
+                    }
+                    List<WishesRow> askForADateWishesRowList = snapshot.data!;
+                    final askForADateWishesRow =
+                        askForADateWishesRowList.isNotEmpty
+                            ? askForADateWishesRowList.first
+                            : null;
+                    return wrapWithModel(
+                      model: _model.askForADateModel,
                       updateCallback: () => setState(() {}),
                       child: PinkButtonWidget(
-                        text: 'Add to Wishlist',
+                        text: widget.isProfile || (askForADateWishesRow != null)
+                            ? 'Ask for a Date'
+                            : 'Add to Wishlist',
                         currentAction: () async {
-                          await showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Colors.transparent,
-                            context: context,
-                            builder: (context) {
-                              return GestureDetector(
-                                onTap: () => _model.unfocusNode.canRequestFocus
-                                    ? FocusScope.of(context)
-                                        .requestFocus(_model.unfocusNode)
-                                    : FocusScope.of(context).unfocus(),
-                                child: Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: SizedBox(
-                                    height:
-                                        MediaQuery.sizeOf(context).height * 0.6,
-                                    child: BSSaveToCollectionWidget(
-                                      selectedWishRow: widget.selectedWishRow,
+                          if (widget.isProfile ||
+                              (askForADateWishesRow != null)) {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: SizedBox(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.6,
+                                      child: const BSAskDayWidget(),
                                     ),
                                   ),
-                                ),
-                              );
-                            },
-                          ).then((value) => safeSetState(() {}));
-                        },
-                      ),
-                    ),
-                    FutureBuilder<List<WishesRow>>(
-                      future: WishesTable().querySingleRow(
-                        queryFn: (q) => q
-                            .eq(
-                              'pair',
-                              FFAppState().pairID,
-                            )
-                            .eq(
-                              'copied_from',
-                              widget.selectedWishRow?.uuid,
-                            ),
-                      ),
-                      builder: (context, snapshot) {
-                        // Customize what your widget looks like when it's loading.
-                        if (!snapshot.hasData) {
-                          return Center(
-                            child: SizedBox(
-                              width: 50.0,
-                              height: 50.0,
-                              child: SpinKitPulse(
-                                color: FlutterFlowTheme.of(context).pinkButton,
-                                size: 50.0,
-                              ),
-                            ),
-                          );
-                        }
-                        List<WishesRow> askForADateWishesRowList =
-                            snapshot.data!;
-                        // Return an empty Container when the item does not exist.
-                        if (snapshot.data!.isEmpty) {
-                          return Container();
-                        }
-                        final askForADateWishesRow =
-                            askForADateWishesRowList.isNotEmpty
-                                ? askForADateWishesRowList.first
-                                : null;
-                        return wrapWithModel(
-                          model: _model.askForADateModel,
-                          updateCallback: () => setState(() {}),
-                          child: PinkButtonWidget(
-                            text: 'Ask for a Date',
-                            currentAction: () async {
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) {
-                                  return GestureDetector(
-                                    onTap: () => _model
-                                            .unfocusNode.canRequestFocus
-                                        ? FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode)
-                                        : FocusScope.of(context).unfocus(),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: SizedBox(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.6,
-                                        child: const BSAskDayWidget(),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          } else {
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return GestureDetector(
+                                  onTap: () =>
+                                      _model.unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: SizedBox(
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              0.6,
+                                      child: BSSaveToCollectionWidget(
+                                        selectedWishRow: widget.selectedWishRow,
                                       ),
                                     ),
-                                  );
-                                },
-                              ).then((value) => safeSetState(() {}));
-                            },
-                          ),
-                        );
-                      },
-                    ),
-                  ],
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+                          }
+                        },
+                      ),
+                    );
+                  },
                 ),
               ),
             ],
