@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -10,7 +11,12 @@ import 'wish_main_model.dart';
 export 'wish_main_model.dart';
 
 class WishMainWidget extends StatefulWidget {
-  const WishMainWidget({super.key});
+  const WishMainWidget({
+    super.key,
+    required this.selectedWishRow,
+  });
+
+  final WishesRow? selectedWishRow;
 
   @override
   State<WishMainWidget> createState() => _WishMainWidgetState();
@@ -133,156 +139,165 @@ class _WishMainWidgetState extends State<WishMainWidget>
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
                 child: SizedBox(
-                  height: 38.0,
+                  height: 48.0,
                   child: Stack(
                     children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 0.0, 16.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: const AlignmentDirectional(-1.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.safePop();
-                                },
-                                child: Stack(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    Container(
-                                      width: 38.0,
-                                      height: 38.0,
-                                      decoration: BoxDecoration(
-                                        color: const Color(0x9A000000),
-                                        borderRadius:
-                                            BorderRadius.circular(14.0),
-                                        border: Border.all(
-                                          color: const Color(0x33FFFFFF),
+                      Align(
+                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: const AlignmentDirectional(-1.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.safePop();
+                                  },
+                                  child: Stack(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    children: [
+                                      Container(
+                                        width: 38.0,
+                                        height: 38.0,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0x9A000000),
+                                          borderRadius:
+                                              BorderRadius.circular(14.0),
+                                          border: Border.all(
+                                            color: const Color(0x33FFFFFF),
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    Icon(
-                                      Icons.chevron_left,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      size: 16.0,
+                                      Icon(
+                                        Icons.chevron_left,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        size: 16.0,
+                                      ),
+                                    ],
+                                  ),
+                                ).animateOnPageLoad(animationsMap[
+                                    'stackOnPageLoadAnimation1']!),
+                              ),
+                              Expanded(
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    if (responsiveVisibility(
+                                      context: context,
+                                      phone: false,
+                                    ))
+                                      Stack(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 0.0),
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/Rectangle.webp',
+                                            width: 38.0,
+                                            height: 38.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                          Container(
+                                            width: 34.0,
+                                            height: 34.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x9A000000),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
+                                            ),
+                                          ),
+                                          Icon(
+                                            FFIcons.ksettings,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            size: 18.0,
+                                          ),
+                                        ],
+                                      ).animateOnPageLoad(animationsMap[
+                                          'stackOnPageLoadAnimation2']!),
+                                    Builder(
+                                      builder: (context) => Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 0.0, 0.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            await Share.share(
+                                              'flares://flares.com${GoRouter.of(context).location}',
+                                              sharePositionOrigin:
+                                                  getWidgetBoundingBox(context),
+                                            );
+                                          },
+                                          child: Stack(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            children: [
+                                              Image.asset(
+                                                'assets/images/Rectangle.webp',
+                                                width: 38.0,
+                                                height: 38.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                              Container(
+                                                width: 34.0,
+                                                height: 34.0,
+                                                decoration: BoxDecoration(
+                                                  color: const Color(0x9A000000),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          12.0),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 0.0, 0.0, 2.0),
+                                                child: Image.asset(
+                                                  'assets/images/Share.webp',
+                                                  width: 18.0,
+                                                  height: 18.0,
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ).animateOnPageLoad(animationsMap[
+                                            'stackOnPageLoadAnimation3']!),
+                                      ),
                                     ),
                                   ],
                                 ),
-                              ).animateOnPageLoad(
-                                  animationsMap['stackOnPageLoadAnimation1']!),
-                            ),
-                            Expanded(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  if (responsiveVisibility(
-                                    context: context,
-                                    phone: false,
-                                  ))
-                                    Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      children: [
-                                        Image.asset(
-                                          'assets/images/Rectangle.webp',
-                                          width: 38.0,
-                                          height: 38.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                        Container(
-                                          width: 34.0,
-                                          height: 34.0,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0x9A000000),
-                                            borderRadius:
-                                                BorderRadius.circular(12.0),
-                                          ),
-                                        ),
-                                        Icon(
-                                          FFIcons.ksettings,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          size: 18.0,
-                                        ),
-                                      ],
-                                    ).animateOnPageLoad(animationsMap[
-                                        'stackOnPageLoadAnimation2']!),
-                                  Builder(
-                                    builder: (context) => Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 0.0, 0.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          await Share.share(
-                                            '#',
-                                            sharePositionOrigin:
-                                                getWidgetBoundingBox(context),
-                                          );
-                                        },
-                                        child: Stack(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          children: [
-                                            Image.asset(
-                                              'assets/images/Rectangle.webp',
-                                              width: 38.0,
-                                              height: 38.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                            Container(
-                                              width: 34.0,
-                                              height: 34.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0x9A000000),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 2.0),
-                                              child: Image.asset(
-                                                'assets/images/Share.webp',
-                                                width: 18.0,
-                                                height: 18.0,
-                                                fit: BoxFit.contain,
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ).animateOnPageLoad(animationsMap[
-                                          'stackOnPageLoadAnimation3']!),
-                                    ),
-                                  ),
-                                ],
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Align(
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Container(
+                          width: double.infinity,
                           decoration: BoxDecoration(
                             color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 4.0, 8.0, 0.0),
+                                58.0, 0.0, 58.0, 0.0),
                             child: Text(
-                              'Dune 2 : Part Two',
+                              widget.selectedWishRow!.name!,
+                              textAlign: TextAlign.center,
+                              maxLines: 2,
                               style: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -302,9 +317,9 @@ class _WishMainWidgetState extends State<WishMainWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
                   child: Image.network(
-                    'https://picsum.photos/seed/142/600',
+                    widget.selectedWishRow!.photo!,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ).animateOnPageLoad(
@@ -333,7 +348,9 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               padding: MediaQuery.viewInsetsOf(context),
                               child: SizedBox(
                                 height: MediaQuery.sizeOf(context).height * 0.6,
-                                child: const BSSaveToCollectionWidget(),
+                                child: BSSaveToCollectionWidget(
+                                  selectedWishRow: widget.selectedWishRow,
+                                ),
                               ),
                             ),
                           );

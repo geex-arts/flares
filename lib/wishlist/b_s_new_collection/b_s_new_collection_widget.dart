@@ -1,13 +1,21 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'b_s_new_collection_model.dart';
 export 'b_s_new_collection_model.dart';
 
 class BSNewCollectionWidget extends StatefulWidget {
-  const BSNewCollectionWidget({super.key});
+  const BSNewCollectionWidget({
+    super.key,
+    this.selectedWishRow,
+  });
+
+  final WishesRow? selectedWishRow;
 
   @override
   State<BSNewCollectionWidget> createState() => _BSNewCollectionWidgetState();
@@ -29,6 +37,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+    _model.textFieldFocusNode!.addListener(() => setState(() {}));
   }
 
   @override
@@ -40,6 +49,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return ClipRRect(
       borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
@@ -97,7 +108,13 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Text(
-                  'Only you will see the created collection',
+                  valueOrDefault<String>(
+                    _model.isSwitch
+                        ? 'Only you will see the created collection'
+                        : 'The created collection will be visible by anyone',
+                    'Only you will see the created collection',
+                  ),
+                  textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Nuckle',
                         color: const Color(0x9AFFFFFF),
@@ -113,24 +130,39 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'PUBLIC',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Nuckle',
-                            color: const Color(0x99FFFFFF),
-                            fontSize: 12.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w500,
-                            useGoogleFonts: false,
-                          ),
+                    Opacity(
+                      opacity: valueOrDefault<double>(
+                        !_model.isSwitch ? 1.0 : 0.6,
+                        0.6,
+                      ),
+                      child: Text(
+                        'PUBLIC',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Nuckle',
+                              color: FlutterFlowTheme.of(context).info,
+                              fontSize: 12.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: false,
+                            ),
+                      ),
                     ),
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Switch.adaptive(
-                        value: _model.switchValue ??= true,
+                        value: _model.switchValue ??= _model.isSwitch,
                         onChanged: (newValue) async {
                           setState(() => _model.switchValue = newValue);
+                          if (newValue) {
+                            setState(() {
+                              _model.isSwitch = true;
+                            });
+                          } else {
+                            setState(() {
+                              _model.isSwitch = false;
+                            });
+                          }
                         },
                         activeColor: FlutterFlowTheme.of(context).info,
                         activeTrackColor: const Color(0xFFFF005C),
@@ -139,16 +171,22 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         inactiveThumbColor: FlutterFlowTheme.of(context).info,
                       ),
                     ),
-                    Text(
-                      'PRIVATE',
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Nuckle',
-                            color: FlutterFlowTheme.of(context).info,
-                            fontSize: 12.0,
-                            letterSpacing: 0.0,
-                            fontWeight: FontWeight.w500,
-                            useGoogleFonts: false,
-                          ),
+                    Opacity(
+                      opacity: valueOrDefault<double>(
+                        _model.isSwitch ? 1.0 : 0.6,
+                        1.0,
+                      ),
+                      child: Text(
+                        'PRIVATE',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Nuckle',
+                              color: FlutterFlowTheme.of(context).info,
+                              fontSize: 12.0,
+                              letterSpacing: 0.0,
+                              fontWeight: FontWeight.w500,
+                              useGoogleFonts: false,
+                            ),
+                      ),
                     ),
                   ],
                 ),
@@ -217,21 +255,69 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         letterSpacing: 0.0,
                         useGoogleFonts: false,
                       ),
-                  minLines: null,
-                  keyboardType: TextInputType.emailAddress,
                   cursorColor: FlutterFlowTheme.of(context).pinkButton,
                   validator:
                       _model.textControllerValidator.asValidator(context),
                 ),
               ),
+              if (_model.isEmptyName)
+                Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  child: Text(
+                    'Field is required',
+                    textAlign: TextAlign.end,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Nuckle',
+                          color: FlutterFlowTheme.of(context).error,
+                          fontSize: 11.0,
+                          letterSpacing: 0.0,
+                          useGoogleFonts: false,
+                        ),
+                  ),
+                ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
                 child: wrapWithModel(
-                  model: _model.createModel,
+                  model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),
                   child: PinkButtonWidget(
                     text: 'Create',
-                    currentAction: () async {},
+                    currentAction: () async {
+                      setState(() {
+                        _model.isEmptyName = false;
+                      });
+                      if (_model.textController.text != '') {
+                        _model.newCollectionRowCopy =
+                            await CollectionsTable().insert({
+                          'name': _model.textController.text,
+                          'visibility': !_model.isSwitch,
+                          'created_by': currentUserUid,
+                          'lowercase_name':
+                              _model.textController.text.toLowerCase(),
+                          'pair': FFAppState().pairID,
+                        });
+                        if (widget.selectedWishRow != null) {
+                          await WishesTable().insert({
+                            'collection': _model.newCollectionRowCopy?.uuid,
+                            'pair': FFAppState().pairID,
+                            'created_by': currentUserUid,
+                            'name': widget.selectedWishRow?.name,
+                            'description': widget.selectedWishRow?.description,
+                            'photo': widget.selectedWishRow?.photo,
+                            'link': widget.selectedWishRow?.link,
+                            'copied_from': widget.selectedWishRow?.createdBy,
+                          });
+                        }
+                        _model.updatePage(() {});
+                        Navigator.pop(context);
+                      } else {
+                        setState(() {
+                          _model.isEmptyName = true;
+                        });
+                      }
+
+                      setState(() {});
+                    },
                   ),
                 ),
               ),

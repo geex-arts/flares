@@ -1,6 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/components/login_exists_warning_widget.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -255,7 +255,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
-                                minLines: null,
                                 keyboardType: TextInputType.emailAddress,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
@@ -351,7 +350,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
-                                  minLines: null,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
@@ -488,7 +486,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
-                                  minLines: null,
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
@@ -640,7 +637,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         shouldSetState = true;
                                         if (_model.existingUser != null &&
                                             (_model.existingUser)!.isNotEmpty) {
-                                          showDialog(
+                                          await showDialog(
                                             context: context,
                                             builder: (dialogContext) {
                                               return Dialog(
@@ -662,14 +659,16 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                       : FocusScope.of(context)
                                                           .unfocus(),
                                                   child:
-                                                      const LoginExistsWarningWidget(),
+                                                      const AlertDialogWarningWidget(
+                                                    title:
+                                                        'It seems you have already signed up!',
+                                                    subtitle:
+                                                        'Please sign in from the login screen',
+                                                  ),
                                                 ),
                                               );
                                             },
                                           ).then((value) => setState(() {}));
-
-                                          await Future.delayed(const Duration(
-                                              milliseconds: 3000));
 
                                           context.goNamedAuth(
                                               'Sign_In', context.mounted);
@@ -801,7 +800,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     }
 
                                     context.goNamedAuth(
-                                        'Couples_Profile', context.mounted);
+                                        'My_Profile', context.mounted);
                                   },
                                   child: Container(
                                     width: double.infinity,

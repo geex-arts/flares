@@ -283,7 +283,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
-                          minLines: null,
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: FlutterFlowTheme.of(context).pinkButton,
                           validator: _model.emailFieldControllerValidator

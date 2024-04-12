@@ -18,6 +18,7 @@ class CreateCoupleProfileModel
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -26,6 +27,21 @@ class CreateCoupleProfileModel
   FocusNode? namesFieldFocusNode;
   TextEditingController? namesFieldController;
   String? Function(BuildContext, String?)? namesFieldControllerValidator;
+  String? _namesFieldControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (val.length < 2) {
+      return 'Please enter at least 2 characters';
+    }
+    if (val.length > 40) {
+      return 'Please enter maximum 40 characters';
+    }
+
+    return null;
+  }
+
   DateTime? datePicked;
   // Model for CreateCouple.
   late PinkButtonModel createCoupleModel;
@@ -41,6 +57,7 @@ class CreateCoupleProfileModel
 
   @override
   void initState(BuildContext context) {
+    namesFieldControllerValidator = _namesFieldControllerValidator;
     createCoupleModel = createModel(context, () => PinkButtonModel());
   }
 

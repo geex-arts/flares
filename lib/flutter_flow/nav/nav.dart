@@ -159,11 +159,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const NotifySettingsWidget(),
             ),
             FFRoute(
-              name: 'Invite_Partner_Notification',
-              path: 'invitePartnerNotification',
-              builder: (context, params) => const InvitePartnerNotificationWidget(),
-            ),
-            FFRoute(
               name: 'Ask_For_Date',
               path: 'askForDate',
               builder: (context, params) => const AskForDateWidget(),
@@ -171,7 +166,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Couples_Profile',
               path: 'couplesProfile',
-              builder: (context, params) => const CouplesProfileWidget(),
+              builder: (context, params) => CouplesProfileWidget(
+                selectedPairID: params.getParam(
+                  'selectedPairID',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Category_P2',
@@ -181,12 +181,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Add_Wish_Reaction',
               path: 'addWishReaction',
-              builder: (context, params) => const AddWishReactionWidget(),
+              builder: (context, params) => AddWishReactionWidget(
+                selectedWishRow: params.getParam<WishesRow>(
+                  'selectedWishRow',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Wish_Main',
               path: 'wishMain',
-              builder: (context, params) => const WishMainWidget(),
+              builder: (context, params) => WishMainWidget(
+                selectedWishRow: params.getParam<WishesRow>(
+                  'selectedWishRow',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Profile',
@@ -232,6 +242,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Category_P',
               path: 'categoryP',
               builder: (context, params) => const CategoryPWidget(),
+            ),
+            FFRoute(
+              name: 'Explore',
+              path: 'explore',
+              builder: (context, params) => const ExploreWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

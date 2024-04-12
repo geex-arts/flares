@@ -5,34 +5,69 @@ import 'b_s_add_from_browser_widget.dart' show BSAddFromBrowserWidget;
 import 'package:flutter/material.dart';
 
 class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
+  ///  Local state fields for this component.
+
+  int selectedImage = 0;
+
   ///  State fields for stateful widgets in this component.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for NameField widget.
-  FocusNode? nameFieldFocusNode1;
-  TextEditingController? nameFieldController1;
-  String? Function(BuildContext, String?)? nameFieldController1Validator;
+  FocusNode? nameFieldFocusNode;
+  TextEditingController? nameFieldController;
+  String? Function(BuildContext, String?)? nameFieldControllerValidator;
+  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (val.length < 2) {
+      return 'Please enter at least 2 characters';
+    }
+    if (val.length > 30) {
+      return 'Please enter below 30 characters';
+    }
+
+    return null;
+  }
+
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  // State field(s) for NameField widget.
-  FocusNode? nameFieldFocusNode2;
-  TextEditingController? nameFieldController2;
-  String? Function(BuildContext, String?)? nameFieldController2Validator;
+  // State field(s) for DescriptionField widget.
+  FocusNode? descriptionFieldFocusNode;
+  TextEditingController? descriptionFieldController;
+  String? Function(BuildContext, String?)? descriptionFieldControllerValidator;
+  String? _descriptionFieldControllerValidator(
+      BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (val.length < 2) {
+      return 'Please enter at least 2 characters';
+    }
+
+    return null;
+  }
+
   // Model for SaveToCollection.
   late PinkButtonModel saveToCollectionModel;
 
   @override
   void initState(BuildContext context) {
+    nameFieldControllerValidator = _nameFieldControllerValidator;
+    descriptionFieldControllerValidator = _descriptionFieldControllerValidator;
     saveToCollectionModel = createModel(context, () => PinkButtonModel());
   }
 
   @override
   void dispose() {
-    nameFieldFocusNode1?.dispose();
-    nameFieldController1?.dispose();
+    nameFieldFocusNode?.dispose();
+    nameFieldController?.dispose();
 
-    nameFieldFocusNode2?.dispose();
-    nameFieldController2?.dispose();
+    descriptionFieldFocusNode?.dispose();
+    descriptionFieldController?.dispose();
 
     saveToCollectionModel.dispose();
   }

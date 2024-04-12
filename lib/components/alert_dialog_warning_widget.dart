@@ -2,19 +2,27 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'login_exists_warning_model.dart';
-export 'login_exists_warning_model.dart';
+import 'package:flutter/scheduler.dart';
+import 'alert_dialog_warning_model.dart';
+export 'alert_dialog_warning_model.dart';
 
-class LoginExistsWarningWidget extends StatefulWidget {
-  const LoginExistsWarningWidget({super.key});
+class AlertDialogWarningWidget extends StatefulWidget {
+  const AlertDialogWarningWidget({
+    super.key,
+    required this.title,
+    required this.subtitle,
+  });
+
+  final String? title;
+  final String? subtitle;
 
   @override
-  State<LoginExistsWarningWidget> createState() =>
-      _LoginExistsWarningWidgetState();
+  State<AlertDialogWarningWidget> createState() =>
+      _AlertDialogWarningWidgetState();
 }
 
-class _LoginExistsWarningWidgetState extends State<LoginExistsWarningWidget> {
-  late LoginExistsWarningModel _model;
+class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
+  late AlertDialogWarningModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -25,7 +33,13 @@ class _LoginExistsWarningWidgetState extends State<LoginExistsWarningWidget> {
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => LoginExistsWarningModel());
+    _model = createModel(context, () => AlertDialogWarningModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      await Future.delayed(const Duration(milliseconds: 3000));
+      Navigator.pop(context);
+    });
   }
 
   @override
@@ -79,7 +93,10 @@ class _LoginExistsWarningWidgetState extends State<LoginExistsWarningWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'It seems you have already signed up!',
+                            valueOrDefault<String>(
+                              widget.title,
+                              'It seems you have already signed up!',
+                            ),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(
@@ -94,7 +111,10 @@ class _LoginExistsWarningWidgetState extends State<LoginExistsWarningWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
                             child: Text(
-                              'Please sign in from login screen',
+                              valueOrDefault<String>(
+                                widget.subtitle,
+                                'Please sign in from the login screen',
+                              ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(

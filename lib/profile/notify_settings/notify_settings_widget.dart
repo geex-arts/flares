@@ -538,10 +538,14 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Icon(
-                                    Icons.info_outline,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 10.0,
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 2.0, 0.0, 0.0),
+                                    child: Icon(
+                                      Icons.info_outline,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 10.0,
+                                    ),
                                   ),
                                   Expanded(
                                     child: Padding(

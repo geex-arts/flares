@@ -9,6 +9,8 @@ class InvitePartnerOnbModel extends FlutterFlowModel<InvitePartnerOnbWidget> {
 
   String? pairingCode;
 
+  bool codeNotFound = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

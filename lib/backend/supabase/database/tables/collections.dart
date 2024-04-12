@@ -37,4 +37,7 @@ class CollectionsRow extends SupabaseDataRow {
 
   String? get lowercaseName => getField<String>('lowercase_name');
   set lowercaseName(String? value) => setField<String>('lowercase_name', value);
+
+  String? get pair => getField<String>('pair');
+  set pair(String? value) => setField<String>('pair', value);
 }

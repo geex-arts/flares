@@ -521,7 +521,6 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
-                                      minLines: null,
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,
                                       validator: _model

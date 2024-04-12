@@ -84,7 +84,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(
-                              Icons.auto_awesome_outlined,
+                              FFIcons.kstars,
                               color: FlutterFlowTheme.of(context).info,
                               size: 26.0,
                             ),
@@ -119,7 +119,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                       shape: BoxShape.circle,
                     ),
                     child: Icon(
-                      Icons.auto_awesome_outlined,
+                      FFIcons.kstars,
                       color: FlutterFlowTheme.of(context).info,
                       size: 26.0,
                     ),

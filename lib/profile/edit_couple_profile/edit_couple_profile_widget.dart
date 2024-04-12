@@ -325,7 +325,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       ),
                                     ),
                                     child: Icon(
-                                      Icons.photo_camera_outlined,
+                                      FFIcons.kgroup63449761,
                                       color: FlutterFlowTheme.of(context).info,
                                       size: 12.0,
                                     ),
@@ -426,7 +426,6 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
                                 validator: _model.namesFieldControllerValidator
@@ -611,7 +610,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: const Color(0x19FFFFFF),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
@@ -671,7 +670,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: const Color(0x19FFFFFF),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
@@ -731,7 +730,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: const Color(0x19FFFFFF),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,

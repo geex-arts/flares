@@ -227,6 +227,8 @@ dynamic deserializeParam<T>(
             return PlacesRow(data);
           case UsersRow:
             return UsersRow(data);
+          case ReactionImagesRow:
+            return ReactionImagesRow(data);
           case ArticlesRow:
             return ArticlesRow(data);
           default:

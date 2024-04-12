@@ -410,10 +410,18 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: FFButtonWidget(
-                    onPressed: () {
-                      print('Button pressed ...');
+                    onPressed: () async {
+                      if (_model.pageViewCurrentIndex == 0) {
+                        await _model.pageViewController?.nextPage(
+                          duration: const Duration(milliseconds: 300),
+                          curve: Curves.ease,
+                        );
+                      } else {
+                        Navigator.pop(context);
+                      }
                     },
-                    text: 'Share now',
+                    text:
+                        _model.pageViewCurrentIndex == 0 ? 'Next' : 'Share now',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 42.0,

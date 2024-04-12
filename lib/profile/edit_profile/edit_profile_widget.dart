@@ -368,7 +368,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             ),
                                           ),
                                           child: Icon(
-                                            Icons.photo_camera_outlined,
+                                            FFIcons.kgroup63449761,
                                             color: FlutterFlowTheme.of(context)
                                                 .info,
                                             size: 12.0,
@@ -483,7 +483,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
-                                      minLines: null,
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,
                                       validator: _model
@@ -595,7 +594,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
-                                      minLines: null,
                                       keyboardType: TextInputType.emailAddress,
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,

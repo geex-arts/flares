@@ -1,11 +1,11 @@
-import '/components/card_widget.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
+import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'b_s_a_i_wishlist_model.dart';
 export 'b_s_a_i_wishlist_model.dart';
 
@@ -16,31 +16,8 @@ class BSAIWishlistWidget extends StatefulWidget {
   State<BSAIWishlistWidget> createState() => _BSAIWishlistWidgetState();
 }
 
-class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
-    with TickerProviderStateMixin {
+class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget> {
   late BSAIWishlistModel _model;
-
-  final animationsMap = {
-    'gridViewOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: const Offset(0.0, 100.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -125,61 +102,36 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                       thickness: 1.0,
                       color: Color(0x0CF2F1F3),
                     ),
-                  Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
-                      child: GridView(
-                        padding: const EdgeInsets.fromLTRB(
-                          0,
-                          10.0,
-                          0,
-                          0,
-                        ),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                          crossAxisSpacing: 8.0,
-                          mainAxisSpacing: 10.0,
-                          childAspectRatio: 0.75,
-                        ),
-                        primary: false,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        children: [
-                          wrapWithModel(
-                            model: _model.cardModel1,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.cardModel2,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.cardModel3,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.cardModel4,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.cardModel5,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                          wrapWithModel(
-                            model: _model.cardModel6,
-                            updateCallback: () => setState(() {}),
-                            child: const CardWidget(),
-                          ),
-                        ],
-                      ).animateOnPageLoad(
-                          animationsMap['gridViewOnPageLoadAnimation']!),
+                  FutureBuilder<List<WishesRow>>(
+                    future: WishesTable().queryRows(
+                      queryFn: (q) => q.order('created_at'),
                     ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: SpinKitPulse(
+                              color: FlutterFlowTheme.of(context).pinkButton,
+                              size: 50.0,
+                            ),
+                          ),
+                        );
+                      }
+                      List<WishesRow> wishesListMainWishesRowList =
+                          snapshot.data!;
+                      return wrapWithModel(
+                        model: _model.wishesListMainModel,
+                        updateCallback: () => setState(() {}),
+                        child: WishesListMainWidget(
+                          isMyProfile: false,
+                          wishesRowsParam: wishesListMainWishesRowList,
+                          endSpacing: 120.0,
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),

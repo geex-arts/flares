@@ -1,4 +1,3 @@
-import '/components/n_share_info_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -81,26 +80,12 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        await showModalBottomSheet(
-                          isScrollControlled: true,
-                          backgroundColor: Colors.transparent,
-                          context: context,
-                          builder: (context) {
-                            return Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: const NShareInfoWidget(),
-                            );
-                          },
-                        ).then((value) => safeSetState(() {}));
-
-                        await Future.delayed(
-                            const Duration(milliseconds: 5000));
-                        Navigator.pop(context);
+                        context.pushNamed('Explore');
                       },
                       child: Icon(
-                        FFIcons.kfolderAdd,
+                        FFIcons.kgroup63448861,
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        size: 18.0,
+                        size: 22.0,
                       ),
                     ),
                     InkWell(

@@ -157,9 +157,9 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget>
                             ),
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Icon(
-                              Icons.safety_check_rounded,
+                              FFIcons.kguard,
                               color: FlutterFlowTheme.of(context).info,
-                              size: 27.0,
+                              size: 30.0,
                             ),
                           ),
                         ),

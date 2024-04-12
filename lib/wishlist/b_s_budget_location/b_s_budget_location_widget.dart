@@ -135,7 +135,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                           color: FlutterFlowTheme.of(context).secondaryText,
                           size: 24.0,
                         ),
-                        fillColor: const Color(0x19FFFFFF),
+                        fillColor: const Color(0xFF1D1B1B),
                         elevation: 0.0,
                         borderColor: Colors.transparent,
                         borderWidth: 0.0,

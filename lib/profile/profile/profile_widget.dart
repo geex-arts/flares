@@ -1,11 +1,14 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
 
@@ -97,6 +100,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -202,213 +207,265 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               height: 100.0,
                               fit: BoxFit.contain,
                             ),
-                            Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(0.0, -1.0),
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed('Invite_Partner');
-                                        },
-                                        child: SizedBox(
-                                          width: 100.0,
-                                          height: 100.0,
-                                          child: Stack(
+                            FutureBuilder<List<UsersRow>>(
+                              future: UsersTable().queryRows(
+                                queryFn: (q) => q.eq(
+                                  'pair',
+                                  FFAppState().pairID,
+                                ),
+                              ),
+                              builder: (context, snapshot) {
+                                // Customize what your widget looks like when it's loading.
+                                if (!snapshot.hasData) {
+                                  return Center(
+                                    child: SizedBox(
+                                      width: 50.0,
+                                      height: 50.0,
+                                      child: SpinKitPulse(
+                                        color: FlutterFlowTheme.of(context)
+                                            .pinkButton,
+                                        size: 50.0,
+                                      ),
+                                    ),
+                                  );
+                                }
+                                List<UsersRow> containerUsersRowList =
+                                    snapshot.data!;
+                                return Container(
+                                  height: 140.0,
+                                  decoration: const BoxDecoration(),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Align(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            children: [
-                                              ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        100.0),
-                                                child: BackdropFilter(
-                                                  filter: ImageFilter.blur(
-                                                    sigmaX: 16.0,
-                                                    sigmaY: 16.0,
-                                                  ),
-                                                  child: Container(
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                    'Invite_Partner');
+                                              },
+                                              child: SizedBox(
+                                                width: 100.0,
+                                                height: 100.0,
+                                                child: Stack(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, 0.0),
+                                                  children: [
+                                                    ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100.0),
+                                                      child: BackdropFilter(
+                                                        filter:
+                                                            ImageFilter.blur(
+                                                          sigmaX: 16.0,
+                                                          sigmaY: 16.0,
+                                                        ),
+                                                        child: Container(
+                                                          width: 100.0,
+                                                          height: 100.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: const Color(
+                                                                0x1AFFFFFF),
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: const Color(
+                                                                  0xFF182DEF),
+                                                              width: 3.0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    Container(
+                                                      width: 36.0,
+                                                      height: 36.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            const Color(0x28FFFFFF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(12.0),
+                                                      ),
+                                                    ),
+                                                    Image.asset(
+                                                      'assets/images/pluss.webp',
+                                                      width: 16.0,
+                                                      height: 16.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Text(
+                                            'Partner',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  19.0, 43.0, 19.0, 0.0),
+                                          child: const Icon(
+                                            FFIcons.klike,
+                                            color: Color(0xFFFF2C96),
+                                            size: 18.0,
+                                          ).animateOnPageLoad(animationsMap[
+                                              'iconOnPageLoadAnimation']!),
+                                        ),
+                                      ),
+                                      Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            child: SizedBox(
+                                              width: 100.0,
+                                              height: 100.0,
+                                              child: Stack(
+                                                children: [
+                                                  Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    clipBehavior:
+                                                        Clip.antiAlias,
+                                                    decoration: const BoxDecoration(
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                    child: Image.network(
+                                                      containerUsersRowList
+                                                          .where((e) =>
+                                                              e.id ==
+                                                              currentUserUid)
+                                                          .toList()
+                                                          .first
+                                                          .avatar!,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'circleImageOnPageLoadAnimation']!),
+                                                  Container(
                                                     width: 100.0,
                                                     height: 100.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0x1AFFFFFF),
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFF182DEF),
+                                                            const Color(0xFFFF2C96),
                                                         width: 3.0,
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
-                                              Container(
-                                                width: 36.0,
-                                                height: 36.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0x28FFFFFF),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
-                                                ),
-                                              ),
-                                              Image.asset(
-                                                'assets/images/pluss.webp',
-                                                width: 16.0,
-                                                height: 16.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Partner',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ],
-                                ),
-                                Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        19.0, 43.0, 19.0, 0.0),
-                                    child: const Icon(
-                                      FFIcons.klike,
-                                      color: Color(0xFFFF2C96),
-                                      size: 18.0,
-                                    ).animateOnPageLoad(animationsMap[
-                                        'iconOnPageLoadAnimation']!),
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Align(
-                                      alignment:
-                                          const AlignmentDirectional(0.0, -1.0),
-                                      child: SizedBox(
-                                        width: 100.0,
-                                        height: 100.0,
-                                        child: Stack(
-                                          children: [
-                                            Container(
-                                              width: 100.0,
-                                              height: 100.0,
-                                              clipBehavior: Clip.antiAlias,
-                                              decoration: const BoxDecoration(
-                                                shape: BoxShape.circle,
-                                              ),
-                                              child: Image.asset(
-                                                'assets/images/prof1.webp',
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ).animateOnPageLoad(animationsMap[
-                                                'circleImageOnPageLoadAnimation']!),
-                                            Container(
-                                              width: 100.0,
-                                              height: 100.0,
-                                              decoration: BoxDecoration(
-                                                shape: BoxShape.circle,
-                                                border: Border.all(
-                                                  color: const Color(0xFFFF2C96),
-                                                  width: 3.0,
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  1.0, 1.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(
-                                                        100.0),
-                                                child: BackdropFilter(
-                                                  filter: ImageFilter.blur(
-                                                    sigmaX: 16.0,
-                                                    sigmaY: 16.0,
-                                                  ),
-                                                  child: InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      context.pushNamed(
-                                                          'Edit_Profile');
-                                                    },
-                                                    child: Container(
-                                                      width: 30.0,
-                                                      height: 30.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0x1AFFFFFF),
-                                                        shape: BoxShape.circle,
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .primaryBackground,
-                                                          width: 2.0,
+                                                  Align(
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            1.0, 1.0),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              100.0),
+                                                      child: BackdropFilter(
+                                                        filter:
+                                                            ImageFilter.blur(
+                                                          sigmaX: 16.0,
+                                                          sigmaY: 16.0,
                                                         ),
-                                                      ),
-                                                      child: Icon(
-                                                        Icons.edit,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        size: 12.0,
+                                                        child: InkWell(
+                                                          splashColor: Colors
+                                                              .transparent,
+                                                          focusColor: Colors
+                                                              .transparent,
+                                                          hoverColor: Colors
+                                                              .transparent,
+                                                          highlightColor: Colors
+                                                              .transparent,
+                                                          onTap: () async {
+                                                            context.pushNamed(
+                                                                'Edit_Profile');
+                                                          },
+                                                          child: Container(
+                                                            width: 30.0,
+                                                            height: 30.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: const Color(
+                                                                  0x1AFFFFFF),
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .primaryBackground,
+                                                                width: 2.0,
+                                                              ),
+                                                            ),
+                                                            child: Icon(
+                                                              Icons.edit,
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              size: 12.0,
+                                                            ),
+                                                          ),
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
+                                                ],
                                               ),
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                    Text(
-                                      'Lola',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
                                           ),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                                          Text(
+                                            'Lola',
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              },
                             ),
                           ],
                         ),
@@ -684,7 +741,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       borderRadius: BorderRadius.circular(11.0),
                                     ),
                                     child: Icon(
-                                      Icons.mail,
+                                      FFIcons.kmail,
                                       color: FlutterFlowTheme.of(context).info,
                                       size: 16.0,
                                     ),
@@ -756,7 +813,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       borderRadius: BorderRadius.circular(11.0),
                                     ),
                                     child: Icon(
-                                      Icons.mail,
+                                      FFIcons.kmail,
                                       color: FlutterFlowTheme.of(context).info,
                                       size: 16.0,
                                     ),
@@ -828,9 +885,9 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       borderRadius: BorderRadius.circular(11.0),
                                     ),
                                     child: Icon(
-                                      Icons.mail,
+                                      FFIcons.ksparkles,
                                       color: FlutterFlowTheme.of(context).info,
-                                      size: 16.0,
+                                      size: 20.0,
                                     ),
                                   ),
                                   Expanded(
@@ -916,7 +973,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       borderRadius: BorderRadius.circular(11.0),
                                     ),
                                     child: Icon(
-                                      Icons.gpp_bad,
+                                      FFIcons.kguard,
                                       color: FlutterFlowTheme.of(context).info,
                                       size: 16.0,
                                     ),
@@ -988,7 +1045,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                       borderRadius: BorderRadius.circular(11.0),
                                     ),
                                     child: Icon(
-                                      Icons.feed,
+                                      FFIcons.kfile,
                                       color: FlutterFlowTheme.of(context).info,
                                       size: 16.0,
                                     ),
@@ -1052,7 +1109,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                     borderRadius: BorderRadius.circular(11.0),
                                   ),
                                   child: Icon(
-                                    Icons.feed,
+                                    FFIcons.kfile,
                                     color: FlutterFlowTheme.of(context).info,
                                     size: 16.0,
                                   ),
@@ -1113,7 +1170,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(
-                                  Icons.logout_sharp,
+                                  FFIcons.klogout,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryText,
                                   size: 24.0,

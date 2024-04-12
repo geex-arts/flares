@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'terms_conditions_model.dart';
 export 'terms_conditions_model.dart';
 
@@ -157,10 +156,10 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget>
                               shape: BoxShape.circle,
                             ),
                             alignment: const AlignmentDirectional(0.0, 0.0),
-                            child: FaIcon(
-                              FontAwesomeIcons.solidFileAlt,
+                            child: Icon(
+                              FFIcons.kfile,
                               color: FlutterFlowTheme.of(context).info,
-                              size: 27.0,
+                              size: 30.0,
                             ),
                           ),
                         ),

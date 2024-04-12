@@ -524,7 +524,6 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
-                                      minLines: null,
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,
                                       validator: _model
@@ -532,6 +531,30 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           .asValidator(context),
                                     ),
                                   ),
+                                  if (_model.codeNotFound)
+                                    Align(
+                                      alignment:
+                                          const AlignmentDirectional(-1.0, 0.0),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 8.0, 0.0, 0.0),
+                                        child: Text(
+                                          'The pairing code not found',
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                fontSize: 11.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
+                                    ),
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
@@ -541,6 +564,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       child: PinkButtonWidget(
                                         text: 'Send Pairing Code',
                                         currentAction: () async {
+                                          setState(() {
+                                            _model.codeNotFound = false;
+                                          });
                                           _model.foundPairingRow =
                                               await PairsInvitationsTable()
                                                   .queryRows(
@@ -575,6 +601,24 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 );
                                               }(),
                                             );
+                                            unawaited(
+                                              () async {
+                                                await PairsInvitationsTable()
+                                                    .update(
+                                                  data: {
+                                                    'status': 'accepted',
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'uuid',
+                                                    _model.foundPairingRow
+                                                        ?.first.uuid,
+                                                  ),
+                                                );
+                                              }(),
+                                            );
+                                            FFAppState().pairID = _model
+                                                .foundPairingRow!.first.pair!;
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -607,6 +651,10 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               },
                                             ).then(
                                                 (value) => safeSetState(() {}));
+                                          } else {
+                                            setState(() {
+                                              _model.codeNotFound = true;
+                                            });
                                           }
 
                                           setState(() {});

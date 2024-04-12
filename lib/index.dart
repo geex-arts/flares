@@ -20,8 +20,6 @@ export '/profile/edit_couple_profile/edit_couple_profile_widget.dart'
     show EditCoupleProfileWidget;
 export '/profile/notify_settings/notify_settings_widget.dart'
     show NotifySettingsWidget;
-export '/invite_partner_notification/invite_partner_notification_widget.dart'
-    show InvitePartnerNotificationWidget;
 export '/ai/ask_for_date/ask_for_date_widget.dart' show AskForDateWidget;
 export '/profiles/couples_profile/couples_profile_widget.dart'
     show CouplesProfileWidget;
@@ -40,3 +38,4 @@ export '/subscriptions/subscriptions/subscriptions_widget.dart'
 export '/profile/invite_partner/invite_partner_widget.dart'
     show InvitePartnerWidget;
 export '/profiles/category_p/category_p_widget.dart' show CategoryPWidget;
+export '/profiles/explore/explore_widget.dart' show ExploreWidget;

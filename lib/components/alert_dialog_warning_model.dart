@@ -1,9 +1,9 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'login_exists_warning_widget.dart' show LoginExistsWarningWidget;
+import 'alert_dialog_warning_widget.dart' show AlertDialogWarningWidget;
 import 'package:flutter/material.dart';
 
-class LoginExistsWarningModel
-    extends FlutterFlowModel<LoginExistsWarningWidget> {
+class AlertDialogWarningModel
+    extends FlutterFlowModel<AlertDialogWarningWidget> {
   @override
   void initState(BuildContext context) {}
 

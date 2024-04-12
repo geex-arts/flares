@@ -17,4 +17,5 @@ export 'tables/stories.dart';
 export 'tables/wishes.dart';
 export 'tables/places.dart';
 export 'tables/users.dart';
+export 'tables/reaction_images.dart';
 export 'tables/articles.dart';

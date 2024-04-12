@@ -251,7 +251,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
-                              minLines: null,
                               keyboardType: TextInputType.emailAddress,
                               cursorColor:
                                   FlutterFlowTheme.of(context).pinkButton,
@@ -349,7 +348,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
-                                minLines: null,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
                                 validator: _model
@@ -500,6 +498,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                             null &&
                                         _model.userAuthCopyCopy?.first.pair !=
                                             '') {
+                                      FFAppState().pairID =
+                                          _model.userAuthCopyCopy!.first.pair!;
+
                                       context.goNamedAuth(
                                           'My_Profile', context.mounted);
                                     } else {
