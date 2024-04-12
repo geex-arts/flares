@@ -98,7 +98,7 @@ class _MyAppState extends State<MyApp> {
       final url = value.map((f) => f.value).join(",");
 
       if (url.isNotEmpty) {
-        _router.go('/createWish?url=${Uri.encodeComponent(url)}');
+        _router.go('/myProfile?url=${Uri.encodeComponent(url)}');
       }
     });
 
