@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -385,87 +384,89 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: BackdropFilter(
-                              filter: ImageFilter.blur(
-                                sigmaX: 16.0,
-                                sigmaY: 16.0,
-                              ),
-                              child: FutureBuilder<List<CollectionsRow>>(
-                                future: CollectionsTable().queryRows(
-                                  queryFn: (q) => q
-                                      .eq(
-                                        'pair',
-                                        FFAppState().pairID,
-                                      )
-                                      .order('name', ascending: true),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitPulse(
-                                          color: FlutterFlowTheme.of(context)
-                                              .pinkButton,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<CollectionsRow>
-                                      dropDownCollectionsRowList =
-                                      snapshot.data!;
-                                  return FlutterFlowDropDown<String>(
-                                    controller:
-                                        _model.dropDownValueController ??=
-                                            FormFieldController<String>(
-                                      _model.dropDownValue ??= '',
-                                    ),
-                                    options: List<String>.from(
-                                        dropDownCollectionsRowList
-                                            .map((e) => e.uuid)
-                                            .toList()),
-                                    optionLabels: dropDownCollectionsRowList
-                                        .map((e) => e.name)
-                                        .withoutNulls
-                                        .toList(),
-                                    onChanged: (val) => setState(
-                                        () => _model.dropDownValue = val),
-                                    width: double.infinity,
-                                    height: 50.0,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Nuckle',
-                                          color: const Color(0x99FFFFFF),
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: false,
-                                        ),
-                                    hintText: 'Collection name',
-                                    icon: const Icon(
-                                      Icons.keyboard_arrow_down_rounded,
-                                      color: Color(0x80F2F1F3),
-                                      size: 20.0,
-                                    ),
-                                    fillColor: const Color(0xFF1D1B1B),
-                                    elevation: 0.0,
-                                    borderColor: const Color(0x0FFFFFFF),
-                                    borderWidth: 0.0,
-                                    borderRadius: 30.0,
-                                    margin: const EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 0.0, 12.0, 0.0),
-                                    hidesUnderline: true,
-                                    isOverButton: true,
-                                    isSearchable: false,
-                                    isMultiSelect: false,
-                                  );
-                                },
-                              ),
+                          child: FutureBuilder<List<CollectionsRow>>(
+                            future: CollectionsTable().queryRows(
+                              queryFn: (q) => q
+                                  .eq(
+                                    'pair',
+                                    FFAppState().pairID,
+                                  )
+                                  .order('name', ascending: true),
                             ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitPulse(
+                                      color: FlutterFlowTheme.of(context)
+                                          .pinkButton,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<CollectionsRow> blurCollectionsRowList =
+                                  snapshot.data!;
+                              return ClipRRect(
+                                borderRadius: BorderRadius.circular(0.0),
+                                child: BackdropFilter(
+                                  filter: ImageFilter.blur(
+                                    sigmaX: 16.0,
+                                    sigmaY: 16.0,
+                                  ),
+                                  child: Visibility(
+                                    visible: blurCollectionsRowList.isNotEmpty,
+                                    child: FlutterFlowDropDown<String>(
+                                      controller:
+                                          _model.dropDownValueController ??=
+                                              FormFieldController<String>(
+                                        _model.dropDownValue ??= '',
+                                      ),
+                                      options: List<String>.from(
+                                          blurCollectionsRowList
+                                              .map((e) => e.uuid)
+                                              .toList()),
+                                      optionLabels: blurCollectionsRowList
+                                          .map((e) => e.name)
+                                          .withoutNulls
+                                          .toList(),
+                                      onChanged: (val) => setState(
+                                          () => _model.dropDownValue = val),
+                                      width: double.infinity,
+                                      height: 50.0,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: const Color(0x99FFFFFF),
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                          ),
+                                      hintText: 'Collection name',
+                                      icon: const Icon(
+                                        Icons.keyboard_arrow_down_rounded,
+                                        color: Color(0x80F2F1F3),
+                                        size: 20.0,
+                                      ),
+                                      fillColor: const Color(0xFF1D1B1B),
+                                      elevation: 0.0,
+                                      borderColor: const Color(0x0FFFFFFF),
+                                      borderWidth: 0.0,
+                                      borderRadius: 30.0,
+                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 0.0, 12.0, 0.0),
+                                      hidesUnderline: true,
+                                      isOverButton: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
                         ),
                         Padding(
@@ -1204,23 +1205,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                   return;
                                 }
                                 Navigator.pop(context);
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: SizedBox(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.65,
-                                        child: const BSSaveToCollectionWidget(),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
+
+                                context.goNamed('My_Profile');
                               },
                             ),
                           ),

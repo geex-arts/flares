@@ -4,10 +4,10 @@ import '/components/generate_with_a_i_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'my_profile_widget.dart' show MyProfileWidget;
+import 'my_profile_copy_widget.dart' show MyProfileCopyWidget;
 import 'package:flutter/material.dart';
 
-class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
+class MyProfileCopyModel extends FlutterFlowModel<MyProfileCopyWidget> {
   ///  Local state fields for this page.
 
   String? selectedCollectionID;
@@ -17,7 +17,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (parseSite)] action in My_Profile widget.
+  // Stores action output result for [Backend Call - API (parseSite)] action in My_ProfileCopy widget.
   ApiCallResponse? apiResultParseURL;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;

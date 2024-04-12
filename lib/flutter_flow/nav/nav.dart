@@ -252,6 +252,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Explore',
               path: 'explore',
               builder: (context, params) => const ExploreWidget(),
+            ),
+            FFRoute(
+              name: 'My_ProfileCopy',
+              path: 'myProfileCopy',
+              builder: (context, params) => MyProfileCopyWidget(
+                url: params.getParam(
+                  'url',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

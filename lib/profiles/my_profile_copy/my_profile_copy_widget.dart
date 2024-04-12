@@ -18,11 +18,11 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'my_profile_model.dart';
-export 'my_profile_model.dart';
+import 'my_profile_copy_model.dart';
+export 'my_profile_copy_model.dart';
 
-class MyProfileWidget extends StatefulWidget {
-  const MyProfileWidget({
+class MyProfileCopyWidget extends StatefulWidget {
+  const MyProfileCopyWidget({
     super.key,
     this.url,
   });
@@ -30,12 +30,12 @@ class MyProfileWidget extends StatefulWidget {
   final String? url;
 
   @override
-  State<MyProfileWidget> createState() => _MyProfileWidgetState();
+  State<MyProfileCopyWidget> createState() => _MyProfileCopyWidgetState();
 }
 
-class _MyProfileWidgetState extends State<MyProfileWidget>
+class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
     with TickerProviderStateMixin {
-  late MyProfileModel _model;
+  late MyProfileCopyModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -192,7 +192,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => MyProfileModel());
+    _model = createModel(context, () => MyProfileCopyModel());
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
