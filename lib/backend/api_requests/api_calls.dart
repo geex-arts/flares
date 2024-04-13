@@ -1,7 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
 
-import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -13,7 +11,7 @@ class ParseSiteCall {
     String? url = '',
   }) async {
     final ffApiRequestBody = '''
-{"url":"${url}"}''';
+{"url":"$url"}''';
     return ApiManager.instance.makeApiCall(
       callName: 'parseSite',
       apiUrl:
@@ -43,9 +41,9 @@ class GenerateAiWishCall {
   }) async {
     final ffApiRequestBody = '''
 {
- "city":"${city}",
- "interest": "${interest}",
- "budget":"${budget}"
+ "city":"$city",
+ "interest": "$interest",
+ "budget":"$budget"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generateAiWish',
@@ -76,9 +74,9 @@ class GenerateAiSimiliarWishCall {
   }) async {
     final ffApiRequestBody = '''
 {
-  "budget": "${budget}",
-  "city": "${city}",
-  "collection_id": "${collectionId}"
+  "budget": "$budget",
+  "city": "$city",
+  "collection_id": "$collectionId"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generateAiSimiliarWish',

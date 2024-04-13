@@ -10,7 +10,7 @@ class NotificationsTable extends SupabaseTable<NotificationsRow> {
 }
 
 class NotificationsRow extends SupabaseDataRow {
-  NotificationsRow(Map<String, dynamic> data) : super(data);
+  NotificationsRow(super.data);
 
   @override
   SupabaseTable get table => NotificationsTable();
@@ -27,8 +27,8 @@ class NotificationsRow extends SupabaseDataRow {
   String? get type => getField<String>('type');
   set type(String? value) => setField<String>('type', value);
 
-  dynamic? get details => getField<dynamic>('details');
-  set details(dynamic? value) => setField<dynamic>('details', value);
+  dynamic get details => getField<dynamic>('details');
+  set details(dynamic value) => setField<dynamic>('details', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);

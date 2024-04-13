@@ -5,9 +5,6 @@ import 'dart:ui';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'b_s_add_wishes_model.dart';
 export 'b_s_add_wishes_model.dart';
 
@@ -43,9 +40,9 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 1.0),
+      alignment: const AlignmentDirectional(0.0, 1.0),
       child: ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(32.0),
@@ -59,7 +56,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
           child: Container(
             width: double.infinity,
             height: MediaQuery.sizeOf(context).height * 0.95,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0x17F2F1F3),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
@@ -72,17 +69,17 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Container(
                     width: 33.0,
                     height: 4.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0x34FFFFFF),
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 8.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 8.0),
                   child: Text(
                     'Add wishes \nfrom anywhere',
                     textAlign: TextAlign.center,
@@ -97,18 +94,18 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                         ),
                   ),
                 ),
-                Divider(
+                const Divider(
                   thickness: 1.0,
                   color: Color(0x0CF2F1F3),
                 ),
                 Expanded(
-                  child: Container(
+                  child: SizedBox(
                     width: double.infinity,
                     height: 500.0,
                     child: Stack(
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 40.0),
                           child: PageView(
                             controller: _model.pageViewController ??=
@@ -116,7 +113,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                             scrollDirection: Axis.horizontal,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -126,7 +123,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 34.0),
                                             child: Image.asset(
                                               'assets/images/Shar.webp',
@@ -138,25 +135,25 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 25.0, 0.0, 0.0),
                                                   child: Container(
                                                     width: 32.0,
                                                     height: 32.0,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       color: Color(0xFFFF2C96),
                                                       shape: BoxShape.circle,
                                                     ),
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -190,7 +187,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 0.0, 0.0),
                                                 child: Text(
@@ -213,7 +210,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 8.0, 0.0, 0.0),
                                                 child: Text(
@@ -245,7 +242,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: SingleChildScrollView(
                                   child: Column(
@@ -255,7 +252,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 54.0),
                                             child: Image.asset(
                                               'assets/images/Shar2.webp',
@@ -267,25 +264,25 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 25.0, 0.0, 0.0),
                                                   child: Container(
                                                     width: 32.0,
                                                     height: 32.0,
-                                                    decoration: BoxDecoration(
+                                                    decoration: const BoxDecoration(
                                                       color: Color(0xFFFF2C96),
                                                       shape: BoxShape.circle,
                                                     ),
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -319,7 +316,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 20.0, 0.0, 0.0),
                                                 child: Text(
@@ -342,7 +339,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 8.0, 0.0, 0.0),
                                                 child: Text(
@@ -377,9 +374,9 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: const AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 0.0, 24.0),
                             child: smooth_page_indicator.SmoothPageIndicator(
                               controller: _model.pageViewController ??=
@@ -389,7 +386,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                               onDotClicked: (i) async {
                                 await _model.pageViewController!.animateToPage(
                                   i,
-                                  duration: Duration(milliseconds: 500),
+                                  duration: const Duration(milliseconds: 500),
                                   curve: Curves.ease,
                                 );
                               },
@@ -398,7 +395,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                                 radius: 16.0,
                                 dotWidth: 8.0,
                                 dotHeight: 8.0,
-                                dotColor: Color(0x24FFFFFF),
+                                dotColor: const Color(0x24FFFFFF),
                                 activeDotColor: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
                                 paintStyle: PaintingStyle.fill,
@@ -411,12 +408,12 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
                       if (_model.pageViewCurrentIndex == 0) {
                         await _model.pageViewController?.nextPage(
-                          duration: Duration(milliseconds: 300),
+                          duration: const Duration(milliseconds: 300),
                           curve: Curves.ease,
                         );
                       } else {
@@ -429,10 +426,10 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                       width: double.infinity,
                       height: 42.0,
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       iconPadding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                      color: Color(0xFFE38DBA),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                      color: const Color(0xFFE38DBA),
                       textStyle:
                           FlutterFlowTheme.of(context).titleSmall.override(
                                 fontFamily: 'Nuckle',
@@ -446,7 +443,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                     ),
                   ),
                 ),
-              ].addToEnd(SizedBox(height: 40.0)),
+              ].addToEnd(const SizedBox(height: 40.0)),
             ),
           ),
         ),

@@ -3,9 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_wish_list_widget_model.dart';
 export 'empty_wish_list_widget_model.dart';
 
@@ -56,7 +53,7 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
               ),
         ),
         Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: FFButtonWidget(
             onPressed: () async {
               await showModalBottomSheet(
@@ -67,7 +64,7 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
                 builder: (context) {
                   return Padding(
                     padding: MediaQuery.viewInsetsOf(context),
-                    child: BSAddWishesWidget(),
+                    child: const BSAddWishesWidget(),
                   );
                 },
               ).then((value) => safeSetState(() {}));
@@ -76,8 +73,8 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
             options: FFButtonOptions(
               width: 155.0,
               height: 42.0,
-              padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
-              iconPadding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+              iconPadding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
               color: FlutterFlowTheme.of(context).pinkButton,
               textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                     fontFamily: 'Nuckle',
@@ -87,7 +84,7 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
                     fontWeight: FontWeight.w500,
                     useGoogleFonts: false,
                   ),
-              borderSide: BorderSide(
+              borderSide: const BorderSide(
                 color: Colors.transparent,
               ),
               borderRadius: BorderRadius.circular(30.0),

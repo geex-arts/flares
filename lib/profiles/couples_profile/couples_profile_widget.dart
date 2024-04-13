@@ -7,14 +7,11 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'couples_profile_model.dart';
 export 'couples_profile_model.dart';
@@ -46,28 +43,28 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -80,8 +77,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: Offset(-200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -93,8 +90,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: Offset(-200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -106,8 +103,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: Offset(200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -119,8 +116,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: Offset(200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -131,8 +128,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: Offset(4.0, 4.0),
-          end: Offset(1.0, 1.0),
+          begin: const Offset(4.0, 4.0),
+          end: const Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -238,7 +235,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 85.0, 0.0, 0.0),
                           child: FutureBuilder<List<PairsRow>>(
                             future: PairsTable().querySingleRow(
@@ -276,18 +273,18 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 17.0, 0.0, 0.0),
                                     child: Stack(
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     32.0, 0.0, 32.0, 0.0),
-                                            child: Container(
+                                            child: SizedBox(
                                               width: 100.0,
                                               height: 124.0,
                                               child: Stack(
@@ -316,7 +313,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                           fit: BoxFit.cover,
                                                           image:
                                                               CachedNetworkImageProvider(
-                                                            columnPairsRow!
+                                                            columnPairsRow
                                                                 .photo!,
                                                           ),
                                                         ),
@@ -330,7 +327,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       1)
                                                     Align(
                                                       alignment:
-                                                          AlignmentDirectional(
+                                                          const AlignmentDirectional(
                                                               0.0, 1.0),
                                                       child: Column(
                                                         mainAxisSize:
@@ -338,7 +335,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         5.0,
                                                                         0.0,
@@ -397,7 +394,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x34FFFFFF),
+                                                                              const Color(0x34FFFFFF),
                                                                           borderRadius:
                                                                               BorderRadius.circular(100.0),
                                                                           border:
@@ -461,7 +458,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                                         decoration:
                                                                             BoxDecoration(
                                                                           color:
-                                                                              Color(0x34FFFFFF),
+                                                                              const Color(0x34FFFFFF),
                                                                           borderRadius:
                                                                               BorderRadius.circular(100.0),
                                                                           border:
@@ -483,9 +480,9 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                           ),
                                                           Align(
                                                             alignment:
-                                                                AlignmentDirectional(
+                                                                const AlignmentDirectional(
                                                                     0.0, 1.0),
-                                                            child: Icon(
+                                                            child: const Icon(
                                                               FFIcons.klike,
                                                               color: Color(
                                                                   0xFFFF2C96),
@@ -504,7 +501,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   46.0, 33.0, 56.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -543,7 +540,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: Text('Ok'),
+                                                              child: const Text('Ok'),
                                                             ),
                                                           ],
                                                         );
@@ -563,7 +560,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                             ' ago', '');
                                                       }(dateTimeFormat(
                                                           'relative',
-                                                          columnPairsRow!
+                                                          columnPairsRow
                                                               .pairSince!)),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -585,7 +582,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -599,7 +596,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0x9AFFFFFF),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -647,7 +644,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                               onPressed: () =>
                                                                   Navigator.pop(
                                                                       alertDialogContext),
-                                                              child: Text('Ok'),
+                                                              child: const Text('Ok'),
                                                             ),
                                                           ],
                                                         );
@@ -723,7 +720,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -737,7 +734,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: Color(
+                                                              color: const Color(
                                                                   0x98FFFFFF),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -761,10 +758,10 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
-                                      columnPairsRow!.pairName!,
+                                      columnPairsRow.pairName!,
                                       textAlign: TextAlign.center,
                                       style: FlutterFlowTheme.of(context)
                                           .titleLarge
@@ -786,9 +783,9 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -814,15 +811,15 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       ''
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
-                                              : Color(0x18FFFFFF),
-                                          Color(0x18FFFFFF),
+                                              : const Color(0x18FFFFFF),
+                                          const Color(0x18FFFFFF),
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(100.0),
                                       ),
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             14.0, 2.0, 14.0, 0.0),
                                         child: Text(
                                           'All Wishes',
@@ -916,17 +913,17 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .secondaryBackground
-                                                      : Color(0x18FFFFFF),
-                                                  Color(0x18FFFFFF),
+                                                      : const Color(0x18FFFFFF),
+                                                  const Color(0x18FFFFFF),
                                                 ),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         100.0),
                                               ),
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 2.0, 14.0, 0.0),
                                                 child: Text(
@@ -970,14 +967,14 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                               ),
                                             ),
                                           );
-                                        }).divide(SizedBox(width: 4.0)),
+                                        }).divide(const SizedBox(width: 4.0)),
                                       );
                                     },
                                   ),
                                 ]
-                                    .divide(SizedBox(width: 4.0))
-                                    .addToStart(SizedBox(width: 16.0))
-                                    .addToEnd(SizedBox(width: 16.0)),
+                                    .divide(const SizedBox(width: 4.0))
+                                    .addToStart(const SizedBox(width: 16.0))
+                                    .addToEnd(const SizedBox(width: 16.0)),
                               ),
                             ),
                           ),
@@ -1027,23 +1024,23 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                           },
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               24.0, 24.0, 24.0, 0.0),
                           child: wrapWithModel(
                             model: _model.generateWithAIModel,
                             updateCallback: () => setState(() {}),
-                            child: GenerateWithAIWidget(),
+                            child: const GenerateWithAIWidget(),
                           ),
                         ),
-                      ].addToEnd(SizedBox(height: 120.0)),
+                      ].addToEnd(const SizedBox(height: 120.0)),
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 116.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           colors: [Colors.transparent, Color(0xA6000000)],
                           stops: [0.0, 1.0],
@@ -1056,17 +1053,17 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                   wrapWithModel(
                     model: _model.tabBarModel,
                     updateCallback: () => setState(() {}),
-                    child: TabBarWidget(),
+                    child: const TabBarWidget(),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                    child: Container(
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                    child: SizedBox(
                       height: 38.0,
                       child: Stack(
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -1079,15 +1076,15 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                   onTap: () async {
                                     context.pushNamed('Notifications');
                                   },
-                                  child: Container(
+                                  child: SizedBox(
                                     width: 42.0,
                                     height: 38.0,
                                     child: Stack(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                              const AlignmentDirectional(-1.0, 0.0),
                                           child: Image.asset(
                                             'assets/images/Rectangle.webp',
                                             width: 38.0,
@@ -1097,16 +1094,16 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(-1.0, 0.0),
+                                              const AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: Container(
                                               width: 34.0,
                                               height: 34.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x9A000000),
+                                                color: const Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -1122,7 +1119,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(1.0, -1.0),
+                                              const AlignmentDirectional(1.0, -1.0),
                                           child: Container(
                                             width: 18.0,
                                             height: 13.0,
@@ -1134,7 +1131,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                   BorderRadius.circular(100.0),
                                             ),
                                             child: Align(
-                                              alignment: AlignmentDirectional(
+                                              alignment: const AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 '22',
@@ -1169,7 +1166,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                       ))
                                         Stack(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           children: [
                                             Image.asset(
                                               'assets/images/Rectangle.webp',
@@ -1181,7 +1178,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                               width: 34.0,
                                               height: 34.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x9A000000),
+                                                color: const Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -1197,7 +1194,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                         ).animateOnPageLoad(animationsMap[
                                             'stackOnPageLoadAnimation2']!),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -1224,7 +1221,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: BSAddWishesWidget(),
+                                                    child: const BSAddWishesWidget(),
                                                   ),
                                                 );
                                               },
@@ -1233,7 +1230,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                           },
                                           child: Stack(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             children: [
                                               Image.asset(
                                                 'assets/images/Rectangle.webp',
@@ -1245,14 +1242,14 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                 width: 34.0,
                                                 height: 34.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x9A000000),
+                                                  color: const Color(0x9A000000),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 2.0),
                                                 child: Image.asset(
@@ -1274,14 +1271,14 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x9A000000),
+                                color: const Color(0x9A000000),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 0.0),
                                 child: Text(
                                   'Wishlist',
@@ -1305,7 +1302,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                   wrapWithModel(
                     model: _model.floatingBtnModel,
                     updateCallback: () => setState(() {}),
-                    child: FloatingBtnWidget(),
+                    child: const FloatingBtnWidget(),
                   ),
                 ],
               ),

@@ -2,9 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_create_couple_ideas_with_a_i/b_s_create_couple_ideas_with_a_i_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'floating_btn_model.dart';
 export 'floating_btn_model.dart';
 
@@ -40,9 +37,9 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(1.0, 1.0),
+      alignment: const AlignmentDirectional(1.0, 1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 104.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 104.0),
         child: InkWell(
           splashColor: Colors.transparent,
           focusColor: Colors.transparent,
@@ -56,12 +53,12 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
               builder: (context) {
                 return Padding(
                   padding: MediaQuery.viewInsetsOf(context),
-                  child: BSCreateCoupleIdeasWithAIWidget(),
+                  child: const BSCreateCoupleIdeasWithAIWidget(),
                 );
               },
             ).then((value) => safeSetState(() {}));
           },
-          child: Container(
+          child: SizedBox(
             width: 130.0,
             height: 54.0,
             child: Stack(
@@ -71,7 +68,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                   phone: false,
                 ))
                   Align(
-                    alignment: AlignmentDirectional(1.0, 1.0),
+                    alignment: const AlignmentDirectional(1.0, 1.0),
                     child: Container(
                       height: 54.0,
                       decoration: BoxDecoration(
@@ -80,7 +77,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                         shape: BoxShape.rectangle,
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             14.0, 0.0, 14.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
@@ -92,7 +89,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                               size: 26.0,
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   6.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 'All Wishes',
@@ -113,7 +110,7 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
                     ),
                   ),
                 Align(
-                  alignment: AlignmentDirectional(1.0, 1.0),
+                  alignment: const AlignmentDirectional(1.0, 1.0),
                   child: Container(
                     width: 54.0,
                     height: 54.0,

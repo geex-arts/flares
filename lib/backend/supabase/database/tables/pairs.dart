@@ -9,7 +9,7 @@ class PairsTable extends SupabaseTable<PairsRow> {
 }
 
 class PairsRow extends SupabaseDataRow {
-  PairsRow(Map<String, dynamic> data) : super(data);
+  PairsRow(super.data);
 
   @override
   SupabaseTable get table => PairsTable();

@@ -5,19 +5,14 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sign_up_model.dart';
 export 'sign_up_model.dart';
 
@@ -114,20 +109,20 @@ class _SignUpWidgetState extends State<SignUpWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                    child: Container(
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                    child: SizedBox(
                       height: 38.0,
                       child: Stack(
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Color(0x9A000000),
+                                color: const Color(0x9A000000),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 0.0),
                                 child: Text(
                                   'Sign Up',
@@ -153,16 +148,16 @@ class _SignUpWidgetState extends State<SignUpWidget>
                               context.safePop();
                             },
                             child: Stack(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               children: [
                                 Container(
                                   width: 38.0,
                                   height: 38.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0x9A000000),
+                                    color: const Color(0x9A000000),
                                     borderRadius: BorderRadius.circular(14.0),
                                     border: Border.all(
-                                      color: Color(0x33FFFFFF),
+                                      color: const Color(0x33FFFFFF),
                                     ),
                                   ),
                                 ),
@@ -185,7 +180,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                       key: _model.formKey,
                       autovalidateMode: AutovalidateMode.disabled,
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
@@ -204,7 +199,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Nuckle',
-                                        color: Color(0x98FFFFFF),
+                                        color: const Color(0x98FFFFFF),
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
@@ -218,7 +213,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -247,9 +242,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0x0FFFFFFF),
+                                  fillColor: const Color(0x0FFFFFFF),
                                   contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
+                                      const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 14.0, 20.0, 14.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -267,7 +262,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     .asValidator(context),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.passwordFieldController,
@@ -282,7 +277,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: Color(0x98FFFFFF),
+                                          color: const Color(0x98FFFFFF),
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
@@ -296,7 +291,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           useGoogleFonts: false,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -327,9 +322,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x0FFFFFFF),
+                                    fillColor: const Color(0x0FFFFFFF),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 14.0, 20.0, 14.0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
@@ -341,7 +336,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         _model.passwordFieldVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: Color(0x98FFFFFF),
+                                        color: const Color(0x98FFFFFF),
                                         size: 18.0,
                                       ),
                                     ),
@@ -364,7 +359,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                               ),
                               if (_model.emptyFields != null)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 16.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -382,7 +377,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Password must have 8 characters, including letters and numbers.',
@@ -390,7 +385,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Nuckle',
-                                                  color: Color(0x7FFFFFFF),
+                                                  color: const Color(0x7FFFFFFF),
                                                   fontSize: 11.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
@@ -402,7 +397,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ),
                                 ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.rePasswordFieldController,
@@ -418,7 +413,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         .labelMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: Color(0x98FFFFFF),
+                                          color: const Color(0x98FFFFFF),
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
@@ -432,7 +427,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           useGoogleFonts: false,
                                         ),
                                     enabledBorder: OutlineInputBorder(
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
@@ -463,9 +458,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                     filled: true,
-                                    fillColor: Color(0x0FFFFFFF),
+                                    fillColor: const Color(0x0FFFFFFF),
                                     contentPadding:
-                                        EdgeInsetsDirectional.fromSTEB(
+                                        const EdgeInsetsDirectional.fromSTEB(
                                             20.0, 14.0, 20.0, 14.0),
                                     suffixIcon: InkWell(
                                       onTap: () => setState(
@@ -477,7 +472,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         _model.rePasswordFieldVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: Color(0x98FFFFFF),
+                                        color: const Color(0x98FFFFFF),
                                         size: 18.0,
                                       ),
                                     ),
@@ -500,7 +495,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                               ),
                               if (_model.emptyFields != null)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 16.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
@@ -518,7 +513,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             _model.passLength!
@@ -528,7 +523,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Nuckle',
-                                                  color: Color(0x7FFFFFFF),
+                                                  color: const Color(0x7FFFFFFF),
                                                   fontSize: 11.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
@@ -541,7 +536,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 ),
                               Builder(
                                 builder: (context) => Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 26.0, 0.0, 0.0),
                                   child: wrapWithModel(
                                     model: _model.nextButtonModel,
@@ -549,16 +544,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     child: PinkButtonWidget(
                                       text: 'Next',
                                       currentAction: () async {
-                                        var _shouldSetState = false;
-                                        if ((_model.emailFieldController.text ==
-                                                    null ||
-                                                _model.emailFieldController
+                                        var shouldSetState = false;
+                                        if ((_model.emailFieldController
                                                         .text ==
                                                     '') &&
                                             (_model.passwordFieldController
-                                                        .text ==
-                                                    null ||
-                                                _model.passwordFieldController
                                                         .text ==
                                                     '')) {
                                           setState(() {
@@ -567,13 +557,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           setState(() {
                                             _model.passLength = false;
                                           });
-                                          if (_shouldSetState) setState(() {});
+                                          if (shouldSetState) setState(() {});
                                           return;
                                         } else {
                                           if (_model.emailFieldController
-                                                      .text ==
-                                                  null ||
-                                              _model.emailFieldController
                                                       .text ==
                                                   '') {
                                             setState(() {
@@ -582,14 +569,12 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             setState(() {
                                               _model.passLength = false;
                                             });
-                                            if (_shouldSetState)
+                                            if (shouldSetState) {
                                               setState(() {});
+                                            }
                                             return;
                                           } else {
                                             if (_model.passwordFieldController
-                                                        .text ==
-                                                    null ||
-                                                _model.passwordFieldController
                                                         .text ==
                                                     '') {
                                               setState(() {
@@ -598,8 +583,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                               setState(() {
                                                 _model.passLength = false;
                                               });
-                                              if (_shouldSetState)
+                                              if (shouldSetState) {
                                                 setState(() {});
+                                              }
                                               return;
                                             } else {
                                               if (functions.wordLength(_model
@@ -612,14 +598,12 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 setState(() {
                                                   _model.passLength = true;
                                                 });
-                                                if (_shouldSetState)
+                                                if (shouldSetState) {
                                                   setState(() {});
+                                                }
                                                 return;
                                               } else {
                                                 if (_model.rePasswordFieldController
-                                                            .text ==
-                                                        null ||
-                                                    _model.rePasswordFieldController
                                                             .text ==
                                                         '') {
                                                   setState(() {
@@ -628,8 +612,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                   setState(() {
                                                     _model.passLength = false;
                                                   });
-                                                  if (_shouldSetState)
+                                                  if (shouldSetState) {
                                                     setState(() {});
+                                                  }
                                                   return;
                                                 }
                                                 setState(() {
@@ -649,7 +634,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             _model.emailFieldController.text,
                                           ),
                                         );
-                                        _shouldSetState = true;
+                                        shouldSetState = true;
                                         if (_model.existingUser != null &&
                                             (_model.existingUser)!.isNotEmpty) {
                                           await showDialog(
@@ -660,7 +645,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                         0.0, -1.0)
                                                     .resolve(Directionality.of(
                                                         context)),
@@ -674,7 +659,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                       : FocusScope.of(context)
                                                           .unfocus(),
                                                   child:
-                                                      AlertDialogWarningWidget(
+                                                      const AlertDialogWarningWidget(
                                                     title:
                                                         'It seems you have already signed up!',
                                                     subtitle:
@@ -688,13 +673,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           context.goNamedAuth(
                                               'Sign_In', context.mounted);
 
-                                          if (_shouldSetState) setState(() {});
+                                          if (shouldSetState) setState(() {});
                                           return;
                                         }
                                         await actions.getPushPermission();
                                         _model.fcmToken =
                                             await actions.getFCMToken();
-                                        _shouldSetState = true;
+                                        shouldSetState = true;
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model
                                                 .passwordFieldController.text !=
@@ -702,7 +687,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 .text) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
-                                            SnackBar(
+                                            const SnackBar(
                                               content: Text(
                                                 'Passwords don\'t match!',
                                               ),
@@ -733,19 +718,19 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             'Create_Couple_Profile',
                                             context.mounted);
 
-                                        if (_shouldSetState) setState(() {});
+                                        if (shouldSetState) setState(() {});
                                       },
                                     ),
                                   ),
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
-                                child: Container(
+                                child: SizedBox(
                                   height: 24.0,
                                   child: Stack(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     children: [
                                       Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -754,16 +739,16 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             child: Container(
                                               width: double.infinity,
                                               height: 1.0,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Color(0x19FFFFFF),
                                               ),
                                             ),
                                           ),
                                           Container(
                                             height: double.infinity,
-                                            decoration: BoxDecoration(),
+                                            decoration: const BoxDecoration(),
                                             child: Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       16.0, 6.0, 16.0, 0.0),
                                               child: Text(
@@ -787,7 +772,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             child: Container(
                                               width: double.infinity,
                                               height: 1.0,
-                                              decoration: BoxDecoration(
+                                              decoration: const BoxDecoration(
                                                 color: Color(0x19FFFFFF),
                                               ),
                                             ),
@@ -799,7 +784,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -821,7 +806,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     width: double.infinity,
                                     height: 40.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0x1AFFFFFF),
+                                      color: const Color(0x1AFFFFFF),
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
                                     child: InkWell(
@@ -857,7 +842,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     3.0, 0.0, 0.0, 0.0),
                                             child: Text(
                                               'Continue with Google',
@@ -883,13 +868,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   height: 40.0,
                                   decoration: BoxDecoration(
-                                    color: Color(0x1AFFFFFF),
+                                    color: const Color(0x1AFFFFFF),
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   child: Row(
@@ -907,7 +892,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             3.0, 0.0, 0.0, 0.0),
                                         child: Text(
                                           'Continue with Apple',
@@ -929,8 +914,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 ),
                               ),
                             ]
-                                .addToStart(SizedBox(height: 32.0))
-                                .addToEnd(SizedBox(height: 160.0)),
+                                .addToStart(const SizedBox(height: 32.0))
+                                .addToEnd(const SizedBox(height: 160.0)),
                           ),
                         ),
                       ),
@@ -942,14 +927,14 @@ class _SignUpWidgetState extends State<SignUpWidget>
                   ? MediaQuery.viewInsetsOf(context).bottom > 0
                   : _isKeyboardVisible))
                 Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
+                  alignment: const AlignmentDirectional(0.0, 1.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: const AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
@@ -961,7 +946,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Nuckle',
-                                        color: Color(0x9AFFFFFF),
+                                        color: const Color(0x9AFFFFFF),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
@@ -993,7 +978,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             14.0, 12.0, 14.0, 40.0),
                         child: RichText(
                           textScaler: MediaQuery.of(context).textScaler,
@@ -1005,7 +990,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: Color(0x9AFFFFFF),
+                                      color: const Color(0x9AFFFFFF),
                                       fontSize: 11.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
@@ -1023,7 +1008,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     context.pushNamed('Terms_Conditions');
                                   },
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text:
                                     'And Confirm That You Have Read The Runway\'s ',
                                 style: TextStyle(

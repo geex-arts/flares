@@ -3,16 +3,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_couple_profile_model.dart';
 export 'edit_couple_profile_model.dart';
 
@@ -50,28 +45,28 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -83,28 +78,28 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: Color(0x80FFFFFF),
+          color: const Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -151,20 +146,20 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
           child: Stack(
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: SizedBox(
                   height: 38.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color(0x9A000000),
+                            color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 0.0),
                             child: Text(
                               'Edit Couple Profile',
@@ -190,16 +185,16 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                           context.safePop();
                         },
                         child: Stack(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           children: [
                             Container(
                               width: 38.0,
                               height: 38.0,
                               decoration: BoxDecoration(
-                                color: Color(0x9A000000),
+                                color: const Color(0x9A000000),
                                 borderRadius: BorderRadius.circular(14.0),
                                 border: Border.all(
-                                  color: Color(0x33FFFFFF),
+                                  color: const Color(0x33FFFFFF),
                                 ),
                               ),
                             ),
@@ -218,14 +213,14 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 80.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 80.0, 16.0, 0.0),
                 child: SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
-                        child: Container(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        child: SizedBox(
                           width: 100.0,
                           height: 100.0,
                           child: Stack(
@@ -234,7 +229,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 width: 120.0,
                                 height: 120.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
@@ -247,7 +242,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 width: 120.0,
                                 height: 120.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.memory(
@@ -258,7 +253,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                               ).animateOnPageLoad(animationsMap[
                                   'circleImageOnPageLoadAnimation2']!),
                               Align(
-                                alignment: AlignmentDirectional(1.0, 1.0),
+                                alignment: const AlignmentDirectional(1.0, 1.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
                                   focusColor: Colors.transparent,
@@ -321,7 +316,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     width: 30.0,
                                     height: 30.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFD886B1),
+                                      color: const Color(0xFFD886B1),
                                       shape: BoxShape.circle,
                                       border: Border.all(
                                         color: FlutterFlowTheme.of(context)
@@ -343,7 +338,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -360,7 +355,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: TextFormField(
                                 controller: _model.namesFieldController,
@@ -375,7 +370,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Nuckle',
-                                        color: Color(0x98FFFFFF),
+                                        color: const Color(0x98FFFFFF),
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
@@ -389,7 +384,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                         useGoogleFonts: false,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(
+                                    borderSide: const BorderSide(
                                       color: Color(0x00000000),
                                       width: 1.0,
                                     ),
@@ -418,9 +413,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0x0FFFFFFF),
+                                  fillColor: const Color(0x0FFFFFFF),
                                   contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
+                                      const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 14.0, 20.0, 14.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -442,7 +437,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -459,7 +454,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -474,7 +469,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   await showModalBottomSheet<bool>(
                                       context: context,
                                       builder: (context) {
-                                        final _datePickedCupertinoTheme =
+                                        final datePickedCupertinoTheme =
                                             CupertinoTheme.of(context);
                                         return Container(
                                           height: MediaQuery.of(context)
@@ -486,10 +481,10 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                           color: FlutterFlowTheme.of(context)
                                               .primaryBackground,
                                           child: CupertinoTheme(
-                                            data: _datePickedCupertinoTheme
+                                            data: datePickedCupertinoTheme
                                                 .copyWith(
                                               textTheme:
-                                                  _datePickedCupertinoTheme
+                                                  datePickedCupertinoTheme
                                                       .textTheme
                                                       .copyWith(
                                                 dateTimePickerTextStyle:
@@ -534,18 +529,18 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
-                                    color: Color(0x0FFFFFFF),
+                                    color: const Color(0x0FFFFFFF),
                                     borderRadius: BorderRadius.circular(30.0),
                                     border: Border.all(
                                       color: _model.borderOn
                                           ? FlutterFlowTheme.of(context)
                                               .pinkButton
-                                          : Color(0x00000000),
+                                          : const Color(0x00000000),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 14.0, 20.0, 14.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -557,7 +552,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: Color(0x98FFFFFF),
+                                            color: const Color(0x98FFFFFF),
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                             lineHeight: 1.4,
@@ -572,7 +567,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -589,12 +584,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController1 ??=
                                     FormFieldController<String>(null),
-                                options: ['Option 1', 'Option 2', 'Option 3'],
+                                options: const ['Option 1', 'Option 2', 'Option 3'],
                                 onChanged: (val) =>
                                     setState(() => _model.dropDownValue1 = val),
                                 width: double.infinity,
@@ -604,7 +599,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: Color(0x99FFFFFF),
+                                      color: const Color(0x99FFFFFF),
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
@@ -615,12 +610,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: Color(0xFF1D1B1B),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 30.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
+                                margin: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 14.0, 20.0, 14.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -633,7 +628,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -650,12 +645,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController2 ??=
                                     FormFieldController<String>(null),
-                                options: ['Option 1'],
+                                options: const ['Option 1'],
                                 onChanged: (val) =>
                                     setState(() => _model.dropDownValue2 = val),
                                 width: double.infinity,
@@ -664,7 +659,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: Color(0x9AFFFFFF),
+                                      color: const Color(0x9AFFFFFF),
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
@@ -675,12 +670,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: Color(0xFF1D1B1B),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 30.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
+                                margin: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -693,7 +688,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -710,12 +705,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 15.0, 0.0, 0.0),
                               child: FlutterFlowDropDown<String>(
                                 controller: _model.dropDownValueController3 ??=
                                     FormFieldController<String>(null),
-                                options: ['Option 1'],
+                                options: const ['Option 1'],
                                 onChanged: (val) =>
                                     setState(() => _model.dropDownValue3 = val),
                                 width: double.infinity,
@@ -724,7 +719,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: Color(0x98FFFFFF),
+                                      color: const Color(0x98FFFFFF),
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
@@ -735,12 +730,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       .secondaryText,
                                   size: 24.0,
                                 ),
-                                fillColor: Color(0xFF1D1B1B),
+                                fillColor: const Color(0xFF1D1B1B),
                                 elevation: 0.0,
                                 borderColor: Colors.transparent,
                                 borderWidth: 0.0,
                                 borderRadius: 30.0,
-                                margin: EdgeInsetsDirectional.fromSTEB(
+                                margin: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
                                 hidesUnderline: true,
                                 isOverButton: false,
@@ -752,16 +747,16 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                         ),
                       ),
                     ]
-                        .addToStart(SizedBox(height: 25.0))
-                        .addToEnd(SizedBox(height: 120.0)),
+                        .addToStart(const SizedBox(height: 25.0))
+                        .addToEnd(const SizedBox(height: 120.0)),
                   ),
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 1.0),
                 child: Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
                   child: wrapWithModel(
                     model: _model.createCoupleModel,
                     updateCallback: () => setState(() {}),

@@ -2,13 +2,8 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'more_model.dart';
 export 'more_model.dart';
 
@@ -46,8 +41,8 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1800.ms,
-          begin: Offset(-200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(-200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -59,8 +54,8 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1800.ms,
-          begin: Offset(200.0, 0.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(200.0, 0.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -71,8 +66,8 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 2400.ms,
-          begin: Offset(4.0, 4.0),
-          end: Offset(1.0, 1.0),
+          begin: const Offset(4.0, 4.0),
+          end: const Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -117,12 +112,12 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 125.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 125.0, 0.0, 0.0),
                 child: Stack(
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(13.0, 0.0, 17.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(13.0, 0.0, 17.0, 0.0),
                       child: Image.asset(
                         'assets/images/field.webp',
                         width: double.infinity,
@@ -133,9 +128,9 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 45.0, 0.0, 0.0),
                             child: Image.asset(
                               'assets/images/logo.webp',
@@ -146,7 +141,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 16.0, 0.0, 0.0),
                           child: Text(
                             'Wishlist',
@@ -162,7 +157,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'You can find the pairing code in \nthe message your partner sent \nyou',
@@ -171,7 +166,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                                 .labelLarge
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: Color(0x9AFFFFFF),
+                                  color: const Color(0x9AFFFFFF),
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.4,
@@ -179,17 +174,17 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 3.0, 16.0, 0.0, 0.0),
-                            child: Container(
+                            child: SizedBox(
                               width: double.infinity,
                               height: 134.0,
                               child: Stack(
                                 children: [
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Image.asset(
                                       'assets/images/vinie.webp',
                                       width: double.infinity,
@@ -198,12 +193,12 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                                         'imageOnPageLoadAnimation']!),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Container(
                                       width: 134.0,
                                       height: 134.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: Image.asset(
@@ -213,7 +208,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
@@ -221,7 +216,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 106.0, 0.0),
                                           child: Container(
                                             width: 34.0,
@@ -247,7 +242,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   106.0, 0.0, 0.0, 0.0),
                                           child: Container(
                                             width: 34.0,
@@ -280,11 +275,11 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                           ),
                         ),
                         Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
+                          alignment: const AlignmentDirectional(0.0, 1.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 24.0, 0.0, 0.0),
-                            child: Icon(
+                            child: const Icon(
                               FFIcons.klike,
                               color: Color(0xFFFF2C96),
                               size: 22.0,
@@ -298,7 +293,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),

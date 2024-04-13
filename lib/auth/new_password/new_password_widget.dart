@@ -3,13 +3,8 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'new_password_model.dart';
 export 'new_password_model.dart';
 
@@ -83,25 +78,25 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                  child: Container(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                  child: SizedBox(
                     height: 38.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0x9A000000),
+                              color: const Color(0x9A000000),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
                               child: Text(
                                 'New Password',
@@ -127,16 +122,16 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0x9A000000),
+                                  color: const Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: Color(0x33FFFFFF),
+                                    color: const Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -155,7 +150,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                   child: TextFormField(
                     controller: _model.passwordFieldController,
                     focusNode: _model.passwordFieldFocusNode,
@@ -168,7 +163,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Nuckle',
-                                color: Color(0x98FFFFFF),
+                                color: const Color(0x98FFFFFF),
                                 letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
@@ -180,7 +175,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                                 useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -208,8 +203,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       filled: true,
-                      fillColor: Color(0x0FFFFFFF),
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      fillColor: const Color(0x0FFFFFFF),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 14.0, 20.0, 14.0),
                       suffixIcon: InkWell(
                         onTap: () => setState(
@@ -221,7 +216,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           _model.passwordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: Color(0x98FFFFFF),
+                          color: const Color(0x98FFFFFF),
                           size: 18.0,
                         ),
                       ),
@@ -243,7 +238,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                 ))
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -256,7 +251,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Password must have 8 characters, including letters and numbers.',
@@ -264,7 +259,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: Color(0x7FFFFFFF),
+                                    color: const Color(0x7FFFFFFF),
                                     fontSize: 11.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
@@ -276,7 +271,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                     ),
                   ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: TextFormField(
                     controller: _model.rePasswordFieldController,
                     focusNode: _model.rePasswordFieldFocusNode,
@@ -289,7 +284,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
                                 fontFamily: 'Nuckle',
-                                color: Color(0x98FFFFFF),
+                                color: const Color(0x98FFFFFF),
                                 letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
@@ -301,7 +296,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                                 useGoogleFonts: false,
                               ),
                       enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Color(0x00000000),
                           width: 1.0,
                         ),
@@ -329,8 +324,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                       filled: true,
-                      fillColor: Color(0x0FFFFFFF),
-                      contentPadding: EdgeInsetsDirectional.fromSTEB(
+                      fillColor: const Color(0x0FFFFFFF),
+                      contentPadding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 14.0, 20.0, 14.0),
                       suffixIcon: InkWell(
                         onTap: () => setState(
@@ -342,7 +337,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           _model.rePasswordFieldVisibility
                               ? Icons.visibility_outlined
                               : Icons.visibility_off_outlined,
-                          color: Color(0x98FFFFFF),
+                          color: const Color(0x98FFFFFF),
                           size: 18.0,
                         ),
                       ),
@@ -364,7 +359,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                 ))
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -377,7 +372,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Password must have 8 characters, including letters and numbers.',
@@ -385,7 +380,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: Color(0x7FFFFFFF),
+                                    color: const Color(0x7FFFFFFF),
                                     fontSize: 11.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
@@ -397,7 +392,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                     ),
                   ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 23.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 23.0, 0.0, 0.0),
                   child: wrapWithModel(
                     model: _model.pinkButtonModel,
                     updateCallback: () => setState(() {}),

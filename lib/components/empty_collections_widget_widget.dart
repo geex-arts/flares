@@ -1,9 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'empty_collections_widget_model.dart';
 export 'empty_collections_widget_model.dart';
 
@@ -41,12 +38,12 @@ class _EmptyCollectionsWidgetWidgetState
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 30.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 30.0),
       child: Container(
         width: 224.0,
         height: 145.0,
         decoration: BoxDecoration(
-          color: Color(0x0DFFFFFF),
+          color: const Color(0x0DFFFFFF),
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Column(
@@ -59,7 +56,7 @@ class _EmptyCollectionsWidgetWidgetState
               size: 24.0,
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 'No Collections Yet',
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -73,13 +70,13 @@ class _EmptyCollectionsWidgetWidgetState
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
               child: Text(
                 'You don\'t have any\nCollections',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Nuckle',
-                      color: Color(0x9AFFFFFF),
+                      color: const Color(0x9AFFFFFF),
                       fontSize: 14.0,
                       letterSpacing: 0.0,
                       fontWeight: FontWeight.normal,
