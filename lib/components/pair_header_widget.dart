@@ -6,8 +6,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'pair_header_model.dart';
 export 'pair_header_model.dart';
@@ -41,28 +43,28 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -75,8 +77,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(-200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -88,8 +90,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(-200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(-200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -101,8 +103,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -114,8 +116,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -127,8 +129,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(200.0, 0.0),
-          end: const Offset(0.0, 0.0),
+          begin: Offset(200.0, 0.0),
+          end: Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -139,8 +141,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 1200.ms,
-          begin: const Offset(4.0, 4.0),
-          end: const Offset(1.0, 1.0),
+          begin: Offset(4.0, 4.0),
+          end: Offset(1.0, 1.0),
         ),
       ],
     ),
@@ -170,7 +172,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 85.0, 0.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(0.0, 85.0, 0.0, 0.0),
       child: FutureBuilder<List<PairsRow>>(
         future: PairsTable().querySingleRow(
           queryFn: (q) => q.eq(
@@ -203,15 +205,15 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 0.0),
                 child: Stack(
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             32.0, 0.0, 32.0, 0.0),
-                        child: SizedBox(
+                        child: Container(
                           width: 100.0,
                           height: 124.0,
                           child: Stack(
@@ -237,7 +239,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: CachedNetworkImageProvider(
-                                        columnPairsRow.photo!,
+                                        columnPairsRow!.photo!,
                                       ),
                                     ),
                                     shape: BoxShape.circle,
@@ -245,7 +247,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                 ).animateOnPageLoad(animationsMap[
                                     'containerOnPageLoadAnimation1']!),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: FutureBuilder<List<UsersRow>>(
                                   future: UsersTable().queryRows(
                                     queryFn: (q) => q.eq(
@@ -271,9 +273,9 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                     List<UsersRow> containerUsersRowList =
                                         snapshot.data!;
                                     return Container(
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 5.0, 7.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -333,7 +335,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                                     width: 34.0,
                                                     height: 34.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0x1AFFFFFF),
+                                                      color: Color(0x1AFFFFFF),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               100.0),
@@ -408,7 +410,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                                     width: 34.0,
                                                     height: 34.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0x4D000000),
+                                                      color: Color(0x4D000000),
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               100.0),
@@ -438,7 +440,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                                       height: 34.0,
                                                       decoration: BoxDecoration(
                                                         color:
-                                                            const Color(0x4D000000),
+                                                            Color(0x4D000000),
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(
@@ -465,8 +467,8 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
-                                child: const Icon(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: Icon(
                                   FFIcons.klike,
                                   color: Color(0xFFFF2C96),
                                   size: 14.0,
@@ -480,7 +482,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(46.0, 33.0, 56.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(46.0, 33.0, 56.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -511,7 +513,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     );
@@ -528,7 +530,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                   (String var1) {
                                     return var1.replaceAll(' ago', '');
                                   }(dateTimeFormat(
-                                      'relative', columnPairsRow.pairSince!)),
+                                      'relative', columnPairsRow!.pairSince!)),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
@@ -543,7 +545,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                       ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Together',
@@ -551,7 +553,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: const Color(0x9AFFFFFF),
+                                          color: Color(0x9AFFFFFF),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -588,7 +590,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                         TextButton(
                                           onPressed: () =>
                                               Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
+                                          child: Text('Ok'),
                                         ),
                                       ],
                                     );
@@ -646,7 +648,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                   },
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 4.0, 0.0, 0.0),
                                   child: Text(
                                     'Dates',
@@ -654,7 +656,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: const Color(0x98FFFFFF),
+                                          color: Color(0x98FFFFFF),
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -673,9 +675,9 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                 child: Text(
-                  columnPairsRow.pairName!,
+                  columnPairsRow!.pairName!,
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).titleLarge.override(
                         fontFamily: 'Nuckle',

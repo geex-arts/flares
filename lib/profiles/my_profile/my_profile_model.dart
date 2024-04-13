@@ -1,11 +1,27 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/generate_with_a_i_widget.dart';
+import '/components/pink_button_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
+import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
+import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'my_profile_widget.dart' show MyProfileWidget;
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ///  Local state fields for this page.
@@ -23,6 +39,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
   ApiCallResponse? apiResultc16Copy;
+  // Model for pinkButton component.
+  late PinkButtonModel pinkButtonModel;
   // Model for wishesListMain component.
   late WishesListMainModel wishesListMainModel;
   // Model for generateWithAI component.
@@ -36,6 +54,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
 
   @override
   void initState(BuildContext context) {
+    pinkButtonModel = createModel(context, () => PinkButtonModel());
     wishesListMainModel = createModel(context, () => WishesListMainModel());
     generateWithAIModel1 = createModel(context, () => GenerateWithAIModel());
     generateWithAIModel2 = createModel(context, () => GenerateWithAIModel());
@@ -46,6 +65,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    pinkButtonModel.dispose();
     wishesListMainModel.dispose();
     generateWithAIModel1.dispose();
     generateWithAIModel2.dispose();

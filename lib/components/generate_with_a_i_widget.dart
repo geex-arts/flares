@@ -2,6 +2,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_create_couple_ideas_with_a_i/b_s_create_couple_ideas_with_a_i_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'generate_with_a_i_model.dart';
 export 'generate_with_a_i_model.dart';
 
@@ -40,11 +43,11 @@ class _GenerateWithAIWidgetState extends State<GenerateWithAIWidget> {
       width: double.infinity,
       height: 73.0,
       decoration: BoxDecoration(
-        color: const Color(0x1AFFFFFF),
+        color: Color(0x1AFFFFFF),
         borderRadius: BorderRadius.circular(16.0),
       ),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -71,7 +74,7 @@ class _GenerateWithAIWidgetState extends State<GenerateWithAIWidget> {
                   builder: (context) {
                     return Padding(
                       padding: MediaQuery.viewInsetsOf(context),
-                      child: const BSCreateCoupleIdeasWithAIWidget(),
+                      child: BSCreateCoupleIdeasWithAIWidget(),
                     );
                   },
                 ).then((value) => safeSetState(() {}));
@@ -83,9 +86,9 @@ class _GenerateWithAIWidgetState extends State<GenerateWithAIWidget> {
                   color: FlutterFlowTheme.of(context).pinkButton,
                   borderRadius: BorderRadius.circular(21.0),
                 ),
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
                   child: Text(
                     'Generate',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(

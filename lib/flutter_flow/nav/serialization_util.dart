@@ -5,6 +5,7 @@ import 'package:from_css_color/from_css_color.dart';
 
 import '/backend/supabase/supabase.dart';
 
+import '../../flutter_flow/lat_lng.dart';
 import '../../flutter_flow/place.dart';
 import '../../flutter_flow/uploaded_file.dart';
 
@@ -166,8 +167,8 @@ dynamic deserializeParam<T>(
         return null;
       }
       return paramValues
-          .whereType<String>()
-          .map((p) => p)
+          .where((p) => p is String)
+          .map((p) => p as String)
           .map((p) => deserializeParam<T>(p, paramType, false))
           .where((p) => p != null)
           .map((p) => p! as T)

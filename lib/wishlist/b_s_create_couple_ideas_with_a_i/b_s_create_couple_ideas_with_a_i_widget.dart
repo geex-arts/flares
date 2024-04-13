@@ -4,6 +4,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_budget_location/b_s_budget_location_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'b_s_create_couple_ideas_with_a_i_model.dart';
 export 'b_s_create_couple_ideas_with_a_i_model.dart';
 
@@ -41,7 +44,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -54,7 +57,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -67,17 +70,17 @@ class _BSCreateCoupleIdeasWithAIWidgetState
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                 child: Text(
                   'Create couple ideas with AI',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -90,12 +93,12 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                       ),
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                 child: Wrap(
                   spacing: 5.0,
                   runSpacing: 5.0,
@@ -116,13 +119,13 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -132,7 +135,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Resataunt',
@@ -158,13 +161,13 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -174,7 +177,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Cafe',
@@ -200,13 +203,13 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -216,7 +219,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Resataunt',
@@ -242,13 +245,13 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -258,7 +261,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Resataunt biger',
@@ -284,13 +287,13 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -300,7 +303,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Resataunt',
@@ -319,20 +322,20 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                     Container(
                       height: 45.0,
                       decoration: BoxDecoration(
-                        color: const Color(0x0DFFFFFF),
+                        color: Color(0x0DFFFFFF),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -342,7 +345,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Resataunt',
@@ -362,20 +365,20 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                     Container(
                       height: 45.0,
                       decoration: BoxDecoration(
-                        color: const Color(0x0DFFFFFF),
+                        color: Color(0x0DFFFFFF),
                         borderRadius: BorderRadius.circular(100.0),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 3.0, 0.0, 0.0, 0.0),
                             child: Container(
                               width: 39.0,
                               height: 39.0,
                               clipBehavior: Clip.antiAlias,
-                              decoration: const BoxDecoration(
+                              decoration: BoxDecoration(
                                 shape: BoxShape.circle,
                               ),
                               child: Image.network(
@@ -385,7 +388,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 7.0, 0.0, 13.0, 0.0),
                             child: Text(
                               'Cafe',
@@ -406,7 +409,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.generateModel,
                   updateCallback: () => setState(() {}),
@@ -421,7 +424,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                         builder: (context) {
                           return Padding(
                             padding: MediaQuery.viewInsetsOf(context),
-                            child: const BSBudgetLocationWidget(),
+                            child: BSBudgetLocationWidget(),
                           );
                         },
                       ).then((value) => safeSetState(() {}));

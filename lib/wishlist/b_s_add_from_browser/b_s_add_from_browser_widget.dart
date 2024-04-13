@@ -1,16 +1,21 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/flutter_flow/upload_data.dart';
+import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'b_s_add_from_browser_model.dart';
 export 'b_s_add_from_browser_model.dart';
@@ -32,35 +37,36 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
   late BSAddFromBrowserModel _model;
 
   final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
+    'imageOnActionTriggerAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onActionTrigger,
+      applyInitialState: true,
       effects: [
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -82,14 +88,14 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (getJsonField(
             widget.parsedURLJson,
-            r'''$.image[0]''',
+            r'''$.images[0]''',
           ) !=
           null) {
         setState(() {
           _model.selectedImage = getJsonField(
             widget.parsedURLJson,
-            r'''$.image[0]''',
-          ).toString().toString();
+            r'''$.images[0]''',
+          ).toString();
         });
       }
     });
@@ -107,6 +113,13 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
       r'''$.description''',
     ).toString().toString());
     _model.descriptionFieldFocusNode ??= FocusNode();
+
+    setupAnimations(
+      animationsMap.values.where((anim) =>
+          anim.trigger == AnimationTrigger.onActionTrigger ||
+          !anim.applyInitialState),
+      this,
+    );
   }
 
   @override
@@ -121,7 +134,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
     context.watch<FFAppState>();
 
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -134,7 +147,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -148,22 +161,22 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Container(
                     width: 33.0,
                     height: 4.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0x3AF2F1F3),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                   child: Text(
                     'Add to wishlist',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -177,7 +190,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                   ),
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
@@ -191,7 +204,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 24.0, 16.0, 0.0),
                           child: Text(
                             'Name',
@@ -208,7 +221,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.nameFieldController,
@@ -223,7 +236,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x98FFFFFF),
+                                    color: Color(0x98FFFFFF),
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
@@ -236,7 +249,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                     useGoogleFonts: false,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -265,8 +278,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                 borderRadius: BorderRadius.circular(30.0),
                               ),
                               filled: true,
-                              fillColor: const Color(0x0FFFFFFF),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              fillColor: Color(0x0FFFFFFF),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 13.0, 20.0, 13.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -284,7 +297,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'Collection',
@@ -301,7 +314,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: FutureBuilder<List<CollectionsRow>>(
                             future: CollectionsTable().queryRows(
@@ -337,7 +350,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                     sigmaY: 16.0,
                                   ),
                                   child: Visibility(
-                                    visible: blurCollectionsRowList.isNotEmpty,
+                                    visible: blurCollectionsRowList.length > 0,
                                     child: FlutterFlowDropDown<String>(
                                       controller:
                                           _model.dropDownValueController ??=
@@ -360,22 +373,22 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: const Color(0x99FFFFFF),
+                                            color: Color(0x99FFFFFF),
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
                                       hintText: 'Collection name',
-                                      icon: const Icon(
+                                      icon: Icon(
                                         Icons.keyboard_arrow_down_rounded,
                                         color: Color(0x80F2F1F3),
                                         size: 20.0,
                                       ),
-                                      fillColor: const Color(0xFF1D1B1B),
+                                      fillColor: Color(0xFF1D1B1B),
                                       elevation: 0.0,
-                                      borderColor: const Color(0x0FFFFFFF),
+                                      borderColor: Color(0x0FFFFFFF),
                                       borderWidth: 0.0,
                                       borderRadius: 30.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
+                                      margin: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 12.0, 0.0),
                                       hidesUnderline: true,
                                       isOverButton: true,
@@ -389,7 +402,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'Motivation',
@@ -406,7 +419,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: TextFormField(
                             controller: _model.descriptionFieldController,
@@ -422,7 +435,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                   .labelMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x98FFFFFF),
+                                    color: Color(0x98FFFFFF),
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
@@ -435,7 +448,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                     useGoogleFonts: false,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x00000000),
                                   width: 1.0,
                                 ),
@@ -464,8 +477,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                 borderRadius: BorderRadius.circular(12.0),
                               ),
                               filled: true,
-                              fillColor: const Color(0x0FFFFFFF),
-                              contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                              fillColor: Color(0x0FFFFFFF),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
                                   20.0, 16.0, 20.0, 16.0),
                             ),
                             style: FlutterFlowTheme.of(context)
@@ -486,7 +499,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 30.0, 0.0, 0.0),
                           child: Text(
                             'Select Image',
@@ -503,239 +516,703 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
-                          child: Builder(
-                            builder: (context) {
-                              final currentImage = getJsonField(
-                                widget.parsedURLJson,
-                                r'''$.image''',
-                              ).toList();
-                              return SingleChildScrollView(
-                                scrollDirection: Axis.horizontal,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: List.generate(currentImage.length,
-                                          (currentImageIndex) {
-                                    final currentImageItem =
-                                        currentImage[currentImageIndex];
-                                    return Container(
-                                      decoration: const BoxDecoration(),
-                                      child: SizedBox(
-                                        width: 119.0,
-                                        height: 177.0,
-                                        child: Stack(
-                                          children: [
-                                            ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Image.network(
-                                                currentImageItem.toString(),
-                                                width: 119.0,
-                                                height: 177.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                            ).animateOnPageLoad(animationsMap[
-                                                'imageOnPageLoadAnimation']!),
-                                            Container(
+                          child: Container(
+                            height: 177.0,
+                            decoration: BoxDecoration(),
+                            child: SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Builder(
+                                    builder: (context) {
+                                      final currentImage = getJsonField(
+                                        widget.parsedURLJson,
+                                        r'''$.images''',
+                                      ).toList();
+                                      return ListView.separated(
+                                        padding: EdgeInsets.zero,
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        scrollDirection: Axis.horizontal,
+                                        itemCount: currentImage.length,
+                                        separatorBuilder: (_, __) =>
+                                            SizedBox(width: 8.0),
+                                        itemBuilder:
+                                            (context, currentImageIndex) {
+                                          final currentImageItem =
+                                              currentImage[currentImageIndex];
+                                          return Container(
+                                            decoration: BoxDecoration(),
+                                            child: Container(
                                               width: 119.0,
                                               height: 177.0,
-                                              decoration: BoxDecoration(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                              ),
-                                            ),
-                                            Container(
-                                              width: 119.0,
-                                              height: 48.0,
-                                              decoration: BoxDecoration(
-                                                gradient: LinearGradient(
-                                                  colors: [
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                    Colors.transparent
-                                                  ],
-                                                  stops: const [0.0, 1.0],
-                                                  begin: const AlignmentDirectional(
-                                                      0.0, -1.0),
-                                                  end: const AlignmentDirectional(
-                                                      0, 1.0),
-                                                ),
-                                                borderRadius: const BorderRadius.only(
-                                                  bottomLeft:
-                                                      Radius.circular(0.0),
-                                                  bottomRight:
-                                                      Radius.circular(0.0),
-                                                  topLeft: Radius.circular(8.0),
-                                                  topRight:
-                                                      Radius.circular(8.0),
-                                                ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.0, 1.0),
-                                              child: Container(
-                                                width: 119.0,
-                                                height: 48.0,
-                                                decoration: BoxDecoration(
-                                                  gradient: LinearGradient(
-                                                    colors: [
-                                                      Colors.transparent,
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .primaryBackground
-                                                    ],
-                                                    stops: const [0.0, 1.0],
-                                                    begin: const AlignmentDirectional(
-                                                        0.0, -1.0),
-                                                    end: const AlignmentDirectional(
-                                                        0, 1.0),
+                                              child: Stack(
+                                                children: [
+                                                  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Image.network(
+                                                      currentImageItem
+                                                          .toString(),
+                                                      width: 119.0,
+                                                      height: 177.0,
+                                                      fit: BoxFit.cover,
+                                                    ),
+                                                  ).animateOnActionTrigger(
+                                                    animationsMap[
+                                                        'imageOnActionTriggerAnimation']!,
                                                   ),
+                                                  Container(
+                                                    width: 119.0,
+                                                    height: 177.0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    width: 119.0,
+                                                    height: 48.0,
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        colors: [
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground,
+                                                          Colors.transparent
+                                                        ],
+                                                        stops: [0.0, 1.0],
+                                                        begin:
+                                                            AlignmentDirectional(
+                                                                0.0, -1.0),
+                                                        end:
+                                                            AlignmentDirectional(
+                                                                0, 1.0),
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                8.0),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                8.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.0, 1.0),
+                                                    child: Container(
+                                                      width: 119.0,
+                                                      height: 48.0,
+                                                      decoration: BoxDecoration(
+                                                        gradient:
+                                                            LinearGradient(
+                                                          colors: [
+                                                            Colors.transparent,
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .primaryBackground
+                                                          ],
+                                                          stops: [0.0, 1.0],
+                                                          begin:
+                                                              AlignmentDirectional(
+                                                                  0.0, -1.0),
+                                                          end:
+                                                              AlignmentDirectional(
+                                                                  0, 1.0),
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius.only(
+                                                          bottomLeft:
+                                                              Radius.circular(
+                                                                  8.0),
+                                                          bottomRight:
+                                                              Radius.circular(
+                                                                  8.0),
+                                                          topLeft:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                          topRight:
+                                                              Radius.circular(
+                                                                  0.0),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            1.0, -1.0),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  10.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          setState(() {
+                                                            _model.selectedImage =
+                                                                currentImageItem
+                                                                    .toString();
+                                                          });
+                                                        },
+                                                        child: Builder(
+                                                          builder: (context) {
+                                                            if (_model
+                                                                    .selectedImage ==
+                                                                currentImageItem) {
+                                                              return Container(
+                                                                width: 20.0,
+                                                                height: 20.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                    width: 1.0,
+                                                                  ),
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 12.0,
+                                                                    height:
+                                                                        12.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            } else {
+                                                              return Container(
+                                                                width: 20.0,
+                                                                height: 20.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  shape: BoxShape
+                                                                      .circle,
+                                                                  border: Border
+                                                                      .all(
+                                                                    color: Color(
+                                                                        0x1AFFFFFF),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            }
+                                                          },
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  ),
+                                  Container(
+                                    width: 119.0,
+                                    height: 177.0,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      border: Border.all(
+                                        color: Color(0x32FFFFFF),
+                                        width: 1.0,
+                                      ),
+                                    ),
+                                    child: Builder(
+                                      builder: (context) {
+                                        if (_model.uploadedFile != null &&
+                                            (_model.uploadedFile?.bytes
+                                                    ?.isNotEmpty ??
+                                                false)) {
+                                          return Container(
+                                            width: 119.0,
+                                            height: 177.0,
+                                            child: Stack(
+                                              children: [
+                                                ClipRRect(
                                                   borderRadius:
-                                                      const BorderRadius.only(
-                                                    bottomLeft:
-                                                        Radius.circular(8.0),
-                                                    bottomRight:
-                                                        Radius.circular(8.0),
-                                                    topLeft:
-                                                        Radius.circular(0.0),
-                                                    topRight:
-                                                        Radius.circular(0.0),
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  child: Image.memory(
+                                                    _model.uploadedFile
+                                                            ?.bytes ??
+                                                        Uint8List.fromList([]),
+                                                    width: 119.0,
+                                                    height: 177.0,
+                                                    fit: BoxFit.cover,
                                                   ),
                                                 ),
-                                              ),
-                                            ),
-                                            Align(
-                                              alignment: const AlignmentDirectional(
-                                                  1.0, -1.0),
-                                              child: Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 10.0, 10.0, 0.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    setState(() {
-                                                      _model.selectedImage =
-                                                          currentImageItem
-                                                              .toString();
-                                                    });
-                                                  },
-                                                  child: Builder(
-                                                    builder: (context) {
-                                                      if (_model
-                                                              .selectedImage ==
-                                                          currentImageItem) {
-                                                        return Container(
-                                                          width: 20.0,
-                                                          height: 20.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .info,
-                                                              width: 1.0,
-                                                            ),
-                                                          ),
-                                                          child: Align(
-                                                            alignment:
-                                                                const AlignmentDirectional(
-                                                                    0.0, 0.0),
-                                                            child: Container(
-                                                              width: 12.0,
-                                                              height: 12.0,
+                                                Container(
+                                                  width: 119.0,
+                                                  height: 177.0,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                  ),
+                                                ),
+                                                Container(
+                                                  width: 119.0,
+                                                  height: 48.0,
+                                                  decoration: BoxDecoration(
+                                                    gradient: LinearGradient(
+                                                      colors: [
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryBackground,
+                                                        Colors.transparent
+                                                      ],
+                                                      stops: [0.0, 1.0],
+                                                      begin:
+                                                          AlignmentDirectional(
+                                                              0.0, -1.0),
+                                                      end: AlignmentDirectional(
+                                                          0, 1.0),
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(0.0),
+                                                      bottomRight:
+                                                          Radius.circular(0.0),
+                                                      topLeft:
+                                                          Radius.circular(8.0),
+                                                      topRight:
+                                                          Radius.circular(8.0),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          0.0, 1.0),
+                                                  child: Container(
+                                                    width: 119.0,
+                                                    height: 48.0,
+                                                    decoration: BoxDecoration(
+                                                      gradient: LinearGradient(
+                                                        colors: [
+                                                          Colors.transparent,
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .primaryBackground
+                                                        ],
+                                                        stops: [0.0, 1.0],
+                                                        begin:
+                                                            AlignmentDirectional(
+                                                                0.0, -1.0),
+                                                        end:
+                                                            AlignmentDirectional(
+                                                                0, 1.0),
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.only(
+                                                        bottomLeft:
+                                                            Radius.circular(
+                                                                8.0),
+                                                        bottomRight:
+                                                            Radius.circular(
+                                                                8.0),
+                                                        topLeft:
+                                                            Radius.circular(
+                                                                0.0),
+                                                        topRight:
+                                                            Radius.circular(
+                                                                0.0),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          1.0, -1.0),
+                                                  child: Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 10.0,
+                                                                10.0, 0.0),
+                                                    child: InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        setState(() {
+                                                          _model.selectedImage =
+                                                              null;
+                                                        });
+                                                      },
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          if (_model.selectedImage ==
+                                                                  null ||
+                                                              _model.selectedImage ==
+                                                                  '') {
+                                                            return Container(
+                                                              width: 20.0,
+                                                              height: 20.0,
                                                               decoration:
                                                                   BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
                                                                 shape: BoxShape
                                                                     .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  width: 1.0,
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      } else {
-                                                        return Container(
-                                                          width: 20.0,
-                                                          height: 20.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            border: Border.all(
-                                                              color: const Color(
-                                                                  0x1AFFFFFF),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      }
-                                                    },
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                child:
+                                                                    Container(
+                                                                  width: 12.0,
+                                                                  height: 12.0,
+                                                                  decoration:
+                                                                      BoxDecoration(
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
+                                                                    shape: BoxShape
+                                                                        .circle,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          } else {
+                                                            return Container(
+                                                              width: 20.0,
+                                                              height: 20.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                                border:
+                                                                    Border.all(
+                                                                  color: Color(
+                                                                      0x1AFFFFFF),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          }
+                                                        },
+                                                      ),
+                                                    ),
                                                   ),
                                                 ),
-                                              ),
+                                              ],
                                             ),
-                                          ],
-                                        ),
-                                      ),
-                                    );
-                                  })
-                                      .divide(const SizedBox(width: 8.0))
-                                      .addToStart(const SizedBox(width: 16.0))
-                                      .addToEnd(const SizedBox(width: 16.0)),
-                                ),
-                              );
-                            },
+                                          );
+                                        } else {
+                                          return Align(
+                                            alignment:
+                                                AlignmentDirectional(0.0, 0.0),
+                                            child: FlutterFlowIconButton(
+                                              borderRadius: 12.0,
+                                              borderWidth: 1.0,
+                                              buttonSize: 36.0,
+                                              fillColor:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              icon: Icon(
+                                                Icons.add_rounded,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .primaryText,
+                                                size: 21.0,
+                                              ),
+                                              onPressed: () async {
+                                                final selectedMedia =
+                                                    await selectMedia(
+                                                  maxHeight: 2000.00,
+                                                  imageQuality: 95,
+                                                  mediaSource:
+                                                      MediaSource.photoGallery,
+                                                  multiImage: false,
+                                                );
+                                                if (selectedMedia != null &&
+                                                    selectedMedia.every((m) =>
+                                                        validateFileFormat(
+                                                            m.storagePath,
+                                                            context))) {
+                                                  setState(() => _model
+                                                      .isDataUploading1 = true);
+                                                  var selectedUploadedFiles =
+                                                      <FFUploadedFile>[];
+
+                                                  try {
+                                                    selectedUploadedFiles =
+                                                        selectedMedia
+                                                            .map((m) =>
+                                                                FFUploadedFile(
+                                                                  name: m
+                                                                      .storagePath
+                                                                      .split(
+                                                                          '/')
+                                                                      .last,
+                                                                  bytes:
+                                                                      m.bytes,
+                                                                  height: m
+                                                                      .dimensions
+                                                                      ?.height,
+                                                                  width: m
+                                                                      .dimensions
+                                                                      ?.width,
+                                                                  blurHash: m
+                                                                      .blurHash,
+                                                                ))
+                                                            .toList();
+                                                  } finally {
+                                                    _model.isDataUploading1 =
+                                                        false;
+                                                  }
+                                                  if (selectedUploadedFiles
+                                                          .length ==
+                                                      selectedMedia.length) {
+                                                    setState(() {
+                                                      _model.uploadedLocalFile1 =
+                                                          selectedUploadedFiles
+                                                              .first;
+                                                    });
+                                                  } else {
+                                                    setState(() {});
+                                                    return;
+                                                  }
+                                                }
+
+                                                if (_model.uploadedLocalFile1 !=
+                                                        null &&
+                                                    (_model
+                                                            .uploadedLocalFile1
+                                                            .bytes
+                                                            ?.isNotEmpty ??
+                                                        false)) {
+                                                  setState(() {
+                                                    _model.uploadedFile = _model
+                                                        .uploadedLocalFile1;
+                                                    _model.selectedImage = null;
+                                                  });
+                                                }
+                                              },
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ),
+                                ]
+                                    .divide(SizedBox(width: 8.0))
+                                    .addToStart(SizedBox(width: 16.0))
+                                    .addToEnd(SizedBox(width: 16.0)),
+                              ),
+                            ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 28.0, 16.0, 45.0),
-                          child: wrapWithModel(
-                            model: _model.saveToCollectionModel,
-                            updateCallback: () => setState(() {}),
-                            child: PinkButtonWidget(
-                              text: _model.dropDownValue != null &&
-                                      _model.dropDownValue != ''
-                                  ? 'Save To Collection'
-                                  : 'Create new collection',
-                              currentAction: () async {
-                                if (_model.formKey.currentState == null ||
-                                    !_model.formKey.currentState!.validate()) {
-                                  return;
-                                }
-                                if (_model.dropDownValue != null &&
-                                    _model.dropDownValue != '') {
-                                  await WishesTable().insert({
-                                    'visibily': true,
-                                    'collection': _model.dropDownValue,
-                                    'pair': FFAppState().pairID,
-                                    'created_by': currentUserUid,
-                                    'name': _model.nameFieldController.text,
-                                    'description':
-                                        _model.descriptionFieldController.text,
-                                    'photo': _model.selectedImage,
-                                    'link': getJsonField(
-                                      widget.parsedURLJson,
-                                      r'''$.link''',
-                                    ).toString(),
-                                  });
-                                }
-                                Navigator.pop(context);
+                        Builder(
+                          builder: (context) => Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                16.0, 28.0, 16.0, 45.0),
+                            child: wrapWithModel(
+                              model: _model.saveToCollectionModel,
+                              updateCallback: () => setState(() {}),
+                              child: PinkButtonWidget(
+                                text: _model.dropDownValue != null &&
+                                        _model.dropDownValue != ''
+                                    ? 'Save To Collection'
+                                    : 'Create new collection',
+                                currentAction: () async {
+                                  var _shouldSetState = false;
+                                  if (_model.formKey.currentState == null ||
+                                      !_model.formKey.currentState!
+                                          .validate()) {
+                                    return;
+                                  }
+                                  if (true) {
+                                    if ((_model.selectedImage == null ||
+                                            _model.selectedImage == '') &&
+                                        (_model.uploadedFile != null &&
+                                            (_model.uploadedFile?.bytes
+                                                    ?.isNotEmpty ??
+                                                false))) {
+                                      {
+                                        setState(() =>
+                                            _model.isDataUploading2 = true);
+                                        var selectedUploadedFiles =
+                                            <FFUploadedFile>[];
+                                        var selectedFiles = <SelectedFile>[];
+                                        var downloadUrls = <String>[];
+                                        try {
+                                          selectedUploadedFiles = _model
+                                                  .uploadedFile!
+                                                  .bytes!
+                                                  .isNotEmpty
+                                              ? [_model.uploadedFile!]
+                                              : <FFUploadedFile>[];
+                                          selectedFiles =
+                                              selectedFilesFromUploadedFiles(
+                                            selectedUploadedFiles,
+                                            storageFolderPath: 'wishImages',
+                                          );
+                                          downloadUrls =
+                                              await uploadSupabaseStorageFiles(
+                                            bucketName: 'EdayBucket',
+                                            selectedFiles: selectedFiles,
+                                          );
+                                        } finally {
+                                          _model.isDataUploading2 = false;
+                                        }
+                                        if (selectedUploadedFiles.length ==
+                                                selectedFiles.length &&
+                                            downloadUrls.length ==
+                                                selectedFiles.length) {
+                                          setState(() {
+                                            _model.uploadedLocalFile2 =
+                                                selectedUploadedFiles.first;
+                                            _model.uploadedFileUrl2 =
+                                                downloadUrls.first;
+                                          });
+                                        } else {
+                                          setState(() {});
+                                          return;
+                                        }
+                                      }
+                                    } else if (_model.selectedImage != null &&
+                                        _model.selectedImage != '') {
+                                    } else {
+                                      showDialog(
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            elevation: 0,
+                                            insetPadding: EdgeInsets.zero,
+                                            backgroundColor: Colors.transparent,
+                                            alignment: AlignmentDirectional(
+                                                    0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                            child: AlertDialogWarningWidget(
+                                              title: 'No image selected!',
+                                              subtitle:
+                                                  'Please select the image from the list below or upload your own',
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
 
-                                context.goNamed('My_Profile');
-                              },
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    _model.createdWishRow =
+                                        await WishesTable().insert({
+                                      'visibily': true,
+                                      'collection':
+                                          _model.dropDownValue != null &&
+                                                  _model.dropDownValue != ''
+                                              ? _model.dropDownValue
+                                              : null,
+                                      'pair': FFAppState().pairID,
+                                      'created_by': currentUserUid,
+                                      'name': _model.nameFieldController.text,
+                                      'description': _model
+                                          .descriptionFieldController.text,
+                                      'photo': _model.selectedImage != null &&
+                                              _model.selectedImage != ''
+                                          ? _model.selectedImage
+                                          : _model.uploadedFileUrl2,
+                                      'link': getJsonField(
+                                        widget.parsedURLJson,
+                                        r'''$.link''',
+                                      ).toString(),
+                                    });
+                                    _shouldSetState = true;
+                                    if (_model.dropDownValue != null &&
+                                        _model.dropDownValue != '') {
+                                      Navigator.pop(context);
+
+                                      context.goNamed('My_Profile');
+                                    } else {
+                                      Navigator.pop(context);
+                                      await showModalBottomSheet(
+                                        isScrollControlled: true,
+                                        backgroundColor: Colors.transparent,
+                                        isDismissible: false,
+                                        enableDrag: false,
+                                        context: context,
+                                        builder: (context) {
+                                          return Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: Container(
+                                              height: MediaQuery.sizeOf(context)
+                                                      .height *
+                                                  0.65,
+                                              child: BSNewCollectionWidget(
+                                                selectedWishRow:
+                                                    _model.createdWishRow,
+                                                isFromBrowser: true,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => safeSetState(() {}));
+                                    }
+                                  }
+                                  if (_shouldSetState) setState(() {});
+                                },
+                              ),
                             ),
                           ),
                         ),

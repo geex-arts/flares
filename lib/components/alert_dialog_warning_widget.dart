@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'alert_dialog_warning_model.dart';
 export 'alert_dialog_warning_model.dart';
 
@@ -52,9 +55,9 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(0.0),
           child: BackdropFilter(
@@ -65,19 +68,20 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: const Color(0x14FFFFFF),
+                color: Color(0x14FFFFFF),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
                       width: 33.0,
                       height: 33.0,
                       clipBehavior: Clip.antiAlias,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
@@ -85,48 +89,52 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            valueOrDefault<String>(
-                              widget.title,
-                              'It seems you have already signed up!',
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  color: FlutterFlowTheme.of(context).info,
-                                  fontSize: 12.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: Text(
+                    Expanded(
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
                               valueOrDefault<String>(
-                                widget.subtitle,
-                                'Please sign in from the login screen',
+                                widget.title,
+                                'It seems you have already signed up!',
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x98FFFFFF),
-                                    fontSize: 11.0,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
                             ),
-                          ),
-                        ],
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    widget.subtitle,
+                                    'Please sign in from the login screen',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color: Color(0x98FFFFFF),
+                                        fontSize: 11.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

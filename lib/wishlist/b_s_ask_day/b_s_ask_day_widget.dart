@@ -6,6 +6,9 @@ import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'b_s_ask_day_model.dart';
 export 'b_s_ask_day_model.dart';
 
@@ -42,7 +45,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
         builder: (context) {
           return Padding(
             padding: MediaQuery.viewInsetsOf(context),
-            child: const BSAIWishlistWidget(),
+            child: BSAIWishlistWidget(),
           );
         },
       ).then((value) => safeSetState(() {}));
@@ -59,7 +62,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -72,7 +75,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -85,17 +88,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -113,11 +116,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                     ),
                     Container(
                       decoration: BoxDecoration(
-                        color: const Color(0x3C767680),
+                        color: Color(0x3C767680),
                         borderRadius: BorderRadius.circular(6.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             12.0, 6.0, 12.0, 6.0),
                         child: Text(
                           'Jun 20, 2024',
@@ -134,14 +137,14 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: const Color(0x3C767680),
+                          color: Color(0x3C767680),
                           borderRadius: BorderRadius.circular(6.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               12.0, 6.0, 12.0, 6.0),
                           child: Text(
                             '8:00 AM ',
@@ -160,15 +163,15 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                   ],
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
                 child: Container(
                   width: 254.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -176,14 +179,14 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                       Container(
                         width: 45.0,
                         height: 156.0,
-                        decoration: const BoxDecoration(),
-                        child: SizedBox(
+                        decoration: BoxDecoration(),
+                        child: Container(
                           width: 40.0,
                           height: 156.0,
                           child: CarouselSlider(
                             items: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '1',
                                   style: FlutterFlowTheme.of(context)
@@ -199,7 +202,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2',
                                   style: FlutterFlowTheme.of(context)
@@ -215,7 +218,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '3',
                                   style: FlutterFlowTheme.of(context)
@@ -231,7 +234,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '4',
                                   style: FlutterFlowTheme.of(context)
@@ -247,7 +250,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '5',
                                   style: FlutterFlowTheme.of(context)
@@ -263,7 +266,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '6',
                                   style: FlutterFlowTheme.of(context)
@@ -279,7 +282,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '7',
                                   style: FlutterFlowTheme.of(context)
@@ -295,7 +298,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '8',
                                   style: FlutterFlowTheme.of(context)
@@ -311,7 +314,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '9',
                                   style: FlutterFlowTheme.of(context)
@@ -327,7 +330,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '10',
                                   style: FlutterFlowTheme.of(context)
@@ -363,14 +366,14 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                       Container(
                         width: 134.0,
                         height: 156.0,
-                        decoration: const BoxDecoration(),
-                        child: SizedBox(
+                        decoration: BoxDecoration(),
+                        child: Container(
                           width: 40.0,
                           height: 156.0,
                           child: CarouselSlider(
                             items: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'January',
                                   style: FlutterFlowTheme.of(context)
@@ -386,7 +389,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'February',
                                   style: FlutterFlowTheme.of(context)
@@ -402,7 +405,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'March',
                                   style: FlutterFlowTheme.of(context)
@@ -418,7 +421,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'April',
                                   style: FlutterFlowTheme.of(context)
@@ -434,7 +437,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'May',
                                   style: FlutterFlowTheme.of(context)
@@ -450,7 +453,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'June',
                                   style: FlutterFlowTheme.of(context)
@@ -466,7 +469,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'July',
                                   style: FlutterFlowTheme.of(context)
@@ -482,7 +485,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'August',
                                   style: FlutterFlowTheme.of(context)
@@ -498,7 +501,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'September',
                                   style: FlutterFlowTheme.of(context)
@@ -514,7 +517,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'October',
                                   style: FlutterFlowTheme.of(context)
@@ -530,7 +533,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'November',
                                   style: FlutterFlowTheme.of(context)
@@ -546,7 +549,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   'December',
                                   style: FlutterFlowTheme.of(context)
@@ -582,14 +585,14 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                       Container(
                         width: 60.0,
                         height: 156.0,
-                        decoration: const BoxDecoration(),
-                        child: SizedBox(
+                        decoration: BoxDecoration(),
+                        child: Container(
                           width: 40.0,
                           height: 156.0,
                           child: CarouselSlider(
                             items: [
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2015',
                                   style: FlutterFlowTheme.of(context)
@@ -605,7 +608,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2016',
                                   style: FlutterFlowTheme.of(context)
@@ -621,7 +624,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2017',
                                   style: FlutterFlowTheme.of(context)
@@ -637,7 +640,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2018',
                                   style: FlutterFlowTheme.of(context)
@@ -653,7 +656,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2019',
                                   style: FlutterFlowTheme.of(context)
@@ -669,7 +672,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2020',
                                   style: FlutterFlowTheme.of(context)
@@ -685,7 +688,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2021',
                                   style: FlutterFlowTheme.of(context)
@@ -701,7 +704,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2022',
                                   style: FlutterFlowTheme.of(context)
@@ -717,7 +720,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2023',
                                   style: FlutterFlowTheme.of(context)
@@ -733,7 +736,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 ),
                               ),
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Text(
                                   '2024',
                                   style: FlutterFlowTheme.of(context)
@@ -771,7 +774,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),

@@ -9,7 +9,7 @@ class DiscoveryTable extends SupabaseTable<DiscoveryRow> {
 }
 
 class DiscoveryRow extends SupabaseDataRow {
-  DiscoveryRow(super.data);
+  DiscoveryRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => DiscoveryTable();

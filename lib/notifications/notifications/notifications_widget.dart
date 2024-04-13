@@ -1,8 +1,14 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'notifications_model.dart';
 export 'notifications_model.dart';
 
@@ -39,28 +45,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -72,28 +78,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -105,28 +111,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -138,28 +144,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -171,28 +177,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -204,28 +210,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -237,28 +243,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -270,28 +276,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -303,28 +309,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -336,28 +342,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -369,28 +375,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -402,28 +408,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -435,28 +441,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -468,28 +474,28 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 200.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
         ShimmerEffect(
           curve: Curves.easeInOut,
           delay: 300.ms,
           duration: 600.ms,
-          color: const Color(0x80FFFFFF),
+          color: Color(0x80FFFFFF),
           angle: 0.524,
         ),
       ],
@@ -533,26 +539,26 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
           child: Stack(
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                      child: SizedBox(
+                          EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                      child: Container(
                         height: 38.0,
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 4.0, 8.0, 0.0),
                                   child: Text(
                                     'Notification',
@@ -578,16 +584,16 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 context.safePop();
                               },
                               child: Stack(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 children: [
                                   Container(
                                     width: 38.0,
                                     height: 38.0,
                                     decoration: BoxDecoration(
-                                      color: const Color(0x9A000000),
+                                      color: Color(0x9A000000),
                                       borderRadius: BorderRadius.circular(14.0),
                                       border: Border.all(
-                                        color: const Color(0x33FFFFFF),
+                                        color: Color(0x33FFFFFF),
                                       ),
                                     ),
                                   ),
@@ -612,7 +618,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),
                               child: RichText(
                                 textScaler: MediaQuery.of(context).textScaler,
@@ -632,7 +638,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                             useGoogleFonts: false,
                                           ),
                                     ),
-                                    const TextSpan(
+                                    TextSpan(
                                       text: '12',
                                       style: TextStyle(
                                         color: Color(0x9AFFFFFF),
@@ -657,12 +663,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               scrollDirection: Axis.vertical,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 84.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -672,7 +678,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                           width: 64.0,
                                           height: 64.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -684,7 +690,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -712,7 +718,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 0.0, 0.0),
                                                   child: Row(
@@ -727,7 +733,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x9AFFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -741,7 +747,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     0.0,
@@ -755,7 +761,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Nuckle',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0x65FFFFFF),
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
@@ -778,11 +784,11 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Container(
                                           width: 80.0,
                                           height: 64.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -797,27 +803,27 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 10.0, 0.0),
                                                   child: Container(
                                                     width: 30.0,
                                                     height: 30.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFA4A39E),
+                                                      color: Color(0xFFA4A39E),
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFFFF2C96),
+                                                            Color(0xFFFF2C96),
                                                         width: 1.0,
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: Image.asset(
                                                         'assets/images/emoji.webp',
                                                         width: 14.0,
@@ -839,7 +845,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -848,7 +854,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -860,7 +866,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -887,7 +893,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -902,7 +908,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -914,7 +920,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -928,7 +934,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -958,7 +964,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               BorderRadius.circular(100.0),
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Open',
                                           style: FlutterFlowTheme.of(context)
@@ -981,7 +987,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -990,7 +996,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -1002,7 +1008,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1029,7 +1035,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -1044,7 +1050,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -1056,7 +1062,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -1070,7 +1076,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1093,11 +1099,11 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Container(
                                         width: 80.0,
                                         height: 64.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Stack(
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
@@ -1111,26 +1117,26 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 10.0, 0.0),
                                                 child: Container(
                                                   width: 30.0,
                                                   height: 30.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFA4A39E),
+                                                    color: Color(0xFFA4A39E),
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFFF2C96),
+                                                      color: Color(0xFFFF2C96),
                                                       width: 1.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: Image.asset(
                                                       'assets/images/emoji.webp',
                                                       width: 14.0,
@@ -1151,7 +1157,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 32.0, 0.0, 0.0),
                               child: RichText(
                                 textScaler: MediaQuery.of(context).textScaler,
@@ -1190,12 +1196,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               scrollDirection: Axis.vertical,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 84.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -1205,7 +1211,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                           width: 64.0,
                                           height: 64.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -1217,7 +1223,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1245,7 +1251,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 0.0, 0.0),
                                                   child: Row(
@@ -1260,7 +1266,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x9AFFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1274,7 +1280,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     0.0,
@@ -1288,7 +1294,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Nuckle',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0x65FFFFFF),
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
@@ -1311,11 +1317,11 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Container(
                                           width: 80.0,
                                           height: 64.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -1330,27 +1336,27 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 10.0, 0.0),
                                                   child: Container(
                                                     width: 30.0,
                                                     height: 30.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFA4A39E),
+                                                      color: Color(0xFFA4A39E),
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFFFF2C96),
+                                                            Color(0xFFFF2C96),
                                                         width: 1.0,
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: Image.asset(
                                                         'assets/images/emoji.webp',
                                                         width: 14.0,
@@ -1372,7 +1378,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1381,7 +1387,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -1393,7 +1399,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1420,7 +1426,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -1435,7 +1441,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -1447,7 +1453,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -1461,7 +1467,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1491,7 +1497,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               BorderRadius.circular(100.0),
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Open',
                                           style: FlutterFlowTheme.of(context)
@@ -1512,12 +1518,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     height: 84.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -1527,7 +1533,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                           width: 64.0,
                                           height: 64.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -1539,7 +1545,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     12.0, 0.0, 0.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.max,
@@ -1567,7 +1573,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                 ),
                                                 Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 0.0, 0.0),
                                                   child: Row(
@@ -1582,7 +1588,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x9AFFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1596,7 +1602,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                       ),
                                                       Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     0.0,
@@ -1610,7 +1616,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                               .override(
                                                                 fontFamily:
                                                                     'Nuckle',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0x65FFFFFF),
                                                                 fontSize: 13.0,
                                                                 letterSpacing:
@@ -1633,11 +1639,11 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         Container(
                                           width: 80.0,
                                           height: 64.0,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Stack(
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
@@ -1652,27 +1658,27 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                 ),
                                               ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 0.0),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 13.0, 10.0, 0.0),
                                                   child: Container(
                                                     width: 30.0,
                                                     height: 30.0,
                                                     decoration: BoxDecoration(
-                                                      color: const Color(0xFFA4A39E),
+                                                      color: Color(0xFFA4A39E),
                                                       shape: BoxShape.circle,
                                                       border: Border.all(
                                                         color:
-                                                            const Color(0xFFFF2C96),
+                                                            Color(0xFFFF2C96),
                                                         width: 1.0,
                                                       ),
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: Image.asset(
                                                         'assets/images/emoji.webp',
                                                         width: 14.0,
@@ -1694,7 +1700,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1703,7 +1709,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -1715,7 +1721,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1742,7 +1748,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -1757,7 +1763,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -1769,7 +1775,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -1783,7 +1789,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1813,7 +1819,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               BorderRadius.circular(100.0),
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Open',
                                           style: FlutterFlowTheme.of(context)
@@ -1836,7 +1842,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -1845,7 +1851,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -1857,7 +1863,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -1884,7 +1890,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -1899,7 +1905,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -1911,7 +1917,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -1925,7 +1931,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -1948,11 +1954,11 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Container(
                                         width: 80.0,
                                         height: 64.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Stack(
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   1.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
@@ -1966,26 +1972,26 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               ),
                                             ),
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 10.0, 0.0),
                                                 child: Container(
                                                   width: 30.0,
                                                   height: 30.0,
                                                   decoration: BoxDecoration(
-                                                    color: const Color(0xFFA4A39E),
+                                                    color: Color(0xFFA4A39E),
                                                     shape: BoxShape.circle,
                                                     border: Border.all(
-                                                      color: const Color(0xFFFF2C96),
+                                                      color: Color(0xFFFF2C96),
                                                       width: 1.0,
                                                     ),
                                                   ),
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsets.all(6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: Image.asset(
                                                       'assets/images/emoji.webp',
                                                       width: 14.0,
@@ -2006,7 +2012,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 Container(
                                   width: double.infinity,
                                   height: 84.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.start,
@@ -2015,7 +2021,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         width: 64.0,
                                         height: 64.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -2027,7 +2033,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -2054,7 +2060,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                         ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 13.0, 0.0, 0.0),
                                                 child: Row(
@@ -2069,7 +2075,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0x9AFFFFFF),
                                                             fontSize: 13.0,
                                                             letterSpacing: 0.0,
@@ -2081,7 +2087,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   15.0,
                                                                   0.0,
@@ -2095,7 +2101,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x65FFFFFF),
                                                               fontSize: 13.0,
                                                               letterSpacing:
@@ -2125,7 +2131,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                               BorderRadius.circular(100.0),
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Text(
                                           'Open',
                                           style: FlutterFlowTheme.of(context)
@@ -2147,7 +2153,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 ),
                               ],
                             ),
-                          ].addToEnd(const SizedBox(height: 120.0)),
+                          ].addToEnd(SizedBox(height: 120.0)),
                         ),
                       ),
                     ),
@@ -2155,7 +2161,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   width: double.infinity,
                   height: 120.0,
@@ -2165,9 +2171,9 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                         Colors.transparent,
                         FlutterFlowTheme.of(context).primaryBackground
                       ],
-                      stops: const [0.0, 1.0],
-                      begin: const AlignmentDirectional(0.0, -1.0),
-                      end: const AlignmentDirectional(0, 1.0),
+                      stops: [0.0, 1.0],
+                      begin: AlignmentDirectional(0.0, -1.0),
+                      end: AlignmentDirectional(0, 1.0),
                     ),
                   ),
                 ),
@@ -2177,12 +2183,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                 phone: false,
               ))
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  alignment: AlignmentDirectional(0.0, 0.0),
                   child: Container(
                     width: 224.0,
                     height: 145.0,
                     decoration: BoxDecoration(
-                      color: const Color(0x0EFFFFFF),
+                      color: Color(0x0EFFFFFF),
                       borderRadius: BorderRadius.circular(20.0),
                     ),
                     child: Column(
@@ -2195,7 +2201,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                           size: 36.0,
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'No data',
@@ -2212,7 +2218,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'Your notifications \nwill appear here',

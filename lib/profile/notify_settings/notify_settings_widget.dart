@@ -1,8 +1,14 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'notify_settings_model.dart';
 export 'notify_settings_model.dart';
 
@@ -72,20 +78,20 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: Container(
                   height: 38.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0x9A000000),
+                            color: Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 4.0, 8.0, 0.0),
                             child: Text(
                               'Notifications',
@@ -111,7 +117,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           context.safePop();
                         },
                         child: Stack(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Container(
                               width: 38.0,
@@ -121,7 +127,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                     .primaryBackground,
                                 borderRadius: BorderRadius.circular(14.0),
                                 border: Border.all(
-                                  color: const Color(0x33FFFFFF),
+                                  color: Color(0x33FFFFFF),
                                 ),
                               ),
                             ),
@@ -141,14 +147,14 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: Text(
                             'Push notifications',
@@ -163,13 +169,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -198,7 +204,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Timely reminders about your anniversary and other special occasions',
@@ -208,7 +214,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -220,7 +226,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -229,12 +235,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .dateinvItationsSwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -242,7 +248,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -250,13 +256,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -285,7 +291,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Product updates and new features',
@@ -295,7 +301,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -307,7 +313,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model.reactionsSwitchValue ??=
@@ -315,12 +321,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.reactionsSwitchValue =
-                                                  newValue);
+                                                  newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -328,7 +334,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -336,13 +342,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -371,7 +377,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Our best offers and discounts on Paired Premium',
@@ -381,7 +387,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -393,7 +399,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -401,12 +407,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.addedNewWishSwitchValue =
-                                                  newValue);
+                                                  newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -414,7 +420,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -422,13 +428,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -457,7 +463,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Weekly Day Night ideas, plus exclusive relationship content',
@@ -467,7 +473,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -479,7 +485,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -488,12 +494,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .pushRecommendationsSwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -501,7 +507,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -509,7 +515,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: Text(
                             'Email notifications',
@@ -524,22 +530,22 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: const Color(0x19FFFFFF),
+                              color: Color(0x19FFFFFF),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsets.all(10.0),
+                              padding: EdgeInsets.all(10.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 2.0, 0.0, 0.0),
                                     child: Icon(
                                       Icons.info_outline,
@@ -549,7 +555,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ),
                                   Expanded(
                                     child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: RichText(
                                         textScaler:
@@ -564,7 +570,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Nuckle',
-                                                    color: const Color(0x9AFFFFFF),
+                                                    color: Color(0x9AFFFFFF),
                                                     fontSize: 12.0,
                                                     letterSpacing: 0.0,
                                                     fontWeight: FontWeight.bold,
@@ -606,13 +612,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -641,7 +647,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Get notified about your partner\'s activity in the app',
@@ -651,7 +657,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -663,7 +669,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -672,12 +678,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .partnerActivitySwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -685,7 +691,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -693,13 +699,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -728,7 +734,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Don\'t miss a new conversation of the day',
@@ -738,7 +744,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -750,7 +756,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -759,12 +765,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .dailyConversationsSwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -772,7 +778,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -780,13 +786,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -815,7 +821,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'Paired couples are 10x more likely to maintain their streak with reminders',
@@ -825,7 +831,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -837,7 +843,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -846,12 +852,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .streakRemindersSwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -859,7 +865,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
@@ -867,13 +873,13 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 18.0, 0.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -902,7 +908,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 8.0, 0.0, 0.0),
                                             child: Text(
                                               'We\'ll send relevant conversations based on your preferences',
@@ -912,7 +918,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 12.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -924,7 +930,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
                                         value: _model
@@ -933,12 +939,12 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                         onChanged: (newValue) async {
                                           setState(() => _model
                                                   .recommendationsSwitchValue =
-                                              newValue);
+                                              newValue!);
                                         },
                                         activeColor:
                                             FlutterFlowTheme.of(context).info,
-                                        activeTrackColor: const Color(0xFFFF2C96),
-                                        inactiveTrackColor: const Color(0x51787880),
+                                        activeTrackColor: Color(0xFFFF2C96),
+                                        inactiveTrackColor: Color(0x51787880),
                                         inactiveThumbColor:
                                             FlutterFlowTheme.of(context).info,
                                       ),
@@ -946,14 +952,14 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                   ],
                                 ),
                               ),
-                              const Divider(
+                              Divider(
                                 thickness: 1.0,
                                 color: Color(0x0EFFFFFF),
                               ),
                             ],
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 80.0)),
+                      ].addToEnd(SizedBox(height: 80.0)),
                     ),
                   ),
                 ),
