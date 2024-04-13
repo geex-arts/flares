@@ -1,7 +1,6 @@
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/wishlist/b_s_a_i_wishlist/b_s_a_i_wishlist_widget.dart';
 import 'dart:ui';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -31,22 +30,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
     _model = createModel(context, () => BSAskDayModel());
 
     // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 3000));
-      Navigator.pop(context);
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        enableDrag: false,
-        context: context,
-        builder: (context) {
-          return Padding(
-            padding: MediaQuery.viewInsetsOf(context),
-            child: const BSAIWishlistWidget(),
-          );
-        },
-      ).then((value) => safeSetState(() {}));
-    });
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
   }
 
   @override

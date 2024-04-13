@@ -109,7 +109,7 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
                                     useGoogleFonts: false,
                                   ),
                             ),
-                            Expanded(
+                            Flexible(
                               child: Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),

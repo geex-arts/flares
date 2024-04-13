@@ -333,7 +333,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                                   widget.selectedWishRow?.description,
                               'photo': widget.selectedWishRow?.photo,
                               'link': widget.selectedWishRow?.link,
-                              'copied_from': widget.selectedWishRow?.createdBy,
+                              'copied_from': widget.selectedWishRow?.uuid,
                             });
                           }
                         }

@@ -146,6 +146,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'pairInvitationRow',
                   ParamType.SupabaseRow,
                 ),
+                isFromProfile: params.getParam(
+                  'isFromProfile',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -156,7 +160,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Edit_Couple_Profile',
               path: 'editCoupleProfile',
-              builder: (context, params) => const EditCoupleProfileWidget(),
+              builder: (context, params) => EditCoupleProfileWidget(
+                myPairRow: params.getParam<PairsRow>(
+                  'myPairRow',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Notify_Settings',
@@ -250,7 +259,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Category_P',
               path: 'categoryP',
-              builder: (context, params) => const CategoryPWidget(),
+              builder: (context, params) => CategoryPWidget(
+                selectedCategoryID: params.getParam(
+                  'selectedCategoryID',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Explore',

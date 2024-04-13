@@ -3,6 +3,7 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_web_view.dart';
 import '/wishlist/b_s_ask_day/b_s_ask_day_widget.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'wish_main_model.dart';
 export 'wish_main_model.dart';
 
@@ -55,39 +57,6 @@ class _WishMainWidgetState extends State<WishMainWidget>
           duration: 600.ms,
           begin: 0.0,
           end: 1.0,
-        ),
-      ],
-    ),
-    'containerOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
         ),
       ],
     ),
@@ -294,18 +263,15 @@ class _WishMainWidgetState extends State<WishMainWidget>
                         height: double.infinity,
                         fit: BoxFit.cover,
                       ),
-                      if (responsiveVisibility(
-                        context: context,
-                        phone: false,
-                      ))
-                        Container(
-                          width: double.infinity,
-                          height: double.infinity,
-                          decoration: const BoxDecoration(
-                            color: Color(0x80FFFFFF),
-                          ),
-                        ).animateOnPageLoad(
-                            animationsMap['containerOnPageLoadAnimation']!),
+                      if (widget.selectedWishRow?.link != null &&
+                          widget.selectedWishRow?.link != '')
+                        FlutterFlowWebView(
+                          content: widget.selectedWishRow!.link!,
+                          bypass: true,
+                          height: MediaQuery.sizeOf(context).height * 0.75,
+                          verticalScroll: false,
+                          horizontalScroll: false,
+                        ),
                     ],
                   ),
                 ),
@@ -361,19 +327,21 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: SizedBox(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.6,
-                                      child: const BSAskDayWidget(),
+                                return WebViewAware(
+                                  child: GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: SizedBox(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.6,
+                                        child: const BSAskDayWidget(),
+                                      ),
                                     ),
                                   ),
                                 );
@@ -385,20 +353,23 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: SizedBox(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
-                                              0.6,
-                                      child: BSSaveToCollectionWidget(
-                                        selectedWishRow: widget.selectedWishRow,
+                                return WebViewAware(
+                                  child: GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: SizedBox(
+                                        height:
+                                            MediaQuery.sizeOf(context).height *
+                                                0.6,
+                                        child: BSSaveToCollectionWidget(
+                                          selectedWishRow:
+                                              widget.selectedWishRow,
+                                        ),
                                       ),
                                     ),
                                   ),

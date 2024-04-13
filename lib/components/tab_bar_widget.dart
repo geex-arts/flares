@@ -66,7 +66,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
-                        context.pushNamed('Category_P');
+                        context.pushNamed('Category_P2');
                       },
                       child: Icon(
                         FFIcons.kworld,

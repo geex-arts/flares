@@ -10,6 +10,8 @@ import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'category_p2_model.dart';
 export 'category_p2_model.dart';
 
@@ -80,6 +82,8 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -109,7 +113,12 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                           const EdgeInsetsDirectional.fromSTEB(0.0, 90.0, 0.0, 0.0),
                       child: FutureBuilder<List<WishesRow>>(
                         future: WishesTable().queryRows(
-                          queryFn: (q) => q.order('created_at'),
+                          queryFn: (q) => q
+                              .neq(
+                                'pair',
+                                FFAppState().pairID,
+                              )
+                              .order('created_at'),
                         ),
                         builder: (context, snapshot) {
                           // Customize what your widget looks like when it's loading.
@@ -133,7 +142,11 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                             updateCallback: () => setState(() {}),
                             child: WishesListMainWidget(
                               isMyProfile: false,
-                              wishesRowsParam: wishesListMainWishesRowList,
+                              wishesRowsParam: wishesListMainWishesRowList
+                                  .where((e) =>
+                                      e.copiedFrom == null ||
+                                      e.copiedFrom == '')
+                                  .toList(),
                             ),
                           );
                         },
@@ -273,19 +286,22 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                                             backgroundColor: Colors.transparent,
                                             context: context,
                                             builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: const BSAddWishesWidget(),
+                                              return WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: const BSAddWishesWidget(),
+                                                  ),
                                                 ),
                                               );
                                             },

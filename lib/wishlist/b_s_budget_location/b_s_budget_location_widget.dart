@@ -7,6 +7,7 @@ import '/wishlist/b_s_a_i_loader/b_s_a_i_loader_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_budget_location_model.dart';
 export 'b_s_budget_location_model.dart';
 
@@ -386,11 +387,13 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                         enableDrag: false,
                         context: context,
                         builder: (context) {
-                          return Padding(
-                            padding: MediaQuery.viewInsetsOf(context),
-                            child: SizedBox(
-                              height: MediaQuery.sizeOf(context).height * 0.8,
-                              child: const BSAILoaderWidget(),
+                          return WebViewAware(
+                            child: Padding(
+                              padding: MediaQuery.viewInsetsOf(context),
+                              child: SizedBox(
+                                height: MediaQuery.sizeOf(context).height * 0.8,
+                                child: const BSAILoaderWidget(),
+                              ),
                             ),
                           );
                         },

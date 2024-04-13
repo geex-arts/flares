@@ -7,6 +7,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'card_model.dart';
 export 'card_model.dart';
 
@@ -605,15 +606,18 @@ class _CardWidgetState extends State<CardWidget> {
                                   backgroundColor: Colors.transparent,
                                   context: context,
                                   builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: SizedBox(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.8,
-                                        child: BSSaveToCollectionWidget(
-                                          selectedWishRow:
-                                              widget.currentWishRow,
+                                    return WebViewAware(
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SizedBox(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.8,
+                                          child: BSSaveToCollectionWidget(
+                                            selectedWishRow:
+                                                widget.currentWishRow,
+                                          ),
                                         ),
                                       ),
                                     );

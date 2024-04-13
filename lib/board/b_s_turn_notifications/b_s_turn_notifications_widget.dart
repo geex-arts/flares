@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_turn_notifications_model.dart';
 export 'b_s_turn_notifications_model.dart';
 
@@ -263,9 +264,11 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {
-                                  return Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: const NAllowNotifyWidget(),
+                                  return WebViewAware(
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: const NAllowNotifyWidget(),
+                                    ),
                                   );
                                 },
                               ).then((value) => safeSetState(() {}));

@@ -19,6 +19,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'my_profile_model.dart';
 export 'my_profile_model.dart';
 
@@ -209,14 +210,16 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             backgroundColor: Colors.transparent,
             context: context,
             builder: (context) {
-              return GestureDetector(
-                onTap: () => _model.unfocusNode.canRequestFocus
-                    ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                    : FocusScope.of(context).unfocus(),
-                child: Padding(
-                  padding: MediaQuery.viewInsetsOf(context),
-                  child: BSAddFromBrowserWidget(
-                    parsedURLJson: (_model.apiResultParseURL?.jsonBody ?? ''),
+              return WebViewAware(
+                child: GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: Padding(
+                    padding: MediaQuery.viewInsetsOf(context),
+                    child: BSAddFromBrowserWidget(
+                      parsedURLJson: (_model.apiResultParseURL?.jsonBody ?? ''),
+                    ),
                   ),
                 ),
               );
@@ -651,19 +654,21 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text((_model
-                                                              .apiResultc17Copy
-                                                              ?.bodyText ??
-                                                          '')),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        title: Text((_model
+                                                                .apiResultc17Copy
+                                                                ?.bodyText ??
+                                                            '')),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 );
@@ -742,19 +747,21 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                   context: context,
                                                   builder:
                                                       (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text((_model
-                                                              .apiResultc16Copy
-                                                              ?.bodyText ??
-                                                          '')),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
+                                                    return WebViewAware(
+                                                      child: AlertDialog(
+                                                        title: Text((_model
+                                                                .apiResultc16Copy
+                                                                ?.bodyText ??
+                                                            '')),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: const Text('Ok'),
+                                                          ),
+                                                        ],
+                                                      ),
                                                     );
                                                   },
                                                 );
@@ -890,21 +897,25 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             useSafeArea: true,
                                             context: context,
                                             builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: BSAddFromBrowserWidget(
-                                                    parsedURLJson:
-                                                        FFAppState().test,
+                                              return WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child:
+                                                        BSAddFromBrowserWidget(
+                                                      parsedURLJson:
+                                                          FFAppState().test,
+                                                    ),
                                                   ),
                                                 ),
                                               );
@@ -948,25 +959,27 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           backgroundColor: Colors.transparent,
                                           context: context,
                                           builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: SizedBox(
-                                                  height:
-                                                      MediaQuery.sizeOf(context)
-                                                              .height *
-                                                          0.45,
-                                                  child:
-                                                      const BSNewCollectionWidget(),
+                                            return WebViewAware(
+                                              child: GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.45,
+                                                    child:
+                                                        const BSNewCollectionWidget(),
+                                                  ),
                                                 ),
                                               ),
                                             );
@@ -1310,27 +1323,31 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     Colors.transparent,
                                                 context: context,
                                                 builder: (context) {
-                                                  return GestureDetector(
-                                                    onTap: () => _model
-                                                            .unfocusNode
-                                                            .canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode)
-                                                        : FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child: SizedBox(
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                0.85,
-                                                        child:
-                                                            const BSAddWishesWidget(),
+                                                  return WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child: SizedBox(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.85,
+                                                          child:
+                                                              const BSAddWishesWidget(),
+                                                        ),
                                                       ),
                                                     ),
                                                   );

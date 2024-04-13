@@ -4,6 +4,7 @@ import '/wishlist/b_s_a_i_wishlist/b_s_a_i_wishlist_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_a_i_loader_model.dart';
 export 'b_s_a_i_loader_model.dart';
 
@@ -38,9 +39,11 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
         enableDrag: false,
         context: context,
         builder: (context) {
-          return Padding(
-            padding: MediaQuery.viewInsetsOf(context),
-            child: const BSAIWishlistWidget(),
+          return WebViewAware(
+            child: Padding(
+              padding: MediaQuery.viewInsetsOf(context),
+              child: const BSAIWishlistWidget(),
+            ),
           );
         },
       ).then((value) => safeSetState(() {}));

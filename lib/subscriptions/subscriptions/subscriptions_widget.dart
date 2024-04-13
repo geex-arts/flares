@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/subscriptions/n_offer/n_offer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'subscriptions_model.dart';
 export 'subscriptions_model.dart';
 
@@ -800,14 +801,16 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                         backgroundColor: Colors.transparent,
                         context: context,
                         builder: (context) {
-                          return GestureDetector(
-                            onTap: () => _model.unfocusNode.canRequestFocus
-                                ? FocusScope.of(context)
-                                    .requestFocus(_model.unfocusNode)
-                                : FocusScope.of(context).unfocus(),
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: const NOfferWidget(),
+                          return WebViewAware(
+                            child: GestureDetector(
+                              onTap: () => _model.unfocusNode.canRequestFocus
+                                  ? FocusScope.of(context)
+                                      .requestFocus(_model.unfocusNode)
+                                  : FocusScope.of(context).unfocus(),
+                              child: Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: const NOfferWidget(),
+                              ),
                             ),
                           );
                         },

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -47,39 +48,6 @@ class _ProfileWidgetState extends State<ProfileWidget>
           duration: 2400.ms,
           begin: const Offset(4.0, 4.0),
           end: const Offset(1.0, 1.0),
-        ),
-      ],
-    ),
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
         ),
       ],
     ),
@@ -243,79 +211,192 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                    'Invite_Partner');
-                                              },
-                                              child: SizedBox(
-                                                width: 100.0,
-                                                height: 100.0,
-                                                child: Stack(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  children: [
-                                                    ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              100.0),
-                                                      child: BackdropFilter(
-                                                        filter:
-                                                            ImageFilter.blur(
-                                                          sigmaX: 16.0,
-                                                          sigmaY: 16.0,
-                                                        ),
-                                                        child: Container(
+                                          Container(
+                                            width: 100.0,
+                                            height: 100.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x1AFFFFFF),
+                                              shape: BoxShape.circle,
+                                              border: Border.all(
+                                                color: const Color(0xFF182DEF),
+                                                width: 3.0,
+                                              ),
+                                            ),
+                                            child: Builder(
+                                              builder: (context) {
+                                                if (containerUsersRowList
+                                                        .length ==
+                                                    1) {
+                                                  return ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            100.0),
+                                                    child: BackdropFilter(
+                                                      filter: ImageFilter.blur(
+                                                        sigmaX: 16.0,
+                                                        sigmaY: 16.0,
+                                                      ),
+                                                      child: InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          _model.pairInvitationRow =
+                                                              await PairsInvitationsTable()
+                                                                  .insert({
+                                                            'status': 'pending',
+                                                            'pair_code':
+                                                                random_data
+                                                                    .randomString(
+                                                              9,
+                                                              9,
+                                                              true,
+                                                              true,
+                                                              true,
+                                                            ),
+                                                            'pair': FFAppState()
+                                                                .pairID,
+                                                          });
+
+                                                          context.pushNamed(
+                                                            'Invite_Partner_Onb',
+                                                            queryParameters: {
+                                                              'pairInvitationRow':
+                                                                  serializeParam(
+                                                                _model
+                                                                    .pairInvitationRow,
+                                                                ParamType
+                                                                    .SupabaseRow,
+                                                              ),
+                                                              'isFromProfile':
+                                                                  serializeParam(
+                                                                true,
+                                                                ParamType.bool,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
+
+                                                          setState(() {});
+                                                        },
+                                                        child: SizedBox(
                                                           width: 100.0,
                                                           height: 100.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: const Color(
-                                                                0x1AFFFFFF),
-                                                            shape:
-                                                                BoxShape.circle,
-                                                            border: Border.all(
-                                                              color: const Color(
-                                                                  0xFF182DEF),
-                                                              width: 3.0,
-                                                            ),
+                                                          child: Stack(
+                                                            alignment:
+                                                                const AlignmentDirectional(
+                                                                    0.0, 0.0),
+                                                            children: [
+                                                              Container(
+                                                                width: 36.0,
+                                                                height: 36.0,
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: const Color(
+                                                                      0x28FFFFFF),
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              12.0),
+                                                                ),
+                                                                child: Align(
+                                                                  alignment:
+                                                                      const AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Image
+                                                                      .asset(
+                                                                    'assets/images/pluss.webp',
+                                                                    width: 16.0,
+                                                                    height:
+                                                                        16.0,
+                                                                    fit: BoxFit
+                                                                        .cover,
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
                                                         ),
                                                       ),
                                                     ),
-                                                    Container(
-                                                      width: 36.0,
-                                                      height: 36.0,
-                                                      decoration: BoxDecoration(
-                                                        color:
-                                                            const Color(0x28FFFFFF),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
+                                                  );
+                                                } else {
+                                                  return Visibility(
+                                                    visible: containerUsersRowList
+                                                                .where((e) =>
+                                                                    e.id !=
+                                                                    currentUserUid)
+                                                                .toList()
+                                                                .first
+                                                                .avatar !=
+                                                            null &&
+                                                        containerUsersRowList
+                                                                .where((e) =>
+                                                                    e.id !=
+                                                                    currentUserUid)
+                                                                .toList()
+                                                                .first
+                                                                .avatar !=
+                                                            '',
+                                                    child: Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
+                                                      decoration: const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Image.network(
+                                                        containerUsersRowList
+                                                            .where((e) =>
+                                                                e.id !=
+                                                                currentUserUid)
+                                                            .toList()
+                                                            .first
+                                                            .avatar!,
+                                                        fit: BoxFit.cover,
                                                       ),
                                                     ),
-                                                    Image.asset(
-                                                      'assets/images/pluss.webp',
-                                                      width: 16.0,
-                                                      height: 16.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                  );
+                                                }
+                                              },
                                             ),
                                           ),
                                           Text(
-                                            'Partner',
+                                            valueOrDefault<String>(
+                                              (containerUsersRowList.length >
+                                                          1) &&
+                                                      (containerUsersRowList
+                                                                  .where((e) =>
+                                                                      e.id !=
+                                                                      currentUserUid)
+                                                                  .toList()
+                                                                  .first
+                                                                  .firstName !=
+                                                              null &&
+                                                          containerUsersRowList
+                                                                  .where((e) =>
+                                                                      e.id !=
+                                                                      currentUserUid)
+                                                                  .toList()
+                                                                  .first
+                                                                  .firstName !=
+                                                              '')
+                                                  ? containerUsersRowList
+                                                      .where((e) =>
+                                                          e.id !=
+                                                          currentUserUid)
+                                                      .toList()
+                                                      .first
+                                                      .firstName
+                                                  : 'Partner',
+                                              'Partner',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium
                                                 .override(
@@ -356,26 +437,41 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                               height: 100.0,
                                               child: Stack(
                                                 children: [
-                                                  Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: Image.network(
+                                                  if (containerUsersRowList
+                                                              .where((e) =>
+                                                                  e.id ==
+                                                                  currentUserUid)
+                                                              .toList()
+                                                              .first
+                                                              .avatar !=
+                                                          null &&
                                                       containerUsersRowList
-                                                          .where((e) =>
-                                                              e.id ==
-                                                              currentUserUid)
-                                                          .toList()
-                                                          .first
-                                                          .avatar!,
-                                                      fit: BoxFit.cover,
+                                                              .where((e) =>
+                                                                  e.id ==
+                                                                  currentUserUid)
+                                                              .toList()
+                                                              .first
+                                                              .avatar !=
+                                                          '')
+                                                    Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      clipBehavior:
+                                                          Clip.antiAlias,
+                                                      decoration: const BoxDecoration(
+                                                        shape: BoxShape.circle,
+                                                      ),
+                                                      child: Image.network(
+                                                        containerUsersRowList
+                                                            .where((e) =>
+                                                                e.id ==
+                                                                currentUserUid)
+                                                            .toList()
+                                                            .first
+                                                            .avatar!,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'circleImageOnPageLoadAnimation']!),
                                                   Container(
                                                     width: 100.0,
                                                     height: 100.0,
@@ -449,7 +545,33 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                             ),
                                           ),
                                           Text(
-                                            'Lola',
+                                            valueOrDefault<String>(
+                                              containerUsersRowList
+                                                              .where((e) =>
+                                                                  e.id ==
+                                                                  currentUserUid)
+                                                              .toList()
+                                                              .first
+                                                              .firstName !=
+                                                          null &&
+                                                      containerUsersRowList
+                                                              .where((e) =>
+                                                                  e.id ==
+                                                                  currentUserUid)
+                                                              .toList()
+                                                              .first
+                                                              .firstName !=
+                                                          ''
+                                                  ? containerUsersRowList
+                                                      .where((e) =>
+                                                          e.id ==
+                                                          currentUserUid)
+                                                      .toList()
+                                                      .first
+                                                      .firstName
+                                                  : 'You',
+                                              'You',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .titleMedium
                                                 .override(
@@ -479,7 +601,24 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('Edit_Couple_Profile');
+                            _model.myPairRow = await PairsTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'uuid',
+                                FFAppState().pairID,
+                              ),
+                            );
+
+                            context.pushNamed(
+                              'Edit_Couple_Profile',
+                              queryParameters: {
+                                'myPairRow': serializeParam(
+                                  _model.myPairRow?.first,
+                                  ParamType.SupabaseRow,
+                                ),
+                              }.withoutNulls,
+                            );
+
+                            setState(() {});
                           },
                           child: Container(
                             width: double.infinity,
@@ -719,7 +858,34 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('Invite_Partner');
+                            _model.pairInvitationRow2 =
+                                await PairsInvitationsTable().insert({
+                              'status': 'pending',
+                              'pair_code': random_data.randomString(
+                                9,
+                                9,
+                                true,
+                                true,
+                                true,
+                              ),
+                              'pair': FFAppState().pairID,
+                            });
+
+                            context.pushNamed(
+                              'Invite_Partner_Onb',
+                              queryParameters: {
+                                'pairInvitationRow': serializeParam(
+                                  _model.pairInvitationRow2,
+                                  ParamType.SupabaseRow,
+                                ),
+                                'isFromProfile': serializeParam(
+                                  true,
+                                  ParamType.bool,
+                                ),
+                              }.withoutNulls,
+                            );
+
+                            setState(() {});
                           },
                           child: Container(
                             width: double.infinity,

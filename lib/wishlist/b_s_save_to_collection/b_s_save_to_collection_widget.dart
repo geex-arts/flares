@@ -2,16 +2,15 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/empty_collections_widget_widget.dart';
 import '/components/pink_button_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_save_to_collection_model.dart';
 export 'b_s_save_to_collection_model.dart';
 
@@ -28,45 +27,8 @@ class BSSaveToCollectionWidget extends StatefulWidget {
       _BSSaveToCollectionWidgetState();
 }
 
-class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget>
-    with TickerProviderStateMixin {
+class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
   late BSSaveToCollectionModel _model;
-
-  final animationsMap = {
-    'imageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -314,8 +276,8 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget>
                                                   widget.selectedWishRow?.photo,
                                               'link':
                                                   widget.selectedWishRow?.link,
-                                              'copied_from': widget
-                                                  .selectedWishRow?.createdBy,
+                                              'copied_from':
+                                                  widget.selectedWishRow?.uuid,
                                             });
                                           }
                                           _model.updatePage(() {});
@@ -343,8 +305,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget>
                                                     height: 40.0,
                                                     fit: BoxFit.cover,
                                                   ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'imageOnPageLoadAnimation']!),
+                                                ),
                                               Padding(
                                                 padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
@@ -403,10 +364,12 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget>
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: BSNewCollectionWidget(
-                                    selectedWishRow: widget.selectedWishRow,
+                                return WebViewAware(
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: BSNewCollectionWidget(
+                                      selectedWishRow: widget.selectedWishRow,
+                                    ),
                                   ),
                                 );
                               },
@@ -418,9 +381,11 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget>
                               backgroundColor: Colors.transparent,
                               context: context,
                               builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: const BSNewCollectionWidget(),
+                                return WebViewAware(
+                                  child: Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: const BSNewCollectionWidget(),
+                                  ),
                                 );
                               },
                             ).then((value) => safeSetState(() {}));

@@ -11,6 +11,7 @@ import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_couple_profile_model.dart';
 export 'create_couple_profile_model.dart';
 
@@ -619,18 +620,21 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                             const AlignmentDirectional(0.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                        child: GestureDetector(
-                                          onTap: () => _model
-                                                  .unfocusNode.canRequestFocus
-                                              ? FocusScope.of(context)
-                                                  .requestFocus(
-                                                      _model.unfocusNode)
-                                              : FocusScope.of(context)
-                                                  .unfocus(),
-                                          child: const AlertDialogWarningWidget(
-                                            title: 'Couple photo is required!',
-                                            subtitle:
-                                                'Please upload your couple photo',
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: const AlertDialogWarningWidget(
+                                              title:
+                                                  'Couple photo is required!',
+                                              subtitle:
+                                                  'Please upload your couple photo',
+                                            ),
                                           ),
                                         ),
                                       );

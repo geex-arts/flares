@@ -2,7 +2,6 @@ import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
-import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -13,9 +12,9 @@ import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_add_from_browser_model.dart';
 export 'b_s_add_from_browser_model.dart';
 
@@ -31,46 +30,8 @@ class BSAddFromBrowserWidget extends StatefulWidget {
   State<BSAddFromBrowserWidget> createState() => _BSAddFromBrowserWidgetState();
 }
 
-class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
-    with TickerProviderStateMixin {
+class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
   late BSAddFromBrowserModel _model;
-
-  final animationsMap = {
-    'imageOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-  };
 
   @override
   void setState(VoidCallback callback) {
@@ -112,13 +73,6 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
       r'''$.description''',
     ).toString().toString());
     _model.descriptionFieldFocusNode ??= FocusNode();
-
-    setupAnimations(
-      animationsMap.values.where((anim) =>
-          anim.trigger == AnimationTrigger.onActionTrigger ||
-          !anim.applyInitialState),
-      this,
-    );
   }
 
   @override
@@ -348,52 +302,54 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                     sigmaX: 16.0,
                                     sigmaY: 16.0,
                                   ),
-                                  child: Visibility(
-                                    visible: blurCollectionsRowList.isNotEmpty,
-                                    child: FlutterFlowDropDown<String>(
-                                      controller:
-                                          _model.dropDownValueController ??=
-                                              FormFieldController<String>(
-                                        _model.dropDownValue ??= '',
-                                      ),
-                                      options: List<String>.from(
-                                          blurCollectionsRowList
-                                              .map((e) => e.uuid)
-                                              .toList()),
-                                      optionLabels: blurCollectionsRowList
-                                          .map((e) => e.name)
-                                          .withoutNulls
-                                          .toList(),
-                                      onChanged: (val) => setState(
-                                          () => _model.dropDownValue = val),
-                                      width: double.infinity,
-                                      height: 50.0,
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: const Color(0x99FFFFFF),
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                          ),
-                                      hintText: 'Collection name',
-                                      icon: const Icon(
-                                        Icons.keyboard_arrow_down_rounded,
-                                        color: Color(0x80F2F1F3),
-                                        size: 20.0,
-                                      ),
-                                      fillColor: const Color(0xFF1D1B1B),
-                                      elevation: 0.0,
-                                      borderColor: const Color(0x0FFFFFFF),
-                                      borderWidth: 0.0,
-                                      borderRadius: 30.0,
-                                      margin: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 12.0, 0.0),
-                                      hidesUnderline: true,
-                                      isOverButton: true,
-                                      isSearchable: false,
-                                      isMultiSelect: false,
+                                  child: FlutterFlowDropDown<String>(
+                                    controller:
+                                        _model.dropDownValueController ??=
+                                            FormFieldController<String>(
+                                      _model.dropDownValue ??= '',
                                     ),
+                                    options: List<String>.from(
+                                        blurCollectionsRowList.isNotEmpty
+                                            ? blurCollectionsRowList
+                                                .map((e) => e.uuid)
+                                                .toList()
+                                            : ([])),
+                                    optionLabels:
+                                        blurCollectionsRowList.isNotEmpty
+                                            ? blurCollectionsRowList
+                                                .map((e) => e.name)
+                                                .withoutNulls
+                                                .toList()
+                                            : ([]),
+                                    onChanged: (val) => setState(
+                                        () => _model.dropDownValue = val),
+                                    width: double.infinity,
+                                    height: 50.0,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x99FFFFFF),
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                    hintText: 'Collection name',
+                                    icon: const Icon(
+                                      Icons.keyboard_arrow_down_rounded,
+                                      color: Color(0x80F2F1F3),
+                                      size: 20.0,
+                                    ),
+                                    fillColor: const Color(0xFF1D1B1B),
+                                    elevation: 0.0,
+                                    borderColor: const Color(0x0FFFFFFF),
+                                    borderWidth: 0.0,
+                                    borderRadius: 30.0,
+                                    margin: const EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 12.0, 0.0),
+                                    hidesUnderline: true,
+                                    isOverButton: true,
+                                    isSearchable: false,
+                                    isMultiSelect: false,
                                   ),
                                 ),
                               );
@@ -561,9 +517,6 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                                       height: 177.0,
                                                       fit: BoxFit.cover,
                                                     ),
-                                                  ).animateOnActionTrigger(
-                                                    animationsMap[
-                                                        'imageOnActionTriggerAnimation']!,
                                                   ),
                                                   Container(
                                                     width: 119.0,
@@ -1139,10 +1092,12 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                                     0.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                            child: const AlertDialogWarningWidget(
-                                              title: 'No image selected!',
-                                              subtitle:
-                                                  'Please select the image from the list below or upload your own',
+                                            child: const WebViewAware(
+                                              child: AlertDialogWarningWidget(
+                                                title: 'No image selected!',
+                                                subtitle:
+                                                    'Please select the image from the list below or upload your own',
+                                              ),
                                             ),
                                           );
                                         },
@@ -1189,17 +1144,20 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget>
                                         enableDrag: false,
                                         context: context,
                                         builder: (context) {
-                                          return Padding(
-                                            padding: MediaQuery.viewInsetsOf(
-                                                context),
-                                            child: SizedBox(
-                                              height: MediaQuery.sizeOf(context)
-                                                      .height *
-                                                  0.65,
-                                              child: BSNewCollectionWidget(
-                                                selectedWishRow:
-                                                    _model.createdWishRow,
-                                                isFromBrowser: true,
+                                          return WebViewAware(
+                                            child: Padding(
+                                              padding: MediaQuery.viewInsetsOf(
+                                                  context),
+                                              child: SizedBox(
+                                                height:
+                                                    MediaQuery.sizeOf(context)
+                                                            .height *
+                                                        0.65,
+                                                child: BSNewCollectionWidget(
+                                                  selectedWishRow:
+                                                      _model.createdWishRow,
+                                                  isFromBrowser: true,
+                                                ),
                                               ),
                                             ),
                                           );

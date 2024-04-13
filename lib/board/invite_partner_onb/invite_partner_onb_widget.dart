@@ -10,6 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_onb_model.dart';
 export 'invite_partner_onb_model.dart';
 
@@ -17,9 +18,11 @@ class InvitePartnerOnbWidget extends StatefulWidget {
   const InvitePartnerOnbWidget({
     super.key,
     required this.pairInvitationRow,
-  });
+    bool? isFromProfile,
+  }) : isFromProfile = isFromProfile ?? false;
 
   final PairsInvitationsRow? pairInvitationRow;
+  final bool isFromProfile;
 
   @override
   State<InvitePartnerOnbWidget> createState() => _InvitePartnerOnbWidgetState();
@@ -92,75 +95,79 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                   height: 38.0,
                   child: Stack(
                     children: [
-                      Align(
-                        alignment: const AlignmentDirectional(1.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return GestureDetector(
-                                  onTap: () =>
-                                      _model.unfocusNode.canRequestFocus
+                      if (!widget.isFromProfile)
+                        Align(
+                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) {
+                                  return WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
                                           ? FocusScope.of(context)
                                               .requestFocus(_model.unfocusNode)
                                           : FocusScope.of(context).unfocus(),
-                                  child: Padding(
-                                    padding: MediaQuery.viewInsetsOf(context),
-                                    child: SizedBox(
-                                      height:
-                                          MediaQuery.sizeOf(context).height *
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SizedBox(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
                                               0.85,
-                                      child: const BSTurnNotificationsWidget(),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          },
-                          child: Container(
-                            height: 38.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0x9A000000),
-                              borderRadius: BorderRadius.circular(21.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    'Skip',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Nuckle',
-                                          color:
-                                              FlutterFlowTheme.of(context).info,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: false,
+                                          child: const BSTurnNotificationsWidget(),
                                         ),
-                                  ),
-                                  Icon(
-                                    Icons.chevron_right,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    size: 16.0,
-                                  ),
-                                ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            },
+                            child: Container(
+                              height: 38.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0x9A000000),
+                                borderRadius: BorderRadius.circular(21.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      'Skip',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                    Icon(
+                                      Icons.chevron_right,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      size: 16.0,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
                       Align(
                         alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
@@ -619,38 +626,47 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                             );
                                             FFAppState().pairID = _model
                                                 .foundPairingRow!.first.pair!;
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: SizedBox(
-                                                      height: MediaQuery.sizeOf(
+                                            if (widget.isFromProfile) {
+                                              context.safePop();
+                                            } else {
+                                              await showModalBottomSheet(
+                                                isScrollControlled: true,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                context: context,
+                                                builder: (context) {
+                                                  return WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
                                                                   context)
-                                                              .height *
-                                                          0.85,
-                                                      child:
-                                                          const BSTurnNotificationsWidget(),
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child: Padding(
+                                                        padding: MediaQuery
+                                                            .viewInsetsOf(
+                                                                context),
+                                                        child: SizedBox(
+                                                          height:
+                                                              MediaQuery.sizeOf(
+                                                                          context)
+                                                                      .height *
+                                                                  0.85,
+                                                          child:
+                                                              const BSTurnNotificationsWidget(),
+                                                        ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
+                                                  );
+                                                },
+                                              ).then((value) =>
+                                                  safeSetState(() {}));
+                                            }
                                           } else {
                                             setState(() {
                                               _model.codeNotFound = true;

@@ -12,7 +12,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'couples_profile_model.dart';
 export 'couples_profile_model.dart';
 
@@ -186,8 +186,6 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -530,19 +528,22 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       context: context,
                                                       builder:
                                                           (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text((_model
-                                                                  .apiResultc17Copy
-                                                                  ?.bodyText ??
-                                                              '')),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text('Ok'),
-                                                            ),
-                                                          ],
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            title: Text((_model
+                                                                    .apiResultc17Copy
+                                                                    ?.bodyText ??
+                                                                '')),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         );
                                                       },
                                                     );
@@ -634,19 +635,22 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       context: context,
                                                       builder:
                                                           (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text((_model
-                                                                  .apiResultc16Copy
-                                                                  ?.bodyText ??
-                                                              '')),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: const Text('Ok'),
-                                                            ),
-                                                          ],
+                                                        return WebViewAware(
+                                                          child: AlertDialog(
+                                                            title: Text((_model
+                                                                    .apiResultc16Copy
+                                                                    ?.bodyText ??
+                                                                '')),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child:
+                                                                    const Text('Ok'),
+                                                              ),
+                                                            ],
+                                                          ),
                                                         );
                                                       },
                                                     );
@@ -984,7 +988,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                             queryFn: (q) => q
                                 .eq(
                                   'pair',
-                                  FFAppState().pairID,
+                                  widget.selectedPairID,
                                 )
                                 .order('created_at'),
                           ),
@@ -1208,20 +1212,23 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                   Colors.transparent,
                                               context: context,
                                               builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: const BSAddWishesWidget(),
+                                                return WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child:
+                                                          const BSAddWishesWidget(),
+                                                    ),
                                                   ),
                                                 );
                                               },

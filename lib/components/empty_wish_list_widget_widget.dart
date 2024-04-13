@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'empty_wish_list_widget_model.dart';
 export 'empty_wish_list_widget_model.dart';
 
@@ -62,9 +63,11 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
                 enableDrag: false,
                 context: context,
                 builder: (context) {
-                  return Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: const BSAddWishesWidget(),
+                  return WebViewAware(
+                    child: Padding(
+                      padding: MediaQuery.viewInsetsOf(context),
+                      child: const BSAddWishesWidget(),
+                    ),
                   );
                 },
               ).then((value) => safeSetState(() {}));

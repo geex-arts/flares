@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pair_header_model.dart';
 export 'pair_header_model.dart';
 
@@ -503,17 +504,19 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          (_model.apiResultc17Copy?.bodyText ??
-                                              '')),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
-                                        ),
-                                      ],
+                                    return WebViewAware(
+                                      child: AlertDialog(
+                                        title: Text((_model
+                                                .apiResultc17Copy?.bodyText ??
+                                            '')),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
                                     );
                                   },
                                 );
@@ -580,17 +583,19 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
-                                    return AlertDialog(
-                                      title: Text(
-                                          (_model.apiResultc16Copy?.bodyText ??
-                                              '')),
-                                      actions: [
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(alertDialogContext),
-                                          child: const Text('Ok'),
-                                        ),
-                                      ],
+                                    return WebViewAware(
+                                      child: AlertDialog(
+                                        title: Text((_model
+                                                .apiResultc16Copy?.bodyText ??
+                                            '')),
+                                        actions: [
+                                          TextButton(
+                                            onPressed: () => Navigator.pop(
+                                                alertDialogContext),
+                                            child: const Text('Ok'),
+                                          ),
+                                        ],
+                                      ),
                                     );
                                   },
                                 );

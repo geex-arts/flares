@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'sign_up_model.dart';
 export 'sign_up_model.dart';
 
@@ -649,21 +650,23 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                         0.0, -1.0)
                                                     .resolve(Directionality.of(
                                                         context)),
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child:
-                                                      const AlertDialogWarningWidget(
-                                                    title:
-                                                        'It seems you have already signed up!',
-                                                    subtitle:
-                                                        'Please sign in from the login screen',
+                                                child: WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child:
+                                                        const AlertDialogWarningWidget(
+                                                      title:
+                                                          'It seems you have already signed up!',
+                                                      subtitle:
+                                                          'Please sign in from the login screen',
+                                                    ),
                                                   ),
                                                 ),
                                               );
