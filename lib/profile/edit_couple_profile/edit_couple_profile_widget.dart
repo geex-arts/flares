@@ -34,30 +34,31 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => EditCoupleProfileModel());
 
-    _model.namesFieldController ??=
+    _model.namesFieldTextController ??=
         TextEditingController(text: widget.myPairRow?.pairName);
     _model.namesFieldFocusNode ??= FocusNode();
     _model.namesFieldFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -329,7 +330,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.namesFieldController,
+                                  controller: _model.namesFieldTextController,
                                   focusNode: _model.namesFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.next,
@@ -404,7 +405,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
-                                      .namesFieldControllerValidator
+                                      .namesFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -801,7 +802,8 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   'photo': _model.uploadedFileUrl2 != ''
                                       ? _model.uploadedFileUrl2
                                       : widget.myPairRow?.photo,
-                                  'pair_name': _model.namesFieldController.text,
+                                  'pair_name':
+                                      _model.namesFieldTextController.text,
                                   'pair_since': supaSerialize<DateTime>(
                                       _model.datePicked ?? widget.myPairRow?.pairSince),
                                 },

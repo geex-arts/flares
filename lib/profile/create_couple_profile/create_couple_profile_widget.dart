@@ -29,61 +29,63 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => CreateCoupleProfileModel());
 
-    _model.namesFieldController ??= TextEditingController();
+    _model.namesFieldTextController ??= TextEditingController();
     _model.namesFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'circleImageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -350,7 +352,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.namesFieldController,
+                                  controller: _model.namesFieldTextController,
                                   focusNode: _model.namesFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.next,
@@ -427,7 +429,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
-                                      .namesFieldControllerValidator
+                                      .namesFieldTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -692,7 +694,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 }
 
                                 _model.newPairRow = await PairsTable().insert({
-                                  'pair_name': _model.namesFieldController.text,
+                                  'pair_name':
+                                      _model.namesFieldTextController.text,
                                   'photo': _model.uploadedFileUrl2,
                                   'pair_since': supaSerialize<DateTime>(
                                       _model.datePicked),

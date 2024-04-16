@@ -16,7 +16,8 @@ Future<String> generateCurrentPageLink(
   bool forceRedirect = false,
 }) async {
   final dynamicLinkParams = DynamicLinkParameters(
-    link: Uri.parse('$_kDynamicLinksUrl${GoRouter.of(context).location}'),
+    link: Uri.parse(
+        '$_kDynamicLinksUrl${GoRouterState.of(context).uri.toString()}'),
     uriPrefix: _kDynamicLinksUrl,
     androidParameters: const AndroidParameters(packageName: _kAppBundleId),
     iosParameters: const IOSParameters(
@@ -75,7 +76,7 @@ class _DynamicLinksHandlerState extends State<DynamicLinksHandler> {
     final link = linkData.link.toString();
     final host = linkData.link.host;
     final location = link.split(host).last;
-    if (widget.router.location != location) {
+    if (GoRouterState.of(context).uri.toString() != location) {
       widget.router.push(location);
     }
   }

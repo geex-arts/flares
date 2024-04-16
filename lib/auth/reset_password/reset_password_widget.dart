@@ -27,29 +27,30 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => ResetPasswordModel());
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
     _model.emailFieldFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -223,7 +224,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
                         child: TextFormField(
-                          controller: _model.emailFieldController,
+                          controller: _model.emailFieldTextController,
                           focusNode: _model.emailFieldFocusNode,
                           autofocus: false,
                           textInputAction: TextInputAction.next,
@@ -290,7 +291,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   ),
                           keyboardType: TextInputType.emailAddress,
                           cursorColor: FlutterFlowTheme.of(context).pinkButton,
-                          validator: _model.emailFieldControllerValidator
+                          validator: _model.emailFieldTextControllerValidator
                               .asValidator(context),
                         ),
                       ),
@@ -310,7 +311,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     await UsersTable().queryRows(
                                   queryFn: (q) => q.eq(
                                     'email',
-                                    _model.emailFieldController.text,
+                                    _model.emailFieldTextController.text,
                                   ),
                                 );
                                 shouldSetState = true;
@@ -351,7 +352,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 }
                                 if (!_model.startTimer) {
                                   if (_model
-                                      .emailFieldController.text.isEmpty) {
+                                      .emailFieldTextController.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
                                         content: Text(
@@ -362,7 +363,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     return;
                                   }
                                   await authManager.resetPassword(
-                                    email: _model.emailFieldController.text,
+                                    email: _model.emailFieldTextController.text,
                                     context: context,
                                   );
                                   _model.timerController.onResetTimer();

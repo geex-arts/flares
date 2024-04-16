@@ -17,9 +17,10 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -32,10 +33,11 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   // State field(s) for PasswordField widget.
   FocusNode? passwordFieldFocusNode;
-  TextEditingController? passwordFieldController;
+  TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
-  String? Function(BuildContext, String?)? passwordFieldControllerValidator;
-  String? _passwordFieldControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
+  String? _passwordFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -49,10 +51,11 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   // State field(s) for RePasswordField widget.
   FocusNode? rePasswordFieldFocusNode;
-  TextEditingController? rePasswordFieldController;
+  TextEditingController? rePasswordFieldTextController;
   late bool rePasswordFieldVisibility;
-  String? Function(BuildContext, String?)? rePasswordFieldControllerValidator;
-  String? _rePasswordFieldControllerValidator(
+  String? Function(BuildContext, String?)?
+      rePasswordFieldTextControllerValidator;
+  String? _rePasswordFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -74,11 +77,13 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   @override
   void initState(BuildContext context) {
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     passwordFieldVisibility = false;
-    passwordFieldControllerValidator = _passwordFieldControllerValidator;
+    passwordFieldTextControllerValidator =
+        _passwordFieldTextControllerValidator;
     rePasswordFieldVisibility = false;
-    rePasswordFieldControllerValidator = _rePasswordFieldControllerValidator;
+    rePasswordFieldTextControllerValidator =
+        _rePasswordFieldTextControllerValidator;
     nextButtonModel = createModel(context, () => PinkButtonModel());
   }
 
@@ -86,13 +91,13 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   void dispose() {
     unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     passwordFieldFocusNode?.dispose();
-    passwordFieldController?.dispose();
+    passwordFieldTextController?.dispose();
 
     rePasswordFieldFocusNode?.dispose();
-    rePasswordFieldController?.dispose();
+    rePasswordFieldTextController?.dispose();
 
     nextButtonModel.dispose();
   }

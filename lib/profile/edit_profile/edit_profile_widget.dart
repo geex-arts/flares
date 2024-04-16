@@ -27,53 +27,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'circleImageOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 100.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-        ShimmerEffect(
-          curve: Curves.easeInOut,
-          delay: 300.ms,
-          duration: 600.ms,
-          color: const Color(0x80FFFFFF),
-          angle: 0.524,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -83,6 +37,54 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
     _model.nameFieldFocusNode ??= FocusNode();
 
     _model.emailFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'circleImageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -419,7 +421,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           0.0, 16.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller:
-                                            _model.nameFieldController ??=
+                                            _model.nameFieldTextController ??=
                                                 TextEditingController(
                                           text: columnUsersRow?.firstName !=
                                                       null &&
@@ -515,7 +517,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             FlutterFlowTheme.of(context)
                                                 .pinkButton,
                                         validator: _model
-                                            .nameFieldControllerValidator
+                                            .nameFieldTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -546,7 +548,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           0.0, 16.0, 0.0, 0.0),
                                       child: TextFormField(
                                         controller:
-                                            _model.emailFieldController ??=
+                                            _model.emailFieldTextController ??=
                                                 TextEditingController(
                                           text: columnUsersRow?.email != null &&
                                                   columnUsersRow?.email != ''
@@ -642,7 +644,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             FlutterFlowTheme.of(context)
                                                 .pinkButton,
                                         validator: _model
-                                            .emailFieldControllerValidator
+                                            .emailFieldTextControllerValidator
                                             .asValidator(context),
                                       ),
                                     ),
@@ -672,8 +674,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           queryFn: (q) => q
                                               .eq(
                                                 'email',
-                                                _model
-                                                    .emailFieldController.text,
+                                                _model.emailFieldTextController
+                                                    .text,
                                               )
                                               .neq(
                                                 'id',
@@ -720,10 +722,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           if (shouldSetState) setState(() {});
                                           return;
                                         }
-                                        if (_model.emailFieldController.text !=
+                                        if (_model.emailFieldTextController
+                                                .text !=
                                             currentUserEmail) {
-                                          if (_model.emailFieldController.text
-                                              .isEmpty) {
+                                          if (_model.emailFieldTextController
+                                              .text.isEmpty) {
                                             ScaffoldMessenger.of(context)
                                                 .showSnackBar(
                                               const SnackBar(
@@ -737,7 +740,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
                                           await authManager.updateEmail(
                                             email: _model
-                                                .emailFieldController.text,
+                                                .emailFieldTextController.text,
                                             context: context,
                                           );
                                           setState(() {});
@@ -796,9 +799,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             await UsersTable().update(
                                               data: {
                                                 'first_name': _model
-                                                    .nameFieldController.text,
+                                                    .nameFieldTextController
+                                                    .text,
                                                 'email': _model
-                                                    .emailFieldController.text,
+                                                    .emailFieldTextController
+                                                    .text,
                                                 'avatar': _model.uploadedFileUrl2 !=
                                                             ''
                                                     ? _model.uploadedFileUrl2

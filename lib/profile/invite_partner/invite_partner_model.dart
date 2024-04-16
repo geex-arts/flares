@@ -15,8 +15,8 @@ class InvitePartnerModel extends FlutterFlowModel<InvitePartnerWidget> {
   late PinkButtonModel sharemyinvitelinkModel;
   // State field(s) for SendCodeField widget.
   FocusNode? sendCodeFieldFocusNode;
-  TextEditingController? sendCodeFieldController;
-  String? Function(BuildContext, String?)? sendCodeFieldControllerValidator;
+  TextEditingController? sendCodeFieldTextController;
+  String? Function(BuildContext, String?)? sendCodeFieldTextControllerValidator;
   // Model for SendPairingCode.
   late PinkButtonModel sendPairingCodeModel;
 
@@ -31,7 +31,7 @@ class InvitePartnerModel extends FlutterFlowModel<InvitePartnerWidget> {
     unfocusNode.dispose();
     sharemyinvitelinkModel.dispose();
     sendCodeFieldFocusNode?.dispose();
-    sendCodeFieldController?.dispose();
+    sendCodeFieldTextController?.dispose();
 
     sendPairingCodeModel.dispose();
   }

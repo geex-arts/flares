@@ -17,9 +17,10 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -32,9 +33,9 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
 
   // State field(s) for PasswordField widget.
   FocusNode? passwordFieldFocusNode;
-  TextEditingController? passwordFieldController;
+  TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
-  String? Function(BuildContext, String?)? passwordFieldControllerValidator;
+  String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
   // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
@@ -44,7 +45,7 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
 
   @override
   void initState(BuildContext context) {
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     passwordFieldVisibility = false;
     nextButtonModel = createModel(context, () => PinkButtonModel());
   }
@@ -53,10 +54,10 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   void dispose() {
     unfocusNode.dispose();
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     passwordFieldFocusNode?.dispose();
-    passwordFieldController?.dispose();
+    passwordFieldTextController?.dispose();
 
     nextButtonModel.dispose();
   }

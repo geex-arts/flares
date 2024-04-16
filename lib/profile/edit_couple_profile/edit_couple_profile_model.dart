@@ -24,9 +24,10 @@ class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
 
   // State field(s) for NamesField widget.
   FocusNode? namesFieldFocusNode;
-  TextEditingController? namesFieldController;
-  String? Function(BuildContext, String?)? namesFieldControllerValidator;
-  String? _namesFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? namesFieldTextController;
+  String? Function(BuildContext, String?)? namesFieldTextControllerValidator;
+  String? _namesFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -60,7 +61,7 @@ class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
 
   @override
   void initState(BuildContext context) {
-    namesFieldControllerValidator = _namesFieldControllerValidator;
+    namesFieldTextControllerValidator = _namesFieldTextControllerValidator;
     createCoupleModel = createModel(context, () => PinkButtonModel());
   }
 
@@ -68,7 +69,7 @@ class EditCoupleProfileModel extends FlutterFlowModel<EditCoupleProfileWidget> {
   void dispose() {
     unfocusNode.dispose();
     namesFieldFocusNode?.dispose();
-    namesFieldController?.dispose();
+    namesFieldTextController?.dispose();
 
     createCoupleModel.dispose();
   }

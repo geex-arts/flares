@@ -15,14 +15,15 @@ class NewPasswordModel extends FlutterFlowModel<NewPasswordWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for PasswordField widget.
   FocusNode? passwordFieldFocusNode;
-  TextEditingController? passwordFieldController;
+  TextEditingController? passwordFieldTextController;
   late bool passwordFieldVisibility;
-  String? Function(BuildContext, String?)? passwordFieldControllerValidator;
+  String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
   // State field(s) for RePasswordField widget.
   FocusNode? rePasswordFieldFocusNode;
-  TextEditingController? rePasswordFieldController;
+  TextEditingController? rePasswordFieldTextController;
   late bool rePasswordFieldVisibility;
-  String? Function(BuildContext, String?)? rePasswordFieldControllerValidator;
+  String? Function(BuildContext, String?)?
+      rePasswordFieldTextControllerValidator;
   // Model for pinkButton component.
   late PinkButtonModel pinkButtonModel;
   // Stores action output result for [Custom Action - changePassword] action in pinkButton widget.
@@ -39,10 +40,10 @@ class NewPasswordModel extends FlutterFlowModel<NewPasswordWidget> {
   void dispose() {
     unfocusNode.dispose();
     passwordFieldFocusNode?.dispose();
-    passwordFieldController?.dispose();
+    passwordFieldTextController?.dispose();
 
     rePasswordFieldFocusNode?.dispose();
-    rePasswordFieldController?.dispose();
+    rePasswordFieldTextController?.dispose();
 
     pinkButtonModel.dispose();
   }

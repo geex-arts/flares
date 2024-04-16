@@ -61,14 +61,14 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
       }
     });
 
-    _model.nameFieldController ??= TextEditingController(
+    _model.nameFieldTextController ??= TextEditingController(
         text: getJsonField(
       widget.parsedURLJson,
       r'''$.title''',
     ).toString().toString());
     _model.nameFieldFocusNode ??= FocusNode();
 
-    _model.descriptionFieldController ??= TextEditingController(
+    _model.descriptionFieldTextController ??= TextEditingController(
         text: getJsonField(
       widget.parsedURLJson,
       r'''$.description''',
@@ -178,7 +178,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: TextFormField(
-                            controller: _model.nameFieldController,
+                            controller: _model.nameFieldTextController,
                             focusNode: _model.nameFieldFocusNode,
                             autofocus: false,
                             textInputAction: TextInputAction.next,
@@ -246,7 +246,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                 ),
                             cursorColor:
                                 FlutterFlowTheme.of(context).pinkButton,
-                            validator: _model.nameFieldControllerValidator
+                            validator: _model.nameFieldTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -378,7 +378,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 12.0, 16.0, 0.0),
                           child: TextFormField(
-                            controller: _model.descriptionFieldController,
+                            controller: _model.descriptionFieldTextController,
                             focusNode: _model.descriptionFieldFocusNode,
                             autofocus: false,
                             textInputAction: TextInputAction.next,
@@ -450,7 +450,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                             cursorColor:
                                 FlutterFlowTheme.of(context).pinkButton,
                             validator: _model
-                                .descriptionFieldControllerValidator
+                                .descriptionFieldTextControllerValidator
                                 .asValidator(context),
                           ),
                         ),
@@ -1118,9 +1118,10 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                               : null,
                                       'pair': FFAppState().pairID,
                                       'created_by': currentUserUid,
-                                      'name': _model.nameFieldController.text,
+                                      'name':
+                                          _model.nameFieldTextController.text,
                                       'description': _model
-                                          .descriptionFieldController.text,
+                                          .descriptionFieldTextController.text,
                                       'photo': _model.selectedImage != null &&
                                               _model.selectedImage != ''
                                           ? _model.selectedImage

@@ -19,9 +19,9 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
-  TextEditingController? nameFieldController;
-  String? Function(BuildContext, String?)? nameFieldControllerValidator;
-  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameFieldTextController;
+  String? Function(BuildContext, String?)? nameFieldTextControllerValidator;
+  String? _nameFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -38,9 +38,10 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
-  TextEditingController? emailFieldController;
-  String? Function(BuildContext, String?)? emailFieldControllerValidator;
-  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailFieldTextController;
+  String? Function(BuildContext, String?)? emailFieldTextControllerValidator;
+  String? _emailFieldTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -62,8 +63,8 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
 
   @override
   void initState(BuildContext context) {
-    nameFieldControllerValidator = _nameFieldControllerValidator;
-    emailFieldControllerValidator = _emailFieldControllerValidator;
+    nameFieldTextControllerValidator = _nameFieldTextControllerValidator;
+    emailFieldTextControllerValidator = _emailFieldTextControllerValidator;
     saveProfileModel = createModel(context, () => PinkButtonModel());
   }
 
@@ -71,10 +72,10 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   void dispose() {
     unfocusNode.dispose();
     nameFieldFocusNode?.dispose();
-    nameFieldController?.dispose();
+    nameFieldTextController?.dispose();
 
     emailFieldFocusNode?.dispose();
-    emailFieldController?.dispose();
+    emailFieldTextController?.dispose();
 
     saveProfileModel.dispose();
   }

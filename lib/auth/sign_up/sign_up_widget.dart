@@ -32,20 +32,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
   late StreamSubscription<bool> _keyboardVisibilitySubscription;
   bool _isKeyboardVisible = false;
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -61,15 +48,29 @@ class _SignUpWidgetState extends State<SignUpWidget>
       });
     }
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
     _model.emailFieldFocusNode!.addListener(() => setState(() {}));
-    _model.passwordFieldController ??= TextEditingController();
+    _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
     _model.passwordFieldFocusNode!.addListener(() => setState(() {}));
-    _model.rePasswordFieldController ??= TextEditingController();
+    _model.rePasswordFieldTextController ??= TextEditingController();
     _model.rePasswordFieldFocusNode ??= FocusNode();
     _model.rePasswordFieldFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -188,7 +189,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               TextFormField(
-                                controller: _model.emailFieldController,
+                                controller: _model.emailFieldTextController,
                                 focusNode: _model.emailFieldFocusNode,
                                 autofocus: false,
                                 textInputAction: TextInputAction.next,
@@ -259,14 +260,16 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 keyboardType: TextInputType.emailAddress,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
-                                validator: _model.emailFieldControllerValidator
+                                validator: _model
+                                    .emailFieldTextControllerValidator
                                     .asValidator(context),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.passwordFieldController,
+                                  controller:
+                                      _model.passwordFieldTextController,
                                   focusNode: _model.passwordFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.next,
@@ -354,7 +357,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
-                                      .passwordFieldControllerValidator
+                                      .passwordFieldTextControllerValidator
                                       .asValidator(context),
                                   inputFormatters: [
                                     FilteringTextInputFormatter.allow(
@@ -405,7 +408,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.rePasswordFieldController,
+                                  controller:
+                                      _model.rePasswordFieldTextController,
                                   focusNode: _model.rePasswordFieldFocusNode,
                                   autofocus: false,
                                   textInputAction: TextInputAction.go,
@@ -494,7 +498,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
                                   validator: _model
-                                      .rePasswordFieldControllerValidator
+                                      .rePasswordFieldTextControllerValidator
                                       .asValidator(context),
                                   inputFormatters: [
                                     FilteringTextInputFormatter.allow(
@@ -554,10 +558,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       text: 'Next',
                                       currentAction: () async {
                                         var shouldSetState = false;
-                                        if ((_model.emailFieldController
+                                        if ((_model.emailFieldTextController
                                                         .text ==
                                                     '') &&
-                                            (_model.passwordFieldController
+                                            (_model.passwordFieldTextController
                                                         .text ==
                                                     '')) {
                                           setState(() {
@@ -569,7 +573,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           if (shouldSetState) setState(() {});
                                           return;
                                         } else {
-                                          if (_model.emailFieldController
+                                          if (_model.emailFieldTextController
                                                       .text ==
                                                   '') {
                                             setState(() {
@@ -583,7 +587,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             }
                                             return;
                                           } else {
-                                            if (_model.passwordFieldController
+                                            if (_model.passwordFieldTextController
                                                         .text ==
                                                     '') {
                                               setState(() {
@@ -598,7 +602,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                               return;
                                             } else {
                                               if (functions.wordLength(_model
-                                                      .passwordFieldController
+                                                      .passwordFieldTextController
                                                       .text) <
                                                   8) {
                                                 setState(() {
@@ -612,7 +616,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 }
                                                 return;
                                               } else {
-                                                if (_model.rePasswordFieldController
+                                                if (_model.rePasswordFieldTextController
                                                             .text ==
                                                         '') {
                                                   setState(() {
@@ -640,7 +644,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             await UsersTable().queryRows(
                                           queryFn: (q) => q.eq(
                                             'email',
-                                            _model.emailFieldController.text,
+                                            _model
+                                                .emailFieldTextController.text,
                                           ),
                                         );
                                         shouldSetState = true;
@@ -692,9 +697,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             await actions.getFCMToken();
                                         shouldSetState = true;
                                         GoRouter.of(context).prepareAuthEvent();
-                                        if (_model
-                                                .passwordFieldController.text !=
-                                            _model.rePasswordFieldController
+                                        if (_model.passwordFieldTextController
+                                                .text !=
+                                            _model.rePasswordFieldTextController
                                                 .text) {
                                           ScaffoldMessenger.of(context)
                                               .showSnackBar(
@@ -710,8 +715,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         final user = await authManager
                                             .createAccountWithEmail(
                                           context,
-                                          _model.emailFieldController.text,
-                                          _model.passwordFieldController.text,
+                                          _model.emailFieldTextController.text,
+                                          _model
+                                              .passwordFieldTextController.text,
                                         );
                                         if (user == null) {
                                           return;

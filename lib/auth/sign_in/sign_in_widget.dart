@@ -30,20 +30,7 @@ class _SignInWidgetState extends State<SignInWidget>
   late StreamSubscription<bool> _keyboardVisibilitySubscription;
   bool _isKeyboardVisible = false;
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -59,12 +46,26 @@ class _SignInWidgetState extends State<SignInWidget>
       });
     }
 
-    _model.emailFieldController ??= TextEditingController();
+    _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
     _model.emailFieldFocusNode!.addListener(() => setState(() {}));
-    _model.passwordFieldController ??= TextEditingController();
+    _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
     _model.passwordFieldFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -183,10 +184,10 @@ class _SignInWidgetState extends State<SignInWidget>
                               key: _model.formKey,
                               autovalidateMode: AutovalidateMode.disabled,
                               child: TextFormField(
-                                controller: _model.emailFieldController,
+                                controller: _model.emailFieldTextController,
                                 focusNode: _model.emailFieldFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.emailFieldController',
+                                  '_model.emailFieldTextController',
                                   const Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
@@ -261,7 +262,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                 keyboardType: TextInputType.emailAddress,
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
-                                validator: _model.emailFieldControllerValidator
+                                validator: _model
+                                    .emailFieldTextControllerValidator
                                     .asValidator(context),
                               ),
                             ),
@@ -269,10 +271,10 @@ class _SignInWidgetState extends State<SignInWidget>
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 16.0, 0.0, 0.0),
                               child: TextFormField(
-                                controller: _model.passwordFieldController,
+                                controller: _model.passwordFieldTextController,
                                 focusNode: _model.passwordFieldFocusNode,
                                 onChanged: (_) => EasyDebounce.debounce(
-                                  '_model.passwordFieldController',
+                                  '_model.passwordFieldTextController',
                                   const Duration(milliseconds: 2000),
                                   () => setState(() {}),
                                 ),
@@ -359,7 +361,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                 cursorColor:
                                     FlutterFlowTheme.of(context).pinkButton,
                                 validator: _model
-                                    .passwordFieldControllerValidator
+                                    .passwordFieldTextControllerValidator
                                     .asValidator(context),
                                 inputFormatters: [
                                   FilteringTextInputFormatter.allow(
@@ -434,9 +436,10 @@ class _SignInWidgetState extends State<SignInWidget>
                                             .validate()) {
                                       return;
                                     }
-                                    if ((_model.emailFieldController.text ==
+                                    if ((_model.emailFieldTextController
+                                                    .text ==
                                                 '') &&
-                                        (_model.passwordFieldController
+                                        (_model.passwordFieldTextController
                                                     .text ==
                                                 '')) {
                                       setState(() {
@@ -448,7 +451,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                       if (shouldSetState) setState(() {});
                                       return;
                                     } else {
-                                      if (_model.emailFieldController.text ==
+                                      if (_model.emailFieldTextController
+                                                  .text ==
                                               '') {
                                         setState(() {
                                           _model.emptyFields = 0;
@@ -459,7 +463,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         if (shouldSetState) setState(() {});
                                         return;
                                       } else {
-                                        if (_model.passwordFieldController
+                                        if (_model.passwordFieldTextController
                                                     .text ==
                                                 '') {
                                           setState(() {
@@ -483,8 +487,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                     final user =
                                         await authManager.signInWithEmail(
                                       context,
-                                      _model.emailFieldController.text,
-                                      _model.passwordFieldController.text,
+                                      _model.emailFieldTextController.text,
+                                      _model.passwordFieldTextController.text,
                                     );
                                     if (user == null) {
                                       return;

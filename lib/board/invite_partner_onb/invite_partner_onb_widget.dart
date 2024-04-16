@@ -34,28 +34,30 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => InvitePartnerOnbModel());
 
-    _model.sendCodeFieldController ??= TextEditingController();
+    _model.sendCodeFieldTextController ??= TextEditingController();
     _model.sendCodeFieldFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -455,7 +457,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.sendCodeFieldController,
+                                          _model.sendCodeFieldTextController,
                                       focusNode: _model.sendCodeFieldFocusNode,
                                       autofocus: false,
                                       textInputAction: TextInputAction.next,
@@ -534,7 +536,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,
                                       validator: _model
-                                          .sendCodeFieldControllerValidator
+                                          .sendCodeFieldTextControllerValidator
                                           .asValidator(context),
                                     ),
                                   ),
@@ -584,7 +586,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 )
                                                 .eq(
                                                   'pair_code',
-                                                  _model.sendCodeFieldController
+                                                  _model
+                                                      .sendCodeFieldTextController
                                                       .text,
                                                 ),
                                           );

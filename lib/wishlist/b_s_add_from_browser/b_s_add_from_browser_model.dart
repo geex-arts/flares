@@ -17,9 +17,9 @@ class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for NameField widget.
   FocusNode? nameFieldFocusNode;
-  TextEditingController? nameFieldController;
-  String? Function(BuildContext, String?)? nameFieldControllerValidator;
-  String? _nameFieldControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameFieldTextController;
+  String? Function(BuildContext, String?)? nameFieldTextControllerValidator;
+  String? _nameFieldTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
     }
@@ -39,9 +39,10 @@ class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
   FormFieldController<String>? dropDownValueController;
   // State field(s) for DescriptionField widget.
   FocusNode? descriptionFieldFocusNode;
-  TextEditingController? descriptionFieldController;
-  String? Function(BuildContext, String?)? descriptionFieldControllerValidator;
-  String? _descriptionFieldControllerValidator(
+  TextEditingController? descriptionFieldTextController;
+  String? Function(BuildContext, String?)?
+      descriptionFieldTextControllerValidator;
+  String? _descriptionFieldTextControllerValidator(
       BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Field is required';
@@ -74,18 +75,19 @@ class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
 
   @override
   void initState(BuildContext context) {
-    nameFieldControllerValidator = _nameFieldControllerValidator;
-    descriptionFieldControllerValidator = _descriptionFieldControllerValidator;
+    nameFieldTextControllerValidator = _nameFieldTextControllerValidator;
+    descriptionFieldTextControllerValidator =
+        _descriptionFieldTextControllerValidator;
     saveToCollectionModel = createModel(context, () => PinkButtonModel());
   }
 
   @override
   void dispose() {
     nameFieldFocusNode?.dispose();
-    nameFieldController?.dispose();
+    nameFieldTextController?.dispose();
 
     descriptionFieldFocusNode?.dispose();
-    descriptionFieldController?.dispose();
+    descriptionFieldTextController?.dispose();
 
     saveToCollectionModel.dispose();
   }

@@ -24,32 +24,33 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'stackOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => NewPasswordModel());
 
-    _model.passwordFieldController ??= TextEditingController();
+    _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
     _model.passwordFieldFocusNode!.addListener(() => setState(() {}));
-    _model.rePasswordFieldController ??= TextEditingController();
+    _model.rePasswordFieldTextController ??= TextEditingController();
     _model.rePasswordFieldFocusNode ??= FocusNode();
     _model.rePasswordFieldFocusNode!.addListener(() => setState(() {}));
+    animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
   }
 
   @override
@@ -155,7 +156,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: _model.passwordFieldController,
+                    controller: _model.passwordFieldTextController,
                     focusNode: _model.passwordFieldFocusNode,
                     autofocus: false,
                     textInputAction: TextInputAction.next,
@@ -232,7 +233,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           useGoogleFonts: false,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).pinkButton,
-                    validator: _model.passwordFieldControllerValidator
+                    validator: _model.passwordFieldTextControllerValidator
                         .asValidator(context),
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]'))
@@ -277,7 +278,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: TextFormField(
-                    controller: _model.rePasswordFieldController,
+                    controller: _model.rePasswordFieldTextController,
                     focusNode: _model.rePasswordFieldFocusNode,
                     autofocus: false,
                     textInputAction: TextInputAction.next,
@@ -354,7 +355,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           useGoogleFonts: false,
                         ),
                     cursorColor: FlutterFlowTheme.of(context).pinkButton,
-                    validator: _model.rePasswordFieldControllerValidator
+                    validator: _model.rePasswordFieldTextControllerValidator
                         .asValidator(context),
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]'))
@@ -410,20 +411,21 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                         text: 'Reset Password',
                         currentAction: () async {
                           var shouldSetState = false;
-                          if ((_model.passwordFieldController.text == '') ||
-                              (_model.passwordFieldController.text.length <
+                          if ((_model.passwordFieldTextController.text ==
+                                      '') ||
+                              (_model.passwordFieldTextController.text.length <
                                   8)) {
                             setState(() {
                               _model.isWrongPassword = true;
                             });
-                          } else if (_model.passwordFieldController.text !=
-                              _model.rePasswordFieldController.text) {
+                          } else if (_model.passwordFieldTextController.text !=
+                              _model.rePasswordFieldTextController.text) {
                             setState(() {
                               _model.isNotMatch = true;
                             });
                           } else {
                             _model.isSuccess = await actions.changePassword(
-                              _model.rePasswordFieldController.text,
+                              _model.rePasswordFieldTextController.text,
                             );
                             shouldSetState = true;
                             if (_model.isSuccess!) {
