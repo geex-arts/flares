@@ -42,6 +42,24 @@ class FFAppState extends ChangeNotifier {
   set test(dynamic value) {
     _test = value;
   }
+
+  String _testUrl = 'https://www.discogs.com/ru/artist/5321901-Darkswoon';
+  String get testUrl => _testUrl;
+  set testUrl(String value) {
+    _testUrl = value;
+  }
+
+  String _previousUrl = '';
+  String get previousUrl => _previousUrl;
+  set previousUrl(String value) {
+    _previousUrl = value;
+  }
+
+  String _currentUrl = '';
+  String get currentUrl => _currentUrl;
+  set currentUrl(String value) {
+    _currentUrl = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
