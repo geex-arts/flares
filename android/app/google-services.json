@@ -7,47 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:949217339794:android:1943a11c1679c68e4ef94b",
+        "mobilesdk_app_id": "1:949217339794:android:640782355468b5c34ef94b",
         "android_client_info": {
-          "package_name": "com.eday"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCzfaQ3WA-DY62HBUfeQ23fVvnK5xU09ps"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:949217339794:android:4a20c6f25d89a3a14ef94b",
-        "android_client_info": {
-          "package_name": "com.flares"
-        }
-      },
-      "oauth_client": [],
-      "api_key": [
-        {
-          "current_key": "AIzaSyCzfaQ3WA-DY62HBUfeQ23fVvnK5xU09ps"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": []
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:949217339794:android:45eb34d5d1e0adc14ef94b",
-        "android_client_info": {
-          "package_name": "com.geexarts.flares"
+          "package_name": "com.geex.arts.flares"
         }
       },
       "oauth_client": [],

@@ -9,7 +9,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.geexarts.flares</string>
+	<string>com.geex.arts.flares</string>
 	<key>PROJECT_ID</key>
 	<string>eday-7c14d</string>
 	<key>STORAGE_BUCKET</key>
@@ -25,6 +25,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:949217339794:ios:a981dbeaca4a0b954ef94b</string>
+	<string>1:949217339794:ios:e3abcddd3e01992c4ef94b</string>
 </dict>
 </plist>
