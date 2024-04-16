@@ -47,10 +47,10 @@
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
-        <string>flares.com</string>
+        <string>flares</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>flares</string>
+        <string>com.geexarts.flares</string>
         </array>
         </dict>
     </array>

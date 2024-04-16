@@ -201,7 +201,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
                                             await Share.share(
-                                              'flares://flares.com${GoRouter.of(context).location}',
+                                              '',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
