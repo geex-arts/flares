@@ -356,6 +356,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   validator: _model
                                       .passwordFieldControllerValidator
                                       .asValidator(context),
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[a-zA-Z0-9]'))
+                                  ],
                                 ),
                               ),
                               if (_model.emptyFields != null)
@@ -492,6 +496,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   validator: _model
                                       .rePasswordFieldControllerValidator
                                       .asValidator(context),
+                                  inputFormatters: [
+                                    FilteringTextInputFormatter.allow(
+                                        RegExp('[a-zA-Z0-9]'))
+                                  ],
                                 ),
                               ),
                               if (_model.emptyFields != null)

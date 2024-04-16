@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -1132,6 +1133,31 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                     shouldSetState = true;
                                     if (_model.dropDownValue != null &&
                                         _model.dropDownValue != '') {
+                                      _model.selectedCollection =
+                                          await CollectionsTable().queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'uuid',
+                                          _model.dropDownValue,
+                                        ),
+                                      );
+                                      shouldSetState = true;
+                                      unawaited(
+                                        () async {
+                                          await WishesTable().update(
+                                            data: {
+                                              'visibily': _model
+                                                  .selectedCollection
+                                                  ?.first
+                                                  .visibility,
+                                            },
+                                            matchingRows: (rows) => rows.eq(
+                                              'uuid',
+                                              _model.createdWishRow?.uuid,
+                                            ),
+                                          );
+                                        }(),
+                                      );
+                                      shouldSetState = true;
                                       Navigator.pop(context);
 
                                       context.goNamed('My_Profile');

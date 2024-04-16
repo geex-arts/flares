@@ -67,6 +67,10 @@ class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
 
   // Stores action output result for [Backend Call - Insert Row] action in SaveToCollection widget.
   WishesRow? createdWishRow;
+  // Stores action output result for [Backend Call - Query Rows] action in SaveToCollection widget.
+  List<CollectionsRow>? selectedCollection;
+  // Stores action output result for [Backend Call - Update Row(s)] action in SaveToCollection widget.
+  List<WishesRow>? updatedRow;
 
   @override
   void initState(BuildContext context) {

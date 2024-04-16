@@ -1,4 +1,6 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -276,111 +278,166 @@ class _WishMainWidgetState extends State<WishMainWidget>
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
-                child: FutureBuilder<List<WishesRow>>(
-                  future: WishesTable().querySingleRow(
-                    queryFn: (q) => q
-                        .eq(
-                          'pair',
-                          FFAppState().pairID,
-                        )
-                        .eq(
-                          'copied_from',
-                          widget.selectedWishRow?.uuid,
-                        ),
-                  ),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: SpinKitPulse(
-                            color: FlutterFlowTheme.of(context).pinkButton,
-                            size: 50.0,
+              Builder(
+                builder: (context) => Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                  child: FutureBuilder<List<WishesRow>>(
+                    future: WishesTable().querySingleRow(
+                      queryFn: (q) => q
+                          .eq(
+                            'pair',
+                            FFAppState().pairID,
+                          )
+                          .eq(
+                            'copied_from',
+                            widget.selectedWishRow?.uuid,
                           ),
-                        ),
-                      );
-                    }
-                    List<WishesRow> askForADateWishesRowList = snapshot.data!;
-                    final askForADateWishesRow =
-                        askForADateWishesRowList.isNotEmpty
-                            ? askForADateWishesRowList.first
-                            : null;
-                    return wrapWithModel(
-                      model: _model.askForADateModel,
-                      updateCallback: () => setState(() {}),
-                      child: PinkButtonWidget(
-                        text: widget.isProfile ||
-                                (askForADateWishesRow != null) ||
-                                (widget.selectedWishRow?.pair ==
-                                    FFAppState().pairID)
-                            ? 'Ask for a Date'
-                            : 'Add to Wishlist',
-                        currentAction: () async {
-                          if (widget.isProfile ||
-                              (askForADateWishesRow != null)) {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return WebViewAware(
-                                  child: GestureDetector(
-                                    onTap: () => _model
-                                            .unfocusNode.canRequestFocus
-                                        ? FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode)
-                                        : FocusScope.of(context).unfocus(),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: SizedBox(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
-                                                0.6,
-                                        child: const BSAskDayWidget(),
-                                      ),
+                    ),
+                    builder: (context, snapshot) {
+                      // Customize what your widget looks like when it's loading.
+                      if (!snapshot.hasData) {
+                        return Center(
+                          child: SizedBox(
+                            width: 50.0,
+                            height: 50.0,
+                            child: SpinKitPulse(
+                              color: FlutterFlowTheme.of(context).pinkButton,
+                              size: 50.0,
+                            ),
+                          ),
+                        );
+                      }
+                      List<WishesRow> askForADateWishesRowList = snapshot.data!;
+                      final askForADateWishesRow =
+                          askForADateWishesRowList.isNotEmpty
+                              ? askForADateWishesRowList.first
+                              : null;
+                      return wrapWithModel(
+                        model: _model.askForADateModel,
+                        updateCallback: () => setState(() {}),
+                        child: PinkButtonWidget(
+                          text: widget.isProfile ||
+                                  (askForADateWishesRow != null) ||
+                                  (widget.selectedWishRow?.pair ==
+                                      FFAppState().pairID)
+                              ? 'Ask for a Date'
+                              : 'Add to Wishlist',
+                          currentAction: () async {
+                            if (widget.isProfile ||
+                                (askForADateWishesRow != null)) {
+                              _model.partnerRow = await UsersTable().queryRows(
+                                queryFn: (q) => q
+                                    .eq(
+                                      'pair',
+                                      FFAppState().pairID,
+                                    )
+                                    .neq(
+                                      'id',
+                                      currentUserUid,
                                     ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          } else {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return WebViewAware(
-                                  child: GestureDetector(
-                                    onTap: () => _model
-                                            .unfocusNode.canRequestFocus
-                                        ? FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode)
-                                        : FocusScope.of(context).unfocus(),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: SizedBox(
-                                        height:
-                                            MediaQuery.sizeOf(context).height *
+                              );
+                              if (_model.partnerRow!.isNotEmpty) {
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: SizedBox(
+                                            height: MediaQuery.sizeOf(context)
+                                                    .height *
                                                 0.6,
-                                        child: BSSaveToCollectionWidget(
-                                          selectedWishRow:
-                                              widget.selectedWishRow,
+                                            child: BSAskDayWidget(
+                                              selectedWishRow:
+                                                  widget.selectedWishRow!,
+                                              partnerID:
+                                                  _model.partnerRow!.first.id,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              } else {
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: const AlignmentDirectional(0.0, -1.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: WebViewAware(
+                                        child: GestureDetector(
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
+                                          child: const AlertDialogWarningWidget(
+                                            title: 'No partner selected !',
+                                            subtitle:
+                                                'Please add your partner from the profile',
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              }
+                            } else {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) {
+                                  return WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: SizedBox(
+                                          height: MediaQuery.sizeOf(context)
+                                                  .height *
+                                              0.6,
+                                          child: BSSaveToCollectionWidget(
+                                            selectedWishRow:
+                                                widget.selectedWishRow,
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-                          }
-                        },
-                      ),
-                    );
-                  },
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            }
+
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                  ),
                 ),
               ),
             ],

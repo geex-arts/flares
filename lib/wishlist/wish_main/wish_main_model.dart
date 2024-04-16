@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'wish_main_widget.dart' show WishMainWidget;
@@ -9,6 +10,8 @@ class WishMainModel extends FlutterFlowModel<WishMainWidget> {
   final unfocusNode = FocusNode();
   // Model for AskForADate.
   late PinkButtonModel askForADateModel;
+  // Stores action output result for [Backend Call - Query Rows] action in AskForADate widget.
+  List<UsersRow>? partnerRow;
 
   @override
   void initState(BuildContext context) {

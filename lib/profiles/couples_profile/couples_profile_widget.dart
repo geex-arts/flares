@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/floating_btn_widget.dart';
-import '/components/generate_with_a_i_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -990,6 +989,10 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                   'pair',
                                   widget.selectedPairID,
                                 )
+                                .eq(
+                                  'visibily',
+                                  true,
+                                )
                                 .order('created_at'),
                           ),
                           builder: (context, snapshot) {
@@ -1026,15 +1029,6 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                               ),
                             );
                           },
-                        ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24.0, 24.0, 24.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.generateWithAIModel,
-                            updateCallback: () => setState(() {}),
-                            child: const GenerateWithAIWidget(),
-                          ),
                         ),
                       ].addToEnd(const SizedBox(height: 120.0)),
                     ),

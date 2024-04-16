@@ -1,10 +1,13 @@
-import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'new_password_model.dart';
 export 'new_password_model.dart';
 
@@ -171,6 +174,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           FlutterFlowTheme.of(context).bodyMedium.override(
                                 fontFamily: 'Nuckle',
                                 color: FlutterFlowTheme.of(context).error,
+                                fontSize: 11.0,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
@@ -230,12 +234,12 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                     cursorColor: FlutterFlowTheme.of(context).pinkButton,
                     validator: _model.passwordFieldControllerValidator
                         .asValidator(context),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]'))
+                    ],
                   ),
                 ),
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
+                if (_model.isWrongPassword)
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
@@ -254,7 +258,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
-                              'Password must have 8 characters, including letters and numbers.',
+                              'Password must have at least 8 characters, including letters and numbers.',
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -292,6 +296,7 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           FlutterFlowTheme.of(context).bodyMedium.override(
                                 fontFamily: 'Nuckle',
                                 color: FlutterFlowTheme.of(context).error,
+                                fontSize: 11.0,
                                 letterSpacing: 0.0,
                                 useGoogleFonts: false,
                               ),
@@ -351,19 +356,19 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                     cursorColor: FlutterFlowTheme.of(context).pinkButton,
                     validator: _model.rePasswordFieldControllerValidator
                         .asValidator(context),
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp('[a-zA-Z0-9]'))
+                    ],
                   ),
                 ),
-                if (responsiveVisibility(
-                  context: context,
-                  phone: false,
-                ))
+                if (_model.isNotMatch)
                   Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Icon(
                           Icons.info,
@@ -371,43 +376,122 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           size: 16.0,
                         ),
                         Expanded(
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                12.0, 0.0, 0.0, 0.0),
-                            child: Text(
-                              'Password must have 8 characters, including letters and numbers.',
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    color: const Color(0x7FFFFFFF),
-                                    fontSize: 11.0,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
+                          child: Align(
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  12.0, 0.0, 0.0, 0.0),
+                              child: Text(
+                                'Passwords do not match',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      color: const Color(0x7FFFFFFF),
+                                      fontSize: 11.0,
+                                      letterSpacing: 0.0,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
                             ),
                           ),
                         ),
                       ],
                     ),
                   ),
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 23.0, 0.0, 0.0),
-                  child: wrapWithModel(
-                    model: _model.pinkButtonModel,
-                    updateCallback: () => setState(() {}),
-                    child: PinkButtonWidget(
-                      text: 'Reset Password',
-                      currentAction: () async {
-                        await UsersTable().update(
-                          data: {
-                            'email': _model.rePasswordFieldController.text,
-                          },
-                          matchingRows: (rows) => rows,
-                        );
+                Builder(
+                  builder: (context) => Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 23.0, 0.0, 0.0),
+                    child: wrapWithModel(
+                      model: _model.pinkButtonModel,
+                      updateCallback: () => setState(() {}),
+                      child: PinkButtonWidget(
+                        text: 'Reset Password',
+                        currentAction: () async {
+                          var shouldSetState = false;
+                          if ((_model.passwordFieldController.text == '') ||
+                              (_model.passwordFieldController.text.length <
+                                  8)) {
+                            setState(() {
+                              _model.isWrongPassword = true;
+                            });
+                          } else if (_model.passwordFieldController.text !=
+                              _model.rePasswordFieldController.text) {
+                            setState(() {
+                              _model.isNotMatch = true;
+                            });
+                          } else {
+                            _model.isSuccess = await actions.changePassword(
+                              _model.rePasswordFieldController.text,
+                            );
+                            shouldSetState = true;
+                            if (_model.isSuccess!) {
+                              await showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: const AlignmentDirectional(0.0, -1.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: const AlertDialogWarningWidget(
+                                          title: 'Success !',
+                                          subtitle:
+                                              'Your password has been changed successfully',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
 
-                        context.pushNamed('My_Profile');
-                      },
+                              context.safePop();
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (dialogContext) {
+                                  return Dialog(
+                                    elevation: 0,
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: const AlignmentDirectional(0.0, -1.0)
+                                        .resolve(Directionality.of(context)),
+                                    child: WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: const AlertDialogWarningWidget(
+                                          title: 'Something went wrong',
+                                          subtitle: 'Please try again later',
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+
+                              if (shouldSetState) setState(() {});
+                              return;
+                            }
+                          }
+
+                          if (shouldSetState) setState(() {});
+                        },
+                      ),
                     ),
                   ),
                 ),

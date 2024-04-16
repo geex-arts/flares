@@ -353,6 +353,10 @@ class _SignInWidgetState extends State<SignInWidget>
                                 validator: _model
                                     .passwordFieldControllerValidator
                                     .asValidator(context),
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                      RegExp('[a-zA-Z0-9]'))
+                                ],
                               ),
                             ),
                             Align(

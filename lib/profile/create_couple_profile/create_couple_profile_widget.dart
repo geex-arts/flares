@@ -478,8 +478,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
+                                            color: const Color(0xCD000000),
                                             child: CupertinoTheme(
                                               data: datePickedCupertinoTheme
                                                   .copyWith(
@@ -513,8 +512,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                                 maximumDate:
                                                     getCurrentTimestamp,
                                                 backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
+                                                    const Color(0xCD000000),
                                                 use24hFormat: false,
                                                 onDateTimeChanged:
                                                     (newDateTime) =>

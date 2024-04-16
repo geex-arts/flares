@@ -118,6 +118,10 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                                 'pair',
                                 FFAppState().pairID,
                               )
+                              .is_(
+                                'copied_from',
+                                null,
+                              )
                               .order('created_at'),
                         ),
                         builder: (context, snapshot) {
@@ -142,11 +146,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                             updateCallback: () => setState(() {}),
                             child: WishesListMainWidget(
                               isMyProfile: false,
-                              wishesRowsParam: wishesListMainWishesRowList
-                                  .where((e) =>
-                                      e.copiedFrom == null ||
-                                      e.copiedFrom == '')
-                                  .toList(),
+                              wishesRowsParam: wishesListMainWishesRowList,
                             ),
                           );
                         },

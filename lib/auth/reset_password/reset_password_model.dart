@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -8,7 +9,7 @@ import 'package:flutter/material.dart';
 class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
   ///  Local state fields for this page.
 
-  bool startTime = false;
+  bool startTimer = false;
 
   ///  State fields for stateful widgets in this page.
 
@@ -31,6 +32,8 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
 
   // Model for sendLinkButton.
   late PinkButtonModel sendLinkButtonModel;
+  // Stores action output result for [Backend Call - Query Rows] action in sendLinkButton widget.
+  List<UsersRow>? foundUserRow;
   // State field(s) for Timer widget.
   int timerMilliseconds = 60000;
   String timerValue = StopWatchTimer.getDisplayTime(

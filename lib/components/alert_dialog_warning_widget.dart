@@ -56,7 +56,7 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
       child: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(0.0),
+          borderRadius: BorderRadius.circular(16.0),
           child: BackdropFilter(
             filter: ImageFilter.blur(
               sigmaX: 16.0,

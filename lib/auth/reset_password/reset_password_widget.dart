@@ -1,4 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,6 +10,7 @@ import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'reset_password_model.dart';
 export 'reset_password_model.dart';
 
@@ -46,6 +49,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
     _model.emailFieldController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
+    _model.emailFieldFocusNode!.addListener(() => setState(() {}));
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -232,6 +236,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 .override(
                                   fontFamily: 'Nuckle',
                                   color: const Color(0x98FFFFFF),
+                                  fontSize: 11.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
@@ -289,48 +294,124 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               .asValidator(context),
                         ),
                       ),
-                      Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 23.0, 0.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.sendLinkButtonModel,
-                          updateCallback: () => setState(() {}),
-                          child: PinkButtonWidget(
-                            text: 'Send Link',
-                            currentAction: () async {
-                              HapticFeedback.vibrate();
-                              _model.timerController.onResetTimer();
+                      Builder(
+                        builder: (context) => Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 23.0, 0.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.sendLinkButtonModel,
+                            updateCallback: () => setState(() {}),
+                            child: PinkButtonWidget(
+                              text: 'Send Link',
+                              currentAction: () async {
+                                var shouldSetState = false;
+                                HapticFeedback.vibrate();
+                                _model.foundUserRow =
+                                    await UsersTable().queryRows(
+                                  queryFn: (q) => q.eq(
+                                    'email',
+                                    _model.emailFieldController.text,
+                                  ),
+                                );
+                                shouldSetState = true;
+                                if (_model.foundUserRow!.isEmpty) {
+                                  showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: const AlertDialogWarningWidget(
+                                              title: 'Email not found !',
+                                              subtitle:
+                                                  'We have not found specified Email in our database',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
 
-                              if (_model.startTime) {
-                                return;
-                              }
-
-                              if (_model.timerMilliseconds != 0) {
-                                if (_model.emailFieldController.text.isEmpty) {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text(
-                                        'Email required!',
-                                      ),
-                                    ),
-                                  );
+                                  if (shouldSetState) setState(() {});
                                   return;
                                 }
-                                await authManager.resetPassword(
-                                  email: _model.emailFieldController.text,
-                                  context: context,
-                                );
-                                _model.timerController.onStartTimer();
-                                setState(() {
-                                  _model.startTime = true;
-                                });
-                              }
-                            },
+                                if (!_model.startTimer) {
+                                  if (_model
+                                      .emailFieldController.text.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Email required!',
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  await authManager.resetPassword(
+                                    email: _model.emailFieldController.text,
+                                    context: context,
+                                  );
+                                  _model.timerController.onResetTimer();
+
+                                  _model.timerController.onStartTimer();
+                                  setState(() {
+                                    _model.startTimer = true;
+                                  });
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: const AlertDialogWarningWidget(
+                                              title:
+                                                  'Wait until you can resend the link !',
+                                              subtitle: '',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                }
+
+                                if (shouldSetState) setState(() {});
+                              },
+                            ),
                           ),
                         ),
                       ),
                       if (valueOrDefault<bool>(
-                        _model.startTime,
+                        _model.startTimer,
                         true,
                       ))
                         Padding(
@@ -341,17 +422,20 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Expanded(
-                                child: Text(
-                                  'The link was sent',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Nuckle',
-                                        color: const Color(0x7FFFFFFF),
-                                        fontSize: 12.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
-                                      ),
+                                child: Opacity(
+                                  opacity: _model.startTimer ? 1.0 : 0.0,
+                                  child: Text(
+                                    'The link was sent',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x7FFFFFFF),
+                                          fontSize: 12.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
                                 ),
                               ),
                               RichText(
@@ -396,6 +480,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   _model.timerMilliseconds = value;
                                   _model.timerValue = displayTime;
                                   if (shouldUpdate) setState(() {});
+                                },
+                                onEnded: () async {
+                                  setState(() {
+                                    _model.startTimer = false;
+                                  });
                                 },
                                 textAlign: TextAlign.start,
                                 style: FlutterFlowTheme.of(context)

@@ -278,6 +278,8 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                                   widget.selectedWishRow?.link,
                                               'copied_from':
                                                   widget.selectedWishRow?.uuid,
+                                              'visibily': currentCollectionItem
+                                                  .visibility,
                                             });
                                           }
                                           _model.updatePage(() {});
@@ -343,10 +345,13 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                     ),
                   ),
                   if (containerCollectionsRowList.isEmpty)
-                    wrapWithModel(
-                      model: _model.emptyCollectionsWidgetModel,
-                      updateCallback: () => setState(() {}),
-                      child: const EmptyCollectionsWidgetWidget(),
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, -1.0),
+                      child: wrapWithModel(
+                        model: _model.emptyCollectionsWidgetModel,
+                        updateCallback: () => setState(() {}),
+                        child: const EmptyCollectionsWidgetWidget(),
+                      ),
                     ),
                   Padding(
                     padding:

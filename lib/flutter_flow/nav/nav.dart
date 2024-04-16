@@ -120,7 +120,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             ),
             FFRoute(
               name: 'New_Password',
-              path: 'newPassword',
+              path: 'newPass',
               builder: (context, params) => const NewPasswordWidget(),
             ),
             FFRoute(

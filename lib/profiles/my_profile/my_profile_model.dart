@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/generate_with_a_i_widget.dart';
 import '/components/pink_button_widget.dart';
@@ -20,6 +21,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (parseSite)] action in My_Profile widget.
   ApiCallResponse? apiResultParseURL;
+  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  PairsInvitationsRow? pairInvitationRow;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
@@ -29,9 +32,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   // Model for wishesListMain component.
   late WishesListMainModel wishesListMainModel;
   // Model for generateWithAI component.
-  late GenerateWithAIModel generateWithAIModel1;
-  // Model for generateWithAI component.
-  late GenerateWithAIModel generateWithAIModel2;
+  late GenerateWithAIModel generateWithAIModel;
   // Model for tabBar component.
   late TabBarModel tabBarModel;
   // Model for floatingBtn component.
@@ -41,8 +42,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   void initState(BuildContext context) {
     pinkButtonModel = createModel(context, () => PinkButtonModel());
     wishesListMainModel = createModel(context, () => WishesListMainModel());
-    generateWithAIModel1 = createModel(context, () => GenerateWithAIModel());
-    generateWithAIModel2 = createModel(context, () => GenerateWithAIModel());
+    generateWithAIModel = createModel(context, () => GenerateWithAIModel());
     tabBarModel = createModel(context, () => TabBarModel());
     floatingBtnModel = createModel(context, () => FloatingBtnModel());
   }
@@ -52,8 +52,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
     unfocusNode.dispose();
     pinkButtonModel.dispose();
     wishesListMainModel.dispose();
-    generateWithAIModel1.dispose();
-    generateWithAIModel2.dispose();
+    generateWithAIModel.dispose();
     tabBarModel.dispose();
     floatingBtnModel.dispose();
   }

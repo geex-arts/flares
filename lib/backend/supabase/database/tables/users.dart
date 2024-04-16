@@ -40,4 +40,14 @@ class UsersRow extends SupabaseDataRow {
 
   String? get fcmToken => getField<String>('fcmToken');
   set fcmToken(String? value) => setField<String>('fcmToken', value);
+
+  DateTime get customerioLastUpdated =>
+      getField<DateTime>('customerio_last_updated')!;
+  set customerioLastUpdated(DateTime value) =>
+      setField<DateTime>('customerio_last_updated', value);
+
+  DateTime? get notificationsLastVisited =>
+      getField<DateTime>('notifications_last_visited');
+  set notificationsLastVisited(DateTime? value) =>
+      setField<DateTime>('notifications_last_visited', value);
 }

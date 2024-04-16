@@ -4,6 +4,12 @@ import 'new_password_widget.dart' show NewPasswordWidget;
 import 'package:flutter/material.dart';
 
 class NewPasswordModel extends FlutterFlowModel<NewPasswordWidget> {
+  ///  Local state fields for this page.
+
+  bool isNotMatch = false;
+
+  bool isWrongPassword = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -19,6 +25,8 @@ class NewPasswordModel extends FlutterFlowModel<NewPasswordWidget> {
   String? Function(BuildContext, String?)? rePasswordFieldControllerValidator;
   // Model for pinkButton component.
   late PinkButtonModel pinkButtonModel;
+  // Stores action output result for [Custom Action - changePassword] action in pinkButton widget.
+  bool? isSuccess;
 
   @override
   void initState(BuildContext context) {

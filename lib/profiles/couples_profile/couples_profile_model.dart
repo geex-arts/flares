@@ -1,6 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/floating_btn_widget.dart';
-import '/components/generate_with_a_i_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -21,8 +20,6 @@ class CouplesProfileModel extends FlutterFlowModel<CouplesProfileWidget> {
   ApiCallResponse? apiResultc16Copy;
   // Model for wishesList.
   late WishesListMainModel wishesListModel;
-  // Model for generateWithAI component.
-  late GenerateWithAIModel generateWithAIModel;
   // Model for tabBar component.
   late TabBarModel tabBarModel;
   // Model for floatingBtn component.
@@ -31,7 +28,6 @@ class CouplesProfileModel extends FlutterFlowModel<CouplesProfileWidget> {
   @override
   void initState(BuildContext context) {
     wishesListModel = createModel(context, () => WishesListMainModel());
-    generateWithAIModel = createModel(context, () => GenerateWithAIModel());
     tabBarModel = createModel(context, () => TabBarModel());
     floatingBtnModel = createModel(context, () => FloatingBtnModel());
   }
@@ -40,7 +36,6 @@ class CouplesProfileModel extends FlutterFlowModel<CouplesProfileWidget> {
   void dispose() {
     unfocusNode.dispose();
     wishesListModel.dispose();
-    generateWithAIModel.dispose();
     tabBarModel.dispose();
     floatingBtnModel.dispose();
   }

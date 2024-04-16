@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'dart:ui';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'b_s_new_collection_model.dart';
@@ -199,7 +200,13 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
+                  onChanged: (_) => EasyDebounce.debounce(
+                    '_model.textController',
+                    const Duration(milliseconds: 200),
+                    () => setState(() {}),
+                  ),
                   autofocus: false,
+                  textCapitalization: TextCapitalization.words,
                   textInputAction: TextInputAction.next,
                   obscureText: false,
                   decoration: InputDecoration(
@@ -309,6 +316,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                                   data: {
                                     'collection':
                                         _model.newCollectionRowCopy?.uuid,
+                                    'visibily':
+                                        _model.newCollectionRowCopy?.visibility,
                                   },
                                   matchingRows: (rows) => rows.eq(
                                     'uuid',
@@ -334,6 +343,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                               'photo': widget.selectedWishRow?.photo,
                               'link': widget.selectedWishRow?.link,
                               'copied_from': widget.selectedWishRow?.uuid,
+                              'visibily':
+                                  _model.newCollectionRowCopy?.visibility,
                             });
                           }
                         }

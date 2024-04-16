@@ -35,6 +35,8 @@ class PairsRow extends SupabaseDataRow {
   DateTime? get pairSince => getField<DateTime>('pair_since');
   set pairSince(DateTime? value) => setField<DateTime>('pair_since', value);
 
-  String? get pairCode => getField<String>('pair_code');
-  set pairCode(String? value) => setField<String>('pair_code', value);
+  DateTime get customerioLastUpdated =>
+      getField<DateTime>('customerio_last_updated')!;
+  set customerioLastUpdated(DateTime value) =>
+      setField<DateTime>('customerio_last_updated', value);
 }

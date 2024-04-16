@@ -3,10 +3,12 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:provider/provider.dart';
 import 'add_wish_reaction_model.dart';
 export 'add_wish_reaction_model.dart';
 
@@ -58,6 +60,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -429,12 +433,48 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
-                              await WishReactionsTable().insert({
-                                'user': currentUserUid,
-                                'rating': rowReactionImagesRow.rating,
-                                'whish': widget.selectedWishRow?.uuid,
-                              });
+                              _model.partnerRow = await UsersTable().queryRows(
+                                queryFn: (q) => q
+                                    .eq(
+                                      'pair',
+                                      FFAppState().pairID,
+                                    )
+                                    .neq(
+                                      'id',
+                                      currentUserUid,
+                                    ),
+                              );
+                              unawaited(
+                                () async {
+                                  await WishReactionsTable().insert({
+                                    'user': currentUserUid,
+                                    'rating': rowReactionImagesRow.rating,
+                                    'whish': widget.selectedWishRow?.uuid,
+                                  });
+                                }(),
+                              );
+                              if (_model.partnerRow!.isNotEmpty) {
+                                unawaited(
+                                  () async {
+                                    await NotificationsTable().insert({
+                                      'from_user': currentUserUid,
+                                      'to_user': _model.partnerRow?.first.id,
+                                      'type': 'reaction',
+                                      'details': <String, String>{
+                                        'wish_id': widget.selectedWishRow!.uuid,
+                                        'wish_image':
+                                            widget.selectedWishRow!.photo!,
+                                        'reaction_id': rowReactionImagesRow
+                                            .rating
+                                            .toString(),
+                                      },
+                                    });
+                                  }(),
+                                );
+                              }
                               context.safePop();
+
+                              setState(() {});
                             },
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 300),

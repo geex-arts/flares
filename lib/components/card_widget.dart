@@ -452,49 +452,29 @@ class _CardWidgetState extends State<CardWidget> {
                                 height: 30.0,
                                 decoration: BoxDecoration(
                                   color: const Color(0xFFA4A39E),
-                                  image: DecorationImage(
-                                    fit: BoxFit.cover,
-                                    image: Image.network(
-                                      widget
-                                          .reactionImagesRows![
-                                              containerWishReactionsRowList
-                                                  .where((e) =>
-                                                      e.user != currentUserUid)
-                                                  .toList()
-                                                  .first
-                                                  .rating!]
-                                          .imageLink!,
-                                    ).image,
-                                  ),
                                   shape: BoxShape.circle,
                                   border: Border.all(
                                     color: const Color(0xFFFF2C96),
                                     width: 1.0,
                                   ),
                                 ),
-                                child: Visibility(
-                                  visible: containerWishReactionsRowList
-                                      .where((e) => e.user == currentUserUid)
-                                      .toList()
-                                      .isNotEmpty,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(6.0),
-                                    child: Image.network(
-                                      widget
-                                          .reactionImagesRows![
-                                              (containerWishReactionsRowList
-                                                      .where((e) =>
-                                                          e.user !=
-                                                          currentUserUid)
-                                                      .toList()
-                                                      .first
-                                                      .rating!) -
-                                                  1]
-                                          .imageLink!,
-                                      width: 14.0,
-                                      height: 14.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(6.0),
+                                  child: Image.network(
+                                    widget
+                                        .reactionImagesRows![
+                                            (containerWishReactionsRowList
+                                                    .where((e) =>
+                                                        e.user !=
+                                                        currentUserUid)
+                                                    .toList()
+                                                    .first
+                                                    .rating!) -
+                                                1]
+                                        .imageLink!,
+                                    width: 14.0,
+                                    height: 14.0,
+                                    fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
