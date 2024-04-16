@@ -203,12 +203,10 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
         if (widget.url != null && widget.url != '') {
           _model.currentURL = widget.url;
           if (true) {
-            _model.apiResultParseURL = await ParseSiteCall.call(
+            _model.apiParseResult = await ParseSiteCall.call(
               url: _model.currentURL,
             );
-            _model.previousURL = _model.currentURL;
-            _model.currentURL = null;
-            if ((_model.apiResultParseURL?.succeeded ?? true)) {
+            if ((_model.apiParseResult?.succeeded ?? true)) {
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,
@@ -225,7 +223,7 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
                         padding: MediaQuery.viewInsetsOf(context),
                         child: BSAddFromBrowserWidget(
                           parsedURLJson:
-                              (_model.apiResultParseURL?.jsonBody ?? ''),
+                              (_model.apiParseResult?.jsonBody ?? ''),
                         ),
                       ),
                     ),
@@ -258,6 +256,9 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
                 },
               ).then((value) => setState(() {}));
             }
+
+            _model.previousURL = _model.currentURL;
+            _model.currentURL = null;
           }
         } else {
           await Future.delayed(const Duration(milliseconds: 2000));
