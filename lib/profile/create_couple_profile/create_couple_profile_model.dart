@@ -52,8 +52,6 @@ class CreateCoupleProfileModel
 
   // Stores action output result for [Backend Call - Insert Row] action in CreateCouple widget.
   PairsRow? newPairRow;
-  // Stores action output result for [Backend Call - Insert Row] action in CreateCouple widget.
-  PairsInvitationsRow? pairInvitationRow;
 
   @override
   void initState(BuildContext context) {

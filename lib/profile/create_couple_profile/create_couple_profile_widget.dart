@@ -7,7 +7,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -711,31 +711,11 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     );
                                   }(),
                                 );
-                                _model.pairInvitationRow =
-                                    await PairsInvitationsTable().insert({
-                                  'status': 'pending',
-                                  'pair_code': random_data.randomString(
-                                    9,
-                                    9,
-                                    true,
-                                    true,
-                                    true,
-                                  ),
-                                  'pair': _model.newPairRow?.uuid,
-                                });
-                                shouldSetState = true;
                                 FFAppState().pairID = _model.newPairRow!.uuid;
-
-                                context.pushNamed(
-                                  'Invite_Partner_Onb',
-                                  queryParameters: {
-                                    'pairInvitationRow': serializeParam(
-                                      _model.pairInvitationRow,
-                                      ParamType.SupabaseRow,
-                                    ),
-                                  }.withoutNulls,
+                                await action_blocks.pairInvitationRowAction(
+                                  context,
+                                  isFromProfile: false,
                                 );
-
                                 if (shouldSetState) setState(() {});
                               },
                             ),

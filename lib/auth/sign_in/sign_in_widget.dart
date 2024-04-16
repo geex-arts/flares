@@ -179,83 +179,91 @@ class _SignInWidgetState extends State<SignInWidget>
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            TextFormField(
-                              controller: _model.emailFieldController,
-                              focusNode: _model.emailFieldFocusNode,
-                              onChanged: (_) => EasyDebounce.debounce(
-                                '_model.emailFieldController',
-                                const Duration(milliseconds: 2000),
-                                () => setState(() {}),
-                              ),
-                              autofocus: false,
-                              textInputAction: TextInputAction.next,
-                              obscureText: false,
-                              decoration: InputDecoration(
-                                isDense: false,
-                                hintText: 'Email',
-                                hintStyle: FlutterFlowTheme.of(context)
-                                    .labelMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: const Color(0x98FFFFFF),
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
+                            Form(
+                              key: _model.formKey,
+                              autovalidateMode: AutovalidateMode.disabled,
+                              child: TextFormField(
+                                controller: _model.emailFieldController,
+                                focusNode: _model.emailFieldFocusNode,
+                                onChanged: (_) => EasyDebounce.debounce(
+                                  '_model.emailFieldController',
+                                  const Duration(milliseconds: 2000),
+                                  () => setState(() {}),
+                                ),
+                                autofocus: false,
+                                textInputAction: TextInputAction.next,
+                                obscureText: false,
+                                decoration: InputDecoration(
+                                  isDense: false,
+                                  hintText: 'Email',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color: const Color(0x98FFFFFF),
+                                        fontSize: 14.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                      ),
+                                  errorStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        fontSize: 11.0,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                      ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderSide: const BorderSide(
+                                      color: Color(0x00000000),
+                                      width: 1.0,
                                     ),
-                                errorStyle: FlutterFlowTheme.of(context)
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context)
+                                          .pinkButton,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                  errorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                  focusedErrorBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: FlutterFlowTheme.of(context).error,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(30.0),
+                                  ),
+                                  filled: true,
+                                  fillColor: const Color(0x0FFFFFFF),
+                                  contentPadding:
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 7.0, 20.0, 7.0),
+                                ),
+                                style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: FlutterFlowTheme.of(context).error,
+                                      color: FlutterFlowTheme.of(context).info,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
-                                    color: Color(0x00000000),
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).pinkButton,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                errorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: FlutterFlowTheme.of(context).error,
-                                    width: 1.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ),
-                                filled: true,
-                                fillColor: const Color(0x0FFFFFFF),
-                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 7.0, 20.0, 7.0),
+                                keyboardType: TextInputType.emailAddress,
+                                cursorColor:
+                                    FlutterFlowTheme.of(context).pinkButton,
+                                validator: _model.emailFieldControllerValidator
+                                    .asValidator(context),
                               ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    color: FlutterFlowTheme.of(context).info,
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                  ),
-                              keyboardType: TextInputType.emailAddress,
-                              cursorColor:
-                                  FlutterFlowTheme.of(context).pinkButton,
-                              validator: _model.emailFieldControllerValidator
-                                  .asValidator(context),
                             ),
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
@@ -421,6 +429,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                   currentAction: () async {
                                     var shouldSetState = false;
                                     HapticFeedback.lightImpact();
+                                    if (_model.formKey.currentState == null ||
+                                        !_model.formKey.currentState!
+                                            .validate()) {
+                                      return;
+                                    }
                                     if ((_model.emailFieldController.text ==
                                                 '') &&
                                         (_model.passwordFieldController

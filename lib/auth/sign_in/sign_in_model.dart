@@ -14,10 +14,22 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  final formKey = GlobalKey<FormState>();
   // State field(s) for EmailField widget.
   FocusNode? emailFieldFocusNode;
   TextEditingController? emailFieldController;
   String? Function(BuildContext, String?)? emailFieldControllerValidator;
+  String? _emailFieldControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (!RegExp(kTextValidatorEmailRegex).hasMatch(val)) {
+      return 'Invalid email entered';
+    }
+    return null;
+  }
+
   // State field(s) for PasswordField widget.
   FocusNode? passwordFieldFocusNode;
   TextEditingController? passwordFieldController;
@@ -32,6 +44,7 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
 
   @override
   void initState(BuildContext context) {
+    emailFieldControllerValidator = _emailFieldControllerValidator;
     passwordFieldVisibility = false;
     nextButtonModel = createModel(context, () => PinkButtonModel());
   }

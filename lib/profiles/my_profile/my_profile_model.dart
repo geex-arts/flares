@@ -1,5 +1,4 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/generate_with_a_i_widget.dart';
 import '/components/pink_button_widget.dart';
@@ -21,8 +20,6 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (parseSite)] action in My_Profile widget.
   ApiCallResponse? apiResultParseURL;
-  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
-  PairsInvitationsRow? pairInvitationRow;
   // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
@@ -35,6 +32,7 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   late GenerateWithAIModel generateWithAIModel;
   // Model for tabBar component.
   late TabBarModel tabBarModel;
+  String currentPageLink = '';
   // Model for floatingBtn component.
   late FloatingBtnModel floatingBtnModel;
 

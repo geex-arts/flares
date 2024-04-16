@@ -544,7 +544,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                         ).then((value) => setState(() {}));
 
                         Navigator.pop(context);
-                        Navigator.pop(context);
+                        context.safePop();
 
                         setState(() {});
                       },

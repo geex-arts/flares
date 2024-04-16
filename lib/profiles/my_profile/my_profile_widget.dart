@@ -14,7 +14,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/actions/actions.dart' as action_blocks;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -554,43 +554,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                             .transparent,
                                                                     onTap:
                                                                         () async {
-                                                                      _model.pairInvitationRow =
-                                                                          await PairsInvitationsTable()
-                                                                              .insert({
-                                                                        'status':
-                                                                            'pending',
-                                                                        'pair_code':
-                                                                            random_data.randomString(
-                                                                          9,
-                                                                          9,
-                                                                          true,
-                                                                          true,
-                                                                          true,
-                                                                        ),
-                                                                        'pair':
-                                                                            FFAppState().pairID,
-                                                                      });
-
-                                                                      context
-                                                                          .pushNamed(
-                                                                        'Invite_Partner_Onb',
-                                                                        queryParameters:
-                                                                            {
-                                                                          'pairInvitationRow':
-                                                                              serializeParam(
-                                                                            _model.pairInvitationRow,
-                                                                            ParamType.SupabaseRow,
-                                                                          ),
-                                                                          'isFromProfile':
-                                                                              serializeParam(
+                                                                      await action_blocks
+                                                                          .pairInvitationRowAction(
+                                                                        context,
+                                                                        isFromProfile:
                                                                             true,
-                                                                            ParamType.bool,
-                                                                          ),
-                                                                        }.withoutNulls,
                                                                       );
-
-                                                                      setState(
-                                                                          () {});
                                                                     },
                                                                     child:
                                                                         Container(
@@ -1747,8 +1716,14 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          _model.currentPageLink =
+                                              await generateCurrentPageLink(
+                                            context,
+                                            isShortLink: false,
+                                          );
+
                                           await Share.share(
-                                            '#',
+                                            _model.currentPageLink,
                                             sharePositionOrigin:
                                                 getWidgetBoundingBox(context),
                                           );

@@ -4,7 +4,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
-import '/flutter_flow/random_data_util.dart' as random_data;
+import '/actions/actions.dart' as action_blocks;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -258,46 +258,12 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
-                                                              _model.pairInvitationRow =
-                                                                  await PairsInvitationsTable()
-                                                                      .insert({
-                                                                'status':
-                                                                    'pending',
-                                                                'pair_code':
-                                                                    random_data
-                                                                        .randomString(
-                                                                  9,
-                                                                  9,
-                                                                  true,
-                                                                  true,
-                                                                  true,
-                                                                ),
-                                                                'pair':
-                                                                    FFAppState()
-                                                                        .pairID,
-                                                              });
-
-                                                              context.pushNamed(
-                                                                'Invite_Partner_Onb',
-                                                                queryParameters:
-                                                                    {
-                                                                  'pairInvitationRow':
-                                                                      serializeParam(
-                                                                    _model
-                                                                        .pairInvitationRow,
-                                                                    ParamType
-                                                                        .SupabaseRow,
-                                                                  ),
-                                                                  'isFromProfile':
-                                                                      serializeParam(
+                                                              await action_blocks
+                                                                  .pairInvitationRowAction(
+                                                                context,
+                                                                isFromProfile:
                                                                     true,
-                                                                    ParamType
-                                                                        .bool,
-                                                                  ),
-                                                                }.withoutNulls,
                                                               );
-
-                                                              setState(() {});
                                                             },
                                                             child: SizedBox(
                                                               width: 100.0,
@@ -912,34 +878,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            _model.pairInvitationRow2 =
-                                await PairsInvitationsTable().insert({
-                              'status': 'pending',
-                              'pair_code': random_data.randomString(
-                                9,
-                                9,
-                                true,
-                                true,
-                                true,
-                              ),
-                              'pair': FFAppState().pairID,
-                            });
-
-                            context.pushNamed(
-                              'Invite_Partner_Onb',
-                              queryParameters: {
-                                'pairInvitationRow': serializeParam(
-                                  _model.pairInvitationRow2,
-                                  ParamType.SupabaseRow,
-                                ),
-                                'isFromProfile': serializeParam(
-                                  true,
-                                  ParamType.bool,
-                                ),
-                              }.withoutNulls,
+                            await action_blocks.pairInvitationRowAction(
+                              context,
+                              isFromProfile: true,
                             );
-
-                            setState(() {});
                           },
                           child: Container(
                             width: double.infinity,
