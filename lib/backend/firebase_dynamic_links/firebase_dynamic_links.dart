@@ -5,7 +5,7 @@ import '../../flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 
 const _kDynamicLinksUrl = 'https://flaresapp.page.link';
-const _kAppBundleId = 'com.geexarts.flares';
+const _kAppBundleId = 'com.geex.arts.flares';
 
 Future<String> generateCurrentPageLink(
   BuildContext context, {

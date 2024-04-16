@@ -50,7 +50,7 @@
         <string>flares</string>
         <key>CFBundleURLSchemes</key>
         <array>
-        <string>com.geexarts.flares</string>
+        <string>com.geex.arts.flares</string>
         </array>
         </dict>
     </array>
