@@ -81,11 +81,17 @@ class _MyAppState extends State<MyApp> {
     //should open Create_wish screen with url props
     _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
         .listen((List<SharedFile> value) {
-      final url = value.map((f) => f.value).join(",");
 
-      print("Shared: getMediaStream ${url}");
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
 
-      _router.go('/myProfileCopy?url=${Uri.encodeComponent(url)}');
+      final url = Uri.parse(urlToParse).queryParameters['url'] ?? '';
+      print(url + " url");
+
+      if (url.isNotEmpty) {
+        _router.go('/myProfileCopy?url=${Uri.encodeComponent(url)}');
+      }
 
     }, onError: (err) {
       print("getIntentDataStream error: $err");
@@ -95,7 +101,12 @@ class _MyAppState extends State<MyApp> {
     FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
       print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
 
-      final url = value.map((f) => f.value).join(",");
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = Uri.parse(urlToParse).queryParameters['url'] ?? '';
+      print(url + " url");
 
       if (url.isNotEmpty) {
         _router.go('/myProfileCopy?url=${Uri.encodeComponent(url)}');
