@@ -6,6 +6,21 @@ import 'package:flutter/material.dart';
 
 class BSCreateCoupleIdeasWithAIModel
     extends FlutterFlowModel<BSCreateCoupleIdeasWithAIWidget> {
+  ///  Local state fields for this component.
+
+  List<String> selectedCategoriesNames = [];
+  void addToSelectedCategoriesNames(String item) =>
+      selectedCategoriesNames.add(item);
+  void removeFromSelectedCategoriesNames(String item) =>
+      selectedCategoriesNames.remove(item);
+  void removeAtIndexFromSelectedCategoriesNames(int index) =>
+      selectedCategoriesNames.removeAt(index);
+  void insertAtIndexInSelectedCategoriesNames(int index, String item) =>
+      selectedCategoriesNames.insert(index, item);
+  void updateSelectedCategoriesNamesAtIndex(
+          int index, Function(String) updateFn) =>
+      selectedCategoriesNames[index] = updateFn(selectedCategoriesNames[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // Model for Generate.

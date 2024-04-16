@@ -724,6 +724,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           'email': currentUserEmail,
                                           'fcmToken': _model.fcmToken,
                                         });
+                                        await actions.initializeCustomerIo(
+                                          currentUserEmail,
+                                        );
 
                                         context.goNamedAuth(
                                             'Create_Couple_Profile',

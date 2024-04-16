@@ -502,6 +502,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                     _model.fcmToken =
                                         await actions.getFCMToken();
                                     shouldSetState = true;
+                                    await actions.initializeCustomerIo(
+                                      currentUserEmail,
+                                    );
                                     await UsersTable().update(
                                       data: {
                                         'fcmToken': _model.fcmToken,

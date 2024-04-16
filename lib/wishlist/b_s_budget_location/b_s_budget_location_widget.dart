@@ -12,7 +12,12 @@ import 'b_s_budget_location_model.dart';
 export 'b_s_budget_location_model.dart';
 
 class BSBudgetLocationWidget extends StatefulWidget {
-  const BSBudgetLocationWidget({super.key});
+  const BSBudgetLocationWidget({
+    super.key,
+    required this.selectedCategories,
+  });
+
+  final String? selectedCategories;
 
   @override
   State<BSBudgetLocationWidget> createState() => _BSBudgetLocationWidgetState();

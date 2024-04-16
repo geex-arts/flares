@@ -4,8 +4,10 @@ import '/components/notifications_list_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'notifications_model.dart';
@@ -43,6 +45,24 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => NotificationsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      unawaited(
+        () async {
+          await UsersTable().update(
+            data: {
+              'notifications_last_visited':
+                  supaSerialize<DateTime>(getCurrentTimestamp),
+            },
+            matchingRows: (rows) => rows.eq(
+              'id',
+              currentUserUid,
+            ),
+          );
+        }(),
+      );
+    });
   }
 
   @override
