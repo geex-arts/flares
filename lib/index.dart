@@ -39,5 +39,5 @@ export '/profile/invite_partner/invite_partner_widget.dart'
     show InvitePartnerWidget;
 export '/profiles/category_p/category_p_widget.dart' show CategoryPWidget;
 export '/profiles/explore/explore_widget.dart' show ExploreWidget;
-export '/profiles/my_profile_copy/my_profile_copy_widget.dart'
-    show MyProfileCopyWidget;
+export '/profiles/add_from_browser/add_from_browser_widget.dart'
+    show AddFromBrowserWidget;

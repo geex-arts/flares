@@ -239,6 +239,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Create_wish',
               path: 'createWish',
+              requireAuth: true,
               builder: (context, params) => CreateWishWidget(
                 url: params.getParam(
                   'url',
@@ -277,9 +278,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => const ExploreWidget(),
             ),
             FFRoute(
-              name: 'My_ProfileCopy',
-              path: 'myProfileCopy',
-              builder: (context, params) => MyProfileCopyWidget(
+              name: 'addFromBrowser',
+              path: 'addFromBrowser',
+              builder: (context, params) => AddFromBrowserWidget(
                 url: params.getParam(
                   'url',
                   ParamType.String,

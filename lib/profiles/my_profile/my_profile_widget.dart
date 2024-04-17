@@ -1787,7 +1787,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed('My_ProfileCopy');
+                                context.pushNamed(
+                                  'addFromBrowser',
+                                  queryParameters: {
+                                    'url': serializeParam(
+                                      FFAppState().testUrl,
+                                      ParamType.String,
+                                    ),
+                                  }.withoutNulls,
+                                );
                               },
                               child: Text(
                                 'Wishlist',
