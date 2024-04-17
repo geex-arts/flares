@@ -43,7 +43,7 @@ class FFAppState extends ChangeNotifier {
     _test = value;
   }
 
-  String _testUrl = 'https://www.discogs.com/ru/artist/5321901-Darkswoon';
+  String _testUrl = '';
   String get testUrl => _testUrl;
   set testUrl(String value) {
     _testUrl = value;

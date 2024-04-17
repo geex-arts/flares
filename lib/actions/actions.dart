@@ -79,7 +79,7 @@ Future loadFromBrowserAction(
       FFAppState().currentUrl = url;
       if (FFAppState().currentUrl != FFAppState().previousUrl) {
         apiParseResult = await ParseSiteCall.call(
-          url: FFAppState().testUrl,
+          url: url,
         );
         if ((apiParseResult.succeeded ?? true)) {
           await showModalBottomSheet(
