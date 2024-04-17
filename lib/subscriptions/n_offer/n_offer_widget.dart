@@ -270,7 +270,8 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                           text: 'Continue',
                           currentAction: () async {
                             _model.result = await revenue_cat.purchasePackage(
-                                revenue_cat.offerings!.current!.identifier);
+                                revenue_cat
+                                    .offerings!.current!.monthly!.identifier);
                             Navigator.pop(context);
 
                             setState(() {});
