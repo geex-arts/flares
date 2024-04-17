@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/subscriptions/n_offer/n_offer_widget.dart';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -798,6 +799,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                   child: PinkButtonWidget(
                     text: 'Continue',
                     currentAction: () async {
+                      _model.test = await revenue_cat.purchasePackage(
+                          revenue_cat.offerings!.current!.monthly!.identifier);
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,
@@ -817,6 +820,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                           );
                         },
                       ).then((value) => safeSetState(() {}));
+
+                      setState(() {});
                     },
                   ),
                 ),

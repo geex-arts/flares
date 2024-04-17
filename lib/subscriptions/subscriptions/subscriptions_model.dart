@@ -9,6 +9,8 @@ class SubscriptionsModel extends FlutterFlowModel<SubscriptionsWidget> {
   final unfocusNode = FocusNode();
   // Model for ContinueButton.
   late PinkButtonModel continueButtonModel;
+  // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
+  bool? test;
 
   @override
   void initState(BuildContext context) {
