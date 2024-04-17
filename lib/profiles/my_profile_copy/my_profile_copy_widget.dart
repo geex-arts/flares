@@ -1573,20 +1573,23 @@ class _MyProfileCopyWidgetState extends State<MyProfileCopyWidget>
                             color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 4.0, 8.0, 0.0),
-                            child: Text(
-                              'Wishlist Copy',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.4,
-                                  ),
+                          child: Visibility(
+                            visible: widget.url != null && widget.url != '',
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 4.0, 8.0, 0.0),
+                              child: Text(
+                                widget.url!,
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      useGoogleFonts: false,
+                                      lineHeight: 1.4,
+                                    ),
+                              ),
                             ),
                           ),
                         ),

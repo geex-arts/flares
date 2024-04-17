@@ -76,7 +76,9 @@ Future loadFromBrowserAction(
 
   while (true) {
     if (url != null && url != '') {
-      FFAppState().currentUrl = url;
+      FFAppState().update(() {
+        FFAppState().currentUrl = url;
+      });
       if (FFAppState().currentUrl != FFAppState().previousUrl) {
         apiParseResult = await ParseSiteCall.call(
           url: url,
