@@ -20,6 +20,8 @@ class NOfferModel extends FlutterFlowModel<NOfferWidget> {
 
   // Model for ContinueBtn.
   late PinkButtonModel continueBtnModel;
+  // Stores action output result for [RevenueCat - Purchase] action in ContinueBtn widget.
+  bool? result;
 
   @override
   void initState(BuildContext context) {

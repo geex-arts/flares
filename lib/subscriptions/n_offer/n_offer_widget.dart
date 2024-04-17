@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'n_offer_model.dart';
@@ -268,7 +269,11 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                         child: PinkButtonWidget(
                           text: 'Continue',
                           currentAction: () async {
+                            _model.result = await revenue_cat
+                                .purchasePackage('flares:flares-monthly');
                             Navigator.pop(context);
+
+                            setState(() {});
                           },
                         ),
                       ),

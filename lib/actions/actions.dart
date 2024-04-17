@@ -99,7 +99,7 @@ Future loadFromBrowserAction(
             },
           );
         } else {
-          showDialog(
+          await showDialog(
             context: context,
             builder: (dialogContext) {
               return Dialog(
