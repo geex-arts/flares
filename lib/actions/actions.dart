@@ -79,7 +79,7 @@ Future loadFromBrowserAction(
       FFAppState().update(() {
         FFAppState().currentUrl = url;
       });
-      if (FFAppState().currentUrl != FFAppState().previousUrl) {
+      if (true) {
         apiParseResult = await ParseSiteCall.call(
           url: url,
         );
@@ -110,10 +110,10 @@ Future loadFromBrowserAction(
                 backgroundColor: Colors.transparent,
                 alignment: const AlignmentDirectional(0.0, -1.0)
                     .resolve(Directionality.of(context)),
-                child: const WebViewAware(
+                child: WebViewAware(
                   child: AlertDialogWarningWidget(
                     title: 'Something went wrong',
-                    subtitle: 'Please try again later',
+                    subtitle: (apiParseResult?.bodyText ?? ''),
                   ),
                 ),
               );
