@@ -33,6 +33,7 @@ void main() async {
   await revenue_cat.initialize(
     "",
     "goog_YwrPlXjJHzkEKJPJGsDIWrubbCP",
+    debugLogEnabled: true,
     loadDataAfterLaunch: true,
   );
 
