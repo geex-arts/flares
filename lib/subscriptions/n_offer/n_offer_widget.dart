@@ -269,8 +269,8 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                         child: PinkButtonWidget(
                           text: 'Continue',
                           currentAction: () async {
-                            _model.result = await revenue_cat
-                                .purchasePackage('flares-monthly');
+                            _model.result = await revenue_cat.purchasePackage(
+                                revenue_cat.offerings!.current!.identifier);
                             Navigator.pop(context);
 
                             setState(() {});
