@@ -22,7 +22,7 @@ void main() async {
   await initFirebase();
 
   // Start initial custom actions code
-  await actions.initializeFirebase();
+  await actions.setForegroundMessages();
   // End initial custom actions code
 
   await SupaFlow.initialize();
