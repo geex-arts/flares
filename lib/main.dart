@@ -86,11 +86,10 @@ class _MyAppState extends State<MyApp> {
       final urlToParse = value.map((f) => f.value).join(",");
       //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
 
-      final url = Uri.parse(urlToParse).queryParameters['url'] ?? '';
-      print(url + " url");
+      final url = value.map((f) => f.value).join(",");
 
       if (url.isNotEmpty) {
-        _router.go('/myProfileCopy?url=${Uri.encodeComponent(url)}');
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
       }
 
     }, onError: (err) {
@@ -105,11 +104,10 @@ class _MyAppState extends State<MyApp> {
       final urlToParse = value.map((f) => f.value).join(",");
       //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
 
-      final url = Uri.parse(urlToParse).queryParameters['url'] ?? '';
-      print(url + " url");
+      final url = value.map((f) => f.value).join(",");
 
       if (url.isNotEmpty) {
-        _router.go('/myProfileCopy?url=${Uri.encodeComponent(url)}');
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
       }
     });
 
