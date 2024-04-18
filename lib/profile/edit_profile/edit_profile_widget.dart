@@ -267,8 +267,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             return Container(
                                               width: 120.0,
                                               height: 120.0,
-                                              decoration: const BoxDecoration(
-                                                color: Color(0x19FFFFFF),
+                                              decoration: BoxDecoration(
+                                                color: const Color(0x19FFFFFF),
+                                                image: DecorationImage(
+                                                  fit: BoxFit.cover,
+                                                  image: Image.asset(
+                                                    'assets/images/emptyavatar.png',
+                                                  ).image,
+                                                ),
                                                 shape: BoxShape.circle,
                                               ),
                                             );

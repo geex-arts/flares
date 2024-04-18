@@ -18,9 +18,11 @@ class BSSaveToCollectionWidget extends StatefulWidget {
   const BSSaveToCollectionWidget({
     super.key,
     this.selectedWishRow,
-  });
+    bool? isFromWebview,
+  }) : isFromWebview = isFromWebview ?? false;
 
   final WishesRow? selectedWishRow;
+  final bool isFromWebview;
 
   @override
   State<BSSaveToCollectionWidget> createState() =>
@@ -95,9 +97,11 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
             List<CollectionsRow> containerCollectionsRowList = snapshot.data!;
             return Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color(0x18F2F1F3),
-                borderRadius: BorderRadius.only(
+              decoration: BoxDecoration(
+                color: widget.isFromWebview
+                    ? const Color(0xFF33393C)
+                    : const Color(0x18F2F1F3),
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
                   topLeft: Radius.circular(32.0),
@@ -136,9 +140,11 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                     thickness: 1.0,
                     color: Color(0x0CF2F1F3),
                   ),
-                  Expanded(
+                  Container(
+                    height: 300.0,
+                    decoration: const BoxDecoration(),
                     child: Column(
-                      mainAxisSize: MainAxisSize.max,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         if (containerCollectionsRowList.isNotEmpty)
                           Padding(
@@ -228,7 +234,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                             ),
                           ),
                         if (containerCollectionsRowList.isNotEmpty)
-                          Expanded(
+                          Flexible(
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 0.0),
@@ -345,13 +351,10 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                     ),
                   ),
                   if (containerCollectionsRowList.isEmpty)
-                    Align(
-                      alignment: const AlignmentDirectional(0.0, -1.0),
-                      child: wrapWithModel(
-                        model: _model.emptyCollectionsWidgetModel,
-                        updateCallback: () => setState(() {}),
-                        child: const EmptyCollectionsWidgetWidget(),
-                      ),
+                    wrapWithModel(
+                      model: _model.emptyCollectionsWidgetModel,
+                      updateCallback: () => setState(() {}),
+                      child: const EmptyCollectionsWidgetWidget(),
                     ),
                   Padding(
                     padding:
@@ -389,7 +392,9 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                 return WebViewAware(
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: const BSNewCollectionWidget(),
+                                    child: const BSNewCollectionWidget(
+                                      isFromWebview: true,
+                                    ),
                                   ),
                                 );
                               },

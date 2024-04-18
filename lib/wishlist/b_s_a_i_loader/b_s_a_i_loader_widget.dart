@@ -1,10 +1,8 @@
+import '/components/loader_placeholder_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/wishlist/b_s_a_i_wishlist/b_s_a_i_wishlist_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_a_i_loader_model.dart';
 export 'b_s_a_i_loader_model.dart';
 
@@ -28,26 +26,6 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAILoaderModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      await Future.delayed(const Duration(milliseconds: 3000));
-      Navigator.pop(context);
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        enableDrag: false,
-        context: context,
-        builder: (context) {
-          return WebViewAware(
-            child: Padding(
-              padding: MediaQuery.viewInsetsOf(context),
-              child: const BSAIWishlistWidget(),
-            ),
-          );
-        },
-      ).then((value) => safeSetState(() {}));
-    });
   }
 
   @override
@@ -114,11 +92,10 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
                 color: Color(0x0CF2F1F3),
               ),
               const Spacer(),
-              Image.asset(
-                'assets/images/logo.webp',
-                width: 155.0,
-                height: 157.0,
-                fit: BoxFit.cover,
+              wrapWithModel(
+                model: _model.loaderPlaceholderModel,
+                updateCallback: () => setState(() {}),
+                child: const LoaderPlaceholderWidget(),
               ),
               const Spacer(),
             ],

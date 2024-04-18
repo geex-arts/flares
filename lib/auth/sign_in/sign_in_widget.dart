@@ -16,7 +16,12 @@ import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
 class SignInWidget extends StatefulWidget {
-  const SignInWidget({super.key});
+  const SignInWidget({
+    super.key,
+    this.pairCode,
+  });
+
+  final String? pairCode;
 
   @override
   State<SignInWidget> createState() => _SignInWidgetState();

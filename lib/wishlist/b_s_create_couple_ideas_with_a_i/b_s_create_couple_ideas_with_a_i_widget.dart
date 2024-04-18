@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_budget_location/b_s_budget_location_widget.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -97,132 +98,157 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
-              Container(
-                decoration: const BoxDecoration(),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                  child: FutureBuilder<List<CollectionsRow>>(
-                    future: CollectionsTable().queryRows(
-                      queryFn: (q) => q
-                          .is_(
-                            'parent',
-                            null,
-                          )
-                          .eq(
-                            'visibility',
-                            true,
-                          ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: SpinKitPulse(
-                              color: FlutterFlowTheme.of(context).pinkButton,
-                              size: 50.0,
-                            ),
-                          ),
-                        );
-                      }
-                      List<CollectionsRow> wrapCollectionsRowList =
-                          snapshot.data!;
-                      return Wrap(
-                        spacing: 5.0,
-                        runSpacing: 5.0,
-                        alignment: WrapAlignment.start,
-                        crossAxisAlignment: WrapCrossAlignment.start,
-                        direction: Axis.horizontal,
-                        runAlignment: WrapAlignment.start,
-                        verticalDirection: VerticalDirection.down,
-                        clipBehavior: Clip.none,
-                        children: List.generate(wrapCollectionsRowList.length,
-                            (wrapIndex) {
-                          final wrapCollectionsRow =
-                              wrapCollectionsRowList[wrapIndex];
-                          return InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              if (_model.selectedCategoriesNames
-                                  .contains(wrapCollectionsRow.name)) {
-                                setState(() {
-                                  _model.removeFromSelectedCategoriesNames(
-                                      wrapCollectionsRow.name!);
-                                });
-                              } else {
-                                setState(() {
-                                  _model.addToSelectedCategoriesNames(
-                                      wrapCollectionsRow.name!);
-                                });
-                              }
-                            },
-                            child: Container(
-                              height: 45.0,
-                              decoration: BoxDecoration(
-                                color: _model.selectedCategoriesNames
-                                        .contains(wrapCollectionsRow.name)
-                                    ? FlutterFlowTheme.of(context)
-                                        .secondaryBackground
-                                    : const Color(0x0DFFFFFF),
-                                borderRadius: BorderRadius.circular(100.0),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  if (wrapCollectionsRow.photo != null &&
-                                      wrapCollectionsRow.photo != '')
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          3.0, 0.0, 0.0, 0.0),
-                                      child: Container(
-                                        width: 39.0,
-                                        height: 39.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          wrapCollectionsRow.photo!,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                    ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        7.0, 0.0, 13.0, 0.0),
-                                    child: Text(
-                                      wrapCollectionsRow.name!,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: _model
-                                                    .selectedCategoriesNames
-                                                    .contains(
-                                                        wrapCollectionsRow.name)
-                                                ? FlutterFlowTheme.of(context)
-                                                    .primaryText
-                                                : FlutterFlowTheme.of(context)
-                                                    .secondaryBackground,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          );
-                        }),
-                      );
-                    },
+              FutureBuilder<List<CollectionsRow>>(
+                future: CollectionsTable().queryRows(
+                  queryFn: (q) => q.eq(
+                    'visibility',
+                    true,
                   ),
                 ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitPulse(
+                          color: FlutterFlowTheme.of(context).pinkButton,
+                          size: 50.0,
+                        ),
+                      ),
+                    );
+                  }
+                  List<CollectionsRow> containerCollectionsRowList =
+                      snapshot.data!;
+                  return Container(
+                    decoration: const BoxDecoration(),
+                    child: Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                      child: Builder(
+                        builder: (context) {
+                          final currentCategory = functions
+                              .uniqueListElements(containerCollectionsRowList
+                                  .map((e) => e.lowercaseName)
+                                  .withoutNulls
+                                  .toList())
+                              .toList();
+                          return Wrap(
+                            spacing: 5.0,
+                            runSpacing: 5.0,
+                            alignment: WrapAlignment.start,
+                            crossAxisAlignment: WrapCrossAlignment.start,
+                            direction: Axis.horizontal,
+                            runAlignment: WrapAlignment.start,
+                            verticalDirection: VerticalDirection.down,
+                            clipBehavior: Clip.none,
+                            children: List.generate(currentCategory.length,
+                                (currentCategoryIndex) {
+                              final currentCategoryItem =
+                                  currentCategory[currentCategoryIndex];
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  if (_model.selectedCategoriesNames
+                                      .contains(currentCategoryItem)) {
+                                    setState(() {
+                                      _model.removeFromSelectedCategoriesNames(
+                                          currentCategoryItem);
+                                    });
+                                  } else {
+                                    setState(() {
+                                      _model.addToSelectedCategoriesNames(
+                                          currentCategoryItem);
+                                    });
+                                  }
+                                },
+                                child: Container(
+                                  height: 45.0,
+                                  decoration: BoxDecoration(
+                                    color: _model.selectedCategoriesNames
+                                            .contains(currentCategoryItem)
+                                        ? FlutterFlowTheme.of(context)
+                                            .secondaryBackground
+                                        : const Color(0x0DFFFFFF),
+                                    borderRadius: BorderRadius.circular(100.0),
+                                  ),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      if (containerCollectionsRowList
+                                                  .where((e) =>
+                                                      e.lowercaseName ==
+                                                      currentCategoryItem)
+                                                  .toList()
+                                                  .first
+                                                  .photo !=
+                                              null &&
+                                          containerCollectionsRowList
+                                                  .where((e) =>
+                                                      e.lowercaseName ==
+                                                      currentCategoryItem)
+                                                  .toList()
+                                                  .first
+                                                  .photo !=
+                                              '')
+                                        Container(
+                                          width: 39.0,
+                                          height: 39.0,
+                                          clipBehavior: Clip.antiAlias,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                          ),
+                                          child: Image.network(
+                                            containerCollectionsRowList
+                                                .where((e) =>
+                                                    e.lowercaseName ==
+                                                    currentCategoryItem)
+                                                .toList()
+                                                .first
+                                                .photo!,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 2.0, 12.0, 0.0),
+                                        child: Text(
+                                          functions.capitalizeFirstLetter(
+                                              currentCategoryItem),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color: _model
+                                                        .selectedCategoriesNames
+                                                        .contains(
+                                                            currentCategoryItem)
+                                                    ? FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText
+                                                    : FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
+                                    ].addToStart(const SizedBox(width: 3.0)),
+                                  ),
+                                ),
+                              );
+                            }),
+                          );
+                        },
+                      ),
+                    ),
+                  );
+                },
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),

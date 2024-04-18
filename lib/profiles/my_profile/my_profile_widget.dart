@@ -995,14 +995,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child: SizedBox(
-                                                    height: MediaQuery.sizeOf(
-                                                                context)
-                                                            .height *
-                                                        0.45,
-                                                    child:
-                                                        const BSNewCollectionWidget(),
-                                                  ),
+                                                  child:
+                                                      const BSNewCollectionWidget(),
                                                 ),
                                               ),
                                             );
@@ -1718,14 +1712,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          _model.currentPageLink =
-                                              await generateCurrentPageLink(
-                                            context,
-                                            isShortLink: false,
-                                          );
-
                                           await Share.share(
-                                            _model.currentPageLink,
+                                            'https://flaresapp.page.link/?link=https://flaresapp.page.link/couplesProfile?selectedPairID=${FFAppState().pairID}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                             sharePositionOrigin:
                                                 getWidgetBoundingBox(context),
                                           );

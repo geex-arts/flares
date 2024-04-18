@@ -12,7 +12,12 @@ import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
 class OnboardingWidget extends StatefulWidget {
-  const OnboardingWidget({super.key});
+  const OnboardingWidget({
+    super.key,
+    this.pairCode,
+  });
+
+  final String? pairCode;
 
   @override
   State<OnboardingWidget> createState() => _OnboardingWidgetState();
@@ -890,7 +895,18 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                         child: PinkButtonWidget(
                           text: 'Log In',
                           currentAction: () async {
-                            context.pushNamed('Sign_In');
+                            context.pushNamed(
+                              'Sign_In',
+                              queryParameters: {
+                                'pairCode': serializeParam(
+                                  widget.pairCode != null &&
+                                          widget.pairCode != ''
+                                      ? widget.pairCode
+                                      : '',
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
                           },
                         ),
                       ),
@@ -898,7 +914,17 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                     Flexible(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('Sign_Up');
+                          context.pushNamed(
+                            'Sign_Up',
+                            queryParameters: {
+                              'pairCode': serializeParam(
+                                widget.pairCode != null && widget.pairCode != ''
+                                    ? widget.pairCode
+                                    : '',
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
                         text: 'Sign Up',
                         options: FFButtonOptions(

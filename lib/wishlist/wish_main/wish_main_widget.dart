@@ -418,14 +418,10 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.6,
-                                          child: BSSaveToCollectionWidget(
-                                            selectedWishRow:
-                                                widget.selectedWishRow,
-                                          ),
+                                        child: BSSaveToCollectionWidget(
+                                          selectedWishRow:
+                                              widget.selectedWishRow,
+                                          isFromWebview: true,
                                         ),
                                       ),
                                     ),

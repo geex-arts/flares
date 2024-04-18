@@ -34,6 +34,8 @@ abstract class FlutterFlowTheme {
 
   late Color pinkButton;
   late Color pink;
+  late Color modalBgndLight;
+  late Color modalBgndFull;
 
   @Deprecated('Use displaySmallFamily instead')
   String get title1Family => displaySmallFamily;
@@ -125,6 +127,8 @@ class LightModeTheme extends FlutterFlowTheme {
 
   late Color pinkButton = const Color(0xFFE38DBA);
   late Color pink = const Color(0xFFFF2C96);
+  late Color modalBgndLight = const Color(0x16F2F1F3);
+  late Color modalBgndFull = const Color(0xFF313131);
 }
 
 abstract class Typography {

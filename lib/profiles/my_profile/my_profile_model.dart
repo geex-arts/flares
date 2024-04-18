@@ -32,7 +32,6 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   late GenerateWithAIModel generateWithAIModel;
   // Model for tabBar component.
   late TabBarModel tabBarModel;
-  String currentPageLink = '';
   // Model for floatingBtn component.
   late FloatingBtnModel floatingBtnModel;
 

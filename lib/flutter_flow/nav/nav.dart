@@ -106,17 +106,32 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Onboarding',
               path: 'onboarding',
-              builder: (context, params) => const OnboardingWidget(),
+              builder: (context, params) => OnboardingWidget(
+                pairCode: params.getParam(
+                  'pairCode',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Sign_In',
               path: 'signIn',
-              builder: (context, params) => const SignInWidget(),
+              builder: (context, params) => SignInWidget(
+                pairCode: params.getParam(
+                  'pairCode',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Sign_Up',
               path: 'signUp',
-              builder: (context, params) => const SignUpWidget(),
+              builder: (context, params) => SignUpWidget(
+                pairCode: params.getParam(
+                  'pairCode',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Reset_Password',

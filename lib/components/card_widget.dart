@@ -232,54 +232,60 @@ class _CardWidgetState extends State<CardWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  FutureBuilder<List<CollectionsRow>>(
-                    future: CollectionsTable().querySingleRow(
-                      queryFn: (q) => q.eq(
-                        'uuid',
-                        widget.currentWishRow?.collection,
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 34.0, 0.0),
+                    child: FutureBuilder<List<CollectionsRow>>(
+                      future: CollectionsTable().querySingleRow(
+                        queryFn: (q) => q.eq(
+                          'uuid',
+                          widget.currentWishRow?.collection,
+                        ),
                       ),
-                    ),
-                    builder: (context, snapshot) {
-                      // Customize what your widget looks like when it's loading.
-                      if (!snapshot.hasData) {
-                        return Center(
-                          child: SizedBox(
-                            width: 50.0,
-                            height: 50.0,
-                            child: SpinKitPulse(
-                              color: FlutterFlowTheme.of(context).pinkButton,
-                              size: 50.0,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitPulse(
+                                color: FlutterFlowTheme.of(context).pinkButton,
+                                size: 50.0,
+                              ),
                             ),
-                          ),
+                          );
+                        }
+                        List<CollectionsRow> textCollectionsRowList =
+                            snapshot.data!;
+                        // Return an empty Container when the item does not exist.
+                        if (snapshot.data!.isEmpty) {
+                          return Container();
+                        }
+                        final textCollectionsRow =
+                            textCollectionsRowList.isNotEmpty
+                                ? textCollectionsRowList.first
+                                : null;
+                        return Text(
+                          textCollectionsRow!.name!,
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'Nuckle',
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
+                                    fontSize: 10.0,
+                                    letterSpacing: 0.0,
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: false,
+                                    lineHeight: 1.4,
+                                  ),
                         );
-                      }
-                      List<CollectionsRow> textCollectionsRowList =
-                          snapshot.data!;
-                      // Return an empty Container when the item does not exist.
-                      if (snapshot.data!.isEmpty) {
-                        return Container();
-                      }
-                      final textCollectionsRow =
-                          textCollectionsRowList.isNotEmpty
-                              ? textCollectionsRowList.first
-                              : null;
-                      return Text(
-                        textCollectionsRow!.name!,
-                        style: FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Nuckle',
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              fontSize: 10.0,
-                              letterSpacing: 0.0,
-                              fontWeight: FontWeight.w500,
-                              useGoogleFonts: false,
-                              lineHeight: 1.4,
-                            ),
-                      );
-                    },
+                      },
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 0.0, 0.0),
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 34.0, 0.0),
                     child: Text(
                       widget.currentWishRow!.name!,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -590,14 +596,9 @@ class _CardWidgetState extends State<CardWidget> {
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.8,
-                                          child: BSSaveToCollectionWidget(
-                                            selectedWishRow:
-                                                widget.currentWishRow,
-                                          ),
+                                        child: BSSaveToCollectionWidget(
+                                          selectedWishRow:
+                                              widget.currentWishRow,
                                         ),
                                       ),
                                     );

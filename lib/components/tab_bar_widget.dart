@@ -55,7 +55,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                 borderRadius: BorderRadius.circular(100.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(26.0, 0.0, 26.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,10 +68,16 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       onTap: () async {
                         context.pushNamed('Explore');
                       },
-                      child: Icon(
-                        FFIcons.kworld,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        size: 18.0,
+                      child: Container(
+                        width: 44.0,
+                        height: 44.0,
+                        decoration: const BoxDecoration(),
+                        child: Icon(
+                          FFIcons.kworld,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          size: 18.0,
+                        ),
                       ),
                     ),
                     InkWell(
@@ -82,10 +88,16 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       onTap: () async {
                         context.pushNamed('Category_P2');
                       },
-                      child: Icon(
-                        FFIcons.kgroup63448861,
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                        size: 22.0,
+                      child: Container(
+                        width: 44.0,
+                        height: 44.0,
+                        decoration: const BoxDecoration(),
+                        child: Icon(
+                          FFIcons.kgroup63448861,
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          size: 22.0,
+                        ),
                       ),
                     ),
                     InkWell(
@@ -97,15 +109,23 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         context.pushNamed('My_Profile');
                       },
                       child: Container(
-                        width: 22.0,
-                        height: 22.0,
-                        clipBehavior: Clip.antiAlias,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                        ),
-                        child: Image.asset(
-                          'assets/images/prof3.webp',
-                          fit: BoxFit.cover,
+                        width: 44.0,
+                        height: 44.0,
+                        decoration: const BoxDecoration(),
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Container(
+                            width: 22.0,
+                            height: 22.0,
+                            clipBehavior: Clip.antiAlias,
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                            ),
+                            child: Image.asset(
+                              'assets/images/prof3.webp',
+                              fit: BoxFit.cover,
+                            ),
+                          ),
                         ),
                       ),
                     ),

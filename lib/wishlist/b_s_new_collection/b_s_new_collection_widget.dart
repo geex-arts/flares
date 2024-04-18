@@ -16,10 +16,13 @@ class BSNewCollectionWidget extends StatefulWidget {
     super.key,
     this.selectedWishRow,
     bool? isFromBrowser,
-  }) : isFromBrowser = isFromBrowser ?? false;
+    bool? isFromWebview,
+  })  : isFromBrowser = isFromBrowser ?? false,
+        isFromWebview = isFromWebview ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isFromBrowser;
+  final bool isFromWebview;
 
   @override
   State<BSNewCollectionWidget> createState() => _BSNewCollectionWidgetState();
@@ -69,9 +72,9 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
-            color: Color(0x18F2F1F3),
-            borderRadius: BorderRadius.only(
+          decoration: BoxDecoration(
+            color: widget.isFromWebview ? const Color(0xFF33393C) : const Color(0x18F2F1F3),
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(32.0),

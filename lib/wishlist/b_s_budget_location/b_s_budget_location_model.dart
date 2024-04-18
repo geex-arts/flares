@@ -5,6 +5,10 @@ import 'b_s_budget_location_widget.dart' show BSBudgetLocationWidget;
 import 'package:flutter/material.dart';
 
 class BSBudgetLocationModel extends FlutterFlowModel<BSBudgetLocationWidget> {
+  ///  Local state fields for this component.
+
+  String budget = 'moderate';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for DropDown widget.

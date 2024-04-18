@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -18,7 +19,12 @@ import 'sign_up_model.dart';
 export 'sign_up_model.dart';
 
 class SignUpWidget extends StatefulWidget {
-  const SignUpWidget({super.key});
+  const SignUpWidget({
+    super.key,
+    this.pairCode,
+  });
+
+  final String? pairCode;
 
   @override
   State<SignUpWidget> createState() => _SignUpWidgetState();
@@ -733,6 +739,100 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         await actions.initializeCustomerIo(
                                           currentUserEmail,
                                         );
+                                        if (widget.pairCode != null &&
+                                            widget.pairCode != '') {
+                                          _model.foundPairingRow =
+                                              await PairsInvitationsTable()
+                                                  .queryRows(
+                                            queryFn: (q) => q
+                                                .eq(
+                                                  'status',
+                                                  'pending',
+                                                )
+                                                .eq(
+                                                  'pair_code',
+                                                  widget.pairCode,
+                                                ),
+                                          );
+                                          shouldSetState = true;
+                                          if (_model.foundPairingRow!.isNotEmpty) {
+                                            unawaited(
+                                              () async {
+                                                await UsersTable().update(
+                                                  data: {
+                                                    'pair': _model
+                                                        .foundPairingRow
+                                                        ?.first
+                                                        .pair,
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'id',
+                                                    currentUserUid,
+                                                  ),
+                                                );
+                                              }(),
+                                            );
+                                            unawaited(
+                                              () async {
+                                                await PairsInvitationsTable()
+                                                    .update(
+                                                  data: {
+                                                    'status': 'accepted',
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'uuid',
+                                                    _model.foundPairingRow
+                                                        ?.first.uuid,
+                                                  ),
+                                                );
+                                              }(),
+                                            );
+                                            FFAppState().pairID = _model
+                                                .foundPairingRow!.first.pair!;
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              context: context,
+                                              builder: (context) {
+                                                return WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child: Padding(
+                                                      padding: MediaQuery
+                                                          .viewInsetsOf(
+                                                              context),
+                                                      child: SizedBox(
+                                                        height:
+                                                            MediaQuery.sizeOf(
+                                                                        context)
+                                                                    .height *
+                                                                0.85,
+                                                        child:
+                                                            const BSTurnNotificationsWidget(),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
+
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
+                                            return;
+                                          }
+                                        }
 
                                         context.goNamedAuth(
                                             'Create_Couple_Profile',

@@ -70,3 +70,11 @@ String checkDay(DateTime dateToCheck) {
     return 'old';
   }
 }
+
+List<String> uniqueListElements(List<String> list) {
+  return list.toSet().toList();
+}
+
+String capitalizeFirstLetter(String lowercaseString) {
+  return toBeginningOfSentenceCase(lowercaseString)!;
+}

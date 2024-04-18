@@ -355,7 +355,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           text: 'Share my invite link',
                                           currentAction: () async {
                                             await Share.share(
-                                              'flares://flares.com',
+                                              'https://flaresapp.page.link/?link=https://flaresapp.page.link/onboarding?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );

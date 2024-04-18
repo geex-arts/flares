@@ -74,6 +74,8 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   List<UsersRow>? existingUser;
   // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
   String? fcmToken;
+  // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
+  List<PairsInvitationsRow>? foundPairingRow;
 
   @override
   void initState(BuildContext context) {

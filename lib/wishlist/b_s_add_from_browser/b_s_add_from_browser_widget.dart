@@ -184,7 +184,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                             textInputAction: TextInputAction.next,
                             obscureText: false,
                             decoration: InputDecoration(
-                              isDense: true,
+                              isDense: false,
                               hintText: 'Kelly\'s Vintage Store',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelMedium
