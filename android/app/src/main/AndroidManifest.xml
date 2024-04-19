@@ -52,6 +52,12 @@
             </intent-filter>
 
 
+            <intent-filter>
+                <action android:name="FLUTTER_NOTIFICATION_CLICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+
+
             <!--TODO: Add this filter, if you want to support sharing text into your app-->
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -110,6 +116,17 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
+<!--        <meta-data-->
+
+<!--                android:name="com.google.firebase.messaging.default_notification_icon"-->
+
+<!--                android:resource="@drawable/ic_notification" />-->
+
+        <meta-data
+
+                android:name="com.google.firebase.messaging.default_notification_channel_id"
+
+                android:value="@string/default_notification_channel_id"/>
 
 
     </application>
