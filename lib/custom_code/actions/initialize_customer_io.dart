@@ -23,6 +23,11 @@ Future<void> initializeCustomerIo(String email) async {
     ),
   );
 
+  final token = await getFCMToken();
+
+  if (token != null) {
+    CustomerIO.registerDeviceToken(deviceToken: token);
+  }
   CustomerIO.identify(identifier: email);
 }
 
