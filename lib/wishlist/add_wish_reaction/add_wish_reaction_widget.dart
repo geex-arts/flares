@@ -51,6 +51,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

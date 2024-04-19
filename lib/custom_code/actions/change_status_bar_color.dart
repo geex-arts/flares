@@ -10,17 +10,15 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/services.dart';
 
-Future<void> setForegroundMessages() async {
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
-
-    if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
-    }
-  });
+Future<void> changeStatusBarColor() async {
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      statusBarColor: const Color.fromARGB(
+          255, 0, 0, 0), // Change the color whatever you want
+    ),
+  );
 }
 
 // Set your action name, define your arguments and return parameter,

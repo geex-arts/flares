@@ -26,6 +26,8 @@ class _LoaderPlaceholderWidgetState extends State<LoaderPlaceholderWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoaderPlaceholderModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

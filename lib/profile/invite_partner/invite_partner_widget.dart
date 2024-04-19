@@ -48,6 +48,8 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

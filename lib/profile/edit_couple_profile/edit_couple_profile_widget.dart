@@ -9,6 +9,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -59,6 +60,8 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -448,58 +451,73 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                         builder: (context) {
                                           final datePickedCupertinoTheme =
                                               CupertinoTheme.of(context);
-                                          return Container(
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height /
-                                                3,
-                                            width: MediaQuery.of(context)
-                                                .size
-                                                .width,
-                                            color: FlutterFlowTheme.of(context)
-                                                .primaryBackground,
-                                            child: CupertinoTheme(
-                                              data: datePickedCupertinoTheme
-                                                  .copyWith(
-                                                textTheme:
-                                                    datePickedCupertinoTheme
-                                                        .textTheme
-                                                        .copyWith(
-                                                  dateTimePickerTextStyle:
+                                          return ScrollConfiguration(
+                                            behavior:
+                                                const MaterialScrollBehavior()
+                                                    .copyWith(
+                                              dragDevices: {
+                                                PointerDeviceKind.mouse,
+                                                PointerDeviceKind.touch,
+                                                PointerDeviceKind.stylus,
+                                                PointerDeviceKind.unknown
+                                              },
+                                            ),
+                                            child: Container(
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .height /
+                                                  3,
+                                              width: MediaQuery.of(context)
+                                                  .size
+                                                  .width,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryBackground,
+                                              child: CupertinoTheme(
+                                                data: datePickedCupertinoTheme
+                                                    .copyWith(
+                                                  textTheme:
+                                                      datePickedCupertinoTheme
+                                                          .textTheme
+                                                          .copyWith(
+                                                    dateTimePickerTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Nuckle',
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              fontSize: 20.0,
+                                                              letterSpacing:
+                                                                  0.0,
+                                                              useGoogleFonts:
+                                                                  false,
+                                                            ),
+                                                  ),
+                                                ),
+                                                child: CupertinoDatePicker(
+                                                  mode: CupertinoDatePickerMode
+                                                      .date,
+                                                  minimumDate: DateTime(1900),
+                                                  initialDateTime:
+                                                      getCurrentTimestamp,
+                                                  maximumDate:
+                                                      getCurrentTimestamp,
+                                                  backgroundColor:
                                                       FlutterFlowTheme.of(
                                                               context)
-                                                          .headlineMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Nuckle',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .info,
-                                                            fontSize: 20.0,
-                                                            letterSpacing: 0.0,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
+                                                          .primaryBackground,
+                                                  use24hFormat: false,
+                                                  onDateTimeChanged:
+                                                      (newDateTime) =>
+                                                          safeSetState(() {
+                                                    _model.datePicked =
+                                                        newDateTime;
+                                                  }),
                                                 ),
-                                              ),
-                                              child: CupertinoDatePicker(
-                                                mode: CupertinoDatePickerMode
-                                                    .date,
-                                                minimumDate: DateTime(1900),
-                                                initialDateTime:
-                                                    getCurrentTimestamp,
-                                                maximumDate:
-                                                    getCurrentTimestamp,
-                                                backgroundColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryBackground,
-                                                use24hFormat: false,
-                                                onDateTimeChanged:
-                                                    (newDateTime) =>
-                                                        safeSetState(() {
-                                                  _model.datePicked =
-                                                      newDateTime;
-                                                }),
                                               ),
                                             ),
                                           );

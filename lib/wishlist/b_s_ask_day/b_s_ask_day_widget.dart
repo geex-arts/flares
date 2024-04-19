@@ -51,6 +51,8 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
         _model.selectedDate = getCurrentTimestamp;
       });
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -179,7 +181,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 9.0, 6.0, 9.0, 6.0),
                             child: Text(
-                              '8:00 AM',
+                              _model.selectedDate != null
+                                  ? dateTimeFormat(
+                                      'h:mm a', _model.selectedDate)
+                                  : dateTimeFormat(
+                                      'h:mm a', getCurrentTimestamp),
                               style: FlutterFlowTheme.of(context)
                                   .bodyLarge
                                   .override(
@@ -223,7 +229,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                               child: Builder(
                                 builder: (context) {
                                   final currentDay =
-                                      functions.returnDays().toList();
+                                      functions.returnDays(31).toList();
                                   return SizedBox(
                                     width: 40.0,
                                     height: 156.0,
@@ -284,9 +290,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                         _model.selectedDate),
                                                     dateTimeFormat('yyyy',
                                                         _model.selectedDate),
-                                                    dateTimeFormat('HH',
+                                                    dateTimeFormat('h',
                                                         _model.selectedDate),
                                                     dateTimeFormat('mm',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('a',
                                                         _model.selectedDate));
                                           });
                                         },
@@ -364,9 +372,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                         .carouselCurrentIndex2),
                                                     dateTimeFormat('yyyy',
                                                         _model.selectedDate),
-                                                    dateTimeFormat('HH',
+                                                    dateTimeFormat('h',
                                                         _model.selectedDate),
                                                     dateTimeFormat('mm',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('a',
                                                         _model.selectedDate));
                                           });
                                         },
@@ -453,9 +463,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                                 .returnYears()
                                                                 .toList()))
                                                         .toString(),
-                                                    dateTimeFormat('HH',
+                                                    dateTimeFormat('h',
                                                         _model.selectedDate),
                                                     dateTimeFormat('mm',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('a',
                                                         _model.selectedDate));
                                           });
                                         },
@@ -484,103 +496,167 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                               width: 45.0,
                               height: 156.0,
                               decoration: const BoxDecoration(),
-                              child: SizedBox(
-                                width: 40.0,
-                                height: 156.0,
-                                child: CarouselSlider(
-                                  items: [
-                                    Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        '11',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                              child: Builder(
+                                builder: (context) {
+                                  final curentHour =
+                                      functions.returnDays(12).toList();
+                                  return SizedBox(
+                                    width: 40.0,
+                                    height: 156.0,
+                                    child: CarouselSlider.builder(
+                                      itemCount: curentHour.length,
+                                      itemBuilder:
+                                          (context, curentHourIndex, _) {
+                                        final curentHourItem =
+                                            curentHour[curentHourIndex];
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            curentHourItem.toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .info,
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        );
+                                      },
+                                      carouselController:
+                                          _model.hoursController ??=
+                                              CarouselController(),
+                                      options: CarouselOptions(
+                                        initialPage: min(
+                                            valueOrDefault<int>(
+                                              (String var1) {
+                                                return int.parse(var1
+                                                        .replaceAll('PM', '')
+                                                        .replaceAll('AM', '')) -
+                                                    1;
+                                              }(dateTimeFormat(
+                                                  'j', getCurrentTimestamp)),
+                                              0,
                                             ),
+                                            curentHour.length - 1),
+                                        viewportFraction: 0.22,
+                                        disableCenter: false,
+                                        enlargeCenterPage: true,
+                                        enlargeFactor: 0.3,
+                                        enableInfiniteScroll: true,
+                                        scrollDirection: Axis.vertical,
+                                        autoPlay: false,
+                                        onPageChanged: (index, _) async {
+                                          _model.hoursCurrentIndex = index;
+                                          setState(() {
+                                            _model.selectedDate =
+                                                functions.returnSelectedDate(
+                                                    dateTimeFormat('d',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('M',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('yyyy',
+                                                        _model.selectedDate),
+                                                    (int var1) {
+                                                      return '${var1 + 1}';
+                                                    }(_model.hoursCurrentIndex),
+                                                    dateTimeFormat('mm',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('a',
+                                                        _model.selectedDate));
+                                          });
+                                        },
                                       ),
                                     ),
-                                  ],
-                                  carouselController: _model.hoursController ??=
-                                      CarouselController(),
-                                  options: CarouselOptions(
-                                    initialPage: min(
-                                        valueOrDefault<int>(
-                                          int.parse(dateTimeFormat(
-                                                  'd', getCurrentTimestamp)) -
-                                              1,
-                                          0,
-                                        ),
-                                        0),
-                                    viewportFraction: 0.22,
-                                    disableCenter: false,
-                                    enlargeCenterPage: true,
-                                    enlargeFactor: 0.3,
-                                    enableInfiniteScroll: true,
-                                    scrollDirection: Axis.vertical,
-                                    autoPlay: false,
-                                    onPageChanged: (index, _) =>
-                                        _model.hoursCurrentIndex = index,
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
                             ),
                             Container(
                               width: 134.0,
                               height: 156.0,
                               decoration: const BoxDecoration(),
-                              child: SizedBox(
-                                width: 40.0,
-                                height: 156.0,
-                                child: CarouselSlider(
-                                  items: [
-                                    Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Text(
-                                        '25',
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleLarge
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
+                              child: Builder(
+                                builder: (context) {
+                                  final currentMinute =
+                                      functions.returnDays(59).toList();
+                                  return SizedBox(
+                                    width: 40.0,
+                                    height: 156.0,
+                                    child: CarouselSlider.builder(
+                                      itemCount: currentMinute.length,
+                                      itemBuilder:
+                                          (context, currentMinuteIndex, _) {
+                                        final currentMinuteItem =
+                                            currentMinute[currentMinuteIndex];
+                                        return Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            currentMinuteItem.toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .titleLarge
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
                                                       .info,
-                                              fontSize: 20.0,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
+                                                  fontSize: 20.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        );
+                                      },
+                                      carouselController:
+                                          _model.carouselController4 ??=
+                                              CarouselController(),
+                                      options: CarouselOptions(
+                                        initialPage: min(
+                                            valueOrDefault<int>(
+                                              int.parse(dateTimeFormat('mm',
+                                                      getCurrentTimestamp)) -
+                                                  1,
+                                              0,
                                             ),
+                                            currentMinute.length - 1),
+                                        viewportFraction: 0.22,
+                                        disableCenter: false,
+                                        enlargeCenterPage: true,
+                                        enlargeFactor: 0.3,
+                                        enableInfiniteScroll: true,
+                                        scrollDirection: Axis.vertical,
+                                        autoPlay: false,
+                                        onPageChanged: (index, _) async {
+                                          _model.carouselCurrentIndex4 = index;
+                                          setState(() {
+                                            _model.selectedDate =
+                                                functions.returnSelectedDate(
+                                                    dateTimeFormat('d',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('M',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('yyyy',
+                                                        _model.selectedDate),
+                                                    dateTimeFormat('h',
+                                                        _model.selectedDate),
+                                                    (int var1) {
+                                                      return '${var1 + 1}';
+                                                    }(_model
+                                                        .carouselCurrentIndex4),
+                                                    dateTimeFormat('a',
+                                                        _model.selectedDate));
+                                          });
+                                        },
                                       ),
                                     ),
-                                  ],
-                                  carouselController:
-                                      _model.carouselController4 ??=
-                                          CarouselController(),
-                                  options: CarouselOptions(
-                                    initialPage: min(
-                                        valueOrDefault<int>(
-                                          int.parse(dateTimeFormat(
-                                                  'M', getCurrentTimestamp)) -
-                                              1,
-                                          0,
-                                        ),
-                                        0),
-                                    viewportFraction: 0.22,
-                                    disableCenter: false,
-                                    enlargeCenterPage: true,
-                                    enlargeFactor: 0.3,
-                                    enableInfiniteScroll: true,
-                                    scrollDirection: Axis.vertical,
-                                    autoPlay: false,
-                                    onPageChanged: (index, _) =>
-                                        _model.carouselCurrentIndex4 = index,
-                                  ),
-                                ),
+                                  );
+                                },
                               ),
                             ),
                             Container(
@@ -633,12 +709,10 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                   options: CarouselOptions(
                                     initialPage: min(
                                         valueOrDefault<int>(
-                                          functions
-                                              .returnYears()
-                                              .toList()
-                                              .indexOf(int.parse(dateTimeFormat(
-                                                  'yyyy',
-                                                  getCurrentTimestamp))),
+                                          (String var1) {
+                                            return var1 == 'AM' ? 0 : 1;
+                                          }(dateTimeFormat(
+                                              's', getCurrentTimestamp)),
                                           0,
                                         ),
                                         1),
@@ -646,11 +720,32 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     disableCenter: true,
                                     enlargeCenterPage: true,
                                     enlargeFactor: 0.3,
-                                    enableInfiniteScroll: true,
+                                    enableInfiniteScroll: false,
                                     scrollDirection: Axis.vertical,
                                     autoPlay: false,
-                                    onPageChanged: (index, _) =>
-                                        _model.carouselCurrentIndex5 = index,
+                                    onPageChanged: (index, _) async {
+                                      _model.carouselCurrentIndex5 = index;
+                                      setState(() {
+                                        _model.selectedDate =
+                                            functions.returnSelectedDate(
+                                                dateTimeFormat(
+                                                    'd', _model.selectedDate),
+                                                dateTimeFormat(
+                                                    'M', _model.selectedDate),
+                                                dateTimeFormat('yyyy',
+                                                    _model.selectedDate),
+                                                dateTimeFormat(
+                                                    'h', _model.selectedDate),
+                                                dateTimeFormat(
+                                                    'mm', _model.selectedDate),
+                                                (int var1) {
+                                                  return var1 == 0
+                                                      ? 'AM'
+                                                      : 'PM';
+                                                }(_model
+                                                    .carouselCurrentIndex5));
+                                      });
+                                    },
                                   ),
                                 ),
                               ),

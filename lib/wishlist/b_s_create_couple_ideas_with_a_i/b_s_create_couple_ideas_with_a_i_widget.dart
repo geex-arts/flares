@@ -33,6 +33,8 @@ class _BSCreateCoupleIdeasWithAIWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => BSCreateCoupleIdeasWithAIModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -258,6 +260,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                   child: PinkButtonWidget(
                     text: '⚡️ Generate with AI',
                     currentAction: () async {
+                      Navigator.pop(context);
                       if (_model.selectedCategoriesNames.isNotEmpty) {
                         await showModalBottomSheet(
                           isScrollControlled: true,

@@ -27,6 +27,8 @@ class _CreateWishWidgetState extends State<CreateWishWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CreateWishModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -65,6 +65,8 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -22,10 +22,13 @@ class WishMainWidget extends StatefulWidget {
     super.key,
     required this.selectedWishRow,
     bool? isProfile,
-  }) : isProfile = isProfile ?? false;
+    bool? isFromAI,
+  })  : isProfile = isProfile ?? false,
+        isFromAI = isFromAI ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isProfile;
+  final bool isFromAI;
 
   @override
   State<WishMainWidget> createState() => _WishMainWidgetState();
@@ -70,6 +73,8 @@ class _WishMainWidgetState extends State<WishMainWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -319,13 +324,51 @@ class _WishMainWidgetState extends State<WishMainWidget>
                         model: _model.askForADateModel,
                         updateCallback: () => setState(() {}),
                         child: PinkButtonWidget(
-                          text: widget.isProfile ||
-                                  (askForADateWishesRow != null) ||
-                                  (widget.selectedWishRow?.pair ==
-                                      FFAppState().pairID)
-                              ? 'Ask for a Date'
-                              : 'Add to Wishlist',
+                          text: () {
+                            if (widget.isFromAI) {
+                              return 'Add to Wishlist';
+                            } else if (widget.isProfile ||
+                                (askForADateWishesRow != null) ||
+                                (widget.selectedWishRow?.pair ==
+                                    FFAppState().pairID)) {
+                              return 'Ask for a Date';
+                            } else {
+                              return 'Add to Wishlist';
+                            }
+                          }(),
                           currentAction: () async {
+                            var shouldSetState = false;
+                            if (widget.isFromAI) {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                context: context,
+                                builder: (context) {
+                                  return WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: BSSaveToCollectionWidget(
+                                          selectedWishRow:
+                                              widget.selectedWishRow,
+                                          isFromWebview: true,
+                                          isFromAI: widget.isFromAI,
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+
+                              if (shouldSetState) setState(() {});
+                              return;
+                            }
                             if (widget.isProfile ||
                                 (askForADateWishesRow != null)) {
                               _model.partnerRow = await UsersTable().queryRows(
@@ -339,6 +382,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       currentUserUid,
                                     ),
                               );
+                              shouldSetState = true;
                               if (_model.partnerRow!.isNotEmpty) {
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
@@ -422,6 +466,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           selectedWishRow:
                                               widget.selectedWishRow,
                                           isFromWebview: true,
+                                          isFromAI: widget.isFromAI,
                                         ),
                                       ),
                                     ),
@@ -430,7 +475,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               ).then((value) => safeSetState(() {}));
                             }
 
-                            setState(() {});
+                            if (shouldSetState) setState(() {});
                           },
                         ),
                       );

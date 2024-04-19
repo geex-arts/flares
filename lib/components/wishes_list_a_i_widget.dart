@@ -1,34 +1,27 @@
-import '/backend/supabase/supabase.dart';
-import '/components/card_widget.dart';
+import '/backend/schema/structs/index.dart';
+import '/components/card_a_i_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
-import 'wishes_list_main_model.dart';
-export 'wishes_list_main_model.dart';
+import 'wishes_list_a_i_model.dart';
+export 'wishes_list_a_i_model.dart';
 
-class WishesListMainWidget extends StatefulWidget {
-  const WishesListMainWidget({
+class WishesListAIWidget extends StatefulWidget {
+  const WishesListAIWidget({
     super.key,
-    required this.wishesRowsParam,
-    bool? isMyProfile,
-    double? endSpacing,
-  })  : isMyProfile = isMyProfile ?? false,
-        endSpacing = endSpacing ?? 0.0;
+    required this.wishesRowsAI,
+  });
 
-  final List<WishesRow>? wishesRowsParam;
-  final bool isMyProfile;
-  final double endSpacing;
+  final List<AiWishStruct>? wishesRowsAI;
 
   @override
-  State<WishesListMainWidget> createState() => _WishesListMainWidgetState();
+  State<WishesListAIWidget> createState() => _WishesListAIWidgetState();
 }
 
-class _WishesListMainWidgetState extends State<WishesListMainWidget>
+class _WishesListAIWidgetState extends State<WishesListAIWidget>
     with TickerProviderStateMixin {
-  late WishesListMainModel _model;
+  late WishesListAIModel _model;
 
   final animationsMap = <String, AnimationInfo>{};
 
@@ -41,17 +34,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => WishesListMainModel());
-
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (widget.isMyProfile) {
-        _model.reactionImagesRows = await ReactionImagesTable().queryRows(
-          queryFn: (q) => q,
-        );
-      }
-      setState(() {});
-    });
+    _model = createModel(context, () => WishesListAIModel());
 
     animationsMap.addAll({
       'gridViewOnPageLoadAnimation': AnimationInfo(
@@ -87,22 +70,17 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Padding(
       padding: const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
       child: Builder(
         builder: (context) {
-          final currentWish = widget.wishesRowsParam!.toList();
+          final currentWish = widget.wishesRowsAI!.toList();
           return GridView.builder(
-            padding: EdgeInsets.fromLTRB(
+            padding: const EdgeInsets.fromLTRB(
               0,
               10.0,
               0,
-              valueOrDefault<double>(
-                widget.endSpacing,
-                0.0,
-              ),
+              120.0,
             ),
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
@@ -116,11 +94,9 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
             itemCount: currentWish.length,
             itemBuilder: (context, currentWishIndex) {
               final currentWishItem = currentWish[currentWishIndex];
-              return CardWidget(
-                key: Key('Keyxvr_${currentWishIndex}_of_${currentWish.length}'),
-                isMyProfile: widget.isMyProfile,
-                currentWishRow: currentWishItem,
-                reactionImagesRows: _model.reactionImagesRows,
+              return CardAIWidget(
+                key: Key('Keyy39_${currentWishIndex}_of_${currentWish.length}'),
+                wishAIElement: currentWishItem,
               );
             },
           ).animateOnPageLoad(animationsMap['gridViewOnPageLoadAnimation']!);

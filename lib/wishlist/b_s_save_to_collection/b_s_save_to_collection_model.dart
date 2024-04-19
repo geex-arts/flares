@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/empty_collections_widget_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -12,6 +13,8 @@ class BSSaveToCollectionModel
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - Update Row(s)] action in Container widget.
+  List<WishesRow>? updatedRow;
   // Model for emptyCollectionsWidget component.
   late EmptyCollectionsWidgetModel emptyCollectionsWidgetModel;
   // Model for CreatenewCollection.

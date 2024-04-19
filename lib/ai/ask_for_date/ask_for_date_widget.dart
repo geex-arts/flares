@@ -21,6 +21,8 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AskForDateModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

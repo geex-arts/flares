@@ -73,6 +73,8 @@ class _ExploreWidgetState extends State<ExploreWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

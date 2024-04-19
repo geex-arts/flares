@@ -5,6 +5,7 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
+import 'dart:async';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
@@ -19,10 +20,13 @@ class BSSaveToCollectionWidget extends StatefulWidget {
     super.key,
     this.selectedWishRow,
     bool? isFromWebview,
-  }) : isFromWebview = isFromWebview ?? false;
+    bool? isFromAI,
+  })  : isFromWebview = isFromWebview ?? false,
+        isFromAI = isFromAI ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isFromWebview;
+  final bool isFromAI;
 
   @override
   State<BSSaveToCollectionWidget> createState() =>
@@ -46,6 +50,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
     _model.textFieldFocusNode!.addListener(() => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -269,27 +274,57 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
                                           if (widget.selectedWishRow != null) {
-                                            await WishesTable().insert({
-                                              'collection':
-                                                  currentCollectionItem.uuid,
-                                              'pair': FFAppState().pairID,
-                                              'created_by': currentUserUid,
-                                              'name':
-                                                  widget.selectedWishRow?.name,
-                                              'description': widget
-                                                  .selectedWishRow?.description,
-                                              'photo':
-                                                  widget.selectedWishRow?.photo,
-                                              'link':
-                                                  widget.selectedWishRow?.link,
-                                              'copied_from':
-                                                  widget.selectedWishRow?.uuid,
-                                              'visibily': currentCollectionItem
-                                                  .visibility,
-                                            });
+                                            if (widget.isFromAI) {
+                                              unawaited(
+                                                () async {
+                                                  _model.updatedRow =
+                                                      await WishesTable()
+                                                          .update(
+                                                    data: {
+                                                      'collection':
+                                                          currentCollectionItem
+                                                              .uuid,
+                                                      'visibily':
+                                                          currentCollectionItem
+                                                              .visibility,
+                                                    },
+                                                    matchingRows: (rows) =>
+                                                        rows.eq(
+                                                      'uuid',
+                                                      widget.selectedWishRow
+                                                          ?.uuid,
+                                                    ),
+                                                    returnRows: true,
+                                                  );
+                                                }(),
+                                              );
+                                            } else {
+                                              await WishesTable().insert({
+                                                'collection':
+                                                    currentCollectionItem.uuid,
+                                                'pair': FFAppState().pairID,
+                                                'created_by': currentUserUid,
+                                                'name': widget
+                                                    .selectedWishRow?.name,
+                                                'description': widget
+                                                    .selectedWishRow
+                                                    ?.description,
+                                                'photo': widget
+                                                    .selectedWishRow?.photo,
+                                                'link': widget
+                                                    .selectedWishRow?.link,
+                                                'copied_from': widget
+                                                    .selectedWishRow?.uuid,
+                                                'visibily':
+                                                    currentCollectionItem
+                                                        .visibility,
+                                              });
+                                            }
                                           }
                                           _model.updatePage(() {});
                                           Navigator.pop(context);
+
+                                          setState(() {});
                                         },
                                         child: Container(
                                           width: double.infinity,
@@ -377,6 +412,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                     padding: MediaQuery.viewInsetsOf(context),
                                     child: BSNewCollectionWidget(
                                       selectedWishRow: widget.selectedWishRow,
+                                      isFromBrowser: widget.isFromAI,
                                     ),
                                   ),
                                 );

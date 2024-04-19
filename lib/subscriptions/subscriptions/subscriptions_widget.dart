@@ -44,6 +44,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

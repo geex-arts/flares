@@ -71,6 +71,8 @@ class _SignInWidgetState extends State<SignInWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

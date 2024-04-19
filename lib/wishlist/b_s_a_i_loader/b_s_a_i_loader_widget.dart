@@ -26,6 +26,8 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAILoaderModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

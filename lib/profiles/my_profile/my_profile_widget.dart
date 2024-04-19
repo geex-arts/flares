@@ -221,6 +221,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -240,7 +242,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).info,
         body: Container(
           width: double.infinity,
           height: double.infinity,
@@ -1775,15 +1777,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                context.pushNamed(
-                                  'addFromBrowser',
-                                  queryParameters: {
-                                    'url': serializeParam(
-                                      FFAppState().testUrl,
-                                      ParamType.String,
-                                    ),
-                                  }.withoutNulls,
-                                );
+                                if (FFAppState().testUrl != '') {
+                                  context.pushNamed(
+                                    'addFromBrowser',
+                                    queryParameters: {
+                                      'url': serializeParam(
+                                        FFAppState().testUrl,
+                                        ParamType.String,
+                                      ),
+                                    }.withoutNulls,
+                                  );
+                                }
                               },
                               child: Text(
                                 'Wishlist',

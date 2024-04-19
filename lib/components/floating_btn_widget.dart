@@ -26,6 +26,8 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => FloatingBtnModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

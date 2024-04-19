@@ -5,6 +5,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 
+import '/backend/schema/structs/index.dart';
+
 import '/backend/supabase/supabase.dart';
 
 import '/auth/base_auth_user_provider.dart';
@@ -234,6 +236,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'isProfile',
                   ParamType.bool,
                 ),
+                isFromAI: params.getParam(
+                  'isFromAI',
+                  ParamType.bool,
+                ),
               ),
             ),
             FFRoute(
@@ -421,6 +427,7 @@ class FFParameters {
     String paramName,
     ParamType type, [
     bool isList = false,
+    StructBuilder<T>? structBuilder,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -438,6 +445,7 @@ class FFParameters {
       param,
       type,
       isList,
+      structBuilder: structBuilder,
     );
   }
 }

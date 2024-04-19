@@ -74,6 +74,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
       r'''$.description''',
     ).toString().toString());
     _model.descriptionFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

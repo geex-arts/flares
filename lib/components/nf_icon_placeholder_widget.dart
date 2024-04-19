@@ -45,6 +45,8 @@ class _NfIconPlaceholderWidgetState extends State<NfIconPlaceholderWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -1,13 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/supabase/supabase.dart';
 import '/components/loader_placeholder_widget.dart';
 import '/components/pink_button_widget.dart';
-import '/components/wishes_list_main_widget.dart';
+import '/components/wishes_list_a_i_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'b_s_a_i_wishlist_model.dart';
 export 'b_s_a_i_wishlist_model.dart';
 
@@ -40,6 +39,8 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAIWishlistModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -128,37 +129,17 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget> {
                           color: Color(0x0CF2F1F3),
                         ),
                       Expanded(
-                        child: FutureBuilder<List<WishesRow>>(
-                          future: WishesTable().queryRows(
-                            queryFn: (q) => q.order('created_at'),
+                        child: wrapWithModel(
+                          model: _model.wishesListAIModel,
+                          updateCallback: () => setState(() {}),
+                          child: WishesListAIWidget(
+                            wishesRowsAI:
+                                functions.jsonArrayToDataType(getJsonField(
+                              containerGenerateAiWishResponse.jsonBody,
+                              r'''$.*''',
+                              true,
+                            )!),
                           ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitPulse(
-                                    color:
-                                        FlutterFlowTheme.of(context).pinkButton,
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            List<WishesRow> wishesListMainWishesRowList =
-                                snapshot.data!;
-                            return wrapWithModel(
-                              model: _model.wishesListMainModel,
-                              updateCallback: () => setState(() {}),
-                              child: WishesListMainWidget(
-                                isMyProfile: false,
-                                wishesRowsParam: wishesListMainWishesRowList,
-                                endSpacing: 120.0,
-                              ),
-                            );
-                          },
                         ),
                       ),
                     ],

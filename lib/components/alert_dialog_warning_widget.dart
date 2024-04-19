@@ -40,6 +40,8 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
       await Future.delayed(const Duration(milliseconds: 3000));
       Navigator.pop(context);
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -51,6 +51,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

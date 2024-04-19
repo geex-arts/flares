@@ -30,6 +30,8 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSTurnNotificationsModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -260,7 +262,10 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                               Navigator.pop(context);
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                barrierColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 enableDrag: false,
                                 context: context,
                                 builder: (context) {

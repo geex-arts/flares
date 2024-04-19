@@ -36,6 +36,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSBudgetLocationModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

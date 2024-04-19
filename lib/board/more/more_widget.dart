@@ -79,6 +79,8 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

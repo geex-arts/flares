@@ -8,6 +8,7 @@ import 'package:timeago/timeago.dart' as timeago;
 import 'lat_lng.dart';
 import 'place.dart';
 import 'uploaded_file.dart';
+import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/auth/supabase_auth/auth_util.dart';
 
@@ -15,9 +16,9 @@ int wordLength(String word) {
   return word.length;
 }
 
-List<int> returnDays() {
+List<int> returnDays(int number) {
   final List<int> days = [];
-  for (int i = 1; i < 32; i++) {
+  for (int i = 1; i < number + 1; i++) {
     days.add(i);
   }
 
@@ -51,9 +52,10 @@ DateTime returnSelectedDate(
   String year,
   String hours,
   String minutes,
+  String hourMarker,
 ) {
-  final dateString = '$day/$month/$year $hours:$minutes';
-  return DateFormat('d/M/yyyy HH:mm').parse(dateString);
+  final dateString = '$day/$month/$year $hours:$minutes $hourMarker';
+  return DateFormat('d/M/yyyy h:mm a').parse(dateString);
 }
 
 String checkDay(DateTime dateToCheck) {
@@ -77,4 +79,12 @@ List<String> uniqueListElements(List<String> list) {
 
 String capitalizeFirstLetter(String lowercaseString) {
   return toBeginningOfSentenceCase(lowercaseString)!;
+}
+
+List<AiWishStruct> jsonArrayToDataType(List<dynamic> apiWishesAIResult) {
+  List<AiWishStruct> listOfStruct = [];
+  for (var item in apiWishesAIResult) {
+    listOfStruct.add(AiWishStruct.fromMap(item));
+  }
+  return listOfStruct;
 }

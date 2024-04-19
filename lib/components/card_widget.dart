@@ -40,6 +40,8 @@ class _CardWidgetState extends State<CardWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CardModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -308,6 +310,7 @@ class _CardWidgetState extends State<CardWidget> {
                               0.0, 6.0, 34.0, 0.0),
                           child: Text(
                             widget.currentWishRow!.description!,
+                            maxLines: 4,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

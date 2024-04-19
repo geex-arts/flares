@@ -58,6 +58,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
         ],
       ),
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -108,7 +110,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                             onTap: () async {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                barrierColor: Colors.transparent,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(
@@ -121,12 +125,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.85,
-                                          child: const BSTurnNotificationsWidget(),
-                                        ),
+                                        child: const BSTurnNotificationsWidget(),
                                       ),
                                     ),
                                   );
