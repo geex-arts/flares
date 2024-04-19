@@ -88,3 +88,12 @@ List<AiWishStruct> jsonArrayToDataType(List<dynamic> apiWishesAIResult) {
   }
   return listOfStruct;
 }
+
+List<AiWishStruct> mergeTwoLists(
+  List<AiWishStruct> currentAIWishes,
+  List<AiWishStruct> newAIWishes,
+) {
+  currentAIWishes.addAll(newAIWishes);
+
+  return currentAIWishes;
+}
