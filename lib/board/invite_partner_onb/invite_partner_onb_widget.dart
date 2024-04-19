@@ -112,7 +112,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 isScrollControlled: true,
                                 backgroundColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                barrierColor: Colors.transparent,
+                                barrierColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(

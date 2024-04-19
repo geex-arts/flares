@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
 
     _model.namesFieldTextController ??= TextEditingController();
     _model.namesFieldFocusNode ??= FocusNode();
-
+    _model.namesFieldFocusNode!.addListener(() => setState(() {}));
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -358,7 +359,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   controller: _model.namesFieldTextController,
                                   focusNode: _model.namesFieldFocusNode,
                                   autofocus: false,
-                                  textInputAction: TextInputAction.next,
+                                  textInputAction: TextInputAction.done,
                                   obscureText: false,
                                   decoration: InputDecoration(
                                     isDense: false,
@@ -466,6 +467,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    await actions.hideKeyboard();
                                     setState(() {
                                       _model.dateOn = true;
                                       _model.borderColor = true;
@@ -651,7 +653,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                                     .unfocus(),
                                             child: const AlertDialogWarningWidget(
                                               title:
-                                                  'Couple photo is required!',
+                                                  'Couple photo is required !',
                                               subtitle:
                                                   'Please upload your couple photo',
                                             ),

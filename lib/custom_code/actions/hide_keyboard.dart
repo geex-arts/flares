@@ -10,16 +10,8 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:flutter/services.dart';
-
-Future<void> changeStatusBarColor() async {
-  SystemChrome.setSystemUIOverlayStyle(
-    SystemUiOverlayStyle(
-      statusBarColor: const Color.fromARGB(
-          255, 0, 0, 0), // Change the color whatever you want
-    ),
-  );
+Future hideKeyboard() async {
+  FocusManager.instance.primaryFocus?.unfocus();
 }
-
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!

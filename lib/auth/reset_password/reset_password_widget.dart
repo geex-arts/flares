@@ -4,9 +4,7 @@ import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -307,6 +305,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               currentAction: () async {
                                 var shouldSetState = false;
                                 HapticFeedback.vibrate();
+                                setState(() {
+                                  _model.isLinkSent = false;
+                                });
                                 _model.foundUserRow =
                                     await UsersTable().queryRows(
                                   queryFn: (q) => q.eq(
@@ -315,7 +316,26 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   ),
                                 );
                                 shouldSetState = true;
-                                if (_model.foundUserRow!.isEmpty) {
+                                if (_model.foundUserRow!.isNotEmpty) {
+                                  if (_model
+                                      .emailFieldTextController.text.isEmpty) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text(
+                                          'Email required!',
+                                        ),
+                                      ),
+                                    );
+                                    return;
+                                  }
+                                  await authManager.resetPassword(
+                                    email: _model.emailFieldTextController.text,
+                                    context: context,
+                                  );
+                                  setState(() {
+                                    _model.isLinkSent = true;
+                                  });
+                                } else {
                                   showDialog(
                                     context: context,
                                     builder: (dialogContext) {
@@ -350,60 +370,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   if (shouldSetState) setState(() {});
                                   return;
                                 }
-                                if (!_model.startTimer) {
-                                  if (_model
-                                      .emailFieldTextController.text.isEmpty) {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text(
-                                          'Email required!',
-                                        ),
-                                      ),
-                                    );
-                                    return;
-                                  }
-                                  await authManager.resetPassword(
-                                    email: _model.emailFieldTextController.text,
-                                    context: context,
-                                  );
-                                  _model.timerController.onResetTimer();
-
-                                  _model.timerController.onStartTimer();
-                                  setState(() {
-                                    _model.startTimer = true;
-                                  });
-                                } else {
-                                  showDialog(
-                                    context: context,
-                                    builder: (dialogContext) {
-                                      return Dialog(
-                                        elevation: 0,
-                                        insetPadding: EdgeInsets.zero,
-                                        backgroundColor: Colors.transparent,
-                                        alignment:
-                                            const AlignmentDirectional(0.0, -1.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        child: WebViewAware(
-                                          child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: const AlertDialogWarningWidget(
-                                              title:
-                                                  'Wait until you can resend the link !',
-                                              subtitle: '',
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => setState(() {}));
-                                }
 
                                 if (shouldSetState) setState(() {});
                               },
@@ -411,107 +377,28 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           ),
                         ),
                       ),
-                      if (valueOrDefault<bool>(
-                        _model.startTimer,
-                        true,
-                      ))
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 20.0, 0.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Expanded(
-                                child: Opacity(
-                                  opacity: _model.startTimer ? 1.0 : 0.0,
-                                  child: Text(
-                                    'The link was sent',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Nuckle',
-                                          color: const Color(0x7FFFFFFF),
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          useGoogleFonts: false,
-                                        ),
+                      Opacity(
+                        opacity: _model.isLinkSent ? 1.0 : 0.0,
+                        child: Align(
+                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          child: Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 20.0, 0.0, 0.0),
+                            child: Text(
+                              'The link was sent',
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Nuckle',
+                                    color: const Color(0x7FFFFFFF),
+                                    fontSize: 12.0,
+                                    letterSpacing: 0.0,
+                                    useGoogleFonts: false,
                                   ),
-                                ),
-                              ),
-                              RichText(
-                                textScaler: MediaQuery.of(context).textScaler,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: 'Resend link in  ',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodySmall
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                          ),
-                                    )
-                                  ],
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Nuckle',
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                              ),
-                              FlutterFlowTimer(
-                                initialTime: _model.timerMilliseconds,
-                                getDisplayTime: (value) =>
-                                    StopWatchTimer.getDisplayTime(
-                                  value,
-                                  hours: false,
-                                  minute: false,
-                                  milliSecond: false,
-                                ),
-                                controller: _model.timerController,
-                                updateStateInterval:
-                                    const Duration(milliseconds: 1000),
-                                onChanged: (value, displayTime, shouldUpdate) {
-                                  _model.timerMilliseconds = value;
-                                  _model.timerValue = displayTime;
-                                  if (shouldUpdate) setState(() {});
-                                },
-                                onEnded: () async {
-                                  setState(() {
-                                    _model.startTimer = false;
-                                  });
-                                },
-                                textAlign: TextAlign.start,
-                                style: FlutterFlowTheme.of(context)
-                                    .headlineSmall
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: FlutterFlowTheme.of(context).error,
-                                      fontSize: 13.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                              Text(
-                                ' s',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: FlutterFlowTheme.of(context).error,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
+                      ),
                     ],
                   ),
                 ),

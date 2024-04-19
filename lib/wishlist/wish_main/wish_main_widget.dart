@@ -269,7 +269,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                       Image.network(
                         widget.selectedWishRow!.photo!,
                         width: double.infinity,
-                        height: double.infinity,
+                        height: MediaQuery.sizeOf(context).height * 0.75,
                         fit: BoxFit.cover,
                       ),
                       if (widget.selectedWishRow?.link != null &&
@@ -341,7 +341,10 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             if (widget.isFromAI) {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                barrierColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(
@@ -386,7 +389,10 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               if (_model.partnerRow!.isNotEmpty) {
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
-                                  backgroundColor: Colors.transparent,
+                                  backgroundColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                  barrierColor: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -449,7 +455,10 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             } else {
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                barrierColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(

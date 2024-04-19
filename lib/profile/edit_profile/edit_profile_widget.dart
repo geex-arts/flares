@@ -757,6 +757,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             (_model.photoPS?.bytes
                                                     ?.isNotEmpty ??
                                                 false)) {
+                                          if (columnUsersRow?.avatar != null &&
+                                              columnUsersRow?.avatar != '') {
+                                            await deleteSupabaseFileFromPublicUrl(
+                                                columnUsersRow!.avatar!);
+                                          }
                                           {
                                             setState(() =>
                                                 _model.isDataUploading2 = true);
@@ -824,7 +829,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             );
                                           }(),
                                         );
-                                        await showDialog(
+                                        showDialog(
                                           context: context,
                                           builder: (dialogContext) {
                                             return Dialog(
@@ -858,6 +863,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           },
                                         ).then((value) => setState(() {}));
 
+                                        FFAppState().update(() {});
                                         context.safePop();
                                         if (shouldSetState) setState(() {});
                                       },

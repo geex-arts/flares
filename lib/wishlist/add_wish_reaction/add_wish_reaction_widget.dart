@@ -135,7 +135,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
               ),
               const Spacer(),
               Text(
-                'Add wish\nreaction',
+                'Add Wish\nReaction',
+                textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Nuckle',
                       color: FlutterFlowTheme.of(context).info,

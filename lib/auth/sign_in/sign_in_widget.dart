@@ -533,7 +533,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                           _model.userAuthCopyCopy!.first.pair!;
 
                                       context.goNamedAuth(
-                                          'My_Profile', context.mounted);
+                                          'Explore', context.mounted);
                                     } else {
                                       context.goNamedAuth(
                                           'More', context.mounted);

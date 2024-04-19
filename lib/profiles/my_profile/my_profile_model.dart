@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/components/floating_btn_widget.dart';
-import '/components/generate_with_a_i_widget.dart';
-import '/components/pink_button_widget.dart';
+import '/components/new_list_widget.dart';
 import '/components/tab_bar_widget.dart';
 import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -24,12 +23,10 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
   ApiCallResponse? apiResultc16Copy;
-  // Model for pinkButton component.
-  late PinkButtonModel pinkButtonModel;
   // Model for wishesListMain component.
   late WishesListMainModel wishesListMainModel;
-  // Model for generateWithAI component.
-  late GenerateWithAIModel generateWithAIModel;
+  // Model for newList component.
+  late NewListModel newListModel;
   // Model for tabBar component.
   late TabBarModel tabBarModel;
   // Model for floatingBtn component.
@@ -37,9 +34,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
 
   @override
   void initState(BuildContext context) {
-    pinkButtonModel = createModel(context, () => PinkButtonModel());
     wishesListMainModel = createModel(context, () => WishesListMainModel());
-    generateWithAIModel = createModel(context, () => GenerateWithAIModel());
+    newListModel = createModel(context, () => NewListModel());
     tabBarModel = createModel(context, () => TabBarModel());
     floatingBtnModel = createModel(context, () => FloatingBtnModel());
   }
@@ -47,9 +43,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    pinkButtonModel.dispose();
     wishesListMainModel.dispose();
-    generateWithAIModel.dispose();
+    newListModel.dispose();
     tabBarModel.dispose();
     floatingBtnModel.dispose();
   }

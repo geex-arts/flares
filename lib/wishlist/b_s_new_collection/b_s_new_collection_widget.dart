@@ -278,7 +278,9 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                 Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    'Field is required',
+                    _model.textController.text == ''
+                        ? 'Field is required'
+                        : 'Name must be less then 15 characters',
                     textAlign: TextAlign.end,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Nuckle',
@@ -301,7 +303,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       setState(() {
                         _model.isEmptyName = false;
                       });
-                      if (_model.textController.text != '') {
+                      if ((_model.textController.text != '') &&
+                          (_model.textController.text.length < 15)) {
                         _model.newCollectionRowCopy =
                             await CollectionsTable().insert({
                           'name': _model.textController.text,

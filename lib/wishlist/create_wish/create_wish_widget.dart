@@ -1,8 +1,6 @@
-import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'create_wish_model.dart';
 export 'create_wish_model.dart';
 
@@ -49,46 +47,17 @@ class _CreateWishWidgetState extends State<CreateWishWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
-          child: FutureBuilder<ApiCallResponse>(
-            future: ParseSiteCall.call(
-              url: widget.url,
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitPulse(
-                      color: FlutterFlowTheme.of(context).pinkButton,
-                      size: 50.0,
-                    ),
-                  ),
-                );
-              }
-              final columnParseSiteResponse = snapshot.data!;
-              return Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Container(
-                    width: double.infinity,
-                    height: 200.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Text(
-                      columnParseSiteResponse.bodyText,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Nuckle',
-                            letterSpacing: 0.0,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ),
-                ],
-              );
-            },
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200.0,
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                ),
+              ),
+            ],
           ),
         ),
       ),
