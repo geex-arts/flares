@@ -71,6 +71,42 @@ class _MyAppState extends State<MyApp> {
     userStream = flaresSupabaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
+
+
+    //Shared: getInitialMedia https://www.instagram.com/p/C5D8JKCNkOZ/?igsh=MTBoZ2M4N3RscmZwbw==
+    //should open Create_wish screen with url props
+    _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
+        .listen((List<SharedFile> value) {
+        print(value);
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+
+    }, onError: (err) {
+      print("getIntentDataStream error: $err");
+    });
+
+    // For sharing images coming from outside the app while the app is closed
+    FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
+      print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
+
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+    });
+
     Future.delayed(
       const Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
