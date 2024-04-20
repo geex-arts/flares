@@ -812,6 +812,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 return;
                               }
                             }
+
+                            if (widget.myPairRow?.photo != null &&
+                                widget.myPairRow?.photo != '') {
+                              await deleteSupabaseFileFromPublicUrl(
+                                  widget.myPairRow!.photo!);
+                            }
                           }
                           unawaited(
                             () async {

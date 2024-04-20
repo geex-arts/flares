@@ -355,7 +355,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                             });
                           }
                         }
-                        _model.updatePage(() {});
+                        FFAppState().update(() {});
                         Navigator.pop(context);
                       } else {
                         setState(() {

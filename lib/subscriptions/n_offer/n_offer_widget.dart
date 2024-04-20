@@ -230,17 +230,39 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                                       useGoogleFonts: false,
                                     ),
                               ),
-                              Text(
-                                '\$29.99',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: const Color(0x99FFFFFF),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 0.0),
+                                child: Stack(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  children: [
+                                    Text(
+                                      '\$29.99',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: const Color(0x99FFFFFF),
+                                            fontSize: 16.0,
+                                            letterSpacing: 0.0,
+                                            decoration:
+                                                TextDecoration.lineThrough,
+                                            useGoogleFonts: false,
+                                          ),
                                     ),
+                                    Align(
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      child: Container(
+                                        width: 48.0,
+                                        height: 1.0,
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                               Text(
                                 '\$14.99',

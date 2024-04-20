@@ -829,7 +829,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             );
                                           }(),
                                         );
-                                        showDialog(
+                                        await showDialog(
                                           context: context,
                                           builder: (dialogContext) {
                                             return Dialog(

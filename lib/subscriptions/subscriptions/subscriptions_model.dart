@@ -4,6 +4,10 @@ import 'subscriptions_widget.dart' show SubscriptionsWidget;
 import 'package:flutter/material.dart';
 
 class SubscriptionsModel extends FlutterFlowModel<SubscriptionsWidget> {
+  ///  Local state fields for this page.
+
+  int selectedPlan = 1;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -276,7 +276,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Subscriptions',
               path: 'subscriptions',
-              builder: (context, params) => const SubscriptionsWidget(),
+              builder: (context, params) => SubscriptionsWidget(
+                isFIrstTime: params.getParam(
+                  'isFIrstTime',
+                  ParamType.bool,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Invite_Partner',

@@ -150,6 +150,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                             return wrapWithModel(
                               model: _model.wishesListMainModel,
                               updateCallback: () => setState(() {}),
+                              updateOnChange: true,
                               child: WishesListMainWidget(
                                 isMyProfile: false,
                                 wishesRowsParam: wishesListMainWishesRowList,

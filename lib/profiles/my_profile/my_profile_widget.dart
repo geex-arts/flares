@@ -1,6 +1,7 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_cancel_collection_widget.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/new_list_widget.dart';
 import '/components/nf_icon_placeholder_widget.dart';
@@ -10,7 +11,6 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import '/actions/actions.dart' as action_blocks;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -51,34 +51,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      setState(() {});
-      if (widget.url != null && widget.url != '') {
-        _model.apiResultParseURL = await ParseSiteCall.call(
-          url: widget.url,
+      if (FFAppState().pairID == '') {
+        context.goNamed(
+          'Create_Couple_Profile',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: const TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
+          },
         );
-        setState(() {});
-        if ((_model.apiResultParseURL?.succeeded ?? true)) {
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            context: context,
-            builder: (context) {
-              return WebViewAware(
-                child: GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: Padding(
-                    padding: MediaQuery.viewInsetsOf(context),
-                    child: BSAddFromBrowserWidget(
-                      parsedURLJson: (_model.apiResultParseURL?.jsonBody ?? ''),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ).then((value) => safeSetState(() {}));
-        }
       }
     });
 
@@ -1200,11 +1183,43 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                         ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 5.0, 0.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.newListModel,
-                            updateCallback: () => setState(() {}),
-                            child: const NewListWidget(),
+                              0.0, 56.0, 0.0, 0.0),
+                          child: FutureBuilder<List<WishesRow>>(
+                            future: WishesTable().queryRows(
+                              queryFn: (q) => q
+                                  .eq(
+                                    'pair',
+                                    FFAppState().pairID,
+                                  )
+                                  .order('created_at'),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitPulse(
+                                      color: FlutterFlowTheme.of(context)
+                                          .pinkButton,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<WishesRow> newListWishesRowList =
+                                  snapshot.data!;
+                              return wrapWithModel(
+                                model: _model.newListModel,
+                                updateCallback: () => setState(() {}),
+                                child: NewListWidget(
+                                  noWishes: newListWishesRowList.isEmpty
+                                      ? true
+                                      : false,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ].addToEnd(const SizedBox(height: 120.0)),
@@ -1502,38 +1517,58 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 4.0, 8.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                if (FFAppState().testUrl != '') {
-                                  context.pushNamed(
-                                    'addFromBrowser',
-                                    queryParameters: {
-                                      'url': serializeParam(
-                                        FFAppState().testUrl,
-                                        ParamType.String,
+                          child: Builder(
+                            builder: (context) => Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 4.0, 8.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child:
+                                                const AlertDialogCancelCollectionWidget(
+                                              title: 'Test',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                },
+                                child: Text(
+                                  'Wishlist',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
                                       ),
-                                    }.withoutNulls,
-                                  );
-                                }
-                              },
-                              child: Text(
-                                'Wishlist',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                      useGoogleFonts: false,
-                                      lineHeight: 1.4,
-                                    ),
+                                ),
                               ),
                             ),
                           ),

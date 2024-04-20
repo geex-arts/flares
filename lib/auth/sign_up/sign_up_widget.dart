@@ -741,6 +741,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         await actions.initializeCustomerIo(
                                           currentUserEmail,
                                         );
+                                        FFAppState().pairID =
+                                            '27a78254-89be-4e9a-80ef-394ebf1e637f';
                                         if (widget.pairCode != null &&
                                             widget.pairCode != '') {
                                           _model.foundPairingRow =
