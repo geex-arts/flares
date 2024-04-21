@@ -499,6 +499,9 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'NOTIFICATIONS_LIST_Container_6yav5pkd_ON');
+                                  logFirebaseEvent('Container_launch_u_r_l');
                                   await launchURL(getJsonField(
                                     currentNotificationItem.details!,
                                     r'''$.link''',

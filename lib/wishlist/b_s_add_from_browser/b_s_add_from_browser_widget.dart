@@ -47,11 +47,13 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('B_S_ADD_FROM_BROWSER_BS_Add_From_Browser');
       if (getJsonField(
             widget.parsedURLJson,
             r'''$.images[0]''',
           ) !=
           null) {
+        logFirebaseEvent('BS_Add_From_Browser_update_component_sta');
         setState(() {
           _model.selectedImage = getJsonField(
             widget.parsedURLJson,
@@ -628,6 +630,10 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                                         highlightColor:
                                                             Colors.transparent,
                                                         onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'B_S_ADD_FROM_BROWSER_ConditionalBuilder_');
+                                                          logFirebaseEvent(
+                                                              'ConditionalBuilder_update_component_stat');
                                                           setState(() {
                                                             _model.selectedImage =
                                                                 currentImageItem
@@ -838,6 +844,10 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'B_S_ADD_FROM_BROWSER_ConditionalBuilder_');
+                                                        logFirebaseEvent(
+                                                            'ConditionalBuilder_update_component_stat');
                                                         setState(() {
                                                           _model.selectedImage =
                                                               null;
@@ -927,6 +937,10 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                                 size: 21.0,
                                               ),
                                               onPressed: () async {
+                                                logFirebaseEvent(
+                                                    'B_S_ADD_FROM_BROWSER_add_rounded_ICN_ON_');
+                                                logFirebaseEvent(
+                                                    'IconButton_store_media_for_upload');
                                                 final selectedMedia =
                                                     await selectMedia(
                                                   maxHeight: 2000.00,
@@ -990,6 +1004,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                                             .bytes
                                                             ?.isNotEmpty ??
                                                         false)) {
+                                                  logFirebaseEvent(
+                                                      'IconButton_update_component_state');
                                                   setState(() {
                                                     _model.uploadedFile = _model
                                                         .uploadedLocalFile1;
@@ -1024,7 +1040,11 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                     ? 'Save To Collection'
                                     : 'Create new collection',
                                 currentAction: () async {
+                                  logFirebaseEvent(
+                                      'B_S_ADD_FROM_BROWSER_SaveToCollection_CA');
                                   var shouldSetState = false;
+                                  logFirebaseEvent(
+                                      'SaveToCollection_validate_form');
                                   if (_model.formKey.currentState == null ||
                                       !_model.formKey.currentState!
                                           .validate()) {
@@ -1037,6 +1057,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                             (_model.uploadedFile?.bytes
                                                     ?.isNotEmpty ??
                                                 false))) {
+                                      logFirebaseEvent(
+                                          'SaveToCollection_upload_file_to_supabase');
                                       {
                                         setState(() =>
                                             _model.isDataUploading2 = true);
@@ -1082,6 +1104,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                     } else if (_model.selectedImage != null &&
                                         _model.selectedImage != '') {
                                     } else {
+                                      logFirebaseEvent(
+                                          'SaveToCollection_alert_dialog');
                                       showDialog(
                                         context: context,
                                         builder: (dialogContext) {
@@ -1108,6 +1132,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                       return;
                                     }
 
+                                    logFirebaseEvent(
+                                        'SaveToCollection_backend_call');
                                     _model.createdWishRow =
                                         await WishesTable().insert({
                                       'visibily': true,
@@ -1134,6 +1160,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                     shouldSetState = true;
                                     if (_model.dropDownValue != null &&
                                         _model.dropDownValue != '') {
+                                      logFirebaseEvent(
+                                          'SaveToCollection_backend_call');
                                       _model.selectedCollection =
                                           await CollectionsTable().queryRows(
                                         queryFn: (q) => q.eq(
@@ -1142,6 +1170,8 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                         ),
                                       );
                                       shouldSetState = true;
+                                      logFirebaseEvent(
+                                          'SaveToCollection_backend_call');
                                       unawaited(
                                         () async {
                                           await WishesTable().update(
@@ -1159,11 +1189,19 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
                                         }(),
                                       );
                                       shouldSetState = true;
+                                      logFirebaseEvent(
+                                          'SaveToCollection_bottom_sheet');
                                       Navigator.pop(context);
+                                      logFirebaseEvent(
+                                          'SaveToCollection_navigate_to');
 
                                       context.goNamed('My_Profile');
                                     } else {
+                                      logFirebaseEvent(
+                                          'SaveToCollection_bottom_sheet');
                                       Navigator.pop(context);
+                                      logFirebaseEvent(
+                                          'SaveToCollection_bottom_sheet');
                                       await showModalBottomSheet(
                                         isScrollControlled: true,
                                         backgroundColor: Colors.transparent,

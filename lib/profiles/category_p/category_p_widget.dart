@@ -39,6 +39,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
     super.initState();
     _model = createModel(context, () => CategoryPModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Category_P'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -164,6 +165,11 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'CATEGORY_P_CircleImage_f30ufwvn_ON_TAP');
+                                        logFirebaseEvent(
+                                            'CircleImage_navigate_to');
+
                                         context.pushNamed('Category_P2');
                                       },
                                       child: Container(
@@ -352,6 +358,10 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'CATEGORY_P_PAGE_Notify_ON_TAP');
+                                    logFirebaseEvent('Notify_navigate_to');
+
                                     context.pushNamed('Notifications');
                                   },
                                   child: SizedBox(
@@ -447,6 +457,10 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            logFirebaseEvent(
+                                                'CATEGORY_P_PAGE_Share_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Share_bottom_sheet');
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:

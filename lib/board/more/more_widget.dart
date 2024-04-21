@@ -26,6 +26,7 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
     super.initState();
     _model = createModel(context, () => MoreModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'More'});
     animationsMap.addAll({
       'imageOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -302,6 +303,9 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                   child: PinkButtonWidget(
                     text: 'Next',
                     currentAction: () async {
+                      logFirebaseEvent('MORE_PAGE_Container_15pv2u1s_CALLBACK');
+                      logFirebaseEvent('pinkButton_navigate_to');
+
                       context.pushNamed('Create_Couple_Profile');
                     },
                   ),

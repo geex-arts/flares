@@ -49,9 +49,13 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     super.initState();
     _model = createModel(context, () => MyProfileModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'My_Profile'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
       if (FFAppState().pairID == '') {
+        logFirebaseEvent('My_Profile_navigate_to');
+
         context.goNamed(
           'Create_Couple_Profile',
           extra: <String, dynamic>{
@@ -297,6 +301,11 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  logFirebaseEvent(
+                                                      'MY_PROFILE_Container_jbzp9z8k_ON_TAP');
+                                                  logFirebaseEvent(
+                                                      'Container_navigate_to');
+
                                                   context.pushNamed(
                                                     'Edit_Couple_Profile',
                                                     queryParameters: {
@@ -399,6 +408,11 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                   Colors
                                                                       .transparent,
                                                               onTap: () async {
+                                                                logFirebaseEvent(
+                                                                    'MY_PROFILE_ConditionalBuilder_fxcd6519_O');
+                                                                logFirebaseEvent(
+                                                                    'ConditionalBuilder_navigate_to');
+
                                                                 context.pushNamed(
                                                                     'Edit_Profile');
                                                               },
@@ -537,6 +551,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                             .transparent,
                                                                     onTap:
                                                                         () async {
+                                                                      logFirebaseEvent(
+                                                                          'MY_PROFILE_Container_029n4mtj_ON_TAP');
+                                                                      logFirebaseEvent(
+                                                                          'Container_action_block');
                                                                       await action_blocks
                                                                           .pairInvitationRowAction(
                                                                         context,
@@ -620,7 +638,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 child: const Icon(
                                                   FFIcons.klike,
                                                   color: Color(0xFFFF2C96),
-                                                  size: 14.0,
+                                                  size: 18.0,
                                                 ).animateOnPageLoad(animationsMap[
                                                     'iconOnPageLoadAnimation']!),
                                               ),
@@ -643,6 +661,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'MY_PROFILE_PAGE_Column_lyodz435_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Column_backend_call');
                                               _model.apiResultc17Copy =
                                                   await GenerateAiSimiliarWishCall
                                                       .call(
@@ -654,6 +676,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               if ((_model.apiResultc17Copy
                                                       ?.succeeded ??
                                                   true)) {
+                                                logFirebaseEvent(
+                                                    'Column_alert_dialog');
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -738,6 +762,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'MY_PROFILE_PAGE_Column_ucyyr0ad_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Column_backend_call');
                                               _model.apiResultc16Copy =
                                                   await GenerateAiWishCall.call(
                                                 city: 'Moscow',
@@ -747,6 +775,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               if ((_model.apiResultc16Copy
                                                       ?.succeeded ??
                                                   true)) {
+                                                logFirebaseEvent(
+                                                    'Column_alert_dialog');
                                                 await showDialog(
                                                   context: context,
                                                   builder:
@@ -907,6 +937,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'MY_PROFILE_Container_zgrl20dw_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Container_bottom_sheet');
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
@@ -958,6 +992,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'MY_PROFILE_Container_4ube1o5r_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       setState(() {
                                         _model.selectedCollectionID = null;
                                       });
@@ -1053,6 +1091,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'MY_PROFILE_Container_5nfqvym8_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'Container_update_page_state');
                                               setState(() {
                                                 _model.selectedCollectionID =
                                                     categoryRowCollectionsRow
@@ -1284,6 +1326,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'MY_PROFILE_PAGE_Notify_ON_TAP');
+                                    logFirebaseEvent('Notify_navigate_to');
+
                                     context.pushNamed('Notifications');
                                   },
                                   child: SizedBox(
@@ -1421,6 +1467,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'MY_PROFILE_PAGE_Settings_ON_TAP');
+                                      logFirebaseEvent('Settings_navigate_to');
+
                                       context.pushNamed('Profile');
                                     },
                                     child: Stack(
@@ -1461,6 +1511,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'MY_PROFILE_PAGE_Share_ON_TAP');
+                                          logFirebaseEvent('Share_share');
                                           await Share.share(
                                             'https://flaresapp.page.link/?link=https://flaresapp.page.link/couplesProfile?selectedPairID=${FFAppState().pairID}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                             sharePositionOrigin:
@@ -1525,6 +1578,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'MY_PROFILE_PAGE_Text_mj0sgy9s_ON_TAP');
+                                  logFirebaseEvent('Text_alert_dialog');
                                   await showDialog(
                                     context: context,
                                     builder: (dialogContext) {
@@ -1577,7 +1633,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(1.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 child: wrapWithModel(
                   model: _model.floatingBtnModel,
                   updateCallback: () => setState(() {}),

@@ -26,6 +26,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
     super.initState();
     _model = createModel(context, () => LanguageModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Language'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -113,6 +114,8 @@ class _LanguageWidgetState extends State<LanguageWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent('LANGUAGE_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(

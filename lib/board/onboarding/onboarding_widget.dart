@@ -36,6 +36,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     super.initState();
     _model = createModel(context, () => OnboardingModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Onboarding'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -281,6 +282,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'ONBOARDING_Container_resc3o4t_ON_TAP');
+                                      logFirebaseEvent('Container_navigate_to');
+
                                       context.pushNamed(
                                         'Sign_In',
                                         queryParameters: {
@@ -924,6 +929,9 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                         child: PinkButtonWidget(
                           text: 'Log In',
                           currentAction: () async {
+                            logFirebaseEvent('ONBOARDING_PAGE_LogIn_CALLBACK');
+                            logFirebaseEvent('LogIn_navigate_to');
+
                             context.pushNamed(
                               'Sign_In',
                               queryParameters: {
@@ -943,6 +951,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                     Flexible(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          logFirebaseEvent(
+                              'ONBOARDING_PAGE_SignUpButton_ON_TAP');
+                          logFirebaseEvent('SignUpButton_navigate_to');
+
                           context.pushNamed(
                             'Sign_Up',
                             queryParameters: {

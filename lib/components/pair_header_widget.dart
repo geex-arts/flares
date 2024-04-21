@@ -494,6 +494,9 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'PAIR_HEADER_COMP_Column_vjhsg0hv_ON_TAP');
+                              logFirebaseEvent('Column_backend_call');
                               _model.apiResultc17Copy =
                                   await GenerateAiSimiliarWishCall.call(
                                 budget: 'elite',
@@ -503,6 +506,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                               );
                               if ((_model.apiResultc17Copy?.succeeded ??
                                   true)) {
+                                logFirebaseEvent('Column_alert_dialog');
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {
@@ -574,6 +578,9 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'PAIR_HEADER_COMP_Column_jyc1spug_ON_TAP');
+                              logFirebaseEvent('Column_backend_call');
                               _model.apiResultc16Copy =
                                   await GenerateAiWishCall.call(
                                 city: 'Moscow',
@@ -582,6 +589,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                               );
                               if ((_model.apiResultc16Copy?.succeeded ??
                                   true)) {
+                                logFirebaseEvent('Column_alert_dialog');
                                 await showDialog(
                                   context: context,
                                   builder: (alertDialogContext) {

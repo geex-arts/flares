@@ -62,6 +62,9 @@ class _NfIconPlaceholderWidgetState extends State<NfIconPlaceholderWidget>
       hoverColor: Colors.transparent,
       highlightColor: Colors.transparent,
       onTap: () async {
+        logFirebaseEvent('NF_ICON_PLACEHOLDER_COMP_Notify_ON_TAP');
+        logFirebaseEvent('Notify_navigate_to');
+
         context.pushNamed('Notifications');
       },
       child: SizedBox(

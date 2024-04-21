@@ -21,6 +21,9 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => AskForDateModel());
+
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Ask_For_Date'});
   }
 
   @override

@@ -37,7 +37,10 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ALERT_DIALOG_WARNING_alertDialogWarning_');
+      logFirebaseEvent('alertDialogWarning_wait__delay');
       await Future.delayed(const Duration(milliseconds: 3000));
+      logFirebaseEvent('alertDialogWarning_dismiss_dialog');
       Navigator.pop(context);
     });
   }

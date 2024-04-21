@@ -118,6 +118,9 @@ class _NShareInfoWidgetState extends State<NShareInfoWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'N_SHARE_INFO_Container_jjxhylus_ON_TAP');
+                            logFirebaseEvent('Container_bottom_sheet');
                             Navigator.pop(context);
                           },
                           child: Container(

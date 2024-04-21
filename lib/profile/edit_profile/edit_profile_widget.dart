@@ -34,6 +34,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
     super.initState();
     _model = createModel(context, () => EditProfileModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Edit_Profile'});
+
     _model.nameFieldFocusNode ??= FocusNode();
 
     _model.emailFieldFocusNode ??= FocusNode();
@@ -158,6 +161,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'EDIT_PROFILE_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -306,6 +312,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            logFirebaseEvent(
+                                                'EDIT_PROFILE_Container_8opee0m0_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Container_store_media_for_upload');
                                             final selectedMedia =
                                                 await selectMediaWithSourceBottomSheet(
                                               context: context,
@@ -371,6 +381,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               }
                                             }
 
+                                            logFirebaseEvent(
+                                                'Container_update_page_state');
                                             setState(() {
                                               _model.photoPS =
                                                   _model.uploadedLocalFile1;
@@ -668,13 +680,19 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                     child: PinkButtonWidget(
                                       text: 'Save Profile',
                                       currentAction: () async {
+                                        logFirebaseEvent(
+                                            'EDIT_PROFILE_PAGE_SaveProfile_CALLBACK');
                                         var shouldSetState = false;
+                                        logFirebaseEvent(
+                                            'SaveProfile_validate_form');
                                         if (_model.formKey.currentState ==
                                                 null ||
                                             !_model.formKey.currentState!
                                                 .validate()) {
                                           return;
                                         }
+                                        logFirebaseEvent(
+                                            'SaveProfile_backend_call');
                                         _model.duplicateEmailRow =
                                             await UsersTable().queryRows(
                                           queryFn: (q) => q
@@ -690,6 +708,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         );
                                         shouldSetState = true;
                                         if (_model.duplicateEmailRow!.isNotEmpty) {
+                                          logFirebaseEvent(
+                                              'SaveProfile_alert_dialog');
                                           await showDialog(
                                             context: context,
                                             builder: (dialogContext) {
@@ -731,6 +751,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         if (_model.emailFieldTextController
                                                 .text !=
                                             currentUserEmail) {
+                                          logFirebaseEvent('SaveProfile_auth');
                                           if (_model.emailFieldTextController
                                               .text.isEmpty) {
                                             ScaffoldMessenger.of(context)
@@ -757,9 +778,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 false)) {
                                           if (columnUsersRow?.avatar != null &&
                                               columnUsersRow?.avatar != '') {
+                                            logFirebaseEvent(
+                                                'SaveProfile_delete_data');
                                             await deleteSupabaseFileFromPublicUrl(
                                                 columnUsersRow!.avatar!);
                                           }
+                                          logFirebaseEvent(
+                                              'SaveProfile_upload_media_to_supabase');
                                           {
                                             setState(() =>
                                                 _model.isDataUploading2 = true);
@@ -805,6 +830,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             }
                                           }
                                         }
+                                        logFirebaseEvent(
+                                            'SaveProfile_backend_call');
                                         unawaited(
                                           () async {
                                             await UsersTable().update(
@@ -827,6 +854,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             );
                                           }(),
                                         );
+                                        logFirebaseEvent(
+                                            'SaveProfile_alert_dialog');
                                         await showDialog(
                                           context: context,
                                           builder: (dialogContext) {
@@ -861,7 +890,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           },
                                         ).then((value) => setState(() {}));
 
+                                        logFirebaseEvent(
+                                            'SaveProfile_update_app_state');
                                         FFAppState().update(() {});
+                                        logFirebaseEvent(
+                                            'SaveProfile_navigate_back');
                                         context.safePop();
                                         if (shouldSetState) setState(() {});
                                       },

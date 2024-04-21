@@ -71,6 +71,8 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('N_OFFER_COMP_Icon_qlx1gubw_ON_TAP');
+                          logFirebaseEvent('Icon_bottom_sheet');
                           Navigator.pop(context);
                         },
                         child: const Icon(
@@ -291,9 +293,14 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                         child: PinkButtonWidget(
                           text: 'Continue',
                           currentAction: () async {
+                            logFirebaseEvent(
+                                'N_OFFER_COMP_ContinueBtn_CALLBACK');
+                            logFirebaseEvent('ContinueBtn_revenue_cat');
                             _model.result = await revenue_cat.purchasePackage(
                                 revenue_cat
                                     .offerings!.current!.monthly!.identifier);
+                            logFirebaseEvent(
+                                'ContinueBtn_close_dialog,_drawer,_etc');
                             Navigator.pop(context);
 
                             setState(() {});

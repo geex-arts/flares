@@ -211,7 +211,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 8.0, 0.0, 0.0),
+                                  0.0, 12.0, 0.0, 0.0),
                               child: LinearPercentIndicator(
                                 percent: () {
                                   if (_model.budget == 'moderate') {
@@ -409,6 +409,10 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Text_64xf91pa_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_component_state');
                                       setState(() {
                                         _model.budget = 'friendly';
                                       });
@@ -435,6 +439,10 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Text_mu2edy3j_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_component_state');
                                       setState(() {
                                         _model.budget = 'moderate';
                                       });
@@ -461,6 +469,10 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Text_42rbkjmv_ON_TAP');
+                                      logFirebaseEvent(
+                                          'Text_update_component_state');
                                       setState(() {
                                         _model.budget = 'luxury';
                                       });
@@ -497,7 +509,10 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                   child: PinkButtonWidget(
                     text: '⚡️ Generate with AI',
                     currentAction: () async {
+                      logFirebaseEvent('B_S_BUDGET_LOCATION_Generate_CALLBACK');
+                      logFirebaseEvent('Generate_bottom_sheet');
                       Navigator.pop(context);
+                      logFirebaseEvent('Generate_bottom_sheet');
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,

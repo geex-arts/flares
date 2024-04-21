@@ -41,6 +41,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
     super.initState();
     _model = createModel(context, () => InvitePartnerOnbModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Invite_Partner_Onb'});
     _model.sendCodeFieldTextController ??= TextEditingController();
     _model.sendCodeFieldFocusNode ??= FocusNode();
 
@@ -106,6 +108,10 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'INVITE_PARTNER_ONB_PAGE_Skip_ON_TAP');
+                              logFirebaseEvent('Skip_navigate_to');
+
                               context.goNamed(
                                 'Subscriptions',
                                 queryParameters: {
@@ -161,6 +167,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'INVITE_PARTNER_ONB_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -311,6 +320,10 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'INVITE_PARTNER_ONB_PAGE_CopyIcon_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'CopyIcon_copy_to_clipboard');
                                               await Clipboard.setData(
                                                   ClipboardData(
                                                       text: widget
@@ -337,6 +350,10 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         child: PinkButtonWidget(
                                           text: 'Share my invite link',
                                           currentAction: () async {
+                                            logFirebaseEvent(
+                                                'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
+                                            logFirebaseEvent(
+                                                'Sharemyinvitelink_share');
                                             await Share.share(
                                               'https://flaresapp.page.link/?link=https://flaresapp.page.link/onboarding?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                               sharePositionOrigin:
@@ -556,9 +573,15 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       child: PinkButtonWidget(
                                         text: 'Send Pairing Code',
                                         currentAction: () async {
+                                          logFirebaseEvent(
+                                              'INVITE_PARTNER_ONB_SendPairingCode_CALLB');
+                                          logFirebaseEvent(
+                                              'SendPairingCode_update_page_state');
                                           setState(() {
                                             _model.codeNotFound = false;
                                           });
+                                          logFirebaseEvent(
+                                              'SendPairingCode_backend_call');
                                           _model.foundPairingRow =
                                               await PairsInvitationsTable()
                                                   .queryRows(
@@ -577,6 +600,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           if (_model.foundPairingRow != null &&
                                               (_model.foundPairingRow)!
                                                   .isNotEmpty) {
+                                            logFirebaseEvent(
+                                                'SendPairingCode_backend_call');
                                             unawaited(
                                               () async {
                                                 await UsersTable().update(
@@ -594,6 +619,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 );
                                               }(),
                                             );
+                                            logFirebaseEvent(
+                                                'SendPairingCode_backend_call');
                                             unawaited(
                                               () async {
                                                 await PairsInvitationsTable()
@@ -610,11 +637,17 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 );
                                               }(),
                                             );
+                                            logFirebaseEvent(
+                                                'SendPairingCode_update_app_state');
                                             FFAppState().pairID = _model
                                                 .foundPairingRow!.first.pair!;
                                             if (widget.isFromProfile) {
+                                              logFirebaseEvent(
+                                                  'SendPairingCode_navigate_back');
                                               context.safePop();
                                             } else {
+                                              logFirebaseEvent(
+                                                  'SendPairingCode_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -654,6 +687,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                   safeSetState(() {}));
                                             }
                                           } else {
+                                            logFirebaseEvent(
+                                                'SendPairingCode_update_page_state');
                                             setState(() {
                                               _model.codeNotFound = true;
                                             });

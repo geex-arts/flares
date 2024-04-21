@@ -31,6 +31,8 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
     super.initState();
     _model = createModel(context, () => NewPasswordModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'New_Password'});
     _model.passwordFieldTextController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
     _model.passwordFieldFocusNode!.addListener(() => setState(() {}));
@@ -123,6 +125,9 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'NEW_PASSWORD_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -410,25 +415,31 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                       child: PinkButtonWidget(
                         text: 'Reset Password',
                         currentAction: () async {
+                          logFirebaseEvent(
+                              'NEW_PASSWORD_Container_l1llfdnz_CALLBACK');
                           var shouldSetState = false;
                           if ((_model.passwordFieldTextController.text ==
                                       '') ||
                               (_model.passwordFieldTextController.text.length <
                                   8)) {
+                            logFirebaseEvent('pinkButton_update_page_state');
                             setState(() {
                               _model.isWrongPassword = true;
                             });
                           } else if (_model.passwordFieldTextController.text !=
                               _model.rePasswordFieldTextController.text) {
+                            logFirebaseEvent('pinkButton_update_page_state');
                             setState(() {
                               _model.isNotMatch = true;
                             });
                           } else {
+                            logFirebaseEvent('pinkButton_custom_action');
                             _model.isSuccess = await actions.changePassword(
                               _model.rePasswordFieldTextController.text,
                             );
                             shouldSetState = true;
                             if (_model.isSuccess!) {
+                              logFirebaseEvent('pinkButton_alert_dialog');
                               await showDialog(
                                 context: context,
                                 builder: (dialogContext) {
@@ -457,8 +468,10 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                                 },
                               ).then((value) => setState(() {}));
 
+                              logFirebaseEvent('pinkButton_navigate_back');
                               context.safePop();
                             } else {
+                              logFirebaseEvent('pinkButton_alert_dialog');
                               showDialog(
                                 context: context,
                                 builder: (dialogContext) {

@@ -47,6 +47,8 @@ class _FloatingBtnWidgetState extends State<FloatingBtnWidget> {
           hoverColor: Colors.transparent,
           highlightColor: Colors.transparent,
           onTap: () async {
+            logFirebaseEvent('FLOATING_BTN_COMP_FloatButton_ON_TAP');
+            logFirebaseEvent('FloatButton_bottom_sheet');
             await showModalBottomSheet(
               isScrollControlled: true,
               backgroundColor: Colors.transparent,

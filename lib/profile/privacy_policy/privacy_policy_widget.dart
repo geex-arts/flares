@@ -26,6 +26,8 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget>
     super.initState();
     _model = createModel(context, () => PrivacyPolicyModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Privacy_Policy'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -112,6 +114,9 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PRIVACY_POLICY_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(

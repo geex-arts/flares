@@ -33,8 +33,12 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
     super.initState();
     _model = createModel(context, () => NotificationsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Notifications'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('NOTIFICATIONS_Notifications_ON_INIT_STAT');
+      logFirebaseEvent('Notifications_backend_call');
       unawaited(
         () async {
           await UsersTable().update(
@@ -166,6 +170,9 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'NOTIFICATIONS_PAGE_NavBack_ON_TAP');
+                                    logFirebaseEvent('NavBack_navigate_back');
                                     context.safePop();
                                   },
                                   child: Stack(
@@ -200,66 +207,75 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 16.0, 0.0, 0.0),
+                                0.0, 24.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(),
+                                      child: wrapWithModel(
+                                        model: _model.notificationsListModel1,
+                                        updateCallback: () => setState(() {}),
+                                        child: NotificationsListWidget(
+                                          day: 'Today',
+                                          parameter8:
+                                              backgroundContainerNotificationsRowList
+                                                  .where((e) =>
+                                                      functions.checkDay(
+                                                          e.createdAt) ==
+                                                      'today')
+                                                  .toList(),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
                                     child: wrapWithModel(
-                                      model: _model.notificationsListModel1,
+                                      model: _model.notificationsListModel2,
                                       updateCallback: () => setState(() {}),
                                       child: NotificationsListWidget(
-                                        day: 'Today',
                                         parameter8:
                                             backgroundContainerNotificationsRowList
                                                 .where((e) =>
                                                     functions.checkDay(
                                                         e.createdAt) ==
-                                                    'today')
+                                                    'yesterday')
                                                 .toList(),
+                                        day: 'Yesterday',
                                       ),
                                     ),
                                   ),
-                                  wrapWithModel(
-                                    model: _model.notificationsListModel2,
-                                    updateCallback: () => setState(() {}),
-                                    child: NotificationsListWidget(
-                                      parameter8:
-                                          backgroundContainerNotificationsRowList
-                                              .where((e) =>
-                                                  functions
-                                                      .checkDay(e.createdAt) ==
-                                                  'yesterday')
-                                              .toList(),
-                                      day: 'Yesterday',
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    decoration: const BoxDecoration(),
-                                    child: wrapWithModel(
-                                      model: _model.notificationsListModel3,
-                                      updateCallback: () => setState(() {}),
-                                      child: NotificationsListWidget(
-                                        day: 'Long time ago',
-                                        parameter8:
-                                            backgroundContainerNotificationsRowList
-                                                .where((e) =>
-                                                    functions.checkDay(
-                                                        e.createdAt) ==
-                                                    'old')
-                                                .toList(),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 16.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(),
+                                      child: wrapWithModel(
+                                        model: _model.notificationsListModel3,
+                                        updateCallback: () => setState(() {}),
+                                        child: NotificationsListWidget(
+                                          day: 'Long time ago',
+                                          parameter8:
+                                              backgroundContainerNotificationsRowList
+                                                  .where((e) =>
+                                                      functions.checkDay(
+                                                          e.createdAt) ==
+                                                      'old')
+                                                  .toList(),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ]
-                                    .divide(const SizedBox(height: 32.0))
-                                    .addToStart(const SizedBox(height: 16.0))
-                                    .addToEnd(const SizedBox(height: 120.0)),
+                                ].addToEnd(const SizedBox(height: 120.0)),
                               ),
                             ),
                           ),

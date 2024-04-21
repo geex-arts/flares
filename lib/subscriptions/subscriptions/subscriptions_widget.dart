@@ -36,6 +36,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
     super.initState();
     _model = createModel(context, () => SubscriptionsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Subscriptions'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -126,6 +128,9 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'SUBSCRIPTIONS_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_bottom_sheet');
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -148,6 +153,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             ).then((value) => safeSetState(() {}));
 
                             if (widget.isFIrstTime) {
+                              logFirebaseEvent('NavBack_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: FlutterFlowTheme.of(context)
@@ -173,6 +179,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                 },
                               ).then((value) => safeSetState(() {}));
                             } else {
+                              logFirebaseEvent('NavBack_navigate_back');
                               context.safePop();
                             }
                           },
@@ -376,6 +383,10 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_a4emnsf1_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     setState(() {
                                       _model.selectedPlan = 0;
                                     });
@@ -529,6 +540,10 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_t0mwi8t9_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     setState(() {
                                       _model.selectedPlan = 1;
                                     });
@@ -714,6 +729,10 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_8du8r81k_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
                                     setState(() {
                                       _model.selectedPlan = 2;
                                     });
@@ -897,8 +916,11 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                   child: PinkButtonWidget(
                     text: 'Continue',
                     currentAction: () async {
+                      logFirebaseEvent('SUBSCRIPTIONS_ContinueButton_CALLBACK');
+                      logFirebaseEvent('ContinueButton_revenue_cat');
                       _model.test = await revenue_cat.purchasePackage(
                           revenue_cat.offerings!.current!.monthly!.identifier);
+                      logFirebaseEvent('ContinueButton_bottom_sheet');
                       await showModalBottomSheet(
                         isScrollControlled: true,
                         backgroundColor: Colors.transparent,

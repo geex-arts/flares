@@ -162,10 +162,16 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         onChanged: (newValue) async {
                           setState(() => _model.switchValue = newValue);
                           if (newValue) {
+                            logFirebaseEvent(
+                                'B_S_NEW_COLLECTION_Switch_df70li1i_ON_TO');
+                            logFirebaseEvent('Switch_update_component_state');
                             setState(() {
                               _model.isSwitch = true;
                             });
                           } else {
+                            logFirebaseEvent(
+                                'B_S_NEW_COLLECTION_Switch_df70li1i_ON_TO');
+                            logFirebaseEvent('Switch_update_component_state');
                             setState(() {
                               _model.isSwitch = false;
                             });
@@ -298,12 +304,16 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   child: PinkButtonWidget(
                     text: 'Create',
                     currentAction: () async {
+                      logFirebaseEvent(
+                          'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
                       var shouldSetState = false;
+                      logFirebaseEvent('pinkButton_update_component_state');
                       setState(() {
                         _model.isEmptyName = false;
                       });
                       if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
+                        logFirebaseEvent('pinkButton_backend_call');
                         _model.newCollectionRowCopy =
                             await CollectionsTable().insert({
                           'name': _model.textController.text,
@@ -316,6 +326,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         shouldSetState = true;
                         if (widget.selectedWishRow != null) {
                           if (widget.isFromBrowser) {
+                            logFirebaseEvent('pinkButton_backend_call');
                             unawaited(
                               () async {
                                 await WishesTable().update(
@@ -332,13 +343,16 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                                 );
                               }(),
                             );
+                            logFirebaseEvent('pinkButton_bottom_sheet');
                             Navigator.pop(context);
+                            logFirebaseEvent('pinkButton_navigate_to');
 
                             context.goNamed('My_Profile');
 
                             if (shouldSetState) setState(() {});
                             return;
                           } else {
+                            logFirebaseEvent('pinkButton_backend_call');
                             await WishesTable().insert({
                               'collection': _model.newCollectionRowCopy?.uuid,
                               'pair': FFAppState().pairID,
@@ -354,9 +368,12 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                             });
                           }
                         }
+                        logFirebaseEvent('pinkButton_update_app_state');
                         FFAppState().update(() {});
+                        logFirebaseEvent('pinkButton_bottom_sheet');
                         Navigator.pop(context);
                       } else {
+                        logFirebaseEvent('pinkButton_update_component_state');
                         setState(() {
                           _model.isEmptyName = true;
                         });

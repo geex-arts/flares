@@ -31,6 +31,8 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
     super.initState();
     _model = createModel(context, () => InvitePartnerModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Invite_Partner'});
     _model.sendCodeFieldTextController ??= TextEditingController();
     _model.sendCodeFieldFocusNode ??= FocusNode();
 
@@ -99,6 +101,9 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'INVITE_PARTNER_PAGE_Skip_ON_TAP');
+                              logFirebaseEvent('Skip_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
@@ -171,6 +176,9 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'INVITE_PARTNER_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -320,6 +328,10 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'INVITE_PARTNER_PAGE_CopyIcon_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'CopyIcon_copy_to_clipboard');
                                               await Clipboard.setData(
                                                   ClipboardData(
                                                       text: valueOrDefault<
@@ -348,6 +360,10 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                         child: PinkButtonWidget(
                                           text: 'Share my invite link',
                                           currentAction: () async {
+                                            logFirebaseEvent(
+                                                'INVITE_PARTNER_Sharemyinvitelink_CALLBAC');
+                                            logFirebaseEvent(
+                                                'Sharemyinvitelink_share');
                                             await Share.share(
                                               _model.code!,
                                               sharePositionOrigin:
@@ -544,6 +560,10 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                         child: PinkButtonWidget(
                                           text: 'Send Pairing Code',
                                           currentAction: () async {
+                                            logFirebaseEvent(
+                                                'INVITE_PARTNER_SendPairingCode_CALLBACK');
+                                            logFirebaseEvent(
+                                                'SendPairingCode_share');
                                             await Share.share(
                                               _model.sendCodeFieldTextController
                                                   .text,

@@ -42,6 +42,7 @@ class _SignInWidgetState extends State<SignInWidget>
     super.initState();
     _model = createModel(context, () => SignInModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Sign_In'});
     if (!isWeb) {
       _keyboardVisibilitySubscription =
           KeyboardVisibilityController().onChange.listen((bool visible) {
@@ -147,6 +148,8 @@ class _SignInWidgetState extends State<SignInWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent('SIGN_IN_PAGE_NavBack_ON_TAP');
+                              logFirebaseEvent('NavBack_navigate_back');
                               context.safePop();
                             },
                             child: Stack(
@@ -191,37 +194,124 @@ class _SignInWidgetState extends State<SignInWidget>
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Container(
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color:
-                                          FlutterFlowTheme.of(context).field6,
-                                      borderRadius: BorderRadius.circular(30.0),
+                                  TextFormField(
+                                    controller: _model.emailFieldTextController,
+                                    focusNode: _model.emailFieldFocusNode,
+                                    onChanged: (_) => EasyDebounce.debounce(
+                                      '_model.emailFieldTextController',
+                                      const Duration(milliseconds: 2000),
+                                      () => setState(() {}),
                                     ),
+                                    autofocus: false,
+                                    textInputAction: TextInputAction.next,
+                                    obscureText: false,
+                                    decoration: InputDecoration(
+                                      isDense: false,
+                                      hintText: 'Email',
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: const Color(0x98FFFFFF),
+                                            fontSize: 14.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                            lineHeight: 1.0,
+                                          ),
+                                      errorStyle: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            fontSize: 11.0,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                            lineHeight: 1.0,
+                                          ),
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: const BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .pinkButton,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      filled: true,
+                                      fillColor: const Color(0x0FFFFFFF),
+                                      contentPadding:
+                                          const EdgeInsetsDirectional.fromSTEB(
+                                              20.0, 14.0, 20.0, 14.0),
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                    keyboardType: TextInputType.emailAddress,
+                                    cursorColor:
+                                        FlutterFlowTheme.of(context).pinkButton,
+                                    validator: _model
+                                        .emailFieldTextControllerValidator
+                                        .asValidator(context),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller:
-                                          _model.emailFieldTextController,
-                                      focusNode: _model.emailFieldFocusNode,
+                                          _model.passwordFieldTextController,
+                                      focusNode: _model.passwordFieldFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
-                                        '_model.emailFieldTextController',
+                                        '_model.passwordFieldTextController',
                                         const Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
                                       textInputAction: TextInputAction.next,
-                                      obscureText: false,
+                                      obscureText:
+                                          !_model.passwordFieldVisibility,
                                       decoration: InputDecoration(
                                         isDense: false,
-                                        hintText: 'Email',
+                                        hintText: 'Password',
                                         hintStyle: FlutterFlowTheme.of(context)
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Nuckle',
                                               color: const Color(0x98FFFFFF),
-                                              fontSize: 14.0,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
-                                              lineHeight: 1.0,
                                             ),
                                         errorStyle: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -230,36 +320,65 @@ class _SignInWidgetState extends State<SignInWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .error,
-                                              fontSize: 11.0,
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
-                                              lineHeight: 1.0,
                                             ),
-                                        enabledBorder: InputBorder.none,
-                                        focusedBorder: InputBorder.none,
-                                        errorBorder: InputBorder.none,
-                                        focusedErrorBorder: InputBorder.none,
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: const BorderSide(
+                                            color: Color(0x00000000),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pinkButton,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        filled: true,
+                                        fillColor: const Color(0x0FFFFFFF),
                                         contentPadding:
                                             const EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 14.0, 20.0, 0.0),
-                                        suffixIcon: _model
-                                                .emailFieldTextController!
-                                                .text
-                                                .isNotEmpty
-                                            ? InkWell(
-                                                onTap: () async {
-                                                  _model
-                                                      .emailFieldTextController
-                                                      ?.clear();
-                                                  setState(() {});
-                                                },
-                                                child: const Icon(
-                                                  Icons.clear,
-                                                  color: Color(0x9AFFFFFF),
-                                                  size: 18.0,
-                                                ),
-                                              )
-                                            : null,
+                                                20.0, 14.0, 20.0, 14.0),
+                                        suffixIcon: InkWell(
+                                          onTap: () => setState(
+                                            () => _model
+                                                    .passwordFieldVisibility =
+                                                !_model.passwordFieldVisibility,
+                                          ),
+                                          focusNode:
+                                              FocusNode(skipTraversal: true),
+                                          child: Icon(
+                                            _model.passwordFieldVisibility
+                                                ? Icons.visibility_outlined
+                                                : Icons.visibility_off_outlined,
+                                            color: const Color(0x98FFFFFF),
+                                            size: 18.0,
+                                          ),
+                                        ),
                                       ),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -270,110 +389,15 @@ class _SignInWidgetState extends State<SignInWidget>
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
-                                      keyboardType: TextInputType.emailAddress,
                                       cursorColor: FlutterFlowTheme.of(context)
                                           .pinkButton,
                                       validator: _model
-                                          .emailFieldTextControllerValidator
+                                          .passwordFieldTextControllerValidator
                                           .asValidator(context),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 16.0, 0.0, 0.0),
-                                    child: Container(
-                                      height: 40.0,
-                                      decoration: BoxDecoration(
-                                        color:
-                                            FlutterFlowTheme.of(context).field6,
-                                        borderRadius:
-                                            BorderRadius.circular(30.0),
-                                      ),
-                                      child: TextFormField(
-                                        controller:
-                                            _model.passwordFieldTextController,
-                                        focusNode:
-                                            _model.passwordFieldFocusNode,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.passwordFieldTextController',
-                                          const Duration(milliseconds: 2000),
-                                          () => setState(() {}),
-                                        ),
-                                        autofocus: false,
-                                        textInputAction: TextInputAction.next,
-                                        obscureText:
-                                            !_model.passwordFieldVisibility,
-                                        decoration: InputDecoration(
-                                          isDense: false,
-                                          hintText: 'Password',
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Nuckle',
-                                                    color: const Color(0x98FFFFFF),
-                                                    letterSpacing: 0.0,
-                                                    useGoogleFonts: false,
-                                                    lineHeight: 1.0,
-                                                  ),
-                                          errorStyle: FlutterFlowTheme.of(
-                                                  context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: false,
-                                              ),
-                                          enabledBorder: InputBorder.none,
-                                          focusedBorder: InputBorder.none,
-                                          errorBorder: InputBorder.none,
-                                          focusedErrorBorder: InputBorder.none,
-                                          contentPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 14.0, 20.0, 0.0),
-                                          suffixIcon: InkWell(
-                                            onTap: () => setState(
-                                              () => _model
-                                                      .passwordFieldVisibility =
-                                                  !_model
-                                                      .passwordFieldVisibility,
-                                            ),
-                                            focusNode:
-                                                FocusNode(skipTraversal: true),
-                                            child: Icon(
-                                              _model.passwordFieldVisibility
-                                                  ? Icons.visibility_outlined
-                                                  : Icons
-                                                      .visibility_off_outlined,
-                                              color: const Color(0x98FFFFFF),
-                                              size: 18.0,
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
-                                        cursorColor:
-                                            FlutterFlowTheme.of(context)
-                                                .pinkButton,
-                                        validator: _model
-                                            .passwordFieldTextControllerValidator
-                                            .asValidator(context),
-                                        inputFormatters: [
-                                          FilteringTextInputFormatter.allow(
-                                              RegExp('[a-zA-Z0-9]'))
-                                        ],
-                                      ),
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.allow(
+                                            RegExp('[a-zA-Z0-9]'))
+                                      ],
                                     ),
                                   ),
                                 ],
@@ -390,6 +414,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_IN_PAGE_ForgotPassword_ON_TAP');
+                                    logFirebaseEvent(
+                                        'ForgotPassword_navigate_to');
+
                                     context.pushNamed('Reset_Password');
                                   },
                                   child: Text(
@@ -439,8 +468,14 @@ class _SignInWidgetState extends State<SignInWidget>
                                 child: PinkButtonWidget(
                                   text: 'Next',
                                   currentAction: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_IN_PAGE_nextButton_CALLBACK');
                                     var shouldSetState = false;
+                                    logFirebaseEvent(
+                                        'nextButton_haptic_feedback');
                                     HapticFeedback.lightImpact();
+                                    logFirebaseEvent(
+                                        'nextButton_validate_form');
                                     if (_model.formKey.currentState == null ||
                                         !_model.formKey.currentState!
                                             .validate()) {
@@ -452,9 +487,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                         (_model.passwordFieldTextController
                                                     .text ==
                                                 '')) {
+                                      logFirebaseEvent(
+                                          'nextButton_update_page_state');
                                       setState(() {
                                         _model.emptyFields = 2;
                                       });
+                                      logFirebaseEvent(
+                                          'nextButton_update_page_state');
                                       setState(() {
                                         _model.passLength = false;
                                       });
@@ -464,9 +503,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                       if (_model.emailFieldTextController
                                                   .text ==
                                               '') {
+                                        logFirebaseEvent(
+                                            'nextButton_update_page_state');
                                         setState(() {
                                           _model.emptyFields = 0;
                                         });
+                                        logFirebaseEvent(
+                                            'nextButton_update_page_state');
                                         setState(() {
                                           _model.passLength = false;
                                         });
@@ -476,9 +519,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                         if (_model.passwordFieldTextController
                                                     .text ==
                                                 '') {
+                                          logFirebaseEvent(
+                                              'nextButton_update_page_state');
                                           setState(() {
                                             _model.emptyFields = 1;
                                           });
+                                          logFirebaseEvent(
+                                              'nextButton_update_page_state');
                                           setState(() {
                                             _model.passLength = false;
                                           });
@@ -487,11 +534,14 @@ class _SignInWidgetState extends State<SignInWidget>
                                         }
                                       }
 
+                                      logFirebaseEvent(
+                                          'nextButton_update_page_state');
                                       setState(() {
                                         _model.emptyFields = null;
                                       });
                                     }
 
+                                    logFirebaseEvent('nextButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
 
                                     final user =
@@ -504,6 +554,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                       return;
                                     }
 
+                                    logFirebaseEvent('nextButton_backend_call');
                                     _model.userAuthCopyCopy =
                                         await UsersTable().queryRows(
                                       queryFn: (q) => q.eq(
@@ -512,13 +563,20 @@ class _SignInWidgetState extends State<SignInWidget>
                                       ),
                                     );
                                     shouldSetState = true;
+                                    logFirebaseEvent(
+                                        'nextButton_custom_action');
                                     await actions.getPushPermission();
+                                    logFirebaseEvent(
+                                        'nextButton_custom_action');
                                     _model.fcmToken =
                                         await actions.getFCMToken();
                                     shouldSetState = true;
+                                    logFirebaseEvent(
+                                        'nextButton_custom_action');
                                     await actions.initializeCustomerIo(
                                       currentUserEmail,
                                     );
+                                    logFirebaseEvent('nextButton_backend_call');
                                     await UsersTable().update(
                                       data: {
                                         'fcmToken': _model.fcmToken,
@@ -532,12 +590,19 @@ class _SignInWidgetState extends State<SignInWidget>
                                             null &&
                                         _model.userAuthCopyCopy?.first.pair !=
                                             '') {
+                                      logFirebaseEvent(
+                                          'nextButton_update_app_state');
                                       FFAppState().pairID =
                                           _model.userAuthCopyCopy!.first.pair!;
+                                      logFirebaseEvent(
+                                          'nextButton_navigate_to');
 
                                       context.goNamedAuth(
                                           'Explore', context.mounted);
                                     } else {
+                                      logFirebaseEvent(
+                                          'nextButton_navigate_to');
+
                                       context.goNamedAuth(
                                           'More', context.mounted);
                                     }
@@ -616,7 +681,12 @@ class _SignInWidgetState extends State<SignInWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'SIGN_IN_PAGE_GoogleButton_ON_TAP');
+                                  logFirebaseEvent(
+                                      'GoogleButton_haptic_feedback');
                                   HapticFeedback.lightImpact();
+                                  logFirebaseEvent('GoogleButton_auth');
                                   GoRouter.of(context).prepareAuthEvent();
                                   final user = await authManager
                                       .signInWithGoogle(context);
@@ -627,9 +697,15 @@ class _SignInWidgetState extends State<SignInWidget>
                                           null &&
                                       _model.userAuthCopyCopy?.first.pair !=
                                           '') {
+                                    logFirebaseEvent(
+                                        'GoogleButton_navigate_to');
+
                                     context.goNamedAuth(
                                         'My_Profile', context.mounted);
                                   } else {
+                                    logFirebaseEvent(
+                                        'GoogleButton_navigate_to');
+
                                     context.goNamedAuth('Create_Couple_Profile',
                                         context.mounted);
                                   }
@@ -647,6 +723,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'SIGN_IN_PAGE_Row_62j4ncdj_ON_TAP');
+                                      logFirebaseEvent('Row_auth');
                                       GoRouter.of(context).prepareAuthEvent();
                                       final user = await authManager
                                           .signInWithGoogle(context);
@@ -787,6 +866,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                   mouseCursor: SystemMouseCursors.click,
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
+                                      logFirebaseEvent(
+                                          'SIGN_IN_RichTextSpan_eikd0fh0_ON_TAP');
+                                      logFirebaseEvent(
+                                          'RichTextSpan_navigate_to');
+
                                       context.pushNamed('Sign_Up');
                                     },
                                 )
@@ -831,6 +915,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SIGN_IN_RichTextSpan_bwh1efst_ON_TAP');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
                                     context.pushNamed('Terms_Conditions');
                                   },
                               ),
@@ -851,6 +940,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SIGN_IN_RichTextSpan_9y74rxgz_ON_TAP');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
                                     context.pushNamed('Privacy_Policy');
                                   },
                               )

@@ -41,6 +41,8 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
     super.initState();
     _model = createModel(context, () => EditCoupleProfileModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Edit_Couple_Profile'});
     _model.namesFieldTextController ??=
         TextEditingController(text: widget.myPairRow?.pairName);
     _model.namesFieldFocusNode ??= FocusNode();
@@ -128,6 +130,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'EDIT_COUPLE_PROFILE_PAGE_NavBack_ON_TAP');
+                          logFirebaseEvent('NavBack_navigate_back');
                           context.safePop();
                         },
                         child: Stack(
@@ -219,6 +224,10 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'EDIT_COUPLE_PROFILE_Container_v2k07gg5_O');
+                                      logFirebaseEvent(
+                                          'Container_store_media_for_upload');
                                       final selectedMedia =
                                           await selectMediaWithSourceBottomSheet(
                                         context: context,
@@ -277,6 +286,8 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       if ((_model.uploadedLocalFile1.bytes
                                                   ?.isNotEmpty ??
                                               false)) {
+                                        logFirebaseEvent(
+                                            'Container_update_page_state');
                                         setState(() {
                                           _model.photoPS =
                                               _model.uploadedLocalFile1;
@@ -439,10 +450,14 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'EDIT_COUPLE_PROFILE_PAGE_Date_ON_TAP');
+                                    logFirebaseEvent('Date_update_page_state');
                                     setState(() {
                                       _model.dateOn = true;
                                       _model.borderOn = true;
                                     });
+                                    logFirebaseEvent('Date_date_time_picker');
                                     await showModalBottomSheet<bool>(
                                         context: context,
                                         builder: (context) {
@@ -504,6 +519,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                             ),
                                           );
                                         });
+                                    logFirebaseEvent('Date_update_page_state');
                                     setState(() {
                                       _model.dateOn = false;
                                       _model.borderOn = false;
@@ -754,12 +770,17 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                       child: PinkButtonWidget(
                         text: 'Save Changes',
                         currentAction: () async {
+                          logFirebaseEvent(
+                              'EDIT_COUPLE_PROFILE_CreateCouple_CALLBAC');
+                          logFirebaseEvent('CreateCouple_validate_form');
                           if (_model.formKey.currentState == null ||
                               !_model.formKey.currentState!.validate()) {
                             return;
                           }
                           if (_model.photoPS != null &&
                               (_model.photoPS?.bytes?.isNotEmpty ?? false)) {
+                            logFirebaseEvent(
+                                'CreateCouple_upload_media_to_supabase');
                             {
                               setState(() => _model.isDataUploading2 = true);
                               var selectedUploadedFiles = <FFUploadedFile>[];
@@ -797,10 +818,12 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
 
                             if (widget.myPairRow?.photo != null &&
                                 widget.myPairRow?.photo != '') {
+                              logFirebaseEvent('CreateCouple_delete_data');
                               await deleteSupabaseFileFromPublicUrl(
                                   widget.myPairRow!.photo!);
                             }
                           }
+                          logFirebaseEvent('CreateCouple_backend_call');
                           unawaited(
                             () async {
                               await PairsTable().update(
@@ -820,6 +843,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                               );
                             }(),
                           );
+                          logFirebaseEvent('CreateCouple_alert_dialog');
                           await showDialog(
                             context: context,
                             builder: (dialogContext) {
@@ -847,6 +871,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                             },
                           ).then((value) => setState(() {}));
 
+                          logFirebaseEvent('CreateCouple_navigate_back');
                           context.safePop();
                         },
                       ),

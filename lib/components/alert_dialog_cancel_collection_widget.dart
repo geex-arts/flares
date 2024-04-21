@@ -42,14 +42,19 @@ class _AlertDialogCancelCollectionWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ALERT_DIALOG_CANCEL_COLLECTION_alertDial');
+      logFirebaseEvent('alertDialogCancelCollection_start_period');
       _model.instantTimer = InstantTimer.periodic(
         duration: const Duration(milliseconds: 1000),
         callback: (timer) async {
           if (_model.currentSecond == 0) {
+            logFirebaseEvent('alertDialogCancelCollection_stop_periodi');
             _model.instantTimer?.cancel();
+            logFirebaseEvent('alertDialogCancelCollection_dismiss_dial');
             Navigator.pop(context);
             return;
           }
+          logFirebaseEvent('alertDialogCancelCollection_update_compo');
           setState(() {
             _model.currentSecond = _model.currentSecond + -1;
           });
@@ -155,7 +160,11 @@ class _AlertDialogCancelCollectionWidgetState
                     ),
                     FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'ALERT_DIALOG_CANCEL_COLLECTION_UNDO_BTN_');
+                        logFirebaseEvent('Button_stop_periodic_action');
                         _model.instantTimer?.cancel();
+                        logFirebaseEvent('Button_dismiss_dialog');
                         Navigator.pop(context);
                       },
                       text: 'Undo',

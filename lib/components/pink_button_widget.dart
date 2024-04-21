@@ -45,6 +45,8 @@ class _PinkButtonWidgetState extends State<PinkButtonWidget> {
   Widget build(BuildContext context) {
     return FFButtonWidget(
       onPressed: () async {
+        logFirebaseEvent('PINK_BUTTON_COMP_NextButton_ON_TAP');
+        logFirebaseEvent('NextButton_execute_callback');
         await widget.currentAction?.call();
       },
       text: widget.text!,

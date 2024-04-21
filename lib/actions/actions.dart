@@ -14,6 +14,7 @@ Future pairInvitationRowAction(
   List<PairsInvitationsRow>? currentPairInvitesRows;
   PairsInvitationsRow? pairInvitationRow;
 
+  logFirebaseEvent('pairInvitationRowAction_backend_call');
   currentPairInvitesRows = await PairsInvitationsTable().queryRows(
     queryFn: (q) => q
         .eq(
@@ -26,6 +27,8 @@ Future pairInvitationRowAction(
         ),
   );
   if (currentPairInvitesRows.isNotEmpty) {
+    logFirebaseEvent('pairInvitationRowAction_navigate_to');
+
     context.pushNamed(
       'Invite_Partner_Onb',
       queryParameters: {
@@ -40,6 +43,7 @@ Future pairInvitationRowAction(
       }.withoutNulls,
     );
   } else {
+    logFirebaseEvent('pairInvitationRowAction_backend_call');
     pairInvitationRow = await PairsInvitationsTable().insert({
       'status': 'pending',
       'pair_code': random_data.randomString(
@@ -51,6 +55,7 @@ Future pairInvitationRowAction(
       ),
       'pair': FFAppState().pairID,
     });
+    logFirebaseEvent('pairInvitationRowAction_navigate_to');
 
     context.pushNamed(
       'Invite_Partner_Onb',
@@ -76,14 +81,17 @@ Future loadFromBrowserAction(
 
   while (true) {
     if (url != null && url != '') {
+      logFirebaseEvent('loadFromBrowserAction_update_app_state');
       FFAppState().update(() {
         FFAppState().currentUrl = url;
       });
       if (true) {
+        logFirebaseEvent('loadFromBrowserAction_backend_call');
         apiParseResult = await ParseSiteCall.call(
           url: url,
         );
         if ((apiParseResult.succeeded ?? true)) {
+          logFirebaseEvent('loadFromBrowserAction_bottom_sheet');
           await showModalBottomSheet(
             isScrollControlled: true,
             backgroundColor: Colors.transparent,
@@ -101,6 +109,7 @@ Future loadFromBrowserAction(
             },
           );
         } else {
+          logFirebaseEvent('loadFromBrowserAction_alert_dialog');
           await showDialog(
             context: context,
             builder: (dialogContext) {
@@ -121,13 +130,16 @@ Future loadFromBrowserAction(
           );
         }
 
+        logFirebaseEvent('loadFromBrowserAction_update_app_state');
         FFAppState().previousUrl = url;
         FFAppState().currentUrl = '';
       }
     } else {
+      logFirebaseEvent('loadFromBrowserAction_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
     }
 
+    logFirebaseEvent('loadFromBrowserAction_wait__delay');
     await Future.delayed(const Duration(milliseconds: 1000));
   }
 }

@@ -50,15 +50,19 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('B_S_A_I_WISHLIST_BS_AI_Wishlist_ON_INIT_');
+      logFirebaseEvent('BS_AI_Wishlist_update_component_state');
       setState(() {
         _model.isLoading = true;
       });
+      logFirebaseEvent('BS_AI_Wishlist_backend_call');
       _model.apiResultohpCopy = await GenerateAiWishCall.call(
         city: widget.city,
         budget: widget.budget,
         interest: widget.categories,
       );
       if ((_model.apiResultohpCopy?.succeeded ?? true)) {
+        logFirebaseEvent('BS_AI_Wishlist_update_component_state');
         setState(() {
           _model.wishesAIGeneratedList = functions
               .jsonArrayToDataType(getJsonField(
@@ -71,6 +75,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
           _model.isLoading = false;
         });
       } else {
+        logFirebaseEvent('BS_AI_Wishlist_alert_dialog');
         await showDialog(
           context: context,
           builder: (dialogContext) {
@@ -223,15 +228,21 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                         child: PinkButtonWidget(
                           text: 'Generate more',
                           currentAction: () async {
+                            logFirebaseEvent(
+                                'B_S_A_I_WISHLIST_COMP_Generate_CALLBACK');
+                            logFirebaseEvent('Generate_update_component_state');
                             setState(() {
                               _model.isLoading = true;
                             });
+                            logFirebaseEvent('Generate_backend_call');
                             _model.apiResultohp = await GenerateAiWishCall.call(
                               city: widget.city,
                               budget: widget.budget,
                               interest: widget.categories,
                             );
                             if ((_model.apiResultohp?.succeeded ?? true)) {
+                              logFirebaseEvent(
+                                  'Generate_update_component_state');
                               _model.wishesAIGeneratedList = functions
                                   .mergeTwoLists(
                                       _model.wishesAIGeneratedList.toList(),
@@ -246,6 +257,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                                   .toList()
                                   .cast<AiWishStruct>();
                             } else {
+                              logFirebaseEvent('Generate_alert_dialog');
                               await showDialog(
                                 context: context,
                                 builder: (dialogContext) {
@@ -266,6 +278,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                               ).then((value) => setState(() {}));
                             }
 
+                            logFirebaseEvent('Generate_update_component_state');
                             setState(() {
                               _model.isLoading = false;
                             });

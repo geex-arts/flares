@@ -90,10 +90,14 @@ class _NAllowNotifyWidgetState extends State<NAllowNotifyWidget> {
                         const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent('N_ALLOW_NOTIFY_COMP_Allow_ON_TAP');
+                        logFirebaseEvent('Allow_request_permissions');
                         await requestPermission(notificationsPermission);
                         if (await getPermissionStatus(
                             notificationsPermission)) {
+                          logFirebaseEvent('Allow_close_dialog,_drawer,_etc');
                           Navigator.pop(context);
+                          logFirebaseEvent('Allow_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -107,9 +111,11 @@ class _NAllowNotifyWidgetState extends State<NAllowNotifyWidget> {
                                   FlutterFlowTheme.of(context).pinkButton,
                             ),
                           );
+                          logFirebaseEvent('Allow_navigate_to');
 
                           context.goNamed('My_Profile');
                         } else {
+                          logFirebaseEvent('Allow_show_snack_bar');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text(
@@ -155,7 +161,11 @@ class _NAllowNotifyWidgetState extends State<NAllowNotifyWidget> {
                     padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        logFirebaseEvent(
+                            'N_ALLOW_NOTIFY_COMP_DontAllow_ON_TAP');
+                        logFirebaseEvent('DontAllow_close_dialog,_drawer,_etc');
                         Navigator.pop(context);
+                        logFirebaseEvent('DontAllow_navigate_to');
 
                         context.pushNamed('My_Profile');
                       },

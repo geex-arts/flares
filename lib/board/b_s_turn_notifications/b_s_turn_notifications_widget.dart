@@ -257,7 +257,13 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                           child: PinkButtonWidget(
                             text: 'Turn On Notifications',
                             currentAction: () async {
+                              logFirebaseEvent(
+                                  'B_S_TURN_NOTIFICATIONS_TurnOnNotificatio');
+                              logFirebaseEvent(
+                                  'TurnOnNotifications_bottom_sheet');
                               Navigator.pop(context);
+                              logFirebaseEvent(
+                                  'TurnOnNotifications_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: FlutterFlowTheme.of(context)
@@ -284,7 +290,11 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                             16.0, 10.0, 16.0, 45.0),
                         child: FFButtonWidget(
                           onPressed: () async {
+                            logFirebaseEvent(
+                                'B_S_TURN_NOTIFICATIONS_RemindMeLater_ON_');
+                            logFirebaseEvent('RemindMeLater_bottom_sheet');
                             Navigator.pop(context);
+                            logFirebaseEvent('RemindMeLater_navigate_to');
 
                             context.goNamed('My_Profile');
                           },

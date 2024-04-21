@@ -45,6 +45,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
     super.initState();
     _model = createModel(context, () => SignUpModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Sign_Up'});
     if (!isWeb) {
       _keyboardVisibilitySubscription =
           KeyboardVisibilityController().onChange.listen((bool visible) {
@@ -153,6 +154,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent('SIGN_UP_PAGE_NavBack_ON_TAP');
+                              logFirebaseEvent('NavBack_navigate_back');
                               context.safePop();
                             },
                             child: Stack(
@@ -523,31 +526,22 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Icon(
-                                        Icons.info,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 16.0,
-                                      ),
                                       Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            _model.passLength!
-                                                ? 'Password must have 8 characters, including letters and numbers.'
-                                                : 'Password must have 8 characters, including letters and numbers.',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x7FFFFFFF),
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                                        child: Text(
+                                          _model.passLength!
+                                              ? 'Password must have 8 characters, including letters and numbers.'
+                                              : 'Password must have 8 characters, including letters and numbers.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                fontSize: 11.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
                                       ),
                                     ],
@@ -563,6 +557,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     child: PinkButtonWidget(
                                       text: 'Next',
                                       currentAction: () async {
+                                        logFirebaseEvent(
+                                            'SIGN_UP_PAGE_nextButton_CALLBACK');
                                         var shouldSetState = false;
                                         if ((_model.emailFieldTextController
                                                         .text ==
@@ -570,9 +566,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             (_model.passwordFieldTextController
                                                         .text ==
                                                     '')) {
+                                          logFirebaseEvent(
+                                              'nextButton_update_page_state');
                                           setState(() {
                                             _model.emptyFields = 2;
                                           });
+                                          logFirebaseEvent(
+                                              'nextButton_update_page_state');
                                           setState(() {
                                             _model.passLength = false;
                                           });
@@ -582,9 +582,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           if (_model.emailFieldTextController
                                                       .text ==
                                                   '') {
+                                            logFirebaseEvent(
+                                                'nextButton_update_page_state');
                                             setState(() {
                                               _model.emptyFields = 0;
                                             });
+                                            logFirebaseEvent(
+                                                'nextButton_update_page_state');
                                             setState(() {
                                               _model.passLength = false;
                                             });
@@ -596,9 +600,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             if (_model.passwordFieldTextController
                                                         .text ==
                                                     '') {
+                                              logFirebaseEvent(
+                                                  'nextButton_update_page_state');
                                               setState(() {
                                                 _model.emptyFields = 1;
                                               });
+                                              logFirebaseEvent(
+                                                  'nextButton_update_page_state');
                                               setState(() {
                                                 _model.passLength = false;
                                               });
@@ -611,9 +619,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                       .passwordFieldTextController
                                                       .text) <
                                                   8) {
+                                                logFirebaseEvent(
+                                                    'nextButton_update_page_state');
                                                 setState(() {
                                                   _model.emptyFields = 1;
                                                 });
+                                                logFirebaseEvent(
+                                                    'nextButton_update_page_state');
                                                 setState(() {
                                                   _model.passLength = true;
                                                 });
@@ -625,9 +637,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 if (_model.rePasswordFieldTextController
                                                             .text ==
                                                         '') {
+                                                  logFirebaseEvent(
+                                                      'nextButton_update_page_state');
                                                   setState(() {
                                                     _model.emptyFields = 4;
                                                   });
+                                                  logFirebaseEvent(
+                                                      'nextButton_update_page_state');
                                                   setState(() {
                                                     _model.passLength = false;
                                                   });
@@ -636,6 +652,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                   }
                                                   return;
                                                 }
+                                                logFirebaseEvent(
+                                                    'nextButton_update_page_state');
                                                 setState(() {
                                                   _model.emptyFields = null;
                                                   _model.passLength = false;
@@ -645,7 +663,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           }
                                         }
 
+                                        logFirebaseEvent(
+                                            'nextButton_haptic_feedback');
                                         HapticFeedback.lightImpact();
+                                        logFirebaseEvent(
+                                            'nextButton_backend_call');
                                         _model.existingUser =
                                             await UsersTable().queryRows(
                                           queryFn: (q) => q.eq(
@@ -657,6 +679,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         shouldSetState = true;
                                         if (_model.existingUser != null &&
                                             (_model.existingUser)!.isNotEmpty) {
+                                          logFirebaseEvent(
+                                              'nextButton_alert_dialog');
                                           await showDialog(
                                             context: context,
                                             builder: (dialogContext) {
@@ -692,16 +716,24 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             },
                                           ).then((value) => setState(() {}));
 
+                                          logFirebaseEvent(
+                                              'nextButton_navigate_to');
+
                                           context.goNamedAuth(
                                               'Sign_In', context.mounted);
 
                                           if (shouldSetState) setState(() {});
                                           return;
                                         }
+                                        logFirebaseEvent(
+                                            'nextButton_custom_action');
                                         await actions.getPushPermission();
+                                        logFirebaseEvent(
+                                            'nextButton_custom_action');
                                         _model.fcmToken =
                                             await actions.getFCMToken();
                                         shouldSetState = true;
+                                        logFirebaseEvent('nextButton_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model.passwordFieldTextController
                                                 .text !=
@@ -729,6 +761,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           return;
                                         }
 
+                                        logFirebaseEvent(
+                                            'nextButton_backend_call');
                                         await UsersTable().insert({
                                           'id': currentUserUid,
                                           'created_at': supaSerialize<DateTime>(
@@ -736,13 +770,19 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           'email': currentUserEmail,
                                           'fcmToken': _model.fcmToken,
                                         });
+                                        logFirebaseEvent(
+                                            'nextButton_custom_action');
                                         await actions.initializeCustomerIo(
                                           currentUserEmail,
                                         );
+                                        logFirebaseEvent(
+                                            'nextButton_update_app_state');
                                         FFAppState().pairID =
                                             '27a78254-89be-4e9a-80ef-394ebf1e637f';
                                         if (widget.pairCode != null &&
                                             widget.pairCode != '') {
+                                          logFirebaseEvent(
+                                              'nextButton_backend_call');
                                           _model.foundPairingRow =
                                               await PairsInvitationsTable()
                                                   .queryRows(
@@ -758,6 +798,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           );
                                           shouldSetState = true;
                                           if (_model.foundPairingRow!.isNotEmpty) {
+                                            logFirebaseEvent(
+                                                'nextButton_backend_call');
                                             unawaited(
                                               () async {
                                                 await UsersTable().update(
@@ -775,6 +817,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 );
                                               }(),
                                             );
+                                            logFirebaseEvent(
+                                                'nextButton_backend_call');
                                             unawaited(
                                               () async {
                                                 await PairsInvitationsTable()
@@ -791,8 +835,12 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 );
                                               }(),
                                             );
+                                            logFirebaseEvent(
+                                                'nextButton_update_app_state');
                                             FFAppState().pairID = _model
                                                 .foundPairingRow!.first.pair!;
+                                            logFirebaseEvent(
+                                                'nextButton_bottom_sheet');
                                             await showModalBottomSheet(
                                               isScrollControlled: true,
                                               backgroundColor:
@@ -835,6 +883,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             return;
                                           }
                                         }
+                                        logFirebaseEvent(
+                                            'nextButton_navigate_to');
 
                                         context.goNamedAuth(
                                             'Create_Couple_Profile',
@@ -914,12 +964,17 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_PAGE_GoogleButton_ON_TAP');
+                                    logFirebaseEvent('GoogleButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
                                         .signInWithGoogle(context);
                                     if (user == null) {
                                       return;
                                     }
+                                    logFirebaseEvent(
+                                        'GoogleButton_navigate_to');
 
                                     context.goNamedAuth(
                                         'My_Profile', context.mounted);
@@ -937,6 +992,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        logFirebaseEvent(
+                                            'SIGN_UP_PAGE_Row_ttzoi8p5_ON_TAP');
+                                        logFirebaseEvent('Row_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         final user = await authManager
                                             .signInWithGoogle(context);
@@ -1083,6 +1141,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   mouseCursor: SystemMouseCursors.click,
                                   recognizer: TapGestureRecognizer()
                                     ..onTap = () async {
+                                      logFirebaseEvent(
+                                          'SIGN_UP_RichTextSpan_8hkcoi6l_ON_TAP');
+                                      logFirebaseEvent(
+                                          'RichTextSpan_navigate_to');
+
                                       context.pushNamed('Sign_In');
                                     },
                                 )
@@ -1127,6 +1190,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_RichTextSpan_qg59gvgo_ON_TAP');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
                                     context.pushNamed('Terms_Conditions');
                                   },
                               ),
@@ -1147,6 +1215,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 mouseCursor: SystemMouseCursors.click,
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_RichTextSpan_wuh7jpvz_ON_TAP');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
                                     context.pushNamed('Privacy_Policy');
                                   },
                               )

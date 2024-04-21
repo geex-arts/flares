@@ -32,6 +32,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
     super.initState();
     _model = createModel(context, () => ResetPasswordModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Reset_Password'});
     _model.emailFieldTextController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
     _model.emailFieldFocusNode!.addListener(() => setState(() {}));
@@ -121,6 +123,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'RESET_PASSWORD_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -233,7 +238,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 .override(
                                   fontFamily: 'Nuckle',
                                   color: const Color(0x98FFFFFF),
-                                  fontSize: 11.0,
+                                  fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
@@ -301,11 +306,18 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                             child: PinkButtonWidget(
                               text: 'Send Link',
                               currentAction: () async {
+                                logFirebaseEvent(
+                                    'RESET_PASSWORD_sendLinkButton_CALLBACK');
                                 var shouldSetState = false;
+                                logFirebaseEvent(
+                                    'sendLinkButton_haptic_feedback');
                                 HapticFeedback.vibrate();
+                                logFirebaseEvent(
+                                    'sendLinkButton_update_page_state');
                                 setState(() {
                                   _model.isLinkSent = false;
                                 });
+                                logFirebaseEvent('sendLinkButton_backend_call');
                                 _model.foundUserRow =
                                     await UsersTable().queryRows(
                                   queryFn: (q) => q.eq(
@@ -315,6 +327,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 );
                                 shouldSetState = true;
                                 if (_model.foundUserRow!.isNotEmpty) {
+                                  logFirebaseEvent('sendLinkButton_auth');
                                   if (_model
                                       .emailFieldTextController.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
@@ -330,10 +343,14 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     email: _model.emailFieldTextController.text,
                                     context: context,
                                   );
+                                  logFirebaseEvent(
+                                      'sendLinkButton_update_page_state');
                                   setState(() {
                                     _model.isLinkSent = true;
                                   });
                                 } else {
+                                  logFirebaseEvent(
+                                      'sendLinkButton_alert_dialog');
                                   showDialog(
                                     context: context,
                                     builder: (dialogContext) {

@@ -27,9 +27,13 @@ class _SplashWidgetState extends State<SplashWidget>
     super.initState();
     _model = createModel(context, () => SplashModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Splash'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('SPLASH_PAGE_Splash_ON_INIT_STATE');
+      logFirebaseEvent('Splash_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2400));
+      logFirebaseEvent('Splash_navigate_to');
 
       context.pushNamed('Onboarding');
     });

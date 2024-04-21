@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
+import '/wishlist/b_s_budget_location/b_s_budget_location_widget.dart';
+import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -32,6 +34,7 @@ class _ExploreWidgetState extends State<ExploreWidget>
     super.initState();
     _model = createModel(context, () => ExploreModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Explore'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -259,182 +262,286 @@ class _ExploreWidgetState extends State<ExploreWidget>
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Container(
-                              width: 125.0,
-                              height: 125.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14.0),
-                                border: Border.all(
-                                  color:
-                                      FlutterFlowTheme.of(context).pinkButton,
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  width: 117.0,
-                                  height: 117.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        child: Image.asset(
-                                          'assets/images/Screen_Shot_2024-04-11_at_14.25.28.png',
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          fit: BoxFit.cover,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'EXPLORE_PAGE_Container_7jgycngs_ON_TAP');
+                                logFirebaseEvent('Container_bottom_sheet');
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: const BSNewCollectionWidget(),
                                         ),
                                       ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 1.0),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Text(
-                                            'Film \nVision',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Container(
+                                width: 125.0,
+                                height: 125.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  border: Border.all(
+                                    color:
+                                        FlutterFlowTheme.of(context).pinkButton,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Container(
+                                    width: 117.0,
+                                    height: 117.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          child: Image.asset(
+                                            'assets/images/Screen_Shot_2024-04-11_at_14.25.28.png',
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 1.0),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Film \nVision',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    fontFamily: 'Nuckle',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                    lineHeight: 1.4,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 125.0,
-                              height: 125.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14.0),
-                                border: Border.all(
-                                  color:
-                                      FlutterFlowTheme.of(context).pinkButton,
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  width: 117.0,
-                                  height: 117.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        child: Image.asset(
-                                          'assets/images/Rectangle_(2).webp',
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          fit: BoxFit.cover,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'EXPLORE_PAGE_Container_lyhtjza3_ON_TAP');
+                                logFirebaseEvent('Container_bottom_sheet');
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
+                                        child: Padding(
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: const BSSaveToCollectionWidget(),
                                         ),
                                       ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 1.0),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Text(
-                                            'Film \nVision',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Container(
+                                width: 125.0,
+                                height: 125.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  border: Border.all(
+                                    color:
+                                        FlutterFlowTheme.of(context).pinkButton,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Container(
+                                    width: 117.0,
+                                    height: 117.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          child: Image.asset(
+                                            'assets/images/Rectangle_(2).webp',
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
-                                      ),
-                                    ],
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 1.0),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Film \nVision',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    fontFamily: 'Nuckle',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                    lineHeight: 1.4,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 125.0,
-                              height: 125.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(14.0),
-                                border: Border.all(
-                                  color:
-                                      FlutterFlowTheme.of(context).pinkButton,
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(4.0),
-                                child: Container(
-                                  width: 117.0,
-                                  height: 117.0,
-                                  decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Stack(
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        child: Image.asset(
-                                          'assets/images/Rectangle_(1).webp',
-                                          width: double.infinity,
-                                          height: double.infinity,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Align(
-                                        alignment:
-                                            const AlignmentDirectional(-1.0, 1.0),
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'EXPLORE_PAGE_Container_qbvrb90e_ON_TAP');
+                                logFirebaseEvent('Container_bottom_sheet');
+                                await showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  context: context,
+                                  builder: (context) {
+                                    return WebViewAware(
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                                .unfocusNode.canRequestFocus
+                                            ? FocusScope.of(context)
+                                                .requestFocus(
+                                                    _model.unfocusNode)
+                                            : FocusScope.of(context).unfocus(),
                                         child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Text(
-                                            'Film \nVision',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodySmall
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
+                                          padding:
+                                              MediaQuery.viewInsetsOf(context),
+                                          child: const BSBudgetLocationWidget(
+                                            selectedCategories: '',
                                           ),
                                         ),
                                       ),
-                                    ],
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: Container(
+                                width: 125.0,
+                                height: 125.0,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  border: Border.all(
+                                    color:
+                                        FlutterFlowTheme.of(context).pinkButton,
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(4.0),
+                                  child: Container(
+                                    width: 117.0,
+                                    height: 117.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                    ),
+                                    child: Stack(
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(10.0),
+                                          child: Image.asset(
+                                            'assets/images/Rectangle_(1).webp',
+                                            width: double.infinity,
+                                            height: double.infinity,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 1.0),
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(10.0),
+                                            child: Text(
+                                              'Film \nVision',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodySmall
+                                                  .override(
+                                                    fontFamily: 'Nuckle',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                    lineHeight: 1.4,
+                                                  ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -1218,6 +1325,10 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'EXPLORE_PAGE_AddToCollection_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'AddToCollection_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -1603,6 +1714,10 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'EXPLORE_PAGE_AddToCollection_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'AddToCollection_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -1988,6 +2103,10 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
+                                              logFirebaseEvent(
+                                                  'EXPLORE_PAGE_AddToCollection_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'AddToCollection_bottom_sheet');
                                               await showModalBottomSheet(
                                                 isScrollControlled: true,
                                                 backgroundColor:
@@ -3948,6 +4067,9 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'EXPLORE_PAGE_NavBack_ON_TAP');
+                                  logFirebaseEvent('NavBack_navigate_back');
                                   context.safePop();
                                 },
                                 child: Stack(
@@ -4025,6 +4147,10 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'EXPLORE_PAGE_Share_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Share_bottom_sheet');
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Colors.transparent,

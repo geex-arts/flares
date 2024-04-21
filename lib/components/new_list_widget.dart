@@ -101,6 +101,9 @@ class _NewListWidgetState extends State<NewListWidget> {
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'NEW_LIST_COMP_Container_ipwmalw1_ON_TAP');
+                          logFirebaseEvent('Container_bottom_sheet');
                           await showModalBottomSheet(
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,

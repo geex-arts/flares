@@ -153,13 +153,19 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent(
+                                      'B_S_CREATE_COUPLE_IDEAS_WITH_A_I_Contain');
                                   if (_model.selectedCategoriesNames
                                       .contains(currentCategoryItem)) {
+                                    logFirebaseEvent(
+                                        'Container_update_component_state');
                                     setState(() {
                                       _model.removeFromSelectedCategoriesNames(
                                           currentCategoryItem);
                                     });
                                   } else {
+                                    logFirebaseEvent(
+                                        'Container_update_component_state');
                                     setState(() {
                                       _model.addToSelectedCategoriesNames(
                                           currentCategoryItem);
@@ -258,8 +264,12 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                   child: PinkButtonWidget(
                     text: '⚡️ Generate with AI',
                     currentAction: () async {
+                      logFirebaseEvent(
+                          'B_S_CREATE_COUPLE_IDEAS_WITH_A_I_Generat');
+                      logFirebaseEvent('Generate_bottom_sheet');
                       Navigator.pop(context);
                       if (_model.selectedCategoriesNames.isNotEmpty) {
+                        logFirebaseEvent('Generate_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,
@@ -278,6 +288,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                           },
                         ).then((value) => safeSetState(() {}));
                       } else {
+                        logFirebaseEvent('Generate_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
                           backgroundColor: Colors.transparent,

@@ -26,6 +26,8 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget>
     super.initState();
     _model = createModel(context, () => TermsConditionsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Terms_Conditions'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -112,6 +114,9 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'TERMS_CONDITIONS_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(

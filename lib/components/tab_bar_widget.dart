@@ -66,6 +66,10 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'TAB_BAR_COMP_Container_9a1z6b86_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.pushNamed('Explore');
                       },
                       child: Container(
@@ -86,6 +90,10 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'TAB_BAR_COMP_Container_7ao3n5gl_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.pushNamed('Category_P2');
                       },
                       child: Container(
@@ -106,6 +114,10 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+                        logFirebaseEvent(
+                            'TAB_BAR_COMP_Container_99yc2qy1_ON_TAP');
+                        logFirebaseEvent('Container_navigate_to');
+
                         context.pushNamed('My_Profile');
                       },
                       child: Container(

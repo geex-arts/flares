@@ -63,7 +63,9 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return ClipRRect(
+    return
+        // на модалку при вызове ставить 40% высоту
+        ClipRRect(
       borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
@@ -272,8 +274,12 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'B_S_SAVE_TO_COLLECTION_Container_t8glhtm');
                                           if (widget.selectedWishRow != null) {
                                             if (widget.isFromAI) {
+                                              logFirebaseEvent(
+                                                  'Container_backend_call');
                                               unawaited(
                                                 () async {
                                                   _model.updatedRow =
@@ -298,6 +304,8 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                                 }(),
                                               );
                                             } else {
+                                              logFirebaseEvent(
+                                                  'Container_backend_call');
                                               await WishesTable().insert({
                                                 'collection':
                                                     currentCollectionItem.uuid,
@@ -320,7 +328,11 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                               });
                                             }
                                           }
+                                          logFirebaseEvent(
+                                              'Container_update_app_state');
                                           _model.updatePage(() {});
+                                          logFirebaseEvent(
+                                              'Container_bottom_sheet');
                                           Navigator.pop(context);
 
                                           setState(() {});
@@ -399,8 +411,14 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                       child: PinkButtonWidget(
                         text: 'Create new Collection',
                         currentAction: () async {
+                          logFirebaseEvent(
+                              'B_S_SAVE_TO_COLLECTION_CreatenewCollecti');
                           if (widget.selectedWishRow != null) {
+                            logFirebaseEvent(
+                                'CreatenewCollection_bottom_sheet');
                             Navigator.pop(context);
+                            logFirebaseEvent(
+                                'CreatenewCollection_bottom_sheet');
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
@@ -418,7 +436,11 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                               },
                             ).then((value) => safeSetState(() {}));
                           } else {
+                            logFirebaseEvent(
+                                'CreatenewCollection_bottom_sheet');
                             Navigator.pop(context);
+                            logFirebaseEvent(
+                                'CreatenewCollection_bottom_sheet');
                             await showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,

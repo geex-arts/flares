@@ -33,6 +33,7 @@ class _ProfileWidgetState extends State<ProfileWidget>
     super.initState();
     _model = createModel(context, () => ProfileModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Profile'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -131,6 +132,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent('PROFILE_PAGE_NavBack_ON_TAP');
+                          logFirebaseEvent('NavBack_navigate_back');
                           context.safePop();
                         },
                         child: Stack(
@@ -260,6 +263,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
+                                                              logFirebaseEvent(
+                                                                  'PROFILE_PAGE_Stack_q0dj5p1w_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Stack_action_block');
                                                               await action_blocks
                                                                   .pairInvitationRowAction(
                                                                 context,
@@ -518,6 +525,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                                                                 Colors
                                                                     .transparent,
                                                             onTap: () async {
+                                                              logFirebaseEvent(
+                                                                  'PROFILE_PAGE_Container_rqzl7b4d_ON_TAP');
+                                                              logFirebaseEvent(
+                                                                  'Container_navigate_to');
+
                                                               context.pushNamed(
                                                                   'Edit_Profile');
                                                             },
@@ -623,12 +635,18 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_EditCoupleProfileContainer_ON_TA');
+                            logFirebaseEvent(
+                                'EditCoupleProfileContainer_backend_call');
                             _model.myPairRow = await PairsTable().queryRows(
                               queryFn: (q) => q.eq(
                                 'uuid',
                                 FFAppState().pairID,
                               ),
                             );
+                            logFirebaseEvent(
+                                'EditCoupleProfileContainer_navigate_to');
 
                             context.pushNamed(
                               'Edit_Couple_Profile',
@@ -728,6 +746,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_NotificationsContainer_ON_TAP');
+                            logFirebaseEvent(
+                                'NotificationsContainer_navigate_to');
+
                             context.pushNamed('Notify_Settings');
                           },
                           child: Container(
@@ -805,6 +828,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'PROFILE_PAGE_LanguageContainer_ON_TAP');
+                              logFirebaseEvent('LanguageContainer_navigate_to');
+
                               context.pushNamed('Language');
                             },
                             child: Container(
@@ -883,6 +910,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_InvitePartnerContainer_ON_TAP');
+                            logFirebaseEvent(
+                                'InvitePartnerContainer_action_block');
                             await action_blocks.pairInvitationRowAction(
                               context,
                               isFromProfile: true,
@@ -958,6 +989,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_ChangePasswordContainer_ON_TAP');
+                            logFirebaseEvent(
+                                'ChangePasswordContainer_navigate_to');
+
                             context.pushNamed('New_Password');
                           },
                           child: Container(
@@ -1030,6 +1066,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_ManageSubscriptionsContainer_ON_');
+                            logFirebaseEvent(
+                                'ManageSubscriptionsContainer_navigate_to');
+
                             context.pushNamed('Subscriptions');
                           },
                           child: Container(
@@ -1118,6 +1159,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_PrivacyPolicyContainer_ON_TAP');
+                            logFirebaseEvent(
+                                'PrivacyPolicyContainer_navigate_to');
+
                             context.pushNamed('Privacy_Policy');
                           },
                           child: Container(
@@ -1190,6 +1236,11 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_TermsConditionsContainer_ON_TAP');
+                            logFirebaseEvent(
+                                'TermsConditionsContainer_navigate_to');
+
                             context.pushNamed('Terms_Conditions');
                           },
                           child: Container(
@@ -1326,6 +1377,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent('PROFILE_PAGE_Logout_ON_TAP');
+                              logFirebaseEvent('Logout_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signOut();
                               GoRouter.of(context).clearRedirectLocation();

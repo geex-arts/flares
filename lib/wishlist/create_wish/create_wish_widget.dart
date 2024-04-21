@@ -25,6 +25,8 @@ class _CreateWishWidgetState extends State<CreateWishWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CreateWishModel());
+
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Create_wish'});
   }
 
   @override

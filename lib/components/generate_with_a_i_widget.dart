@@ -65,6 +65,8 @@ class _GenerateWithAIWidgetState extends State<GenerateWithAIWidget> {
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
               onTap: () async {
+                logFirebaseEvent('GENERATE_WITH_A_I_Container_a2hb5xhy_ON_');
+                logFirebaseEvent('Container_bottom_sheet');
                 await showModalBottomSheet(
                   isScrollControlled: true,
                   backgroundColor: Colors.transparent,

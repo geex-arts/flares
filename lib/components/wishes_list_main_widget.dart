@@ -45,11 +45,14 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('WISHES_LIST_MAIN_wishesListMain_ON_INIT_');
       if (widget.isMyProfile) {
+        logFirebaseEvent('wishesListMain_backend_call');
         _model.reactionImagesRows = await ReactionImagesTable().queryRows(
           queryFn: (q) => q,
         );
       }
+      logFirebaseEvent('wishesListMain_update_app_state');
       setState(() {});
     });
 

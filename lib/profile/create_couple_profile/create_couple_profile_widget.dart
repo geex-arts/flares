@@ -37,6 +37,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
     super.initState();
     _model = createModel(context, () => CreateCoupleProfileModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Create_Couple_Profile'});
     _model.namesFieldTextController ??= TextEditingController();
     _model.namesFieldFocusNode ??= FocusNode();
     _model.namesFieldFocusNode!.addListener(() => setState(() {}));
@@ -160,6 +162,9 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'CREATE_COUPLE_PROFILE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -257,6 +262,10 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
+                                      logFirebaseEvent(
+                                          'CREATE_COUPLE_PROFILE_Container_r2798lyt');
+                                      logFirebaseEvent(
+                                          'Container_store_media_for_upload');
                                       final selectedMedia =
                                           await selectMediaWithSourceBottomSheet(
                                         context: context,
@@ -301,6 +310,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                         }
                                       }
 
+                                      logFirebaseEvent(
+                                          'Container_update_page_state');
                                       setState(() {
                                         _model.uplImg =
                                             _model.uploadedLocalFile1;
@@ -464,11 +475,16 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
+                                    logFirebaseEvent(
+                                        'CREATE_COUPLE_PROFILE_PAGE_Date_ON_TAP');
+                                    logFirebaseEvent('Date_custom_action');
                                     await actions.hideKeyboard();
+                                    logFirebaseEvent('Date_update_page_state');
                                     setState(() {
                                       _model.dateOn = true;
                                       _model.borderColor = true;
                                     });
+                                    logFirebaseEvent('Date_date_time_picker');
                                     await showModalBottomSheet<bool>(
                                         context: context,
                                         builder: (context) {
@@ -530,6 +546,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                             ),
                                           );
                                         });
+                                    logFirebaseEvent('Date_update_page_state');
                                     setState(() {
                                       _model.dateOn = false;
                                       _model.borderColor = false;
@@ -606,7 +623,10 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                             child: PinkButtonWidget(
                               text: 'Create Couple',
                               currentAction: () async {
+                                logFirebaseEvent(
+                                    'CREATE_COUPLE_PROFILE_CreateCouple_CALLB');
                                 var shouldSetState = false;
+                                logFirebaseEvent('CreateCouple_validate_form');
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
                                   return;
@@ -648,12 +668,16 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   return;
                                 }
                                 if (!(_model.datePicked != null)) {
+                                  logFirebaseEvent(
+                                      'CreateCouple_update_page_state');
                                   setState(() {
                                     _model.borderColor = true;
                                   });
                                   if (shouldSetState) setState(() {});
                                   return;
                                 }
+                                logFirebaseEvent(
+                                    'CreateCouple_upload_media_to_supabase');
                                 {
                                   setState(
                                       () => _model.isDataUploading2 = true);
@@ -697,6 +721,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   }
                                 }
 
+                                logFirebaseEvent('CreateCouple_backend_call');
                                 _model.newPairRow = await PairsTable().insert({
                                   'pair_name':
                                       _model.namesFieldTextController.text,
@@ -705,6 +730,7 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                       _model.datePicked),
                                 });
                                 shouldSetState = true;
+                                logFirebaseEvent('CreateCouple_backend_call');
                                 unawaited(
                                   () async {
                                     await UsersTable().update(
@@ -718,7 +744,10 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     );
                                   }(),
                                 );
+                                logFirebaseEvent(
+                                    'CreateCouple_update_app_state');
                                 FFAppState().pairID = _model.newPairRow!.uuid;
+                                logFirebaseEvent('CreateCouple_action_block');
                                 await action_blocks.pairInvitationRowAction(
                                   context,
                                   isFromProfile: false,

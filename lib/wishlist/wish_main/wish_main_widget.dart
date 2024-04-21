@@ -47,6 +47,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
     super.initState();
     _model = createModel(context, () => WishMainModel());
 
+    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Wish_Main'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -165,6 +166,10 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'WISH_MAIN_PAGE_NavBack_ON_TAP');
+                                          logFirebaseEvent(
+                                              'NavBack_navigate_back');
                                           context.safePop();
                                         },
                                         child: Stack(
@@ -205,6 +210,9 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           hoverColor: Colors.transparent,
                                           highlightColor: Colors.transparent,
                                           onTap: () async {
+                                            logFirebaseEvent(
+                                                'WISH_MAIN_PAGE_Share_ON_TAP');
+                                            logFirebaseEvent('Share_share');
                                             await Share.share(
                                               '',
                                               sharePositionOrigin:
@@ -335,14 +343,15 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             }
                           }(),
                           currentAction: () async {
+                            logFirebaseEvent(
+                                'WISH_MAIN_PAGE_AskForADate_CALLBACK');
                             var shouldSetState = false;
                             if (widget.isFromAI) {
+                              logFirebaseEvent('AskForADate_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                barrierColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                backgroundColor: Colors.transparent,
+                                barrierColor: Colors.transparent,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(
@@ -355,11 +364,14 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: BSSaveToCollectionWidget(
-                                          selectedWishRow:
-                                              widget.selectedWishRow,
-                                          isFromWebview: true,
-                                          isFromAI: widget.isFromAI,
+                                        child: SizedBox(
+                                          height: 40.0,
+                                          child: BSSaveToCollectionWidget(
+                                            selectedWishRow:
+                                                widget.selectedWishRow,
+                                            isFromWebview: true,
+                                            isFromAI: widget.isFromAI,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -372,6 +384,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             }
                             if (widget.isProfile ||
                                 (askForADateWishesRow != null)) {
+                              logFirebaseEvent('AskForADate_backend_call');
                               _model.partnerRow = await UsersTable().queryRows(
                                 queryFn: (q) => q
                                     .eq(
@@ -385,12 +398,11 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               );
                               shouldSetState = true;
                               if (_model.partnerRow!.isNotEmpty) {
+                                logFirebaseEvent('AskForADate_bottom_sheet');
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
-                                  backgroundColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
-                                  barrierColor: FlutterFlowTheme.of(context)
-                                      .primaryBackground,
+                                  backgroundColor: Colors.transparent,
+                                  barrierColor: Colors.transparent,
                                   context: context,
                                   builder: (context) {
                                     return WebViewAware(
@@ -407,7 +419,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           child: SizedBox(
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
-                                                0.6,
+                                                0.4,
                                             child: BSAskDayWidget(
                                               selectedWishRow:
                                                   widget.selectedWishRow!,
@@ -421,6 +433,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                   },
                                 ).then((value) => safeSetState(() {}));
                               } else {
+                                logFirebaseEvent('AskForADate_alert_dialog');
                                 await showDialog(
                                   context: context,
                                   builder: (dialogContext) {
@@ -451,12 +464,11 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                 ).then((value) => setState(() {}));
                               }
                             } else {
+                              logFirebaseEvent('AskForADate_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
-                                backgroundColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                barrierColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
+                                backgroundColor: Colors.transparent,
+                                barrierColor: Colors.transparent,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(

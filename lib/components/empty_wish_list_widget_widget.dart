@@ -57,6 +57,8 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
           padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
           child: FFButtonWidget(
             onPressed: () async {
+              logFirebaseEvent('EMPTY_WISH_LIST_WIDGET_NextButton_ON_TAP');
+              logFirebaseEvent('NextButton_bottom_sheet');
               await showModalBottomSheet(
                 isScrollControlled: true,
                 backgroundColor: Colors.transparent,

@@ -411,17 +411,22 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                   padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: FFButtonWidget(
                     onPressed: () async {
+                      logFirebaseEvent(
+                          'B_S_ADD_WISHES_COMP_SHARE_NOW_BTN_ON_TAP');
                       if (_model.pageViewCurrentIndex == 0) {
+                        logFirebaseEvent('Button_page_view');
                         await _model.pageViewController?.nextPage(
                           duration: const Duration(milliseconds: 300),
                           curve: Curves.ease,
                         );
                       } else {
+                        logFirebaseEvent('Button_bottom_sheet');
                         Navigator.pop(context);
                       }
                     },
-                    text:
-                        _model.pageViewCurrentIndex == 0 ? 'Next' : 'Share now',
+                    text: _model.pageViewCurrentIndex == 0
+                        ? 'Share now'
+                        : 'Share now',
                     options: FFButtonOptions(
                       width: double.infinity,
                       height: 42.0,

@@ -26,6 +26,8 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
     super.initState();
     _model = createModel(context, () => NotifySettingsModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Notify_Settings'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -110,6 +112,9 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                         hoverColor: Colors.transparent,
                         highlightColor: Colors.transparent,
                         onTap: () async {
+                          logFirebaseEvent(
+                              'NOTIFY_SETTINGS_PAGE_NavBack_ON_TAP');
+                          logFirebaseEvent('NavBack_navigate_back');
                           context.safePop();
                         },
                         child: Stack(

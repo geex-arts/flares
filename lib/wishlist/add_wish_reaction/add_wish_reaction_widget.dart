@@ -37,6 +37,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
     super.initState();
     _model = createModel(context, () => AddWishReactionModel());
 
+    logFirebaseEvent('screen_view',
+        parameters: {'screen_name': 'Add_Wish_Reaction'});
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -100,6 +102,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+                            logFirebaseEvent(
+                                'ADD_WISH_REACTION_PAGE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },
                           child: Stack(
@@ -133,7 +138,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
               ),
               const Spacer(),
               Text(
-                'Add Wish\nReaction',
+                'Add wish\nReaction',
                 textAlign: TextAlign.center,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       fontFamily: 'Nuckle',
@@ -436,6 +441,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'ADD_WISH_REACTION_Image_nqu5kvy3_ON_TAP');
+                              logFirebaseEvent('Image_backend_call');
                               _model.partnerRow = await UsersTable().queryRows(
                                 queryFn: (q) => q
                                     .eq(
@@ -447,6 +455,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                       currentUserUid,
                                     ),
                               );
+                              logFirebaseEvent('Image_backend_call');
                               unawaited(
                                 () async {
                                   await WishReactionsTable().insert({
@@ -457,6 +466,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                 }(),
                               );
                               if (_model.partnerRow!.isNotEmpty) {
+                                logFirebaseEvent('Image_backend_call');
                                 unawaited(
                                   () async {
                                     await NotificationsTable().insert({
@@ -475,6 +485,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                   }(),
                                 );
                               }
+                              logFirebaseEvent('Image_navigate_back');
                               context.safePop();
 
                               setState(() {});

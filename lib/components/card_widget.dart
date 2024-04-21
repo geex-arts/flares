@@ -64,6 +64,9 @@ class _CardWidgetState extends State<CardWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('CARD_COMP_MainImage_ON_TAP');
+              logFirebaseEvent('MainImage_navigate_to');
+
               context.pushNamed(
                 'Wish_Main',
                 queryParameters: {
@@ -166,6 +169,9 @@ class _CardWidgetState extends State<CardWidget> {
                   hoverColor: Colors.transparent,
                   highlightColor: Colors.transparent,
                   onTap: () async {
+                    logFirebaseEvent('CARD_COMP_UserInfo_ON_TAP');
+                    logFirebaseEvent('UserInfo_navigate_to');
+
                     context.pushNamed(
                       'Couples_Profile',
                       queryParameters: {
@@ -422,6 +428,10 @@ class _CardWidgetState extends State<CardWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+                                          logFirebaseEvent(
+                                              'CARD_COMP_Icon_2q0sv6lt_ON_TAP');
+                                          logFirebaseEvent('Icon_navigate_to');
+
                                           context.pushNamed(
                                             'Add_Wish_Reaction',
                                             queryParameters: {
@@ -499,6 +509,9 @@ class _CardWidgetState extends State<CardWidget> {
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
                                 onTap: () async {
+                                  logFirebaseEvent('CARD_COMP_Emoji3_ON_TAP');
+                                  logFirebaseEvent('Emoji3_navigate_to');
+
                                   context.pushNamed(
                                     'Add_Wish_Reaction',
                                     queryParameters: {
@@ -588,6 +601,9 @@ class _CardWidgetState extends State<CardWidget> {
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
+                                logFirebaseEvent(
+                                    'CARD_COMP_Icon_l3r77h5f_ON_TAP');
+                                logFirebaseEvent('Icon_bottom_sheet');
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Colors.transparent,

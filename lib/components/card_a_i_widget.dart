@@ -61,6 +61,8 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             hoverColor: Colors.transparent,
             highlightColor: Colors.transparent,
             onTap: () async {
+              logFirebaseEvent('CARD_A_I_COMP_MainImage_ON_TAP');
+              logFirebaseEvent('MainImage_backend_call');
               _model.newWishRow = await WishesTable().insert({
                 'pair': FFAppState().pairID,
                 'created_by': currentUserUid,
@@ -70,6 +72,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                 'link': widget.wishAIElement?.link,
                 'visibily': true,
               });
+              logFirebaseEvent('MainImage_navigate_to');
 
               context.pushNamed(
                 'Wish_Main',
@@ -314,6 +317,9 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                             hoverColor: Colors.transparent,
                             highlightColor: Colors.transparent,
                             onTap: () async {
+                              logFirebaseEvent(
+                                  'CARD_A_I_COMP_Icon_jhzkwbun_ON_TAP');
+                              logFirebaseEvent('Icon_backend_call');
                               _model.newWishRowIcon =
                                   await WishesTable().insert({
                                 'pair': FFAppState().pairID,
@@ -326,6 +332,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                                 'visibily': true,
                                 'collection': null,
                               });
+                              logFirebaseEvent('Icon_bottom_sheet');
                               await showModalBottomSheet(
                                 isScrollControlled: true,
                                 backgroundColor: Colors.transparent,
