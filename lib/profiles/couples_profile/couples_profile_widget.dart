@@ -176,8 +176,6 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

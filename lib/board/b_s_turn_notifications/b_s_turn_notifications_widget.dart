@@ -30,8 +30,6 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSTurnNotificationsModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -37,8 +37,6 @@ class _CardAIWidgetState extends State<CardAIWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CardAIModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

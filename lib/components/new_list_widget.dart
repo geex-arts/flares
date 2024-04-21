@@ -32,8 +32,6 @@ class _NewListWidgetState extends State<NewListWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NewListModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

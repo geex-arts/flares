@@ -28,8 +28,6 @@ class _EmptyWishListWidgetWidgetState extends State<EmptyWishListWidgetWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EmptyWishListWidgetModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

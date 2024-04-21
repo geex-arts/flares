@@ -25,8 +25,6 @@ class _NShareInfoWidgetState extends State<NShareInfoWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NShareInfoModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -159,8 +159,6 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

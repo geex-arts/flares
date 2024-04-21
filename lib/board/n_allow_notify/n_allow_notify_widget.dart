@@ -27,8 +27,6 @@ class _NAllowNotifyWidgetState extends State<NAllowNotifyWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => NAllowNotifyModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

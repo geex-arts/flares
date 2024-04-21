@@ -26,8 +26,6 @@ class _EmptyCollectionsWidgetWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => EmptyCollectionsWidgetModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

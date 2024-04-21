@@ -102,6 +102,25 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
           ),
         ],
       ),
+      'circleImageOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: const Offset(1.2, 1.2),
+            end: const Offset(1.0, 1.0),
+          ),
+        ],
+      ),
       'containerOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
@@ -168,26 +187,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
           ScaleEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(1.0, 1.0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(128.0, 128.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation6': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
             duration: 1600.0.ms,
             begin: const Offset(2.0, 2.0),
             end: const Offset(1.0, 1.0),
@@ -201,9 +200,27 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
           ),
         ],
       ),
+      'imageOnPageLoadAnimation6': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          ScaleEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1800.0.ms,
+            begin: const Offset(2.0, 2.0),
+            end: const Offset(1.0, 1.0),
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1800.0.ms,
+            begin: const Offset(128.0, 128.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -264,7 +281,15 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      context.pushNamed('Sign_In');
+                                      context.pushNamed(
+                                        'Sign_In',
+                                        queryParameters: {
+                                          'pairCode': serializeParam(
+                                            '',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     },
                                     child: Container(
                                       height: 38.0,
@@ -407,7 +432,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                     0.0, 16.0, 0.0, 0.0),
                                             child: Image.asset(
                                               'assets/images/board1.webp',
-                                              height: 274.0,
                                               fit: BoxFit.contain,
                                             ).animateOnPageLoad(animationsMap[
                                                 'imageOnPageLoadAnimation1']!),
@@ -492,7 +516,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                     0.0, 16.0, 0.0, 0.0),
                                             child: Image.asset(
                                               'assets/images/board2.webp',
-                                              height: 294.0,
                                               fit: BoxFit.contain,
                                             ).animateOnPageLoad(animationsMap[
                                                 'imageOnPageLoadAnimation2']!),
@@ -567,135 +590,126 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               ),
                                         ),
                                       ),
+                                      const Spacer(),
                                       Align(
                                         alignment:
                                             const AlignmentDirectional(0.0, 0.0),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  3.0, 4.0, 0.0, 0.0),
-                                          child: SizedBox(
-                                            width: double.infinity,
-                                            height: 130.0,
-                                            child: Stack(
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
+                                        child: SizedBox(
+                                          width: double.infinity,
+                                          height: 130.0,
+                                          child: Stack(
+                                            children: [
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Image.asset(
+                                                  'assets/images/vinie.webp',
+                                                  width: double.infinity,
+                                                  fit: BoxFit.cover,
+                                                ).animateOnPageLoad(animationsMap[
+                                                    'imageOnPageLoadAnimation3']!),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Container(
+                                                  width: 134.0,
+                                                  height: 134.0,
+                                                  clipBehavior: Clip.antiAlias,
+                                                  decoration: const BoxDecoration(
+                                                    shape: BoxShape.circle,
+                                                  ),
                                                   child: Image.asset(
-                                                    'assets/images/vinie.webp',
-                                                    width: double.infinity,
-                                                    fit: BoxFit.contain,
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'imageOnPageLoadAnimation3']!),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Container(
-                                                    width: 134.0,
-                                                    height: 134.0,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: Image.asset(
-                                                      'assets/images/Profile.webp',
-                                                      fit: BoxFit.cover,
-                                                    ),
+                                                    'assets/images/Profile.webp',
+                                                    fit: BoxFit.cover,
                                                   ),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    106.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 34.0,
-                                                          height: 34.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.asset(
-                                                                'assets/images/prof1.webp',
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100.0),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              width: 1.0,
-                                                            ),
+                                                ).animateOnPageLoad(animationsMap[
+                                                    'circleImageOnPageLoadAnimation']!),
+                                              ),
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.min,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  106.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 34.0,
+                                                        height: 34.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image: Image.asset(
+                                                              'assets/images/prof1.webp',
+                                                            ).image,
                                                           ),
-                                                        ).animateOnPageLoad(
-                                                            animationsMap[
-                                                                'containerOnPageLoadAnimation1']!),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    106.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 34.0,
-                                                          height: 34.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.asset(
-                                                                'assets/images/prof2.webp',
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100.0),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              width: 1.0,
-                                                            ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 1.0,
                                                           ),
-                                                        ).animateOnPageLoad(
-                                                            animationsMap[
-                                                                'containerOnPageLoadAnimation2']!),
-                                                      ),
-                                                    ],
-                                                  ),
+                                                        ),
+                                                      ).animateOnPageLoad(
+                                                          animationsMap[
+                                                              'containerOnPageLoadAnimation1']!),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  106.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 34.0,
+                                                        height: 34.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image: Image.asset(
+                                                              'assets/images/prof2.webp',
+                                                            ).image,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .primaryText,
+                                                            width: 1.0,
+                                                          ),
+                                                        ),
+                                                      ).animateOnPageLoad(
+                                                          animationsMap[
+                                                              'containerOnPageLoadAnimation2']!),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),
@@ -714,6 +728,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               'iconOnPageLoadAnimation']!),
                                         ),
                                       ),
+                                      const Spacer(flex: 3),
                                     ],
                                   ),
                                 ],
@@ -782,63 +797,75 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               ),
                                         ),
                                       ),
-                                      Container(
-                                        decoration: const BoxDecoration(),
+                                      Flexible(
                                         child: Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 24.0, 0.0, 0.0),
-                                          child: SizedBox(
-                                            width: 198.0,
-                                            height: 175.0,
-                                            child: Stack(
+                                                  40.0, 24.0, 40.0, 0.0),
+                                          child: Container(
+                                            height: 360.0,
+                                            decoration: const BoxDecoration(),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
                                               children: [
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          -1.0, 0.0),
-                                                  child: Image.asset(
-                                                    'assets/images/Mask_4.webp',
-                                                    height: 175.0,
-                                                    fit: BoxFit.contain,
+                                                Expanded(
+                                                  flex: 2,
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Image.asset(
+                                                      'assets/images/Mask_4.webp',
+                                                      height: double.infinity,
+                                                      fit: BoxFit.cover,
+                                                    ),
                                                   ).animateOnPageLoad(animationsMap[
                                                       'imageOnPageLoadAnimation4']!),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, 1.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/box3.webp',
-                                                      width: 62.0,
-                                                      height: 82.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'imageOnPageLoadAnimation5']!),
+                                                Expanded(
+                                                  flex: 1,
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Expanded(
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          child: Image.asset(
+                                                            'assets/images/box4.webp',
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'imageOnPageLoadAnimation5']!),
+                                                      ),
+                                                      Expanded(
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          child: Image.asset(
+                                                            'assets/images/box3.webp',
+                                                            fit: BoxFit.cover,
+                                                          ),
+                                                        ).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'imageOnPageLoadAnimation6']!),
+                                                      ),
+                                                    ].divide(
+                                                        const SizedBox(height: 10.0)),
+                                                  ),
                                                 ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          1.0, -1.0),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: Image.asset(
-                                                      'assets/images/box4.webp',
-                                                      width: 62.0,
-                                                      height: 82.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'imageOnPageLoadAnimation6']!),
-                                                ),
-                                              ],
+                                              ].divide(const SizedBox(width: 10.0)),
                                             ),
                                           ),
                                         ),

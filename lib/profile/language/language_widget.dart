@@ -40,8 +40,6 @@ class _LanguageWidgetState extends State<LanguageWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

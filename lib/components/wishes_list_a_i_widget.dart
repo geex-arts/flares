@@ -57,8 +57,6 @@ class _WishesListAIWidgetState extends State<WishesListAIWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

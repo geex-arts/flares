@@ -40,8 +40,6 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

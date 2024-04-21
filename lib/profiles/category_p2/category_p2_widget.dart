@@ -73,8 +73,6 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

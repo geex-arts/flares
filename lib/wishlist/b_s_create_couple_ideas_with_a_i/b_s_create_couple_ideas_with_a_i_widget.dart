@@ -33,8 +33,6 @@ class _BSCreateCoupleIdeasWithAIWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => BSCreateCoupleIdeasWithAIModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

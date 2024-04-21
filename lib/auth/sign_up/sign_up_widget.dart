@@ -77,8 +77,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

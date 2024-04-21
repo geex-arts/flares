@@ -108,8 +108,6 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

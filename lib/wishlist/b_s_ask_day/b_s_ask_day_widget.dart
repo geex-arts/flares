@@ -51,8 +51,6 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
         _model.selectedDate = getCurrentTimestamp;
       });
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

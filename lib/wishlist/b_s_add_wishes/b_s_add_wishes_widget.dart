@@ -28,8 +28,6 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAddWishesModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

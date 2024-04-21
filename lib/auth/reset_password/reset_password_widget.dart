@@ -49,8 +49,6 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

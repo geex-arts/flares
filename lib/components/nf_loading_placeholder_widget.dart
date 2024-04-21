@@ -25,8 +25,6 @@ class _NfLoadingPlaceholderWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NfLoadingPlaceholderModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -202,8 +202,6 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

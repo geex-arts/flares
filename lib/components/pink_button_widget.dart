@@ -32,8 +32,6 @@ class _PinkButtonWidgetState extends State<PinkButtonWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => PinkButtonModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

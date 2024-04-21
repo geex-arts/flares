@@ -73,8 +73,6 @@ class _WishMainWidgetState extends State<WishMainWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -25,8 +25,6 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => TabBarModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

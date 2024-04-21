@@ -40,8 +40,6 @@ class _PrivacyPolicyWidgetState extends State<PrivacyPolicyWidget>
         ],
       ),
     });
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

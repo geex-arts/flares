@@ -44,8 +44,6 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
     _model.nameFieldFocusNode ??= FocusNode();
 
     _model.descriptionFieldFocusNode ??= FocusNode();
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
