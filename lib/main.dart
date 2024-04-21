@@ -12,7 +12,9 @@ import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
-
+import 'dart:async';
+import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
+import 'package:flutter_sharing_intent/model/sharing_file.dart';
 import '/backend/firebase_dynamic_links/firebase_dynamic_links.dart';
 
 void main() async {
@@ -56,6 +58,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
+  late StreamSubscription _intentDataStreamSubscription;
 
   late Stream<BaseAuthUser> userStream;
 
