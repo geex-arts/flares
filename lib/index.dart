@@ -35,9 +35,11 @@ export '/wishlist/create_wish/create_wish_widget.dart' show CreateWishWidget;
 export '/board/more/more_widget.dart' show MoreWidget;
 export '/subscriptions/subscriptions/subscriptions_widget.dart'
     show SubscriptionsWidget;
-export '/profile/invite_partner/invite_partner_widget.dart'
+export '/wishlist/invite_partner/invite_partner_widget.dart'
     show InvitePartnerWidget;
 export '/profiles/category_p/category_p_widget.dart' show CategoryPWidget;
 export '/profiles/explore/explore_widget.dart' show ExploreWidget;
 export '/profiles/add_from_browser/add_from_browser_widget.dart'
     show AddFromBrowserWidget;
+export '/wishlist/official_referral/official_referral_widget.dart'
+    show OfficialReferralWidget;

@@ -108,12 +108,33 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
-          MoveEffect(
+          ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: const Offset(-200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 100.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
+          ),
+          ShimmerEffect(
+            curve: Curves.easeInOut,
+            delay: 300.0.ms,
+            duration: 600.0.ms,
+            color: const Color(0x80FFFFFF),
+            angle: 0.524,
           ),
         ],
       ),
@@ -138,7 +159,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
+            begin: const Offset(-200.0, 0.0),
             end: const Offset(0.0, 0.0),
           ),
         ],
@@ -157,6 +178,19 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         ],
       ),
       'containerOnPageLoadAnimation6': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 1200.0.ms,
+            begin: const Offset(200.0, 0.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+      'containerOnPageLoadAnimation7': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
@@ -290,64 +324,97 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         padding: const EdgeInsetsDirectional.fromSTEB(
                                             32.0, 0.0, 32.0, 0.0),
                                         child: SizedBox(
-                                          width: 100.0,
                                           height: 124.0,
                                           child: Stack(
                                             children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'MY_PROFILE_Container_jbzp9z8k_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Container_navigate_to');
+                                              Align(
+                                                alignment: const AlignmentDirectional(
+                                                    0.0, -1.0),
+                                                child: InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    logFirebaseEvent(
+                                                        'MY_PROFILE_Container_jbzp9z8k_ON_TAP');
+                                                    logFirebaseEvent(
+                                                        'Container_navigate_to');
 
-                                                  context.pushNamed(
-                                                    'Edit_Couple_Profile',
-                                                    queryParameters: {
-                                                      'myPairRow':
-                                                          serializeParam(
-                                                        columnPairsRow,
-                                                        ParamType.SupabaseRow,
+                                                    context.pushNamed(
+                                                      'Edit_Couple_Profile',
+                                                      queryParameters: {
+                                                        'myPairRow':
+                                                            serializeParam(
+                                                          columnPairsRow,
+                                                          ParamType.SupabaseRow,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image:
+                                                            CachedNetworkImageProvider(
+                                                          columnPairsRow!
+                                                              .photo!,
+                                                        ),
                                                       ),
-                                                    }.withoutNulls,
-                                                  );
-                                                },
-                                                child: Container(
-                                                  width: 100.0,
-                                                  height: 100.0,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image:
-                                                          CachedNetworkImageProvider(
-                                                        columnPairsRow!.photo!,
-                                                      ),
+                                                      shape: BoxShape.circle,
                                                     ),
-                                                    shape: BoxShape.circle,
                                                   ),
                                                 ),
                                               ),
                                               if (!true)
-                                                Container(
-                                                  width: 100.0,
-                                                  height: 100.0,
-                                                  decoration: BoxDecoration(
-                                                    image: DecorationImage(
-                                                      fit: BoxFit.cover,
-                                                      image:
-                                                          CachedNetworkImageProvider(
-                                                        columnPairsRow.photo!,
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, -1.0),
+                                                  child: Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image:
+                                                            CachedNetworkImageProvider(
+                                                          columnPairsRow
+                                                              .photo!,
+                                                        ),
                                                       ),
+                                                      shape: BoxShape.circle,
                                                     ),
-                                                    shape: BoxShape.circle,
-                                                  ),
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'containerOnPageLoadAnimation1']!),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'containerOnPageLoadAnimation1']!),
+                                                ),
+                                              if (!true)
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, -1.0),
+                                                  child: Container(
+                                                    width: 100.0,
+                                                    height: 100.0,
+                                                    decoration: BoxDecoration(
+                                                      image: DecorationImage(
+                                                        fit: BoxFit.cover,
+                                                        image: Image.asset(
+                                                          'assets/images/Mask_group.webp',
+                                                        ).image,
+                                                      ),
+                                                      shape: BoxShape.circle,
+                                                    ),
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'containerOnPageLoadAnimation2']!),
+                                                ),
                                               Align(
                                                 alignment: const AlignmentDirectional(
                                                     0.0, 1.0),
@@ -380,6 +447,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                         containerUsersRowList =
                                                         snapshot.data!;
                                                     return Container(
+                                                      width: double.infinity,
                                                       decoration:
                                                           const BoxDecoration(),
                                                       child: Padding(
@@ -395,148 +463,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                               MainAxisSize.max,
                                                           mainAxisAlignment:
                                                               MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  .center,
                                                           children: [
-                                                            InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                logFirebaseEvent(
-                                                                    'MY_PROFILE_ConditionalBuilder_fxcd6519_O');
-                                                                logFirebaseEvent(
-                                                                    'ConditionalBuilder_navigate_to');
-
-                                                                context.pushNamed(
-                                                                    'Edit_Profile');
-                                                              },
-                                                              child: Builder(
-                                                                builder:
-                                                                    (context) {
-                                                                  if (containerUsersRowList
-                                                                              .where((e) =>
-                                                                                  e.id ==
-                                                                                  currentUserUid)
-                                                                              .toList()
-                                                                              .first
-                                                                              .avatar !=
-                                                                          null &&
-                                                                      containerUsersRowList
-                                                                              .where((e) => e.id == currentUserUid)
-                                                                              .toList()
-                                                                              .first
-                                                                              .avatar !=
-                                                                          '') {
-                                                                    return Container(
-                                                                      width:
-                                                                          34.0,
-                                                                      height:
-                                                                          34.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        image:
-                                                                            DecorationImage(
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                          image:
-                                                                              Image.network(
-                                                                            containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar!,
-                                                                          ).image,
-                                                                        ),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(100.0),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          width:
-                                                                              1.0,
-                                                                        ),
-                                                                      ),
-                                                                    ).animateOnPageLoad(
-                                                                        animationsMap[
-                                                                            'containerOnPageLoadAnimation2']!);
-                                                                  } else {
-                                                                    return Container(
-                                                                      width:
-                                                                          34.0,
-                                                                      height:
-                                                                          34.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: const Color(
-                                                                            0x1AFFFFFF),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(100.0),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          width:
-                                                                              1.0,
-                                                                        ),
-                                                                      ),
-                                                                    ).animateOnPageLoad(
-                                                                        animationsMap[
-                                                                            'containerOnPageLoadAnimation3']!);
-                                                                  }
-                                                                },
-                                                              ),
-                                                            ),
-                                                            Builder(
-                                                              builder:
-                                                                  (context) {
-                                                                if ((containerUsersRowList
-                                                                            .length >
-                                                                        1) &&
-                                                                    (containerUsersRowList.where((e) => e.id != currentUserUid).toList().first.avatar !=
-                                                                            null &&
-                                                                        containerUsersRowList.where((e) => e.id != currentUserUid).toList().first.avatar !=
-                                                                            '')) {
-                                                                  return Container(
-                                                                    width: 34.0,
-                                                                    height:
-                                                                        34.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      image:
-                                                                          DecorationImage(
-                                                                        fit: BoxFit
-                                                                            .cover,
-                                                                        image: Image
-                                                                            .network(
-                                                                          containerUsersRowList
-                                                                              .where((e) => e.id != currentUserUid)
-                                                                              .toList()
-                                                                              .first
-                                                                              .avatar!,
-                                                                        ).image,
-                                                                      ),
-                                                                      borderRadius:
-                                                                          BorderRadius.circular(
-                                                                              100.0),
-                                                                      border:
-                                                                          Border
-                                                                              .all(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .primaryText,
-                                                                        width:
-                                                                            1.0,
-                                                                      ),
-                                                                    ),
-                                                                  ).animateOnPageLoad(
-                                                                      animationsMap[
-                                                                          'containerOnPageLoadAnimation4']!);
-                                                                } else if (containerUsersRowList
-                                                                        .length ==
-                                                                    1) {
-                                                                  return InkWell(
+                                                            SizedBox(
+                                                              height: 56.0,
+                                                              child: Stack(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                children: [
+                                                                  InkWell(
                                                                     splashColor:
                                                                         Colors
                                                                             .transparent,
@@ -552,96 +489,325 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                     onTap:
                                                                         () async {
                                                                       logFirebaseEvent(
-                                                                          'MY_PROFILE_Container_029n4mtj_ON_TAP');
+                                                                          'MY_PROFILE_ConditionalBuilder_fxcd6519_O');
                                                                       logFirebaseEvent(
-                                                                          'Container_action_block');
-                                                                      await action_blocks
-                                                                          .pairInvitationRowAction(
-                                                                        context,
-                                                                        isFromProfile:
-                                                                            true,
-                                                                      );
+                                                                          'ConditionalBuilder_navigate_to');
+
+                                                                      context.pushNamed(
+                                                                          'Edit_Profile');
                                                                     },
                                                                     child:
-                                                                        Container(
-                                                                      width:
-                                                                          34.0,
-                                                                      height:
-                                                                          34.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: const Color(
-                                                                            0x4D000000),
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(100.0),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          width:
-                                                                              1.0,
-                                                                        ),
-                                                                      ),
-                                                                      child:
-                                                                          Icon(
-                                                                        Icons
-                                                                            .person_add_alt_outlined,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
-                                                                        size:
-                                                                            17.0,
-                                                                      ),
+                                                                        Builder(
+                                                                      builder:
+                                                                          (context) {
+                                                                        if (containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar !=
+                                                                                null &&
+                                                                            containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar !=
+                                                                                '') {
+                                                                          return Container(
+                                                                            width:
+                                                                                34.0,
+                                                                            height:
+                                                                                34.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              image: DecorationImage(
+                                                                                fit: BoxFit.cover,
+                                                                                image: Image.network(
+                                                                                  containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar!,
+                                                                                ).image,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              border: Border.all(
+                                                                                color: const Color(0xFF931293),
+                                                                                width: 1.5,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(
+                                                                              animationsMap['containerOnPageLoadAnimation3']!);
+                                                                        } else {
+                                                                          return Container(
+                                                                            width:
+                                                                                34.0,
+                                                                            height:
+                                                                                34.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: const Color(0x1AFFFFFF),
+                                                                              image: DecorationImage(
+                                                                                fit: BoxFit.cover,
+                                                                                image: Image.asset(
+                                                                                  'assets/images/prof5.webp',
+                                                                                ).image,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              border: Border.all(
+                                                                                color: const Color(0xFF931293),
+                                                                                width: 1.5,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(
+                                                                              animationsMap['containerOnPageLoadAnimation4']!);
+                                                                        }
+                                                                      },
                                                                     ),
-                                                                  ).animateOnPageLoad(
-                                                                      animationsMap[
-                                                                          'containerOnPageLoadAnimation5']!);
-                                                                } else {
-                                                                  return Visibility(
-                                                                    visible:
-                                                                        false,
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            1.0),
                                                                     child:
                                                                         Container(
-                                                                      width:
-                                                                          34.0,
                                                                       height:
-                                                                          34.0,
+                                                                          17.0,
                                                                       decoration:
                                                                           BoxDecoration(
                                                                         color: const Color(
-                                                                            0x4D000000),
+                                                                            0xFF931293),
                                                                         borderRadius:
                                                                             BorderRadius.circular(100.0),
-                                                                        border:
-                                                                            Border.all(
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).primaryText,
-                                                                          width:
-                                                                              1.0,
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              child: Image.asset(
+                                                                                'assets/images/Winking_Face_With_Tongue.png',
+                                                                                width: 12.0,
+                                                                                height: 12.0,
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 2.0, 0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Thoughtful',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Nuckle',
+                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                      fontSize: 10.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      useGoogleFonts: false,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
-                                                                    ).animateOnPageLoad(
-                                                                            animationsMap['containerOnPageLoadAnimation6']!),
-                                                                  );
-                                                                }
-                                                              },
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
                                                             ),
-                                                          ],
+                                                            SizedBox(
+                                                              height: 56.0,
+                                                              child: Stack(
+                                                                alignment:
+                                                                    const AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0),
+                                                                children: [
+                                                                  Builder(
+                                                                    builder:
+                                                                        (context) {
+                                                                      if ((containerUsersRowList.length >
+                                                                              1) &&
+                                                                          (containerUsersRowList.where((e) => e.id != currentUserUid).toList().first.avatar != null &&
+                                                                              containerUsersRowList.where((e) => e.id != currentUserUid).toList().first.avatar !=
+                                                                                  '')) {
+                                                                        return Container(
+                                                                          width:
+                                                                              34.0,
+                                                                          height:
+                                                                              34.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            image:
+                                                                                DecorationImage(
+                                                                              fit: BoxFit.cover,
+                                                                              image: Image.network(
+                                                                                containerUsersRowList.where((e) => e.id != currentUserUid).toList().first.avatar!,
+                                                                              ).image,
+                                                                            ),
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(100.0),
+                                                                            border:
+                                                                                Border.all(
+                                                                              color: FlutterFlowTheme.of(context).error,
+                                                                              width: 1.5,
+                                                                            ),
+                                                                          ),
+                                                                        ).animateOnPageLoad(
+                                                                            animationsMap['containerOnPageLoadAnimation5']!);
+                                                                      } else if (containerUsersRowList
+                                                                              .length ==
+                                                                          1) {
+                                                                        return InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            logFirebaseEvent('MY_PROFILE_Container_029n4mtj_ON_TAP');
+                                                                            logFirebaseEvent('Container_action_block');
+                                                                            await action_blocks.pairInvitationRowAction(
+                                                                              context,
+                                                                              isFromProfile: true,
+                                                                            );
+                                                                          },
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                34.0,
+                                                                            height:
+                                                                                34.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: const Color(0x4D000000),
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              border: Border.all(
+                                                                                color: FlutterFlowTheme.of(context).primaryText,
+                                                                                width: 1.0,
+                                                                              ),
+                                                                            ),
+                                                                            child:
+                                                                                Icon(
+                                                                              Icons.person_add_alt_outlined,
+                                                                              color: FlutterFlowTheme.of(context).secondaryBackground,
+                                                                              size: 17.0,
+                                                                            ),
+                                                                          ),
+                                                                        ).animateOnPageLoad(
+                                                                            animationsMap['containerOnPageLoadAnimation6']!);
+                                                                      } else {
+                                                                        return Visibility(
+                                                                          visible:
+                                                                              false,
+                                                                          child:
+                                                                              Container(
+                                                                            width:
+                                                                                34.0,
+                                                                            height:
+                                                                                34.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: const Color(0x4D000000),
+                                                                              image: DecorationImage(
+                                                                                fit: BoxFit.cover,
+                                                                                image: Image.asset(
+                                                                                  'assets/images/Ellipse_1952.webp',
+                                                                                ).image,
+                                                                              ),
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              border: Border.all(
+                                                                                color: FlutterFlowTheme.of(context).error,
+                                                                                width: 1.5,
+                                                                              ),
+                                                                            ),
+                                                                          ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation7']!),
+                                                                        );
+                                                                      }
+                                                                    },
+                                                                  ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        const AlignmentDirectional(
+                                                                            0.0,
+                                                                            1.0),
+                                                                    child:
+                                                                        Container(
+                                                                      height:
+                                                                          17.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .error,
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(100.0),
+                                                                      ),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                            5.0,
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.max,
+                                                                          children: [
+                                                                            ClipRRect(
+                                                                              borderRadius: BorderRadius.circular(100.0),
+                                                                              child: Image.asset(
+                                                                                'assets/images/Winking_Face_With_Tongue.png',
+                                                                                width: 12.0,
+                                                                                height: 12.0,
+                                                                                fit: BoxFit.cover,
+                                                                              ),
+                                                                            ),
+                                                                            Padding(
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(4.0, 2.0, 0.0, 0.0),
+                                                                              child: Text(
+                                                                                'Thoughtful',
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Nuckle',
+                                                                                      color: FlutterFlowTheme.of(context).info,
+                                                                                      fontSize: 10.0,
+                                                                                      letterSpacing: 0.0,
+                                                                                      useGoogleFonts: false,
+                                                                                    ),
+                                                                              ),
+                                                                            ),
+                                                                          ],
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ),
+                                                          ].divide(const SizedBox(
+                                                              width: 16.0)),
                                                         ),
                                                       ),
                                                     );
                                                   },
                                                 ),
                                               ),
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 1.0),
-                                                child: const Icon(
-                                                  FFIcons.klike,
-                                                  color: Color(0xFFFF2C96),
-                                                  size: 18.0,
-                                                ).animateOnPageLoad(animationsMap[
-                                                    'iconOnPageLoadAnimation']!),
-                                              ),
+
+                                              // скрывается если выбрана эмоция
+                                              if (responsiveVisibility(
+                                                context: context,
+                                                phone: false,
+                                              ))
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, 1.0),
+                                                  child: const Icon(
+                                                    FFIcons.klike,
+                                                    color: Color(0xFFFF2C96),
+                                                    size: 18.0,
+                                                  ).animateOnPageLoad(animationsMap[
+                                                      'iconOnPageLoadAnimation']!),
+                                                ),
                                             ],
                                           ),
                                         ),

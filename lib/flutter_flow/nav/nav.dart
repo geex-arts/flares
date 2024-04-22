@@ -312,6 +312,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'Official_Referral',
+              path: 'officialReferral',
+              builder: (context, params) => const OfficialReferralWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
