@@ -464,17 +464,17 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget> {
                                                     width: 24.0,
                                                     height: 24.0,
                                                     decoration: const BoxDecoration(
-                                                      color: Color(0x80FFFFFF),
                                                       shape: BoxShape.circle,
                                                     ),
                                                     alignment:
                                                         const AlignmentDirectional(
                                                             0.0, 0.0),
-                                                    child: FaIcon(
-                                                      FontAwesomeIcons.trashAlt,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .primaryBackground,
+                                                    child: Icon(
+                                                      Icons.dehaze,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
                                                       size: 14.0,
                                                     ),
                                                   ),
@@ -487,8 +487,18 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget> {
                                                     width: 24.0,
                                                     height: 24.0,
                                                     decoration: const BoxDecoration(
-                                                      color: Color(0x80FFFFFF),
                                                       shape: BoxShape.circle,
+                                                    ),
+                                                    alignment:
+                                                        const AlignmentDirectional(
+                                                            0.0, 0.0),
+                                                    child: FaIcon(
+                                                      FontAwesomeIcons.trashAlt,
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .info,
+                                                      size: 14.0,
                                                     ),
                                                   ),
                                                 ),

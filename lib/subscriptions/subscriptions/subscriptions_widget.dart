@@ -1,4 +1,5 @@
 import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -361,7 +362,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                 ),
               ),
               Container(
-                height: 141.0,
+                height: 218.0,
                 decoration: const BoxDecoration(),
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
@@ -371,7 +372,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                     children: [
                       Expanded(
                         child: Container(
-                          height: 141.0,
+                          height: 218.0,
                           decoration: const BoxDecoration(),
                           child: Stack(
                             children: [
@@ -399,7 +400,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                     ),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 123.0,
+                                      height: 200.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           _model.selectedPlan == 0
@@ -480,7 +481,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                                   .fromSTEB(
                                                       0.0, 12.0, 0.0, 0.0),
                                               child: Text(
-                                                '1 Week',
+                                                'Monthly',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -499,6 +500,26 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                             ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
+                                              child: Text(
+                                                'For 2 users',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x9AFFFFFF),
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                       0.0, 12.0, 0.0, 0.0),
                                               child: Text(
@@ -508,9 +529,56 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '/mo per user',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
                                                           color:
                                                               const Color(0x98FFFFFF),
+                                                          fontSize: 11.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '\$14.99',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           useGoogleFonts: false,
                                                         ),
                                               ),
@@ -528,7 +596,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                       ),
                       Expanded(
                         child: Container(
-                          height: 141.0,
+                          height: 14218.0,
                           decoration: const BoxDecoration(),
                           child: Stack(
                             children: [
@@ -556,7 +624,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                     ),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 123.0,
+                                      height: 200.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           _model.selectedPlan == 1
@@ -583,39 +651,43 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                             Builder(
                                               builder: (context) {
                                                 if (_model.selectedPlan == 1) {
-                                                  return Stack(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    children: [
-                                                      Container(
-                                                        width: 20.0,
-                                                        height: 20.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          border: Border.all(
+                                                  return SizedBox(
+                                                    width: 20.0,
+                                                    height: 20.0,
+                                                    child: Stack(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      children: [
+                                                        Container(
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              width: 1.0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 12.0,
+                                                          height: 12.0,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .info,
-                                                            width: 1.0,
+                                                            shape:
+                                                                BoxShape.circle,
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        width: 12.0,
-                                                        height: 12.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   );
                                                 } else {
                                                   return Container(
@@ -637,7 +709,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                                   .fromSTEB(
                                                       0.0, 12.0, 0.0, 0.0),
                                               child: Text(
-                                                '1 Year',
+                                                'Yearly',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
@@ -656,18 +728,85 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                             ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 12.0, 0.0, 0.0),
+                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
                                               child: Text(
-                                                '\$36.99',
+                                                'For 2 users',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              const Color(0x98FFFFFF),
+                                                              const Color(0x99FFFFFF),
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '\$3.12',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '/mo per user',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x9AFFFFFF),
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '\$74.99',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           useGoogleFonts: false,
                                                         ),
                                               ),
@@ -717,7 +856,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                       ),
                       Expanded(
                         child: Container(
-                          height: 141.0,
+                          height: 218.0,
                           decoration: const BoxDecoration(),
                           child: Stack(
                             children: [
@@ -745,7 +884,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                     ),
                                     child: Container(
                                       width: double.infinity,
-                                      height: 123.0,
+                                      height: 200.0,
                                       decoration: BoxDecoration(
                                         color: valueOrDefault<Color>(
                                           _model.selectedPlan == 2
@@ -772,39 +911,43 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                             Builder(
                                               builder: (context) {
                                                 if (_model.selectedPlan == 2) {
-                                                  return Stack(
-                                                    alignment:
-                                                        const AlignmentDirectional(
-                                                            0.0, 0.0),
-                                                    children: [
-                                                      Container(
-                                                        width: 20.0,
-                                                        height: 20.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          shape:
-                                                              BoxShape.circle,
-                                                          border: Border.all(
+                                                  return SizedBox(
+                                                    width: 20.0,
+                                                    height: 20.0,
+                                                    child: Stack(
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      children: [
+                                                        Container(
+                                                          width: 20.0,
+                                                          height: 20.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            shape:
+                                                                BoxShape.circle,
+                                                            border: Border.all(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .info,
+                                                              width: 1.0,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          width: 12.0,
+                                                          height: 12.0,
+                                                          decoration:
+                                                              BoxDecoration(
                                                             color: FlutterFlowTheme
                                                                     .of(context)
                                                                 .info,
-                                                            width: 1.0,
+                                                            shape:
+                                                                BoxShape.circle,
                                                           ),
                                                         ),
-                                                      ),
-                                                      Container(
-                                                        width: 12.0,
-                                                        height: 12.0,
-                                                        decoration:
-                                                            BoxDecoration(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          shape:
-                                                              BoxShape.circle,
-                                                        ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   );
                                                 } else {
                                                   return Container(
@@ -845,18 +988,85 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                             ),
                                             Padding(
                                               padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 12.0, 0.0, 0.0),
+                                                  .fromSTEB(0.0, 6.0, 0.0, 0.0),
                                               child: Text(
-                                                'Best Value',
+                                                'For 2 users',
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              const Color(0x98FFFFFF),
+                                                              const Color(0x9AFFFFFF),
+                                                          fontSize: 12.0,
                                                           letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '1-Time',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 16.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Lifetime',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x99FFFFFF),
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 12.0, 0.0, 0.0),
+                                              child: Text(
+                                                '\$124.99',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 18.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
                                                           useGoogleFonts: false,
                                                         ),
                                               ),
@@ -908,41 +1118,100 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 45.0),
-                child: wrapWithModel(
-                  model: _model.continueButtonModel,
-                  updateCallback: () => setState(() {}),
-                  child: PinkButtonWidget(
-                    text: 'Continue',
-                    currentAction: () async {
-                      logFirebaseEvent('SUBSCRIPTIONS_ContinueButton_CALLBACK');
-                      logFirebaseEvent('ContinueButton_revenue_cat');
-                      _model.test = await revenue_cat.purchasePackage(
-                          revenue_cat.offerings!.current!.monthly!.identifier);
-                      logFirebaseEvent('ContinueButton_bottom_sheet');
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return WebViewAware(
-                            child: GestureDetector(
-                              onTap: () => _model.unfocusNode.canRequestFocus
-                                  ? FocusScope.of(context)
-                                      .requestFocus(_model.unfocusNode)
-                                  : FocusScope.of(context).unfocus(),
-                              child: Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: const NOfferWidget(),
-                              ),
-                            ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
+              Builder(
+                builder: (context) => Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 45.0),
+                  child: wrapWithModel(
+                    model: _model.continueButtonModel,
+                    updateCallback: () => setState(() {}),
+                    child: PinkButtonWidget(
+                      text: 'Continue',
+                      currentAction: () async {
+                        logFirebaseEvent(
+                            'SUBSCRIPTIONS_ContinueButton_CALLBACK');
+                        if (_model.selectedPlan == 0) {
+                          logFirebaseEvent('ContinueButton_revenue_cat');
+                          _model.monthlyResult =
+                              await revenue_cat.purchasePackage(revenue_cat
+                                  .offerings!.current!.monthly!.identifier);
+                        } else if (_model.selectedPlan == 1) {
+                          logFirebaseEvent('ContinueButton_revenue_cat');
+                          _model.annuallyResult =
+                              await revenue_cat.purchasePackage(revenue_cat
+                                  .offerings!.current!.annual!.identifier);
+                        } else {
+                          logFirebaseEvent('ContinueButton_revenue_cat');
+                          _model.lifetimeResult =
+                              await revenue_cat.purchasePackage(revenue_cat
+                                  .offerings!.current!.lifetime!.identifier);
+                        }
 
-                      setState(() {});
-                    },
+                        if (_model.monthlyResult! ||
+                            _model.annuallyResult! ||
+                            _model.lifetimeResult!) {
+                          logFirebaseEvent('ContinueButton_alert_dialog');
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: const AlignmentDirectional(0.0, -1.0)
+                                    .resolve(Directionality.of(context)),
+                                child: WebViewAware(
+                                  child: GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: const AlertDialogWarningWidget(
+                                      title: 'Success !',
+                                      subtitle:
+                                          'Thank you, your subscription is activated !',
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+
+                          logFirebaseEvent('ContinueButton_navigate_back');
+                          context.safePop();
+                        } else {
+                          logFirebaseEvent('ContinueButton_alert_dialog');
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: const AlignmentDirectional(0.0, -1.0)
+                                    .resolve(Directionality.of(context)),
+                                child: WebViewAware(
+                                  child: GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: const AlertDialogWarningWidget(
+                                      title: 'Something went wrong ',
+                                      subtitle: 'Please try again later',
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                        }
+
+                        setState(() {});
+                      },
+                    ),
                   ),
                 ),
               ),

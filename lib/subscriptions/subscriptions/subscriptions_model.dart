@@ -14,7 +14,11 @@ class SubscriptionsModel extends FlutterFlowModel<SubscriptionsWidget> {
   // Model for ContinueButton.
   late PinkButtonModel continueButtonModel;
   // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
-  bool? test;
+  bool? monthlyResult;
+  // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
+  bool? annuallyResult;
+  // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
+  bool? lifetimeResult;
 
   @override
   void initState(BuildContext context) {
