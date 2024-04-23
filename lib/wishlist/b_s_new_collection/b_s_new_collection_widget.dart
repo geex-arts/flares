@@ -362,7 +362,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                                   widget.selectedWishRow?.description,
                               'photo': widget.selectedWishRow?.photo,
                               'link': widget.selectedWishRow?.link,
-                              'copied_from': widget.selectedWishRow?.uuid,
+                              'parent_uuid': widget.selectedWishRow?.uuid,
                               'visibily':
                                   _model.newCollectionRowCopy?.visibility,
                             });

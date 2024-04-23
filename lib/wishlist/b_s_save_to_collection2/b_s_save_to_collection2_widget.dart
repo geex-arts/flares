@@ -347,7 +347,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget> {
                                                       .selectedWishRow?.photo,
                                                   'link': widget
                                                       .selectedWishRow?.link,
-                                                  'copied_from': widget
+                                                  'parent_uuid': widget
                                                       .selectedWishRow?.uuid,
                                                   'visibily':
                                                       currentCollectionItem

@@ -32,4 +32,7 @@ class NotificationsRow extends SupabaseDataRow {
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);
+
+  bool? get needMessage => getField<bool>('need_message');
+  set needMessage(bool? value) => setField<bool>('need_message', value);
 }

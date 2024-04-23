@@ -1,18 +1,18 @@
 import '../database.dart';
 
-class DiscoveryTable extends SupabaseTable<DiscoveryRow> {
+class AiWishImagesTable extends SupabaseTable<AiWishImagesRow> {
   @override
-  String get tableName => 'discovery';
+  String get tableName => 'ai wish images';
 
   @override
-  DiscoveryRow createRow(Map<String, dynamic> data) => DiscoveryRow(data);
+  AiWishImagesRow createRow(Map<String, dynamic> data) => AiWishImagesRow(data);
 }
 
-class DiscoveryRow extends SupabaseDataRow {
-  DiscoveryRow(super.data);
+class AiWishImagesRow extends SupabaseDataRow {
+  AiWishImagesRow(super.data);
 
   @override
-  SupabaseTable get table => DiscoveryTable();
+  SupabaseTable get table => AiWishImagesTable();
 
   String get id => getField<String>('id')!;
   set id(String value) => setField<String>('id', value);
@@ -20,8 +20,8 @@ class DiscoveryRow extends SupabaseDataRow {
   String? get collection => getField<String>('collection');
   set collection(String? value) => setField<String>('collection', value);
 
-  int? get order => getField<int>('order');
-  set order(int? value) => setField<int>('order', value);
+  String? get image => getField<String>('image');
+  set image(String? value) => setField<String>('image', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);

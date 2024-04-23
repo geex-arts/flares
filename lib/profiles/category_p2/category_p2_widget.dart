@@ -122,7 +122,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                                 FFAppState().pairID,
                               )
                               .is_(
-                                'copied_from',
+                                'parent_uuid',
                                 null,
                               )
                               .order('created_at'),

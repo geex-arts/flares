@@ -21,8 +21,8 @@ class WishReactionsRow extends SupabaseDataRow {
   String? get whish => getField<String>('whish');
   set whish(String? value) => setField<String>('whish', value);
 
-  String? get user => getField<String>('user');
-  set user(String? value) => setField<String>('user', value);
+  String get user => getField<String>('user')!;
+  set user(String value) => setField<String>('user', value);
 
   DateTime get createdAt => getField<DateTime>('created_at')!;
   set createdAt(DateTime value) => setField<DateTime>('created_at', value);

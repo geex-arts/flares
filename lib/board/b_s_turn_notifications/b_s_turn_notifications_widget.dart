@@ -1,11 +1,13 @@
-import '/board/n_allow_notify/n_allow_notify_widget.dart';
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'dart:ui';
+import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_turn_notifications_model.dart';
 export 'b_s_turn_notifications_model.dart';
 
@@ -260,27 +262,34 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                               logFirebaseEvent(
                                   'B_S_TURN_NOTIFICATIONS_TurnOnNotificatio');
                               logFirebaseEvent(
+                                  'TurnOnNotifications_request_permissions');
+                              await requestPermission(notificationsPermission);
+                              if (await getPermissionStatus(
+                                  notificationsPermission)) {
+                                logFirebaseEvent(
+                                    'TurnOnNotifications_backend_call');
+                                unawaited(
+                                  () async {
+                                    await UsersTable().update(
+                                      data: {
+                                        'push_partner_updates': true,
+                                        'push_relationship_reminders': true,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'id',
+                                        currentUserUid,
+                                      ),
+                                    );
+                                  }(),
+                                );
+                              }
+                              logFirebaseEvent(
                                   'TurnOnNotifications_bottom_sheet');
                               Navigator.pop(context);
                               logFirebaseEvent(
-                                  'TurnOnNotifications_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                barrierColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                enableDrag: false,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: const NAllowNotifyWidget(),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => safeSetState(() {}));
+                                  'TurnOnNotifications_navigate_to');
+
+                              context.goNamed('My_Profile');
                             },
                           ),
                         ),

@@ -300,8 +300,8 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                 isMyProfile: false,
                                 wishesRowsParam: wishesListMainWishesRowList
                                     .where((e) =>
-                                        e.copiedFrom == null ||
-                                        e.copiedFrom == '')
+                                        e.parentUuid == null ||
+                                        e.parentUuid == '')
                                     .toList(),
                               ),
                             );

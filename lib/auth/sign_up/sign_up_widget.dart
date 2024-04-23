@@ -1093,6 +1093,175 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ),
                                 ),
                               ),
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBackground,
+                                ),
+                                child: Visibility(
+                                  visible: !(isWeb
+                                      ? MediaQuery.viewInsetsOf(context)
+                                              .bottom >
+                                          0
+                                      : _isKeyboardVisible),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Align(
+                                        alignment:
+                                            const AlignmentDirectional(0.0, 1.0),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 30.0, 0.0, 0.0),
+                                          child: RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'You Already Have An Account? ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            const Color(0x9AFFFFFF),
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                TextSpan(
+                                                  text: 'Sign in',
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .info,
+                                                    fontSize: 11.0,
+                                                  ),
+                                                  mouseCursor:
+                                                      SystemMouseCursors.click,
+                                                  recognizer:
+                                                      TapGestureRecognizer()
+                                                        ..onTap = () async {
+                                                          logFirebaseEvent(
+                                                              'SIGN_UP_RichTextSpan_8hkcoi6l_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'RichTextSpan_navigate_to');
+
+                                                          context.pushNamed(
+                                                              'Sign_In');
+                                                        },
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                        lineHeight: 1.4,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            14.0, 12.0, 14.0, 40.0),
+                                        child: RichText(
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                    'By Continuing You Agree To ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x9AFFFFFF),
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                              TextSpan(
+                                                text: 'Terms Of Use ',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 11.0,
+                                                ),
+                                                mouseCursor:
+                                                    SystemMouseCursors.click,
+                                                recognizer:
+                                                    TapGestureRecognizer()
+                                                      ..onTap = () async {
+                                                        logFirebaseEvent(
+                                                            'SIGN_UP_RichTextSpan_qg59gvgo_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'RichTextSpan_navigate_to');
+
+                                                        context.pushNamed(
+                                                            'Terms_Conditions');
+                                                      },
+                                              ),
+                                              const TextSpan(
+                                                text:
+                                                    'And Confirm That You Have Read The Runway\'s ',
+                                                style: TextStyle(
+                                                  color: Color(0x98FFFFFF),
+                                                  fontSize: 11.0,
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: 'Privacy Policy',
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 11.0,
+                                                ),
+                                                mouseCursor:
+                                                    SystemMouseCursors.click,
+                                                recognizer:
+                                                    TapGestureRecognizer()
+                                                      ..onTap = () async {
+                                                        logFirebaseEvent(
+                                                            'SIGN_UP_RichTextSpan_wuh7jpvz_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'RichTextSpan_navigate_to');
+
+                                                        context.pushNamed(
+                                                            'Privacy_Policy');
+                                                      },
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.4,
+                                                ),
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             ]
                                 .addToStart(const SizedBox(height: 32.0))
                                 .addToEnd(const SizedBox(height: 160.0)),
@@ -1103,142 +1272,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                   ),
                 ],
               ),
-              if (!(isWeb
-                  ? MediaQuery.viewInsetsOf(context).bottom > 0
-                  : _isKeyboardVisible))
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
-                        child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              0.0, 30.0, 0.0, 0.0),
-                          child: RichText(
-                            textScaler: MediaQuery.of(context).textScaler,
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: 'You Already Have An Account? ',
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Nuckle',
-                                        color: const Color(0x9AFFFFFF),
-                                        fontSize: 11.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                                TextSpan(
-                                  text: 'Sign in',
-                                  style: TextStyle(
-                                    color: FlutterFlowTheme.of(context).info,
-                                    fontSize: 11.0,
-                                  ),
-                                  mouseCursor: SystemMouseCursors.click,
-                                  recognizer: TapGestureRecognizer()
-                                    ..onTap = () async {
-                                      logFirebaseEvent(
-                                          'SIGN_UP_RichTextSpan_8hkcoi6l_ON_TAP');
-                                      logFirebaseEvent(
-                                          'RichTextSpan_navigate_to');
-
-                                      context.pushNamed('Sign_In');
-                                    },
-                                )
-                              ],
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    letterSpacing: 0.0,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.4,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            14.0, 12.0, 14.0, 40.0),
-                        child: RichText(
-                          textScaler: MediaQuery.of(context).textScaler,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'By Continuing You Agree To ',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: const Color(0x9AFFFFFF),
-                                      fontSize: 11.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                              TextSpan(
-                                text: 'Terms Of Use ',
-                                style: TextStyle(
-                                  color: FlutterFlowTheme.of(context).info,
-                                  fontSize: 11.0,
-                                ),
-                                mouseCursor: SystemMouseCursors.click,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    logFirebaseEvent(
-                                        'SIGN_UP_RichTextSpan_qg59gvgo_ON_TAP');
-                                    logFirebaseEvent(
-                                        'RichTextSpan_navigate_to');
-
-                                    context.pushNamed('Terms_Conditions');
-                                  },
-                              ),
-                              const TextSpan(
-                                text:
-                                    'And Confirm That You Have Read The Runway\'s ',
-                                style: TextStyle(
-                                  color: Color(0x98FFFFFF),
-                                  fontSize: 11.0,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Privacy Policy',
-                                style: TextStyle(
-                                  color: FlutterFlowTheme.of(context).info,
-                                  fontSize: 11.0,
-                                ),
-                                mouseCursor: SystemMouseCursors.click,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    logFirebaseEvent(
-                                        'SIGN_UP_RichTextSpan_wuh7jpvz_ON_TAP');
-                                    logFirebaseEvent(
-                                        'RichTextSpan_navigate_to');
-
-                                    context.pushNamed('Privacy_Policy');
-                                  },
-                              )
-                            ],
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                  lineHeight: 1.4,
-                                ),
-                          ),
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
             ],
           ),
         ),

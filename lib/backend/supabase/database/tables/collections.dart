@@ -40,4 +40,7 @@ class CollectionsRow extends SupabaseDataRow {
 
   String? get pair => getField<String>('pair');
   set pair(String? value) => setField<String>('pair', value);
+
+  int? get order => getField<int>('order');
+  set order(int? value) => setField<int>('order', value);
 }

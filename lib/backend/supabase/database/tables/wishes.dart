@@ -44,6 +44,6 @@ class WishesRow extends SupabaseDataRow {
   String? get link => getField<String>('link');
   set link(String? value) => setField<String>('link', value);
 
-  String? get copiedFrom => getField<String>('copied_from');
-  set copiedFrom(String? value) => setField<String>('copied_from', value);
+  String? get parentUuid => getField<String>('parent_uuid');
+  set parentUuid(String? value) => setField<String>('parent_uuid', value);
 }

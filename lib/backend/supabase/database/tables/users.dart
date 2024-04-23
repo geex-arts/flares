@@ -50,4 +50,13 @@ class UsersRow extends SupabaseDataRow {
       getField<DateTime>('notifications_last_visited');
   set notificationsLastVisited(DateTime? value) =>
       setField<DateTime>('notifications_last_visited', value);
+
+  bool? get pushPartnerUpdates => getField<bool>('push_partner_updates');
+  set pushPartnerUpdates(bool? value) =>
+      setField<bool>('push_partner_updates', value);
+
+  bool? get pushRelationshipReminders =>
+      getField<bool>('push_relationship_reminders');
+  set pushRelationshipReminders(bool? value) =>
+      setField<bool>('push_relationship_reminders', value);
 }

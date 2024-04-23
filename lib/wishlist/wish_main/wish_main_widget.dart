@@ -303,7 +303,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             FFAppState().pairID,
                           )
                           .eq(
-                            'copied_from',
+                            'parent_uuid',
                             widget.selectedWishRow?.uuid,
                           ),
                     ),
@@ -364,14 +364,11 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
-                                          height: 40.0,
-                                          child: BSSaveToCollectionWidget(
-                                            selectedWishRow:
-                                                widget.selectedWishRow,
-                                            isFromWebview: true,
-                                            isFromAI: widget.isFromAI,
-                                          ),
+                                        child: BSSaveToCollectionWidget(
+                                          selectedWishRow:
+                                              widget.selectedWishRow,
+                                          isFromWebview: true,
+                                          isFromAI: widget.isFromAI,
                                         ),
                                       ),
                                     ),
@@ -416,16 +413,11 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                         child: Padding(
                                           padding:
                                               MediaQuery.viewInsetsOf(context),
-                                          child: SizedBox(
-                                            height: MediaQuery.sizeOf(context)
-                                                    .height *
-                                                0.4,
-                                            child: BSAskDayWidget(
-                                              selectedWishRow:
-                                                  widget.selectedWishRow!,
-                                              partnerID:
-                                                  _model.partnerRow!.first.id,
-                                            ),
+                                          child: BSAskDayWidget(
+                                            selectedWishRow:
+                                                widget.selectedWishRow!,
+                                            partnerID:
+                                                _model.partnerRow!.first.id,
                                           ),
                                         ),
                                       ),

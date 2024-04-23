@@ -576,6 +576,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                     await actions.initializeCustomerIo(
                                       currentUserEmail,
                                     );
+                                    logFirebaseEvent(
+                                        'nextButton_custom_action');
+                                    await actions.identifyRevenueCat(
+                                      '',
+                                    );
                                     logFirebaseEvent('nextButton_backend_call');
                                     await UsersTable().update(
                                       data: {

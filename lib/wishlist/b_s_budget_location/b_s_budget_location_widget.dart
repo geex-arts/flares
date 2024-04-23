@@ -194,24 +194,11 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                       height: MediaQuery.sizeOf(context).height * 0.08,
                       child: Stack(
                         children: [
-                          const Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 30.0, 0.0, 0.0),
-                                child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  children: [],
-                                ),
-                              ),
-                            ],
-                          ),
                           Align(
                             alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 0.0),
+                                  4.0, 0.0, 4.0, 2.0),
                               child: LinearPercentIndicator(
                                 percent: () {
                                   if (_model.budget == 'moderate') {
@@ -236,7 +223,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 3.0, 0.0, 0.0),
+                                0.0, 0.0, 0.0, 4.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -244,150 +231,132 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                 Opacity(
                                   opacity:
                                       _model.budget == 'friendly' ? 1.0 : 0.0,
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Transform.translate(
-                                      offset: const Offset(0.0, 0.0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 24.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              width: 26.0,
-                                              height: 18.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .pink,
-                                                borderRadius:
-                                                    BorderRadius.circular(9.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 24.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .info,
-                                                  width: 2.0,
-                                                ),
-                                              ),
+                                              width: 2.0,
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/slide.webp',
-                                                  width: 29.0,
-                                                  height: 11.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/slide.webp',
+                                              width: 29.0,
+                                              height: 11.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 Opacity(
                                   opacity:
                                       _model.budget == 'moderate' ? 1.0 : 0.0,
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Transform.translate(
-                                      offset: const Offset(0.0, 0.0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 24.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              width: 26.0,
-                                              height: 18.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .pink,
-                                                borderRadius:
-                                                    BorderRadius.circular(9.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 24.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .info,
-                                                  width: 2.0,
-                                                ),
-                                              ),
+                                              width: 2.0,
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/slide.webp',
-                                                  width: 29.0,
-                                                  height: 11.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/slide.webp',
+                                              width: 29.0,
+                                              height: 11.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                                 Opacity(
                                   opacity:
                                       _model.budget == 'luxury' ? 1.0 : 0.0,
-                                  child: Align(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    child: Transform.translate(
-                                      offset: const Offset(0.0, 0.0),
-                                      child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 24.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.min,
-                                          children: [
-                                            Container(
-                                              width: 26.0,
-                                              height: 18.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .pink,
-                                                borderRadius:
-                                                    BorderRadius.circular(9.0),
-                                                border: Border.all(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 24.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .info,
-                                                  width: 2.0,
-                                                ),
-                                              ),
+                                              width: 2.0,
                                             ),
-                                            Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 8.0, 0.0, 0.0),
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                child: Image.asset(
-                                                  'assets/images/slide.webp',
-                                                  width: 29.0,
-                                                  height: 11.0,
-                                                  fit: BoxFit.contain,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 8.0, 0.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/slide.webp',
+                                              width: 29.0,
+                                              height: 11.0,
+                                              fit: BoxFit.contain,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
@@ -395,7 +364,6 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             ),
                           ),
                           Container(
-                            height: MediaQuery.sizeOf(context).height * 0.09,
                             decoration: const BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,

@@ -559,7 +559,7 @@ class _CardWidgetState extends State<CardWidget> {
                           FFAppState().pairID,
                         )
                         .eq(
-                          'copied_from',
+                          'parent_uuid',
                           widget.currentWishRow?.uuid,
                         ),
                   ),
