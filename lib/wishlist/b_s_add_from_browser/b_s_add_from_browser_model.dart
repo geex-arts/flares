@@ -28,7 +28,7 @@ class BSAddFromBrowserModel extends FlutterFlowModel<BSAddFromBrowserWidget> {
       return 'Please enter at least 2 characters';
     }
     if (val.length > 30) {
-      return 'Please enter below 30 characters';
+      return 'Please enter less than 30 characters';
     }
 
     return null;

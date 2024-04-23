@@ -193,7 +193,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryBackground,
-                                              size: 16.0,
+                                              size: 24.0,
                                             ),
                                           ],
                                         ),

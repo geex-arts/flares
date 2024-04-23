@@ -16,9 +16,11 @@ class AddWishReactionWidget extends StatefulWidget {
   const AddWishReactionWidget({
     super.key,
     required this.selectedWishRow,
+    this.selectedWishReaction,
   });
 
   final WishesRow? selectedWishRow;
+  final WishReactionsRow? selectedWishReaction;
 
   @override
   State<AddWishReactionWidget> createState() => _AddWishReactionWidgetState();
@@ -125,7 +127,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                 Icons.chevron_left,
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                size: 16.0,
+                                size: 24.0,
                               ),
                             ],
                           ),
@@ -443,6 +445,34 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                             onTap: () async {
                               logFirebaseEvent(
                                   'ADD_WISH_REACTION_Image_nqu5kvy3_ON_TAP');
+                              if (widget.selectedWishReaction != null) {
+                                logFirebaseEvent('Image_backend_call');
+                                unawaited(
+                                  () async {
+                                    await WishReactionsTable().update(
+                                      data: {
+                                        'rating': rowReactionImagesRow.rating,
+                                      },
+                                      matchingRows: (rows) => rows.eq(
+                                        'id',
+                                        widget.selectedWishReaction?.id,
+                                      ),
+                                    );
+                                  }(),
+                                );
+                              } else {
+                                logFirebaseEvent('Image_backend_call');
+                                unawaited(
+                                  () async {
+                                    await WishReactionsTable().insert({
+                                      'user': currentUserUid,
+                                      'rating': rowReactionImagesRow.rating,
+                                      'whish': widget.selectedWishRow?.uuid,
+                                    });
+                                  }(),
+                                );
+                              }
+
                               logFirebaseEvent('Image_backend_call');
                               _model.partnerRow = await UsersTable().queryRows(
                                 queryFn: (q) => q
@@ -454,16 +484,6 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                       'id',
                                       currentUserUid,
                                     ),
-                              );
-                              logFirebaseEvent('Image_backend_call');
-                              unawaited(
-                                () async {
-                                  await WishReactionsTable().insert({
-                                    'user': currentUserUid,
-                                    'rating': rowReactionImagesRow.rating,
-                                    'whish': widget.selectedWishRow?.uuid,
-                                  });
-                                }(),
                               );
                               if (_model.partnerRow!.isNotEmpty) {
                                 logFirebaseEvent('Image_backend_call');

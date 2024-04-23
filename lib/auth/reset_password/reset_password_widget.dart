@@ -135,7 +135,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: const Color(0x18000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
                                     color: const Color(0x33FFFFFF),
@@ -146,7 +146,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 Icons.chevron_left,
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                size: 16.0,
+                                size: 24.0,
                               ),
                             ],
                           ),

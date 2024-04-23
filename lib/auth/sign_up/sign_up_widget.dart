@@ -176,7 +176,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   Icons.chevron_left,
                                   color: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
-                                  size: 16.0,
+                                  size: 24.0,
                                 ),
                               ],
                             ),

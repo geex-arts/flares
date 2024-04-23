@@ -6,7 +6,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import '/wishlist/b_s_budget_location/b_s_budget_location_widget.dart';
-import '/wishlist/b_s_filling/b_s_filling_widget.dart';
+import '/wishlist/b_s_feeling/b_s_feeling_widget.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import '/wishlist/b_s_save_to_collection2/b_s_save_to_collection2_widget.dart';
@@ -676,7 +676,7 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                             height: MediaQuery.sizeOf(context)
                                                     .height *
                                                 0.9,
-                                            child: const BSFillingWidget(),
+                                            child: const BSFeelingWidget(),
                                           ),
                                         ),
                                       ),
@@ -4231,7 +4231,7 @@ class _ExploreWidgetState extends State<ExploreWidget>
                                       Icons.chevron_left,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      size: 16.0,
+                                      size: 24.0,
                                     ),
                                   ],
                                 ),

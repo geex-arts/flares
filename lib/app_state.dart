@@ -21,6 +21,13 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _pairID = prefs.getString('ff_pairID') ?? _pairID;
     });
+    _safeInit(() {
+      _colorsList = prefs
+              .getStringList('ff_colorsList')
+              ?.map((x) => Color(int.tryParse(x) ?? 0))
+              .toList() ??
+          _colorsList;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -61,6 +68,53 @@ class FFAppState extends ChangeNotifier {
   set currentUrl(String value) {
     _currentUrl = value;
   }
+
+  List<Color> _colorsList = [
+    const Color(0xff182def),
+    const Color(0xff931293),
+    const Color(0xffe81542),
+    const Color(0xffff2c96),
+    const Color(0xffe38dba)
+  ];
+  List<Color> get colorsList => _colorsList;
+  set colorsList(List<Color> value) {
+    _colorsList = value;
+    prefs.setStringList(
+        'ff_colorsList', value.map((x) => x.value.toString()).toList());
+  }
+
+  void addToColorsList(Color value) {
+    _colorsList.add(value);
+    prefs.setStringList(
+        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+  }
+
+  void removeFromColorsList(Color value) {
+    _colorsList.remove(value);
+    prefs.setStringList(
+        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+  }
+
+  void removeAtIndexFromColorsList(int index) {
+    _colorsList.removeAt(index);
+    prefs.setStringList(
+        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+  }
+
+  void updateColorsListAtIndex(
+    int index,
+    Color Function(Color) updateFn,
+  ) {
+    _colorsList[index] = updateFn(_colorsList[index]);
+    prefs.setStringList(
+        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+  }
+
+  void insertAtIndexInColorsList(int index, Color value) {
+    _colorsList.insert(index, value);
+    prefs.setStringList(
+        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+  }
 }
 
 void _safeInit(Function() initializeField) {
@@ -73,4 +127,11 @@ Future _safeInitAsync(Function() initializeField) async {
   try {
     await initializeField();
   } catch (_) {}
+}
+
+Color? _colorFromIntValue(int? val) {
+  if (val == null) {
+    return null;
+  }
+  return Color(val);
 }

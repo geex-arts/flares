@@ -125,7 +125,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                             child: Container(
                               height: 38.0,
                               decoration: BoxDecoration(
-                                color: const Color(0x9A000000),
+                                color: const Color(0x17FFFFFF),
                                 borderRadius: BorderRadius.circular(21.0),
                               ),
                               child: Padding(
@@ -179,7 +179,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: const Color(0x16000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
                                     color: const Color(0x33FFFFFF),
@@ -190,7 +190,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 Icons.chevron_left,
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                size: 16.0,
+                                size: 24.0,
                               ),
                             ],
                           ),

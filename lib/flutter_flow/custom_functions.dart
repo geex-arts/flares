@@ -46,6 +46,15 @@ List<int> returnYears() {
   return [2024, 2025, 2026, 2027, 2028, 2029, 2030];
 }
 
+List<AiWishStruct> mergeTwoListsAIWishes(
+  List<AiWishStruct> currentAIWishes,
+  List<AiWishStruct> newAIWishes,
+) {
+  currentAIWishes.addAll(newAIWishes);
+
+  return currentAIWishes;
+}
+
 DateTime returnSelectedDate(
   String day,
   String month,
@@ -89,11 +98,15 @@ List<AiWishStruct> jsonArrayToDataType(List<dynamic> apiWishesAIResult) {
   return listOfStruct;
 }
 
-List<AiWishStruct> mergeTwoLists(
-  List<AiWishStruct> currentAIWishes,
-  List<AiWishStruct> newAIWishes,
+List<String> mergeTwoListsStrings(
+  List<String> feelingsNames,
+  List<String> customNames,
 ) {
-  currentAIWishes.addAll(newAIWishes);
+  feelingsNames.addAll(customNames);
 
-  return currentAIWishes;
+  return feelingsNames;
+}
+
+String stringToImagePath(String stringImage) {
+  return stringImage;
 }

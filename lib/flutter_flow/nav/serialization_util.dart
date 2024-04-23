@@ -237,6 +237,8 @@ dynamic deserializeParam<T>(
             return WishesRow(data);
           case FeelingsRow:
             return FeelingsRow(data);
+          case PopularWishesRow:
+            return PopularWishesRow(data);
           case UserFeelingsRow:
             return UserFeelingsRow(data);
           case PlacesRow:
@@ -245,10 +247,14 @@ dynamic deserializeParam<T>(
             return CountriesRow(data);
           case UsersRow:
             return UsersRow(data);
+          case WishesCollectionsRow:
+            return WishesCollectionsRow(data);
           case ReactionImagesRow:
             return ReactionImagesRow(data);
           case AiWishImagesRow:
             return AiWishImagesRow(data);
+          case RevenuecatPaymentsRow:
+            return RevenuecatPaymentsRow(data);
           case ArticlesRow:
             return ArticlesRow(data);
           default:

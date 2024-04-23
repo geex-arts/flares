@@ -1,13 +1,20 @@
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'n_save_to_collection_model.dart';
 export 'n_save_to_collection_model.dart';
 
 class NSaveToCollectionWidget extends StatefulWidget {
-  const NSaveToCollectionWidget({super.key});
+  const NSaveToCollectionWidget({
+    super.key,
+    required this.selectedCollectionID,
+  });
+
+  final String? selectedCollectionID;
 
   @override
   State<NSaveToCollectionWidget> createState() =>
@@ -59,7 +66,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Lorem Ipsum\nlorem lorem',
+                    'Are you sure you want to delete this colletion?',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Nuckle',
@@ -72,32 +79,33 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                         ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                    child: Text(
-                      'Notifications may include',
-                      textAlign: TextAlign.center,
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'Nuckle',
-                            color: const Color(0x99FFFFFF),
-                            letterSpacing: 0.0,
-                            useGoogleFonts: false,
-                            lineHeight: 1.4,
-                          ),
-                    ),
-                  ),
-                  Padding(
                     padding:
                         const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: FFButtonWidget(
-                      onPressed: () {
-                        print('Allow pressed ...');
+                      onPressed: () async {
+                        logFirebaseEvent(
+                            'N_SAVE_TO_COLLECTION_COMP_Allow_ON_TAP');
+                        logFirebaseEvent('Allow_backend_call');
+                        unawaited(
+                          () async {
+                            await CollectionsTable().delete(
+                              matchingRows: (rows) => rows.eq(
+                                'uuid',
+                                widget.selectedCollectionID,
+                              ),
+                            );
+                          }(),
+                        );
+                        logFirebaseEvent('Allow_update_app_state');
+                        _model.updatePage(() {});
+                        logFirebaseEvent('Allow_bottom_sheet');
+                        Navigator.pop(context, true);
                       },
-                      text: 'Delete',
+                      text: 'Delete Collection',
                       options: FFButtonOptions(
-                        width: 100.0,
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).pinkButton,
@@ -124,13 +132,10 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                       onPressed: () async {
                         logFirebaseEvent(
                             'N_SAVE_TO_COLLECTION_DontAllow_ON_TAP');
-                        logFirebaseEvent('DontAllow_close_dialog,_drawer,_etc');
-                        Navigator.pop(context);
-                        logFirebaseEvent('DontAllow_navigate_to');
-
-                        context.pushNamed('My_Profile');
+                        logFirebaseEvent('DontAllow_bottom_sheet');
+                        Navigator.pop(context, false);
                       },
-                      text: 'No',
+                      text: 'Cancel',
                       options: FFButtonOptions(
                         width: 100.0,
                         height: 40.0,

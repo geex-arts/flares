@@ -244,7 +244,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                               logFirebaseEvent(
                                   'Generate_update_component_state');
                               _model.wishesAIGeneratedList = functions
-                                  .mergeTwoLists(
+                                  .mergeTwoListsAIWishes(
                                       _model.wishesAIGeneratedList.toList(),
                                       functions
                                           .jsonArrayToDataType(getJsonField(

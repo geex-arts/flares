@@ -232,7 +232,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                                       Icons.chevron_left,
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
-                                      size: 16.0,
+                                      size: 24.0,
                                     ),
                                   ],
                                 ),

@@ -67,7 +67,7 @@ class _BSAddFromBrowserWidgetState extends State<BSAddFromBrowserWidget> {
         text: getJsonField(
       widget.parsedURLJson,
       r'''$.title''',
-    ).toString().toString());
+    ).toString().toString().substring(0, 29));
     _model.nameFieldFocusNode ??= FocusNode();
 
     _model.descriptionFieldTextController ??= TextEditingController(

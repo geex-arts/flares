@@ -222,6 +222,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'selectedWishRow',
                   ParamType.SupabaseRow,
                 ),
+                selectedWishReaction: params.getParam<WishReactionsRow>(
+                  'selectedWishReaction',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(

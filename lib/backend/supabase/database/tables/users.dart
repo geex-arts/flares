@@ -59,4 +59,8 @@ class UsersRow extends SupabaseDataRow {
       getField<bool>('push_relationship_reminders');
   set pushRelationshipReminders(bool? value) =>
       setField<bool>('push_relationship_reminders', value);
+
+  String? get currentFeeling => getField<String>('current_feeling');
+  set currentFeeling(String? value) =>
+      setField<String>('current_feeling', value);
 }

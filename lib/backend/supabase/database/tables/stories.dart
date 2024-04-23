@@ -31,4 +31,7 @@ class StoriesRow extends SupabaseDataRow {
 
   String? get language => getField<String>('language');
   set language(String? value) => setField<String>('language', value);
+
+  int? get order => getField<int>('order');
+  set order(int? value) => setField<int>('order', value);
 }

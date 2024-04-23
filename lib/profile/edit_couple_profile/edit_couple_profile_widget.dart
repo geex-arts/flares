@@ -153,7 +153,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                               Icons.chevron_left,
                               color: FlutterFlowTheme.of(context)
                                   .secondaryBackground,
-                              size: 16.0,
+                              size: 24.0,
                             ),
                           ],
                         ),
@@ -310,7 +310,7 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                         FFIcons.kgroup63449761,
                                         color:
                                             FlutterFlowTheme.of(context).info,
-                                        size: 12.0,
+                                        size: 16.0,
                                       ),
                                     ),
                                   ),

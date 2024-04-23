@@ -299,7 +299,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                     child: Container(
                                       height: 38.0,
                                       decoration: BoxDecoration(
-                                        color: const Color(0x9A000000),
+                                        color: const Color(0x16FFFFFF),
                                         borderRadius:
                                             BorderRadius.circular(21.0),
                                       ),

@@ -115,7 +115,6 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                             16.0, 16.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
-                          height: 79.0,
                           decoration: BoxDecoration(
                             color: const Color(0x14FFFFFF),
                             borderRadius: BorderRadius.circular(16.0),
@@ -210,6 +209,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                                   fontSize: 11.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
+                                                  lineHeight: 1.4,
                                                 ),
                                           ),
                                         ),

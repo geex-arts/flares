@@ -137,7 +137,7 @@ class _TermsConditionsWidgetState extends State<TermsConditionsWidget>
                                 Icons.chevron_left,
                                 color: FlutterFlowTheme.of(context)
                                     .secondaryBackground,
-                                size: 16.0,
+                                size: 24.0,
                               ),
                             ],
                           ),
