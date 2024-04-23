@@ -776,6 +776,11 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           currentUserEmail,
                                         );
                                         logFirebaseEvent(
+                                            'nextButton_custom_action');
+                                        await actions.identifyRevenueCat(
+                                          currentUserUid,
+                                        );
+                                        logFirebaseEvent(
                                             'nextButton_update_app_state');
                                         FFAppState().pairID =
                                             '27a78254-89be-4e9a-80ef-394ebf1e637f';

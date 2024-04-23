@@ -579,7 +579,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     logFirebaseEvent(
                                         'nextButton_custom_action');
                                     await actions.identifyRevenueCat(
-                                      '',
+                                      currentUserUid,
                                     );
                                     logFirebaseEvent('nextButton_backend_call');
                                     await UsersTable().update(
