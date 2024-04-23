@@ -12,7 +12,9 @@ import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
-
+import 'dart:async';
+import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
+import 'package:flutter_sharing_intent/model/sharing_file.dart';
 import '/backend/firebase_dynamic_links/firebase_dynamic_links.dart';
 
 void main() async {
@@ -31,7 +33,7 @@ void main() async {
   await appState.initializePersistedState();
 
   await revenue_cat.initialize(
-    "appl_WJnHYADaLdtnuWqutpGMesBDKiH",
+    "",
     "goog_YwrPlXjJHzkEKJPJGsDIWrubbCP",
     debugLogEnabled: true,
     loadDataAfterLaunch: true,
@@ -56,6 +58,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
+  late StreamSubscription _intentDataStreamSubscription;
 
   late Stream<BaseAuthUser> userStream;
 
@@ -71,6 +74,42 @@ class _MyAppState extends State<MyApp> {
     userStream = flaresSupabaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
+
+
+    //Shared: getInitialMedia https://www.instagram.com/p/C5D8JKCNkOZ/?igsh=MTBoZ2M4N3RscmZwbw==
+    //should open Create_wish screen with url props
+    _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
+        .listen((List<SharedFile> value) {
+        print(value);
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+
+    }, onError: (err) {
+      print("getIntentDataStream error: $err");
+    });
+
+    // For sharing images coming from outside the app while the app is closed
+    FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
+      print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
+
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+    });
+
     Future.delayed(
       const Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
