@@ -425,7 +425,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
                       }
                     },
                     text: _model.pageViewCurrentIndex == 0
-                        ? 'Share now'
+                        ? 'Continue'
                         : 'Share now',
                     options: FFButtonOptions(
                       width: double.infinity,

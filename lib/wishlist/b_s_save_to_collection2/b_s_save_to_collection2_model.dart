@@ -10,6 +10,8 @@ class BSSaveToCollection2Model
 
   String? selectedCollectionID;
 
+  bool isLoading = false;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
