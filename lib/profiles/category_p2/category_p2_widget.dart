@@ -186,7 +186,9 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
               wrapWithModel(
                 model: _model.tabBarModel,
                 updateCallback: () => setState(() {}),
-                child: const TabBarWidget(),
+                child: const TabBarWidget(
+                  index: 1,
+                ),
               ),
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),

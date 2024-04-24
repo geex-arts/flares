@@ -21,6 +21,8 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
   String? Function(BuildContext, String?)? textControllerValidator;
   // Model for pinkButton component.
   late PinkButtonModel pinkButtonModel;
+  // Stores action output result for [Backend Call - Query Rows] action in pinkButton widget.
+  List<CollectionsRow>? collectionsRows;
   // Stores action output result for [Backend Call - Insert Row] action in pinkButton widget.
   CollectionsRow? newCollectionRowCopy;
 

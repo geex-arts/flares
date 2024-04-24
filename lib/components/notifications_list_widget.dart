@@ -189,11 +189,14 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.start,
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Expanded(
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 12.0, 0.0, 0.0),
                                           child: Text(
                                             'Your Partner',
                                             style: FlutterFlowTheme.of(context)
@@ -273,56 +276,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                             maxLines: 2,
                                           ),
                                         ),
-                                        Container(
-                                          height: 17.0,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0xFF931293),
-                                            borderRadius:
-                                                BorderRadius.circular(100.0),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          100.0),
-                                                  child: Image.asset(
-                                                    'assets/images/Winking_Face_With_Tongue.png',
-                                                    width: 12.0,
-                                                    height: 12.0,
-                                                    fit: BoxFit.cover,
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          4.0, 2.0, 0.0, 0.0),
-                                                  child: Text(
-                                                    'Thoughtful',
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Nuckle',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                          fontSize: 10.0,
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                      ],
+                                      ].divide(const SizedBox(height: 10.0)),
                                     ),
                                   ),
                                 ),
@@ -425,6 +379,237 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else if (currentNotificationItem.type == 'feeling') {
+                          return Container(
+                            width: double.infinity,
+                            height: 84.0,
+                            decoration: const BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                FutureBuilder<List<UsersRow>>(
+                                  future: UsersTable().querySingleRow(
+                                    queryFn: (q) => q.eq(
+                                      'id',
+                                      currentNotificationItem.fromUser,
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 64.0,
+                                          height: 64.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context).pink,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<UsersRow>
+                                        conditionalBuilderUsersRowList =
+                                        snapshot.data!;
+                                    final conditionalBuilderUsersRow =
+                                        conditionalBuilderUsersRowList
+                                                .isNotEmpty
+                                            ? conditionalBuilderUsersRowList
+                                                .first
+                                            : null;
+                                    return Builder(
+                                      builder: (context) {
+                                        if (conditionalBuilderUsersRow
+                                                    ?.avatar !=
+                                                null &&
+                                            conditionalBuilderUsersRow
+                                                    ?.avatar !=
+                                                '') {
+                                          return Container(
+                                            width: 64.0,
+                                            height: 64.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              conditionalBuilderUsersRow!
+                                                  .avatar!,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        } else {
+                                          return Container(
+                                            width: 64.0,
+                                            height: 64.0,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 8.0, 0.0, 8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'Your Partner',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 16.0,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts: false,
+                                                lineHeight: 1.0,
+                                              ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 8.0, 0.0),
+                                          child: RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text: 'Changed the status',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            const Color(0x9AFFFFFF),
+                                                        fontSize: 13.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                const TextSpan(
+                                                  text: ' • ',
+                                                  style: TextStyle(
+                                                    color: Color(0x19FFFFFF),
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: (String var1) {
+                                                    return var1.replaceAll(
+                                                        ' ago', '');
+                                                  }(dateTimeFormat(
+                                                      'relative',
+                                                      currentNotificationItem
+                                                          .createdAt)),
+                                                  style: const TextStyle(
+                                                    color: Color(0x65FFFFFF),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 13.0,
+                                                  ),
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            const Color(0x9AFFFFFF),
+                                                        fontSize: 13.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                        lineHeight: 1.0,
+                                                      ),
+                                            ),
+                                            maxLines: 2,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 6.0, 0.0, 0.0),
+                                          child: Container(
+                                            height: 17.0,
+                                            decoration: BoxDecoration(
+                                              color: valueOrDefault<Color>(
+                                                Color(
+                                                    int.parse(getJsonField(
+                                                  currentNotificationItem
+                                                      .details!,
+                                                  r'''$.color''',
+                                                ).toString())),
+                                                FlutterFlowTheme.of(context)
+                                                    .error,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 2.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      getJsonField(
+                                                        currentNotificationItem
+                                                            .details!,
+                                                        r'''$.feeling''',
+                                                      ).toString(),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Nuckle',
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                fontSize: 10.0,
+                                                                letterSpacing:
+                                                                    0.0,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
@@ -562,7 +747,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     logFirebaseEvent(
-                                        'NOTIFICATIONS_LIST_Container_6yav5pkd_ON');
+                                        'NOTIFICATIONS_LIST_Container_p4p6jbo9_ON');
                                     logFirebaseEvent('Container_launch_u_r_l');
                                     await launchURL(getJsonField(
                                       currentNotificationItem.details!,

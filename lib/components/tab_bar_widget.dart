@@ -6,7 +6,12 @@ import 'tab_bar_model.dart';
 export 'tab_bar_model.dart';
 
 class TabBarWidget extends StatefulWidget {
-  const TabBarWidget({super.key});
+  const TabBarWidget({
+    super.key,
+    this.index,
+  });
+
+  final int? index;
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
@@ -68,9 +73,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       onTap: () async {
                         logFirebaseEvent(
                             'TAB_BAR_COMP_Container_9a1z6b86_ON_TAP');
-                        logFirebaseEvent('Container_navigate_to');
+                        if (widget.index == 0) {
+                          logFirebaseEvent('Container_update_app_state');
+                          _model.updatePage(() {});
+                        } else {
+                          logFirebaseEvent('Container_navigate_to');
 
-                        context.pushNamed('Explore');
+                          context.goNamed('Explore');
+                        }
                       },
                       child: Container(
                         width: 44.0,
@@ -92,9 +102,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       onTap: () async {
                         logFirebaseEvent(
                             'TAB_BAR_COMP_Container_7ao3n5gl_ON_TAP');
-                        logFirebaseEvent('Container_navigate_to');
+                        if (widget.index == 1) {
+                          logFirebaseEvent('Container_update_app_state');
+                          _model.updatePage(() {});
+                        } else {
+                          logFirebaseEvent('Container_navigate_to');
 
-                        context.pushNamed('Category_P2');
+                          context.goNamed('Category_P2');
+                        }
                       },
                       child: Container(
                         width: 44.0,
@@ -116,9 +131,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       onTap: () async {
                         logFirebaseEvent(
                             'TAB_BAR_COMP_Container_99yc2qy1_ON_TAP');
-                        logFirebaseEvent('Container_navigate_to');
+                        if (widget.index != 2) {
+                          logFirebaseEvent('Container_navigate_to');
 
-                        context.pushNamed('My_Profile');
+                          context.goNamed('My_Profile');
+                        } else {
+                          logFirebaseEvent('Container_update_app_state');
+                          _model.updatePage(() {});
+                        }
                       },
                       child: Container(
                         width: 44.0,

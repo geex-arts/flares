@@ -13,6 +13,7 @@ class AiWishStruct extends BaseStruct {
     String? description,
     String? city,
     String? address,
+    String? image,
     String? link,
   })  : _name = name,
         _category = category,
@@ -20,6 +21,7 @@ class AiWishStruct extends BaseStruct {
         _description = description,
         _city = city,
         _address = address,
+        _image = image,
         _link = link;
 
   // "name" field.
@@ -58,6 +60,12 @@ class AiWishStruct extends BaseStruct {
   set address(String? val) => _address = val;
   bool hasAddress() => _address != null;
 
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  set image(String? val) => _image = val;
+  bool hasImage() => _image != null;
+
   // "link" field.
   String? _link;
   String get link => _link ?? '';
@@ -71,6 +79,7 @@ class AiWishStruct extends BaseStruct {
         description: data['description'] as String?,
         city: data['city'] as String?,
         address: data['address'] as String?,
+        image: data['image'] as String?,
         link: data['link'] as String?,
       );
 
@@ -84,6 +93,7 @@ class AiWishStruct extends BaseStruct {
         'description': _description,
         'city': _city,
         'address': _address,
+        'image': _image,
         'link': _link,
       }.withoutNulls;
 
@@ -111,6 +121,10 @@ class AiWishStruct extends BaseStruct {
         ),
         'address': serializeParam(
           _address,
+          ParamType.String,
+        ),
+        'image': serializeParam(
+          _image,
           ParamType.String,
         ),
         'link': serializeParam(
@@ -151,6 +165,11 @@ class AiWishStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        image: deserializeParam(
+          data['image'],
+          ParamType.String,
+          false,
+        ),
         link: deserializeParam(
           data['link'],
           ParamType.String,
@@ -170,12 +189,13 @@ class AiWishStruct extends BaseStruct {
         description == other.description &&
         city == other.city &&
         address == other.address &&
+        image == other.image &&
         link == other.link;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([name, category, budget, description, city, address, link]);
+      .hash([name, category, budget, description, city, address, image, link]);
 }
 
 AiWishStruct createAiWishStruct({
@@ -185,6 +205,7 @@ AiWishStruct createAiWishStruct({
   String? description,
   String? city,
   String? address,
+  String? image,
   String? link,
 }) =>
     AiWishStruct(
@@ -194,5 +215,6 @@ AiWishStruct createAiWishStruct({
       description: description,
       city: city,
       address: address,
+      image: image,
       link: link,
     );

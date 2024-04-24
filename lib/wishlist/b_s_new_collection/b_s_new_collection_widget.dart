@@ -314,6 +314,17 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
                         logFirebaseEvent('pinkButton_backend_call');
+                        _model.collectionsRows =
+                            await CollectionsTable().queryRows(
+                          queryFn: (q) => q
+                              .eq(
+                                'pair',
+                                FFAppState().pairID,
+                              )
+                              .order('order'),
+                        );
+                        shouldSetState = true;
+                        logFirebaseEvent('pinkButton_backend_call');
                         _model.newCollectionRowCopy =
                             await CollectionsTable().insert({
                           'name': _model.textController.text,
@@ -322,6 +333,9 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                           'lowercase_name':
                               _model.textController.text.toLowerCase(),
                           'pair': FFAppState().pairID,
+                          'order': _model.collectionsRows!.isNotEmpty
+                              ? ((_model.collectionsRows!.first.order!) + 1)
+                              : 0,
                         });
                         shouldSetState = true;
                         if (widget.selectedWishRow != null) {

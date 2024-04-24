@@ -58,6 +58,8 @@ class BSFeelingModel extends FlutterFlowModel<BSFeelingWidget> {
   List<FeelingsRow>? foundFeelingRow2;
   // Stores action output result for [Backend Call - Insert Row] action in pinkButton widget.
   UserFeelingsRow? newUserFeelingRow2;
+  // Stores action output result for [Backend Call - Query Rows] action in pinkButton widget.
+  List<UsersRow>? partnerRow;
 
   @override
   void initState(BuildContext context) {

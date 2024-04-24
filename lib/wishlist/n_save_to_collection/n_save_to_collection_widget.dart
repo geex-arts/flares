@@ -104,8 +104,8 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                       text: 'Delete Collection',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            10.0, 0.0, 10.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).pinkButton,
@@ -113,10 +113,11 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nuckle',
                                   color: Colors.white,
-                                  fontSize: 17.0,
+                                  fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: false,
+                                  lineHeight: 1.3,
                                 ),
                         elevation: 0.0,
                         borderSide: const BorderSide(
@@ -139,8 +140,8 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                       options: FFButtonOptions(
                         width: 100.0,
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            24.0, 0.0, 24.0, 0.0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
@@ -148,7 +149,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nuckle',
                                   color: const Color(0x80F2F1F3),
-                                  fontSize: 17.0,
+                                  fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: false,

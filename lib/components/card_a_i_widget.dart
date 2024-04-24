@@ -4,6 +4,7 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -68,7 +69,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                 'created_by': currentUserUid,
                 'name': widget.wishAIElement?.name,
                 'description': widget.wishAIElement?.description,
-                'photo': widget.wishAIElement?.link,
+                'photo': widget.wishAIElement?.image,
                 'link': widget.wishAIElement?.link,
                 'visibily': true,
               });
@@ -95,7 +96,8 @@ class _CardAIWidgetState extends State<CardAIWidget> {
               child: CachedNetworkImage(
                 fadeInDuration: const Duration(milliseconds: 300),
                 fadeOutDuration: const Duration(milliseconds: 300),
-                imageUrl: '',
+                imageUrl:
+                    functions.stringToImagePath(widget.wishAIElement!.image),
                 width: double.infinity,
                 height: double.infinity,
                 fit: BoxFit.cover,
@@ -327,7 +329,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                                 'name': widget.wishAIElement?.name,
                                 'description':
                                     widget.wishAIElement?.description,
-                                'photo': widget.wishAIElement?.link,
+                                'photo': widget.wishAIElement?.image,
                                 'link': widget.wishAIElement?.link,
                                 'visibily': true,
                                 'collection': null,

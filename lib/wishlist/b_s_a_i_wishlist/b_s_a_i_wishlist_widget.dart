@@ -216,80 +216,84 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                     ),
                   ],
                 ),
-                Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
-                  child: Builder(
-                    builder: (context) => Padding(
-                      padding: const EdgeInsetsDirectional.fromSTEB(
-                          16.0, 30.0, 16.0, 45.0),
-                      child: wrapWithModel(
-                        model: _model.generateModel,
-                        updateCallback: () => setState(() {}),
-                        child: PinkButtonWidget(
-                          text: 'Generate more',
-                          currentAction: () async {
-                            logFirebaseEvent(
-                                'B_S_A_I_WISHLIST_COMP_Generate_CALLBACK');
-                            logFirebaseEvent('Generate_update_component_state');
-                            setState(() {
-                              _model.isLoading = true;
-                            });
-                            logFirebaseEvent('Generate_backend_call');
-                            _model.apiResultohp = await GenerateAiWishCall.call(
-                              city: widget.city,
-                              budget: widget.budget,
-                              interest: widget.categories,
-                            );
-                            if ((_model.apiResultohp?.succeeded ?? true)) {
+                if (!_model.isLoading)
+                  Align(
+                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    child: Builder(
+                      builder: (context) => Padding(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            16.0, 30.0, 16.0, 45.0),
+                        child: wrapWithModel(
+                          model: _model.generateModel,
+                          updateCallback: () => setState(() {}),
+                          child: PinkButtonWidget(
+                            text: 'Generate more',
+                            currentAction: () async {
+                              logFirebaseEvent(
+                                  'B_S_A_I_WISHLIST_COMP_Generate_CALLBACK');
                               logFirebaseEvent(
                                   'Generate_update_component_state');
-                              _model.wishesAIGeneratedList = functions
-                                  .mergeTwoListsAIWishes(
-                                      _model.wishesAIGeneratedList.toList(),
-                                      functions
-                                          .jsonArrayToDataType(getJsonField(
-                                            (_model.apiResultohp?.jsonBody ??
-                                                ''),
-                                            r'''$.*''',
-                                            true,
-                                          )!)
-                                          .toList())
-                                  .toList()
-                                  .cast<AiWishStruct>();
-                            } else {
-                              logFirebaseEvent('Generate_alert_dialog');
-                              await showDialog(
-                                context: context,
-                                builder: (dialogContext) {
-                                  return Dialog(
-                                    elevation: 0,
-                                    insetPadding: EdgeInsets.zero,
-                                    backgroundColor: Colors.transparent,
-                                    alignment: const AlignmentDirectional(0.0, -1.0)
-                                        .resolve(Directionality.of(context)),
-                                    child: const WebViewAware(
-                                      child: AlertDialogWarningWidget(
-                                        title: 'Something went wrong',
-                                        subtitle: 'Please try again later',
+                              setState(() {
+                                _model.isLoading = true;
+                              });
+                              logFirebaseEvent('Generate_backend_call');
+                              _model.apiResultohp =
+                                  await GenerateAiWishCall.call(
+                                city: widget.city,
+                                budget: widget.budget,
+                                interest: widget.categories,
+                              );
+                              if ((_model.apiResultohp?.succeeded ?? true)) {
+                                logFirebaseEvent(
+                                    'Generate_update_component_state');
+                                _model.wishesAIGeneratedList = functions
+                                    .mergeTwoListsAIWishes(
+                                        _model.wishesAIGeneratedList.toList(),
+                                        functions
+                                            .jsonArrayToDataType(getJsonField(
+                                              (_model.apiResultohp?.jsonBody ??
+                                                  ''),
+                                              r'''$.*''',
+                                              true,
+                                            )!)
+                                            .toList())
+                                    .toList()
+                                    .cast<AiWishStruct>();
+                              } else {
+                                logFirebaseEvent('Generate_alert_dialog');
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: const AlignmentDirectional(0.0, -1.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: const WebViewAware(
+                                        child: AlertDialogWarningWidget(
+                                          title: 'Something went wrong',
+                                          subtitle: 'Please try again later',
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => setState(() {}));
-                            }
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              }
 
-                            logFirebaseEvent('Generate_update_component_state');
-                            setState(() {
-                              _model.isLoading = false;
-                            });
+                              logFirebaseEvent(
+                                  'Generate_update_component_state');
+                              setState(() {
+                                _model.isLoading = false;
+                              });
 
-                            setState(() {});
-                          },
+                              setState(() {});
+                            },
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
               ],
             ),
           ),
