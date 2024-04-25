@@ -12,8 +12,17 @@ import '/backend/supabase/supabase.dart';
 import 'backend/firebase/firebase_config.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
+import 'package:flutter_sharing_intent/model/sharing_file.dart';
+import 'dart:async';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'dart:async';
+import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
+import 'package:flutter_sharing_intent/model/sharing_file.dart';
 import '/backend/firebase_dynamic_links/firebase_dynamic_links.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -37,6 +46,56 @@ void main() async {
     loadDataAfterLaunch: true,
   );
 
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+    alert: true, // Required to display a heads up notification
+    badge: true,
+    sound: true,
+  );
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel('my_app_channel', 'my_app_channel',
+    description: 'This channel is used for important notifications.',
+    importance: Importance.high,
+    showBadge: true,
+    enableVibration: true,
+    playSound: true
+  );
+
+  final FlutterLocalNotificationsPlugin notificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  notificationsPlugin.initialize(
+    InitializationSettings(
+      android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+    ),
+  );
+
+  await notificationsPlugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  var android = const AndroidNotificationDetails(
+    'my_app_channel',
+    'my_app_channel',
+    channelDescription: 'channel description',
+    importance: Importance.max,
+    priority: Priority.high,
+    ticker: 'ticker',
+  );
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message}');
+
+    print(message.notification!.title);
+    print(message.notification!.body);
+    notificationsPlugin.show(
+      message.notification!.hashCode,
+      message.notification!.title,
+      message.notification!.body,
+      NotificationDetails(android: android),
+    );
+  });
+
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: const MyApp(),
@@ -56,6 +115,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = ThemeMode.system;
+  late StreamSubscription _intentDataStreamSubscription;
 
   late Stream<BaseAuthUser> userStream;
 
@@ -71,6 +131,42 @@ class _MyAppState extends State<MyApp> {
     userStream = flaresSupabaseUserStream()
       ..listen((user) => _appStateNotifier.update(user));
     jwtTokenStream.listen((_) {});
+
+
+    //Shared: getInitialMedia https://www.instagram.com/p/C5D8JKCNkOZ/?igsh=MTBoZ2M4N3RscmZwbw==
+    //should open Create_wish screen with url props
+    _intentDataStreamSubscription = FlutterSharingIntent.instance.getMediaStream()
+        .listen((List<SharedFile> value) {
+
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+
+    }, onError: (err) {
+      print("getIntentDataStream error: $err");
+    });
+
+    // For sharing images coming from outside the app while the app is closed
+    FlutterSharingIntent.instance.getInitialSharing().then((List<SharedFile> value) {
+      print("Shared: getInitialMedia ${value.map((f) => f.value).join(",")}");
+
+      //get url from query param
+      final urlToParse = value.map((f) => f.value).join(",");
+      //https://flaresapp.page.link/myProfileCopy/?url='https://zodiacmoscow.ru/
+
+      final url = value.map((f) => f.value).join(",");
+
+      if (url.isNotEmpty) {
+        _router.go('/addFromBrowser?url=${Uri.encodeComponent(url)}');
+      }
+    });
+
     Future.delayed(
       const Duration(milliseconds: 1000),
       () => _appStateNotifier.stopShowingSplashImage(),
@@ -80,6 +176,12 @@ class _MyAppState extends State<MyApp> {
   void setThemeMode(ThemeMode mode) => setState(() {
         _themeMode = mode;
       });
+
+  @override
+  void dispose() {
+    _intentDataStreamSubscription.cancel();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
