@@ -3,11 +3,14 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'add_wish_reaction_model.dart';
 export 'add_wish_reaction_model.dart';
@@ -91,13 +94,13 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: Container(
                   height: 38.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -110,16 +113,16 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: const Color(0x33FFFFFF),
+                                    color: Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -138,7 +141,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                   ),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Text(
                 'Add wish\nReaction',
                 textAlign: TextAlign.center,
@@ -152,18 +155,18 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                     ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(60.0, 24.0, 60.0, 24.0),
+                padding: EdgeInsetsDirectional.fromSTEB(60.0, 24.0, 60.0, 24.0),
                 child: Container(
                   width: 238.0,
                   height: 325.0,
-                  constraints: const BoxConstraints(
+                  constraints: BoxConstraints(
                     maxWidth: 230.0,
                   ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                   child: Stack(
-                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     children: [
                       ClipRRect(
                         borderRadius: BorderRadius.circular(8.0),
@@ -175,11 +178,11 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Container(
                           width: double.infinity,
                           height: 77.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Color(0xA5000000), Colors.transparent],
                               stops: [0.0, 1.0],
@@ -196,11 +199,11 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 100.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Colors.transparent, Color(0xA6000000)],
                               stops: [0.0, 1.0],
@@ -217,9 +220,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, -1.0),
+                        alignment: AlignmentDirectional(-1.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 16.0, 0.0, 0.0),
                           child: FutureBuilder<List<UsersRow>>(
                             future: UsersTable().querySingleRow(
@@ -258,14 +261,14 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                       width: 18.0,
                                       height: 18.0,
                                       clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
+                                      decoration: BoxDecoration(
                                         shape: BoxShape.circle,
                                       ),
                                       child: CachedNetworkImage(
                                         fadeInDuration:
-                                            const Duration(milliseconds: 300),
+                                            Duration(milliseconds: 300),
                                         fadeOutDuration:
-                                            const Duration(milliseconds: 300),
+                                            Duration(milliseconds: 300),
                                         imageUrl: userInfoUsersRow!.avatar!,
                                         fit: BoxFit.cover,
                                       ),
@@ -273,7 +276,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                   if (userInfoUsersRow?.firstName != null &&
                                       userInfoUsersRow?.firstName != '')
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         userInfoUsersRow!.firstName!,
@@ -299,9 +302,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 1.0),
+                        alignment: AlignmentDirectional(-1.0, 1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               10.0, 0.0, 10.0, 6.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
@@ -360,7 +363,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                               if (widget.selectedWishRow?.name != null &&
                                   widget.selectedWishRow?.name != '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 9.0, 0.0, 0.0),
                                   child: Text(
                                     widget.selectedWishRow!.name!,
@@ -380,7 +383,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                               if (widget.selectedWishRow?.description != null &&
                                   widget.selectedWishRow?.description != '')
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 6.0, 0.0, 0.0),
                                   child: Text(
                                     widget.selectedWishRow!.description!,
@@ -388,7 +391,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: const Color(0x98FFFFFF),
+                                          color: Color(0x98FFFFFF),
                                           fontSize: 10.0,
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.w500,
@@ -405,9 +408,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                   ),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 45.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 45.0),
                 child: FutureBuilder<List<ReactionImagesRow>>(
                   future: ReactionImagesTable().queryRows(
                     queryFn: (q) => q.order('rating', ascending: true),
@@ -485,13 +488,13 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                       currentUserUid,
                                     ),
                               );
-                              if (_model.partnerRow!.isNotEmpty) {
+                              if (_model.partnerRow!.length > 0) {
                                 logFirebaseEvent('Image_backend_call');
                                 unawaited(
                                   () async {
                                     await NotificationsTable().insert({
                                       'from_user': currentUserUid,
-                                      'to_user': _model.partnerRow?.first.id,
+                                      'to_user': _model.partnerRow?.first?.id,
                                       'type': 'reaction',
                                       'details': <String, String>{
                                         'wish_id': widget.selectedWishRow!.uuid,
@@ -511,8 +514,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                               setState(() {});
                             },
                             child: CachedNetworkImage(
-                              fadeInDuration: const Duration(milliseconds: 300),
-                              fadeOutDuration: const Duration(milliseconds: 300),
+                              fadeInDuration: Duration(milliseconds: 300),
+                              fadeOutDuration: Duration(milliseconds: 300),
                               imageUrl: rowReactionImagesRow.imageLink!,
                               width: 53.0,
                               height: 53.0,
@@ -520,9 +523,9 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                             ),
                           );
                         })
-                            .divide(const SizedBox(width: 27.0))
-                            .addToStart(const SizedBox(width: 16.0))
-                            .addToEnd(const SizedBox(width: 16.0)),
+                            .divide(SizedBox(width: 27.0))
+                            .addToStart(SizedBox(width: 16.0))
+                            .addToEnd(SizedBox(width: 16.0)),
                       ),
                     );
                   },

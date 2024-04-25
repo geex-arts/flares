@@ -6,10 +6,15 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'category_p_model.dart';
 export 'category_p_model.dart';
@@ -124,7 +129,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 85.0, 0.0, 0.0),
                           child: FutureBuilder<List<CollectionsRow>>(
                             future: CollectionsTable().querySingleRow(
@@ -176,7 +181,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                         width: 100.0,
                                         height: 100.0,
                                         clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           shape: BoxShape.circle,
                                         ),
                                         child: Image.network(
@@ -186,7 +191,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                       ),
                                     ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 20.0, 0.0, 0.0),
                                     child: Text(
                                       columnCollectionsRow!.name!,
@@ -206,7 +211,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                     ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 6.0, 0.0, 0.0),
                                     child: RichText(
                                       textScaler:
@@ -219,7 +224,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
+                                                  color: Color(0x9AFFFFFF),
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.normal,
                                                   useGoogleFonts: false,
@@ -231,9 +236,9 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                   ' ago', '');
                                             }(dateTimeFormat(
                                                 'relative',
-                                                columnCollectionsRow
+                                                columnCollectionsRow!
                                                     .createdAt)),
-                                            style: const TextStyle(),
+                                            style: TextStyle(),
                                           ),
                                           TextSpan(
                                             text: ' ago',
@@ -241,7 +246,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
+                                                  color: Color(0x9AFFFFFF),
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
                                                 ),
@@ -308,23 +313,23 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                           },
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               24.0, 24.0, 24.0, 0.0),
                           child: wrapWithModel(
                             model: _model.generateWithAIModel,
                             updateCallback: () => setState(() {}),
-                            child: const GenerateWithAIWidget(),
+                            child: GenerateWithAIWidget(),
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 120.0)),
+                      ].addToEnd(SizedBox(height: 120.0)),
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 116.0,
-                      decoration: const BoxDecoration(
+                      decoration: BoxDecoration(
                         gradient: LinearGradient(
                           colors: [Colors.transparent, Color(0xA6000000)],
                           stops: [0.0, 1.0],
@@ -337,17 +342,17 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                   wrapWithModel(
                     model: _model.tabBarModel,
                     updateCallback: () => setState(() {}),
-                    child: const TabBarWidget(),
+                    child: TabBarWidget(),
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                    child: SizedBox(
+                        EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                    child: Container(
                       height: 38.0,
                       child: Stack(
                         children: [
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 16.0, 0.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -364,15 +369,15 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
 
                                     context.pushNamed('Notifications');
                                   },
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 42.0,
                                     height: 38.0,
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Image.asset(
                                             'assets/images/Rectangle.webp',
                                             width: 38.0,
@@ -382,16 +387,16 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: Container(
                                               width: 34.0,
                                               height: 34.0,
                                               decoration: BoxDecoration(
-                                                color: const Color(0x9A000000),
+                                                color: Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -407,7 +412,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
+                                              AlignmentDirectional(1.0, -1.0),
                                           child: Container(
                                             width: 18.0,
                                             height: 13.0,
@@ -419,7 +424,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                   BorderRadius.circular(100.0),
                                             ),
                                             child: Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
                                                 '22',
@@ -449,7 +454,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -482,7 +487,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                           .viewInsetsOf(
                                                               context),
                                                       child:
-                                                          const BSAddWishesWidget(),
+                                                          BSAddWishesWidget(),
                                                     ),
                                                   ),
                                                 );
@@ -492,7 +497,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                           },
                                           child: Stack(
                                             alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
+                                                AlignmentDirectional(0.0, 0.0),
                                             children: [
                                               Image.asset(
                                                 'assets/images/Rectangle.webp',
@@ -504,14 +509,14 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                 width: 34.0,
                                                 height: 34.0,
                                                 decoration: BoxDecoration(
-                                                  color: const Color(0x9A000000),
+                                                  color: Color(0x9A000000),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 2.0),
                                                 child: Image.asset(
@@ -537,14 +542,14 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                             phone: false,
                           ))
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 4.0, 8.0, 0.0),
                                   child: Text(
                                     'Wishlist',
@@ -568,7 +573,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                   wrapWithModel(
                     model: _model.floatingBtnModel,
                     updateCallback: () => setState(() {}),
-                    child: const FloatingBtnWidget(),
+                    child: FloatingBtnWidget(),
                   ),
                 ],
               ),

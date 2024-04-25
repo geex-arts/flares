@@ -7,6 +7,8 @@ import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_create_couple_ideas_with_a_i_model.dart';
 export 'b_s_create_couple_ideas_with_a_i_model.dart';
@@ -45,7 +47,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -58,7 +60,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -71,17 +73,17 @@ class _BSCreateCoupleIdeasWithAIWidgetState
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                 child: Text(
                   'Create couple ideas with AI',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -94,7 +96,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                       ),
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
@@ -122,10 +124,10 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                   List<CollectionsRow> containerCollectionsRowList =
                       snapshot.data!;
                   return Container(
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                       child: Builder(
                         builder: (context) {
                           final currentCategory = functions
@@ -179,7 +181,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                             .contains(currentCategoryItem)
                                         ? FlutterFlowTheme.of(context)
                                             .secondaryBackground
-                                        : const Color(0x0DFFFFFF),
+                                        : Color(0x0DFFFFFF),
                                     borderRadius: BorderRadius.circular(100.0),
                                   ),
                                   child: Row(
@@ -205,7 +207,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                           width: 39.0,
                                           height: 39.0,
                                           clipBehavior: Clip.antiAlias,
-                                          decoration: const BoxDecoration(
+                                          decoration: BoxDecoration(
                                             shape: BoxShape.circle,
                                           ),
                                           child: Image.network(
@@ -220,7 +222,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                           ),
                                         ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             8.0, 2.0, 12.0, 0.0),
                                         child: Text(
                                           functions.capitalizeFirstLetter(
@@ -244,7 +246,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                               ),
                                         ),
                                       ),
-                                    ].addToStart(const SizedBox(width: 3.0)),
+                                    ].addToStart(SizedBox(width: 3.0)),
                                   ),
                                 ),
                               );
@@ -257,7 +259,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                 },
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.generateModel,
                   updateCallback: () => setState(() {}),
@@ -268,7 +270,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                           'B_S_CREATE_COUPLE_IDEAS_WITH_A_I_Generat');
                       logFirebaseEvent('Generate_bottom_sheet');
                       Navigator.pop(context);
-                      if (_model.selectedCategoriesNames.isNotEmpty) {
+                      if (_model.selectedCategoriesNames.length > 0) {
                         logFirebaseEvent('Generate_bottom_sheet');
                         await showModalBottomSheet(
                           isScrollControlled: true,
@@ -297,7 +299,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                             return WebViewAware(
                               child: Padding(
                                 padding: MediaQuery.viewInsetsOf(context),
-                                child: const BSBudgetLocationWidget(
+                                child: BSBudgetLocationWidget(
                                   selectedCategories: 'any',
                                 ),
                               ),

@@ -10,7 +10,7 @@ class RevenuecatPaymentsTable extends SupabaseTable<RevenuecatPaymentsRow> {
 }
 
 class RevenuecatPaymentsRow extends SupabaseDataRow {
-  RevenuecatPaymentsRow(super.data);
+  RevenuecatPaymentsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => RevenuecatPaymentsTable();

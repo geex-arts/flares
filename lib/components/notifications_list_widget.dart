@@ -1,7 +1,11 @@
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'notifications_list_model.dart';
 export 'notifications_list_model.dart';
 
@@ -45,9 +49,9 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
   @override
   Widget build(BuildContext context) {
     return Visibility(
-      visible: widget.parameter8!.isNotEmpty,
+      visible: widget.parameter8!.length > 0,
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 16.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -72,10 +76,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                   ),
                   TextSpan(
                     text: valueOrDefault<String>(
-                      widget.parameter8?.length.toString(),
+                      widget.parameter8?.length?.toString(),
                       '0',
                     ),
-                    style: const TextStyle(
+                    style: TextStyle(
                       color: Color(0x9AFFFFFF),
                     ),
                   )
@@ -92,7 +96,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
               builder: (context) {
                 final currentNotification = widget.parameter8!.toList();
                 return ListView.builder(
-                  padding: const EdgeInsets.fromLTRB(
+                  padding: EdgeInsets.fromLTRB(
                     0,
                     20.0,
                     0,
@@ -111,7 +115,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                           return Container(
                             width: double.infinity,
                             height: 84.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -160,7 +164,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                             width: 64.0,
                                             height: 64.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -173,7 +177,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                           return Container(
                                             width: 64.0,
                                             height: 64.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                           );
@@ -184,7 +188,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 8.0, 0.0, 8.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -195,7 +199,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                       children: [
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 12.0, 0.0, 0.0),
                                           child: Text(
                                             'Your Partner',
@@ -216,7 +220,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 8.0, 0.0),
                                           child: RichText(
                                             textScaler: MediaQuery.of(context)
@@ -231,7 +235,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -239,7 +243,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         useGoogleFonts: false,
                                                       ),
                                                 ),
-                                                const TextSpan(
+                                                TextSpan(
                                                   text: ' • ',
                                                   style: TextStyle(
                                                     color: Color(0x19FFFFFF),
@@ -253,7 +257,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       'relative',
                                                       currentNotificationItem
                                                           .createdAt)),
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 13.0,
@@ -266,7 +270,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -276,19 +280,19 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                             maxLines: 2,
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 10.0)),
+                                      ].divide(SizedBox(height: 10.0)),
                                     ),
                                   ),
                                 ),
                                 Container(
                                   width: 80.0,
                                   height: 64.0,
-                                  decoration: const BoxDecoration(),
+                                  decoration: BoxDecoration(),
                                   child: Stack(
                                     children: [
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(1.0, 0.0),
+                                            AlignmentDirectional(1.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:
                                               BorderRadius.circular(4.0),
@@ -305,24 +309,24 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                       ),
                                       Align(
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 13.0, 10.0, 0.0),
                                           child: Container(
                                             width: 30.0,
                                             height: 30.0,
                                             decoration: BoxDecoration(
-                                              color: const Color(0xFFA4A39E),
+                                              color: Color(0xFFA4A39E),
                                               shape: BoxShape.circle,
                                               border: Border.all(
-                                                color: const Color(0xFFFF2C96),
+                                                color: Color(0xFFFF2C96),
                                                 width: 1.0,
                                               ),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsets.all(6.0),
+                                              padding: EdgeInsets.all(6.0),
                                               child: FutureBuilder<
                                                   List<ReactionImagesRow>>(
                                                 future: ReactionImagesTable()
@@ -388,7 +392,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                           return Container(
                             width: double.infinity,
                             height: 84.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -437,7 +441,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                             width: 64.0,
                                             height: 64.0,
                                             clipBehavior: Clip.antiAlias,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                             child: Image.network(
@@ -450,7 +454,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                           return Container(
                                             width: 64.0,
                                             height: 64.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               shape: BoxShape.circle,
                                             ),
                                           );
@@ -461,7 +465,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 8.0, 0.0, 8.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -488,7 +492,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 8.0, 0.0),
                                           child: RichText(
                                             textScaler: MediaQuery.of(context)
@@ -503,7 +507,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
                                                         fontWeight:
@@ -511,7 +515,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         useGoogleFonts: false,
                                                       ),
                                                 ),
-                                                const TextSpan(
+                                                TextSpan(
                                                   text: ' • ',
                                                   style: TextStyle(
                                                     color: Color(0x19FFFFFF),
@@ -525,7 +529,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       'relative',
                                                       currentNotificationItem
                                                           .createdAt)),
-                                                  style: const TextStyle(
+                                                  style: TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 13.0,
@@ -538,7 +542,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
+                                                            Color(0x9AFFFFFF),
                                                         fontSize: 13.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
@@ -550,13 +554,13 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 6.0, 0.0, 0.0),
                                           child: Container(
                                             height: 17.0,
                                             decoration: BoxDecoration(
                                               color: valueOrDefault<Color>(
-                                                Color(
+                                                new Color(
                                                     int.parse(getJsonField(
                                                   currentNotificationItem
                                                       .details!,
@@ -569,14 +573,14 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                   BorderRadius.circular(100.0),
                                             ),
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.min,
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 2.0,
                                                                 0.0, 0.0),
                                                     child: Text(
@@ -619,7 +623,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                           return Container(
                             width: double.infinity,
                             height: 84.0,
-                            decoration: const BoxDecoration(),
+                            decoration: BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -628,7 +632,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                   width: 64.0,
                                   height: 64.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.network(
@@ -641,7 +645,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 16.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -669,7 +673,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                         Expanded(
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 8.0, 0.0),
                                             child: RichText(
                                               textScaler: MediaQuery.of(context)
@@ -689,7 +693,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              const Color(0x9AFFFFFF),
+                                                              Color(0x9AFFFFFF),
                                                           fontSize: 13.0,
                                                           letterSpacing: 0.0,
                                                           fontWeight:
@@ -697,7 +701,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
-                                                  const TextSpan(
+                                                  TextSpan(
                                                     text: ' • ',
                                                     style: TextStyle(
                                                       color: Color(0x19FFFFFF),
@@ -711,7 +715,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         'relative',
                                                         currentNotificationItem
                                                             .createdAt)),
-                                                    style: const TextStyle(
+                                                    style: TextStyle(
                                                       color: Color(0x65FFFFFF),
                                                       fontWeight:
                                                           FontWeight.w500,
@@ -725,7 +729,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              const Color(0x9AFFFFFF),
+                                                              Color(0x9AFFFFFF),
                                                           fontSize: 13.0,
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts: false,
@@ -736,7 +740,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                             ),
                                           ),
                                         ),
-                                      ].divide(const SizedBox(height: 13.0)),
+                                      ].divide(SizedBox(height: 13.0)),
                                     ),
                                   ),
                                 ),
@@ -763,7 +767,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                       borderRadius:
                                           BorderRadius.circular(100.0),
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Text(
                                       'Open',
                                       style: FlutterFlowTheme.of(context)

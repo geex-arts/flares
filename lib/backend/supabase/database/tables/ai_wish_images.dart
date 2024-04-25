@@ -9,7 +9,7 @@ class AiWishImagesTable extends SupabaseTable<AiWishImagesRow> {
 }
 
 class AiWishImagesRow extends SupabaseDataRow {
-  AiWishImagesRow(super.data);
+  AiWishImagesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AiWishImagesTable();

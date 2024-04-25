@@ -8,6 +8,9 @@ import 'dart:async';
 import 'dart:ui';
 import '/flutter_flow/permissions_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'b_s_turn_notifications_model.dart';
 export 'b_s_turn_notifications_model.dart';
 
@@ -44,7 +47,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: const BorderRadius.only(
+      borderRadius: BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -57,7 +60,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
         ),
         child: Container(
           width: double.infinity,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -71,22 +74,22 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Container(
                     width: 33.0,
                     height: 4.0,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       color: Color(0x3AF2F1F3),
                     ),
                   ),
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, -1.0),
+                alignment: AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                   child: Text(
                     'Never miss an update',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -100,7 +103,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                   ),
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
@@ -111,16 +114,16 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 16.0, 16.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: const Color(0x14FFFFFF),
+                            color: Color(0x14FFFFFF),
                             borderRadius: BorderRadius.circular(16.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(16.0),
+                            padding: EdgeInsets.all(16.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -144,7 +147,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -173,7 +176,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                                   ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(4.0, 0.0, 0.0, 0.0),
                                               child: Text(
                                                 'Now',
@@ -197,7 +200,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 8.0, 0.0, 0.0),
                                           child: Text(
                                             'Sarah Smith has invited you to collaborate on \"New Apartment\"',
@@ -205,7 +208,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                                 .bodyMedium
                                                 .override(
                                                   fontFamily: 'Nuckle',
-                                                  color: const Color(0x99FFFFFF),
+                                                  color: Color(0x99FFFFFF),
                                                   fontSize: 11.0,
                                                   letterSpacing: 0.0,
                                                   useGoogleFonts: false,
@@ -224,7 +227,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 45.0, 0.0, 0.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.asset(
@@ -235,7 +238,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 20.0, 16.0, 0.0),
                         child: Text(
                           'Turn on push notifications to hear from\nfriends and get updates about your favorite products.',
@@ -251,7 +254,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 17.0, 16.0, 0.0),
                         child: wrapWithModel(
                           model: _model.turnOnNotificationsModel,
@@ -295,7 +298,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 10.0, 16.0, 45.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -311,11 +314,11 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 40.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: const Color(0x25FFFFFF),
+                            color: Color(0x25FFFFFF),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -327,7 +330,7 @@ class _BSTurnNotificationsWidgetState extends State<BSTurnNotificationsWidget> {
                                   useGoogleFonts: false,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                             ),
                             borderRadius: BorderRadius.circular(30.0),

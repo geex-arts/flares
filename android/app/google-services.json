@@ -12,7 +12,20 @@
           "package_name": "com.geex.arts.flares"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "949217339794-2madirbekkjlivfs3237i26guquegv3s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.geex.arts.flares",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "949217339794-h6m0a0j8tbvmmik1ah21c6p5ees0u4ui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCzfaQ3WA-DY62HBUfeQ23fVvnK5xU09ps"
@@ -20,7 +33,20 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949217339794-h6m0a0j8tbvmmik1ah21c6p5ees0u4ui.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "949217339794-kgeisvs6q8f40t7289214hoqmhqltlgc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.geex.arts.flares",
+                "app_store_id": "962194608"
+              }
+            }
+          ]
         }
       }
     }

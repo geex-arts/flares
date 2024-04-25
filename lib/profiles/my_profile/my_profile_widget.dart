@@ -11,6 +11,7 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_feeling/b_s_feeling_widget.dart';
 import '/wishlist/b_s_save_to_collection2/b_s_save_to_collection2_widget.dart';
 import 'dart:ui';
@@ -20,6 +21,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -55,13 +57,13 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
-      if (FFAppState().pairID == '') {
+      if (FFAppState().pairID == null || FFAppState().pairID == '') {
         logFirebaseEvent('My_Profile_navigate_to');
 
         context.goNamed(
           'Create_Couple_Profile',
           extra: <String, dynamic>{
-            kTransitionInfoKey: const TransitionInfo(
+            kTransitionInfoKey: TransitionInfo(
               hasTransition: true,
               transitionType: PageTransitionType.fade,
               duration: Duration(milliseconds: 0),
@@ -80,28 +82,28 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -114,28 +116,28 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 200.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 100.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
           ShimmerEffect(
             curve: Curves.easeInOut,
             delay: 300.0.ms,
             duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
+            color: Color(0x80FFFFFF),
             angle: 0.524,
           ),
         ],
@@ -148,8 +150,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(-200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-200.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -161,8 +163,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(-200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(-200.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -174,8 +176,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(200.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -187,8 +189,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(200.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -200,8 +202,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(200.0, 0.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -212,8 +214,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(4.0, 4.0),
-            end: const Offset(1.0, 1.0),
+            begin: Offset(4.0, 4.0),
+            end: Offset(1.0, 1.0),
           ),
         ],
       ),
@@ -281,7 +283,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                   children: [
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 85.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 85.0, 0.0, 0.0),
                       child: FutureBuilder<List<PairsRow>>(
                         future: PairsTable().querySingleRow(
                           queryFn: (q) => q.eq(
@@ -316,21 +318,21 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 17.0, 0.0, 0.0),
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             32.0, 0.0, 32.0, 0.0),
-                                        child: SizedBox(
+                                        child: Container(
                                           height: 127.0,
                                           child: Stack(
                                             children: [
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: InkWell(
                                                   splashColor:
@@ -378,7 +380,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               if (!true)
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, -1.0),
                                                   child: Container(
                                                     width: 100.0,
@@ -388,7 +390,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                         fit: BoxFit.cover,
                                                         image:
                                                             CachedNetworkImageProvider(
-                                                          columnPairsRow
+                                                          columnPairsRow!
                                                               .photo!,
                                                         ),
                                                       ),
@@ -400,7 +402,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               if (!true)
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, -1.0),
                                                   child: Container(
                                                     width: 100.0,
@@ -418,7 +420,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                       'containerOnPageLoadAnimation2']!),
                                                 ),
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, 1.0),
                                                 child: FutureBuilder<
                                                     List<UsersRow>>(
@@ -451,10 +453,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     return Container(
                                                       width: 200.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     0.0,
                                                                     0.0,
@@ -518,7 +520,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                         : null;
                                                                 return Container(
                                                                   decoration:
-                                                                      const BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   child: FutureBuilder<
                                                                       List<
                                                                           FeelingsRow>>(
@@ -562,14 +564,14 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                           ? stackFeelingsRowList
                                                                               .first
                                                                           : null;
-                                                                      return SizedBox(
+                                                                      return Container(
                                                                         width:
                                                                             98.0,
                                                                         height:
                                                                             56.0,
                                                                         child:
                                                                             Stack(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               0.0),
                                                                           children: [
@@ -594,7 +596,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                             padding: MediaQuery.viewInsetsOf(context),
                                                                                             child: BSFeelingWidget(
                                                                                               currentUserFeelingRow: containerUserFeelingsRow,
-                                                                                              currentFeelingRow: stackFeelingsRow,
+                                                                                              currentFeelingRow: stackFeelingsRow != null ? stackFeelingsRow : null,
                                                                                               avatar: containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar,
                                                                                             ),
                                                                                           ),
@@ -616,7 +618,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                             padding: MediaQuery.viewInsetsOf(context),
                                                                                             child: BSFeelingWidget(
                                                                                               currentUserFeelingRow: containerUserFeelingsRow,
-                                                                                              currentFeelingRow: stackFeelingsRow,
+                                                                                              currentFeelingRow: stackFeelingsRow != null ? stackFeelingsRow : null,
                                                                                             ),
                                                                                           ),
                                                                                         ),
@@ -655,7 +657,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                           onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                           child: Padding(
                                                                                             padding: MediaQuery.viewInsetsOf(context),
-                                                                                            child: const BSFeelingWidget(),
+                                                                                            child: BSFeelingWidget(),
                                                                                           ),
                                                                                         ),
                                                                                       );
@@ -688,11 +690,11 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                               color: valueOrDefault<Color>(
                                                                                                 containerUserFeelingsRow != null
                                                                                                     ? valueOrDefault<Color>(
-                                                                                                        Color(int.parse((containerUserFeelingsRow.color!))),
+                                                                                                        new Color(int.parse((containerUserFeelingsRow!.color!))),
                                                                                                         FlutterFlowTheme.of(context).error,
                                                                                                       )
-                                                                                                    : const Color(0x00FFFFFF),
-                                                                                                const Color(0x00FFFFFF),
+                                                                                                    : Color(0x00FFFFFF),
+                                                                                                Color(0x00FFFFFF),
                                                                                               ),
                                                                                               width: 1.5,
                                                                                             ),
@@ -712,7 +714,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                           width: 34.0,
                                                                                           height: 34.0,
                                                                                           decoration: BoxDecoration(
-                                                                                            color: const Color(0x1AFFFFFF),
+                                                                                            color: Color(0x1AFFFFFF),
                                                                                             borderRadius: BorderRadius.circular(100.0),
                                                                                             border: Border.all(
                                                                                               color: FlutterFlowTheme.of(context).primaryText,
@@ -727,7 +729,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                               ),
                                                                             ),
                                                                             Align(
-                                                                              alignment: const AlignmentDirectional(0.0, 1.0),
+                                                                              alignment: AlignmentDirectional(0.0, 1.0),
                                                                               child: InkWell(
                                                                                 splashColor: Colors.transparent,
                                                                                 focusColor: Colors.transparent,
@@ -749,7 +751,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                               padding: MediaQuery.viewInsetsOf(context),
                                                                                               child: BSFeelingWidget(
                                                                                                 currentUserFeelingRow: containerUserFeelingsRow,
-                                                                                                currentFeelingRow: stackFeelingsRow,
+                                                                                                currentFeelingRow: stackFeelingsRow != null ? stackFeelingsRow : null,
                                                                                                 avatar: containerUsersRowList.where((e) => e.id == currentUserUid).toList().first.avatar,
                                                                                               ),
                                                                                             ),
@@ -771,7 +773,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                               padding: MediaQuery.viewInsetsOf(context),
                                                                                               child: BSFeelingWidget(
                                                                                                 currentUserFeelingRow: containerUserFeelingsRow,
-                                                                                                currentFeelingRow: stackFeelingsRow,
+                                                                                                currentFeelingRow: stackFeelingsRow != null ? stackFeelingsRow : null,
                                                                                               ),
                                                                                             ),
                                                                                           ),
@@ -810,7 +812,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                             onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
                                                                                             child: Padding(
                                                                                               padding: MediaQuery.viewInsetsOf(context),
-                                                                                              child: const BSFeelingWidget(),
+                                                                                              child: BSFeelingWidget(),
                                                                                             ),
                                                                                           ),
                                                                                         );
@@ -820,31 +822,31 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                 },
                                                                                 child: Container(
                                                                                   height: 17.0,
-                                                                                  constraints: const BoxConstraints(
+                                                                                  constraints: BoxConstraints(
                                                                                     minWidth: 50.0,
                                                                                   ),
                                                                                   decoration: BoxDecoration(
                                                                                     color: valueOrDefault<Color>(
                                                                                       containerUserFeelingsRow != null
                                                                                           ? valueOrDefault<Color>(
-                                                                                              Color(int.parse((containerUserFeelingsRow.color!))),
+                                                                                              new Color(int.parse((containerUserFeelingsRow!.color!))),
                                                                                               FlutterFlowTheme.of(context).error,
                                                                                             )
-                                                                                          : const Color(0x19FFFFFF),
-                                                                                      const Color(0x19FFFFFF),
+                                                                                          : Color(0x19FFFFFF),
+                                                                                      Color(0x19FFFFFF),
                                                                                     ),
                                                                                     borderRadius: BorderRadius.circular(100.0),
                                                                                   ),
                                                                                   child: Padding(
-                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                                                                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                     child: Row(
                                                                                       mainAxisSize: MainAxisSize.min,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
+                                                                                          padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
-                                                                                              containerUserFeelingsRow != null ? (containerUserFeelingsRow.customFeeling != null && containerUserFeelingsRow.customFeeling != '' ? containerUserFeelingsRow.customFeeling : stackFeelingsRow?.name) : 'Set your mood',
+                                                                                              containerUserFeelingsRow != null ? (containerUserFeelingsRow?.customFeeling != null && containerUserFeelingsRow?.customFeeling != '' ? containerUserFeelingsRow?.customFeeling : stackFeelingsRow?.name) : 'Set your mood',
                                                                                               'Set your mood',
                                                                                             ),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -919,12 +921,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                         ? stackUserFeelingsRowList
                                                                             .first
                                                                         : null;
-                                                                return SizedBox(
+                                                                return Container(
                                                                   width: 98.0,
                                                                   height: 56.0,
                                                                   child: Stack(
                                                                     alignment:
-                                                                        const AlignmentDirectional(
+                                                                        AlignmentDirectional(
                                                                             0.0,
                                                                             0.0),
                                                                     children: [
@@ -953,8 +955,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                     borderRadius: BorderRadius.circular(100.0),
                                                                                     border: Border.all(
                                                                                       color: valueOrDefault<Color>(
-                                                                                        stackUserFeelingsRow != null ? (Color(int.parse((stackUserFeelingsRow.color!)))) : const Color(0x19FFFFFF),
-                                                                                        const Color(0x19FFFFFF),
+                                                                                        stackUserFeelingsRow != null ? (new Color(int.parse((stackUserFeelingsRow!.color!)))) : Color(0x19FFFFFF),
+                                                                                        Color(0x19FFFFFF),
                                                                                       ),
                                                                                       width: 1.5,
                                                                                     ),
@@ -980,7 +982,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                 width: 34.0,
                                                                                 height: 34.0,
                                                                                 decoration: BoxDecoration(
-                                                                                  color: const Color(0x4D000000),
+                                                                                  color: Color(0x4D000000),
                                                                                   borderRadius: BorderRadius.circular(100.0),
                                                                                   border: Border.all(
                                                                                     color: FlutterFlowTheme.of(context).primaryText,
@@ -1008,7 +1010,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                     width: 34.0,
                                                                                     height: 34.0,
                                                                                     decoration: BoxDecoration(
-                                                                                      color: const Color(0x4D000000),
+                                                                                      color: Color(0x4D000000),
                                                                                       image: DecorationImage(
                                                                                         fit: BoxFit.cover,
                                                                                         image: Image.asset(
@@ -1033,7 +1035,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                           (stackUserFeelingsRow !=
                                                                               null))
                                                                         Align(
-                                                                          alignment: const AlignmentDirectional(
+                                                                          alignment: AlignmentDirectional(
                                                                               0.0,
                                                                               1.0),
                                                                           child:
@@ -1042,7 +1044,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                 FeelingsTable().querySingleRow(
                                                                               queryFn: (q) => q.eq(
                                                                                 'id',
-                                                                                stackUserFeelingsRow.feeling,
+                                                                                stackUserFeelingsRow?.feeling,
                                                                               ),
                                                                             ),
                                                                             builder:
@@ -1064,25 +1066,25 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                               final containerFeelingsRow = containerFeelingsRowList.isNotEmpty ? containerFeelingsRowList.first : null;
                                                                               return Container(
                                                                                 height: 17.0,
-                                                                                constraints: const BoxConstraints(
+                                                                                constraints: BoxConstraints(
                                                                                   minWidth: 50.0,
                                                                                 ),
                                                                                 decoration: BoxDecoration(
                                                                                   color: valueOrDefault<Color>(
-                                                                                    stackUserFeelingsRow != null ? (Color(int.parse((stackUserFeelingsRow.color!)))) : const Color(0x19FFFFFF),
-                                                                                    const Color(0x19FFFFFF),
+                                                                                    stackUserFeelingsRow != null ? (new Color(int.parse((stackUserFeelingsRow!.color!)))) : Color(0x19FFFFFF),
+                                                                                    Color(0x19FFFFFF),
                                                                                   ),
                                                                                   borderRadius: BorderRadius.circular(100.0),
                                                                                 ),
                                                                                 child: Padding(
-                                                                                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
+                                                                                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.min,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
+                                                                                        padding: EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
                                                                                         child: Text(
-                                                                                          stackUserFeelingsRow.customFeeling != null && stackUserFeelingsRow.customFeeling != '' ? stackUserFeelingsRow.customFeeling! : containerFeelingsRow!.name!,
+                                                                                          stackUserFeelingsRow?.customFeeling != null && stackUserFeelingsRow?.customFeeling != '' ? stackUserFeelingsRow!.customFeeling! : containerFeelingsRow!.name!,
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Nuckle',
                                                                                                 color: FlutterFlowTheme.of(context).info,
@@ -1104,7 +1106,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                 );
                                                               },
                                                             ),
-                                                          ].divide(const SizedBox(
+                                                          ].divide(SizedBox(
                                                               width: 4.0)),
                                                         ),
                                                       ),
@@ -1120,9 +1122,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               ))
                                                 Align(
                                                   alignment:
-                                                      const AlignmentDirectional(
+                                                      AlignmentDirectional(
                                                           0.0, 1.0),
-                                                  child: const Icon(
+                                                  child: Icon(
                                                     FFIcons.klike,
                                                     color: Color(0xFFFF2C96),
                                                     size: 18.0,
@@ -1136,13 +1138,13 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.0, -1.0),
+                                          AlignmentDirectional(0.0, -1.0),
                                       child: Container(
                                         width: 294.0,
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 33.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -1189,7 +1191,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
@@ -1210,7 +1212,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                             ' ago', '');
                                                       }(dateTimeFormat(
                                                           'relative',
-                                                          columnPairsRow
+                                                          columnPairsRow!
                                                               .pairSince!)),
                                                       style: FlutterFlowTheme
                                                               .of(context)
@@ -1232,7 +1234,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1246,7 +1248,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x9AFFFFFF),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -1302,7 +1304,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                     Navigator.pop(
                                                                         alertDialogContext),
                                                                 child:
-                                                                    const Text('Ok'),
+                                                                    Text('Ok'),
                                                               ),
                                                             ],
                                                           ),
@@ -1379,7 +1381,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          const EdgeInsetsDirectional
+                                                          EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   0.0,
                                                                   4.0,
@@ -1393,7 +1395,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Nuckle',
-                                                              color: const Color(
+                                                              color: Color(
                                                                   0x98FFFFFF),
                                                               fontSize: 12.0,
                                                               letterSpacing:
@@ -1419,10 +1421,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
                                 child: Text(
-                                  columnPairsRow.pairName!,
+                                  columnPairsRow!.pairName!,
                                   textAlign: TextAlign.center,
                                   style: FlutterFlowTheme.of(context)
                                       .titleLarge
@@ -1447,9 +1449,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
                             child: SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
@@ -1457,7 +1459,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 6.0, 0.0),
                                     child: InkWell(
                                       splashColor: Colors.transparent,
@@ -1488,7 +1490,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                       MediaQuery.viewInsetsOf(
                                                           context),
                                                   child:
-                                                      const BSSaveToCollection2Widget(
+                                                      BSSaveToCollection2Widget(
                                                     isManagement: true,
                                                   ),
                                                 ),
@@ -1501,12 +1503,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         width: 37.0,
                                         height: 37.0,
                                         decoration: BoxDecoration(
-                                          color: const Color(0x2AFFFFFF),
+                                          color: Color(0x2AFFFFFF),
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                         ),
                                         alignment:
-                                            const AlignmentDirectional(0.0, 0.0),
+                                            AlignmentDirectional(0.0, 0.0),
                                         child: Icon(
                                           FFIcons.kaddCircle,
                                           color: FlutterFlowTheme.of(context)
@@ -1539,15 +1541,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                       ''
                                               ? FlutterFlowTheme.of(context)
                                                   .secondaryBackground
-                                              : const Color(0x18FFFFFF),
-                                          const Color(0x18FFFFFF),
+                                              : Color(0x18FFFFFF),
+                                          Color(0x18FFFFFF),
                                         ),
                                         borderRadius:
                                             BorderRadius.circular(100.0),
                                       ),
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             14.0, 2.0, 14.0, 0.0),
                                         child: Text(
                                           'All Wishes',
@@ -1641,17 +1643,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                       ? FlutterFlowTheme.of(
                                                               context)
                                                           .secondaryBackground
-                                                      : const Color(0x18FFFFFF),
-                                                  const Color(0x18FFFFFF),
+                                                      : Color(0x18FFFFFF),
+                                                  Color(0x18FFFFFF),
                                                 ),
                                                 borderRadius:
                                                     BorderRadius.circular(
                                                         100.0),
                                               ),
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         14.0, 2.0, 14.0, 0.0),
                                                 child: Text(
@@ -1695,14 +1697,14 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               ),
                                             ),
                                           );
-                                        }).divide(const SizedBox(width: 4.0)),
+                                        }).divide(SizedBox(width: 4.0)),
                                       );
                                     },
                                   ),
                                 ]
-                                    .divide(const SizedBox(width: 4.0))
-                                    .addToStart(const SizedBox(width: 16.0))
-                                    .addToEnd(const SizedBox(width: 16.0)),
+                                    .divide(SizedBox(width: 4.0))
+                                    .addToStart(SizedBox(width: 16.0))
+                                    .addToEnd(SizedBox(width: 16.0)),
                               ),
                             ),
                           ),
@@ -1753,7 +1755,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                           },
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 56.0, 0.0, 0.0),
                           child: FutureBuilder<List<WishesRow>>(
                             future: WishesTable().queryRows(
@@ -1785,7 +1787,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 model: _model.newListModel,
                                 updateCallback: () => setState(() {}),
                                 child: NewListWidget(
-                                  noWishes: newListWishesRowList.isEmpty
+                                  noWishes: newListWishesRowList.length < 1
                                       ? true
                                       : false,
                                 ),
@@ -1793,17 +1795,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             },
                           ),
                         ),
-                      ].addToEnd(const SizedBox(height: 120.0)),
+                      ].addToEnd(SizedBox(height: 120.0)),
                     ),
                   ],
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   width: double.infinity,
                   height: 116.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [Colors.transparent, Color(0xA6000000)],
                       stops: [0.0, 1.0],
@@ -1814,23 +1816,23 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 1.0),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.tabBarModel,
                   updateCallback: () => setState(() {}),
-                  child: const TabBarWidget(
+                  child: TabBarWidget(
                     index: 2,
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                child: Container(
                   height: 39.0,
                   child: Stack(
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
@@ -1845,7 +1847,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               builder: (context, snapshot) {
                                 // Customize what your widget looks like when it's loading.
                                 if (!snapshot.hasData) {
-                                  return const NfIconPlaceholderWidget();
+                                  return NfIconPlaceholderWidget();
                                 }
                                 List<UsersRow> notifyUsersRowList =
                                     snapshot.data!;
@@ -1865,15 +1867,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
 
                                     context.pushNamed('Notifications');
                                   },
-                                  child: SizedBox(
+                                  child: Container(
                                     width: 42.0,
                                     height: 38.0,
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Image.asset(
                                             'assets/images/Rectangle.webp',
                                             width: 38.0,
@@ -1883,16 +1885,16 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
+                                              AlignmentDirectional(-1.0, 0.0),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     2.0, 0.0, 0.0, 0.0),
                                             child: Container(
                                               width: 34.0,
                                               height: 34.0,
                                               decoration: BoxDecoration(
-                                                color: const Color(0x9A000000),
+                                                color: Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
@@ -1908,7 +1910,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
+                                              AlignmentDirectional(1.0, -1.0),
                                           child: FutureBuilder<
                                               List<NotificationsRow>>(
                                             future:
@@ -1928,16 +1930,18 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             builder: (context, snapshot) {
                                               // Customize what your widget looks like when it's loading.
                                               if (!snapshot.hasData) {
-                                                return const NfLoadingPlaceholderWidget();
+                                                return NfLoadingPlaceholderWidget();
                                               }
                                               List<NotificationsRow>
                                                   containerNotificationsRowList =
                                                   snapshot.data!;
                                               return Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Visibility(
                                                   visible:
-                                                      containerNotificationsRowList.isNotEmpty,
+                                                      containerNotificationsRowList
+                                                              .length >
+                                                          0,
                                                   child: Container(
                                                     width: 18.0,
                                                     height: 13.0,
@@ -1951,7 +1955,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     ),
                                                     child: Align(
                                                       alignment:
-                                                          const AlignmentDirectional(
+                                                          AlignmentDirectional(
                                                               0.0, 0.0),
                                                       child: Text(
                                                         valueOrDefault<String>(
@@ -2007,7 +2011,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                       context.pushNamed('Profile');
                                     },
                                     child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       children: [
                                         Image.asset(
                                           'assets/images/Rectangle.webp',
@@ -2019,7 +2023,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           width: 34.0,
                                           height: 34.0,
                                           decoration: BoxDecoration(
-                                            color: const Color(0x9A000000),
+                                            color: Color(0x9A000000),
                                             borderRadius:
                                                 BorderRadius.circular(12.0),
                                           ),
@@ -2036,7 +2040,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                       'stackOnPageLoadAnimation1']!),
                                   Builder(
                                     builder: (context) => Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           8.0, 0.0, 0.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
@@ -2055,7 +2059,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         },
                                         child: Stack(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           children: [
                                             Image.asset(
                                               'assets/images/Rectangle.webp',
@@ -2067,13 +2071,13 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               width: 34.0,
                                               height: 34.0,
                                               decoration: BoxDecoration(
-                                                color: const Color(0x9A000000),
+                                                color: Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(12.0),
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 2.0),
                                               child: Image.asset(
                                                 'assets/images/Share.webp',
@@ -2095,15 +2099,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0x9A000000),
+                            color: Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Builder(
                             builder: (context) => Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -2122,7 +2126,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         insetPadding: EdgeInsets.zero,
                                         backgroundColor: Colors.transparent,
                                         alignment:
-                                            const AlignmentDirectional(0.0, -1.0)
+                                            AlignmentDirectional(0.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         child: WebViewAware(
@@ -2135,7 +2139,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 : FocusScope.of(context)
                                                     .unfocus(),
                                             child:
-                                                const AlertDialogCancelCollectionWidget(
+                                                AlertDialogCancelCollectionWidget(
                                               title: 'Test',
                                             ),
                                           ),
@@ -2166,11 +2170,11 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                 ),
               ),
               Align(
-                alignment: const AlignmentDirectional(0.0, 0.0),
+                alignment: AlignmentDirectional(0.0, 0.0),
                 child: wrapWithModel(
                   model: _model.floatingBtnModel,
                   updateCallback: () => setState(() {}),
-                  child: const FloatingBtnWidget(),
+                  child: FloatingBtnWidget(),
                 ),
               ),
             ],

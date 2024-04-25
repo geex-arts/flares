@@ -2,8 +2,13 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'official_referral_model.dart';
 export 'official_referral_model.dart';
 
@@ -77,13 +82,13 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: Container(
                   height: 38.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -96,16 +101,16 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
+                                  color: Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: const Color(0x33FFFFFF),
+                                    color: Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -142,13 +147,13 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Text(
                         'You can find the pairing code in\nthe message your partner sent \nyou.',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Nuckle',
-                              color: const Color(0x9AFFFFFF),
+                              color: Color(0x9AFFFFFF),
                               letterSpacing: 0.0,
                               useGoogleFonts: false,
                               lineHeight: 1.4,
@@ -157,15 +162,15 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 34.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 34.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 140.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Stack(
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Image.asset(
                                 'assets/images/Vector_1.webp',
                                 width: double.infinity,
@@ -173,12 +178,12 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
+                              alignment: AlignmentDirectional(0.0, -1.0),
                               child: Container(
                                 width: 134.0,
                                 height: 134.0,
                                 clipBehavior: Clip.antiAlias,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                 ),
                                 child: Image.asset(
@@ -188,15 +193,15 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-1.0, 1.0),
+                              alignment: AlignmentDirectional(-1.0, 1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     28.0, 0.0, 0.0, 0.0),
                                 child: Container(
                                   width: 55.0,
                                   height: 55.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
@@ -207,15 +212,15 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, -1.0),
+                              alignment: AlignmentDirectional(1.0, -1.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 6.0, 28.0, 0.0),
                                 child: Container(
                                   width: 62.0,
                                   height: 62.0,
                                   clipBehavior: Clip.antiAlias,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                   ),
                                   child: Image.asset(
@@ -231,7 +236,7 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: Text(
                         'Your referral code',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -246,16 +251,16 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                       child: Container(
                         width: double.infinity,
                         height: 52.0,
                         decoration: BoxDecoration(
-                          color: const Color(0x1AFFFFFF),
+                          color: Color(0x1AFFFFFF),
                           borderRadius: BorderRadius.circular(100.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -276,7 +281,7 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 8.0, 0.0),
                                 child: Container(
                                   height: 36.0,
@@ -286,7 +291,7 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                                     borderRadius: BorderRadius.circular(100.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -311,7 +316,7 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                                                 useGoogleFonts: false,
                                               ),
                                         ),
-                                      ].divide(const SizedBox(width: 8.0)),
+                                      ].divide(SizedBox(width: 8.0)),
                                     ),
                                   ),
                                 ),
@@ -322,12 +327,12 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                       ),
                     ),
                   ]
-                      .addToStart(const SizedBox(height: 30.0))
-                      .addToEnd(const SizedBox(height: 60.0)),
+                      .addToStart(SizedBox(height: 30.0))
+                      .addToEnd(SizedBox(height: 60.0)),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),

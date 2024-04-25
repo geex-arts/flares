@@ -10,7 +10,7 @@ class DiscoveryCategoriesTable extends SupabaseTable<DiscoveryCategoriesRow> {
 }
 
 class DiscoveryCategoriesRow extends SupabaseDataRow {
-  DiscoveryCategoriesRow(super.data);
+  DiscoveryCategoriesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => DiscoveryCategoriesTable();

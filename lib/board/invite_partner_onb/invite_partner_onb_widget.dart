@@ -5,10 +5,16 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_onb_model.dart';
@@ -19,7 +25,7 @@ class InvitePartnerOnbWidget extends StatefulWidget {
     super.key,
     required this.pairInvitationRow,
     bool? isFromProfile,
-  }) : isFromProfile = isFromProfile ?? false;
+  }) : this.isFromProfile = isFromProfile ?? false;
 
   final PairsInvitationsRow? pairInvitationRow;
   final bool isFromProfile;
@@ -94,14 +100,14 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: SizedBox(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: Container(
                   height: 38.0,
                   child: Stack(
                     children: [
                       if (!widget.isFromProfile)
                         Align(
-                          alignment: const AlignmentDirectional(1.0, 0.0),
+                          alignment: AlignmentDirectional(1.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -125,11 +131,11 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                             child: Container(
                               height: 38.0,
                               decoration: BoxDecoration(
-                                color: const Color(0x17FFFFFF),
+                                color: Color(0x17FFFFFF),
                                 borderRadius: BorderRadius.circular(21.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 10.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -160,7 +166,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           ),
                         ),
                       Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        alignment: AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -173,16 +179,16 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x16000000),
+                                  color: Color(0x16000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: const Color(0x33FFFFFF),
+                                    color: Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -203,7 +209,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -222,7 +228,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                               ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'Your partner will receive a link to \ndownload to the Flo app. He\'ll then use the \ncode to pair your profiles',
@@ -231,7 +237,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: const Color(0x9AFFFFFF),
+                                  color: Color(0x9AFFFFFF),
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.4,
@@ -239,16 +245,16 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: const Color(0x0DFFFFFF),
+                              color: Color(0x0DFFFFFF),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -265,7 +271,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -283,7 +289,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              const Color(0x98FFFFFF),
+                                                              Color(0x98FFFFFF),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -296,7 +302,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                       ?.pairCode,
                                                   'FLARES990',
                                                 ),
-                                                style: const TextStyle(
+                                                style: TextStyle(
                                                   color: Color(0xFFFF2C96),
                                                 ),
                                               )
@@ -312,7 +318,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -330,7 +336,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                           .pairInvitationRow!
                                                           .pairCode!));
                                             },
-                                            child: const Icon(
+                                            child: Icon(
                                               Icons.content_copy,
                                               color: Color(0xFFFF2C96),
                                               size: 18.0,
@@ -342,7 +348,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                   ),
                                   Builder(
                                     builder: (context) => Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
                                       child: wrapWithModel(
                                         model: _model.sharemyinvitelinkModel,
@@ -370,12 +376,12 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
-                          child: SizedBox(
+                          child: Container(
                             height: 24.0,
                             child: Stack(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -384,16 +390,16 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           color: Color(0x19FFFFFF),
                                         ),
                                       ),
                                     ),
                                     Container(
                                       height: double.infinity,
-                                      decoration: const BoxDecoration(),
+                                      decoration: BoxDecoration(),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 6.0, 16.0, 0.0),
                                         child: Text(
                                           'Or',
@@ -415,7 +421,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: const BoxDecoration(
+                                        decoration: BoxDecoration(
                                           color: Color(0x19FFFFFF),
                                         ),
                                       ),
@@ -427,16 +433,16 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           ),
                         ),
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: const Color(0x0DFFFFFF),
+                              color: Color(0x0DFFFFFF),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -453,7 +459,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         ),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller:
@@ -469,7 +475,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Nuckle',
-                                              color: const Color(0x98FFFFFF),
+                                              color: Color(0x98FFFFFF),
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
@@ -484,7 +490,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -519,9 +525,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               BorderRadius.circular(30.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0x19FFFFFF),
+                                        fillColor: Color(0x19FFFFFF),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 14.0, 20.0, 14.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -543,9 +549,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                   if (_model.codeNotFound)
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(-1.0, 0.0),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             20.0, 8.0, 0.0, 0.0),
                                         child: Text(
                                           'The pairing code not found',
@@ -565,7 +571,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       ),
                                     ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: wrapWithModel(
                                       model: _model.sendPairingCodeModel,
@@ -609,7 +615,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                     'pair': _model
                                                         .foundPairingRow
                                                         ?.first
-                                                        .pair,
+                                                        ?.pair,
                                                   },
                                                   matchingRows: (rows) =>
                                                       rows.eq(
@@ -632,7 +638,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                       rows.eq(
                                                     'uuid',
                                                     _model.foundPairingRow
-                                                        ?.first.uuid,
+                                                        ?.first?.uuid,
                                                   ),
                                                 );
                                               }(),
@@ -670,14 +676,14 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                         padding: MediaQuery
                                                             .viewInsetsOf(
                                                                 context),
-                                                        child: SizedBox(
+                                                        child: Container(
                                                           height:
                                                               MediaQuery.sizeOf(
                                                                           context)
                                                                       .height *
                                                                   0.85,
                                                           child:
-                                                              const BSTurnNotificationsWidget(),
+                                                              BSTurnNotificationsWidget(),
                                                         ),
                                                       ),
                                                     ),
@@ -705,8 +711,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           ),
                         ),
                       ]
-                          .addToStart(const SizedBox(height: 30.0))
-                          .addToEnd(const SizedBox(height: 60.0)),
+                          .addToStart(SizedBox(height: 30.0))
+                          .addToEnd(SizedBox(height: 60.0)),
                     ),
                   ),
                 ),

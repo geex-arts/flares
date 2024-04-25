@@ -6,7 +6,10 @@ import '/flutter_flow/instant_timer.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:percent_indicator/percent_indicator.dart';
+import 'package:provider/provider.dart';
 import 'alert_dialog_cancel_collection_model.dart';
 export 'alert_dialog_cancel_collection_model.dart';
 
@@ -45,7 +48,7 @@ class _AlertDialogCancelCollectionWidgetState
       logFirebaseEvent('ALERT_DIALOG_CANCEL_COLLECTION_alertDial');
       logFirebaseEvent('alertDialogCancelCollection_start_period');
       _model.instantTimer = InstantTimer.periodic(
-        duration: const Duration(milliseconds: 1000),
+        duration: Duration(milliseconds: 1000),
         callback: (timer) async {
           if (_model.currentSecond == 0) {
             logFirebaseEvent('alertDialogCancelCollection_stop_periodi');
@@ -74,9 +77,9 @@ class _AlertDialogCancelCollectionWidgetState
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
           child: BackdropFilter(
@@ -87,17 +90,17 @@ class _AlertDialogCancelCollectionWidgetState
             child: Container(
               width: double.infinity,
               decoration: BoxDecoration(
-                color: const Color(0x14FFFFFF),
+                color: Color(0x14FFFFFF),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 10.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Stack(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       children: [
                         Container(
                           width: 33.0,
@@ -107,7 +110,7 @@ class _AlertDialogCancelCollectionWidgetState
                                 .secondaryBackground,
                             shape: BoxShape.circle,
                           ),
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                         ),
                         CircularPercentIndicator(
                           percent: valueOrDefault<double>(
@@ -120,7 +123,7 @@ class _AlertDialogCancelCollectionWidgetState
                           animateFromLastPercent: true,
                           progressColor:
                               FlutterFlowTheme.of(context).secondaryBackground,
-                          backgroundColor: const Color(0x00FFFFFF),
+                          backgroundColor: Color(0x00FFFFFF),
                           center: Text(
                             _model.currentSecond.toString(),
                             textAlign: TextAlign.center,
@@ -140,7 +143,7 @@ class _AlertDialogCancelCollectionWidgetState
                     ),
                     Expanded(
                       child: Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             15.0, 0.0, 15.0, 0.0),
                         child: Text(
                           'Saved To The ${widget.title} Compilation',
@@ -172,9 +175,9 @@ class _AlertDialogCancelCollectionWidgetState
                         width: 52.0,
                         height: 32.0,
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).pinkButton,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -187,7 +190,7 @@ class _AlertDialogCancelCollectionWidgetState
                                   lineHeight: 1.3,
                                 ),
                         elevation: 3.0,
-                        borderSide: const BorderSide(
+                        borderSide: BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

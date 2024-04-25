@@ -2,7 +2,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'nf_icon_placeholder_model.dart';
 export 'nf_icon_placeholder_model.dart';
 
@@ -67,14 +71,14 @@ class _NfIconPlaceholderWidgetState extends State<NfIconPlaceholderWidget>
 
         context.pushNamed('Notifications');
       },
-      child: SizedBox(
+      child: Container(
         width: 42.0,
         height: 38.0,
         child: Stack(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           children: [
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Image.asset(
                 'assets/images/Rectangle.webp',
                 width: 38.0,
@@ -83,14 +87,14 @@ class _NfIconPlaceholderWidgetState extends State<NfIconPlaceholderWidget>
               ),
             ),
             Align(
-              alignment: const AlignmentDirectional(-1.0, 0.0),
+              alignment: AlignmentDirectional(-1.0, 0.0),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(2.0, 0.0, 0.0, 0.0),
                 child: Container(
                   width: 34.0,
                   height: 34.0,
                   decoration: BoxDecoration(
-                    color: const Color(0x9A000000),
+                    color: Color(0x9A000000),
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                   child: Icon(

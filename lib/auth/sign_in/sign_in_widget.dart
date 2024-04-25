@@ -4,14 +4,19 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
@@ -112,20 +117,20 @@ class _SignInWidgetState extends State<SignInWidget>
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                    child: SizedBox(
+                        EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                    child: Container(
                       height: 38.0,
                       child: Stack(
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
-                                color: const Color(0x9A000000),
+                                color: Color(0x9A000000),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 0.0),
                                 child: Text(
                                   'Sign In',
@@ -153,16 +158,16 @@ class _SignInWidgetState extends State<SignInWidget>
                               context.safePop();
                             },
                             child: Stack(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               children: [
                                 Container(
                                   width: 38.0,
                                   height: 38.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0x9A000000),
+                                    color: Color(0x9A000000),
                                     borderRadius: BorderRadius.circular(14.0),
                                     border: Border.all(
-                                      color: const Color(0x33FFFFFF),
+                                      color: Color(0x33FFFFFF),
                                     ),
                                   ),
                                 ),
@@ -183,7 +188,7 @@ class _SignInWidgetState extends State<SignInWidget>
                   Expanded(
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -199,7 +204,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     focusNode: _model.emailFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.emailFieldTextController',
-                                      const Duration(milliseconds: 2000),
+                                      Duration(milliseconds: 2000),
                                       () => setState(() {}),
                                     ),
                                     autofocus: false,
@@ -212,7 +217,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: const Color(0x98FFFFFF),
+                                            color: Color(0x98FFFFFF),
                                             fontSize: 14.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
@@ -230,7 +235,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                             lineHeight: 1.0,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -265,9 +270,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                             BorderRadius.circular(30.0),
                                       ),
                                       filled: true,
-                                      fillColor: const Color(0x0FFFFFFF),
+                                      fillColor: Color(0x0FFFFFFF),
                                       contentPadding:
-                                          const EdgeInsetsDirectional.fromSTEB(
+                                          EdgeInsetsDirectional.fromSTEB(
                                               20.0, 14.0, 20.0, 14.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -287,7 +292,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         .asValidator(context),
                                   ),
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller:
@@ -295,7 +300,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                       focusNode: _model.passwordFieldFocusNode,
                                       onChanged: (_) => EasyDebounce.debounce(
                                         '_model.passwordFieldTextController',
-                                        const Duration(milliseconds: 2000),
+                                        Duration(milliseconds: 2000),
                                         () => setState(() {}),
                                       ),
                                       autofocus: false,
@@ -309,7 +314,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Nuckle',
-                                              color: const Color(0x98FFFFFF),
+                                              color: Color(0x98FFFFFF),
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
@@ -324,7 +329,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -359,9 +364,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                               BorderRadius.circular(30.0),
                                         ),
                                         filled: true,
-                                        fillColor: const Color(0x0FFFFFFF),
+                                        fillColor: Color(0x0FFFFFFF),
                                         contentPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 14.0, 20.0, 14.0),
                                         suffixIcon: InkWell(
                                           onTap: () => setState(
@@ -375,7 +380,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                             _model.passwordFieldVisibility
                                                 ? Icons.visibility_outlined
                                                 : Icons.visibility_off_outlined,
-                                            color: const Color(0x98FFFFFF),
+                                            color: Color(0x98FFFFFF),
                                             size: 18.0,
                                           ),
                                         ),
@@ -404,9 +409,9 @@ class _SignInWidgetState extends State<SignInWidget>
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(1.0, 0.0),
+                              alignment: AlignmentDirectional(1.0, 0.0),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: InkWell(
                                   splashColor: Colors.transparent,
@@ -428,7 +433,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: const Color(0x7FFFFFFF),
+                                          color: Color(0x7FFFFFFF),
                                           fontSize: 11.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
@@ -439,9 +444,9 @@ class _SignInWidgetState extends State<SignInWidget>
                             ),
                             if (_model.emptyFields != null)
                               Align(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
+                                alignment: AlignmentDirectional(0.0, 0.0),
                                 child: Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 23.0, 0.0, 0.0),
                                   child: Text(
                                     'Invalid Username Or Password Entered',
@@ -460,7 +465,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                 ),
                               ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 26.0, 0.0, 0.0),
                               child: wrapWithModel(
                                 model: _model.nextButtonModel,
@@ -470,7 +475,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                   currentAction: () async {
                                     logFirebaseEvent(
                                         'SIGN_IN_PAGE_nextButton_CALLBACK');
-                                    var shouldSetState = false;
+                                    var _shouldSetState = false;
                                     logFirebaseEvent(
                                         'nextButton_haptic_feedback');
                                     HapticFeedback.lightImpact();
@@ -481,10 +486,15 @@ class _SignInWidgetState extends State<SignInWidget>
                                             .validate()) {
                                       return;
                                     }
-                                    if ((_model.emailFieldTextController
+                                    if ((_model.emailFieldTextController.text ==
+                                                null ||
+                                            _model.emailFieldTextController
                                                     .text ==
                                                 '') &&
                                         (_model.passwordFieldTextController
+                                                    .text ==
+                                                null ||
+                                            _model.passwordFieldTextController
                                                     .text ==
                                                 '')) {
                                       logFirebaseEvent(
@@ -497,10 +507,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                       setState(() {
                                         _model.passLength = false;
                                       });
-                                      if (shouldSetState) setState(() {});
+                                      if (_shouldSetState) setState(() {});
                                       return;
                                     } else {
                                       if (_model.emailFieldTextController
+                                                  .text ==
+                                              null ||
+                                          _model.emailFieldTextController
                                                   .text ==
                                               '') {
                                         logFirebaseEvent(
@@ -513,10 +526,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                         setState(() {
                                           _model.passLength = false;
                                         });
-                                        if (shouldSetState) setState(() {});
+                                        if (_shouldSetState) setState(() {});
                                         return;
                                       } else {
                                         if (_model.passwordFieldTextController
+                                                    .text ==
+                                                null ||
+                                            _model.passwordFieldTextController
                                                     .text ==
                                                 '') {
                                           logFirebaseEvent(
@@ -529,7 +545,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                           setState(() {
                                             _model.passLength = false;
                                           });
-                                          if (shouldSetState) setState(() {});
+                                          if (_shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -562,7 +578,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         currentUserUid,
                                       ),
                                     );
-                                    shouldSetState = true;
+                                    _shouldSetState = true;
                                     logFirebaseEvent(
                                         'nextButton_custom_action');
                                     await actions.getPushPermission();
@@ -570,7 +586,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         'nextButton_custom_action');
                                     _model.fcmToken =
                                         await actions.getFCMToken();
-                                    shouldSetState = true;
+                                    _shouldSetState = true;
                                     logFirebaseEvent(
                                         'nextButton_custom_action');
                                     await actions.initializeCustomerIo(
@@ -591,9 +607,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                         currentUserUid,
                                       ),
                                     );
-                                    if (_model.userAuthCopyCopy?.first.pair !=
+                                    if (_model.userAuthCopyCopy?.first?.pair !=
                                             null &&
-                                        _model.userAuthCopyCopy?.first.pair !=
+                                        _model.userAuthCopyCopy?.first?.pair !=
                                             '') {
                                       logFirebaseEvent(
                                           'nextButton_update_app_state');
@@ -612,18 +628,18 @@ class _SignInWidgetState extends State<SignInWidget>
                                           'More', context.mounted);
                                     }
 
-                                    if (shouldSetState) setState(() {});
+                                    if (_shouldSetState) setState(() {});
                                   },
                                 ),
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
-                              child: SizedBox(
+                              child: Container(
                                 height: 24.0,
                                 child: Stack(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   children: [
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -632,17 +648,17 @@ class _SignInWidgetState extends State<SignInWidget>
                                           child: Container(
                                             width: double.infinity,
                                             height: 1.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0x19FFFFFF),
                                             ),
                                           ),
                                         ),
                                         Container(
                                           height: double.infinity,
-                                          decoration: const BoxDecoration(),
+                                          decoration: BoxDecoration(),
                                           child: Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     16.0, 6.0, 16.0, 0.0),
                                             child: Text(
                                               'Or',
@@ -666,7 +682,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                           child: Container(
                                             width: double.infinity,
                                             height: 1.0,
-                                            decoration: const BoxDecoration(
+                                            decoration: BoxDecoration(
                                               color: Color(0x19FFFFFF),
                                             ),
                                           ),
@@ -678,7 +694,7 @@ class _SignInWidgetState extends State<SignInWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 12.0, 0.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -698,9 +714,9 @@ class _SignInWidgetState extends State<SignInWidget>
                                   if (user == null) {
                                     return;
                                   }
-                                  if (_model.userAuthCopyCopy?.first.pair !=
+                                  if (_model.userAuthCopyCopy?.first?.pair !=
                                           null &&
-                                      _model.userAuthCopyCopy?.first.pair !=
+                                      _model.userAuthCopyCopy?.first?.pair !=
                                           '') {
                                     logFirebaseEvent(
                                         'GoogleButton_navigate_to');
@@ -719,7 +735,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                   width: double.infinity,
                                   height: 40.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0x1AFFFFFF),
+                                    color: Color(0x1AFFFFFF),
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
                                   child: InkWell(
@@ -758,7 +774,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   3.0, 0.0, 0.0, 0.0),
                                           child: Text(
                                             'Continue with Google',
@@ -782,13 +798,13 @@ class _SignInWidgetState extends State<SignInWidget>
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 10.0, 0.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 40.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x1AFFFFFF),
+                                  color: Color(0x1AFFFFFF),
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
                                 child: Row(
@@ -805,7 +821,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           3.0, 0.0, 0.0, 0.0),
                                       child: Text(
                                         'Continue with Apple',
@@ -826,7 +842,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                 ),
                               ),
                             ),
-                          ].addToStart(const SizedBox(height: 32.0)),
+                          ].addToStart(SizedBox(height: 32.0)),
                         ),
                       ),
                     ),
@@ -837,14 +853,14 @@ class _SignInWidgetState extends State<SignInWidget>
                   ? MediaQuery.viewInsetsOf(context).bottom > 0
                   : _isKeyboardVisible))
                 Align(
-                  alignment: const AlignmentDirectional(0.0, 1.0),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: RichText(
                             textScaler: MediaQuery.of(context).textScaler,
@@ -856,7 +872,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Nuckle',
-                                        color: const Color(0x9AFFFFFF),
+                                        color: Color(0x9AFFFFFF),
                                         fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
@@ -893,7 +909,7 @@ class _SignInWidgetState extends State<SignInWidget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             14.0, 12.0, 14.0, 40.0),
                         child: RichText(
                           textScaler: MediaQuery.of(context).textScaler,
@@ -905,7 +921,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: const Color(0x9AFFFFFF),
+                                      color: Color(0x9AFFFFFF),
                                       fontSize: 11.0,
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
@@ -928,7 +944,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     context.pushNamed('Terms_Conditions');
                                   },
                               ),
-                              const TextSpan(
+                              TextSpan(
                                 text:
                                     'And Confirm That You Have Read The Runway\'s ',
                                 style: TextStyle(

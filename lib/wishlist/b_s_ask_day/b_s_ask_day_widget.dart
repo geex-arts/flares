@@ -9,6 +9,8 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_ask_day_model.dart';
@@ -20,7 +22,7 @@ class BSAskDayWidget extends StatefulWidget {
     required this.selectedWishRow,
     required this.partnerID,
     bool? backgroundColor,
-  }) : backgroundColor = backgroundColor ?? false;
+  }) : this.backgroundColor = backgroundColor ?? false;
 
   final WishesRow? selectedWishRow;
   final String? partnerID;
@@ -70,7 +72,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
       height: 400.0,
       decoration: BoxDecoration(
         color: FlutterFlowTheme.of(context).primaryBackground,
-        borderRadius: const BorderRadius.only(
+        borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(32.0),
@@ -84,17 +86,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 16.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,11 +128,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: const Color(0x67767680),
+                          color: Color(0x67767680),
                           borderRadius: BorderRadius.circular(6.0),
                         ),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               9.0, 6.0, 9.0, 6.0),
                           child: Text(
                             _model.selectedDate != null
@@ -154,7 +156,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -170,11 +172,11 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                         },
                         child: Container(
                           decoration: BoxDecoration(
-                            color: const Color(0x65767680),
+                            color: Color(0x65767680),
                             borderRadius: BorderRadius.circular(6.0),
                           ),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 9.0, 6.0, 9.0, 6.0),
                             child: Text(
                               _model.selectedDate != null
@@ -201,25 +203,25 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                   ],
                 ),
               ),
-              const Divider(
+              Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
             ],
           ),
           Align(
-            alignment: const AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 90.0),
               child: Builder(
                 builder: (context) {
                   if (_model.checkedField == false) {
                     return Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
                       child: Container(
                         width: 254.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -227,12 +229,12 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 45.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final currentDay =
                                       functions.returnDays(31).toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: 40.0,
                                     height: 156.0,
                                     child: CarouselSlider.builder(
@@ -243,7 +245,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                             currentDay[currentDayIndex];
                                         return Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             currentDayItem.toString(),
                                             style: FlutterFlowTheme.of(context)
@@ -313,12 +315,12 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 134.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final currentMonth =
                                       functions.returnMonths().toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: 40.0,
                                     height: 156.0,
                                     child: CarouselSlider.builder(
@@ -329,7 +331,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                             currentMonth[currentMonthIndex];
                                         return Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             currentMonthItem,
                                             style: FlutterFlowTheme.of(context)
@@ -399,12 +401,12 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 60.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final currentYear =
                                       functions.returnYears().toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: 40.0,
                                     height: 156.0,
                                     child: CarouselSlider.builder(
@@ -415,7 +417,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                             currentYear[currentYearIndex];
                                         return Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             currentYearItem.toString(),
                                             style: FlutterFlowTheme.of(context)
@@ -498,10 +500,10 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                   } else {
                     return Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 25.0),
                       child: Container(
                         width: 254.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -509,12 +511,12 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 45.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final curentHour =
                                       functions.returnDays(12).toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: 40.0,
                                     height: 156.0,
                                     child: CarouselSlider.builder(
@@ -525,7 +527,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                             curentHour[curentHourIndex];
                                         return Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             curentHourItem.toString(),
                                             style: FlutterFlowTheme.of(context)
@@ -598,12 +600,12 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 134.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
+                              decoration: BoxDecoration(),
                               child: Builder(
                                 builder: (context) {
                                   final currentMinute =
                                       functions.returnDays(59).toList();
-                                  return SizedBox(
+                                  return Container(
                                     width: 40.0,
                                     height: 156.0,
                                     child: CarouselSlider.builder(
@@ -614,7 +616,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                             currentMinute[currentMinuteIndex];
                                         return Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             currentMinuteItem.toString(),
                                             style: FlutterFlowTheme.of(context)
@@ -684,14 +686,14 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             Container(
                               width: 60.0,
                               height: 156.0,
-                              decoration: const BoxDecoration(),
-                              child: SizedBox(
+                              decoration: BoxDecoration(),
+                              child: Container(
                                 width: 40.0,
                                 height: 156.0,
                                 child: CarouselSlider(
                                   items: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'AM',
                                         style: FlutterFlowTheme.of(context)
@@ -708,7 +710,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                       ),
                                     ),
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'PM',
                                         style: FlutterFlowTheme.of(context)
@@ -786,10 +788,10 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
             ),
           ),
           Align(
-            alignment: const AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Builder(
               builder: (context) => Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 40.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),
@@ -835,9 +837,9 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                             elevation: 0,
                             insetPadding: EdgeInsets.zero,
                             backgroundColor: Colors.transparent,
-                            alignment: const AlignmentDirectional(0.0, -1.0)
+                            alignment: AlignmentDirectional(0.0, -1.0)
                                 .resolve(Directionality.of(context)),
-                            child: const WebViewAware(
+                            child: WebViewAware(
                               child: AlertDialogWarningWidget(
                                 title: 'Date created successfully !',
                                 subtitle: '',

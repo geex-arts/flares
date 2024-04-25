@@ -5,9 +5,15 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'reset_password_model.dart';
 export 'reset_password_model.dart';
@@ -82,25 +88,25 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
             ),
           ),
           child: Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                  child: SizedBox(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                  child: Container(
                     height: 38.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: const Color(0x9A000000),
+                              color: Color(0x9A000000),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
                               child: Text(
                                 'Reset password',
@@ -129,16 +135,16 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0x18000000),
+                                  color: Color(0x18000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: const Color(0x33FFFFFF),
+                                    color: Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -157,7 +163,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                   child: RichText(
                     textScaler: MediaQuery.of(context).textScaler,
                     text: TextSpan(
@@ -167,7 +173,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x9AFFFFFF),
+                                    color: Color(0x9AFFFFFF),
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
                                     useGoogleFonts: false,
@@ -189,7 +195,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x99FFFFFF),
+                                    color: Color(0x99FFFFFF),
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,
                                   ),
@@ -223,7 +229,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                     children: [
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 27.0, 0.0, 0.0),
                         child: TextFormField(
                           controller: _model.emailFieldTextController,
                           focusNode: _model.emailFieldFocusNode,
@@ -237,7 +243,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 .labelMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: const Color(0x98FFFFFF),
+                                  color: Color(0x98FFFFFF),
                                   fontSize: 14.0,
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
@@ -251,7 +257,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   useGoogleFonts: false,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -279,8 +285,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               borderRadius: BorderRadius.circular(30.0),
                             ),
                             filled: true,
-                            fillColor: const Color(0x0FFFFFFF),
-                            contentPadding: const EdgeInsetsDirectional.fromSTEB(
+                            fillColor: Color(0x0FFFFFFF),
+                            contentPadding: EdgeInsetsDirectional.fromSTEB(
                                 20.0, 14.0, 20.0, 14.0),
                           ),
                           style:
@@ -298,7 +304,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       ),
                       Builder(
                         builder: (context) => Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 23.0, 0.0, 0.0),
                           child: wrapWithModel(
                             model: _model.sendLinkButtonModel,
@@ -308,7 +314,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               currentAction: () async {
                                 logFirebaseEvent(
                                     'RESET_PASSWORD_sendLinkButton_CALLBACK');
-                                var shouldSetState = false;
+                                var _shouldSetState = false;
                                 logFirebaseEvent(
                                     'sendLinkButton_haptic_feedback');
                                 HapticFeedback.vibrate();
@@ -325,13 +331,13 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     _model.emailFieldTextController.text,
                                   ),
                                 );
-                                shouldSetState = true;
-                                if (_model.foundUserRow!.isNotEmpty) {
+                                _shouldSetState = true;
+                                if (_model.foundUserRow!.length > 0) {
                                   logFirebaseEvent('sendLinkButton_auth');
                                   if (_model
                                       .emailFieldTextController.text.isEmpty) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
+                                      SnackBar(
                                         content: Text(
                                           'Email required!',
                                         ),
@@ -359,7 +365,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                         insetPadding: EdgeInsets.zero,
                                         backgroundColor: Colors.transparent,
                                         alignment:
-                                            const AlignmentDirectional(0.0, -1.0)
+                                            AlignmentDirectional(0.0, -1.0)
                                                 .resolve(
                                                     Directionality.of(context)),
                                         child: WebViewAware(
@@ -371,7 +377,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                                         _model.unfocusNode)
                                                 : FocusScope.of(context)
                                                     .unfocus(),
-                                            child: const AlertDialogWarningWidget(
+                                            child: AlertDialogWarningWidget(
                                               title: 'Email not found !',
                                               subtitle:
                                                   'We have not found specified Email in our database',
@@ -382,11 +388,11 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                     },
                                   ).then((value) => setState(() {}));
 
-                                  if (shouldSetState) setState(() {});
+                                  if (_shouldSetState) setState(() {});
                                   return;
                                 }
 
-                                if (shouldSetState) setState(() {});
+                                if (_shouldSetState) setState(() {});
                               },
                             ),
                           ),
@@ -395,9 +401,9 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                       Opacity(
                         opacity: _model.isLinkSent ? 1.0 : 0.0,
                         child: Align(
-                          alignment: const AlignmentDirectional(-1.0, 0.0),
+                          alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 20.0, 0.0, 0.0),
                             child: Text(
                               'The link was sent',
@@ -405,7 +411,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: const Color(0x7FFFFFFF),
+                                    color: Color(0x7FFFFFFF),
                                     fontSize: 12.0,
                                     letterSpacing: 0.0,
                                     useGoogleFonts: false,

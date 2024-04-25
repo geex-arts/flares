@@ -7,6 +7,7 @@ import '/wishlist/b_s_save_to_collection2/b_s_save_to_collection2_widget.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'card_model.dart';
@@ -18,7 +19,7 @@ class CardWidget extends StatefulWidget {
     bool? isMyProfile,
     required this.currentWishRow,
     this.reactionImagesRows,
-  }) : isMyProfile = isMyProfile ?? false;
+  }) : this.isMyProfile = isMyProfile ?? false;
 
   final bool isMyProfile;
   final WishesRow? currentWishRow;
@@ -54,7 +55,7 @@ class _CardWidgetState extends State<CardWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return SizedBox(
+    return Container(
       width: double.infinity,
       height: double.infinity,
       child: Stack(
@@ -85,8 +86,8 @@ class _CardWidgetState extends State<CardWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: CachedNetworkImage(
-                fadeInDuration: const Duration(milliseconds: 300),
-                fadeOutDuration: const Duration(milliseconds: 300),
+                fadeInDuration: Duration(milliseconds: 300),
+                fadeOutDuration: Duration(milliseconds: 300),
                 imageUrl: widget.currentWishRow!.photo!,
                 width: double.infinity,
                 height: double.infinity,
@@ -97,7 +98,7 @@ class _CardWidgetState extends State<CardWidget> {
           Container(
             width: double.infinity,
             height: 77.0,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xA5000000), Colors.transparent],
                 stops: [0.0, 1.0],
@@ -113,11 +114,11 @@ class _CardWidgetState extends State<CardWidget> {
             ),
           ),
           Align(
-            alignment: const AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 100.0,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.transparent, Color(0xA6000000)],
                   stops: [0.0, 1.0],
@@ -134,7 +135,7 @@ class _CardWidgetState extends State<CardWidget> {
             ),
           ),
           Padding(
-            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 0.0, 0.0),
             child: FutureBuilder<List<UsersRow>>(
               future: UsersTable().querySingleRow(
                 queryFn: (q) => q.eq(
@@ -192,12 +193,12 @@ class _CardWidgetState extends State<CardWidget> {
                           width: 18.0,
                           height: 18.0,
                           clipBehavior: Clip.antiAlias,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             shape: BoxShape.circle,
                           ),
                           child: CachedNetworkImage(
-                            fadeInDuration: const Duration(milliseconds: 200),
-                            fadeOutDuration: const Duration(milliseconds: 200),
+                            fadeInDuration: Duration(milliseconds: 200),
+                            fadeOutDuration: Duration(milliseconds: 200),
                             imageUrl: userInfoUsersRow!.avatar!,
                             fit: BoxFit.cover,
                           ),
@@ -205,7 +206,7 @@ class _CardWidgetState extends State<CardWidget> {
                       if (userInfoUsersRow?.firstName != null &&
                           userInfoUsersRow?.firstName != '')
                         Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 0.0, 0.0, 0.0),
                           child: Text(
                             userInfoUsersRow!.firstName!
@@ -231,9 +232,9 @@ class _CardWidgetState extends State<CardWidget> {
             ),
           ),
           Align(
-            alignment: const AlignmentDirectional(0.0, 1.0),
+            alignment: AlignmentDirectional(0.0, 1.0),
             child: Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 6.0),
+              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 6.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -241,7 +242,7 @@ class _CardWidgetState extends State<CardWidget> {
                 children: [
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 34.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 34.0, 0.0),
                     child: FutureBuilder<List<CollectionsRow>>(
                       future: CollectionsTable().querySingleRow(
                         queryFn: (q) => q.eq(
@@ -292,7 +293,7 @@ class _CardWidgetState extends State<CardWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 34.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 34.0, 0.0),
                     child: Text(
                       widget.currentWishRow!.name!,
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -311,7 +312,7 @@ class _CardWidgetState extends State<CardWidget> {
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 6.0, 34.0, 0.0),
                           child: Text(
                             widget.currentWishRow!.description!,
@@ -320,7 +321,7 @@ class _CardWidgetState extends State<CardWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: const Color(0x98FFFFFF),
+                                  color: Color(0x98FFFFFF),
                                   fontSize: 10.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
@@ -338,7 +339,7 @@ class _CardWidgetState extends State<CardWidget> {
           ),
           if (widget.isMyProfile)
             Align(
-              alignment: const AlignmentDirectional(1.0, -1.0),
+              alignment: AlignmentDirectional(1.0, -1.0),
               child: FutureBuilder<List<WishReactionsRow>>(
                 future: WishReactionsTable().queryRows(
                   queryFn: (q) => q.eq(
@@ -365,12 +366,12 @@ class _CardWidgetState extends State<CardWidget> {
                   return Container(
                     width: 62.0,
                     height: 44.0,
-                    decoration: const BoxDecoration(),
+                    decoration: BoxDecoration(),
                     child: Stack(
                       children: [
-                        if (containerWishReactionsRowList.isNotEmpty)
+                        if (containerWishReactionsRowList.length > 0)
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0,
@@ -423,7 +424,7 @@ class _CardWidgetState extends State<CardWidget> {
                                   width: 30.0,
                                   height: 30.0,
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFA4A39E),
+                                    color: Color(0xFFA4A39E),
                                     shape: BoxShape.circle,
                                     border: Border.all(
                                       color:
@@ -439,7 +440,7 @@ class _CardWidgetState extends State<CardWidget> {
                                           .toList()
                                           .isNotEmpty) {
                                         return Padding(
-                                          padding: const EdgeInsets.all(6.0),
+                                          padding: EdgeInsets.all(6.0),
                                           child: Image.network(
                                             widget
                                                 .reactionImagesRows![
@@ -476,23 +477,23 @@ class _CardWidgetState extends State<CardWidget> {
                             .toList()
                             .isNotEmpty)
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 13.0, 10.0, 0.0),
                               child: Container(
                                 width: 30.0,
                                 height: 30.0,
                                 decoration: BoxDecoration(
-                                  color: const Color(0xFFA4A39E),
+                                  color: Color(0xFFA4A39E),
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: const Color(0xFFFF2C96),
+                                    color: Color(0xFFFF2C96),
                                     width: 1.0,
                                   ),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(6.0),
+                                  padding: EdgeInsets.all(6.0),
                                   child: Image.network(
                                     widget
                                         .reactionImagesRows![
@@ -513,11 +514,11 @@ class _CardWidgetState extends State<CardWidget> {
                               ),
                             ),
                           ),
-                        if (containerWishReactionsRowList.isEmpty)
+                        if (containerWishReactionsRowList.length < 1)
                           Align(
-                            alignment: const AlignmentDirectional(1.0, -1.0),
+                            alignment: AlignmentDirectional(1.0, -1.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 13.0, 10.0, 0.0),
                               child: InkWell(
                                 splashColor: Colors.transparent,
@@ -541,7 +542,7 @@ class _CardWidgetState extends State<CardWidget> {
                                 child: Container(
                                   width: 30.0,
                                   height: 30.0,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     color: Color(0xFFA4A39E),
                                     shape: BoxShape.circle,
                                   ),
@@ -562,18 +563,18 @@ class _CardWidgetState extends State<CardWidget> {
               ),
             ),
           Align(
-            alignment: const AlignmentDirectional(1.0, 1.0),
+            alignment: AlignmentDirectional(1.0, 1.0),
             child: Builder(
               builder: (context) {
                 if (widget.isMyProfile) {
                   return Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
                     child: Container(
                       width: 30.0,
                       height: 30.0,
                       decoration: BoxDecoration(
-                        color: const Color(0x28FFFFFF),
+                        color: Color(0x28FFFFFF),
                         borderRadius: BorderRadius.circular(10.0),
                       ),
                       child: Builder(
@@ -660,7 +661,7 @@ class _CardWidgetState extends State<CardWidget> {
                         (widget.currentWishRow?.pair == FFAppState().pairID)),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
                       child: FutureBuilder<List<WishesRow>>(
                         future: WishesTable().queryRows(
                           queryFn: (q) => q
@@ -694,12 +695,12 @@ class _CardWidgetState extends State<CardWidget> {
                             width: 30.0,
                             height: 30.0,
                             decoration: BoxDecoration(
-                              color: const Color(0x28FFFFFF),
+                              color: Color(0x28FFFFFF),
                               borderRadius: BorderRadius.circular(10.0),
                             ),
                             child: Builder(
                               builder: (context) {
-                                if (addToCollectionWishesRowList.isNotEmpty) {
+                                if (addToCollectionWishesRowList.length > 0) {
                                   return Icon(
                                     FFIcons.kfcheck,
                                     color:
