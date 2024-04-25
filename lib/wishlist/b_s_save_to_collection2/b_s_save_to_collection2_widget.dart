@@ -723,12 +723,12 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                             );
                                             logFirebaseEvent(
                                                 'ListView_update_component_state');
-                                            _model.updatePage(() {
+                                            setState(() {
                                               _model.isLoading = false;
                                             });
                                             logFirebaseEvent(
                                                 'ListView_update_app_state');
-                                            setState(() {});
+                                            _model.updatePage(() {});
 
                                             setState(() {});
                                           },

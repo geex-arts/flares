@@ -7,3 +7,4 @@ export 'set_foreground_messages.dart' show setForegroundMessages;
 export 'hide_keyboard.dart' show hideKeyboard;
 export 'identify_revenue_cat.dart' show identifyRevenueCat;
 export 'reorder_collections.dart' show reorderCollections;
+export 'sign_in_with_google.dart' show signInWithGoogle;
