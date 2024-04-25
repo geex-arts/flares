@@ -6,14 +6,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/wishlist/b_s_ask_day/b_s_ask_day_widget.dart';
 import '/wishlist/b_s_save_to_collection/b_s_save_to_collection_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -26,8 +23,8 @@ class WishMainWidget extends StatefulWidget {
     required this.selectedWishRow,
     bool? isProfile,
     bool? isFromAI,
-  })  : this.isProfile = isProfile ?? false,
-        this.isFromAI = isFromAI ?? false;
+  })  : isProfile = isProfile ?? false,
+        isFromAI = isFromAI ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isProfile;
@@ -113,21 +110,21 @@ class _WishMainWidgetState extends State<WishMainWidget>
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                child: SizedBox(
                   height: 48.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Container(
                           width: double.infinity,
                           decoration: BoxDecoration(
-                            color: Color(0x9A000000),
+                            color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 58.0, 0.0, 58.0, 0.0),
                             child: Text(
                               widget.selectedWishRow!.name!,
@@ -147,9 +144,9 @@ class _WishMainWidgetState extends State<WishMainWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
+                        alignment: const AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
@@ -162,7 +159,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                   children: [
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                          const AlignmentDirectional(-1.0, 0.0),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -177,17 +174,17 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                         },
                                         child: Stack(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           children: [
                                             Container(
                                               width: 38.0,
                                               height: 38.0,
                                               decoration: BoxDecoration(
-                                                color: Color(0x9A000000),
+                                                color: const Color(0x9A000000),
                                                 borderRadius:
                                                     BorderRadius.circular(14.0),
                                                 border: Border.all(
-                                                  color: Color(0x33FFFFFF),
+                                                  color: const Color(0x33FFFFFF),
                                                 ),
                                               ),
                                             ),
@@ -205,7 +202,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                     ),
                                     Builder(
                                       builder: (context) => Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             8.0, 0.0, 0.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
@@ -224,7 +221,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           },
                                           child: Stack(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             children: [
                                               Image.asset(
                                                 'assets/images/Rectangle.webp',
@@ -236,14 +233,14 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                                 width: 34.0,
                                                 height: 34.0,
                                                 decoration: BoxDecoration(
-                                                  color: Color(0x9A000000),
+                                                  color: const Color(0x9A000000),
                                                   borderRadius:
                                                       BorderRadius.circular(
                                                           12.0),
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 0.0, 0.0, 2.0),
                                                 child: Image.asset(
@@ -272,7 +269,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
                   child: Stack(
                     children: [
                       Image.network(
@@ -297,7 +294,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
               Builder(
                 builder: (context) => Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
                   child: FutureBuilder<List<WishesRow>>(
                     future: WishesTable().querySingleRow(
                       queryFn: (q) => q
@@ -348,7 +345,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                           currentAction: () async {
                             logFirebaseEvent(
                                 'WISH_MAIN_PAGE_AskForADate_CALLBACK');
-                            var _shouldSetState = false;
+                            var shouldSetState = false;
                             if (widget.isFromAI) {
                               logFirebaseEvent('AskForADate_bottom_sheet');
                               await showModalBottomSheet(
@@ -379,7 +376,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                 },
                               ).then((value) => safeSetState(() {}));
 
-                              if (_shouldSetState) setState(() {});
+                              if (shouldSetState) setState(() {});
                               return;
                             }
                             if (widget.isProfile ||
@@ -396,8 +393,8 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       currentUserUid,
                                     ),
                               );
-                              _shouldSetState = true;
-                              if (_model.partnerRow!.length > 0) {
+                              shouldSetState = true;
+                              if (_model.partnerRow!.isNotEmpty) {
                                 logFirebaseEvent('AskForADate_bottom_sheet');
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
@@ -436,7 +433,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                       elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, -1.0)
+                                      alignment: const AlignmentDirectional(0.0, -1.0)
                                           .resolve(Directionality.of(context)),
                                       child: WebViewAware(
                                         child: GestureDetector(
@@ -447,7 +444,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                                       _model.unfocusNode)
                                               : FocusScope.of(context)
                                                   .unfocus(),
-                                          child: AlertDialogWarningWidget(
+                                          child: const AlertDialogWarningWidget(
                                             title: 'No partner selected !',
                                             subtitle:
                                                 'Please add your partner from the profile',
@@ -489,7 +486,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                               ).then((value) => safeSetState(() {}));
                             }
 
-                            if (_shouldSetState) setState(() {});
+                            if (shouldSetState) setState(() {});
                           },
                         ),
                       );

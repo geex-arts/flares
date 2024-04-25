@@ -3,9 +3,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'alert_dialog_status_model.dart';
 export 'alert_dialog_status_model.dart';
 
@@ -58,9 +55,9 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16.0),
           child: BackdropFilter(
@@ -72,11 +69,11 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
               width: double.infinity,
               height: 70.0,
               decoration: BoxDecoration(
-                color: Color(0x14FFFFFF),
+                color: const Color(0x14FFFFFF),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
-                padding: EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,7 +84,7 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                         border: Border.all(
-                          color: Color(0xFF931293),
+                          color: const Color(0xFF931293),
                           width: 1.5,
                         ),
                       ),
@@ -95,7 +92,7 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                         width: 35.0,
                         height: 35.0,
                         clipBehavior: Clip.antiAlias,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
                         child: Image.asset(
@@ -106,7 +103,7 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,13 +122,13 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                           ),
                           Flexible(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 8.0, 0.0),
                                     child: Text(
                                       'Changed The Status',
@@ -139,7 +136,7 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: Color(0x98FFFFFF),
+                                            color: const Color(0x98FFFFFF),
                                             fontSize: 11.0,
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
@@ -149,12 +146,12 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                                   Container(
                                     height: 17.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF931293),
+                                      color: const Color(0xFF931293),
                                       borderRadius:
                                           BorderRadius.circular(100.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           5.0, 0.0, 5.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -171,7 +168,7 @@ class _AlertDialogStatusWidgetState extends State<AlertDialogStatusWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
+                                                const EdgeInsetsDirectional.fromSTEB(
                                                     4.0, 2.0, 0.0, 0.0),
                                             child: Text(
                                               'Thoughtful',

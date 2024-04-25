@@ -7,8 +7,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'b_s_new_collection_model.dart';
 export 'b_s_new_collection_model.dart';
@@ -19,8 +17,8 @@ class BSNewCollectionWidget extends StatefulWidget {
     this.selectedWishRow,
     bool? isFromBrowser,
     bool? isFromWebview,
-  })  : this.isFromBrowser = isFromBrowser ?? false,
-        this.isFromWebview = isFromWebview ?? false;
+  })  : isFromBrowser = isFromBrowser ?? false,
+        isFromWebview = isFromWebview ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isFromBrowser;
@@ -61,7 +59,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
     context.watch<FFAppState>();
 
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -75,8 +73,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: widget.isFromWebview ? Color(0xFF33393C) : Color(0x18F2F1F3),
-            borderRadius: BorderRadius.only(
+            color: widget.isFromWebview ? const Color(0xFF33393C) : const Color(0x18F2F1F3),
+            borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
               topLeft: Radius.circular(32.0),
@@ -87,17 +85,17 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                 child: Text(
                   'New Collection',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -110,12 +108,12 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       ),
                 ),
               ),
-              Divider(
+              const Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                 child: Text(
                   valueOrDefault<String>(
                     _model.isSwitch
@@ -126,7 +124,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   textAlign: TextAlign.center,
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Nuckle',
-                        color: Color(0x9AFFFFFF),
+                        color: const Color(0x9AFFFFFF),
                         letterSpacing: 0.0,
                         fontWeight: FontWeight.w500,
                         useGoogleFonts: false,
@@ -134,7 +132,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -158,12 +156,12 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Switch.adaptive(
                         value: _model.switchValue ??= _model.isSwitch,
                         onChanged: (newValue) async {
-                          setState(() => _model.switchValue = newValue!);
-                          if (newValue!) {
+                          setState(() => _model.switchValue = newValue);
+                          if (newValue) {
                             logFirebaseEvent(
                                 'B_S_NEW_COLLECTION_Switch_df70li1i_ON_TO');
                             logFirebaseEvent('Switch_update_component_state');
@@ -180,7 +178,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                           }
                         },
                         activeColor: FlutterFlowTheme.of(context).info,
-                        activeTrackColor: Color(0xFFFF005C),
+                        activeTrackColor: const Color(0xFFFF005C),
                         inactiveTrackColor:
                             FlutterFlowTheme.of(context).secondaryText,
                         inactiveThumbColor: FlutterFlowTheme.of(context).info,
@@ -207,13 +205,13 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    Duration(milliseconds: 200),
+                    const Duration(milliseconds: 200),
                     () => setState(() {}),
                   ),
                   autofocus: false,
@@ -226,7 +224,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               fontFamily: 'Nuckle',
-                              color: Color(0x98FFFFFF),
+                              color: const Color(0x98FFFFFF),
                               letterSpacing: 0.0,
                               useGoogleFonts: false,
                             ),
@@ -238,7 +236,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                               useGoogleFonts: false,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -266,9 +264,9 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     filled: true,
-                    fillColor: Color(0x0FFFFFFF),
+                    fillColor: const Color(0x0FFFFFFF),
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Nuckle',
@@ -283,10 +281,9 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
               ),
               if (_model.isEmptyName)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    _model.textController.text == null ||
-                            _model.textController.text == ''
+                    _model.textController.text == ''
                         ? 'Field is required'
                         : 'Name must be less then 15 characters',
                     textAlign: TextAlign.end,
@@ -300,7 +297,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   ),
                 ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),
@@ -309,13 +306,12 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                     currentAction: () async {
                       logFirebaseEvent(
                           'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
-                      var _shouldSetState = false;
+                      var shouldSetState = false;
                       logFirebaseEvent('pinkButton_update_component_state');
                       setState(() {
                         _model.isEmptyName = false;
                       });
-                      if ((_model.textController.text != null &&
-                              _model.textController.text != '') &&
+                      if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
                         logFirebaseEvent('pinkButton_backend_call');
                         _model.collectionsRows =
@@ -327,7 +323,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                               )
                               .order('order'),
                         );
-                        _shouldSetState = true;
+                        shouldSetState = true;
                         logFirebaseEvent('pinkButton_backend_call');
                         _model.newCollectionRowCopy =
                             await CollectionsTable().insert({
@@ -337,11 +333,11 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                           'lowercase_name':
                               _model.textController.text.toLowerCase(),
                           'pair': FFAppState().pairID,
-                          'order': _model.collectionsRows!.length > 0
+                          'order': _model.collectionsRows!.isNotEmpty
                               ? ((_model.collectionsRows!.first.order!) + 1)
                               : 0,
                         });
-                        _shouldSetState = true;
+                        shouldSetState = true;
                         if (widget.selectedWishRow != null) {
                           if (widget.isFromBrowser) {
                             logFirebaseEvent('pinkButton_backend_call');
@@ -367,7 +363,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
 
                             context.goNamed('My_Profile');
 
-                            if (_shouldSetState) setState(() {});
+                            if (shouldSetState) setState(() {});
                             return;
                           } else {
                             logFirebaseEvent('pinkButton_backend_call');
@@ -397,7 +393,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         });
                       }
 
-                      if (_shouldSetState) setState(() {});
+                      if (shouldSetState) setState(() {});
                     },
                   ),
                 ),

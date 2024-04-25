@@ -1,13 +1,8 @@
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'language_model.dart';
 export 'language_model.dart';
 
@@ -77,26 +72,26 @@ class _LanguageWidgetState extends State<LanguageWidget>
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                  child: Container(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                  child: SizedBox(
                     height: 38.0,
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color(0x9A000000),
+                              color: const Color(0x9A000000),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
                               child: Text(
                                 'Language',
@@ -124,16 +119,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0x9A000000),
+                                  color: const Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: Color(0x33FFFFFF),
+                                    color: const Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -169,12 +164,12 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             height: 46.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -199,16 +194,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -225,7 +220,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: Color(0x33F2F1F3),
+                                        color: const Color(0x33F2F1F3),
                                         width: 1.0,
                                       ),
                                     ),
@@ -237,7 +232,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                         Container(
                           width: double.infinity,
                           height: 46.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -266,16 +261,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -288,7 +283,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0x33F2F1F3),
+                                    color: const Color(0x33F2F1F3),
                                     width: 1.0,
                                   ),
                                 ),
@@ -296,12 +291,12 @@ class _LanguageWidgetState extends State<LanguageWidget>
                             ],
                           ),
                         ),
-                        Divider(
+                        const Divider(
                           thickness: 1.0,
                           color: Color(0x1AFFFFFF),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 32.0, 0.0, 0.0),
                           child: Text(
                             'Others',
@@ -317,12 +312,12 @@ class _LanguageWidgetState extends State<LanguageWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 10.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             height: 46.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -351,16 +346,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: Color(0xFFFF2C96),
+                                        color: const Color(0xFFFF2C96),
                                         width: 1.0,
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsets.all(2.0),
+                                      padding: const EdgeInsets.all(2.0),
                                       child: Container(
                                         width: 102.0,
                                         height: 102.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0xFFFF2C96),
                                           shape: BoxShape.circle,
                                         ),
@@ -373,7 +368,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0x33F2F1F3),
+                                      color: const Color(0x33F2F1F3),
                                       width: 1.0,
                                     ),
                                   ),
@@ -385,7 +380,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                         Container(
                           width: double.infinity,
                           height: 46.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -414,16 +409,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -436,7 +431,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0x33F2F1F3),
+                                    color: const Color(0x33F2F1F3),
                                     width: 1.0,
                                   ),
                                 ),
@@ -447,7 +442,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                         Container(
                           width: double.infinity,
                           height: 46.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -476,16 +471,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -498,7 +493,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0x33F2F1F3),
+                                    color: const Color(0x33F2F1F3),
                                     width: 1.0,
                                   ),
                                 ),
@@ -509,7 +504,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                         Container(
                           width: double.infinity,
                           height: 46.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -538,16 +533,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -560,7 +555,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0x33F2F1F3),
+                                    color: const Color(0x33F2F1F3),
                                     width: 1.0,
                                   ),
                                 ),
@@ -571,7 +566,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                         Container(
                           width: double.infinity,
                           height: 46.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -600,16 +595,16 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     border: Border.all(
-                                      color: Color(0xFFFF2C96),
+                                      color: const Color(0xFFFF2C96),
                                       width: 1.0,
                                     ),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsets.all(2.0),
+                                    padding: const EdgeInsets.all(2.0),
                                     child: Container(
                                       width: 102.0,
                                       height: 102.0,
-                                      decoration: BoxDecoration(
+                                      decoration: const BoxDecoration(
                                         color: Color(0xFFFF2C96),
                                         shape: BoxShape.circle,
                                       ),
@@ -622,7 +617,7 @@ class _LanguageWidgetState extends State<LanguageWidget>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: Color(0x33F2F1F3),
+                                    color: const Color(0x33F2F1F3),
                                     width: 1.0,
                                   ),
                                 ),
@@ -631,8 +626,8 @@ class _LanguageWidgetState extends State<LanguageWidget>
                           ),
                         ),
                       ]
-                          .addToStart(SizedBox(height: 32.0))
-                          .addToEnd(SizedBox(height: 80.0)),
+                          .addToStart(const SizedBox(height: 32.0))
+                          .addToEnd(const SizedBox(height: 80.0)),
                     ),
                   ),
                 ),

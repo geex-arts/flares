@@ -3,9 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'new_list_model.dart';
 export 'new_list_model.dart';
@@ -14,7 +11,7 @@ class NewListWidget extends StatefulWidget {
   const NewListWidget({
     super.key,
     bool? noWishes,
-  }) : this.noWishes = noWishes ?? true;
+  }) : noWishes = noWishes ?? true;
 
   final bool noWishes;
 
@@ -51,16 +48,16 @@ class _NewListWidgetState extends State<NewListWidget> {
       children: [
         if (widget.noWishes)
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 16.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 16.0),
             child: Container(
               width: double.infinity,
               height: 73.0,
               decoration: BoxDecoration(
-                color: Color(0x1AFFFFFF),
+                color: const Color(0x1AFFFFFF),
                 borderRadius: BorderRadius.circular(16.0),
               ),
               child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -68,11 +65,11 @@ class _NewListWidgetState extends State<NewListWidget> {
                     Container(
                       width: 40.0,
                       height: 40.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0x0FFFFFFF),
                         shape: BoxShape.circle,
                       ),
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Icon(
                         FFIcons.kdocumentSearch,
                         color: FlutterFlowTheme.of(context).info,
@@ -82,7 +79,7 @@ class _NewListWidgetState extends State<NewListWidget> {
                     Expanded(
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(6.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Add or import your first wish',
                           style:
@@ -97,7 +94,7 @@ class _NewListWidgetState extends State<NewListWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 0.0, 0.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -115,10 +112,10 @@ class _NewListWidgetState extends State<NewListWidget> {
                               return WebViewAware(
                                 child: Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
-                                  child: Container(
+                                  child: SizedBox(
                                     height: MediaQuery.sizeOf(context).height *
                                         0.85,
-                                    child: BSAddWishesWidget(),
+                                    child: const BSAddWishesWidget(),
                                   ),
                                 ),
                               );
@@ -133,9 +130,9 @@ class _NewListWidgetState extends State<NewListWidget> {
                               color: FlutterFlowTheme.of(context).pinkButton,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 3.0, 12.0, 0.0),
                             child: Text(
                               'How it Works?',
@@ -159,11 +156,11 @@ class _NewListWidgetState extends State<NewListWidget> {
           ),
         if (widget.noWishes)
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
-            child: Container(
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+            child: SizedBox(
               height: 24.0,
               child: Stack(
-                alignment: AlignmentDirectional(0.0, 0.0),
+                alignment: const AlignmentDirectional(0.0, 0.0),
                 children: [
                   Row(
                     mainAxisSize: MainAxisSize.max,
@@ -172,16 +169,16 @@ class _NewListWidgetState extends State<NewListWidget> {
                         child: Container(
                           width: double.infinity,
                           height: 1.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x19FFFFFF),
                           ),
                         ),
                       ),
                       Container(
                         height: double.infinity,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 6.0, 16.0, 0.0),
                           child: Text(
                             'Or',
@@ -201,7 +198,7 @@ class _NewListWidgetState extends State<NewListWidget> {
                         child: Container(
                           width: double.infinity,
                           height: 1.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0x19FFFFFF),
                           ),
                         ),
@@ -224,7 +221,7 @@ class _NewListWidgetState extends State<NewListWidget> {
           child: wrapWithModel(
             model: _model.generateWithAIModel,
             updateCallback: () => setState(() {}),
-            child: GenerateWithAIWidget(),
+            child: const GenerateWithAIWidget(),
           ),
         ),
       ],

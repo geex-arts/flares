@@ -11,9 +11,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_a_i_wishlist_model.dart';
 export 'b_s_a_i_wishlist_model.dart';
@@ -86,9 +83,9 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
               elevation: 0,
               insetPadding: EdgeInsets.zero,
               backgroundColor: Colors.transparent,
-              alignment: AlignmentDirectional(0.0, -1.0)
+              alignment: const AlignmentDirectional(0.0, -1.0)
                   .resolve(Directionality.of(context)),
-              child: WebViewAware(
+              child: const WebViewAware(
                 child: AlertDialogWarningWidget(
                   title: 'Something went wrong',
                   subtitle: 'Please try again later',
@@ -129,7 +126,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
   Widget build(BuildContext context) {
     return Builder(
       builder: (context) => ClipRRect(
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(0.0),
           bottomRight: Radius.circular(0.0),
           topLeft: Radius.circular(32.0),
@@ -143,7 +140,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
           child: Container(
             width: double.infinity,
             height: MediaQuery.sizeOf(context).height * 0.85,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: Color(0x18F2F1F3),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
@@ -159,18 +156,18 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                       child: Container(
                         width: 33.0,
                         height: 4.0,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Color(0x3AF2F1F3),
                         ),
                       ),
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                       child: Text(
                         'Wishlist',
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -187,7 +184,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                       context: context,
                       phone: false,
                     ))
-                      Divider(
+                      const Divider(
                         thickness: 1.0,
                         color: Color(0x0CF2F1F3),
                       ),
@@ -204,7 +201,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                             );
                           } else {
                             return Align(
-                              alignment: AlignmentDirectional(0.0, -0.3),
+                              alignment: const AlignmentDirectional(0.0, -0.3),
                               child: Image.asset(
                                 'assets/images/logo.webp',
                                 width: 155.0,
@@ -221,10 +218,10 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                 ),
                 if (!_model.isLoading)
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Builder(
                       builder: (context) => Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 30.0, 16.0, 45.0),
                         child: wrapWithModel(
                           model: _model.generateModel,
@@ -271,9 +268,9 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                                       elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
-                                      alignment: AlignmentDirectional(0.0, -1.0)
+                                      alignment: const AlignmentDirectional(0.0, -1.0)
                                           .resolve(Directionality.of(context)),
-                                      child: WebViewAware(
+                                      child: const WebViewAware(
                                         child: AlertDialogWarningWidget(
                                           title: 'Something went wrong',
                                           subtitle: 'Please try again later',

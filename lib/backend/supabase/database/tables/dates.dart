@@ -9,7 +9,7 @@ class DatesTable extends SupabaseTable<DatesRow> {
 }
 
 class DatesRow extends SupabaseDataRow {
-  DatesRow(Map<String, dynamic> data) : super(data);
+  DatesRow(super.data);
 
   @override
   SupabaseTable get table => DatesTable();

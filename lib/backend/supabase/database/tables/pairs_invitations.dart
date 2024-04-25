@@ -10,7 +10,7 @@ class PairsInvitationsTable extends SupabaseTable<PairsInvitationsRow> {
 }
 
 class PairsInvitationsRow extends SupabaseDataRow {
-  PairsInvitationsRow(Map<String, dynamic> data) : super(data);
+  PairsInvitationsRow(super.data);
 
   @override
   SupabaseTable get table => PairsInvitationsTable();

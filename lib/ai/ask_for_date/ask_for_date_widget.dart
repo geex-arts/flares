@@ -1,11 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'ask_for_date_model.dart';
 export 'ask_for_date_model.dart';
 
@@ -77,12 +73,12 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                     decoration: BoxDecoration(
                       color: FlutterFlowTheme.of(context).primaryBackground,
                     ),
-                    alignment: AlignmentDirectional(-1.0, 0.0),
+                    alignment: const AlignmentDirectional(-1.0, 0.0),
                     child: Align(
-                      alignment: AlignmentDirectional(-1.0, 0.0),
+                      alignment: const AlignmentDirectional(-1.0, 0.0),
                       child: Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                         child: Text(
                           'Header',
                           style:
@@ -102,7 +98,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 70.0,
@@ -114,7 +110,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 blurRadius: 0.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: Offset(
+                                offset: const Offset(
                                   0.0,
                                   1.0,
                                 ),
@@ -126,16 +122,16 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                   .primaryBackground,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
@@ -146,7 +142,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'A',
                                         style: FlutterFlowTheme.of(context)
@@ -163,7 +159,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: 100.0,
@@ -174,7 +170,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'List Item',
                                           style: FlutterFlowTheme.of(context)
@@ -202,7 +198,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 70.0,
@@ -214,7 +210,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 blurRadius: 0.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: Offset(
+                                offset: const Offset(
                                   0.0,
                                   1.0,
                                 ),
@@ -226,16 +222,16 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                   .primaryBackground,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
@@ -246,7 +242,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'A',
                                         style: FlutterFlowTheme.of(context)
@@ -263,7 +259,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: 100.0,
@@ -274,7 +270,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'List Item',
                                           style: FlutterFlowTheme.of(context)
@@ -302,7 +298,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 70.0,
@@ -314,7 +310,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 blurRadius: 0.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: Offset(
+                                offset: const Offset(
                                   0.0,
                                   1.0,
                                 ),
@@ -326,16 +322,16 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                   .primaryBackground,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
@@ -346,7 +342,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'A',
                                         style: FlutterFlowTheme.of(context)
@@ -363,7 +359,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: 100.0,
@@ -374,7 +370,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'List Item',
                                           style: FlutterFlowTheme.of(context)
@@ -402,7 +398,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 70.0,
@@ -414,7 +410,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 blurRadius: 0.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: Offset(
+                                offset: const Offset(
                                   0.0,
                                   1.0,
                                 ),
@@ -426,16 +422,16 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                   .primaryBackground,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
@@ -446,7 +442,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'A',
                                         style: FlutterFlowTheme.of(context)
@@ -463,7 +459,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: 100.0,
@@ -474,7 +470,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'List Item',
                                           style: FlutterFlowTheme.of(context)
@@ -502,7 +498,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 70.0,
@@ -514,7 +510,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 blurRadius: 0.0,
                                 color: FlutterFlowTheme.of(context)
                                     .primaryBackground,
-                                offset: Offset(
+                                offset: const Offset(
                                   0.0,
                                   1.0,
                                 ),
@@ -526,16 +522,16 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                   .primaryBackground,
                             ),
                           ),
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 0.0, 0.0, 0.0),
                                   child: Container(
                                     width: 50.0,
@@ -546,7 +542,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       shape: BoxShape.circle,
                                     ),
                                     child: Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      alignment: const AlignmentDirectional(0.0, 0.0),
                                       child: Text(
                                         'A',
                                         style: FlutterFlowTheme.of(context)
@@ -563,7 +559,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         12.0, 0.0, 12.0, 0.0),
                                     child: Container(
                                       width: 100.0,
@@ -574,7 +570,7 @@ class _AskForDateWidgetState extends State<AskForDateWidget> {
                                       ),
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
+                                            const AlignmentDirectional(-1.0, 0.0),
                                         child: Text(
                                           'List Item',
                                           style: FlutterFlowTheme.of(context)

@@ -8,7 +8,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'card_a_i_model.dart';
@@ -52,7 +51,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
+    return SizedBox(
       width: double.infinity,
       height: double.infinity,
       child: Stack(
@@ -95,8 +94,8 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8.0),
               child: CachedNetworkImage(
-                fadeInDuration: Duration(milliseconds: 300),
-                fadeOutDuration: Duration(milliseconds: 300),
+                fadeInDuration: const Duration(milliseconds: 300),
+                fadeOutDuration: const Duration(milliseconds: 300),
                 imageUrl:
                     functions.stringToImagePath(widget.wishAIElement!.image),
                 width: double.infinity,
@@ -108,7 +107,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
           Container(
             width: double.infinity,
             height: 77.0,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xA5000000), Colors.transparent],
                 stops: [0.0, 1.0],
@@ -124,11 +123,11 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Container(
               width: double.infinity,
               height: 100.0,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [Colors.transparent, Color(0xA6000000)],
                   stops: [0.0, 1.0],
@@ -145,7 +144,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(10.0, 16.0, 0.0, 0.0),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -154,18 +153,18 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                     width: 18.0,
                     height: 18.0,
                     clipBehavior: Clip.antiAlias,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                     ),
                     child: CachedNetworkImage(
-                      fadeInDuration: Duration(milliseconds: 200),
-                      fadeOutDuration: Duration(milliseconds: 200),
+                      fadeInDuration: const Duration(milliseconds: 200),
+                      fadeOutDuration: const Duration(milliseconds: 200),
                       imageUrl: '',
                       fit: BoxFit.cover,
                     ),
                   ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                   child: Text(
                     'AI Generated',
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -184,9 +183,9 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(0.0, 1.0),
+            alignment: const AlignmentDirectional(0.0, 1.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 6.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 6.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -196,7 +195,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                       widget.wishAIElement?.category != '')
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 34.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 34.0, 0.0),
                       child: Text(
                         widget.wishAIElement!.category,
                         maxLines: 2,
@@ -216,7 +215,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                       widget.wishAIElement?.name != '')
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 34.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 9.0, 34.0, 0.0),
                       child: Text(
                         widget.wishAIElement!.name,
                         maxLines: 2,
@@ -238,7 +237,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                           widget.wishAIElement?.description != '')
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 6.0, 34.0, 0.0),
                             child: Text(
                               widget.wishAIElement!.description,
@@ -247,7 +246,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: Color(0x98FFFFFF),
+                                    color: const Color(0x98FFFFFF),
                                     fontSize: 10.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
@@ -264,9 +263,9 @@ class _CardAIWidgetState extends State<CardAIWidget> {
             ),
           ),
           Align(
-            alignment: AlignmentDirectional(1.0, 1.0),
+            alignment: const AlignmentDirectional(1.0, 1.0),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
               child: FutureBuilder<List<WishesRow>>(
                 future: WishesTable().queryRows(
                   queryFn: (q) => q
@@ -302,12 +301,12 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                     width: 30.0,
                     height: 30.0,
                     decoration: BoxDecoration(
-                      color: Color(0x28FFFFFF),
+                      color: const Color(0x28FFFFFF),
                       borderRadius: BorderRadius.circular(10.0),
                     ),
                     child: Builder(
                       builder: (context) {
-                        if (addToCollectionWishesRowList.length > 0) {
+                        if (addToCollectionWishesRowList.isNotEmpty) {
                           return Icon(
                             FFIcons.kfcheck,
                             color: FlutterFlowTheme.of(context).secondary,

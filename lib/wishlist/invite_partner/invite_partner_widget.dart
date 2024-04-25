@@ -3,15 +3,9 @@ import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_model.dart';
@@ -90,8 +84,8 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
             mainAxisSize: MainAxisSize.max,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
-                child: Container(
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 47.0, 16.0, 0.0),
+                child: SizedBox(
                   height: 38.0,
                   child: Stack(
                     children: [
@@ -100,7 +94,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                         phone: false,
                       ))
                         Align(
-                          alignment: AlignmentDirectional(1.0, 0.0),
+                          alignment: const AlignmentDirectional(1.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
                             focusColor: Colors.transparent,
@@ -125,11 +119,11 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: Container(
+                                        child: SizedBox(
                                           height: MediaQuery.sizeOf(context)
                                                   .height *
                                               0.85,
-                                          child: BSTurnNotificationsWidget(),
+                                          child: const BSTurnNotificationsWidget(),
                                         ),
                                       ),
                                     ),
@@ -140,11 +134,11 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                             child: Container(
                               height: 38.0,
                               decoration: BoxDecoration(
-                                color: Color(0x9A000000),
+                                color: const Color(0x9A000000),
                                 borderRadius: BorderRadius.circular(21.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     10.0, 0.0, 10.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
@@ -175,7 +169,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           ),
                         ),
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -188,16 +182,16 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                             context.safePop();
                           },
                           child: Stack(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             children: [
                               Container(
                                 width: 38.0,
                                 height: 38.0,
                                 decoration: BoxDecoration(
-                                  color: Color(0x9A000000),
+                                  color: const Color(0x9A000000),
                                   borderRadius: BorderRadius.circular(14.0),
                                   border: Border.all(
-                                    color: Color(0x33FFFFFF),
+                                    color: const Color(0x33FFFFFF),
                                   ),
                                 ),
                               ),
@@ -218,7 +212,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -237,7 +231,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                               ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
                             'Your partner will receive a link to \ndownload to the Flo app. He\'ll then use the \ncode to pair your profiles',
@@ -246,7 +240,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: Color(0x9AFFFFFF),
+                                  color: const Color(0x9AFFFFFF),
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                   lineHeight: 1.4,
@@ -254,16 +248,16 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Color(0x0DFFFFFF),
+                              color: const Color(0x0DFFFFFF),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -280,7 +274,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 10.0, 0.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
@@ -298,7 +292,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              Color(0x98FFFFFF),
+                                                              const Color(0x98FFFFFF),
                                                           letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.normal,
@@ -310,7 +304,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                                   _model.code,
                                                   'def',
                                                 ),
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                   color: Color(0xFFFF2C96),
                                                 ),
                                               )
@@ -326,7 +320,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   5.0, 0.0, 0.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,
@@ -346,7 +340,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                                 'fut2',
                                               )));
                                             },
-                                            child: Icon(
+                                            child: const Icon(
                                               Icons.content_copy,
                                               color: Color(0xFFFF2C96),
                                               size: 18.0,
@@ -358,7 +352,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                   ),
                                   Builder(
                                     builder: (context) => Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
                                       child: wrapWithModel(
                                         model: _model.sharemyinvitelinkModel,
@@ -386,12 +380,12 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 12.0, 0.0, 0.0),
-                          child: Container(
+                          child: SizedBox(
                             height: 24.0,
                             child: Stack(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               children: [
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -400,16 +394,16 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x19FFFFFF),
                                         ),
                                       ),
                                     ),
                                     Container(
                                       height: double.infinity,
-                                      decoration: BoxDecoration(),
+                                      decoration: const BoxDecoration(),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 6.0, 16.0, 0.0),
                                         child: Text(
                                           'Or',
@@ -431,7 +425,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                       child: Container(
                                         width: double.infinity,
                                         height: 1.0,
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0x19FFFFFF),
                                         ),
                                       ),
@@ -443,16 +437,16 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           ),
                         ),
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             decoration: BoxDecoration(
-                              color: Color(0x0DFFFFFF),
+                              color: const Color(0x0DFFFFFF),
                               borderRadius: BorderRadius.circular(16.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 16.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.min,
@@ -469,7 +463,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                         ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 16.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller:
@@ -485,7 +479,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                             .labelMedium
                                             .override(
                                               fontFamily: 'Nuckle',
-                                              color: Color(0x98FFFFFF),
+                                              color: const Color(0x98FFFFFF),
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
@@ -500,7 +494,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                               useGoogleFonts: false,
                                             ),
                                         enabledBorder: OutlineInputBorder(
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Color(0x00000000),
                                             width: 1.0,
                                           ),
@@ -535,9 +529,9 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                               BorderRadius.circular(30.0),
                                         ),
                                         filled: true,
-                                        fillColor: Color(0x1AFFFFFF),
+                                        fillColor: const Color(0x1AFFFFFF),
                                         contentPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 20.0, 14.0, 20.0, 14.0),
                                       ),
                                       style: FlutterFlowTheme.of(context)
@@ -558,7 +552,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                   ),
                                   Builder(
                                     builder: (context) => Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 16.0, 0.0, 0.0),
                                       child: wrapWithModel(
                                         model: _model.sendPairingCodeModel,
@@ -587,8 +581,8 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                           ),
                         ),
                       ]
-                          .addToStart(SizedBox(height: 30.0))
-                          .addToEnd(SizedBox(height: 60.0)),
+                          .addToStart(const SizedBox(height: 30.0))
+                          .addToEnd(const SizedBox(height: 60.0)),
                     ),
                   ),
                 ),

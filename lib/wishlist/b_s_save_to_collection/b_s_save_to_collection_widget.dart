@@ -10,7 +10,6 @@ import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_save_to_collection_model.dart';
@@ -22,8 +21,8 @@ class BSSaveToCollectionWidget extends StatefulWidget {
     this.selectedWishRow,
     bool? isFromWebview,
     bool? isFromAI,
-  })  : this.isFromWebview = isFromWebview ?? false,
-        this.isFromAI = isFromAI ?? false;
+  })  : isFromWebview = isFromWebview ?? false,
+        isFromAI = isFromAI ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isFromWebview;
@@ -67,7 +66,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
     return
         // на модалку при вызове ставить 40% высоту
         ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -106,9 +105,9 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
               width: double.infinity,
               decoration: BoxDecoration(
                 color: widget.isFromWebview
-                    ? Color(0xFF33393C)
-                    : Color(0x18F2F1F3),
-                borderRadius: BorderRadius.only(
+                    ? const Color(0xFF33393C)
+                    : const Color(0x18F2F1F3),
+                borderRadius: const BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
                   bottomRight: Radius.circular(0.0),
                   topLeft: Radius.circular(32.0),
@@ -119,18 +118,18 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Container(
                       width: 33.0,
                       height: 4.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0x3AF2F1F3),
                       ),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                     child: Text(
                       'Save to Collections',
                       style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -143,26 +142,26 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                           ),
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.0,
                     color: Color(0x0CF2F1F3),
                   ),
                   Container(
                     height: 300.0,
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        if (containerCollectionsRowList.length > 0)
+                        if (containerCollectionsRowList.isNotEmpty)
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 12.0, 16.0, 0.0),
                             child: TextFormField(
                               controller: _model.textController,
                               focusNode: _model.textFieldFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.textController',
-                                Duration(milliseconds: 200),
+                                const Duration(milliseconds: 200),
                                 () => setState(() {}),
                               ),
                               autofocus: false,
@@ -175,7 +174,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                     .labelMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: Color(0x98FFFFFF),
+                                      color: const Color(0x98FFFFFF),
                                       letterSpacing: 0.0,
                                       useGoogleFonts: false,
                                     ),
@@ -188,7 +187,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                       useGoogleFonts: false,
                                     ),
                                 enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
+                                  borderSide: const BorderSide(
                                     color: Color(0x00000000),
                                     width: 1.0,
                                   ),
@@ -217,10 +216,10 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                   borderRadius: BorderRadius.circular(30.0),
                                 ),
                                 filled: true,
-                                fillColor: Color(0x0FFFFFFF),
-                                contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                fillColor: const Color(0x0FFFFFFF),
+                                contentPadding: const EdgeInsetsDirectional.fromSTEB(
                                     20.0, 0.0, 20.0, 0.0),
-                                prefixIcon: Icon(
+                                prefixIcon: const Icon(
                                   Icons.search,
                                   color: Color(0x7FF2F1F3),
                                 ),
@@ -240,18 +239,14 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                   .asValidator(context),
                             ),
                           ),
-                        if (containerCollectionsRowList.length > 0)
+                        if (containerCollectionsRowList.isNotEmpty)
                           Flexible(
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 10.0, 16.0, 0.0),
                               child: Builder(
                                 builder: (context) {
-                                  final currentCollection = ((_model
-                                                          .textController
-                                                          .text !=
-                                                      null &&
-                                                  _model.textController.text !=
+                                  final currentCollection = ((_model.textController.text !=
                                                       '') &&
                                               (_model.textController.text
                                                       .length >
@@ -345,7 +340,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                         child: Container(
                                           width: double.infinity,
                                           height: 56.0,
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
                                             children: [
@@ -366,7 +361,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                                   ),
                                                 ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         8.0, 0.0, 0.0, 0.0),
                                                 child: Text(
@@ -401,15 +396,15 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                       ],
                     ),
                   ),
-                  if (containerCollectionsRowList.length < 1)
+                  if (containerCollectionsRowList.isEmpty)
                     wrapWithModel(
                       model: _model.emptyCollectionsWidgetModel,
                       updateCallback: () => setState(() {}),
-                      child: EmptyCollectionsWidgetWidget(),
+                      child: const EmptyCollectionsWidgetWidget(),
                     ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
                     child: wrapWithModel(
                       model: _model.createnewCollectionModel,
                       updateCallback: () => setState(() {}),
@@ -454,7 +449,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                 return WebViewAware(
                                   child: Padding(
                                     padding: MediaQuery.viewInsetsOf(context),
-                                    child: BSNewCollectionWidget(
+                                    child: const BSNewCollectionWidget(
                                       isFromWebview: true,
                                     ),
                                   ),

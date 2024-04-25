@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
@@ -15,7 +14,6 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'add_from_browser_model.dart';
@@ -81,9 +79,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
             ),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
             child: ClipRRect(
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(0.0),
                 bottomRight: Radius.circular(0.0),
                 topLeft: Radius.circular(32.0),
@@ -115,7 +113,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                     final containerParseSiteResponse = snapshot.data!;
                     return Container(
                       width: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0x18F2F1F3),
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
@@ -129,23 +127,23 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Container(
                                 width: 33.0,
                                 height: 4.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0x3AF2F1F3),
                                 ),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.0, -1.0),
+                            alignment: const AlignmentDirectional(0.0, -1.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 14.0, 0.0, 12.0),
                               child: Text(
                                 'Add to wishlist',
@@ -162,7 +160,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                               ),
                             ),
                           ),
-                          Divider(
+                          const Divider(
                             thickness: 1.0,
                             color: Color(0x0CF2F1F3),
                           ),
@@ -176,7 +174,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 24.0, 16.0, 0.0),
                                       child: Text(
                                         'Name',
@@ -195,7 +193,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 0.0),
                                       child: TextFormField(
                                         controller:
@@ -218,7 +216,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   .labelMedium
                                                   .override(
                                                     fontFamily: 'Nuckle',
-                                                    color: Color(0x98FFFFFF),
+                                                    color: const Color(0x98FFFFFF),
                                                     letterSpacing: 0.0,
                                                     useGoogleFonts: false,
                                                   ),
@@ -234,7 +232,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -273,9 +271,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 BorderRadius.circular(30.0),
                                           ),
                                           filled: true,
-                                          fillColor: Color(0x0FFFFFFF),
+                                          fillColor: const Color(0x0FFFFFFF),
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 13.0, 20.0, 13.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -297,7 +295,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 30.0, 0.0, 0.0),
                                       child: Text(
                                         'Collection',
@@ -316,7 +314,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 0.0),
                                       child:
                                           FutureBuilder<List<CollectionsRow>>(
@@ -363,17 +361,13 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   _model.dropDownValue ??= '',
                                                 ),
                                                 options: List<String>.from(
-                                                    blurCollectionsRowList
-                                                                .length >
-                                                            0
+                                                    blurCollectionsRowList.isNotEmpty
                                                         ? blurCollectionsRowList
                                                             .map((e) => e.uuid)
                                                             .toList()
                                                         : ([])),
                                                 optionLabels:
-                                                    blurCollectionsRowList
-                                                                .length >
-                                                            0
+                                                    blurCollectionsRowList.isNotEmpty
                                                         ? blurCollectionsRowList
                                                             .map((e) => e.name)
                                                             .withoutNulls
@@ -390,23 +384,23 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                         .override(
                                                           fontFamily: 'Nuckle',
                                                           color:
-                                                              Color(0x99FFFFFF),
+                                                              const Color(0x99FFFFFF),
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts: false,
                                                         ),
                                                 hintText: 'Collection name',
-                                                icon: Icon(
+                                                icon: const Icon(
                                                   Icons
                                                       .keyboard_arrow_down_rounded,
                                                   color: Color(0x80F2F1F3),
                                                   size: 20.0,
                                                 ),
-                                                fillColor: Color(0xFF1D1B1B),
+                                                fillColor: const Color(0xFF1D1B1B),
                                                 elevation: 0.0,
-                                                borderColor: Color(0x0FFFFFFF),
+                                                borderColor: const Color(0x0FFFFFFF),
                                                 borderWidth: 0.0,
                                                 borderRadius: 30.0,
-                                                margin: EdgeInsetsDirectional
+                                                margin: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         20.0, 0.0, 12.0, 0.0),
                                                 hidesUnderline: true,
@@ -420,7 +414,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 30.0, 0.0, 0.0),
                                       child: Text(
                                         'Motivation',
@@ -439,7 +433,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 12.0, 16.0, 0.0),
                                       child: TextFormField(
                                         controller: _model
@@ -464,7 +458,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   .labelMedium
                                                   .override(
                                                     fontFamily: 'Nuckle',
-                                                    color: Color(0x98FFFFFF),
+                                                    color: const Color(0x98FFFFFF),
                                                     letterSpacing: 0.0,
                                                     useGoogleFonts: false,
                                                   ),
@@ -480,7 +474,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 useGoogleFonts: false,
                                               ),
                                           enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
+                                            borderSide: const BorderSide(
                                               color: Color(0x00000000),
                                               width: 1.0,
                                             ),
@@ -519,9 +513,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 BorderRadius.circular(12.0),
                                           ),
                                           filled: true,
-                                          fillColor: Color(0x0FFFFFFF),
+                                          fillColor: const Color(0x0FFFFFFF),
                                           contentPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 16.0, 20.0, 16.0),
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -545,7 +539,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           16.0, 30.0, 0.0, 0.0),
                                       child: Text(
                                         'Select Image',
@@ -564,11 +558,11 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Container(
                                         height: 177.0,
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
@@ -591,7 +585,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                     itemCount:
                                                         currentImage.length,
                                                     separatorBuilder: (_, __) =>
-                                                        SizedBox(width: 8.0),
+                                                        const SizedBox(width: 8.0),
                                                     itemBuilder: (context,
                                                         currentImageIndex) {
                                                       final currentImageItem =
@@ -599,8 +593,8 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               currentImageIndex];
                                                       return Container(
                                                         decoration:
-                                                            BoxDecoration(),
-                                                        child: Container(
+                                                            const BoxDecoration(),
+                                                        child: SizedBox(
                                                           width: 119.0,
                                                           height: 177.0,
                                                           child: Stack(
@@ -645,19 +639,19 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                       Colors
                                                                           .transparent
                                                                     ],
-                                                                    stops: [
+                                                                    stops: const [
                                                                       0.0,
                                                                       1.0
                                                                     ],
                                                                     begin:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
-                                                                    end: AlignmentDirectional(
+                                                                    end: const AlignmentDirectional(
                                                                         0, 1.0),
                                                                   ),
                                                                   borderRadius:
-                                                                      BorderRadius
+                                                                      const BorderRadius
                                                                           .only(
                                                                     bottomLeft:
                                                                         Radius.circular(
@@ -676,7 +670,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         0.0,
                                                                         1.0),
                                                                 child:
@@ -693,19 +687,19 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                         FlutterFlowTheme.of(context)
                                                                             .primaryBackground
                                                                       ],
-                                                                      stops: [
+                                                                      stops: const [
                                                                         0.0,
                                                                         1.0
                                                                       ],
-                                                                      begin: AlignmentDirectional(
+                                                                      begin: const AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
-                                                                      end: AlignmentDirectional(
+                                                                      end: const AlignmentDirectional(
                                                                           0,
                                                                           1.0),
                                                                     ),
                                                                     borderRadius:
-                                                                        BorderRadius
+                                                                        const BorderRadius
                                                                             .only(
                                                                       bottomLeft:
                                                                           Radius.circular(
@@ -725,11 +719,11 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               ),
                                                               Align(
                                                                 alignment:
-                                                                    AlignmentDirectional(
+                                                                    const AlignmentDirectional(
                                                                         1.0,
                                                                         -1.0),
                                                                 child: Padding(
-                                                                  padding: EdgeInsetsDirectional
+                                                                  padding: const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           10.0,
@@ -782,7 +776,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                             ),
                                                                             child:
                                                                                 Align(
-                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              alignment: const AlignmentDirectional(0.0, 0.0),
                                                                               child: Container(
                                                                                 width: 12.0,
                                                                                 height: 12.0,
@@ -803,7 +797,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                                 BoxDecoration(
                                                                               shape: BoxShape.circle,
                                                                               border: Border.all(
-                                                                                color: Color(0x1AFFFFFF),
+                                                                                color: const Color(0x1AFFFFFF),
                                                                               ),
                                                                             ),
                                                                           );
@@ -829,7 +823,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       BorderRadius.circular(
                                                           8.0),
                                                   border: Border.all(
-                                                    color: Color(0x32FFFFFF),
+                                                    color: const Color(0x32FFFFFF),
                                                     width: 1.0,
                                                   ),
                                                 ),
@@ -842,7 +836,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                 ?.bytes
                                                                 ?.isNotEmpty ??
                                                             false)) {
-                                                      return Container(
+                                                      return SizedBox(
                                                         width: 119.0,
                                                         height: 177.0,
                                                         child: Stack(
@@ -890,21 +884,21 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                     Colors
                                                                         .transparent
                                                                   ],
-                                                                  stops: [
+                                                                  stops: const [
                                                                     0.0,
                                                                     1.0
                                                                   ],
                                                                   begin:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0.0,
                                                                           -1.0),
                                                                   end:
-                                                                      AlignmentDirectional(
+                                                                      const AlignmentDirectional(
                                                                           0,
                                                                           1.0),
                                                                 ),
                                                                 borderRadius:
-                                                                    BorderRadius
+                                                                    const BorderRadius
                                                                         .only(
                                                                   bottomLeft: Radius
                                                                       .circular(
@@ -923,7 +917,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 1.0),
                                                               child: Container(
                                                                 width: 119.0,
@@ -939,19 +933,19 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                               context)
                                                                           .primaryBackground
                                                                     ],
-                                                                    stops: [
+                                                                    stops: const [
                                                                       0.0,
                                                                       1.0
                                                                     ],
                                                                     begin:
-                                                                        AlignmentDirectional(
+                                                                        const AlignmentDirectional(
                                                                             0.0,
                                                                             -1.0),
-                                                                    end: AlignmentDirectional(
+                                                                    end: const AlignmentDirectional(
                                                                         0, 1.0),
                                                                   ),
                                                                   borderRadius:
-                                                                      BorderRadius
+                                                                      const BorderRadius
                                                                           .only(
                                                                     bottomLeft:
                                                                         Radius.circular(
@@ -971,11 +965,11 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             ),
                                                             Align(
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       1.0,
                                                                       -1.0),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         0.0,
                                                                         10.0,
@@ -1030,7 +1024,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                                const AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Container(
                                                                               width: 12.0,
@@ -1054,7 +1048,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                                 BoxShape.circle,
                                                                             border:
                                                                                 Border.all(
-                                                                              color: Color(0x1AFFFFFF),
+                                                                              color: const Color(0x1AFFFFFF),
                                                                             ),
                                                                           ),
                                                                         );
@@ -1070,7 +1064,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                     } else {
                                                       return Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 0.0, 0.0),
                                                         child:
                                                             FlutterFlowIconButton(
@@ -1145,9 +1139,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               }
                                                             }
 
-                                                            if (_model.uploadedLocalFile1 !=
-                                                                    null &&
-                                                                (_model
+                                                            if ((_model
                                                                         .uploadedLocalFile1
                                                                         .bytes
                                                                         ?.isNotEmpty ??
@@ -1170,18 +1162,18 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 ),
                                               ),
                                             ]
-                                                .divide(SizedBox(width: 8.0))
+                                                .divide(const SizedBox(width: 8.0))
                                                 .addToStart(
-                                                    SizedBox(width: 16.0))
+                                                    const SizedBox(width: 16.0))
                                                 .addToEnd(
-                                                    SizedBox(width: 16.0)),
+                                                    const SizedBox(width: 16.0)),
                                           ),
                                         ),
                                       ),
                                     ),
                                     Builder(
                                       builder: (context) => Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 28.0, 16.0, 45.0),
                                         child: wrapWithModel(
                                           model: _model.saveToCollectionModel,
@@ -1195,7 +1187,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                             currentAction: () async {
                                               logFirebaseEvent(
                                                   'ADD_FROM_BROWSER_SaveToCollection_CALLBA');
-                                              var _shouldSetState = false;
+                                              var shouldSetState = false;
                                               logFirebaseEvent(
                                                   'SaveToCollection_validate_form');
                                               if (_model.formKey.currentState ==
@@ -1293,7 +1285,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                         backgroundColor:
                                                             Colors.transparent,
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                     0.0, -1.0)
                                                                 .resolve(
                                                                     Directionality.of(
@@ -1313,7 +1305,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                         context)
                                                                     .unfocus(),
                                                             child:
-                                                                AlertDialogWarningWidget(
+                                                                const AlertDialogWarningWidget(
                                                               title:
                                                                   'No image selected!',
                                                               subtitle:
@@ -1326,8 +1318,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   ).then((value) =>
                                                       setState(() {}));
 
-                                                  if (_shouldSetState)
+                                                  if (shouldSetState) {
                                                     setState(() {});
+                                                  }
                                                   return;
                                                 }
 
@@ -1363,7 +1356,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                     r'''$.link''',
                                                   ).toString(),
                                                 });
-                                                _shouldSetState = true;
+                                                shouldSetState = true;
                                                 if (_model.dropDownValue !=
                                                         null &&
                                                     _model.dropDownValue !=
@@ -1378,7 +1371,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       _model.dropDownValue,
                                                     ),
                                                   );
-                                                  _shouldSetState = true;
+                                                  shouldSetState = true;
                                                   logFirebaseEvent(
                                                       'SaveToCollection_backend_call');
                                                   unawaited(
@@ -1389,7 +1382,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                           'visibily': _model
                                                               .selectedCollection
                                                               ?.first
-                                                              ?.visibility,
+                                                              .visibility,
                                                         },
                                                         matchingRows: (rows) =>
                                                             rows.eq(
@@ -1400,7 +1393,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       );
                                                     }(),
                                                   );
-                                                  _shouldSetState = true;
+                                                  shouldSetState = true;
                                                   logFirebaseEvent(
                                                       'SaveToCollection_bottom_sheet');
                                                   Navigator.pop(context);
@@ -1439,7 +1432,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             padding: MediaQuery
                                                                 .viewInsetsOf(
                                                                     context),
-                                                            child: Container(
+                                                            child: SizedBox(
                                                               height: MediaQuery
                                                                           .sizeOf(
                                                                               context)
@@ -1462,8 +1455,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       safeSetState(() {}));
                                                 }
                                               }
-                                              if (_shouldSetState)
+                                              if (shouldSetState) {
                                                 setState(() {});
+                                              }
                                             },
                                           ),
                                         ),

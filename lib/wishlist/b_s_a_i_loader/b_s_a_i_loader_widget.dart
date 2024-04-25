@@ -3,9 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'b_s_a_i_loader_model.dart';
 export 'b_s_a_i_loader_model.dart';
 
@@ -41,7 +38,7 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -54,7 +51,7 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
         ),
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -67,17 +64,17 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                 child: Text(
                   'Name',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -90,17 +87,17 @@ class _BSAILoaderWidgetState extends State<BSAILoaderWidget> {
                       ),
                 ),
               ),
-              Divider(
+              const Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
-              Spacer(),
+              const Spacer(),
               wrapWithModel(
                 model: _model.loaderPlaceholderModel,
                 updateCallback: () => setState(() {}),
-                child: LoaderPlaceholderWidget(),
+                child: const LoaderPlaceholderWidget(),
               ),
-              Spacer(),
+              const Spacer(),
             ],
           ),
         ),

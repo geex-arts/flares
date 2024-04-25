@@ -5,9 +5,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'n_save_to_collection_model.dart';
 export 'n_save_to_collection_model.dart';
 
@@ -49,7 +46,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32.0),
         child: BackdropFilter(
@@ -60,11 +57,11 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
           child: Container(
             width: 259.0,
             decoration: BoxDecoration(
-              color: Color(0x16F2F1F3),
+              color: const Color(0x16F2F1F3),
               borderRadius: BorderRadius.circular(32.0),
             ),
             child: Padding(
-              padding: EdgeInsets.all(20.0),
+              padding: const EdgeInsets.all(20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -83,7 +80,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -107,10 +104,10 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                       text: 'Delete Collection',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).pinkButton,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
@@ -123,7 +120,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                                   lineHeight: 1.3,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                         ),
                         borderRadius: BorderRadius.circular(30.0),
@@ -131,7 +128,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
                         logFirebaseEvent(
@@ -144,21 +141,21 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                         width: 100.0,
                         height: 40.0,
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: Colors.transparent,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
                                   fontFamily: 'Nuckle',
-                                  color: Color(0x80F2F1F3),
+                                  color: const Color(0x80F2F1F3),
                                   fontSize: 15.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                   useGoogleFonts: false,
                                 ),
                         elevation: 0.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                         ),
                         borderRadius: BorderRadius.circular(30.0),

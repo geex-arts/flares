@@ -4,15 +4,12 @@ import '/components/notifications_list_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'notifications_model.dart';
 export 'notifications_model.dart';
 
@@ -131,26 +128,26 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                 children: [
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 47.0, 0.0, 0.0),
-                          child: Container(
+                          child: SizedBox(
                             height: 38.0,
                             child: Stack(
                               children: [
                                 Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: Color(0x9A000000),
+                                      color: const Color(0x9A000000),
                                       borderRadius: BorderRadius.circular(8.0),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           8.0, 4.0, 8.0, 0.0),
                                       child: Text(
                                         'Notification',
@@ -179,17 +176,17 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     context.safePop();
                                   },
                                   child: Stack(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     children: [
                                       Container(
                                         width: 38.0,
                                         height: 38.0,
                                         decoration: BoxDecoration(
-                                          color: Color(0x9A000000),
+                                          color: const Color(0x9A000000),
                                           borderRadius:
                                               BorderRadius.circular(14.0),
                                           border: Border.all(
-                                            color: Color(0x33FFFFFF),
+                                            color: const Color(0x33FFFFFF),
                                           ),
                                         ),
                                       ),
@@ -215,7 +212,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               children: [
                                 Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: wrapWithModel(
                                     model: _model.notificationsListModel1,
                                     updateCallback: () => setState(() {}),
@@ -247,7 +244,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                 ),
                                 Container(
                                   width: double.infinity,
-                                  decoration: BoxDecoration(),
+                                  decoration: const BoxDecoration(),
                                   child: wrapWithModel(
                                     model: _model.notificationsListModel3,
                                     updateCallback: () => setState(() {}),
@@ -263,7 +260,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                     ),
                                   ),
                                 ),
-                              ].addToEnd(SizedBox(height: 120.0)),
+                              ].addToEnd(const SizedBox(height: 120.0)),
                             ),
                           ),
                         ),
@@ -271,7 +268,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 120.0,
@@ -281,21 +278,21 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                             Colors.transparent,
                             FlutterFlowTheme.of(context).primaryBackground
                           ],
-                          stops: [0.0, 1.0],
-                          begin: AlignmentDirectional(0.0, -1.0),
-                          end: AlignmentDirectional(0, 1.0),
+                          stops: const [0.0, 1.0],
+                          begin: const AlignmentDirectional(0.0, -1.0),
+                          end: const AlignmentDirectional(0, 1.0),
                         ),
                       ),
                     ),
                   ),
-                  if (backgroundContainerNotificationsRowList.length < 1)
+                  if (backgroundContainerNotificationsRowList.isEmpty)
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 224.0,
                         height: 145.0,
                         decoration: BoxDecoration(
-                          color: Color(0x0EFFFFFF),
+                          color: const Color(0x0EFFFFFF),
                           borderRadius: BorderRadius.circular(20.0),
                         ),
                         child: Column(
@@ -308,7 +305,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               size: 36.0,
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'No data',
@@ -325,7 +322,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 'Your notifications \nwill appear here',

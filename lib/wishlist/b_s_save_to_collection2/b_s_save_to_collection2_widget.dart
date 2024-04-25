@@ -15,7 +15,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_save_to_collection2_model.dart';
@@ -27,7 +26,7 @@ class BSSaveToCollection2Widget extends StatefulWidget {
     this.selectedWishRow,
     this.currentCollectionID,
     bool? isManagement,
-  }) : this.isManagement = isManagement ?? false;
+  }) : isManagement = isManagement ?? false;
 
   final WishesRow? selectedWishRow;
   final String? currentCollectionID;
@@ -102,7 +101,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
     return
         // на модалку при вызове ставить 40% высоту
         ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -139,7 +138,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
             List<CollectionsRow> containerCollectionsRowList = snapshot.data!;
             return Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Color(0x18F2F1F3),
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(0.0),
@@ -152,18 +151,18 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                     child: Container(
                       width: 33.0,
                       height: 4.0,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Color(0x3AF2F1F3),
                       ),
                     ),
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                     child: Text(
                       widget.isManagement
                           ? 'Manage Collections'
@@ -178,7 +177,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                           ),
                     ),
                   ),
-                  Divider(
+                  const Divider(
                     thickness: 1.0,
                     color: Color(0x0CF2F1F3),
                   ),
@@ -187,20 +186,20 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                       if (!_model.isLoading) {
                         return Container(
                           height: 300.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              if (containerCollectionsRowList.length > 0)
+                              if (containerCollectionsRowList.isNotEmpty)
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       12.0, 12.0, 12.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.textController',
-                                      Duration(milliseconds: 200),
+                                      const Duration(milliseconds: 200),
                                       () => setState(() {}),
                                     ),
                                     autofocus: false,
@@ -213,7 +212,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: Color(0x98FFFFFF),
+                                            color: const Color(0x98FFFFFF),
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
@@ -227,7 +226,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                             useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -262,11 +261,11 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                             BorderRadius.circular(30.0),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0x0FFFFFFF),
+                                      fillColor: const Color(0x0FFFFFFF),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               20.0, 0.0, 20.0, 0.0),
-                                      prefixIcon: Icon(
+                                      prefixIcon: const Icon(
                                         Icons.search,
                                         color: Color(0x7FF2F1F3),
                                       ),
@@ -287,18 +286,14 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                         .asValidator(context),
                                   ),
                                 ),
-                              if (containerCollectionsRowList.length > 0)
+                              if (containerCollectionsRowList.isNotEmpty)
                                 Flexible(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 10.0, 16.0, 0.0),
                                     child: Builder(
                                       builder: (context) {
-                                        final currentCollection = ((_model
-                                                                .textController
-                                                                .text !=
-                                                            null &&
-                                                        _model.textController
+                                        final currentCollection = ((_model.textController
                                                                 .text !=
                                                             '') &&
                                                     (_model.textController.text
@@ -315,7 +310,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                 : containerCollectionsRowList)
                                             .toList();
                                         if (currentCollection.isEmpty) {
-                                          return Center(
+                                          return const Center(
                                             child:
                                                 EmptyCollectionsWidgetWidget(),
                                           );
@@ -331,8 +326,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                     currentCollectionIndex];
                                             return Container(
                                               key: ValueKey(
-                                                  "ListView_0sqpsacf" +
-                                                      '_' +
+                                                  "ListView_0sqpsacf" '_' +
                                                       currentCollectionIndex
                                                           .toString()),
                                               child: InkWell(
@@ -372,7 +366,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                     );
                                                     logFirebaseEvent(
                                                         'Container_update_app_state');
-                                                    _model.updatePage(() {});
+                                                    FFAppState().update(() {});
                                                     logFirebaseEvent(
                                                         'Container_bottom_sheet');
                                                     Navigator.pop(context);
@@ -381,136 +375,167 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                 child: Container(
                                                   width: double.infinity,
                                                   height: 56.0,
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Row(
                                                     mainAxisSize:
                                                         MainAxisSize.max,
                                                     children: [
-                                                      if (!widget.isManagement)
-                                                        InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'B_S_SAVE_TO_COLLECTION2_ConditionalBuild');
-                                                            logFirebaseEvent(
-                                                                'ConditionalBuilder_update_component_stat');
-                                                            setState(() {
-                                                              _model.selectedCollectionID =
-                                                                  currentCollectionItem
-                                                                      .uuid;
-                                                            });
-                                                            logFirebaseEvent(
-                                                                'ConditionalBuilder_backend_call');
-                                                            _model.updatedRow =
-                                                                await WishesTable()
-                                                                    .update(
-                                                              data: {
-                                                                'collection':
-                                                                    currentCollectionItem
-                                                                        .uuid,
-                                                                'visibily':
-                                                                    currentCollectionItem
-                                                                        .visibility,
-                                                              },
-                                                              matchingRows:
-                                                                  (rows) =>
-                                                                      rows.eq(
-                                                                'uuid',
-                                                                widget
-                                                                    .selectedWishRow
-                                                                    ?.uuid,
-                                                              ),
-                                                              returnRows: true,
-                                                            );
-                                                            logFirebaseEvent(
-                                                                'ConditionalBuilder_update_app_state');
-                                                            _model.updatePage(
-                                                                () {});
-                                                            logFirebaseEvent(
-                                                                'ConditionalBuilder_bottom_sheet');
-                                                            Navigator.pop(
-                                                                context);
-
-                                                            setState(() {});
-                                                          },
-                                                          child: Builder(
-                                                            builder: (context) {
-                                                              if ((_model.selectedCollectionID !=
-                                                                          null &&
-                                                                      _model.selectedCollectionID !=
-                                                                          '') &&
-                                                                  (_model.selectedCollectionID ==
+                                                      Builder(
+                                                        builder: (context) {
+                                                          if (!widget
+                                                              .isManagement) {
+                                                            return InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                logFirebaseEvent(
+                                                                    'B_S_SAVE_TO_COLLECTION2_ConditionalBuild');
+                                                                logFirebaseEvent(
+                                                                    'ConditionalBuilder_update_component_stat');
+                                                                setState(() {
+                                                                  _model.selectedCollectionID =
                                                                       currentCollectionItem
-                                                                          .uuid)) {
-                                                                return Container(
-                                                                  width: 20.0,
-                                                                  height: 20.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    border:
-                                                                        Border
-                                                                            .all(
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .info,
-                                                                      width:
-                                                                          1.0,
-                                                                    ),
+                                                                          .uuid;
+                                                                });
+                                                                logFirebaseEvent(
+                                                                    'ConditionalBuilder_backend_call');
+                                                                _model.updatedRow =
+                                                                    await WishesTable()
+                                                                        .update(
+                                                                  data: {
+                                                                    'collection':
+                                                                        currentCollectionItem
+                                                                            .uuid,
+                                                                    'visibily':
+                                                                        currentCollectionItem
+                                                                            .visibility,
+                                                                  },
+                                                                  matchingRows:
+                                                                      (rows) =>
+                                                                          rows.eq(
+                                                                    'uuid',
+                                                                    widget
+                                                                        .selectedWishRow
+                                                                        ?.uuid,
                                                                   ),
-                                                                  child: Align(
-                                                                    alignment:
-                                                                        AlignmentDirectional(
-                                                                            0.0,
-                                                                            0.0),
-                                                                    child:
-                                                                        Container(
+                                                                  returnRows:
+                                                                      true,
+                                                                );
+                                                                logFirebaseEvent(
+                                                                    'ConditionalBuilder_update_app_state');
+                                                                FFAppState()
+                                                                    .update(
+                                                                        () {});
+                                                                logFirebaseEvent(
+                                                                    'ConditionalBuilder_bottom_sheet');
+                                                                Navigator.pop(
+                                                                    context);
+
+                                                                setState(() {});
+                                                              },
+                                                              child: Builder(
+                                                                builder:
+                                                                    (context) {
+                                                                  if ((_model.selectedCollectionID !=
+                                                                              null &&
+                                                                          _model.selectedCollectionID !=
+                                                                              '') &&
+                                                                      (_model.selectedCollectionID ==
+                                                                          currentCollectionItem
+                                                                              .uuid)) {
+                                                                    return Container(
                                                                       width:
-                                                                          12.0,
+                                                                          20.0,
                                                                       height:
-                                                                          12.0,
+                                                                          20.0,
                                                                       decoration:
                                                                           BoxDecoration(
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .info,
                                                                         shape: BoxShape
                                                                             .circle,
+                                                                        border:
+                                                                            Border.all(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).info,
+                                                                          width:
+                                                                              1.0,
+                                                                        ),
                                                                       ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              } else {
-                                                                return Container(
-                                                                  width: 20.0,
-                                                                  height: 20.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    shape: BoxShape
-                                                                        .circle,
-                                                                    border:
-                                                                        Border
-                                                                            .all(
-                                                                      color: Color(
-                                                                          0x1AFFFFFF),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              }
-                                                            },
-                                                          ),
-                                                        ),
+                                                                      child:
+                                                                          Align(
+                                                                        alignment: const AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Container(
+                                                                          width:
+                                                                              12.0,
+                                                                          height:
+                                                                              12.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).info,
+                                                                            shape:
+                                                                                BoxShape.circle,
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  } else {
+                                                                    return Container(
+                                                                      width:
+                                                                          20.0,
+                                                                      height:
+                                                                          20.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        shape: BoxShape
+                                                                            .circle,
+                                                                        border:
+                                                                            Border.all(
+                                                                          color:
+                                                                              const Color(0x1AFFFFFF),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  }
+                                                                },
+                                                              ),
+                                                            );
+                                                          } else {
+                                                            return Container(
+                                                              width: 24.0,
+                                                              height: 24.0,
+                                                              decoration:
+                                                                  const BoxDecoration(
+                                                                shape: BoxShape
+                                                                    .circle,
+                                                              ),
+                                                              alignment:
+                                                                  const AlignmentDirectional(
+                                                                      0.0, 0.0),
+                                                              child: Icon(
+                                                                Icons.dehaze,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .info,
+                                                                size: 14.0,
+                                                              ),
+                                                            );
+                                                          }
+                                                        },
+                                                      ),
                                                       Expanded(
                                                         child: Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       8.0,
                                                                       0.0,
@@ -519,6 +544,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                           child: Text(
                                                             currentCollectionItem
                                                                 .name!,
+                                                            maxLines: 2,
                                                             style: FlutterFlowTheme
                                                                     .of(context)
                                                                 .bodyMedium
@@ -544,7 +570,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                       if (widget.isManagement)
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
@@ -562,7 +588,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                                     .transparent,
                                                             onTap: () async {
                                                               logFirebaseEvent(
-                                                                  'B_S_SAVE_TO_COLLECTION2_Container_wi9i39');
+                                                                  'B_S_SAVE_TO_COLLECTION2_Container_xapbq2');
                                                               logFirebaseEvent(
                                                                   'Container_bottom_sheet');
                                                               await showModalBottomSheet(
@@ -597,19 +623,28 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                               width: 24.0,
                                                               height: 24.0,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
-                                                              child: Icon(
-                                                                Icons.dehaze,
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                                size: 14.0,
+                                                              child: Padding(
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            3.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Icon(
+                                                                  FFIcons.kpen,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .info,
+                                                                  size: 14.0,
+                                                                ),
                                                               ),
                                                             ),
                                                           ),
@@ -617,11 +652,11 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                       if (widget.isManagement)
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       0.0,
-                                                                      28.0,
+                                                                      8.0,
                                                                       0.0),
                                                           child: InkWell(
                                                             splashColor: Colors
@@ -686,12 +721,12 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                               width: 24.0,
                                                               height: 24.0,
                                                               decoration:
-                                                                  BoxDecoration(
+                                                                  const BoxDecoration(
                                                                 shape: BoxShape
                                                                     .circle,
                                                               ),
                                                               alignment:
-                                                                  AlignmentDirectional(
+                                                                  const AlignmentDirectional(
                                                                       0.0, 0.0),
                                                               child: FaIcon(
                                                                 FontAwesomeIcons
@@ -748,15 +783,15 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                         );
                       } else {
                         return Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 85.0),
                           child: Container(
                             height: 300.0,
-                            decoration: BoxDecoration(),
+                            decoration: const BoxDecoration(),
                             child: Align(
-                              alignment: AlignmentDirectional(0.0, -0.3),
+                              alignment: const AlignmentDirectional(0.0, -0.3),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 40.0, 0.0, 0.0),
                                 child: Image.asset(
                                   'assets/images/logo.webp',
@@ -775,7 +810,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                   if (!_model.isLoading)
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 45.0),
                       child: wrapWithModel(
                         model: _model.createnewCollectionModel,
                         updateCallback: () => setState(() {}),
@@ -798,7 +833,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                   return WebViewAware(
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
-                                      child: BSNewCollectionWidget(),
+                                      child: const BSNewCollectionWidget(),
                                     ),
                                   );
                                 },

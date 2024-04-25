@@ -1,9 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
-import '/backend/api_requests/api_manager.dart';
-import '/backend/schema/structs/index.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/alert_dialog_warning_widget.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -29,14 +26,14 @@ Future pairInvitationRowAction(
           'pending',
         ),
   );
-  if (currentPairInvitesRows!.length > 0) {
+  if (currentPairInvitesRows.isNotEmpty) {
     logFirebaseEvent('pairInvitationRowAction_navigate_to');
 
     context.pushNamed(
       'Invite_Partner_Onb',
       queryParameters: {
         'pairInvitationRow': serializeParam(
-          currentPairInvitesRows?.first,
+          currentPairInvitesRows.first,
           ParamType.SupabaseRow,
         ),
         'isFromProfile': serializeParam(
@@ -86,14 +83,14 @@ Future loadFromBrowserAction(
     if (url != null && url != '') {
       logFirebaseEvent('loadFromBrowserAction_update_app_state');
       FFAppState().update(() {
-        FFAppState().currentUrl = url!;
+        FFAppState().currentUrl = url;
       });
       if (true) {
         logFirebaseEvent('loadFromBrowserAction_backend_call');
         apiParseResult = await ParseSiteCall.call(
           url: url,
         );
-        if ((apiParseResult?.succeeded ?? true)) {
+        if ((apiParseResult.succeeded ?? true)) {
           logFirebaseEvent('loadFromBrowserAction_bottom_sheet');
           await showModalBottomSheet(
             isScrollControlled: true,
@@ -120,7 +117,7 @@ Future loadFromBrowserAction(
                 elevation: 0,
                 insetPadding: EdgeInsets.zero,
                 backgroundColor: Colors.transparent,
-                alignment: AlignmentDirectional(0.0, -1.0)
+                alignment: const AlignmentDirectional(0.0, -1.0)
                     .resolve(Directionality.of(context)),
                 child: WebViewAware(
                   child: AlertDialogWarningWidget(
@@ -134,7 +131,7 @@ Future loadFromBrowserAction(
         }
 
         logFirebaseEvent('loadFromBrowserAction_update_app_state');
-        FFAppState().previousUrl = url!;
+        FFAppState().previousUrl = url;
         FFAppState().currentUrl = '';
       }
     } else {

@@ -11,7 +11,6 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'b_s_feeling_model.dart';
 export 'b_s_feeling_model.dart';
@@ -53,7 +52,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
         logFirebaseEvent('BS_Feeling_update_component_state');
         setState(() {
           _model.selectedColor = valueOrDefault<Color>(
-            new Color(int.parse((widget.currentUserFeelingRow!.color!))),
+            Color(int.parse((widget.currentUserFeelingRow!.color!))),
             FlutterFlowTheme.of(context).error,
           );
         });
@@ -92,7 +91,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
     context.watch<FFAppState>();
 
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -106,7 +105,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
         child: Container(
           width: double.infinity,
           height: MediaQuery.sizeOf(context).height * 0.9,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -119,13 +118,13 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
             mainAxisSize: MainAxisSize.max,
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, -1.0),
+                alignment: const AlignmentDirectional(0.0, -1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Container(
                     width: 33.0,
                     height: 4.0,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: Color(0x3AF2F1F3),
                     ),
                   ),
@@ -143,10 +142,10 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 24.0, 0.0, 0.0),
                               child: Stack(
-                                alignment: AlignmentDirectional(0.0, 0.0),
+                                alignment: const AlignmentDirectional(0.0, 0.0),
                                 children: [
                                   Container(
                                     width: 117.0,
@@ -167,7 +166,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                           width: 95.0,
                                           height: 95.0,
                                           decoration: BoxDecoration(
-                                            color: Color(0x15FFFFFF),
+                                            color: const Color(0x15FFFFFF),
                                             image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: Image.network(
@@ -182,7 +181,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                         return Container(
                                           width: 95.0,
                                           height: 95.0,
-                                          decoration: BoxDecoration(
+                                          decoration: const BoxDecoration(
                                             color: Color(0x15FFFFFF),
                                             shape: BoxShape.circle,
                                           ),
@@ -194,9 +193,9 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
+                              alignment: const AlignmentDirectional(0.0, -1.0),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 24.0, 0.0, 0.0),
                                 child: Text(
                                   'I\'m Feeling...',
@@ -215,7 +214,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 30.0, 0.0, 0.0),
                               child: Builder(
                                 builder: (context) {
@@ -241,12 +240,12 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                             _model.selectedColor = colorItem;
                                           });
                                         },
-                                        child: Container(
+                                        child: SizedBox(
                                           width: 45.0,
                                           height: 45.0,
                                           child: Stack(
                                             alignment:
-                                                AlignmentDirectional(0.0, 0.0),
+                                                const AlignmentDirectional(0.0, 0.0),
                                             children: [
                                               if (colorItem ==
                                                   _model.selectedColor)
@@ -279,13 +278,13 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                           ),
                                         ),
                                       );
-                                    }).divide(SizedBox(width: 17.0)),
+                                    }).divide(const SizedBox(width: 17.0)),
                                   );
                                 },
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 30.0, 16.0, 26.0),
                               child: FutureBuilder<List<FeelingsRow>>(
                                 future: FeelingsTable().queryRows(
@@ -311,7 +310,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                       snapshot.data!;
                                   return Container(
                                     width: double.infinity,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                     child: FutureBuilder<List<UserFeelingsRow>>(
                                       future: UserFeelingsTable().queryRows(
                                         queryFn: (q) => q
@@ -345,7 +344,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                             containerUserFeelingsRowList =
                                             snapshot.data!;
                                         return Container(
-                                          decoration: BoxDecoration(),
+                                          decoration: const BoxDecoration(),
                                           child: Builder(
                                             builder: (context) {
                                               final feelingName = functions
@@ -409,9 +408,9 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                                                       .isCustom
                                                               ? _model
                                                                   .selectedColor
-                                                              : Color(
+                                                              : const Color(
                                                                   0x14FFFFFF),
-                                                          Color(0x14FFFFFF),
+                                                          const Color(0x14FFFFFF),
                                                         ),
                                                         borderRadius:
                                                             BorderRadius
@@ -419,7 +418,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                                                     100.0),
                                                       ),
                                                       child: Padding(
-                                                        padding: EdgeInsets.all(
+                                                        padding: const EdgeInsets.all(
                                                             14.0),
                                                         child: Row(
                                                           mainAxisSize:
@@ -464,23 +463,23 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                         ),
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       thickness: 1.0,
                       color: Color(0x0CF2F1F3),
                     ),
                     if (_model.isCustom)
                       Container(
                         height: 140.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               16.0, 0.0, 16.0, 0.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 12.0, 0.0, 0.0),
                                 child: Text(
                                   'Add Your Own',
@@ -501,14 +500,14 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                 key: _model.formKey,
                                 autovalidateMode: AutovalidateMode.disabled,
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 0.0),
                                   child: TextFormField(
                                     controller: _model.nameFieldTextController,
                                     focusNode: _model.nameFieldFocusNode,
                                     onChanged: (_) => EasyDebounce.debounce(
                                       '_model.nameFieldTextController',
-                                      Duration(milliseconds: 200),
+                                      const Duration(milliseconds: 200),
                                       () => setState(() {}),
                                     ),
                                     autofocus: false,
@@ -521,7 +520,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                           .labelMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: Color(0x98FFFFFF),
+                                            color: const Color(0x98FFFFFF),
                                             letterSpacing: 0.0,
                                             useGoogleFonts: false,
                                           ),
@@ -536,7 +535,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                             useGoogleFonts: false,
                                           ),
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Color(0x00000000),
                                           width: 1.0,
                                         ),
@@ -571,9 +570,9 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                             BorderRadius.circular(30.0),
                                       ),
                                       filled: true,
-                                      fillColor: Color(0x0FFFFFFF),
+                                      fillColor: const Color(0x0FFFFFFF),
                                       contentPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               20.0, 13.0, 20.0, 13.0),
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -600,7 +599,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                     if (!_model.isCustom)
                       Container(
                         height: 140.0,
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -618,13 +617,13 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                           child: wrapWithModel(
                             model: _model.emptyAddTourOwnModel,
                             updateCallback: () => setState(() {}),
-                            child: EmptyAddTourOwnWidget(),
+                            child: const EmptyAddTourOwnWidget(),
                           ),
                         ),
                       ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
@@ -634,7 +633,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                             size: 16.0,
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 12.0, 0.0, 0.0, 0.0),
                             child: Text(
                               'Your mood will only be seen by you and your partner',
@@ -642,7 +641,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                   .bodyMedium
                                   .override(
                                     fontFamily: 'Nuckle',
-                                    color: Color(0x99FFFFFF),
+                                    color: const Color(0x99FFFFFF),
                                     fontSize: 11.0,
                                     letterSpacing: 0.0,
                                     fontWeight: FontWeight.normal,
@@ -654,7 +653,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           16.0, 22.0, 16.0, 40.0),
                       child: wrapWithModel(
                         model: _model.pinkButtonModel,
@@ -699,7 +698,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     _model.selectedFeeling,
                                   ),
                                 );
-                                if (_model.foundFeelingRow!.length > 0) {
+                                if (_model.foundFeelingRow!.isNotEmpty) {
                                   logFirebaseEvent('pinkButton_backend_call');
                                   _model.foundUserFeeling =
                                       await UserFeelingsTable().queryRows(
@@ -713,7 +712,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                           null,
                                         ),
                                   );
-                                  if (_model.foundUserFeeling!.length > 0) {
+                                  if (_model.foundUserFeeling!.isNotEmpty) {
                                     logFirebaseEvent('pinkButton_backend_call');
                                     _model.updatedUserFeelingRow =
                                         await UserFeelingsTable().update(
@@ -721,12 +720,12 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                         'color': _model.selectedColor.value
                                             .toString(),
                                         'feeling':
-                                            _model.foundFeelingRow?.first?.id,
+                                            _model.foundFeelingRow?.first.id,
                                         'custom feeling': null,
                                       },
                                       matchingRows: (rows) => rows.eq(
                                         'id',
-                                        _model.foundUserFeeling?.first?.id,
+                                        _model.foundUserFeeling?.first.id,
                                       ),
                                       returnRows: true,
                                     );
@@ -734,7 +733,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     await UsersTable().update(
                                       data: {
                                         'current_feeling': _model
-                                            .updatedUserFeelingRow?.first?.id,
+                                            .updatedUserFeelingRow?.first.id,
                                       },
                                       matchingRows: (rows) => rows.eq(
                                         'id',
@@ -748,7 +747,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                       'color':
                                           _model.selectedColor.value.toString(),
                                       'feeling':
-                                          _model.foundFeelingRow?.first?.id,
+                                          _model.foundFeelingRow?.first.id,
                                       'custom feeling': null,
                                     });
                                     logFirebaseEvent('pinkButton_backend_call');
@@ -788,7 +787,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     },
                                     matchingRows: (rows) => rows.eq(
                                       'id',
-                                      _model.foundUserCustomFeeling?.first?.id,
+                                      _model.foundUserCustomFeeling?.first.id,
                                     ),
                                     returnRows: true,
                                   );
@@ -796,7 +795,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                   await UsersTable().update(
                                     data: {
                                       'current_feeling': _model
-                                          .updatedUserFeelingRow2?.first?.id,
+                                          .updatedUserFeelingRow2?.first.id,
                                     },
                                     matchingRows: (rows) => rows.eq(
                                       'id',
@@ -818,7 +817,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     await UserFeelingsTable().insert({
                                   'color':
                                       _model.selectedColor.value.toString(),
-                                  'feeling': _model.foundFeelingRow2?.first?.id,
+                                  'feeling': _model.foundFeelingRow2?.first.id,
                                   'created_by': currentUserUid,
                                 });
                                 logFirebaseEvent('pinkButton_backend_call');
@@ -847,13 +846,13 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     currentUserUid,
                                   ),
                             );
-                            if (_model.partnerRow!.length > 0) {
+                            if (_model.partnerRow!.isNotEmpty) {
                               logFirebaseEvent('pinkButton_backend_call');
                               unawaited(
                                 () async {
                                   await NotificationsTable().insert({
                                     'from_user': currentUserUid,
-                                    'to_user': _model.partnerRow?.first?.id,
+                                    'to_user': _model.partnerRow?.first.id,
                                     'type': 'feeling',
                                     'details': <String, String>{
                                       'color':

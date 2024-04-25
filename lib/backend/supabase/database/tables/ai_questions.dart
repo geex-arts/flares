@@ -9,7 +9,7 @@ class AiQuestionsTable extends SupabaseTable<AiQuestionsRow> {
 }
 
 class AiQuestionsRow extends SupabaseDataRow {
-  AiQuestionsRow(Map<String, dynamic> data) : super(data);
+  AiQuestionsRow(super.data);
 
   @override
   SupabaseTable get table => AiQuestionsTable();

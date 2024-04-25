@@ -3,8 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
 import '/backend/schema/structs/index.dart';
@@ -14,12 +12,8 @@ import '/backend/supabase/supabase.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -87,14 +81,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
-        child: appStateNotifier.loggedIn ? MyProfileWidget() : SplashWidget(),
+        child: appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? MyProfileWidget() : SplashWidget(),
+              appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
           routes: [
             FFRoute(
               name: 'My_Profile',
@@ -109,7 +103,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Splash',
               path: 'splash',
-              builder: (context, params) => SplashWidget(),
+              builder: (context, params) => const SplashWidget(),
             ),
             FFRoute(
               name: 'Onboarding',
@@ -144,27 +138,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Reset_Password',
               path: 'resetPassword',
-              builder: (context, params) => ResetPasswordWidget(),
+              builder: (context, params) => const ResetPasswordWidget(),
             ),
             FFRoute(
               name: 'New_Password',
               path: 'newPass',
-              builder: (context, params) => NewPasswordWidget(),
+              builder: (context, params) => const NewPasswordWidget(),
             ),
             FFRoute(
               name: 'Notifications',
               path: 'notifications',
-              builder: (context, params) => NotificationsWidget(),
+              builder: (context, params) => const NotificationsWidget(),
             ),
             FFRoute(
               name: 'Terms_Conditions',
               path: 'termsConditions',
-              builder: (context, params) => TermsConditionsWidget(),
+              builder: (context, params) => const TermsConditionsWidget(),
             ),
             FFRoute(
               name: 'Privacy_Policy',
               path: 'privacyPolicy',
-              builder: (context, params) => PrivacyPolicyWidget(),
+              builder: (context, params) => const PrivacyPolicyWidget(),
             ),
             FFRoute(
               name: 'Invite_Partner_Onb',
@@ -183,7 +177,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Language',
               path: 'language',
-              builder: (context, params) => LanguageWidget(),
+              builder: (context, params) => const LanguageWidget(),
             ),
             FFRoute(
               name: 'Edit_Couple_Profile',
@@ -198,12 +192,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Notify_Settings',
               path: 'notifySettings',
-              builder: (context, params) => NotifySettingsWidget(),
+              builder: (context, params) => const NotifySettingsWidget(),
             ),
             FFRoute(
               name: 'Ask_For_Date',
               path: 'askForDate',
-              builder: (context, params) => AskForDateWidget(),
+              builder: (context, params) => const AskForDateWidget(),
             ),
             FFRoute(
               name: 'Couples_Profile',
@@ -218,7 +212,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Category_P2',
               path: 'categoryP2',
-              builder: (context, params) => CategoryP2Widget(),
+              builder: (context, params) => const CategoryP2Widget(),
             ),
             FFRoute(
               name: 'Add_Wish_Reaction',
@@ -255,17 +249,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Profile',
               path: 'profile',
-              builder: (context, params) => ProfileWidget(),
+              builder: (context, params) => const ProfileWidget(),
             ),
             FFRoute(
               name: 'Edit_Profile',
               path: 'editProfile',
-              builder: (context, params) => EditProfileWidget(),
+              builder: (context, params) => const EditProfileWidget(),
             ),
             FFRoute(
               name: 'Create_Couple_Profile',
               path: 'createCoupleProfile',
-              builder: (context, params) => CreateCoupleProfileWidget(),
+              builder: (context, params) => const CreateCoupleProfileWidget(),
             ),
             FFRoute(
               name: 'Create_wish',
@@ -281,7 +275,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'More',
               path: 'more',
-              builder: (context, params) => MoreWidget(),
+              builder: (context, params) => const MoreWidget(),
             ),
             FFRoute(
               name: 'Subscriptions',
@@ -296,7 +290,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Invite_Partner',
               path: 'invitePartner',
-              builder: (context, params) => InvitePartnerWidget(),
+              builder: (context, params) => const InvitePartnerWidget(),
             ),
             FFRoute(
               name: 'Category_P',
@@ -311,7 +305,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Explore',
               path: 'explore',
-              builder: (context, params) => ExploreWidget(),
+              builder: (context, params) => const ExploreWidget(),
             ),
             FFRoute(
               name: 'addFromBrowser',
@@ -326,7 +320,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Official_Referral',
               path: 'officialReferral',
-              builder: (context, params) => OfficialReferralWidget(),
+              builder: (context, params) => const OfficialReferralWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -565,15 +559,14 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class _RouteErrorBuilder extends StatefulWidget {
   const _RouteErrorBuilder({
-    Key? key,
     required this.state,
     required this.child,
-  }) : super(key: key);
+  });
 
   final GoRouterState state;
   final Widget child;
