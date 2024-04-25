@@ -730,8 +730,16 @@ class _SignInWidgetState extends State<SignInWidget>
                                     onTap: () async {
                                       logFirebaseEvent(
                                           'SIGN_IN_PAGE_Row_62j4ncdj_ON_TAP');
-                                      logFirebaseEvent('Row_custom_action');
-                                      await actions.signInWithGoogle();
+                                      logFirebaseEvent('Row_auth');
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final user = await authManager
+                                          .signInWithGoogle(context);
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      context.goNamedAuth(
+                                          'My_Profile', context.mounted);
                                     },
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
