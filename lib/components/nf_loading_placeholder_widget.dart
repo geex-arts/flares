@@ -1,5 +1,9 @@
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'nf_loading_placeholder_model.dart';
 export 'nf_loading_placeholder_model.dart';
 
@@ -40,7 +44,7 @@ class _NfLoadingPlaceholderWidgetState
       width: 18.0,
       height: 13.0,
       decoration: BoxDecoration(
-        color: const Color(0x00FFFFFF),
+        color: Color(0x00FFFFFF),
         borderRadius: BorderRadius.circular(100.0),
       ),
     );

@@ -9,7 +9,7 @@ class FeelingsTable extends SupabaseTable<FeelingsRow> {
 }
 
 class FeelingsRow extends SupabaseDataRow {
-  FeelingsRow(super.data);
+  FeelingsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FeelingsTable();

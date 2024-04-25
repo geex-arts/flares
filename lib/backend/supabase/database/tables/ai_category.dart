@@ -9,7 +9,7 @@ class AiCategoryTable extends SupabaseTable<AiCategoryRow> {
 }
 
 class AiCategoryRow extends SupabaseDataRow {
-  AiCategoryRow(super.data);
+  AiCategoryRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => AiCategoryTable();

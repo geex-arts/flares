@@ -10,7 +10,7 @@ class ReactionImagesTable extends SupabaseTable<ReactionImagesRow> {
 }
 
 class ReactionImagesRow extends SupabaseDataRow {
-  ReactionImagesRow(super.data);
+  ReactionImagesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ReactionImagesTable();

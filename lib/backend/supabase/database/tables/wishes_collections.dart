@@ -10,7 +10,7 @@ class WishesCollectionsTable extends SupabaseTable<WishesCollectionsRow> {
 }
 
 class WishesCollectionsRow extends SupabaseDataRow {
-  WishesCollectionsRow(super.data);
+  WishesCollectionsRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => WishesCollectionsTable();

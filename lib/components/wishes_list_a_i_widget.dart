@@ -1,9 +1,14 @@
 import '/backend/schema/structs/index.dart';
 import '/components/card_a_i_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'wishes_list_a_i_model.dart';
 export 'wishes_list_a_i_model.dart';
 
@@ -51,8 +56,8 @@ class _WishesListAIWidgetState extends State<WishesListAIWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -69,18 +74,18 @@ class _WishesListAIWidgetState extends State<WishesListAIWidget>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
       child: Builder(
         builder: (context) {
           final currentWish = widget.wishesRowsAI!.toList();
           return GridView.builder(
-            padding: const EdgeInsets.fromLTRB(
+            padding: EdgeInsets.fromLTRB(
               0,
               10.0,
               0,
               120.0,
             ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 10.0,

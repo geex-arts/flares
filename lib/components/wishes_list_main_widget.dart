@@ -1,10 +1,13 @@
 import '/backend/supabase/supabase.dart';
 import '/components/card_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'wishes_list_main_model.dart';
 export 'wishes_list_main_model.dart';
@@ -15,8 +18,8 @@ class WishesListMainWidget extends StatefulWidget {
     required this.wishesRowsParam,
     bool? isMyProfile,
     double? endSpacing,
-  })  : isMyProfile = isMyProfile ?? false,
-        endSpacing = endSpacing ?? 0.0;
+  })  : this.isMyProfile = isMyProfile ?? false,
+        this.endSpacing = endSpacing ?? 0.0;
 
   final List<WishesRow>? wishesRowsParam;
   final bool isMyProfile;
@@ -71,8 +74,8 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 100.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -91,7 +94,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
     context.watch<FFAppState>();
 
     return Padding(
-      padding: const EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(8.0, 10.0, 8.0, 0.0),
       child: Builder(
         builder: (context) {
           final currentWish = widget.wishesRowsParam!.toList();
@@ -105,7 +108,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
                 0.0,
               ),
             ),
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
               crossAxisSpacing: 8.0,
               mainAxisSpacing: 10.0,

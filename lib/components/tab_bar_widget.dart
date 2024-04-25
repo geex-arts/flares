@@ -3,6 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'tab_bar_model.dart';
 export 'tab_bar_model.dart';
 
@@ -43,9 +46,9 @@ class _TabBarWidgetState extends State<TabBarWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, 1.0),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
         child: ClipRRect(
           borderRadius: BorderRadius.circular(100.0),
           child: BackdropFilter(
@@ -57,11 +60,11 @@ class _TabBarWidgetState extends State<TabBarWidget> {
               width: 200.0,
               height: 50.0,
               decoration: BoxDecoration(
-                color: const Color(0x1AFFFFFF),
+                color: Color(0x1AFFFFFF),
                 borderRadius: BorderRadius.circular(100.0),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(12.0, 0.0, 12.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +89,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       child: Container(
                         width: 44.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Icon(
                           FFIcons.kworld,
                           color:
@@ -123,7 +126,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       child: Container(
                         width: 44.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Icon(
                           FFIcons.kgroup63448861,
                           color:
@@ -152,14 +155,14 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                       child: Container(
                         width: 44.0,
                         height: 44.0,
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Padding(
-                          padding: const EdgeInsets.all(10.0),
+                          padding: EdgeInsets.all(10.0),
                           child: Container(
                             width: 22.0,
                             height: 22.0,
                             clipBehavior: Clip.antiAlias,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
                             ),
                             child: Image.asset(

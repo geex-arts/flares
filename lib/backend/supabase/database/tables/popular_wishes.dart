@@ -10,7 +10,7 @@ class PopularWishesTable extends SupabaseTable<PopularWishesRow> {
 }
 
 class PopularWishesRow extends SupabaseDataRow {
-  PopularWishesRow(super.data);
+  PopularWishesRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => PopularWishesTable();
