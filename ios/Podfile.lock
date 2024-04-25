@@ -7,7 +7,7 @@ PODS:
   - AppAuth/Core (1.7.4)
   - AppAuth/ExternalUserAgent (1.7.4):
     - AppAuth/Core
-  - customer_io (1.4.0):
+  - customer_io (1.3.0):
     - CustomerIO/MessagingInApp (~> 2)
     - CustomerIO/Tracking (~> 2)
     - Flutter
@@ -414,7 +414,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   app_links: ab4ba54d10a13d45825336bc9707b5eadee81191
   AppAuth: 182c5b88630569df5acb672720534756c29b3358
-  customer_io: 92787a1faee8114f7fc52974cb266ac477167506
+  customer_io: 19c83b06c1861a6e53baddbb6f21053cff7bfa55
   CustomerIO: 55adb7377dff7afaf38c533c5bddaabfdd4203ac
   CustomerIOCommon: 5c4c2d0ca81dd802dd3bab368c96fb3ee5ab7fe6
   CustomerIOMessagingInApp: abe108b80c8deecac70741fa2c9928289fda5814
