@@ -16,7 +16,7 @@ Future<User?> googleSignInFunc() async {
         ? null
         : "536053787180-o9040q4o6npi8sgvle08m8oo3fflvant.apps.googleusercontent.com",
     serverClientId:
-        "536053787180-14rlko27l0ujp7husapkukthlbok5csa.apps.googleusercontent.com",
+        "536053787180-flvhkbf9phf8k4ulnljj0gdplfcugq7a.apps.googleusercontent.com",
   );
 
   await googleSignIn.signOut().catchError((_) => null);

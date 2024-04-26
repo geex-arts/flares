@@ -35,27 +35,24 @@
 
             </array>
         </dict>
-
-
-        <dict>
-            <key>CFBundleTypeRole</key>
-            <string>Editor</string>
-            <key>CFBundleURLSchemes</key>
-            <array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
                 <string>com.googleusercontent.apps.536053787180-o9040q4o6npi8sgvle08m8oo3fflvant</string>
-            </array>
-        </dict>
-
-        <dict>
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>flares</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-        <string>com.geex.arts.flares</string>
-        </array>
-        </dict>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>flares</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.geex.arts.flares</string>
+			</array>
+		</dict>
 		<dict/>
 	</array>
 	<key>CFBundleVersion</key>
