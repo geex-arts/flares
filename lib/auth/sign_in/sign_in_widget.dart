@@ -801,6 +801,16 @@ class _SignInWidgetState extends State<SignInWidget>
                                         'SIGN_IN_PAGE_Row_ifrmzuny_ON_TAP');
                                     logFirebaseEvent('Row_custom_action');
                                     await actions.appleSignin();
+                                    logFirebaseEvent('Row_backend_call');
+                                    await UsersTable().insert({
+                                      'id': currentUserUid,
+                                      'created_at': supaSerialize<DateTime>(
+                                          getCurrentTimestamp),
+                                      'email': currentUserEmail,
+                                    });
+                                    logFirebaseEvent('Row_navigate_to');
+
+                                    context.pushNamed('Explore');
                                   },
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
