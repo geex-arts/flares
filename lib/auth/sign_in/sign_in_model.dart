@@ -42,6 +42,8 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   List<UsersRow>? userAuthCopyCopy;
   // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
   String? fcmToken;
+  // Stores action output result for [Custom Action - appleSignin] action in Row widget.
+  dynamic authResponse;
 
   @override
   void initState(BuildContext context) {
