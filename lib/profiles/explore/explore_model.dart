@@ -5,6 +5,18 @@ import 'explore_widget.dart' show ExploreWidget;
 import 'package:flutter/material.dart';
 
 class ExploreModel extends FlutterFlowModel<ExploreWidget> {
+  ///  Local state fields for this page.
+
+  List<String> popularWishesIDs = [];
+  void addToPopularWishesIDs(String item) => popularWishesIDs.add(item);
+  void removeFromPopularWishesIDs(String item) => popularWishesIDs.remove(item);
+  void removeAtIndexFromPopularWishesIDs(int index) =>
+      popularWishesIDs.removeAt(index);
+  void insertAtIndexInPopularWishesIDs(int index, String item) =>
+      popularWishesIDs.insert(index, item);
+  void updatePopularWishesIDsAtIndex(int index, Function(String) updateFn) =>
+      popularWishesIDs[index] = updateFn(popularWishesIDs[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

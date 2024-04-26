@@ -17,10 +17,10 @@ export 'category_p_model.dart';
 class CategoryPWidget extends StatefulWidget {
   const CategoryPWidget({
     super.key,
-    this.selectedCategoryID,
+    required this.searchText,
   });
 
-  final String? selectedCategoryID;
+  final String? searchText;
 
   @override
   State<CategoryPWidget> createState() => _CategoryPWidgetState();
@@ -88,7 +88,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
           future: CollectionsTable().queryRows(
             queryFn: (q) => q.eq(
               'parent',
-              widget.selectedCategoryID,
+              widget.searchText,
             ),
           ),
           builder: (context, snapshot) {
@@ -130,7 +130,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                             future: CollectionsTable().querySingleRow(
                               queryFn: (q) => q.eq(
                                 'uuid',
-                                widget.selectedCategoryID,
+                                widget.searchText,
                               ),
                             ),
                             builder: (context, snapshot) {
@@ -159,30 +159,16 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                 children: [
                                   if (columnCollectionsRow?.photo != null &&
                                       columnCollectionsRow?.photo != '')
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'CATEGORY_P_CircleImage_f30ufwvn_ON_TAP');
-                                        logFirebaseEvent(
-                                            'CircleImage_navigate_to');
-
-                                        context.pushNamed('Category_P2');
-                                      },
-                                      child: Container(
-                                        width: 100.0,
-                                        height: 100.0,
-                                        clipBehavior: Clip.antiAlias,
-                                        decoration: const BoxDecoration(
-                                          shape: BoxShape.circle,
-                                        ),
-                                        child: Image.network(
-                                          columnCollectionsRow!.photo!,
-                                          fit: BoxFit.cover,
-                                        ),
+                                    Container(
+                                      width: 100.0,
+                                      height: 100.0,
+                                      clipBehavior: Clip.antiAlias,
+                                      decoration: const BoxDecoration(
+                                        shape: BoxShape.circle,
+                                      ),
+                                      child: Image.network(
+                                        columnCollectionsRow!.photo!,
+                                        fit: BoxFit.cover,
                                       ),
                                     ),
                                   Padding(

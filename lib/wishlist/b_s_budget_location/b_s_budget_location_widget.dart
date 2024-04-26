@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -6,6 +7,7 @@ import '/flutter_flow/form_field_controller.dart';
 import '/wishlist/b_s_a_i_wishlist/b_s_a_i_wishlist_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_budget_location_model.dart';
@@ -119,39 +121,85 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                     Padding(
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: FlutterFlowDropDown<String>(
-                        controller: _model.dropDownValueController ??=
-                            FormFieldController<String>(null),
-                        options: const ['Moscow', 'Saint Petersburg', 'Bobruisk'],
-                        onChanged: (val) =>
-                            setState(() => _model.dropDownValue = val),
-                        width: double.infinity,
-                        height: 50.0,
-                        maxHeight: 240.0,
-                        textStyle:
-                            FlutterFlowTheme.of(context).bodyMedium.override(
+                      child: FutureBuilder<List<CitiesRow>>(
+                        future: FFAppState().cities(
+                          requestFn: () => CitiesTable().queryRows(
+                            queryFn: (q) => q,
+                          ),
+                        ),
+                        builder: (context, snapshot) {
+                          // Customize what your widget looks like when it's loading.
+                          if (!snapshot.hasData) {
+                            return Center(
+                              child: SizedBox(
+                                width: 50.0,
+                                height: 50.0,
+                                child: SpinKitPulse(
+                                  color:
+                                      FlutterFlowTheme.of(context).pinkButton,
+                                  size: 50.0,
+                                ),
+                              ),
+                            );
+                          }
+                          List<CitiesRow> dropDownCitiesRowList =
+                              snapshot.data!;
+                          return FlutterFlowDropDown<String>(
+                            controller: _model.dropDownValueController ??=
+                                FormFieldController<String>(null),
+                            options: dropDownCitiesRowList
+                                .map((e) => e.city)
+                                .withoutNulls
+                                .toList(),
+                            onChanged: (val) =>
+                                setState(() => _model.dropDownValue = val),
+                            width: double.infinity,
+                            height: 50.0,
+                            maxHeight: 240.0,
+                            searchHintTextStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Nuckle',
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                            searchTextStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Nuckle',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryText,
+                                  letterSpacing: 0.0,
+                                  useGoogleFonts: false,
+                                ),
+                            textStyle: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
                                   fontFamily: 'Nuckle',
                                   color: const Color(0x99FFFFFF),
                                   letterSpacing: 0.0,
                                   useGoogleFonts: false,
                                 ),
-                        hintText: 'Select an option',
-                        icon: Icon(
-                          Icons.keyboard_arrow_down_rounded,
-                          color: FlutterFlowTheme.of(context).secondaryText,
-                          size: 24.0,
-                        ),
-                        fillColor: const Color(0xFF1D1B1B),
-                        elevation: 0.0,
-                        borderColor: Colors.transparent,
-                        borderWidth: 0.0,
-                        borderRadius: 30.0,
-                        margin: const EdgeInsetsDirectional.fromSTEB(
-                            20.0, 14.0, 20.0, 14.0),
-                        hidesUnderline: true,
-                        isOverButton: false,
-                        isSearchable: false,
-                        isMultiSelect: false,
+                            hintText: 'Select an option',
+                            searchHintText: 'Search for an city...',
+                            icon: Icon(
+                              Icons.keyboard_arrow_down_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 24.0,
+                            ),
+                            fillColor: const Color(0xFF1D1B1B),
+                            elevation: 0.0,
+                            borderColor: Colors.transparent,
+                            borderWidth: 0.0,
+                            borderRadius: 30.0,
+                            margin: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 14.0, 20.0, 14.0),
+                            hidesUnderline: true,
+                            isOverButton: false,
+                            isSearchable: true,
+                            isMultiSelect: false,
+                          );
+                        },
                       ),
                     ),
                   ],

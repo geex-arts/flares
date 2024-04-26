@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
+import 'backend/supabase/supabase.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'dart:convert';
@@ -115,6 +117,21 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
   }
+
+  final _citiesManager = FutureRequestManager<List<CitiesRow>>();
+  Future<List<CitiesRow>> cities({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<List<CitiesRow>> Function() requestFn,
+  }) =>
+      _citiesManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearCitiesCache() => _citiesManager.clear();
+  void clearCitiesCacheKey(String? uniqueKey) =>
+      _citiesManager.clearRequest(uniqueKey);
 }
 
 void _safeInit(Function() initializeField) {

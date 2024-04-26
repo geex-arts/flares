@@ -16,7 +16,12 @@ import 'category_p2_model.dart';
 export 'category_p2_model.dart';
 
 class CategoryP2Widget extends StatefulWidget {
-  const CategoryP2Widget({super.key});
+  const CategoryP2Widget({
+    super.key,
+    required this.popularWishes,
+  });
+
+  final List<WishesRow>? popularWishes;
 
   @override
   State<CategoryP2Widget> createState() => _CategoryP2WidgetState();
@@ -150,7 +155,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                             updateOnChange: true,
                             child: WishesListMainWidget(
                               isMyProfile: false,
-                              wishesRowsParam: wishesListMainWishesRowList,
+                              wishesRowsParam: widget.popularWishes!,
                             ),
                           );
                         },

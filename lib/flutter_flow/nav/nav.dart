@@ -212,7 +212,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Category_P2',
               path: 'categoryP2',
-              builder: (context, params) => const CategoryP2Widget(),
+              builder: (context, params) => CategoryP2Widget(
+                popularWishes: params.getParam<WishesRow>(
+                  'popularWishes',
+                  ParamType.SupabaseRow,
+                  isList: true,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Add_Wish_Reaction',
@@ -296,8 +302,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Category_P',
               path: 'categoryP',
               builder: (context, params) => CategoryPWidget(
-                selectedCategoryID: params.getParam(
-                  'selectedCategoryID',
+                searchText: params.getParam(
+                  'searchText',
                   ParamType.String,
                 ),
               ),
@@ -321,6 +327,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Official_Referral',
               path: 'officialReferral',
               builder: (context, params) => const OfficialReferralWidget(),
+            ),
+            FFRoute(
+              name: 'Stories_View',
+              path: 'storiesView',
+              builder: (context, params) => StoriesViewWidget(
+                selectedStories: params.getParam<StoriesRow>(
+                  'selectedStories',
+                  ParamType.SupabaseRow,
+                ),
+                selectedArticle: params.getParam<ArticlesRow>(
+                  'selectedArticle',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -418,7 +438,7 @@ class FFParameters {
   // present is the special extra parameter reserved for the transition info.
   bool get isEmpty =>
       state.allParams.isEmpty ||
-      (state.extraMap.length == 1 &&
+      (state.allParams.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
@@ -439,10 +459,10 @@ class FFParameters {
 
   dynamic getParam<T>(
     String paramName,
-    ParamType type, [
+    ParamType type, {
     bool isList = false,
     StructBuilder<T>? structBuilder,
-  ]) {
+  }) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
     }

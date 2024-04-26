@@ -105,10 +105,6 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         if (widget.index == 1) {
                           logFirebaseEvent('Container_update_app_state');
                           _model.updatePage(() {});
-                        } else {
-                          logFirebaseEvent('Container_navigate_to');
-
-                          context.goNamed('Category_P2');
                         }
                       },
                       child: Container(

@@ -233,6 +233,8 @@ dynamic deserializeParam<T>(
             return DatesRow(data);
           case StoriesRow:
             return StoriesRow(data);
+          case CitiesRow:
+            return CitiesRow(data);
           case WishesRow:
             return WishesRow(data);
           case FeelingsRow:
@@ -243,8 +245,6 @@ dynamic deserializeParam<T>(
             return UserFeelingsRow(data);
           case PlacesRow:
             return PlacesRow(data);
-          case CountriesRow:
-            return CountriesRow(data);
           case UsersRow:
             return UsersRow(data);
           case WishesCollectionsRow:
