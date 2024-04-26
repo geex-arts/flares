@@ -831,54 +831,6 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                               useGoogleFonts: false,
                                             ),
                                       ),
-                                      RichText(
-                                        textScaler:
-                                            MediaQuery.of(context).textScaler,
-                                        text: TextSpan(
-                                          children: [
-                                            TextSpan(
-                                              text: 'See all ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            const Color(0x9AFFFFFF),
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
-                                            const TextSpan(
-                                              text: '(',
-                                              style: TextStyle(),
-                                            ),
-                                            TextSpan(
-                                              text: valueOrDefault<String>(
-                                                containerDiscoveryCategoriesRowList
-                                                    .length
-                                                    .toString(),
-                                                '0',
-                                              ),
-                                              style: const TextStyle(),
-                                            ),
-                                            const TextSpan(
-                                              text: ')',
-                                              style: TextStyle(),
-                                            )
-                                          ],
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodySmall
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: false,
-                                              ),
-                                        ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -1243,7 +1195,9 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         final currentArticle =
-                                            containerArticlesRowList.toList();
+                                            containerArticlesRowList
+                                                .where((e) => e.featured)
+                                                .toList();
                                         return ListView.separated(
                                           padding: const EdgeInsets.fromLTRB(
                                             16.0,
@@ -1428,7 +1382,9 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                     child: Builder(
                                       builder: (context) {
                                         final currentArticle2 =
-                                            containerArticlesRowList.toList();
+                                            containerArticlesRowList
+                                                .where((e) => !e.featured)
+                                                .toList();
                                         return GridView.builder(
                                           padding: EdgeInsets.zero,
                                           gridDelegate:

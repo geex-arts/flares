@@ -34,4 +34,7 @@ class ArticlesRow extends SupabaseDataRow {
 
   String? get category => getField<String>('category');
   set category(String? value) => setField<String>('category', value);
+
+  bool get featured => getField<bool>('featured')!;
+  set featured(bool value) => setField<bool>('featured', value);
 }
