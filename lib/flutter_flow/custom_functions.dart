@@ -110,3 +110,10 @@ List<String> mergeTwoListsStrings(
 String stringToImagePath(String stringImage) {
   return stringImage;
 }
+
+bool? checkIfIListContains(
+  AiCategoryRow currentCategory,
+  List<AiCategoryRow> selectedCategories,
+) {
+  return selectedCategories.contains(currentCategory);
+}

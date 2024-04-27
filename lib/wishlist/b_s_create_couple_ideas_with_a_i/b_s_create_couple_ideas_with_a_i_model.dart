@@ -1,3 +1,4 @@
+import '/backend/supabase/supabase.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'b_s_create_couple_ideas_with_a_i_widget.dart'
@@ -8,18 +9,18 @@ class BSCreateCoupleIdeasWithAIModel
     extends FlutterFlowModel<BSCreateCoupleIdeasWithAIWidget> {
   ///  Local state fields for this component.
 
-  List<String> selectedCategoriesNames = [];
-  void addToSelectedCategoriesNames(String item) =>
-      selectedCategoriesNames.add(item);
-  void removeFromSelectedCategoriesNames(String item) =>
-      selectedCategoriesNames.remove(item);
-  void removeAtIndexFromSelectedCategoriesNames(int index) =>
-      selectedCategoriesNames.removeAt(index);
-  void insertAtIndexInSelectedCategoriesNames(int index, String item) =>
-      selectedCategoriesNames.insert(index, item);
-  void updateSelectedCategoriesNamesAtIndex(
-          int index, Function(String) updateFn) =>
-      selectedCategoriesNames[index] = updateFn(selectedCategoriesNames[index]);
+  List<AiCategoryRow> selectedAICategories = [];
+  void addToSelectedAICategories(AiCategoryRow item) =>
+      selectedAICategories.add(item);
+  void removeFromSelectedAICategories(AiCategoryRow item) =>
+      selectedAICategories.remove(item);
+  void removeAtIndexFromSelectedAICategories(int index) =>
+      selectedAICategories.removeAt(index);
+  void insertAtIndexInSelectedAICategories(int index, AiCategoryRow item) =>
+      selectedAICategories.insert(index, item);
+  void updateSelectedAICategoriesAtIndex(
+          int index, Function(AiCategoryRow) updateFn) =>
+      selectedAICategories[index] = updateFn(selectedAICategories[index]);
 
   ///  State fields for stateful widgets in this component.
 

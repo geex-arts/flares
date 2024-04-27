@@ -48,8 +48,8 @@ class _NOfferWidgetState extends State<NOfferWidget> {
         borderRadius: BorderRadius.circular(32.0),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 16.0,
-            sigmaY: 16.0,
+            sigmaX: 70.0,
+            sigmaY: 70.0,
           ),
           child: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),

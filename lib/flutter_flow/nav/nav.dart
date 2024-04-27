@@ -213,7 +213,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Category_P2',
               path: 'categoryP2',
               builder: (context, params) => CategoryP2Widget(
-                popularWishes: params.getParam<WishesRow>(
+                popularWishes: params.getParam<PopularWishesRow>(
                   'popularWishes',
                   ParamType.SupabaseRow,
                   isList: true,
@@ -302,9 +302,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Category_P',
               path: 'categoryP',
               builder: (context, params) => CategoryPWidget(
-                searchText: params.getParam(
-                  'searchText',
-                  ParamType.String,
+                selectedCategory: params.getParam<DiscoveryCategoriesRow>(
+                  'selectedCategory',
+                  ParamType.SupabaseRow,
                 ),
               ),
             ),
@@ -339,6 +339,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 selectedArticle: params.getParam<ArticlesRow>(
                   'selectedArticle',
                   ParamType.SupabaseRow,
+                ),
+                aiAssistantLink: params.getParam(
+                  'aiAssistantLink',
+                  ParamType.String,
                 ),
               ),
             )

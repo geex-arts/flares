@@ -44,8 +44,8 @@ class _NShareInfoWidgetState extends State<NShareInfoWidget> {
           borderRadius: BorderRadius.circular(0.0),
           child: BackdropFilter(
             filter: ImageFilter.blur(
-              sigmaX: 16.0,
-              sigmaY: 16.0,
+              sigmaX: 70.0,
+              sigmaY: 70.0,
             ),
             child: Container(
               width: double.infinity,

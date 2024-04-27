@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/card_widget.dart';
 import '/components/floating_btn_widget.dart';
@@ -435,14 +436,6 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                 logFirebaseEvent(
                                                     'EXPLORE_PAGE_RichText_cdc2pqwv_ON_TAP');
                                                 logFirebaseEvent(
-                                                    'RichText_update_page_state');
-                                                _model.popularWishesIDs =
-                                                    containerPopularWishesRowList
-                                                        .map((e) => e.uuid)
-                                                        .withoutNulls
-                                                        .toList()
-                                                        .cast<String>();
-                                                logFirebaseEvent(
                                                     'RichText_navigate_to');
 
                                                 context.pushNamed(
@@ -450,7 +443,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                   queryParameters: {
                                                     'popularWishes':
                                                         serializeParam(
-                                                      containerWishesRowList,
+                                                      containerPopularWishesRowList,
                                                       ParamType.SupabaseRow,
                                                       true,
                                                     ),
@@ -626,71 +619,100 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              FutureBuilder<List<AiQuestionsRow>>(
-                                future: AiQuestionsTable().queryRows(
-                                  queryFn: (q) =>
-                                      q.order('order', ascending: true),
-                                ),
-                                builder: (context, snapshot) {
-                                  // Customize what your widget looks like when it's loading.
-                                  if (!snapshot.hasData) {
-                                    return Center(
-                                      child: SizedBox(
-                                        width: 50.0,
-                                        height: 50.0,
-                                        child: SpinKitPulse(
-                                          color: FlutterFlowTheme.of(context)
-                                              .pinkButton,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                    );
-                                  }
-                                  List<AiQuestionsRow> wrapAiQuestionsRowList =
-                                      snapshot.data!;
-                                  return Wrap(
-                                    spacing: 16.0,
-                                    runSpacing: 16.0,
-                                    alignment: WrapAlignment.start,
-                                    crossAxisAlignment:
-                                        WrapCrossAlignment.start,
-                                    direction: Axis.horizontal,
-                                    runAlignment: WrapAlignment.start,
-                                    verticalDirection: VerticalDirection.down,
-                                    clipBehavior: Clip.none,
-                                    children: List.generate(
-                                        wrapAiQuestionsRowList.length,
-                                        (wrapIndex) {
-                                      final wrapAiQuestionsRow =
-                                          wrapAiQuestionsRowList[wrapIndex];
-                                      return Container(
-                                        decoration: BoxDecoration(
-                                          color: const Color(0x19FFFFFF),
-                                          borderRadius:
-                                              BorderRadius.circular(100.0),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(10.0),
-                                          child: Text(
-                                            wrapAiQuestionsRow.name!,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w500,
-                                                  useGoogleFonts: false,
-                                                ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    14.0, 0.0, 14.0, 0.0),
+                                child: FutureBuilder<List<AiQuestionsRow>>(
+                                  future: AiQuestionsTable().queryRows(
+                                    queryFn: (q) =>
+                                        q.order('order', ascending: true),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: SpinKitPulse(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pinkButton,
+                                            size: 50.0,
                                           ),
                                         ),
                                       );
-                                    }),
-                                  );
-                                },
+                                    }
+                                    List<AiQuestionsRow>
+                                        wrapAiQuestionsRowList = snapshot.data!;
+                                    return Wrap(
+                                      spacing: 16.0,
+                                      runSpacing: 16.0,
+                                      alignment: WrapAlignment.start,
+                                      crossAxisAlignment:
+                                          WrapCrossAlignment.start,
+                                      direction: Axis.horizontal,
+                                      runAlignment: WrapAlignment.start,
+                                      verticalDirection: VerticalDirection.down,
+                                      clipBehavior: Clip.none,
+                                      children: List.generate(
+                                          wrapAiQuestionsRowList.length,
+                                          (wrapIndex) {
+                                        final wrapAiQuestionsRow =
+                                            wrapAiQuestionsRowList[wrapIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            logFirebaseEvent(
+                                                'EXPLORE_PAGE_Container_ykzt20u1_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Container_navigate_to');
+
+                                            context.pushNamed(
+                                              'Stories_View',
+                                              queryParameters: {
+                                                'aiAssistantLink':
+                                                    serializeParam(
+                                                  'https://flaresapp.com/aiquestions?question=${wrapAiQuestionsRow.value}&userID=$currentUserUid',
+                                                  ParamType.String,
+                                                ),
+                                              }.withoutNulls,
+                                            );
+                                          },
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x19FFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                            ),
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(10.0),
+                                              child: Text(
+                                                wrapAiQuestionsRow.name!,
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      }),
+                                    );
+                                  },
+                                ),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
@@ -713,10 +735,20 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                           autofocus: false,
                                           obscureText: false,
                                           decoration: InputDecoration(
-                                            labelText: 'Label here...',
+                                            isDense: false,
                                             labelStyle:
                                                 FlutterFlowTheme.of(context)
                                                     .labelMedium
+                                                    .override(
+                                                      fontFamily: 'Nuckle',
+                                                      color: const Color(0x80FFFFFF),
+                                                      letterSpacing: 0.0,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                            hintText: 'Your question...',
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
                                                     .override(
                                                       fontFamily: 'Nuckle',
                                                       color: const Color(0x80FFFFFF),
@@ -730,7 +762,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                 InputBorder.none,
                                             contentPadding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    20.0, 18.0, 20.0, 0.0),
                                             suffixIcon: Icon(
                                               FFIcons.klike,
                                               color:
@@ -870,10 +902,10 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                 context.pushNamed(
                                                   'Category_P',
                                                   queryParameters: {
-                                                    'searchText':
+                                                    'selectedCategory':
                                                         serializeParam(
-                                                      currentCategoryItem.name,
-                                                      ParamType.String,
+                                                      currentCategoryItem,
+                                                      ParamType.SupabaseRow,
                                                     ),
                                                   }.withoutNulls,
                                                 );
@@ -994,11 +1026,10 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                   context.pushNamed(
                                                     'Category_P',
                                                     queryParameters: {
-                                                      'searchText':
+                                                      'selectedCategory':
                                                           serializeParam(
-                                                        currentCategory2Item
-                                                            .name,
-                                                        ParamType.String,
+                                                        currentCategory2Item,
+                                                        ParamType.SupabaseRow,
                                                       ),
                                                     }.withoutNulls,
                                                   );
@@ -1378,7 +1409,9 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                       16.0, 30.0, 16.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
-                                    decoration: const BoxDecoration(),
+                                    decoration: const BoxDecoration(
+                                      color: Colors.transparent,
+                                    ),
                                     child: Builder(
                                       builder: (context) {
                                         final currentArticle2 =
@@ -1392,7 +1425,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                             crossAxisCount: 2,
                                             crossAxisSpacing: 10.0,
                                             mainAxisSpacing: 10.0,
-                                            childAspectRatio: 0.8,
+                                            childAspectRatio: 0.9,
                                           ),
                                           primary: false,
                                           shrinkWrap: true,
@@ -1428,7 +1461,9 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                               },
                                               child: Container(
                                                 width: 205.0,
-                                                decoration: const BoxDecoration(),
+                                                decoration: const BoxDecoration(
+                                                  color: Color(0x00FFFFFF),
+                                                ),
                                                 child: Column(
                                                   mainAxisSize:
                                                       MainAxisSize.max,

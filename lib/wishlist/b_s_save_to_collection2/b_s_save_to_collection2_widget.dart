@@ -109,8 +109,8 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 16.0,
-          sigmaY: 16.0,
+          sigmaX: 70.0,
+          sigmaY: 70.0,
         ),
         child: FutureBuilder<List<CollectionsRow>>(
           future: CollectionsTable().queryRows(

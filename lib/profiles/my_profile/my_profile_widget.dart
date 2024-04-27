@@ -76,33 +76,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
-          ShimmerEffect(
+          MoveEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 200.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
+            duration: 1200.0.ms,
+            begin: const Offset(-200.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -110,33 +89,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
-          ShimmerEffect(
+          MoveEffect(
             curve: Curves.easeInOut,
             delay: 0.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 200.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 100.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
-          ),
-          ShimmerEffect(
-            curve: Curves.easeInOut,
-            delay: 300.0.ms,
-            duration: 600.0.ms,
-            color: const Color(0x80FFFFFF),
-            angle: 0.524,
+            duration: 1200.0.ms,
+            begin: const Offset(-200.0, 0.0),
+            end: const Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -148,7 +106,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(-200.0, 0.0),
+            begin: const Offset(200.0, 0.0),
             end: const Offset(0.0, 0.0),
           ),
         ],
@@ -161,38 +119,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 1200.0.ms,
-            begin: const Offset(-200.0, 0.0),
+            begin: const Offset(200.0, 0.0),
             end: const Offset(0.0, 0.0),
           ),
         ],
       ),
       'containerOnPageLoadAnimation5': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation6': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation7': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           VisibilityEffect(duration: 1.ms),
@@ -329,93 +261,56 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           height: 127.0,
                                           child: Stack(
                                             children: [
-                                              Align(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, -1.0),
-                                                child: InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    logFirebaseEvent(
-                                                        'MY_PROFILE_Container_jbzp9z8k_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Container_navigate_to');
+                                              if (columnPairsRow?.photo !=
+                                                      null &&
+                                                  columnPairsRow?.photo != '')
+                                                Align(
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                          0.0, -1.0),
+                                                  child: InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      logFirebaseEvent(
+                                                          'MY_PROFILE_Container_jbzp9z8k_ON_TAP');
+                                                      logFirebaseEvent(
+                                                          'Container_navigate_to');
 
-                                                    context.pushNamed(
-                                                      'Edit_Couple_Profile',
-                                                      queryParameters: {
-                                                        'myPairRow':
-                                                            serializeParam(
-                                                          columnPairsRow,
-                                                          ParamType.SupabaseRow,
+                                                      context.pushNamed(
+                                                        'Edit_Couple_Profile',
+                                                        queryParameters: {
+                                                          'myPairRow':
+                                                              serializeParam(
+                                                            columnPairsRow,
+                                                            ParamType
+                                                                .SupabaseRow,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
+                                                    },
+                                                    child: Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          image:
+                                                              CachedNetworkImageProvider(
+                                                            columnPairsRow!
+                                                                .photo!,
+                                                          ),
                                                         ),
-                                                      }.withoutNulls,
-                                                    );
-                                                  },
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image:
-                                                            CachedNetworkImageProvider(
-                                                          columnPairsRow!
-                                                              .photo!,
-                                                        ),
+                                                        shape: BoxShape.circle,
                                                       ),
-                                                      shape: BoxShape.circle,
                                                     ),
                                                   ),
-                                                ),
-                                              ),
-                                              if (!true)
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, -1.0),
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image:
-                                                            CachedNetworkImageProvider(
-                                                          columnPairsRow
-                                                              .photo!,
-                                                        ),
-                                                      ),
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'containerOnPageLoadAnimation1']!),
-                                                ),
-                                              if (!true)
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, -1.0),
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      image: DecorationImage(
-                                                        fit: BoxFit.cover,
-                                                        image: Image.asset(
-                                                          'assets/images/Mask_group.webp',
-                                                        ).image,
-                                                      ),
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'containerOnPageLoadAnimation2']!),
                                                 ),
                                               Align(
                                                 alignment: const AlignmentDirectional(
@@ -697,7 +592,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                               width: 1.5,
                                                                                             ),
                                                                                           ),
-                                                                                        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation3']!),
+                                                                                        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation1']!),
                                                                                       ),
                                                                                     );
                                                                                   } else {
@@ -719,7 +614,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                               width: 1.5,
                                                                                             ),
                                                                                           ),
-                                                                                        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation4']!),
+                                                                                        ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation2']!),
                                                                                       ),
                                                                                     );
                                                                                   }
@@ -820,9 +715,6 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                 },
                                                                                 child: Container(
                                                                                   height: 17.0,
-                                                                                  constraints: const BoxConstraints(
-                                                                                    minWidth: 50.0,
-                                                                                  ),
                                                                                   decoration: BoxDecoration(
                                                                                     color: valueOrDefault<Color>(
                                                                                       containerUserFeelingsRow != null
@@ -839,14 +731,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                     padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                     child: Row(
                                                                                       mainAxisSize: MainAxisSize.min,
+                                                                                      mainAxisAlignment: MainAxisAlignment.center,
                                                                                       children: [
                                                                                         Padding(
-                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
+                                                                                          padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                                                                           child: Text(
                                                                                             valueOrDefault<String>(
                                                                                               containerUserFeelingsRow != null ? (containerUserFeelingsRow.customFeeling != null && containerUserFeelingsRow.customFeeling != '' ? containerUserFeelingsRow.customFeeling : stackFeelingsRow?.name) : 'Set your mood',
                                                                                               'Set your mood',
-                                                                                            ),
+                                                                                            ).maybeHandleOverflow(maxChars: 15),
                                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                   fontFamily: 'Nuckle',
                                                                                                   color: FlutterFlowTheme.of(context).info,
@@ -959,7 +852,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                       width: 1.5,
                                                                                     ),
                                                                                   ),
-                                                                                ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation5']!),
+                                                                                ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation3']!),
                                                                               ),
                                                                             );
                                                                           } else if (containerUsersRowList.length == 1) {
@@ -993,7 +886,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                   size: 17.0,
                                                                                 ),
                                                                               ),
-                                                                            ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation6']!);
+                                                                            ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation4']!);
                                                                           } else {
                                                                             return ClipRRect(
                                                                               borderRadius: BorderRadius.circular(100.0),
@@ -1021,7 +914,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                         width: 1.5,
                                                                                       ),
                                                                                     ),
-                                                                                  ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation7']!),
+                                                                                  ).animateOnPageLoad(animationsMap['containerOnPageLoadAnimation5']!),
                                                                                 ),
                                                                               ),
                                                                             );
@@ -1064,9 +957,6 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                               final containerFeelingsRow = containerFeelingsRowList.isNotEmpty ? containerFeelingsRowList.first : null;
                                                                               return Container(
                                                                                 height: 17.0,
-                                                                                constraints: const BoxConstraints(
-                                                                                  minWidth: 50.0,
-                                                                                ),
                                                                                 decoration: BoxDecoration(
                                                                                   color: valueOrDefault<Color>(
                                                                                     stackUserFeelingsRow != null ? (Color(int.parse((stackUserFeelingsRow.color!)))) : const Color(0x19FFFFFF),
@@ -1078,11 +968,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                   padding: const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                                                                                   child: Row(
                                                                                     mainAxisSize: MainAxisSize.min,
+                                                                                    mainAxisAlignment: MainAxisAlignment.center,
                                                                                     children: [
                                                                                       Padding(
-                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(2.0, 2.0, 2.0, 0.0),
+                                                                                        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 0.0),
                                                                                         child: Text(
-                                                                                          stackUserFeelingsRow.customFeeling != null && stackUserFeelingsRow.customFeeling != '' ? stackUserFeelingsRow.customFeeling! : containerFeelingsRow!.name!,
+                                                                                          stackUserFeelingsRow.customFeeling != null && stackUserFeelingsRow.customFeeling != '' ? stackUserFeelingsRow.customFeeling! : containerFeelingsRow!.name!.maybeHandleOverflow(maxChars: 15),
                                                                                           style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                                 fontFamily: 'Nuckle',
                                                                                                 color: FlutterFlowTheme.of(context).info,
@@ -1210,7 +1101,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                             ' ago', '');
                                                       }(dateTimeFormat(
                                                           'relative',
-                                                          columnPairsRow
+                                                          columnPairsRow!
                                                               .pairSince!)),
                                                       style: FlutterFlowTheme
                                                               .of(context)

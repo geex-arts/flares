@@ -134,8 +134,8 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
         ),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 16.0,
-            sigmaY: 16.0,
+            sigmaX: 70.0,
+            sigmaY: 70.0,
           ),
           child: Container(
             width: double.infinity,

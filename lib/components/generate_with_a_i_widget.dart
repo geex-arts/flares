@@ -37,73 +37,76 @@ class _GenerateWithAIWidgetState extends State<GenerateWithAIWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      height: 73.0,
-      decoration: BoxDecoration(
-        color: const Color(0x1AFFFFFF),
-        borderRadius: BorderRadius.circular(16.0),
-      ),
-      child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              '⚡️ Generate with AI',
-              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                    fontFamily: 'Nuckle',
-                    color: FlutterFlowTheme.of(context).info,
-                    letterSpacing: 0.0,
-                    useGoogleFonts: false,
-                  ),
-            ),
-            InkWell(
-              splashColor: Colors.transparent,
-              focusColor: Colors.transparent,
-              hoverColor: Colors.transparent,
-              highlightColor: Colors.transparent,
-              onTap: () async {
-                logFirebaseEvent('GENERATE_WITH_A_I_Container_a2hb5xhy_ON_');
-                logFirebaseEvent('Container_bottom_sheet');
-                await showModalBottomSheet(
-                  isScrollControlled: true,
-                  backgroundColor: Colors.transparent,
-                  context: context,
-                  builder: (context) {
-                    return WebViewAware(
-                      child: Padding(
-                        padding: MediaQuery.viewInsetsOf(context),
-                        child: const BSCreateCoupleIdeasWithAIWidget(),
-                      ),
-                    );
-                  },
-                ).then((value) => safeSetState(() {}));
-              },
-              child: Container(
-                width: 100.0,
-                height: 40.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).pinkButton,
-                  borderRadius: BorderRadius.circular(21.0),
-                ),
-                alignment: const AlignmentDirectional(0.0, 0.0),
-                child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
-                  child: Text(
-                    'Generate',
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Nuckle',
-                          color: FlutterFlowTheme.of(context).info,
-                          letterSpacing: 0.0,
-                          useGoogleFonts: false,
+    return Padding(
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
+      child: Container(
+        width: double.infinity,
+        height: 73.0,
+        decoration: BoxDecoration(
+          color: const Color(0x1AFFFFFF),
+          borderRadius: BorderRadius.circular(16.0),
+        ),
+        child: Padding(
+          padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                '⚡️ Generate with AI',
+                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                      fontFamily: 'Nuckle',
+                      color: FlutterFlowTheme.of(context).info,
+                      letterSpacing: 0.0,
+                      useGoogleFonts: false,
+                    ),
+              ),
+              InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  logFirebaseEvent('GENERATE_WITH_A_I_Container_a2hb5xhy_ON_');
+                  logFirebaseEvent('Container_bottom_sheet');
+                  await showModalBottomSheet(
+                    isScrollControlled: true,
+                    backgroundColor: Colors.transparent,
+                    context: context,
+                    builder: (context) {
+                      return WebViewAware(
+                        child: Padding(
+                          padding: MediaQuery.viewInsetsOf(context),
+                          child: const BSCreateCoupleIdeasWithAIWidget(),
                         ),
+                      );
+                    },
+                  ).then((value) => safeSetState(() {}));
+                },
+                child: Container(
+                  width: 100.0,
+                  height: 40.0,
+                  decoration: BoxDecoration(
+                    color: FlutterFlowTheme.of(context).pinkButton,
+                    borderRadius: BorderRadius.circular(21.0),
+                  ),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
+                  child: Padding(
+                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 3.0, 0.0, 0.0),
+                    child: Text(
+                      'Generate',
+                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                            fontFamily: 'Nuckle',
+                            color: FlutterFlowTheme.of(context).info,
+                            letterSpacing: 0.0,
+                            useGoogleFonts: false,
+                          ),
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -17,10 +17,10 @@ export 'category_p_model.dart';
 class CategoryPWidget extends StatefulWidget {
   const CategoryPWidget({
     super.key,
-    required this.searchText,
+    required this.selectedCategory,
   });
 
-  final String? searchText;
+  final DiscoveryCategoriesRow? selectedCategory;
 
   @override
   State<CategoryPWidget> createState() => _CategoryPWidgetState();
@@ -84,12 +84,19 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: FutureBuilder<List<CollectionsRow>>(
-          future: CollectionsTable().queryRows(
-            queryFn: (q) => q.eq(
-              'parent',
-              widget.searchText,
-            ),
+        body: FutureBuilder<List<WishesCollectionsRow>>(
+          future: WishesCollectionsTable().queryRows(
+            queryFn: (q) => q
+                .in_(
+                  'search_text',
+                  (String var1) {
+                    return var1.split(' ');
+                  }(widget.selectedCategory!.name!),
+                )
+                .eq(
+                  'visibily',
+                  true,
+                ),
           ),
           builder: (context, snapshot) {
             // Customize what your widget looks like when it's loading.
@@ -105,7 +112,8 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                 ),
               );
             }
-            List<CollectionsRow> containerCollectionsRowList = snapshot.data!;
+            List<WishesCollectionsRow> containerWishesCollectionsRowList =
+                snapshot.data!;
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -126,138 +134,106 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 85.0, 0.0, 0.0),
-                          child: FutureBuilder<List<CollectionsRow>>(
-                            future: CollectionsTable().querySingleRow(
-                              queryFn: (q) => q.eq(
-                                'uuid',
-                                widget.searchText,
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              if (widget.selectedCategory?.image != null &&
+                                  widget.selectedCategory?.image != '')
+                                Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  clipBehavior: Clip.antiAlias,
+                                  decoration: const BoxDecoration(
+                                    shape: BoxShape.circle,
+                                  ),
+                                  child: Image.network(
+                                    widget.selectedCategory!.image!,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 20.0, 0.0, 0.0),
+                                child: Text(
+                                  widget.selectedCategory!.name!,
+                                  textAlign: TextAlign.center,
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleLarge
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        fontSize: 20.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w600,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
+                                      ),
+                                ),
                               ),
-                            ),
-                            builder: (context, snapshot) {
-                              // Customize what your widget looks like when it's loading.
-                              if (!snapshot.hasData) {
-                                return Center(
-                                  child: SizedBox(
-                                    width: 50.0,
-                                    height: 50.0,
-                                    child: SpinKitPulse(
-                                      color: FlutterFlowTheme.of(context)
-                                          .pinkButton,
-                                      size: 50.0,
-                                    ),
-                                  ),
-                                );
-                              }
-                              List<CollectionsRow> columnCollectionsRowList =
-                                  snapshot.data!;
-                              final columnCollectionsRow =
-                                  columnCollectionsRowList.isNotEmpty
-                                      ? columnCollectionsRowList.first
-                                      : null;
-                              return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  if (columnCollectionsRow?.photo != null &&
-                                      columnCollectionsRow?.photo != '')
-                                    Container(
-                                      width: 100.0,
-                                      height: 100.0,
-                                      clipBehavior: Clip.antiAlias,
-                                      decoration: const BoxDecoration(
-                                        shape: BoxShape.circle,
-                                      ),
-                                      child: Image.network(
-                                        columnCollectionsRow!.photo!,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
-                                    child: Text(
-                                      columnCollectionsRow!.name!,
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleLarge
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w600,
-                                            useGoogleFonts: false,
-                                            lineHeight: 1.4,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 6.0, 0.0, 0.0),
-                                    child: RichText(
-                                      textScaler:
-                                          MediaQuery.of(context).textScaler,
-                                      text: TextSpan(
-                                        children: [
-                                          TextSpan(
-                                            text: 'Last Updated ',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.normal,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                          TextSpan(
-                                            text: (String var1) {
-                                              return var1.replaceAll(
-                                                  ' ago', '');
-                                            }(dateTimeFormat(
-                                                'relative',
-                                                columnCollectionsRow
-                                                    .createdAt)),
-                                            style: const TextStyle(),
-                                          ),
-                                          TextSpan(
-                                            text: ' ago',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          )
-                                        ],
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 6.0, 0.0, 0.0),
+                                child: RichText(
+                                  textScaler: MediaQuery.of(context).textScaler,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: 'Last Updated ',
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
+                                              color: const Color(0x9AFFFFFF),
                                               letterSpacing: 0.0,
+                                              fontWeight: FontWeight.normal,
                                               useGoogleFonts: false,
                                             ),
                                       ),
-                                    ),
+                                      TextSpan(
+                                        text: (String var1) {
+                                          return var1.replaceAll(' ago', '');
+                                        }(dateTimeFormat(
+                                            'relative',
+                                            widget
+                                                .selectedCategory!.createdAt)),
+                                        style: const TextStyle(),
+                                      ),
+                                      TextSpan(
+                                        text: ' ago',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Nuckle',
+                                              color: const Color(0x9AFFFFFF),
+                                              letterSpacing: 0.0,
+                                              useGoogleFonts: false,
+                                            ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
                                   ),
-                                ],
-                              );
-                            },
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         FutureBuilder<List<WishesRow>>(
                           future: WishesTable().queryRows(
                             queryFn: (q) => q
                                 .in_(
-                                  'collection',
-                                  containerCollectionsRowList
+                                  'uuid',
+                                  containerWishesCollectionsRowList
                                       .map((e) => e.uuid)
+                                      .withoutNulls
                                       .toList(),
                                 )
                                 .order('created_at'),

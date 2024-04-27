@@ -7,6 +7,7 @@ import 'dart:async';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'b_s_new_collection_model.dart';
 export 'b_s_new_collection_model.dart';
@@ -67,8 +68,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 16.0,
-          sigmaY: 16.0,
+          sigmaX: 70.0,
+          sigmaY: 70.0,
         ),
         child: Container(
           width: double.infinity,
@@ -274,6 +275,13 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         letterSpacing: 0.0,
                         useGoogleFonts: false,
                       ),
+                  maxLength: 14,
+                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                  buildCounter: (context,
+                          {required currentLength,
+                          required isFocused,
+                          maxLength}) =>
+                      null,
                   cursorColor: FlutterFlowTheme.of(context).pinkButton,
                   validator:
                       _model.textControllerValidator.asValidator(context),

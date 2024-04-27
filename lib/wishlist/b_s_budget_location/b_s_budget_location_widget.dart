@@ -58,8 +58,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
       ),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 16.0,
-          sigmaY: 16.0,
+          sigmaX: 70.0,
+          sigmaY: 70.0,
         ),
         child: Container(
           width: double.infinity,
@@ -285,19 +285,25 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Container(
-                                          width: 26.0,
-                                          height: 18.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .pink,
-                                            borderRadius:
-                                                BorderRadius.circular(9.0),
-                                            border: Border.all(
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 11.0, 0.0, 0.0),
+                                          child: Container(
+                                            width: 26.0,
+                                            height: 18.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .info,
-                                              width: 2.0,
+                                                      .pink,
+                                              borderRadius:
+                                                  BorderRadius.circular(9.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                width: 2.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -329,19 +335,25 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Container(
-                                          width: 26.0,
-                                          height: 18.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .pink,
-                                            borderRadius:
-                                                BorderRadius.circular(9.0),
-                                            border: Border.all(
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 11.0, 0.0, 0.0),
+                                          child: Container(
+                                            width: 26.0,
+                                            height: 18.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .info,
-                                              width: 2.0,
+                                                      .pink,
+                                              borderRadius:
+                                                  BorderRadius.circular(9.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                width: 2.0,
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -373,19 +385,25 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Container(
-                                          width: 26.0,
-                                          height: 18.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .pink,
-                                            borderRadius:
-                                                BorderRadius.circular(9.0),
-                                            border: Border.all(
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 11.0, 0.0, 0.0),
+                                          child: Container(
+                                            width: 26.0,
+                                            height: 18.0,
+                                            decoration: BoxDecoration(
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .info,
-                                              width: 2.0,
+                                                      .pink,
+                                              borderRadius:
+                                                  BorderRadius.circular(9.0),
+                                              border: Border.all(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                width: 2.0,
+                                              ),
                                             ),
                                           ),
                                         ),

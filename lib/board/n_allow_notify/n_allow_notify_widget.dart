@@ -44,8 +44,8 @@ class _NAllowNotifyWidgetState extends State<NAllowNotifyWidget> {
         borderRadius: BorderRadius.circular(32.0),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 16.0,
-            sigmaY: 16.0,
+            sigmaX: 70.0,
+            sigmaY: 70.0,
           ),
           child: Container(
             width: 259.0,

@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
@@ -105,6 +106,18 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                         if (widget.index == 1) {
                           logFirebaseEvent('Container_update_app_state');
                           _model.updatePage(() {});
+                        } else {
+                          logFirebaseEvent('Container_navigate_to');
+
+                          context.pushNamed(
+                            'Stories_View',
+                            queryParameters: {
+                              'aiAssistantLink': serializeParam(
+                                'https://flaresapp.com/chat?userID=$currentUserUid',
+                                ParamType.String,
+                              ),
+                            }.withoutNulls,
+                          );
                         }
                       },
                       child: Container(
