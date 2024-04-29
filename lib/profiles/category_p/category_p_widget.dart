@@ -362,7 +362,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                size: 20.0,
+                                                size: 16.0,
                                               ),
                                             ),
                                           ),

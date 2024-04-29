@@ -44,3 +44,5 @@ export '/profiles/add_from_browser/add_from_browser_widget.dart'
 export '/wishlist/official_referral/official_referral_widget.dart'
     show OfficialReferralWidget;
 export '/wishlist/stories_view/stories_view_widget.dart' show StoriesViewWidget;
+export '/wishlist/assistant_view/assistant_view_widget.dart'
+    show AssistantViewWidget;

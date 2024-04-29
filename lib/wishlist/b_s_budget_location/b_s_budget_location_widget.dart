@@ -281,7 +281,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                       _model.budget == 'friendly' ? 1.0 : 0.0,
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 24.0, 0.0, 0.0),
+                                        0.0, 12.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -331,7 +331,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                       _model.budget == 'moderate' ? 1.0 : 0.0,
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 24.0, 0.0, 0.0),
+                                        0.0, 12.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -381,7 +381,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                       _model.budget == 'luxury' ? 1.0 : 0.0,
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 24.0, 0.0, 0.0),
+                                        0.0, 12.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [

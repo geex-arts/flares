@@ -1,4 +1,3 @@
-import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/card_widget.dart';
 import '/components/floating_btn_widget.dart';
@@ -671,11 +670,11 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                 'Container_navigate_to');
 
                                             context.pushNamed(
-                                              'Stories_View',
+                                              'Assistant_View',
                                               queryParameters: {
                                                 'aiAssistantLink':
                                                     serializeParam(
-                                                  'https://flaresapp.com/aiquestions?question=${wrapAiQuestionsRow.value}&userID=$currentUserUid',
+                                                  wrapAiQuestionsRow.value,
                                                   ParamType.String,
                                                 ),
                                               }.withoutNulls,
@@ -873,7 +872,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                     builder: (context) {
                                       final currentCategory =
                                           containerDiscoveryCategoriesRowList
-                                              .take(10)
+                                              .take(4)
                                               .toList();
                                       return SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
@@ -989,7 +988,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                   ),
                                 ),
                                 if (containerDiscoveryCategoriesRowList.length >
-                                    10)
+                                    4)
                                   Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         0.0, 5.0, 0.0, 0.0),
@@ -997,7 +996,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                       builder: (context) {
                                         final currentCategory2 =
                                             containerDiscoveryCategoriesRowList
-                                                .where((e) => e.order! > 10)
+                                                .where((e) => e.order! > 4)
                                                 .toList();
                                         return SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,

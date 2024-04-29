@@ -978,11 +978,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     if (user == null) {
                                       return;
                                     }
-                                    logFirebaseEvent(
-                                        'GoogleButton_navigate_to');
-
-                                    context.goNamedAuth(
-                                        'My_Profile', context.mounted);
                                   },
                                   child: Container(
                                     width: double.infinity,
@@ -991,63 +986,41 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       color: const Color(0x1AFFFFFF),
                                       borderRadius: BorderRadius.circular(30.0),
                                     ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'SIGN_UP_PAGE_Row_ttzoi8p5_ON_TAP');
-                                        logFirebaseEvent('Row_auth');
-                                        GoRouter.of(context).prepareAuthEvent();
-                                        final user = await authManager
-                                            .signInWithGoogle(context);
-                                        if (user == null) {
-                                          return;
-                                        }
-
-                                        context.goNamedAuth(
-                                            'My_Profile', context.mounted);
-                                      },
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(8.0),
-                                            child: Image.asset(
-                                              'assets/images/google.webp',
-                                              width: 24.0,
-                                              height: 24.0,
-                                              fit: BoxFit.cover,
-                                            ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/google.webp',
+                                            width: 24.0,
+                                            height: 24.0,
+                                            fit: BoxFit.cover,
                                           ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    3.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Continue with Google',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        fontSize: 11.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  3.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Continue with Google',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),

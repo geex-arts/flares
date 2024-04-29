@@ -1792,7 +1792,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .secondaryBackground,
-                                                size: 20.0,
+                                                size: 16.0,
                                               ),
                                             ),
                                           ),

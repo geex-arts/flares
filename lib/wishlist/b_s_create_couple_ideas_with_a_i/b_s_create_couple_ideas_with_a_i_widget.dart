@@ -105,7 +105,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                       const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
                   child: FutureBuilder<List<AiCategoryRow>>(
                     future: AiCategoryTable().queryRows(
-                      queryFn: (q) => q.order('created_at'),
+                      queryFn: (q) => q.order('order', ascending: true),
                     ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.

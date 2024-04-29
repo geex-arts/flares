@@ -256,7 +256,7 @@ class _OfficialReferralWidgetState extends State<OfficialReferralWidget>
                         ),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 0.0, 0.0),
+                              20.0, 0.0, 0.0, 0.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             children: [

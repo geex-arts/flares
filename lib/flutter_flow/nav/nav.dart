@@ -345,6 +345,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'Assistant_View',
+              path: 'assistantView',
+              builder: (context, params) => AssistantViewWidget(
+                aiAssistantLink: params.getParam(
+                  'aiAssistantLink',
+                  ParamType.String,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

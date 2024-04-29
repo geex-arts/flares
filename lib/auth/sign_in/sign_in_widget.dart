@@ -574,6 +574,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                     shouldSetState = true;
                                     logFirebaseEvent(
                                         'nextButton_custom_action');
+                                    await actions.initializeCustomerIo(
+                                      currentUserEmail,
+                                    );
+                                    logFirebaseEvent(
+                                        'nextButton_custom_action');
                                     await actions.identifyRevenueCat(
                                       currentUserUid,
                                     );
@@ -694,6 +699,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                   if (user == null) {
                                     return;
                                   }
+                                  logFirebaseEvent(
+                                      'GoogleButton_custom_action');
+                                  await actions.getPushPermission();
+                                  logFirebaseEvent(
+                                      'GoogleButton_custom_action');
+                                  _model.fcmToken2 =
+                                      await actions.getFCMToken();
                                   if (_model.userAuthCopyCopy?.first.pair !=
                                           null &&
                                       _model.userAuthCopyCopy?.first.pair !=
@@ -710,6 +722,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                     context.goNamedAuth('Create_Couple_Profile',
                                         context.mounted);
                                   }
+
+                                  setState(() {});
                                 },
                                 child: Container(
                                   width: double.infinity,

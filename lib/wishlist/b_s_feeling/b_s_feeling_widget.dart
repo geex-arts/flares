@@ -135,386 +135,382 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                     ),
                   ),
                   Expanded(
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 105.0),
-                      child: SingleChildScrollView(
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 24.0, 0.0, 0.0),
-                                  child: Stack(
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
-                                    children: [
-                                      Container(
-                                        width: 117.0,
-                                        height: 117.0,
-                                        decoration: BoxDecoration(
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: _model.selectedColor,
-                                            width: 3.0,
-                                          ),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 24.0, 0.0, 0.0),
+                                child: Stack(
+                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  children: [
+                                    Container(
+                                      width: 117.0,
+                                      height: 117.0,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          color: _model.selectedColor,
+                                          width: 3.0,
                                         ),
                                       ),
-                                      Builder(
-                                        builder: (context) {
-                                          if (widget.avatar != null &&
-                                              widget.avatar != '') {
-                                            return Container(
-                                              width: 95.0,
-                                              height: 95.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0x15FFFFFF),
-                                                image: DecorationImage(
-                                                  fit: BoxFit.cover,
-                                                  image: Image.network(
-                                                    functions.stringToImagePath(
-                                                        widget.avatar!),
-                                                  ).image,
-                                                ),
-                                                shape: BoxShape.circle,
-                                              ),
-                                            );
-                                          } else {
-                                            return Container(
-                                              width: 95.0,
-                                              height: 95.0,
-                                              decoration: const BoxDecoration(
-                                                color: Color(0x15FFFFFF),
-                                                shape: BoxShape.circle,
-                                              ),
-                                            );
-                                          }
-                                        },
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Align(
-                                  alignment: const AlignmentDirectional(0.0, -1.0),
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 24.0, 0.0, 0.0),
-                                    child: Text(
-                                      'I\'m Feeling...',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            fontSize: 20.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
                                     ),
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 30.0, 0.0, 0.0),
-                                  child: Builder(
-                                    builder: (context) {
-                                      final color =
-                                          FFAppState().colorsList.toList();
-                                      return Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: List.generate(color.length,
-                                            (colorIndex) {
-                                          final colorItem = color[colorIndex];
-                                          return InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              logFirebaseEvent(
-                                                  'B_S_FEELING_COMP_Stack_ejt99s1e_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'Stack_update_component_state');
-                                              setState(() {
-                                                _model.selectedColor =
-                                                    colorItem;
-                                              });
-                                            },
-                                            child: SizedBox(
-                                              width: 45.0,
-                                              height: 45.0,
-                                              child: Stack(
-                                                alignment: const AlignmentDirectional(
-                                                    0.0, 0.0),
-                                                children: [
-                                                  if (colorItem ==
-                                                      _model.selectedColor)
-                                                    Container(
-                                                      width: 45.0,
-                                                      height: 45.0,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(12.0),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .info,
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  Container(
-                                                    width: 39.0,
-                                                    height: 39.0,
-                                                    decoration: BoxDecoration(
-                                                      color: colorItem,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              10.0),
-                                                    ),
-                                                  ),
-                                                ],
+                                    Builder(
+                                      builder: (context) {
+                                        if (widget.avatar != null &&
+                                            widget.avatar != '') {
+                                          return Container(
+                                            width: 95.0,
+                                            height: 95.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x15FFFFFF),
+                                              image: DecorationImage(
+                                                fit: BoxFit.cover,
+                                                image: Image.network(
+                                                  functions.stringToImagePath(
+                                                      widget.avatar!),
+                                                ).image,
                                               ),
+                                              shape: BoxShape.circle,
                                             ),
                                           );
-                                        }).divide(const SizedBox(width: 17.0)),
-                                      );
-                                    },
+                                        } else {
+                                          return Container(
+                                            width: 95.0,
+                                            height: 95.0,
+                                            decoration: const BoxDecoration(
+                                              color: Color(0x15FFFFFF),
+                                              shape: BoxShape.circle,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 24.0, 0.0, 0.0),
+                                  child: Text(
+                                    'I\'m Feeling...',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color:
+                                              FlutterFlowTheme.of(context).info,
+                                          fontSize: 20.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: false,
+                                        ),
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 30.0, 16.0, 26.0),
-                                  child: FutureBuilder<List<FeelingsRow>>(
-                                    future: FeelingsTable().queryRows(
-                                      queryFn: (q) => q.order('created_at',
-                                          ascending: true),
-                                    ),
-                                    builder: (context, snapshot) {
-                                      // Customize what your widget looks like when it's loading.
-                                      if (!snapshot.hasData) {
-                                        return Center(
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 30.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final color =
+                                        FFAppState().colorsList.toList();
+                                    return Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: List.generate(color.length,
+                                          (colorIndex) {
+                                        final colorItem = color[colorIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            logFirebaseEvent(
+                                                'B_S_FEELING_COMP_Stack_ejt99s1e_ON_TAP');
+                                            logFirebaseEvent(
+                                                'Stack_update_component_state');
+                                            setState(() {
+                                              _model.selectedColor = colorItem;
+                                            });
+                                          },
                                           child: SizedBox(
-                                            width: 50.0,
-                                            height: 50.0,
-                                            child: SpinKitPulse(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .pinkButton,
-                                              size: 50.0,
+                                            width: 45.0,
+                                            height: 45.0,
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                if (colorItem ==
+                                                    _model.selectedColor)
+                                                  Container(
+                                                    width: 45.0,
+                                                    height: 45.0,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              12.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                Container(
+                                                  width: 39.0,
+                                                  height: 39.0,
+                                                  decoration: BoxDecoration(
+                                                    color: colorItem,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                  ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         );
-                                      }
-                                      List<FeelingsRow>
-                                          containerFeelingsRowList =
-                                          snapshot.data!;
-                                      return Container(
-                                        width: double.infinity,
-                                        decoration: const BoxDecoration(),
-                                        child: FutureBuilder<
-                                            List<UserFeelingsRow>>(
-                                          future: UserFeelingsTable().queryRows(
-                                            queryFn: (q) => q
-                                                .eq(
-                                                  'created_by',
-                                                  currentUserUid,
-                                                )
-                                                .not(
-                                                  'custom feeling',
-                                                  'is',
-                                                  null,
-                                                ),
+                                      }).divide(const SizedBox(width: 17.0)),
+                                    );
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 30.0, 16.0, 26.0),
+                                child: FutureBuilder<List<FeelingsRow>>(
+                                  future: FeelingsTable().queryRows(
+                                    queryFn: (q) =>
+                                        q.order('created_at', ascending: true),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 50.0,
+                                          height: 50.0,
+                                          child: SpinKitPulse(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pinkButton,
+                                            size: 50.0,
                                           ),
-                                          builder: (context, snapshot) {
-                                            // Customize what your widget looks like when it's loading.
-                                            if (!snapshot.hasData) {
-                                              return Center(
-                                                child: SizedBox(
-                                                  width: 50.0,
-                                                  height: 50.0,
-                                                  child: SpinKitPulse(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .pinkButton,
-                                                    size: 50.0,
-                                                  ),
-                                                ),
-                                              );
-                                            }
-                                            List<UserFeelingsRow>
-                                                containerUserFeelingsRowList =
-                                                snapshot.data!;
-                                            return Container(
-                                              decoration: const BoxDecoration(),
-                                              child: Builder(
-                                                builder: (context) {
-                                                  final feelingName = functions
-                                                      .mergeTwoListsStrings(
-                                                          containerFeelingsRowList
-                                                              .map(
-                                                                  (e) => e.name)
-                                                              .withoutNulls
-                                                              .toList(),
-                                                          containerUserFeelingsRowList
-                                                              .map((e) => e
-                                                                  .customFeeling)
-                                                              .withoutNulls
-                                                              .toList())
-                                                      .toList();
-                                                  return Wrap(
-                                                    spacing: 12.0,
-                                                    runSpacing: 12.0,
-                                                    alignment:
-                                                        WrapAlignment.center,
-                                                    crossAxisAlignment:
-                                                        WrapCrossAlignment
-                                                            .start,
-                                                    direction: Axis.horizontal,
-                                                    runAlignment:
-                                                        WrapAlignment.start,
-                                                    verticalDirection:
-                                                        VerticalDirection.down,
-                                                    clipBehavior: Clip.none,
-                                                    children: List.generate(
-                                                        feelingName.length,
-                                                        (feelingNameIndex) {
-                                                      final feelingNameItem =
-                                                          feelingName[
-                                                              feelingNameIndex];
-                                                      return InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          logFirebaseEvent(
-                                                              'B_S_FEELING_Container_g58x1qnh_ON_TAP');
-                                                          logFirebaseEvent(
-                                                              'Container_update_component_state');
-                                                          setState(() {
-                                                            _model.selectedFeeling =
-                                                                feelingNameItem;
-                                                            _model.isCustom =
-                                                                false;
-                                                          });
-                                                        },
-                                                        child: Container(
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color:
-                                                                valueOrDefault<
-                                                                    Color>(
-                                                              (feelingNameItem ==
-                                                                          _model
-                                                                              .selectedFeeling) &&
-                                                                      !_model
-                                                                          .isCustom
-                                                                  ? _model
-                                                                      .selectedColor
-                                                                  : const Color(
-                                                                      0x14FFFFFF),
-                                                              const Color(0x14FFFFFF),
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100.0),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets.all(
-                                                                    14.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
-                                                              children: [
-                                                                Text(
-                                                                  feelingNameItem,
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'Nuckle',
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .info,
-                                                                        fontSize:
-                                                                            12.0,
-                                                                        letterSpacing:
-                                                                            0.0,
-                                                                        useGoogleFonts:
-                                                                            false,
-                                                                      ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    }),
-                                                  );
-                                                },
-                                              ),
-                                            );
-                                          },
                                         ),
                                       );
-                                    },
+                                    }
+                                    List<FeelingsRow> containerFeelingsRowList =
+                                        snapshot.data!;
+                                    return Container(
+                                      width: double.infinity,
+                                      decoration: const BoxDecoration(),
+                                      child:
+                                          FutureBuilder<List<UserFeelingsRow>>(
+                                        future: UserFeelingsTable().queryRows(
+                                          queryFn: (q) => q
+                                              .eq(
+                                                'created_by',
+                                                currentUserUid,
+                                              )
+                                              .not(
+                                                'custom feeling',
+                                                'is',
+                                                null,
+                                              ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child: SpinKitPulse(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .pinkButton,
+                                                  size: 50.0,
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<UserFeelingsRow>
+                                              containerUserFeelingsRowList =
+                                              snapshot.data!;
+                                          return Container(
+                                            decoration: const BoxDecoration(),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final feelingName = functions
+                                                    .mergeTwoListsStrings(
+                                                        containerFeelingsRowList
+                                                            .map((e) => e.name)
+                                                            .withoutNulls
+                                                            .toList(),
+                                                        containerUserFeelingsRowList
+                                                            .map((e) =>
+                                                                e.customFeeling)
+                                                            .withoutNulls
+                                                            .toList())
+                                                    .toList();
+                                                return Wrap(
+                                                  spacing: 12.0,
+                                                  runSpacing: 12.0,
+                                                  alignment:
+                                                      WrapAlignment.center,
+                                                  crossAxisAlignment:
+                                                      WrapCrossAlignment.start,
+                                                  direction: Axis.horizontal,
+                                                  runAlignment:
+                                                      WrapAlignment.start,
+                                                  verticalDirection:
+                                                      VerticalDirection.down,
+                                                  clipBehavior: Clip.none,
+                                                  children: List.generate(
+                                                      feelingName.length,
+                                                      (feelingNameIndex) {
+                                                    final feelingNameItem =
+                                                        feelingName[
+                                                            feelingNameIndex];
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'B_S_FEELING_Container_g58x1qnh_ON_TAP');
+                                                        logFirebaseEvent(
+                                                            'Container_update_component_state');
+                                                        setState(() {
+                                                          _model.selectedFeeling =
+                                                              feelingNameItem;
+                                                          _model.isCustom =
+                                                              false;
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: valueOrDefault<
+                                                              Color>(
+                                                            (feelingNameItem ==
+                                                                        _model
+                                                                            .selectedFeeling) &&
+                                                                    !_model
+                                                                        .isCustom
+                                                                ? _model
+                                                                    .selectedColor
+                                                                : const Color(
+                                                                    0x14FFFFFF),
+                                                            const Color(0x14FFFFFF),
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      100.0),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                              const EdgeInsets.all(
+                                                                  14.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            children: [
+                                                              Text(
+                                                                feelingNameItem,
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Nuckle',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .info,
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  }),
+                                                );
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(
+                            thickness: 1.0,
+                            color: Color(0x0CF2F1F3),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                16.0, 8.0, 16.0, 12.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Icon(
+                                  Icons.info,
+                                  color: FlutterFlowTheme.of(context).info,
+                                  size: 16.0,
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    'Your mood will only be seen by you and your partner',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x99FFFFFF),
+                                          fontSize: 11.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.normal,
+                                          useGoogleFonts: false,
+                                        ),
                                   ),
                                 ),
                               ],
                             ),
-                            const Divider(
-                              thickness: 1.0,
-                              color: Color(0x0CF2F1F3),
-                            ),
+                          ),
+                          if (_model.isCustom)
                             Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
-                                  16.0, 8.0, 16.0, 12.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.info,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 16.0,
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      'Your mood will only be seen by you and your partner',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: const Color(0x99FFFFFF),
-                                            fontSize: 11.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.normal,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            if (_model.isCustom)
-                              Container(
+                                  0.0, 0.0, 0.0, 105.0),
+                              child: Container(
                                 height: 140.0,
                                 decoration: const BoxDecoration(),
                                 child: Padding(
@@ -670,8 +666,12 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                   ),
                                 ),
                               ),
-                            if (!_model.isCustom)
-                              Container(
+                            ),
+                          if (!_model.isCustom)
+                            Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 105.0),
+                              child: Container(
                                 height: 140.0,
                                 decoration: const BoxDecoration(),
                                 child: InkWell(
@@ -695,8 +695,8 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                   ),
                                 ),
                               ),
-                          ],
-                        ),
+                            ),
+                        ],
                       ),
                     ),
                   ),

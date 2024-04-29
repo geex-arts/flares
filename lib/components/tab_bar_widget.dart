@@ -110,7 +110,7 @@ class _TabBarWidgetState extends State<TabBarWidget> {
                           logFirebaseEvent('Container_navigate_to');
 
                           context.pushNamed(
-                            'Stories_View',
+                            'Assistant_View',
                             queryParameters: {
                               'aiAssistantLink': serializeParam(
                                 'https://flaresapp.com/chat?userID=$currentUserUid',
