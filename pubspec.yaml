@@ -101,6 +101,7 @@ dependencies:
   sticky_headers: 0.3.0+2
   stop_watch_timer: 3.0.2
   storage_client: 1.5.4
+  substring_highlight: 1.0.33
   supabase: 1.11.11
   supabase_flutter: 1.10.24
   timeago: 3.2.2

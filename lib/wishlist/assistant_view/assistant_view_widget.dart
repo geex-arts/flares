@@ -38,6 +38,12 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('ASSISTANT_VIEW_Assistant_View_ON_INIT_ST');
+      logFirebaseEvent('Assistant_View_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 2000));
+      logFirebaseEvent('Assistant_View_update_page_state');
+      setState(() {
+        _model.isLoading = false;
+      });
     });
 
     animationsMap.addAll({
@@ -91,7 +97,7 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                 ),
               ),
             ),
-            if (!_model.isLoading)
+            if (_model.isLoading)
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(

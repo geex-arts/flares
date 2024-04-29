@@ -1,11 +1,12 @@
-import '/backend/supabase/supabase.dart';
+import '/backend/api_requests/api_calls.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
-import '/flutter_flow/flutter_flow_drop_down.dart';
+import '/flutter_flow/flutter_flow_autocomplete_options_list.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/wishlist/b_s_a_i_wishlist/b_s_a_i_wishlist_widget.dart';
 import 'dart:ui';
+import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -28,6 +29,8 @@ class BSBudgetLocationWidget extends StatefulWidget {
 class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
   late BSBudgetLocationModel _model;
 
+  bool textFieldFocusListenerRegistered = false;
+
   @override
   void setState(VoidCallback callback) {
     super.setState(callback);
@@ -38,6 +41,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSBudgetLocationModel());
+
+    _model.textController ??= TextEditingController();
   }
 
   @override
@@ -118,88 +123,194 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             useGoogleFonts: false,
                           ),
                     ),
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: FutureBuilder<List<CitiesRow>>(
-                        future: FFAppState().cities(
-                          requestFn: () => CitiesTable().queryRows(
-                            queryFn: (q) => q,
+                    Form(
+                      key: _model.formKey,
+                      autovalidateMode: AutovalidateMode.disabled,
+                      child: Padding(
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                        child: FutureBuilder<ApiCallResponse>(
+                          future: SearchCitiesCall.call(
+                            searchString: _model.textController.text,
                           ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitPulse(
-                                  color:
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitPulse(
+                                    color:
+                                        FlutterFlowTheme.of(context).pinkButton,
+                                    size: 50.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            final textFieldSearchCitiesResponse =
+                                snapshot.data!;
+                            return Autocomplete<String>(
+                              initialValue: const TextEditingValue(),
+                              optionsBuilder: (textEditingValue) {
+                                if (textEditingValue.text == '') {
+                                  return const Iterable<String>.empty();
+                                }
+                                return (getJsonField(
+                                  textFieldSearchCitiesResponse.jsonBody,
+                                  r'''$..city''',
+                                  true,
+                                ) as List)
+                                    .map<String>((s) => s.toString())
+                                    .toList()
+                                    .where((option) {
+                                  final lowercaseOption = option.toLowerCase();
+                                  return lowercaseOption.contains(
+                                      textEditingValue.text.toLowerCase());
+                                });
+                              },
+                              optionsViewBuilder:
+                                  (context, onSelected, options) {
+                                return AutocompleteOptionsList(
+                                  textFieldKey: _model.textFieldKey,
+                                  textController: _model.textController!,
+                                  options: options.toList(),
+                                  onSelected: onSelected,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                      ),
+                                  textHighlightStyle:
+                                      FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Nuckle',
+                                            color: FlutterFlowTheme.of(context)
+                                                .info,
+                                            letterSpacing: 0.0,
+                                            useGoogleFonts: false,
+                                          ),
+                                  elevation: 0.0,
+                                  optionBackgroundColor: const Color(0xFF1D1B1B),
+                                  optionHighlightColor: const Color(0xFF1D1B1B),
+                                  maxHeight: 230.0,
+                                );
+                              },
+                              onSelected: (String selection) {
+                                setState(() =>
+                                    _model.textFieldSelectedOption = selection);
+                                FocusScope.of(context).unfocus();
+                              },
+                              fieldViewBuilder: (
+                                context,
+                                textEditingController,
+                                focusNode,
+                                onEditingComplete,
+                              ) {
+                                _model.textFieldFocusNode = focusNode;
+                                if (!textFieldFocusListenerRegistered) {
+                                  textFieldFocusListenerRegistered = true;
+                                  _model.textFieldFocusNode!
+                                      .addListener(() => setState(() {}));
+                                }
+                                _model.textController = textEditingController;
+                                return TextFormField(
+                                  key: _model.textFieldKey,
+                                  controller: textEditingController,
+                                  focusNode: focusNode,
+                                  onEditingComplete: onEditingComplete,
+                                  onChanged: (_) => EasyDebounce.debounce(
+                                    '_model.textController',
+                                    const Duration(milliseconds: 200),
+                                    () => setState(() {}),
+                                  ),
+                                  autofocus: false,
+                                  textInputAction: TextInputAction.next,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    isDense: false,
+                                    hintText: 'Search for a city...',
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x98FFFFFF),
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                    errorStyle: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: FlutterFlowTheme.of(context)
+                                              .error,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        color: Color(0x00000000),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .pinkButton,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    filled: true,
+                                    fillColor: const Color(0xFF1D1B1B),
+                                    contentPadding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            40.0, 0.0, 20.0, 0.0),
+                                    prefixIcon: const Icon(
+                                      Icons.search,
+                                      color: Color(0xCDFFFFFF),
+                                    ),
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        letterSpacing: 0.0,
+                                        useGoogleFonts: false,
+                                      ),
+                                  cursorColor:
                                       FlutterFlowTheme.of(context).pinkButton,
-                                  size: 50.0,
-                                ),
-                              ),
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
+                                );
+                              },
                             );
-                          }
-                          List<CitiesRow> dropDownCitiesRowList =
-                              snapshot.data!;
-                          return FlutterFlowDropDown<String>(
-                            controller: _model.dropDownValueController ??=
-                                FormFieldController<String>(null),
-                            options: dropDownCitiesRowList
-                                .map((e) => e.city)
-                                .withoutNulls
-                                .toList(),
-                            onChanged: (val) =>
-                                setState(() => _model.dropDownValue = val),
-                            width: double.infinity,
-                            height: 50.0,
-                            maxHeight: 240.0,
-                            searchHintTextStyle: FlutterFlowTheme.of(context)
-                                .labelMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                            searchTextStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryText,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                            textStyle: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  color: const Color(0x99FFFFFF),
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                ),
-                            hintText: 'Select an option',
-                            searchHintText: 'Search for an city...',
-                            icon: Icon(
-                              Icons.keyboard_arrow_down_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
-                            ),
-                            fillColor: const Color(0xFF1D1B1B),
-                            elevation: 0.0,
-                            borderColor: Colors.transparent,
-                            borderWidth: 0.0,
-                            borderRadius: 30.0,
-                            margin: const EdgeInsetsDirectional.fromSTEB(
-                                20.0, 14.0, 20.0, 14.0),
-                            hidesUnderline: true,
-                            isOverButton: false,
-                            isSearchable: true,
-                            isMultiSelect: false,
-                          );
-                        },
+                          },
+                        ),
                       ),
                     ),
                   ],
@@ -535,39 +646,71 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
-                child: wrapWithModel(
-                  model: _model.generateModel,
-                  updateCallback: () => setState(() {}),
-                  child: PinkButtonWidget(
-                    text: '⚡️ Generate with AI',
-                    currentAction: () async {
-                      logFirebaseEvent('B_S_BUDGET_LOCATION_Generate_CALLBACK');
-                      logFirebaseEvent('Generate_bottom_sheet');
-                      Navigator.pop(context);
-                      logFirebaseEvent('Generate_bottom_sheet');
-                      await showModalBottomSheet(
-                        isScrollControlled: true,
-                        backgroundColor: Colors.transparent,
-                        context: context,
-                        builder: (context) {
-                          return WebViewAware(
-                            child: Padding(
-                              padding: MediaQuery.viewInsetsOf(context),
-                              child: SizedBox(
-                                height: MediaQuery.sizeOf(context).height * 0.8,
-                                child: BSAIWishlistWidget(
-                                  categories: widget.selectedCategories!,
-                                  city: _model.dropDownValue!,
-                                  budget: '',
+              Builder(
+                builder: (context) => Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 30.0, 16.0, 45.0),
+                  child: wrapWithModel(
+                    model: _model.generateModel,
+                    updateCallback: () => setState(() {}),
+                    child: PinkButtonWidget(
+                      text: '⚡️ Generate with AI',
+                      currentAction: () async {
+                        logFirebaseEvent(
+                            'B_S_BUDGET_LOCATION_Generate_CALLBACK');
+                        if ((_model.textController.text != '') ||
+                            (_model.textFieldSelectedOption != null &&
+                                _model.textFieldSelectedOption != '')) {
+                          logFirebaseEvent('Generate_bottom_sheet');
+                          Navigator.pop(context);
+                          logFirebaseEvent('Generate_bottom_sheet');
+                          await showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Colors.transparent,
+                            context: context,
+                            builder: (context) {
+                              return WebViewAware(
+                                child: Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: SizedBox(
+                                    height:
+                                        MediaQuery.sizeOf(context).height * 0.8,
+                                    child: BSAIWishlistWidget(
+                                      categories: widget.selectedCategories!,
+                                      city: _model.textController.text != ''
+                                          ? _model.textController.text
+                                          : _model.textFieldSelectedOption!,
+                                      budget: _model.budget,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                            ),
-                          );
-                        },
-                      ).then((value) => safeSetState(() {}));
-                    },
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
+                        } else {
+                          logFirebaseEvent('Generate_alert_dialog');
+                          await showDialog(
+                            context: context,
+                            builder: (dialogContext) {
+                              return Dialog(
+                                elevation: 0,
+                                insetPadding: EdgeInsets.zero,
+                                backgroundColor: Colors.transparent,
+                                alignment: const AlignmentDirectional(0.0, -1.0)
+                                    .resolve(Directionality.of(context)),
+                                child: const WebViewAware(
+                                  child: AlertDialogWarningWidget(
+                                    title: 'City not selected !',
+                                    subtitle:
+                                        'Please select from the list or enter your city name',
+                                  ),
+                                ),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                        }
+                      },
+                    ),
                   ),
                 ),
               ),

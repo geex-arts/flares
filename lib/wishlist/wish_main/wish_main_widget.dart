@@ -212,12 +212,18 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           onTap: () async {
                                             logFirebaseEvent(
                                                 'WISH_MAIN_PAGE_Share_ON_TAP');
-                                            logFirebaseEvent('Share_share');
-                                            await Share.share(
-                                              '',
-                                              sharePositionOrigin:
-                                                  getWidgetBoundingBox(context),
-                                            );
+                                            if (widget.selectedWishRow?.link !=
+                                                    null &&
+                                                widget.selectedWishRow?.link !=
+                                                    '') {
+                                              logFirebaseEvent('Share_share');
+                                              await Share.share(
+                                                widget.selectedWishRow!.link!,
+                                                sharePositionOrigin:
+                                                    getWidgetBoundingBox(
+                                                        context),
+                                              );
+                                            }
                                           },
                                           child: Stack(
                                             alignment:

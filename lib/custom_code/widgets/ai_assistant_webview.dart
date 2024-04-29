@@ -46,29 +46,18 @@ class _AiAssistantWebviewState extends State<AiAssistantWebview> {
           child: _buildWebViewX(),
         ),
         WebViewAware(
-          child: Align(
-            widthFactor: 1.0,
-            heightFactor: 1.0,
-            alignment: AlignmentDirectional(1, -1),
-            child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(
-                  0,
-                  0,
-                  0,
-                  // widget.width! > 600 ? 74 : 3,
-                  // widget.width! > 600 ? 20 : 3,
-                  0),
-              child: IconButton(
-                iconSize: 40,
-                icon: Icon(
-                  Icons.close,
-                  size: 24,
-                  color: Colors.transparent,
-                ),
-                onPressed: () async {
-                  context.safePop();
-                },
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0, 0, 3, 0),
+            child: IconButton(
+              iconSize: 40,
+              icon: Icon(
+                Icons.close,
+                size: 24,
+                color: Colors.transparent,
               ),
+              onPressed: () async {
+                context.safePop();
+              },
             ),
           ),
         ),
@@ -103,8 +92,8 @@ class _AiAssistantWebviewState extends State<AiAssistantWebview> {
           'allow-pointer-lock',
           'allow-popups',
           'allow-popups-to-escape-sandbox',
-          'allow-presentation'
-              'allow-same-origin'
+          'allow-presentation',
+          'allow-same-origin'
         ],
       ),
       mobileSpecificParams: const MobileSpecificParams(

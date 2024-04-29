@@ -66,6 +66,31 @@ class GenerateAiWishCall {
   }
 }
 
+class SearchCitiesCall {
+  static Future<ApiCallResponse> call({
+    String? searchString = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'searchCities',
+      apiUrl:
+          'https://gkjpgyieiugznobskhlt.supabase.co/rest/v1/cities?city=ilike.*$searchString*&select=city',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization':
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdranBneWllaXVnem5vYnNraGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc5ODQyMzUsImV4cCI6MjAyMzU2MDIzNX0.ulHur9jh5q99iNT1AcnjKD7f8JEQj52GPLz2NESiW64',
+        'apikey':
+            'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdranBneWllaXVnem5vYnNraGx0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDc5ODQyMzUsImV4cCI6MjAyMzU2MDIzNX0.ulHur9jh5q99iNT1AcnjKD7f8JEQj52GPLz2NESiW64',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: true,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class GenerateAiSimiliarWishCall {
   static Future<ApiCallResponse> call({
     String? budget = '',

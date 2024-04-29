@@ -44,6 +44,12 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('STORIES_VIEW_Stories_View_ON_INIT_STATE');
+      logFirebaseEvent('Stories_View_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 2000));
+      logFirebaseEvent('Stories_View_update_page_state');
+      setState(() {
+        _model.isLoading = false;
+      });
     });
 
     animationsMap.addAll({
@@ -243,7 +249,14 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                                                   logFirebaseEvent(
                                                       'Share_share');
                                                   await Share.share(
-                                                    '',
+                                                    widget.selectedStories !=
+                                                            null
+                                                        ? widget
+                                                            .selectedStories!
+                                                            .link!
+                                                        : widget
+                                                            .selectedArticle!
+                                                            .link!,
                                                     sharePositionOrigin:
                                                         getWidgetBoundingBox(
                                                             context),
@@ -329,7 +342,7 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                 ],
               ),
             ),
-            if (!_model.isLoading)
+            if (_model.isLoading)
               Align(
                 alignment: const AlignmentDirectional(0.0, 0.0),
                 child: Container(

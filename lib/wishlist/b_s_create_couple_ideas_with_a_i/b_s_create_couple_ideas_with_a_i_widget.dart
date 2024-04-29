@@ -101,8 +101,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
               Container(
                 decoration: const BoxDecoration(),
                 child: Padding(
-                  padding:
-                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                   child: FutureBuilder<List<AiCategoryRow>>(
                     future: AiCategoryTable().queryRows(
                       queryFn: (q) => q.order('order', ascending: true),

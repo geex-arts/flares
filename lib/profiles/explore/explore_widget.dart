@@ -1,3 +1,4 @@
+import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/card_widget.dart';
 import '/components/floating_btn_widget.dart';
@@ -674,7 +675,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                               queryParameters: {
                                                 'aiAssistantLink':
                                                     serializeParam(
-                                                  wrapAiQuestionsRow.value,
+                                                  'https://flaresapp.com/aiquestions?question=${wrapAiQuestionsRow.value}&userID=$currentUserUid',
                                                   ParamType.String,
                                                 ),
                                               }.withoutNulls,
