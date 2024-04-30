@@ -63,4 +63,9 @@ class UsersRow extends SupabaseDataRow {
   String? get currentFeeling => getField<String>('current_feeling');
   set currentFeeling(String? value) =>
       setField<String>('current_feeling', value);
+
+  List<String> get dismissedBanners =>
+      getListField<String>('dismissed_banners');
+  set dismissedBanners(List<String>? value) =>
+      setListField<String>('dismissed_banners', value);
 }

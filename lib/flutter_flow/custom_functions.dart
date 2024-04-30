@@ -117,3 +117,11 @@ bool? checkIfIListContains(
 ) {
   return selectedCategories.contains(currentCategory);
 }
+
+List<String> addStringToList(
+  List<String> banners,
+  String banner,
+) {
+  banners.add(banner);
+  return banners.toSet().toList();
+}

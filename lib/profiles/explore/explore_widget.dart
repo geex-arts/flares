@@ -6,6 +6,8 @@ import '/components/tab_bar_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'explore_model.dart';
@@ -68,151 +70,309 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(16.0, 20.0, 16.0, 0.0),
-                      child: Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          color: const Color(0x0EFFFFFF),
-                          image: DecorationImage(
-                            fit: BoxFit.fitHeight,
-                            alignment: const AlignmentDirectional(1.0, 0.0),
-                            image: Image.asset(
-                              'assets/images/Helix.webp',
-                            ).image,
-                          ),
-                          borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(
-                            color: const Color(0x19FFFFFF),
-                          ),
-                        ),
-                        child: Stack(
-                          children: [
-                            Padding(
-                              padding: const EdgeInsets.all(18.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    'One Time Offer',
-                                    style: FlutterFlowTheme.of(context)
-                                        .titleMedium
-                                        .override(
-                                          fontFamily: 'Nuckle',
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w600,
-                                          useGoogleFonts: false,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 14.0, 0.0, 0.0),
-                                    child: Text(
-                                      'The most delicious Spanish \ncafe in the Whole World',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: const Color(0x9AFFFFFF),
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 14.0, 20.0, 0.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Flexible(
-                                          child: FFButtonWidget(
-                                            onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'EXPLORE_PAGE_ContiniueButton_ON_TAP');
-                                              logFirebaseEvent(
-                                                  'ContiniueButton_navigate_to');
-
-                                              context.pushNamed(
-                                                  'Official_Referral');
-                                            },
-                                            text: 'Continiue',
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .pinkButton,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color: Colors.white,
-                                                        fontSize: 1.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(30.0),
-                                            ),
-                                          ),
-                                        ),
-                                        Flexible(
-                                          child: FFButtonWidget(
-                                            onPressed: () {
-                                              print(
-                                                  'DismissForeverButton pressed ...');
-                                            },
-                                            text: 'Dismiss Forever',
-                                            options: FFButtonOptions(
-                                              height: 40.0,
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      15.0, 0.0, 15.0, 0.0),
-                                              iconPadding: const EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
-                                              color: const Color(0x32FFFFFF),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color: Colors.white,
-                                                        fontSize: 1.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              borderSide: const BorderSide(
-                                                color: Colors.transparent,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(30.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ].divide(const SizedBox(width: 5.0)),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                    FutureBuilder<List<UsersRow>>(
+                      future: UsersTable().querySingleRow(
+                        queryFn: (q) => q.eq(
+                          'id',
+                          currentUserUid,
                         ),
                       ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitPulse(
+                                color: FlutterFlowTheme.of(context).pinkButton,
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<UsersRow> containerUsersRowList = snapshot.data!;
+                        final containerUsersRow =
+                            containerUsersRowList.isNotEmpty
+                                ? containerUsersRowList.first
+                                : null;
+                        return Container(
+                          decoration: const BoxDecoration(),
+                          child: FutureBuilder<List<BannersRow>>(
+                            future: BannersTable().querySingleRow(
+                              queryFn: (q) => q.eq(
+                                'for_subscribed',
+                                revenue_cat.activeEntitlementIds.isNotEmpty
+                                    ? true
+                                    : false,
+                              ),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: SizedBox(
+                                    width: 50.0,
+                                    height: 50.0,
+                                    child: SpinKitPulse(
+                                      color: FlutterFlowTheme.of(context)
+                                          .pinkButton,
+                                      size: 50.0,
+                                    ),
+                                  ),
+                                );
+                              }
+                              List<BannersRow> containerBannersRowList =
+                                  snapshot.data!;
+                              final containerBannersRow =
+                                  containerBannersRowList.isNotEmpty
+                                      ? containerBannersRowList.first
+                                      : null;
+                              return Container(
+                                decoration: const BoxDecoration(),
+                                child: Visibility(
+                                  visible: !containerUsersRow!.dismissedBanners
+                                      .contains(containerBannersRow?.uuid),
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        16.0, 20.0, 16.0, 0.0),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0x0EFFFFFF),
+                                        image: DecorationImage(
+                                          fit: BoxFit.fitHeight,
+                                          alignment:
+                                              const AlignmentDirectional(1.0, 0.0),
+                                          image: Image.network(
+                                            containerBannersRow!.image!,
+                                          ).image,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20.0),
+                                        border: Border.all(
+                                          color: const Color(0x19FFFFFF),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(18.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  containerBannersRow.title!,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 14.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    containerBannersRow.info!,
+                                                    maxLines: 4,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x9AFFFFFF),
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 14.0, 20.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.min,
+                                                    children: [
+                                                      Flexible(
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            logFirebaseEvent(
+                                                                'EXPLORE_PAGE_ContiniueButton_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'ContiniueButton_navigate_to');
+
+                                                            context.pushNamed(
+                                                              'Subscriptions',
+                                                              queryParameters: {
+                                                                'isFIrstTime':
+                                                                    serializeParam(
+                                                                  false,
+                                                                  ParamType
+                                                                      .bool,
+                                                                ),
+                                                              }.withoutNulls,
+                                                            );
+                                                          },
+                                                          text: 'Continiue',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        15.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .pinkButton,
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Nuckle',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          1.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        30.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Flexible(
+                                                        child: FFButtonWidget(
+                                                          onPressed: () async {
+                                                            logFirebaseEvent(
+                                                                'EXPLORE_PAGE_DismissForeverButton_ON_TAP');
+                                                            logFirebaseEvent(
+                                                                'DismissForeverButton_backend_call');
+                                                            await UsersTable()
+                                                                .update(
+                                                              data: {
+                                                                'dismissed_banners': functions.addStringToList(
+                                                                    containerUsersRow
+                                                                        .dismissedBanners
+                                                                        .toList(),
+                                                                    containerBannersRow
+                                                                        .uuid),
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'id',
+                                                                currentUserUid,
+                                                              ),
+                                                            );
+                                                            logFirebaseEvent(
+                                                                'DismissForeverButton_update_app_state');
+                                                            setState(() {});
+                                                          },
+                                                          text:
+                                                              'Dismiss Forever',
+                                                          options:
+                                                              FFButtonOptions(
+                                                            height: 40.0,
+                                                            padding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        15.0,
+                                                                        0.0),
+                                                            iconPadding:
+                                                                const EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0,
+                                                                        0.0),
+                                                            color: const Color(
+                                                                0x32FFFFFF),
+                                                            textStyle:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Nuckle',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontSize:
+                                                                          1.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Colors
+                                                                  .transparent,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        30.0),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ].divide(
+                                                        const SizedBox(width: 5.0)),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        );
+                      },
                     ),
                     Padding(
                       padding:

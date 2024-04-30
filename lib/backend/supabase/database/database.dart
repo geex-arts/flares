@@ -7,6 +7,7 @@ export 'table.dart';
 
 export 'tables/pairs_invitations.dart';
 export 'tables/pairs.dart';
+export 'tables/banners.dart';
 export 'tables/notifications.dart';
 export 'tables/ai_questions.dart';
 export 'tables/ai_category.dart';
