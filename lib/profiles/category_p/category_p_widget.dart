@@ -96,6 +96,10 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                 .eq(
                   'visibily',
                   true,
+                )
+                .is_(
+                  'parent_uuid',
+                  null,
                 ),
           ),
           builder: (context, snapshot) {

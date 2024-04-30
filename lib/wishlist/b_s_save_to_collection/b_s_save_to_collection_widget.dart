@@ -321,7 +321,16 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                                 'link': widget
                                                     .selectedWishRow?.link,
                                                 'parent_uuid': widget
-                                                    .selectedWishRow?.uuid,
+                                                                .selectedWishRow
+                                                                ?.parentUuid !=
+                                                            null &&
+                                                        widget.selectedWishRow
+                                                                ?.parentUuid !=
+                                                            ''
+                                                    ? widget.selectedWishRow
+                                                        ?.parentUuid
+                                                    : widget
+                                                        .selectedWishRow?.uuid,
                                                 'visibily':
                                                     currentCollectionItem
                                                         .visibility,

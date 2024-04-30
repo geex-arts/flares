@@ -667,7 +667,10 @@ class _CardWidgetState extends State<CardWidget> {
                             )
                             .eq(
                               'parent_uuid',
-                              widget.currentWishRow?.uuid,
+                              widget.currentWishRow?.parentUuid != null &&
+                                      widget.currentWishRow?.parentUuid != ''
+                                  ? widget.currentWishRow?.parentUuid
+                                  : widget.currentWishRow?.uuid,
                             ),
                       ),
                       builder: (context, snapshot) {
