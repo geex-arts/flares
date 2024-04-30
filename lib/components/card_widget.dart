@@ -716,9 +716,11 @@ class _CardWidgetState extends State<CardWidget> {
                                                 context),
                                             child: BSSaveToCollection2Widget(
                                               selectedWishRow:
-                                                  widget.currentWishRow,
-                                              currentCollectionID: widget
-                                                  .currentWishRow?.collection,
+                                                  addToCollectionWishesRowList
+                                                      .first,
+                                              currentCollectionID:
+                                                  addToCollectionWishesRowList
+                                                      .first.collection,
                                             ),
                                           ),
                                         );

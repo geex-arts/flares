@@ -921,117 +921,123 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'SIGN_UP_PAGE_AppleButton_ON_TAP');
-                                    logFirebaseEvent(
-                                        'AppleButton_haptic_feedback');
-                                    HapticFeedback.lightImpact();
-                                    logFirebaseEvent(
-                                        'AppleButton_custom_action');
-                                    _model.authResponse =
-                                        await actions.appleSignin();
-                                    logFirebaseEvent(
-                                        'AppleButton_alert_dialog');
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return WebViewAware(
-                                          child: AlertDialog(
-                                            title: Text(_model.authResponse!
-                                                .toString()),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () => Navigator.pop(
-                                                    alertDialogContext),
-                                                child: const Text('Ok'),
-                                              ),
-                                            ],
-                                          ),
-                                        );
-                                      },
-                                    );
-                                    logFirebaseEvent(
-                                        'AppleButton_backend_call');
-                                    _model.foundUserRow2 =
-                                        await UsersTable().queryRows(
-                                      queryFn: (q) => q.eq(
-                                        'id',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    if (_model.foundUserRow2!.isNotEmpty) {
+                              if (isiOS)
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 0.0),
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
                                       logFirebaseEvent(
-                                          'AppleButton_action_block');
-                                      await action_blocks.authRoutine(context);
-                                    } else {
+                                          'SIGN_UP_PAGE_AppleButton_ON_TAP');
                                       logFirebaseEvent(
-                                          'AppleButton_action_block');
-                                      await action_blocks.signinRoutine(
-                                        context,
-                                        pairCode: widget.pairCode != null &&
-                                                widget.pairCode != ''
-                                            ? widget.pairCode
-                                            : '',
-                                      );
-                                    }
-
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0x1AFFFFFF),
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/apple.webp',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  3.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Continue with Apple',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
+                                          'AppleButton_haptic_feedback');
+                                      HapticFeedback.lightImpact();
+                                      logFirebaseEvent(
+                                          'AppleButton_custom_action');
+                                      _model.authResponse =
+                                          await actions.appleSignin();
+                                      logFirebaseEvent(
+                                          'AppleButton_alert_dialog');
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              title: Text(_model.authResponse!
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
                                                 ),
-                                          ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
+                                      logFirebaseEvent(
+                                          'AppleButton_backend_call');
+                                      _model.foundUserRow2 =
+                                          await UsersTable().queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'id',
+                                          currentUserUid,
                                         ),
-                                      ],
+                                      );
+                                      if (_model.foundUserRow2!.isNotEmpty) {
+                                        logFirebaseEvent(
+                                            'AppleButton_action_block');
+                                        await action_blocks
+                                            .authRoutine(context);
+                                      } else {
+                                        logFirebaseEvent(
+                                            'AppleButton_action_block');
+                                        await action_blocks.signinRoutine(
+                                          context,
+                                          pairCode: widget.pairCode != null &&
+                                                  widget.pairCode != ''
+                                              ? widget.pairCode
+                                              : '',
+                                        );
+                                      }
+
+                                      setState(() {});
+                                    },
+                                    child: Container(
+                                      width: double.infinity,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0x1AFFFFFF),
+                                        borderRadius:
+                                            BorderRadius.circular(30.0),
+                                      ),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/apple.webp',
+                                              width: 24.0,
+                                              height: 24.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    3.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Continue with Apple',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
                               Container(
                                 decoration: BoxDecoration(
                                   color: FlutterFlowTheme.of(context)
