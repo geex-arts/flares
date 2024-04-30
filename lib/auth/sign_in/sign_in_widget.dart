@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/gestures.dart';
@@ -471,7 +472,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                   currentAction: () async {
                                     logFirebaseEvent(
                                         'SIGN_IN_PAGE_nextButton_CALLBACK');
-                                    var shouldSetState = false;
                                     logFirebaseEvent(
                                         'nextButton_haptic_feedback');
                                     HapticFeedback.lightImpact();
@@ -498,7 +498,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                       setState(() {
                                         _model.passLength = false;
                                       });
-                                      if (shouldSetState) setState(() {});
                                       return;
                                     } else {
                                       if (_model.emailFieldTextController
@@ -514,7 +513,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                         setState(() {
                                           _model.passLength = false;
                                         });
-                                        if (shouldSetState) setState(() {});
                                         return;
                                       } else {
                                         if (_model.passwordFieldTextController
@@ -530,7 +528,6 @@ class _SignInWidgetState extends State<SignInWidget>
                                           setState(() {
                                             _model.passLength = false;
                                           });
-                                          if (shouldSetState) setState(() {});
                                           return;
                                         }
                                       }
@@ -555,65 +552,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                       return;
                                     }
 
-                                    logFirebaseEvent('nextButton_backend_call');
-                                    _model.userAuthCopyCopy =
-                                        await UsersTable().queryRows(
-                                      queryFn: (q) => q.eq(
-                                        'id',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    shouldSetState = true;
-                                    logFirebaseEvent(
-                                        'nextButton_custom_action');
-                                    await actions.getPushPermission();
-                                    logFirebaseEvent(
-                                        'nextButton_custom_action');
-                                    _model.fcmToken =
-                                        await actions.getFCMToken();
-                                    shouldSetState = true;
-                                    logFirebaseEvent(
-                                        'nextButton_custom_action');
-                                    await actions.initializeCustomerIo(
-                                      currentUserEmail,
-                                    );
-                                    logFirebaseEvent(
-                                        'nextButton_custom_action');
-                                    await actions.identifyRevenueCat(
-                                      currentUserUid,
-                                    );
-                                    logFirebaseEvent('nextButton_backend_call');
-                                    await UsersTable().update(
-                                      data: {
-                                        'fcmToken': _model.fcmToken,
-                                      },
-                                      matchingRows: (rows) => rows.eq(
-                                        'id',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    if (_model.userAuthCopyCopy?.first.pair !=
-                                            null &&
-                                        _model.userAuthCopyCopy?.first.pair !=
-                                            '') {
-                                      logFirebaseEvent(
-                                          'nextButton_update_app_state');
-                                      FFAppState().pairID =
-                                          _model.userAuthCopyCopy!.first.pair!;
-                                      logFirebaseEvent(
-                                          'nextButton_navigate_to');
-
-                                      context.goNamedAuth(
-                                          'Explore', context.mounted);
-                                    } else {
-                                      logFirebaseEvent(
-                                          'nextButton_navigate_to');
-
-                                      context.goNamedAuth(
-                                          'More', context.mounted);
-                                    }
-
-                                    if (shouldSetState) setState(() {});
+                                    logFirebaseEvent('nextButton_action_block');
+                                    await action_blocks.authRoutine(context);
                                   },
                                 ),
                               ),
@@ -699,28 +639,28 @@ class _SignInWidgetState extends State<SignInWidget>
                                   if (user == null) {
                                     return;
                                   }
-                                  logFirebaseEvent(
-                                      'GoogleButton_custom_action');
-                                  await actions.getPushPermission();
-                                  logFirebaseEvent(
-                                      'GoogleButton_custom_action');
-                                  _model.fcmToken2 =
-                                      await actions.getFCMToken();
-                                  if (_model.userAuthCopyCopy?.first.pair !=
-                                          null &&
-                                      _model.userAuthCopyCopy?.first.pair !=
-                                          '') {
+                                  logFirebaseEvent('GoogleButton_backend_call');
+                                  _model.foundUserRow =
+                                      await UsersTable().queryRows(
+                                    queryFn: (q) => q.eq(
+                                      'id',
+                                      currentUserUid,
+                                    ),
+                                  );
+                                  if (_model.foundUserRow!.isNotEmpty) {
                                     logFirebaseEvent(
-                                        'GoogleButton_navigate_to');
-
-                                    context.goNamedAuth(
-                                        'Explore', context.mounted);
+                                        'GoogleButton_action_block');
+                                    await action_blocks.authRoutine(context);
                                   } else {
                                     logFirebaseEvent(
-                                        'GoogleButton_navigate_to');
-
-                                    context.goNamedAuth('Create_Couple_Profile',
-                                        context.mounted);
+                                        'GoogleButton_action_block');
+                                    await action_blocks.signinRoutine(
+                                      context,
+                                      pairCode: widget.pairCode != null &&
+                                              widget.pairCode != ''
+                                          ? widget.pairCode
+                                          : '',
+                                    );
                                   }
 
                                   setState(() {});
@@ -787,6 +727,8 @@ class _SignInWidgetState extends State<SignInWidget>
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'SIGN_IN_PAGE_Row_ifrmzuny_ON_TAP');
+                                    logFirebaseEvent('Row_haptic_feedback');
+                                    HapticFeedback.lightImpact();
                                     logFirebaseEvent('Row_custom_action');
                                     _model.authResponse =
                                         await actions.appleSignin();
@@ -810,15 +752,26 @@ class _SignInWidgetState extends State<SignInWidget>
                                       },
                                     );
                                     logFirebaseEvent('Row_backend_call');
-                                    await UsersTable().insert({
-                                      'id': currentUserUid,
-                                      'created_at': supaSerialize<DateTime>(
-                                          getCurrentTimestamp),
-                                      'email': currentUserEmail,
-                                    });
-                                    logFirebaseEvent('Row_navigate_to');
-
-                                    context.pushNamed('Explore');
+                                    _model.foundUserRow2 =
+                                        await UsersTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'id',
+                                        currentUserUid,
+                                      ),
+                                    );
+                                    if (_model.foundUserRow2!.isNotEmpty) {
+                                      logFirebaseEvent('Row_action_block');
+                                      await action_blocks.authRoutine(context);
+                                    } else {
+                                      logFirebaseEvent('Row_action_block');
+                                      await action_blocks.signinRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
+                                    }
 
                                     setState(() {});
                                   },

@@ -655,97 +655,122 @@ class _CardWidgetState extends State<CardWidget> {
                     ),
                   );
                 } else {
-                  return Visibility(
-                    visible: !(widget.isMyProfile ||
-                        (widget.currentWishRow?.pair == FFAppState().pairID)),
-                    child: Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
-                      child: FutureBuilder<List<WishesRow>>(
-                        future: WishesTable().queryRows(
-                          queryFn: (q) => q
-                              .eq(
-                                'pair',
-                                FFAppState().pairID,
-                              )
-                              .eq(
-                                'parent_uuid',
-                                widget.currentWishRow?.uuid,
-                              ),
-                        ),
-                        builder: (context, snapshot) {
-                          // Customize what your widget looks like when it's loading.
-                          if (!snapshot.hasData) {
-                            return Center(
-                              child: SizedBox(
-                                width: 50.0,
-                                height: 50.0,
-                                child: SpinKitPulse(
-                                  color:
-                                      FlutterFlowTheme.of(context).pinkButton,
-                                  size: 50.0,
-                                ),
-                              ),
-                            );
-                          }
-                          List<WishesRow> addToCollectionWishesRowList =
-                              snapshot.data!;
-                          return Container(
-                            width: 30.0,
-                            height: 30.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0x28FFFFFF),
-                              borderRadius: BorderRadius.circular(10.0),
+                  return Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 10.0, 10.0),
+                    child: FutureBuilder<List<WishesRow>>(
+                      future: WishesTable().queryRows(
+                        queryFn: (q) => q
+                            .eq(
+                              'pair',
+                              FFAppState().pairID,
+                            )
+                            .eq(
+                              'parent_uuid',
+                              widget.currentWishRow?.uuid,
                             ),
-                            child: Builder(
-                              builder: (context) {
-                                if (addToCollectionWishesRowList.isNotEmpty) {
-                                  return Icon(
+                      ),
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitPulse(
+                                color: FlutterFlowTheme.of(context).pinkButton,
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        List<WishesRow> addToCollectionWishesRowList =
+                            snapshot.data!;
+                        return Container(
+                          width: 30.0,
+                          height: 30.0,
+                          decoration: BoxDecoration(
+                            color: const Color(0x28FFFFFF),
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          child: Builder(
+                            builder: (context) {
+                              if (addToCollectionWishesRowList.isNotEmpty) {
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'CARD_COMP_Icon_o32p0crk_ON_TAP');
+                                    logFirebaseEvent('Icon_bottom_sheet');
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return WebViewAware(
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: BSSaveToCollection2Widget(
+                                              selectedWishRow:
+                                                  widget.currentWishRow,
+                                              currentCollectionID: widget
+                                                  .currentWishRow?.collection,
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Icon(
                                     FFIcons.kfcheck,
                                     color:
                                         FlutterFlowTheme.of(context).secondary,
                                     size: 15.0,
-                                  );
-                                } else {
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'CARD_COMP_Icon_rjhkv1sa_ON_TAP');
-                                      logFirebaseEvent('Icon_bottom_sheet');
-                                      await showModalBottomSheet(
-                                        isScrollControlled: true,
-                                        backgroundColor: Colors.transparent,
-                                        context: context,
-                                        builder: (context) {
-                                          return WebViewAware(
-                                            child: Padding(
-                                              padding: MediaQuery.viewInsetsOf(
-                                                  context),
-                                              child: BSSaveToCollectionWidget(
-                                                selectedWishRow:
-                                                    widget.currentWishRow,
-                                              ),
+                                  ),
+                                );
+                              } else {
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'CARD_COMP_Icon_rjhkv1sa_ON_TAP');
+                                    logFirebaseEvent('Icon_bottom_sheet');
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Colors.transparent,
+                                      context: context,
+                                      builder: (context) {
+                                        return WebViewAware(
+                                          child: Padding(
+                                            padding: MediaQuery.viewInsetsOf(
+                                                context),
+                                            child: BSSaveToCollectionWidget(
+                                              selectedWishRow:
+                                                  widget.currentWishRow,
                                             ),
-                                          );
-                                        },
-                                      ).then((value) => safeSetState(() {}));
-                                    },
-                                    child: Icon(
-                                      FFIcons.kfolderAdd,
-                                      color: FlutterFlowTheme.of(context).info,
-                                      size: 15.0,
-                                    ),
-                                  );
-                                }
-                              },
-                            ),
-                          );
-                        },
-                      ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  },
+                                  child: Icon(
+                                    FFIcons.kfolderAdd,
+                                    color: FlutterFlowTheme.of(context).info,
+                                    size: 15.0,
+                                  ),
+                                );
+                              }
+                            },
+                          ),
+                        );
+                      },
                     ),
                   );
                 }

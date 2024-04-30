@@ -38,14 +38,12 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
-  // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
-  List<UsersRow>? userAuthCopyCopy;
-  // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
-  String? fcmToken;
-  // Stores action output result for [Custom Action - getFCMToken] action in GoogleButton widget.
-  String? fcmToken2;
+  // Stores action output result for [Backend Call - Query Rows] action in GoogleButton widget.
+  List<UsersRow>? foundUserRow;
   // Stores action output result for [Custom Action - appleSignin] action in Row widget.
   dynamic authResponse;
+  // Stores action output result for [Backend Call - Query Rows] action in Row widget.
+  List<UsersRow>? foundUserRow2;
 
   @override
   void initState(BuildContext context) {

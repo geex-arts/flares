@@ -72,10 +72,12 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   late PinkButtonModel nextButtonModel;
   // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
   List<UsersRow>? existingUser;
-  // Stores action output result for [Custom Action - getFCMToken] action in nextButton widget.
-  String? fcmToken;
-  // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
-  List<PairsInvitationsRow>? foundPairingRow;
+  // Stores action output result for [Backend Call - Query Rows] action in GoogleButton widget.
+  List<UsersRow>? foundUserRow;
+  // Stores action output result for [Custom Action - appleSignin] action in AppleButton widget.
+  dynamic authResponse;
+  // Stores action output result for [Backend Call - Query Rows] action in AppleButton widget.
+  List<UsersRow>? foundUserRow2;
 
   @override
   void initState(BuildContext context) {

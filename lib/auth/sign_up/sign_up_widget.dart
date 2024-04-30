@@ -1,12 +1,12 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
@@ -725,14 +725,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           if (shouldSetState) setState(() {});
                                           return;
                                         }
-                                        logFirebaseEvent(
-                                            'nextButton_custom_action');
-                                        await actions.getPushPermission();
-                                        logFirebaseEvent(
-                                            'nextButton_custom_action');
-                                        _model.fcmToken =
-                                            await actions.getFCMToken();
-                                        shouldSetState = true;
                                         logFirebaseEvent('nextButton_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model.passwordFieldTextController
@@ -762,139 +754,14 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         }
 
                                         logFirebaseEvent(
-                                            'nextButton_backend_call');
-                                        await UsersTable().insert({
-                                          'id': currentUserUid,
-                                          'created_at': supaSerialize<DateTime>(
-                                              getCurrentTimestamp),
-                                          'email': currentUserEmail,
-                                          'fcmToken': _model.fcmToken,
-                                        });
-                                        logFirebaseEvent(
-                                            'nextButton_custom_action');
-                                        await actions.initializeCustomerIo(
-                                          currentUserEmail,
+                                            'nextButton_action_block');
+                                        await action_blocks.signinRoutine(
+                                          context,
+                                          pairCode: widget.pairCode != null &&
+                                                  widget.pairCode != ''
+                                              ? widget.pairCode
+                                              : '',
                                         );
-                                        logFirebaseEvent(
-                                            'nextButton_custom_action');
-                                        await actions.identifyRevenueCat(
-                                          currentUserUid,
-                                        );
-                                        logFirebaseEvent(
-                                            'nextButton_update_app_state');
-                                        FFAppState().pairID =
-                                            '27a78254-89be-4e9a-80ef-394ebf1e637f';
-                                        if (widget.pairCode != null &&
-                                            widget.pairCode != '') {
-                                          logFirebaseEvent(
-                                              'nextButton_backend_call');
-                                          _model.foundPairingRow =
-                                              await PairsInvitationsTable()
-                                                  .queryRows(
-                                            queryFn: (q) => q
-                                                .eq(
-                                                  'status',
-                                                  'pending',
-                                                )
-                                                .eq(
-                                                  'pair_code',
-                                                  widget.pairCode,
-                                                ),
-                                          );
-                                          shouldSetState = true;
-                                          if (_model.foundPairingRow!.isNotEmpty) {
-                                            logFirebaseEvent(
-                                                'nextButton_backend_call');
-                                            unawaited(
-                                              () async {
-                                                await UsersTable().update(
-                                                  data: {
-                                                    'pair': _model
-                                                        .foundPairingRow
-                                                        ?.first
-                                                        .pair,
-                                                  },
-                                                  matchingRows: (rows) =>
-                                                      rows.eq(
-                                                    'id',
-                                                    currentUserUid,
-                                                  ),
-                                                );
-                                              }(),
-                                            );
-                                            logFirebaseEvent(
-                                                'nextButton_backend_call');
-                                            unawaited(
-                                              () async {
-                                                await PairsInvitationsTable()
-                                                    .update(
-                                                  data: {
-                                                    'status': 'accepted',
-                                                  },
-                                                  matchingRows: (rows) =>
-                                                      rows.eq(
-                                                    'uuid',
-                                                    _model.foundPairingRow
-                                                        ?.first.uuid,
-                                                  ),
-                                                );
-                                              }(),
-                                            );
-                                            logFirebaseEvent(
-                                                'nextButton_update_app_state');
-                                            FFAppState().pairID = _model
-                                                .foundPairingRow!.first.pair!;
-                                            logFirebaseEvent(
-                                                'nextButton_bottom_sheet');
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              context: context,
-                                              builder: (context) {
-                                                return WebViewAware(
-                                                  child: GestureDetector(
-                                                    onTap: () => _model
-                                                            .unfocusNode
-                                                            .canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode)
-                                                        : FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child: SizedBox(
-                                                        height:
-                                                            MediaQuery.sizeOf(
-                                                                        context)
-                                                                    .height *
-                                                                0.85,
-                                                        child:
-                                                            const BSTurnNotificationsWidget(),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-
-                                            if (shouldSetState) {
-                                              setState(() {});
-                                            }
-                                            return;
-                                          }
-                                        }
-                                        logFirebaseEvent(
-                                            'nextButton_navigate_to');
-
-                                        context.goNamedAuth(
-                                            'Create_Couple_Profile',
-                                            context.mounted);
-
                                         if (shouldSetState) setState(() {});
                                       },
                                     ),
@@ -971,6 +838,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   onTap: () async {
                                     logFirebaseEvent(
                                         'SIGN_UP_PAGE_GoogleButton_ON_TAP');
+                                    logFirebaseEvent(
+                                        'GoogleButton_haptic_feedback');
+                                    HapticFeedback.lightImpact();
                                     logFirebaseEvent('GoogleButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
@@ -978,6 +848,32 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     if (user == null) {
                                       return;
                                     }
+                                    logFirebaseEvent(
+                                        'GoogleButton_backend_call');
+                                    _model.foundUserRow =
+                                        await UsersTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'id',
+                                        currentUserUid,
+                                      ),
+                                    );
+                                    if (_model.foundUserRow!.isNotEmpty) {
+                                      logFirebaseEvent(
+                                          'GoogleButton_action_block');
+                                      await action_blocks.authRoutine(context);
+                                    } else {
+                                      logFirebaseEvent(
+                                          'GoogleButton_action_block');
+                                      await action_blocks.signinRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
+                                    }
+
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: double.infinity,
@@ -1028,46 +924,111 @@ class _SignUpWidgetState extends State<SignUpWidget>
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 10.0, 0.0, 0.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0x1AFFFFFF),
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/apple.webp',
-                                          width: 24.0,
-                                          height: 24.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            3.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Continue with Apple',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 11.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: false,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SIGN_UP_PAGE_AppleButton_ON_TAP');
+                                    logFirebaseEvent(
+                                        'AppleButton_haptic_feedback');
+                                    HapticFeedback.lightImpact();
+                                    logFirebaseEvent(
+                                        'AppleButton_custom_action');
+                                    _model.authResponse =
+                                        await actions.appleSignin();
+                                    logFirebaseEvent(
+                                        'AppleButton_alert_dialog');
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return WebViewAware(
+                                          child: AlertDialog(
+                                            title: Text(_model.authResponse!
+                                                .toString()),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () => Navigator.pop(
+                                                    alertDialogContext),
+                                                child: const Text('Ok'),
                                               ),
-                                        ),
+                                            ],
+                                          ),
+                                        );
+                                      },
+                                    );
+                                    logFirebaseEvent(
+                                        'AppleButton_backend_call');
+                                    _model.foundUserRow2 =
+                                        await UsersTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'id',
+                                        currentUserUid,
                                       ),
-                                    ],
+                                    );
+                                    if (_model.foundUserRow2!.isNotEmpty) {
+                                      logFirebaseEvent(
+                                          'AppleButton_action_block');
+                                      await action_blocks.authRoutine(context);
+                                    } else {
+                                      logFirebaseEvent(
+                                          'AppleButton_action_block');
+                                      await action_blocks.signinRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
+                                    }
+
+                                    setState(() {});
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0x1AFFFFFF),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/apple.webp',
+                                            width: 24.0,
+                                            height: 24.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  3.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Continue with Apple',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
