@@ -305,7 +305,9 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                     currentAction: () async {
                       logFirebaseEvent('MORE_PAGE_Container_15pv2u1s_CALLBACK');
                       logFirebaseEvent('pinkButton_navigate_to');
-
+                      if (Navigator.of(context).canPop()) {
+                        context.pop();
+                      }
                       context.pushNamed('Create_Couple_Profile');
                     },
                   ),

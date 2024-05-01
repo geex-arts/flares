@@ -376,45 +376,41 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ],
                                 ),
                               ),
-                              if (_model.emptyFields != null)
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 12.0, 0.0, 16.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Icon(
-                                        Icons.info,
-                                        color:
-                                            FlutterFlowTheme.of(context).info,
-                                        size: 16.0,
-                                      ),
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  12.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Password must have 8 characters, including letters and numbers.',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x7FFFFFFF),
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 16.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Icon(
+                                      Icons.info,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 16.0,
+                                    ),
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Password must have 8 characters, including letters and numbers.',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color: const Color(0x7FFFFFFF),
+                                                fontSize: 11.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
+                              ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
@@ -518,7 +514,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ],
                                 ),
                               ),
-                              if (_model.emptyFields != null)
+                              if (_model.passNotMatch)
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 12.0, 0.0, 16.0),
@@ -529,30 +525,27 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      if (_model.passNotMatch)
-                                        Expanded(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 0.0, 0.0),
-                                            child: Text(
-                                              'Passwords don\'t match',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        fontSize: 11.0,
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Passwords don\'t match',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .error,
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
                                         ),
+                                      ),
                                     ],
                                   ),
                                 ),

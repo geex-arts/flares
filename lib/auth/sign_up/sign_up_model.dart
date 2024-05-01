@@ -7,10 +7,6 @@ import 'package:flutter/material.dart';
 class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   ///  Local state fields for this page.
 
-  int? emptyFields;
-
-  bool? passLength = false;
-
   bool passNotMatch = false;
 
   ///  State fields for stateful widgets in this page.

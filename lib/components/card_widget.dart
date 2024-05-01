@@ -71,13 +71,13 @@ class _CardWidgetState extends State<CardWidget> {
               context.pushNamed(
                 'Wish_Main',
                 queryParameters: {
-                  'selectedWishRow': serializeParam(
-                    widget.currentWishRow,
-                    ParamType.SupabaseRow,
-                  ),
                   'isProfile': serializeParam(
                     widget.isMyProfile,
                     ParamType.bool,
+                  ),
+                  'selectedWishID': serializeParam(
+                    widget.currentWishRow?.uuid,
+                    ParamType.String,
                   ),
                 }.withoutNulls,
               );

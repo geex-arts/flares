@@ -164,6 +164,11 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                           onTap: () async {
                             logFirebaseEvent(
                                 'CREATE_COUPLE_PROFILE_NavBack_ON_TAP');
+                            logFirebaseEvent('NavBack_auth');
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
                             logFirebaseEvent('NavBack_navigate_back');
                             context.safePop();
                           },

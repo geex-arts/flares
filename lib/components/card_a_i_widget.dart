@@ -78,13 +78,13 @@ class _CardAIWidgetState extends State<CardAIWidget> {
               context.pushNamed(
                 'Wish_Main',
                 queryParameters: {
-                  'selectedWishRow': serializeParam(
-                    _model.newWishRow,
-                    ParamType.SupabaseRow,
-                  ),
                   'isFromAI': serializeParam(
                     true,
                     ParamType.bool,
+                  ),
+                  'selectedWishID': serializeParam(
+                    _model.newWishRow?.uuid,
+                    ParamType.String,
                   ),
                 }.withoutNulls,
               );

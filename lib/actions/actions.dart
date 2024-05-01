@@ -191,7 +191,7 @@ Future authRoutine(BuildContext context) async {
   } else {
     logFirebaseEvent('authRoutine_navigate_to');
 
-    context.goNamed('More');
+    context.pushNamed('More');
   }
 }
 

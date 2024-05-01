@@ -6,11 +6,10 @@ import '/components/wishes_list_main_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/wishlist/b_s_add_wishes/b_s_add_wishes_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
+import 'package:share_plus/share_plus.dart';
 import 'category_p_model.dart';
 export 'category_p_model.dart';
 
@@ -358,83 +357,65 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            8.0, 0.0, 0.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'CATEGORY_P_PAGE_Share_ON_TAP');
-                                            logFirebaseEvent(
-                                                'Share_bottom_sheet');
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Colors.transparent,
-                                              context: context,
-                                              builder: (context) {
-                                                return WebViewAware(
-                                                  child: GestureDetector(
-                                                    onTap: () => _model
-                                                            .unfocusNode
-                                                            .canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode)
-                                                        : FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child: Padding(
-                                                      padding: MediaQuery
-                                                          .viewInsetsOf(
-                                                              context),
-                                                      child:
-                                                          const BSAddWishesWidget(),
-                                                    ),
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  8.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'CATEGORY_P_PAGE_Share_ON_TAP');
+                                              logFirebaseEvent('Share_share');
+                                              await Share.share(
+                                                'https://flaresapp.page.link/?link=https://flaresapp.page.link/categoryP?selectedCategory=${(String id, int order, String created, String name, String image) {
+                                                  return '''{ "id" : "$id", "order" : $order, "created_at" : "$created", "name" : "$name", "image" : "$image"}''';
+                                                }(widget.selectedCategory!.id, widget.selectedCategory!.order!, widget.selectedCategory!.createdAt.toString(), widget.selectedCategory!.name!, widget.selectedCategory!.image!)}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
+                                                sharePositionOrigin:
+                                                    getWidgetBoundingBox(
+                                                        context),
+                                              );
+                                            },
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Image.asset(
+                                                  'assets/images/Rectangle.webp',
+                                                  width: 38.0,
+                                                  height: 38.0,
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                Container(
+                                                  width: 34.0,
+                                                  height: 34.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0x9A000000),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            12.0),
                                                   ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
-                                          },
-                                          child: Stack(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            children: [
-                                              Image.asset(
-                                                'assets/images/Rectangle.webp',
-                                                width: 38.0,
-                                                height: 38.0,
-                                                fit: BoxFit.cover,
-                                              ),
-                                              Container(
-                                                width: 34.0,
-                                                height: 34.0,
-                                                decoration: BoxDecoration(
-                                                  color: const Color(0x9A000000),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          12.0),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 0.0, 0.0, 2.0),
-                                                child: Image.asset(
-                                                  'assets/images/Share.webp',
-                                                  width: 18.0,
-                                                  height: 18.0,
-                                                  fit: BoxFit.contain,
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 0.0, 0.0, 2.0),
+                                                  child: Image.asset(
+                                                    'assets/images/Share.webp',
+                                                    width: 18.0,
+                                                    height: 18.0,
+                                                    fit: BoxFit.contain,
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
-                                          ),
-                                        ).animateOnPageLoad(animationsMap[
-                                            'stackOnPageLoadAnimation2']!),
+                                              ],
+                                            ),
+                                          ).animateOnPageLoad(animationsMap[
+                                              'stackOnPageLoadAnimation2']!),
+                                        ),
                                       ),
                                     ],
                                   ),

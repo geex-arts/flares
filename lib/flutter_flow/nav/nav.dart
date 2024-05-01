@@ -238,10 +238,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Wish_Main',
               path: 'wishMain',
               builder: (context, params) => WishMainWidget(
-                selectedWishRow: params.getParam<WishesRow>(
-                  'selectedWishRow',
-                  ParamType.SupabaseRow,
-                ),
                 isProfile: params.getParam(
                   'isProfile',
                   ParamType.bool,
@@ -249,6 +245,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 isFromAI: params.getParam(
                   'isFromAI',
                   ParamType.bool,
+                ),
+                selectedWishID: params.getParam(
+                  'selectedWishID',
+                  ParamType.String,
                 ),
               ),
             ),
