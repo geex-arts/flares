@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
@@ -732,6 +733,26 @@ class _SignInWidgetState extends State<SignInWidget>
                                       logFirebaseEvent('Row_custom_action');
                                       _model.authResponse =
                                           await actions.appleSignin();
+                                      logFirebaseEvent('Row_alert_dialog');
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return WebViewAware(
+                                            child: AlertDialog(
+                                              title: Text(_model.authResponse!
+                                                  .toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: const Text('Ok'),
+                                                ),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      );
                                       logFirebaseEvent('Row_backend_call');
                                       _model.foundUserRow2 =
                                           await UsersTable().queryRows(

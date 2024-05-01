@@ -877,120 +877,135 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     14.0, 30.0, 14.0, 18.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'EXPLORE_PAGE_Row_vcnwks2k_ON_TAP');
-                                    logFirebaseEvent('Row_navigate_to');
-
-                                    context.pushNamed(
-                                      'Assistant_View',
-                                      queryParameters: {
-                                        'aiAssistantLink': serializeParam(
-                                          'https://flaresapp.com/chat?userID=$currentUserUid',
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  },
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          height: 48.0,
-                                          decoration: BoxDecoration(
-                                            color: const Color(0x1AFFFFFF),
-                                            borderRadius:
-                                                BorderRadius.circular(100.0),
-                                            shape: BoxShape.rectangle,
-                                          ),
-                                          child: TextFormField(
-                                            controller: _model.textController,
-                                            focusNode:
-                                                _model.textFieldFocusNode,
-                                            autofocus: false,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: false,
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            const Color(0x80FFFFFF),
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              hintText: 'Your question...',
-                                              hintStyle:
+                                child: Stack(
+                                  children: [
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            height: 48.0,
+                                            decoration: BoxDecoration(
+                                              color: const Color(0x1AFFFFFF),
+                                              borderRadius:
+                                                  BorderRadius.circular(100.0),
+                                              shape: BoxShape.rectangle,
+                                            ),
+                                            child: TextFormField(
+                                              controller: _model.textController,
+                                              focusNode:
+                                                  _model.textFieldFocusNode,
+                                              autofocus: false,
+                                              readOnly: true,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: false,
+                                                labelStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x80FFFFFF),
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                hintText: 'Your question...',
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x80FFFFFF),
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                enabledBorder: InputBorder.none,
+                                                focusedBorder: InputBorder.none,
+                                                errorBorder: InputBorder.none,
+                                                focusedErrorBorder:
+                                                    InputBorder.none,
+                                                contentPadding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(20.0, 18.0,
+                                                            20.0, 0.0),
+                                                suffixIcon: Icon(
+                                                  FFIcons.klike,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .pink,
+                                                  size: 24.0,
+                                                ),
+                                              ),
+                                              style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x80FFFFFF),
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
                                                       ),
-                                              enabledBorder: InputBorder.none,
-                                              focusedBorder: InputBorder.none,
-                                              errorBorder: InputBorder.none,
-                                              focusedErrorBorder:
-                                                  InputBorder.none,
-                                              contentPadding:
-                                                  const EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 18.0,
-                                                          20.0, 0.0),
-                                              suffixIcon: Icon(
-                                                FFIcons.klike,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .pink,
-                                                size: 24.0,
-                                              ),
+                                              validator: _model
+                                                  .textControllerValidator
+                                                  .asValidator(context),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 0.0, 0.0, 0.0),
+                                          child: Container(
+                                            width: 48.0,
+                                            height: 48.0,
+                                            decoration: const BoxDecoration(
+                                              color: Color(0x1AFFFFFF),
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Icon(
+                                              FFIcons.ksend,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
                                                       .info,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                            validator: _model
-                                                .textControllerValidator
-                                                .asValidator(context),
+                                              size: 24.0,
+                                            ),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'EXPLORE_PAGE_Container_uizawb7z_ON_TAP');
+                                        logFirebaseEvent(
+                                            'Container_navigate_to');
+
+                                        context.pushNamed(
+                                          'Assistant_View',
+                                          queryParameters: {
+                                            'aiAssistantLink': serializeParam(
+                                              'https://flaresapp.com/chat?userID=$currentUserUid',
+                                              ParamType.String,
+                                            ),
+                                          }.withoutNulls,
+                                        );
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 48.0,
+                                        decoration: const BoxDecoration(),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 0.0, 0.0, 0.0),
-                                        child: Container(
-                                          width: 48.0,
-                                          height: 48.0,
-                                          decoration: const BoxDecoration(
-                                            color: Color(0x1AFFFFFF),
-                                            shape: BoxShape.circle,
-                                          ),
-                                          child: Icon(
-                                            FFIcons.ksend,
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            size: 24.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],

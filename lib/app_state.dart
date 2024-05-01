@@ -37,7 +37,7 @@ class FFAppState extends ChangeNotifier {
 
   late SharedPreferences prefs;
 
-  String _pairID = '27a78254-89be-4e9a-80ef-394ebf1e637f';
+  String _pairID = '';
   String get pairID => _pairID;
   set pairID(String value) {
     _pairID = value;
@@ -50,8 +50,7 @@ class FFAppState extends ChangeNotifier {
     _test = value;
   }
 
-  String _testUrl =
-      'https://wrenjapan.com/yaponiya/goryachie-istochniki-v-arima-onsen/';
+  String _testUrl = '';
   String get testUrl => _testUrl;
   set testUrl(String value) {
     _testUrl = value;

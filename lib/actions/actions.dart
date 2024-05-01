@@ -222,7 +222,7 @@ Future signinRoutine(
     currentUserUid,
   );
   logFirebaseEvent('signinRoutine_update_app_state');
-  FFAppState().pairID = '27a78254-89be-4e9a-80ef-394ebf1e637f';
+  FFAppState().pairID = '';
   if (pairCode != null && pairCode != '') {
     logFirebaseEvent('signinRoutine_backend_call');
     foundPairingRow = await PairsInvitationsTable().queryRows(
