@@ -11,6 +11,8 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
 
   bool? passLength = false;
 
+  bool passNotMatch = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -55,19 +57,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   late bool rePasswordFieldVisibility;
   String? Function(BuildContext, String?)?
       rePasswordFieldTextControllerValidator;
-  String? _rePasswordFieldTextControllerValidator(
-      BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Field is required';
-    }
-
-    if (val.length < 8) {
-      return 'Password must have 8 characters, including letters and numbers.';
-    }
-
-    return null;
-  }
-
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
   // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
@@ -86,8 +75,6 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
     passwordFieldTextControllerValidator =
         _passwordFieldTextControllerValidator;
     rePasswordFieldVisibility = false;
-    rePasswordFieldTextControllerValidator =
-        _rePasswordFieldTextControllerValidator;
     nextButtonModel = createModel(context, () => PinkButtonModel());
   }
 

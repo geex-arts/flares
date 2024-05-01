@@ -8,7 +8,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -220,6 +219,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         fontFamily: 'Nuckle',
                                         color:
                                             FlutterFlowTheme.of(context).error,
+                                        fontSize: 11.0,
                                         letterSpacing: 0.0,
                                         useGoogleFonts: false,
                                       ),
@@ -291,6 +291,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         .override(
                                           fontFamily: 'Nuckle',
                                           color: const Color(0x98FFFFFF),
+                                          fontSize: 14.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
@@ -300,6 +301,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           fontFamily: 'Nuckle',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          fontSize: 11.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
@@ -441,6 +443,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           fontFamily: 'Nuckle',
                                           color: FlutterFlowTheme.of(context)
                                               .error,
+                                          fontSize: 11.0,
                                           letterSpacing: 0.0,
                                           useGoogleFonts: false,
                                         ),
@@ -526,24 +529,30 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
                                     children: [
-                                      Expanded(
-                                        child: Text(
-                                          _model.passLength!
-                                              ? 'Password must have 8 characters, including letters and numbers.'
-                                              : 'Password must have 8 characters, including letters and numbers.',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                fontSize: 11.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: false,
-                                              ),
+                                      if (_model.passNotMatch)
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Passwords don\'t match',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
                                         ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -560,109 +569,35 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         logFirebaseEvent(
                                             'SIGN_UP_PAGE_nextButton_CALLBACK');
                                         var shouldSetState = false;
-                                        if ((_model.emailFieldTextController
-                                                        .text ==
-                                                    '') &&
-                                            (_model.passwordFieldTextController
-                                                        .text ==
-                                                    '')) {
+                                        logFirebaseEvent(
+                                            'nextButton_validate_form');
+                                        if (_model.formKey.currentState ==
+                                                null ||
+                                            !_model.formKey.currentState!
+                                                .validate()) {
+                                          return;
+                                        }
+                                        if (_model.passwordFieldTextController
+                                                .text !=
+                                            _model.rePasswordFieldTextController
+                                                .text) {
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
                                           setState(() {
-                                            _model.emptyFields = 2;
+                                            _model.passNotMatch = true;
                                           });
                                           logFirebaseEvent(
+                                              'nextButton_wait__delay');
+                                          await Future.delayed(const Duration(
+                                              milliseconds: 5000));
+                                          logFirebaseEvent(
                                               'nextButton_update_page_state');
                                           setState(() {
-                                            _model.passLength = false;
+                                            _model.passNotMatch = false;
                                           });
                                           if (shouldSetState) setState(() {});
                                           return;
-                                        } else {
-                                          if (_model.emailFieldTextController
-                                                      .text ==
-                                                  '') {
-                                            logFirebaseEvent(
-                                                'nextButton_update_page_state');
-                                            setState(() {
-                                              _model.emptyFields = 0;
-                                            });
-                                            logFirebaseEvent(
-                                                'nextButton_update_page_state');
-                                            setState(() {
-                                              _model.passLength = false;
-                                            });
-                                            if (shouldSetState) {
-                                              setState(() {});
-                                            }
-                                            return;
-                                          } else {
-                                            if (_model.passwordFieldTextController
-                                                        .text ==
-                                                    '') {
-                                              logFirebaseEvent(
-                                                  'nextButton_update_page_state');
-                                              setState(() {
-                                                _model.emptyFields = 1;
-                                              });
-                                              logFirebaseEvent(
-                                                  'nextButton_update_page_state');
-                                              setState(() {
-                                                _model.passLength = false;
-                                              });
-                                              if (shouldSetState) {
-                                                setState(() {});
-                                              }
-                                              return;
-                                            } else {
-                                              if (functions.wordLength(_model
-                                                      .passwordFieldTextController
-                                                      .text) <
-                                                  8) {
-                                                logFirebaseEvent(
-                                                    'nextButton_update_page_state');
-                                                setState(() {
-                                                  _model.emptyFields = 1;
-                                                });
-                                                logFirebaseEvent(
-                                                    'nextButton_update_page_state');
-                                                setState(() {
-                                                  _model.passLength = true;
-                                                });
-                                                if (shouldSetState) {
-                                                  setState(() {});
-                                                }
-                                                return;
-                                              } else {
-                                                if (_model.rePasswordFieldTextController
-                                                            .text ==
-                                                        '') {
-                                                  logFirebaseEvent(
-                                                      'nextButton_update_page_state');
-                                                  setState(() {
-                                                    _model.emptyFields = 4;
-                                                  });
-                                                  logFirebaseEvent(
-                                                      'nextButton_update_page_state');
-                                                  setState(() {
-                                                    _model.passLength = false;
-                                                  });
-                                                  if (shouldSetState) {
-                                                    setState(() {});
-                                                  }
-                                                  return;
-                                                }
-                                                logFirebaseEvent(
-                                                    'nextButton_update_page_state');
-                                                setState(() {
-                                                  _model.emptyFields = null;
-                                                  _model.passLength = false;
-                                                });
-                                              }
-                                            }
-                                          }
                                         }
-
                                         logFirebaseEvent(
                                             'nextButton_haptic_feedback');
                                         HapticFeedback.lightImpact();
