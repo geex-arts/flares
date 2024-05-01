@@ -373,7 +373,8 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                                               logFirebaseEvent('Share_share');
                                               await Share.share(
                                                 'https://flaresapp.page.link/?link=https://flaresapp.page.link/categoryP?selectedCategory=${(String id, int order, String created, String name, String image) {
-                                                  return '''{ "id" : "$id", "order" : $order, "created_at" : "$created", "name" : "$name", "image" : "$image"}''';
+                                                  return Uri.encodeFull(
+                                                      '''{ "id" : "$id", "order" : $order, "created_at" : "$created", "name" : "$name", "image" : "$image"}''');
                                                 }(widget.selectedCategory!.id, widget.selectedCategory!.order!, widget.selectedCategory!.createdAt.toString(), widget.selectedCategory!.name!, widget.selectedCategory!.image!)}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                                 sharePositionOrigin:
                                                     getWidgetBoundingBox(

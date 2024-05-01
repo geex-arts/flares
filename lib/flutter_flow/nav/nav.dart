@@ -93,6 +93,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'My_Profile',
               path: 'myProfile',
+              requireAuth: true,
               builder: (context, params) => MyProfileWidget(
                 url: params.getParam(
                   'url',
@@ -311,6 +312,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Explore',
               path: 'explore',
+              requireAuth: true,
               builder: (context, params) => const ExploreWidget(),
             ),
             FFRoute(

@@ -1097,87 +1097,32 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
                                     logFirebaseEvent(
-                                        'COUPLES_PROFILE_PAGE_Notify_ON_TAP');
-                                    logFirebaseEvent('Notify_navigate_to');
-
-                                    context.pushNamed('Notifications');
+                                        'COUPLES_PROFILE_PAGE_NavBack_ON_TAP');
+                                    logFirebaseEvent('NavBack_navigate_back');
+                                    context.safePop();
                                   },
-                                  child: SizedBox(
-                                    width: 42.0,
-                                    height: 38.0,
-                                    child: Stack(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Image.asset(
-                                            'assets/images/Rectangle.webp',
-                                            width: 38.0,
-                                            height: 38.0,
-                                            fit: BoxFit.cover,
+                                  child: Stack(
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    children: [
+                                      Container(
+                                        width: 38.0,
+                                        height: 38.0,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0x9A000000),
+                                          borderRadius:
+                                              BorderRadius.circular(14.0),
+                                          border: Border.all(
+                                            color: const Color(0x33FFFFFF),
                                           ),
                                         ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(-1.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    2.0, 0.0, 0.0, 0.0),
-                                            child: Container(
-                                              width: 34.0,
-                                              height: 34.0,
-                                              decoration: BoxDecoration(
-                                                color: const Color(0x9A000000),
-                                                borderRadius:
-                                                    BorderRadius.circular(12.0),
-                                              ),
-                                              child: Icon(
-                                                FFIcons.kbell,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryBackground,
-                                                size: 16.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Container(
-                                            width: 18.0,
-                                            height: 13.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              borderRadius:
-                                                  BorderRadius.circular(100.0),
-                                            ),
-                                            child: Align(
-                                              alignment: const AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: Text(
-                                                '22',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Nuckle',
-                                                          fontSize: 10.0,
-                                                          letterSpacing: 0.0,
-                                                          fontWeight:
-                                                              FontWeight.w600,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                      Icon(
+                                        Icons.chevron_left,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        size: 24.0,
+                                      ),
+                                    ],
                                   ),
                                 ).animateOnPageLoad(animationsMap[
                                     'stackOnPageLoadAnimation1']!),

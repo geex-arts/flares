@@ -47,6 +47,18 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
     });
 
     animationsMap.addAll({
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
       'imageOnPageLoadAnimation': AnimationInfo(
         loop: true,
         reverse: true,
@@ -82,20 +94,131 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Stack(
           children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: const BoxDecoration(
-                color: Color(0xFF931293),
-              ),
-              child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
-                child: custom_widgets.AiAssistantWebview(
-                  width: MediaQuery.sizeOf(context).width * 1.0,
-                  height: MediaQuery.sizeOf(context).height * 1.0,
-                  url: widget.aiAssistantLink!,
+            Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                if (widget.aiAssistantLink == null ||
+                    widget.aiAssistantLink == '')
+                  Padding(
+                    padding:
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                    child: SizedBox(
+                      height: 48.0,
+                      child: Stack(
+                        children: [
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    58.0, 0.0, 58.0, 0.0),
+                                child: Text(
+                                  'AI Assistant Chat',
+                                  textAlign: TextAlign.center,
+                                  maxLines: 2,
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 0.0, 16.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(-1.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'ASSISTANT_VIEW_PAGE_NavBack_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'NavBack_navigate_back');
+                                              context.safePop();
+                                            },
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Container(
+                                                  width: 38.0,
+                                                  height: 38.0,
+                                                  decoration: BoxDecoration(
+                                                    color: const Color(0x9A000000),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            14.0),
+                                                    border: Border.all(
+                                                      color: const Color(0x33FFFFFF),
+                                                    ),
+                                                  ),
+                                                ),
+                                                Icon(
+                                                  Icons.chevron_left,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryBackground,
+                                                  size: 24.0,
+                                                ),
+                                              ],
+                                            ),
+                                          ).animateOnPageLoad(animationsMap[
+                                              'stackOnPageLoadAnimation']!),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                Container(
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF931293),
+                    image: DecorationImage(
+                      fit: BoxFit.cover,
+                      image: Image.asset(
+                        'assets/images/Background.webp',
+                      ).image,
+                    ),
+                  ),
+                  child: custom_widgets.AiAssistantWebview(
+                    width: MediaQuery.sizeOf(context).width * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    url: widget.aiAssistantLink!,
+                  ),
                 ),
-              ),
+              ],
             ),
             if (_model.isLoading)
               Align(
