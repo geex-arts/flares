@@ -214,7 +214,7 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                   ),
                   child: custom_widgets.AiAssistantWebview(
                     width: MediaQuery.sizeOf(context).width * 1.0,
-                    height: MediaQuery.sizeOf(context).height * 1.0,
+                    height: MediaQuery.sizeOf(context).height * 0.9,
                     url: widget.aiAssistantLink!,
                   ),
                 ),

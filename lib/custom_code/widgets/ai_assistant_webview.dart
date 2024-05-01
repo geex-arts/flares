@@ -72,7 +72,7 @@ class _AiAssistantWebviewState extends State<AiAssistantWebview> {
       key: const ValueKey('webviewx'),
       initialContent: widget.url,
       initialSourceType: SourceType.url,
-      height: MediaQuery.sizeOf(context).height - 48,
+      height: MediaQuery.sizeOf(context).height - 95,
       width: MediaQuery.sizeOf(context).width,
       onWebViewCreated: (controller) => webviewController = controller,
       //onPageStarted: (src) => _callPlatformIndependentJsMethod(),
