@@ -591,8 +591,22 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 child: FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController1 ??=
-                                          FormFieldController<String>(null),
-                                  options: const ['Option 1', 'Option 2', 'Option 3'],
+                                          FormFieldController<String>(
+                                    _model.dropDownValue1 ??= widget.myPairRow
+                                                    ?.liveWithPartner !=
+                                                null &&
+                                            widget.myPairRow?.liveWithPartner !=
+                                                ''
+                                        ? widget.myPairRow?.liveWithPartner
+                                        : '',
+                                  ),
+                                  options: const [
+                                    'Yes, we live together',
+                                    'No, we live separately',
+                                    'We are in a long-distance relationship',
+                                    'We are currently considering living together',
+                                    'No, but we plan to move in together soon'
+                                  ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue1 = val),
                                   width: double.infinity,
@@ -653,8 +667,27 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 child: FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController2 ??=
-                                          FormFieldController<String>(null),
-                                  options: const ['Option 1'],
+                                          FormFieldController<String>(
+                                    _model.dropDownValue2 ??= widget.myPairRow
+                                                    ?.relationshipStatus !=
+                                                null &&
+                                            widget.myPairRow
+                                                    ?.relationshipStatus !=
+                                                ''
+                                        ? widget.myPairRow?.relationshipStatus
+                                        : '',
+                                  ),
+                                  options: const [
+                                    'Single',
+                                    'In a relationship',
+                                    'Engaged',
+                                    'Married',
+                                    'Separated',
+                                    'Divorced',
+                                    'Widowed',
+                                    'It\'s complicated',
+                                    'In an open relationship'
+                                  ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue2 = val),
                                   width: double.infinity,
@@ -714,8 +747,19 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                 child: FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController3 ??=
-                                          FormFieldController<String>(null),
-                                  options: const ['Option 1'],
+                                          FormFieldController<String>(
+                                    _model.dropDownValue3 ??=
+                                        widget.myPairRow?.haveKids != null &&
+                                                widget.myPairRow?.haveKids != ''
+                                            ? widget.myPairRow?.haveKids
+                                            : '',
+                                  ),
+                                  options: const [
+                                    'Yes, I have kids',
+                                    'Yes, my partner has kids',
+                                    'Yes, we both have kids',
+                                    'No, neither of us have kids'
+                                  ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue3 = val),
                                   width: double.infinity,
@@ -835,6 +879,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                       _model.namesFieldTextController.text,
                                   'pair_since': supaSerialize<DateTime>(
                                       _model.datePicked ?? widget.myPairRow?.pairSince),
+                                  'live_with_partner': _model.dropDownValue1,
+                                  'relationship_status': _model.dropDownValue2,
+                                  'have_kids': _model.dropDownValue3,
                                 },
                                 matchingRows: (rows) => rows.eq(
                                   'uuid',

@@ -552,7 +552,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                     }
 
                                     logFirebaseEvent('nextButton_action_block');
-                                    await action_blocks.authRoutine(context);
+                                    await action_blocks.authRoutine(
+                                      context,
+                                      pairCode: widget.pairCode != null &&
+                                              widget.pairCode != ''
+                                          ? widget.pairCode
+                                          : '',
+                                    );
                                   },
                                 ),
                               ),
@@ -649,7 +655,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                   if (_model.foundUserRow!.isNotEmpty) {
                                     logFirebaseEvent(
                                         'GoogleButton_action_block');
-                                    await action_blocks.authRoutine(context);
+                                    await action_blocks.authRoutine(
+                                      context,
+                                      pairCode: widget.pairCode != null &&
+                                              widget.pairCode != ''
+                                          ? widget.pairCode
+                                          : '',
+                                    );
                                   } else {
                                     logFirebaseEvent(
                                         'GoogleButton_action_block');
@@ -742,8 +754,13 @@ class _SignInWidgetState extends State<SignInWidget>
                                       );
                                       if (_model.foundUserRow2!.isNotEmpty) {
                                         logFirebaseEvent('Row_action_block');
-                                        await action_blocks
-                                            .authRoutine(context);
+                                        await action_blocks.authRoutine(
+                                          context,
+                                          pairCode: widget.pairCode != null &&
+                                                  widget.pairCode != ''
+                                              ? widget.pairCode
+                                              : '',
+                                        );
                                       } else {
                                         logFirebaseEvent('Row_action_block');
                                         await action_blocks.signinRoutine(
@@ -846,7 +863,18 @@ class _SignInWidgetState extends State<SignInWidget>
                                       logFirebaseEvent(
                                           'RichTextSpan_navigate_to');
 
-                                      context.pushNamed('Sign_Up');
+                                      context.pushNamed(
+                                        'Sign_Up',
+                                        queryParameters: {
+                                          'pairCode': serializeParam(
+                                            widget.pairCode != null &&
+                                                    widget.pairCode != ''
+                                                ? widget.pairCode
+                                                : '',
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
                                     },
                                 )
                               ],

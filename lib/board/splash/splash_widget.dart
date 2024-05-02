@@ -1,9 +1,13 @@
+import '/auth/supabase_auth/auth_util.dart';
+import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'splash_model.dart';
 export 'splash_model.dart';
 
@@ -37,7 +41,62 @@ class _SplashWidgetState extends State<SplashWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('SPLASH_PAGE_Splash_ON_INIT_STATE');
       logFirebaseEvent('Splash_wait__delay');
-      await Future.delayed(const Duration(milliseconds: 2400));
+      await Future.delayed(const Duration(milliseconds: 2000));
+      if (currentUserUid != '') {
+        if (widget.pairCode != null && widget.pairCode != '') {
+          logFirebaseEvent('Splash_backend_call');
+          _model.foundPairingRow2 = await PairsInvitationsTable().queryRows(
+            queryFn: (q) => q
+                .eq(
+                  'status',
+                  'pending',
+                )
+                .eq(
+                  'pair_code',
+                  widget.pairCode,
+                ),
+          );
+          if (_model.foundPairingRow2!.isNotEmpty) {
+            logFirebaseEvent('Splash_backend_call');
+            await UsersTable().update(
+              data: {
+                'pair': _model.foundPairingRow2?.first.pair,
+              },
+              matchingRows: (rows) => rows.eq(
+                'id',
+                currentUserUid,
+              ),
+            );
+            logFirebaseEvent('Splash_backend_call');
+            unawaited(
+              () async {
+                await PairsInvitationsTable().update(
+                  data: {
+                    'status': 'accepted',
+                  },
+                  matchingRows: (rows) => rows.eq(
+                    'uuid',
+                    _model.foundPairingRow2?.first.uuid,
+                  ),
+                );
+              }(),
+            );
+            logFirebaseEvent('Splash_update_app_state');
+            FFAppState().pairID = _model.foundPairingRow2!.first.pair!;
+          }
+          logFirebaseEvent('Splash_navigate_to');
+
+          context.goNamed('My_Profile');
+
+          return;
+        } else {
+          logFirebaseEvent('Splash_navigate_to');
+
+          context.goNamed('My_Profile');
+
+          return;
+        }
+      }
       logFirebaseEvent('Splash_navigate_to');
 
       context.goNamed(
@@ -79,6 +138,8 @@ class _SplashWidgetState extends State<SplashWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)

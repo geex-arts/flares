@@ -128,8 +128,12 @@ Future loadFromBrowserAction(
   }
 }
 
-Future authRoutine(BuildContext context) async {
+Future authRoutine(
+  BuildContext context, {
+  String? pairCode,
+}) async {
   String? fcmToken;
+  List<PairsInvitationsRow>? foundPairingRow;
   List<UsersRow>? userAuthCopyCopy;
 
   logFirebaseEvent('authRoutine_custom_action');
@@ -154,6 +158,57 @@ Future authRoutine(BuildContext context) async {
       currentUserUid,
     ),
   );
+  if (pairCode != null && pairCode != '') {
+    logFirebaseEvent('authRoutine_backend_call');
+    foundPairingRow = await PairsInvitationsTable().queryRows(
+      queryFn: (q) => q
+          .eq(
+            'status',
+            'pending',
+          )
+          .eq(
+            'pair_code',
+            pairCode,
+          ),
+    );
+    if (foundPairingRow.isNotEmpty) {
+      logFirebaseEvent('authRoutine_backend_call');
+      unawaited(
+        () async {
+          await UsersTable().update(
+            data: {
+              'pair': foundPairingRow?.first.pair,
+            },
+            matchingRows: (rows) => rows.eq(
+              'id',
+              currentUserUid,
+            ),
+          );
+        }(),
+      );
+      logFirebaseEvent('authRoutine_backend_call');
+      unawaited(
+        () async {
+          await PairsInvitationsTable().update(
+            data: {
+              'status': 'accepted',
+            },
+            matchingRows: (rows) => rows.eq(
+              'uuid',
+              foundPairingRow?.first.uuid,
+            ),
+          );
+        }(),
+      );
+      logFirebaseEvent('authRoutine_update_app_state');
+      FFAppState().pairID = foundPairingRow.first.pair!;
+      logFirebaseEvent('authRoutine_navigate_to');
+
+      context.goNamed('My_Profile');
+
+      return;
+    }
+  }
   logFirebaseEvent('authRoutine_backend_call');
   userAuthCopyCopy = await UsersTable().queryRows(
     queryFn: (q) => q.eq(

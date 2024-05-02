@@ -81,14 +81,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
-        child: appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
+        child: appStateNotifier.loggedIn ? const SplashWidget() : const SplashWidget(),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
+              appStateNotifier.loggedIn ? const SplashWidget() : const SplashWidget(),
           routes: [
             FFRoute(
               name: 'My_Profile',

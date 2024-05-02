@@ -133,13 +133,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 0.0),
                                 child: Text(
-                                  valueOrDefault<String>(
-                                    widget.pairCode != null &&
-                                            widget.pairCode != ''
-                                        ? widget.pairCode
-                                        : 'Sign Up',
-                                    'Sign Up',
-                                  ),
+                                  'Sign Up',
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -794,7 +788,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     if (_model.foundUserRow!.isNotEmpty) {
                                       logFirebaseEvent(
                                           'GoogleButton_action_block');
-                                      await action_blocks.authRoutine(context);
+                                      await action_blocks.authRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
                                     } else {
                                       logFirebaseEvent(
                                           'GoogleButton_action_block');
@@ -886,8 +886,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       if (_model.foundUserRow2!.isNotEmpty) {
                                         logFirebaseEvent(
                                             'AppleButton_action_block');
-                                        await action_blocks
-                                            .authRoutine(context);
+                                        await action_blocks.authRoutine(
+                                          context,
+                                          pairCode: widget.pairCode != null &&
+                                                  widget.pairCode != ''
+                                              ? widget.pairCode
+                                              : '',
+                                        );
                                       } else {
                                         logFirebaseEvent(
                                             'AppleButton_action_block');
