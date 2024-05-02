@@ -9,6 +9,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'explore_model.dart';
 export 'explore_model.dart';
@@ -31,6 +32,16 @@ class _ExploreWidgetState extends State<ExploreWidget> {
     _model = createModel(context, () => ExploreModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Explore'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('EXPLORE_PAGE_Explore_ON_INIT_STATE');
+      if (!(currentUserUid != '')) {
+        logFirebaseEvent('Explore_navigate_to');
+
+        context.goNamed('Onboarding');
+      }
+    });
+
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
   }

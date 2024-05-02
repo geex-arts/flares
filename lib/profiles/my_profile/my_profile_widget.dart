@@ -54,7 +54,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
-      if (!loggedIn) {
+      if (!(currentUserUid != '')) {
         logFirebaseEvent('My_Profile_navigate_to');
 
         context.goNamed('Onboarding');
