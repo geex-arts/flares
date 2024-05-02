@@ -83,6 +83,8 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
         body: Stack(
           children: [
             Container(
+              width: double.infinity,
+              height: double.infinity,
               decoration: const BoxDecoration(
                 color: Color(0xFF931293),
               ),
