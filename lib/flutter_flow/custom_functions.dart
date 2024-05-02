@@ -118,6 +118,10 @@ bool? checkIfIListContains(
   return selectedCategories.contains(currentCategory);
 }
 
+List<String> uniqueListElementsImages(List<String> list) {
+  return list.toSet().toList();
+}
+
 List<String> addStringToList(
   List<String> banners,
   String banner,

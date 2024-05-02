@@ -14,7 +14,7 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Switch widget.
-  bool? switchValue;
+  bool switchValue = true;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

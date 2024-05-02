@@ -1578,7 +1578,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                             crossAxisCount: 2,
                                             crossAxisSpacing: 10.0,
                                             mainAxisSpacing: 10.0,
-                                            childAspectRatio: 0.9,
+                                            childAspectRatio: 0.74,
                                           ),
                                           primary: false,
                                           shrinkWrap: true,
@@ -1654,6 +1654,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                         (currentArticle2Item
                                                                 .category!)
                                                             .toUpperCase(),
+                                                        maxLines: 3,
                                                         style: FlutterFlowTheme
                                                                 .of(context)
                                                             .bodyMedium

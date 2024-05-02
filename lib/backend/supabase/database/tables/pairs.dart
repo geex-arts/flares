@@ -39,4 +39,15 @@ class PairsRow extends SupabaseDataRow {
       getField<DateTime>('customerio_last_updated')!;
   set customerioLastUpdated(DateTime value) =>
       setField<DateTime>('customerio_last_updated', value);
+
+  String? get liveWithPartner => getField<String>('live_with_partner');
+  set liveWithPartner(String? value) =>
+      setField<String>('live_with_partner', value);
+
+  String? get relationshipStatus => getField<String>('relationship_status');
+  set relationshipStatus(String? value) =>
+      setField<String>('relationship_status', value);
+
+  String? get haveKids => getField<String>('have_kids');
+  set haveKids(String? value) => setField<String>('have_kids', value);
 }

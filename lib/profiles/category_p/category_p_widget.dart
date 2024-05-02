@@ -86,11 +86,9 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
         body: FutureBuilder<List<WishesCollectionsRow>>(
           future: WishesCollectionsTable().queryRows(
             queryFn: (q) => q
-                .in_(
+                .eq(
                   'search_text',
-                  (String var1) {
-                    return var1.split(' ');
-                  }(widget.selectedCategory!.name!),
+                  widget.selectedCategory?.name,
                 )
                 .eq(
                   'visibily',

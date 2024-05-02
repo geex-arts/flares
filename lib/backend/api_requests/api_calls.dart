@@ -38,12 +38,14 @@ class GenerateAiWishCall {
     String? city = '',
     String? budget = '',
     String? interest = '',
+    String? places = '',
   }) async {
     final ffApiRequestBody = '''
 {
- "city":"$city",
- "interest": "$interest",
- "budget":"$budget"
+  "city": "$city",
+  "interest": "$interest",
+  "budget": "$budget",
+  "places": "$places"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generateAiWish',

@@ -8,7 +8,12 @@ import 'splash_model.dart';
 export 'splash_model.dart';
 
 class SplashWidget extends StatefulWidget {
-  const SplashWidget({super.key});
+  const SplashWidget({
+    super.key,
+    this.pairCode,
+  });
+
+  final String? pairCode;
 
   @override
   State<SplashWidget> createState() => _SplashWidgetState();
@@ -35,7 +40,17 @@ class _SplashWidgetState extends State<SplashWidget>
       await Future.delayed(const Duration(milliseconds: 2400));
       logFirebaseEvent('Splash_navigate_to');
 
-      context.pushNamed('Onboarding');
+      context.goNamed(
+        'Onboarding',
+        queryParameters: {
+          'pairCode': serializeParam(
+            widget.pairCode != null && widget.pairCode != ''
+                ? widget.pairCode
+                : '',
+            ParamType.String,
+          ),
+        }.withoutNulls,
+      );
     });
 
     animationsMap.addAll({

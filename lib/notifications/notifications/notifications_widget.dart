@@ -222,7 +222,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                           backgroundContainerNotificationsRowList
                                               .where((e) =>
                                                   functions
-                                                      .checkDay(e.createdAt) ==
+                                                      .checkDay(e.createdAt!) ==
                                                   'today')
                                               .toList(),
                                     ),
@@ -236,7 +236,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                         backgroundContainerNotificationsRowList
                                             .where((e) =>
                                                 functions
-                                                    .checkDay(e.createdAt) ==
+                                                    .checkDay(e.createdAt!) ==
                                                 'yesterday')
                                             .toList(),
                                     day: 'Yesterday',
@@ -254,7 +254,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
                                           backgroundContainerNotificationsRowList
                                               .where((e) =>
                                                   functions
-                                                      .checkDay(e.createdAt) ==
+                                                      .checkDay(e.createdAt!) ==
                                                   'old')
                                               .toList(),
                                     ),

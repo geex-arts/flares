@@ -61,6 +61,18 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
           ),
         ],
       ),
+      'stackOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
     });
   }
 
@@ -89,7 +101,7 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                 color: Color(0xFF931293),
               ),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 95.0, 0.0, 0.0),
                 child: custom_widgets.AiAssistantWebview(
                   width: MediaQuery.sizeOf(context).width * 1.0,
                   height: MediaQuery.sizeOf(context).height * 1.0,
@@ -127,6 +139,76 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                   ),
                 ),
               ),
+            Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(8.0, 47.0, 8.0, 0.0),
+              child: SizedBox(
+                height: 38.0,
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 4.0, 8.0, 0.0),
+                          child: Text(
+                            'AI Assistant',
+                            style: FlutterFlowTheme.of(context)
+                                .titleSmall
+                                .override(
+                                  fontFamily: 'Nuckle',
+                                  color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  useGoogleFonts: false,
+                                  lineHeight: 1.4,
+                                ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        logFirebaseEvent('ASSISTANT_VIEW_PAGE_NavBack_ON_TAP');
+                        logFirebaseEvent('NavBack_navigate_back');
+                        context.safePop();
+                      },
+                      child: Stack(
+                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        children: [
+                          Container(
+                            width: 38.0,
+                            height: 38.0,
+                            decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(14.0),
+                              border: Border.all(
+                                color: const Color(0x33FFFFFF),
+                              ),
+                            ),
+                          ),
+                          Icon(
+                            Icons.chevron_left,
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            size: 24.0,
+                          ),
+                        ],
+                      ),
+                    ).animateOnPageLoad(
+                        animationsMap['stackOnPageLoadAnimation']!),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),

@@ -242,6 +242,11 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                                 city: widget.city,
                                 budget: widget.budget,
                                 interest: widget.categories,
+                                places: (List<String> var1) {
+                                  return var1.join(', ');
+                                }(_model.wishesAIGeneratedList
+                                    .map((e) => e.name)
+                                    .toList()),
                               );
                               if ((_model.apiResultohp?.succeeded ?? true)) {
                                 logFirebaseEvent(

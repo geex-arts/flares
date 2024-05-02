@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/upload_data.dart';
 import 'dart:async';
-import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -141,17 +140,34 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
-                              child: Text(
-                                'Create Couple',
-                                style: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      letterSpacing: 0.0,
-                                      fontWeight: FontWeight.w500,
-                                      useGoogleFonts: false,
-                                      lineHeight: 1.4,
-                                    ),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  logFirebaseEvent(
+                                      'CREATE_COUPLE_PROFILE_Text_0mqfg20q_ON_T');
+                                  logFirebaseEvent('Text_auth');
+                                  GoRouter.of(context).prepareAuthEvent();
+                                  await authManager.signOut();
+                                  GoRouter.of(context).clearRedirectLocation();
+
+                                  context.goNamedAuth(
+                                      'Splash', context.mounted);
+                                },
+                                child: Text(
+                                  'Create Couple',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
+                                      ),
+                                ),
                               ),
                             ),
                           ),
@@ -752,11 +768,18 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 logFirebaseEvent(
                                     'CreateCouple_update_app_state');
                                 FFAppState().pairID = _model.newPairRow!.uuid;
-                                logFirebaseEvent('CreateCouple_action_block');
-                                await action_blocks.pairInvitationRowAction(
-                                  context,
-                                  isFromProfile: false,
+                                logFirebaseEvent('CreateCouple_navigate_to');
+
+                                context.goNamed(
+                                  'Subscriptions',
+                                  queryParameters: {
+                                    'isFIrstTime': serializeParam(
+                                      true,
+                                      ParamType.bool,
+                                    ),
+                                  }.withoutNulls,
                                 );
+
                                 if (shouldSetState) setState(() {});
                               },
                             ),

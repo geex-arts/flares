@@ -970,6 +970,8 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                       'wish_image':
                                           widget.selectedWishRow!.photo!,
                                     },
+                                    'created_at': supaSerialize<DateTime>(
+                                        getCurrentTimestamp),
                                   });
                                 }(),
                               );

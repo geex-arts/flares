@@ -30,8 +30,8 @@ class NotificationsRow extends SupabaseDataRow {
   dynamic get details => getField<dynamic>('details');
   set details(dynamic value) => setField<dynamic>('details', value);
 
-  DateTime get createdAt => getField<DateTime>('created_at')!;
-  set createdAt(DateTime value) => setField<DateTime>('created_at', value);
+  DateTime? get createdAt => getField<DateTime>('created_at');
+  set createdAt(DateTime? value) => setField<DateTime>('created_at', value);
 
   bool? get needMessage => getField<bool>('need_message');
   set needMessage(bool? value) => setField<bool>('need_message', value);

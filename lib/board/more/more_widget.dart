@@ -308,7 +308,15 @@ class _MoreWidgetState extends State<MoreWidget> with TickerProviderStateMixin {
                       if (Navigator.of(context).canPop()) {
                         context.pop();
                       }
-                      context.pushNamed('Create_Couple_Profile');
+                      context.pushNamed(
+                        'Invite_Partner_Onb',
+                        queryParameters: {
+                          'isFromProfile': serializeParam(
+                            false,
+                            ParamType.bool,
+                          ),
+                        }.withoutNulls,
+                      );
                     },
                   ),
                 ),

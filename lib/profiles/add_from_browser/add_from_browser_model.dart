@@ -38,6 +38,13 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+  String uploadedFileUrl1 = '';
+
+  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  WishesRow? createdWishRowCopy;
   // State field(s) for DescriptionField widget.
   FocusNode? descriptionFieldFocusNode;
   TextEditingController? descriptionFieldTextController;
@@ -56,16 +63,16 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
     return null;
   }
 
-  bool isDataUploading1 = false;
-  FFUploadedFile uploadedLocalFile1 =
+  bool isDataUploading2 = false;
+  FFUploadedFile uploadedLocalFile2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
   // Model for SaveToCollection.
   late PinkButtonModel saveToCollectionModel;
-  bool isDataUploading2 = false;
-  FFUploadedFile uploadedLocalFile2 =
+  bool isDataUploading3 = false;
+  FFUploadedFile uploadedLocalFile3 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
-  String uploadedFileUrl2 = '';
+  String uploadedFileUrl3 = '';
 
   // Stores action output result for [Backend Call - Insert Row] action in SaveToCollection widget.
   WishesRow? createdWishRow;

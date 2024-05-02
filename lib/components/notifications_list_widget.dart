@@ -252,7 +252,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                   }(dateTimeFormat(
                                                       'relative',
                                                       currentNotificationItem
-                                                          .createdAt)),
+                                                          .createdAt!)),
                                                   style: const TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,
@@ -459,157 +459,138 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     );
                                   },
                                 ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 8.0, 0.0, 8.0),
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.start,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          'Your Partner',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 8.0, 0.0, 8.0),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        'Your Partner',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Nuckle',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              fontSize: 16.0,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                              lineHeight: 1.0,
+                                            ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 10.0, 8.0, 0.0),
+                                        child: RichText(
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: 'Changed the status',
+                                                style:
                                                     FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 16.0,
-                                                letterSpacing: 0.0,
-                                                fontWeight: FontWeight.bold,
-                                                useGoogleFonts: false,
-                                                lineHeight: 1.0,
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x9AFFFFFF),
+                                                          fontSize: 13.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
                                               ),
+                                              const TextSpan(
+                                                text: ' • ',
+                                                style: TextStyle(
+                                                  color: Color(0x19FFFFFF),
+                                                ),
+                                              ),
+                                              TextSpan(
+                                                text: (String var1) {
+                                                  return var1.replaceAll(
+                                                      ' ago', '');
+                                                }(dateTimeFormat(
+                                                    'relative',
+                                                    currentNotificationItem
+                                                        .createdAt!)),
+                                                style: const TextStyle(
+                                                  color: Color(0x65FFFFFF),
+                                                  fontWeight: FontWeight.w500,
+                                                  fontSize: 13.0,
+                                                ),
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: const Color(0x9AFFFFFF),
+                                                  fontSize: 13.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.0,
+                                                ),
+                                          ),
+                                          maxLines: 2,
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 10.0, 8.0, 0.0),
-                                          child: RichText(
-                                            textScaler: MediaQuery.of(context)
-                                                .textScaler,
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: 'Changed the status',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            const Color(0x9AFFFFFF),
-                                                        fontSize: 13.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                                const TextSpan(
-                                                  text: ' • ',
-                                                  style: TextStyle(
-                                                    color: Color(0x19FFFFFF),
-                                                  ),
-                                                ),
-                                                TextSpan(
-                                                  text: (String var1) {
-                                                    return var1.replaceAll(
-                                                        ' ago', '');
-                                                  }(dateTimeFormat(
-                                                      'relative',
-                                                      currentNotificationItem
-                                                          .createdAt)),
-                                                  style: const TextStyle(
-                                                    color: Color(0x65FFFFFF),
-                                                    fontWeight: FontWeight.w500,
-                                                    fontSize: 13.0,
-                                                  ),
-                                                )
-                                              ],
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 6.0, 0.0, 0.0),
+                                        child: Container(
+                                          height: 17.0,
+                                          decoration: BoxDecoration(
+                                            color: valueOrDefault<Color>(
+                                              Color(int.parse(getJsonField(
+                                                currentNotificationItem
+                                                    .details!,
+                                                r'''$.color''',
+                                              ).toString())),
+                                              FlutterFlowTheme.of(context)
+                                                  .error,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(100.0),
+                                          ),
+                                          alignment:
+                                              const AlignmentDirectional(0.0, 0.0),
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    5.0, 0.0, 5.0, 0.0),
+                                            child: Text(
+                                              getJsonField(
+                                                currentNotificationItem
+                                                    .details!,
+                                                r'''$.feeling''',
+                                              ).toString(),
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Nuckle',
                                                         color:
-                                                            const Color(0x9AFFFFFF),
-                                                        fontSize: 13.0,
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        fontSize: 10.0,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
-                                                        lineHeight: 1.0,
                                                       ),
                                             ),
-                                            maxLines: 2,
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 6.0, 0.0, 0.0),
-                                          child: Container(
-                                            height: 17.0,
-                                            decoration: BoxDecoration(
-                                              color: valueOrDefault<Color>(
-                                                Color(
-                                                    int.parse(getJsonField(
-                                                  currentNotificationItem
-                                                      .details!,
-                                                  r'''$.color''',
-                                                ).toString())),
-                                                FlutterFlowTheme.of(context)
-                                                    .error,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(100.0),
-                                            ),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        const EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 2.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      getJsonField(
-                                                        currentNotificationItem
-                                                            .details!,
-                                                        r'''$.feeling''',
-                                                      ).toString(),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Nuckle',
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .info,
-                                                                fontSize: 10.0,
-                                                                letterSpacing:
-                                                                    0.0,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -710,7 +691,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                     }(dateTimeFormat(
                                                         'relative',
                                                         currentNotificationItem
-                                                            .createdAt)),
+                                                            .createdAt!)),
                                                     style: const TextStyle(
                                                       color: Color(0x65FFFFFF),
                                                       fontWeight:

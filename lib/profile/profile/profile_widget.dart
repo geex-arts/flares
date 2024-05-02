@@ -1454,6 +1454,10 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               logFirebaseEvent('PROFILE_PAGE_Logout_ON_TAP');
+                              logFirebaseEvent('Logout_update_app_state');
+                              setState(() {
+                                FFAppState().pairID = '';
+                              });
                               logFirebaseEvent('Logout_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signOut();

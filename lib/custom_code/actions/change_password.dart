@@ -10,23 +10,15 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import 'package:supabase/supabase.dart';
-
 Future<bool> changePassword(String newPassword) async {
-  try {
-    final response = await SupaFlow.client.auth
-        .updateUser(UserAttributes(password: newPassword));
+  final response = await SupaFlow.client.auth
+      .updateUser(UserAttributes(password: newPassword));
 
-    // Return true if the response contains a user
+  // Return true if the response contains a user
 
-    return response.user != null;
-  } catch (error) {
-    // Handle errors if needed
-
-    print('Error: $error');
-
-    // Indicate that the password change failed
-
+  if (response.user != null) {
+    return true;
+  } else {
     return false;
   }
 }

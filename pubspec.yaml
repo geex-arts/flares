@@ -49,7 +49,7 @@ dependencies:
   firebase_performance_web: 0.1.4+24
   flutter_animate: 4.1.1+1
   flutter_cache_manager: 3.3.1
-  flutter_keyboard_visibility: 5.2.0
+  flutter_keyboard_visibility: 5.4.1
   flutter_plugin_android_lifecycle: 2.0.17
   flutter_spinkit: 5.2.0
   font_awesome_flutter: 10.6.0

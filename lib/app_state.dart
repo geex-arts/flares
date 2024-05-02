@@ -50,7 +50,8 @@ class FFAppState extends ChangeNotifier {
     _test = value;
   }
 
-  String _testUrl = '';
+  String _testUrl =
+      'https://www.afisha.ru/msk/restaurant/louis-the-claw-508413/';
   String get testUrl => _testUrl;
   set testUrl(String value) {
     _testUrl = value;

@@ -4,7 +4,6 @@ import '/backend/supabase/supabase.dart';
 import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/wishlist/b_s_add_from_browser/b_s_add_from_browser_widget.dart';
 import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
@@ -94,25 +93,7 @@ Future loadFromBrowserAction(
         apiParseResult = await ParseSiteCall.call(
           url: url,
         );
-        if ((apiParseResult.succeeded ?? true)) {
-          logFirebaseEvent('loadFromBrowserAction_bottom_sheet');
-          await showModalBottomSheet(
-            isScrollControlled: true,
-            backgroundColor: Colors.transparent,
-            useSafeArea: true,
-            context: context,
-            builder: (context) {
-              return WebViewAware(
-                child: Padding(
-                  padding: MediaQuery.viewInsetsOf(context),
-                  child: BSAddFromBrowserWidget(
-                    parsedURLJson: (apiParseResult?.jsonBody ?? ''),
-                  ),
-                ),
-              );
-            },
-          );
-        } else {
+        if (!(apiParseResult.succeeded ?? true)) {
           logFirebaseEvent('loadFromBrowserAction_alert_dialog');
           await showDialog(
             context: context,
@@ -133,7 +114,6 @@ Future loadFromBrowserAction(
             },
           );
         }
-
         logFirebaseEvent('loadFromBrowserAction_update_app_state');
         FFAppState().previousUrl = url;
         FFAppState().currentUrl = '';
@@ -212,6 +192,7 @@ Future signinRoutine(
     'created_at': supaSerialize<DateTime>(getCurrentTimestamp),
     'email': currentUserEmail,
     'fcmToken': fcmToken,
+    'notifications_last_visited': supaSerialize<DateTime>(getCurrentTimestamp),
   });
   logFirebaseEvent('signinRoutine_custom_action');
   await actions.initializeCustomerIo(
@@ -290,5 +271,13 @@ Future signinRoutine(
   }
   logFirebaseEvent('signinRoutine_navigate_to');
 
-  context.goNamed('Create_Couple_Profile');
+  context.goNamed(
+    'Invite_Partner_Onb',
+    queryParameters: {
+      'isFromProfile': serializeParam(
+        false,
+        ParamType.bool,
+      ),
+    }.withoutNulls,
+  );
 }

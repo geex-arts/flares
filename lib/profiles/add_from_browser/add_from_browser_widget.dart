@@ -13,6 +13,7 @@ import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -202,14 +203,14 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                           text: getJsonField(
                                             containerParseSiteResponse.jsonBody,
                                             r'''$.title''',
-                                          ).toString(),
+                                          ).toString().substring(0, 30),
                                         ),
                                         focusNode: _model.nameFieldFocusNode,
                                         autofocus: false,
                                         textInputAction: TextInputAction.next,
                                         obscureText: false,
                                         decoration: InputDecoration(
-                                          isDense: true,
+                                          isDense: false,
                                           hintText: 'Kelly\'s Vintage Store',
                                           hintStyle:
                                               FlutterFlowTheme.of(context)
@@ -228,6 +229,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .error,
+                                                fontSize: 11.0,
                                                 letterSpacing: 0.0,
                                                 useGoogleFonts: false,
                                               ),
@@ -286,6 +288,14 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                               letterSpacing: 0.0,
                                               useGoogleFonts: false,
                                             ),
+                                        maxLength: 30,
+                                        maxLengthEnforcement:
+                                            MaxLengthEnforcement.enforced,
+                                        buildCounter: (context,
+                                                {required currentLength,
+                                                required isFocused,
+                                                maxLength}) =>
+                                            null,
                                         cursorColor:
                                             FlutterFlowTheme.of(context)
                                                 .pinkButton,
@@ -353,60 +363,373 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                 sigmaX: 16.0,
                                                 sigmaY: 16.0,
                                               ),
-                                              child:
-                                                  FlutterFlowDropDown<String>(
-                                                controller: _model
-                                                        .dropDownValueController ??=
-                                                    FormFieldController<String>(
-                                                  _model.dropDownValue ??= '',
-                                                ),
-                                                options: List<String>.from(
-                                                    blurCollectionsRowList.isNotEmpty
-                                                        ? blurCollectionsRowList
-                                                            .map((e) => e.uuid)
-                                                            .toList()
-                                                        : ([])),
-                                                optionLabels:
-                                                    blurCollectionsRowList.isNotEmpty
-                                                        ? blurCollectionsRowList
-                                                            .map((e) => e.name)
-                                                            .withoutNulls
-                                                            .toList()
-                                                        : ([]),
-                                                onChanged: (val) => setState(
-                                                    () => _model.dropDownValue =
-                                                        val),
-                                                width: double.infinity,
+                                              child: Container(
                                                 height: 50.0,
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Nuckle',
-                                                          color:
-                                                              const Color(0x99FFFFFF),
-                                                          letterSpacing: 0.0,
-                                                          useGoogleFonts: false,
+                                                decoration: const BoxDecoration(),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Expanded(
+                                                      child:
+                                                          FlutterFlowDropDown<
+                                                              String>(
+                                                        controller: _model
+                                                                .dropDownValueController ??=
+                                                            FormFieldController<
+                                                                String>(
+                                                          _model.dropDownValue ??=
+                                                              '',
                                                         ),
-                                                hintText: 'Collection name',
-                                                icon: const Icon(
-                                                  Icons
-                                                      .keyboard_arrow_down_rounded,
-                                                  color: Color(0x80F2F1F3),
-                                                  size: 20.0,
+                                                        options: List<
+                                                                String>.from(
+                                                            blurCollectionsRowList.isNotEmpty
+                                                                ? blurCollectionsRowList
+                                                                    .map((e) =>
+                                                                        e.uuid)
+                                                                    .toList()
+                                                                : ([])),
+                                                        optionLabels:
+                                                            blurCollectionsRowList.isNotEmpty
+                                                                ? blurCollectionsRowList
+                                                                    .map((e) =>
+                                                                        e.name)
+                                                                    .withoutNulls
+                                                                    .toList()
+                                                                : ([]),
+                                                        onChanged: (val) =>
+                                                            setState(() => _model
+                                                                    .dropDownValue =
+                                                                val),
+                                                        width: double.infinity,
+                                                        height: 50.0,
+                                                        textStyle:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nuckle',
+                                                                  color: const Color(
+                                                                      0x99FFFFFF),
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                        hintText:
+                                                            'Collection name',
+                                                        icon: const Icon(
+                                                          Icons
+                                                              .keyboard_arrow_down_rounded,
+                                                          color:
+                                                              Color(0x80F2F1F3),
+                                                          size: 20.0,
+                                                        ),
+                                                        fillColor:
+                                                            const Color(0xFF1D1B1B),
+                                                        elevation: 0.0,
+                                                        borderColor:
+                                                            const Color(0x0FFFFFFF),
+                                                        borderWidth: 0.0,
+                                                        borderRadius: 30.0,
+                                                        margin:
+                                                            const EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    0.0,
+                                                                    12.0,
+                                                                    0.0),
+                                                        hidesUnderline: true,
+                                                        isOverButton: true,
+                                                        isSearchable: false,
+                                                        isMultiSelect: false,
+                                                      ),
+                                                    ),
+                                                    Builder(
+                                                      builder: (context) =>
+                                                          InkWell(
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
+                                                        highlightColor:
+                                                            Colors.transparent,
+                                                        onTap: () async {
+                                                          logFirebaseEvent(
+                                                              'ADD_FROM_BROWSER_Container_fci69r5l_ON_T');
+                                                          var shouldSetState =
+                                                              false;
+                                                          logFirebaseEvent(
+                                                              'Container_validate_form');
+                                                          if (_model.formKey
+                                                                      .currentState ==
+                                                                  null ||
+                                                              !_model.formKey
+                                                                  .currentState!
+                                                                  .validate()) {
+                                                            return;
+                                                          }
+                                                          if (true) {
+                                                            if ((_model.selectedImage ==
+                                                                        null ||
+                                                                    _model.selectedImage ==
+                                                                        '') &&
+                                                                (_model.uploadedFile !=
+                                                                        null &&
+                                                                    (_model
+                                                                            .uploadedFile
+                                                                            ?.bytes
+                                                                            ?.isNotEmpty ??
+                                                                        false))) {
+                                                              logFirebaseEvent(
+                                                                  'Container_upload_file_to_supabase');
+                                                              {
+                                                                setState(() =>
+                                                                    _model.isDataUploading1 =
+                                                                        true);
+                                                                var selectedUploadedFiles =
+                                                                    <FFUploadedFile>[];
+                                                                var selectedFiles =
+                                                                    <SelectedFile>[];
+                                                                var downloadUrls =
+                                                                    <String>[];
+                                                                try {
+                                                                  selectedUploadedFiles = _model
+                                                                          .uploadedFile!
+                                                                          .bytes!
+                                                                          .isNotEmpty
+                                                                      ? [
+                                                                          _model
+                                                                              .uploadedFile!
+                                                                        ]
+                                                                      : <FFUploadedFile>[];
+                                                                  selectedFiles =
+                                                                      selectedFilesFromUploadedFiles(
+                                                                    selectedUploadedFiles,
+                                                                    storageFolderPath:
+                                                                        'wishImages',
+                                                                  );
+                                                                  downloadUrls =
+                                                                      await uploadSupabaseStorageFiles(
+                                                                    bucketName:
+                                                                        'EdayBucket',
+                                                                    selectedFiles:
+                                                                        selectedFiles,
+                                                                  );
+                                                                } finally {
+                                                                  _model.isDataUploading1 =
+                                                                      false;
+                                                                }
+                                                                if (selectedUploadedFiles
+                                                                            .length ==
+                                                                        selectedFiles
+                                                                            .length &&
+                                                                    downloadUrls
+                                                                            .length ==
+                                                                        selectedFiles
+                                                                            .length) {
+                                                                  setState(() {
+                                                                    _model.uploadedLocalFile1 =
+                                                                        selectedUploadedFiles
+                                                                            .first;
+                                                                    _model.uploadedFileUrl1 =
+                                                                        downloadUrls
+                                                                            .first;
+                                                                  });
+                                                                } else {
+                                                                  setState(
+                                                                      () {});
+                                                                  return;
+                                                                }
+                                                              }
+                                                            } else if (_model
+                                                                        .selectedImage !=
+                                                                    null &&
+                                                                _model.selectedImage !=
+                                                                    '') {
+                                                            } else {
+                                                              logFirebaseEvent(
+                                                                  'Container_alert_dialog');
+                                                              showDialog(
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    elevation:
+                                                                        0,
+                                                                    insetPadding:
+                                                                        EdgeInsets
+                                                                            .zero,
+                                                                    backgroundColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    alignment: const AlignmentDirectional(
+                                                                            0.0,
+                                                                            -1.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                    child:
+                                                                        WebViewAware(
+                                                                      child:
+                                                                          GestureDetector(
+                                                                        onTap: () => _model.unfocusNode.canRequestFocus
+                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                            : FocusScope.of(context).unfocus(),
+                                                                        child:
+                                                                            const AlertDialogWarningWidget(
+                                                                          title:
+                                                                              'No image selected!',
+                                                                          subtitle:
+                                                                              'Please select the image from the list below or upload your own',
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  setState(
+                                                                      () {}));
+
+                                                              if (shouldSetState) {
+                                                                setState(() {});
+                                                              }
+                                                              return;
+                                                            }
+
+                                                            logFirebaseEvent(
+                                                                'Container_backend_call');
+                                                            _model.createdWishRowCopy =
+                                                                await WishesTable()
+                                                                    .insert({
+                                                              'visibily': true,
+                                                              'collection': _model
+                                                                              .dropDownValue !=
+                                                                          null &&
+                                                                      _model.dropDownValue !=
+                                                                          ''
+                                                                  ? _model
+                                                                      .dropDownValue
+                                                                  : null,
+                                                              'pair':
+                                                                  FFAppState()
+                                                                      .pairID,
+                                                              'created_by':
+                                                                  currentUserUid,
+                                                              'name': _model
+                                                                  .nameFieldTextController
+                                                                  .text,
+                                                              'description': _model
+                                                                  .descriptionFieldTextController
+                                                                  .text,
+                                                              'photo': _model.selectedImage !=
+                                                                          null &&
+                                                                      _model.selectedImage !=
+                                                                          ''
+                                                                  ? _model
+                                                                      .selectedImage
+                                                                  : _model
+                                                                      .uploadedFileUrl3,
+                                                              'link':
+                                                                  getJsonField(
+                                                                containerParseSiteResponse
+                                                                    .jsonBody,
+                                                                r'''$.link''',
+                                                              ).toString(),
+                                                            });
+                                                            shouldSetState =
+                                                                true;
+                                                            logFirebaseEvent(
+                                                                'Container_bottom_sheet');
+                                                            Navigator.pop(
+                                                                context);
+                                                            logFirebaseEvent(
+                                                                'Container_bottom_sheet');
+                                                            await showModalBottomSheet(
+                                                              isScrollControlled:
+                                                                  true,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              isDismissible:
+                                                                  false,
+                                                              enableDrag: false,
+                                                              context: context,
+                                                              builder:
+                                                                  (context) {
+                                                                return WebViewAware(
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: MediaQuery
+                                                                          .viewInsetsOf(
+                                                                              context),
+                                                                      child:
+                                                                          SizedBox(
+                                                                        height: MediaQuery.sizeOf(context).height *
+                                                                            0.65,
+                                                                        child:
+                                                                            BSNewCollectionWidget(
+                                                                          selectedWishRow:
+                                                                              _model.createdWishRowCopy,
+                                                                          isFromBrowser:
+                                                                              true,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                safeSetState(
+                                                                    () {}));
+                                                          }
+                                                          if (shouldSetState) {
+                                                            setState(() {});
+                                                          }
+                                                        },
+                                                        child: Container(
+                                                          width: 46.0,
+                                                          height: 46.0,
+                                                          decoration:
+                                                              BoxDecoration(
+                                                            color: const Color(
+                                                                0x2AFFFFFF),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        12.0),
+                                                          ),
+                                                          alignment:
+                                                              const AlignmentDirectional(
+                                                                  0.0, 0.0),
+                                                          child: Icon(
+                                                            FFIcons.kaddCircle,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryBackground,
+                                                            size: 22.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ].divide(
+                                                      const SizedBox(width: 6.0)),
                                                 ),
-                                                fillColor: const Color(0xFF1D1B1B),
-                                                elevation: 0.0,
-                                                borderColor: const Color(0x0FFFFFFF),
-                                                borderWidth: 0.0,
-                                                borderRadius: 30.0,
-                                                margin: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        20.0, 0.0, 12.0, 0.0),
-                                                hidesUnderline: true,
-                                                isOverButton: true,
-                                                isSearchable: false,
-                                                isMultiSelect: false,
                                               ),
                                             ),
                                           );
@@ -1103,7 +1426,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                         m.storagePath,
                                                                         context))) {
                                                               setState(() =>
-                                                                  _model.isDataUploading1 =
+                                                                  _model.isDataUploading2 =
                                                                       true);
                                                               var selectedUploadedFiles =
                                                                   <FFUploadedFile>[];
@@ -1121,7 +1444,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                             ))
                                                                         .toList();
                                                               } finally {
-                                                                _model.isDataUploading1 =
+                                                                _model.isDataUploading2 =
                                                                     false;
                                                               }
                                                               if (selectedUploadedFiles
@@ -1129,7 +1452,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                   selectedMedia
                                                                       .length) {
                                                                 setState(() {
-                                                                  _model.uploadedLocalFile1 =
+                                                                  _model.uploadedLocalFile2 =
                                                                       selectedUploadedFiles
                                                                           .first;
                                                                 });
@@ -1140,7 +1463,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             }
 
                                                             if ((_model
-                                                                        .uploadedLocalFile1
+                                                                        .uploadedLocalFile2
                                                                         .bytes
                                                                         ?.isNotEmpty ??
                                                                     false)) {
@@ -1149,7 +1472,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               setState(() {
                                                                 _model.uploadedFile =
                                                                     _model
-                                                                        .uploadedLocalFile1;
+                                                                        .uploadedLocalFile2;
                                                                 _model.selectedImage =
                                                                     null;
                                                               });
@@ -1179,11 +1502,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                           model: _model.saveToCollectionModel,
                                           updateCallback: () => setState(() {}),
                                           child: PinkButtonWidget(
-                                            text: _model.dropDownValue !=
-                                                        null &&
-                                                    _model.dropDownValue != ''
-                                                ? 'Save To Collection'
-                                                : 'Create new collection',
+                                            text: 'Save To Collection',
                                             currentAction: () async {
                                               logFirebaseEvent(
                                                   'ADD_FROM_BROWSER_SaveToCollection_CALLBA');
@@ -1196,7 +1515,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       .validate()) {
                                                 return;
                                               }
-                                              if (true) {
+                                              if (_model.dropDownValue !=
+                                                      null &&
+                                                  _model.dropDownValue != '') {
                                                 if ((_model.selectedImage ==
                                                             null ||
                                                         _model.selectedImage ==
@@ -1212,7 +1533,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       'SaveToCollection_upload_file_to_supabase');
                                                   {
                                                     setState(() => _model
-                                                            .isDataUploading2 =
+                                                            .isDataUploading3 =
                                                         true);
                                                     var selectedUploadedFiles =
                                                         <FFUploadedFile>[];
@@ -1245,7 +1566,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             selectedFiles,
                                                       );
                                                     } finally {
-                                                      _model.isDataUploading2 =
+                                                      _model.isDataUploading3 =
                                                           false;
                                                     }
                                                     if (selectedUploadedFiles
@@ -1256,10 +1577,10 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                             selectedFiles
                                                                 .length) {
                                                       setState(() {
-                                                        _model.uploadedLocalFile2 =
+                                                        _model.uploadedLocalFile3 =
                                                             selectedUploadedFiles
                                                                 .first;
-                                                        _model.uploadedFileUrl2 =
+                                                        _model.uploadedFileUrl3 =
                                                             downloadUrls.first;
                                                       });
                                                     } else {
@@ -1349,7 +1670,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                           _model.selectedImage !=
                                                               ''
                                                       ? _model.selectedImage
-                                                      : _model.uploadedFileUrl2,
+                                                      : _model.uploadedFileUrl3,
                                                   'link': getJsonField(
                                                     containerParseSiteResponse
                                                         .jsonBody,
@@ -1357,10 +1678,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   ).toString(),
                                                 });
                                                 shouldSetState = true;
-                                                if (_model.dropDownValue !=
-                                                        null &&
-                                                    _model.dropDownValue !=
-                                                        '') {
+                                                if (true) {
                                                   logFirebaseEvent(
                                                       'SaveToCollection_backend_call');
                                                   _model.selectedCollection =
@@ -1401,21 +1719,26 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       'SaveToCollection_navigate_to');
 
                                                   context.goNamed('My_Profile');
-                                                } else {
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_bottom_sheet');
-                                                  Navigator.pop(context);
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_bottom_sheet');
-                                                  await showModalBottomSheet(
-                                                    isScrollControlled: true,
-                                                    backgroundColor:
-                                                        Colors.transparent,
-                                                    isDismissible: false,
-                                                    enableDrag: false,
-                                                    context: context,
-                                                    builder: (context) {
-                                                      return WebViewAware(
+                                                }
+                                              } else {
+                                                logFirebaseEvent(
+                                                    'SaveToCollection_alert_dialog');
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          const AlignmentDirectional(
+                                                                  0.0, -1.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: WebViewAware(
                                                         child: GestureDetector(
                                                           onTap: () => _model
                                                                   .unfocusNode
@@ -1428,33 +1751,21 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               : FocusScope.of(
                                                                       context)
                                                                   .unfocus(),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child: SizedBox(
-                                                              height: MediaQuery
-                                                                          .sizeOf(
-                                                                              context)
-                                                                      .height *
-                                                                  0.65,
-                                                              child:
-                                                                  BSNewCollectionWidget(
-                                                                selectedWishRow:
-                                                                    _model
-                                                                        .createdWishRow,
-                                                                isFromBrowser:
-                                                                    true,
-                                                              ),
-                                                            ),
+                                                          child:
+                                                              const AlertDialogWarningWidget(
+                                                            title:
+                                                                'No category selected !',
+                                                            subtitle:
+                                                                'Please select category from the dropdown or add new',
                                                           ),
                                                         ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      safeSetState(() {}));
-                                                }
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
                                               }
+
                                               if (shouldSetState) {
                                                 setState(() {});
                                               }

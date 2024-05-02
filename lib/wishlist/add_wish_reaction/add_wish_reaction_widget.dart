@@ -501,10 +501,14 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                             .rating
                                             .toString(),
                                       },
+                                      'created_at': supaSerialize<DateTime>(
+                                          getCurrentTimestamp),
                                     });
                                   }(),
                                 );
                               }
+                              logFirebaseEvent('Image_update_app_state');
+                              FFAppState().update(() {});
                               logFirebaseEvent('Image_navigate_back');
                               context.safePop();
 

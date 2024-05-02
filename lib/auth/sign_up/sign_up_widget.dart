@@ -133,7 +133,13 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     8.0, 4.0, 8.0, 0.0),
                                 child: Text(
-                                  'Sign Up',
+                                  valueOrDefault<String>(
+                                    widget.pairCode != null &&
+                                            widget.pairCode != ''
+                                        ? widget.pairCode
+                                        : 'Sign Up',
+                                    'Sign Up',
+                                  ),
                                   style: FlutterFlowTheme.of(context)
                                       .titleSmall
                                       .override(
@@ -868,27 +874,6 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           'AppleButton_custom_action');
                                       _model.authResponse =
                                           await actions.appleSignin();
-                                      logFirebaseEvent(
-                                          'AppleButton_alert_dialog');
-                                      await showDialog(
-                                        context: context,
-                                        builder: (alertDialogContext) {
-                                          return WebViewAware(
-                                            child: AlertDialog(
-                                              title: Text(_model.authResponse!
-                                                  .toString()),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: const Text('Ok'),
-                                                ),
-                                              ],
-                                            ),
-                                          );
-                                        },
-                                      );
                                       logFirebaseEvent(
                                           'AppleButton_backend_call');
                                       _model.foundUserRow2 =

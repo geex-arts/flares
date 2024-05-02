@@ -104,7 +104,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Splash',
               path: 'splash',
-              builder: (context, params) => const SplashWidget(),
+              builder: (context, params) => SplashWidget(
+                pairCode: params.getParam(
+                  'pairCode',
+                  ParamType.String,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Onboarding',
@@ -267,17 +272,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Create_Couple_Profile',
               path: 'createCoupleProfile',
               builder: (context, params) => const CreateCoupleProfileWidget(),
-            ),
-            FFRoute(
-              name: 'Create_wish',
-              path: 'createWish',
-              requireAuth: true,
-              builder: (context, params) => CreateWishWidget(
-                url: params.getParam(
-                  'url',
-                  ParamType.String,
-                ),
-              ),
             ),
             FFRoute(
               name: 'More',
