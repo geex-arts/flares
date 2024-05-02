@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
+import 'dart:io' show Platform;
 
 import 'auth/supabase_auth/supabase_user_provider.dart';
 import 'auth/supabase_auth/auth_util.dart';
@@ -87,6 +88,9 @@ void main() async {
     ticker: 'ticker',
   );
 
+
+if (Platform.isAndroid) {
+
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print('Got a message whilst in the foreground!');
     print('Message data: ${message}');
@@ -100,7 +104,7 @@ void main() async {
       NotificationDetails(android: android),
     );
   });
-
+}
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),
