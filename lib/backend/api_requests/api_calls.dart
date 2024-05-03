@@ -97,13 +97,12 @@ class GenerateAiSimiliarWishCall {
   static Future<ApiCallResponse> call({
     String? budget = '',
     String? city = '',
-    String? collectionId = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "budget": "$budget",
   "city": "$city",
-  "collection_id": "$collectionId"
+  "collection_id": "<collection_id>"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'generateAiSimiliarWish',

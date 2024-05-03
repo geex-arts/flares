@@ -14,8 +14,6 @@ class CouplesProfileModel extends FlutterFlowModel<CouplesProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - API (generateAiSimiliarWish)] action in Column widget.
-  ApiCallResponse? apiResultc17Copy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
   ApiCallResponse? apiResultc16Copy;
   // Model for wishesList.

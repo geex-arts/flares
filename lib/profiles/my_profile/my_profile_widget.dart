@@ -1036,119 +1036,59 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
-                                              InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  logFirebaseEvent(
-                                                      'MY_PROFILE_PAGE_Column_lyodz435_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Column_backend_call');
-                                                  _model.apiResultc17Copy =
-                                                      await GenerateAiSimiliarWishCall
-                                                          .call(
-                                                    budget: 'elite',
-                                                    city: 'Almaty',
-                                                    collectionId:
-                                                        '8e367689-4000-48dc-9c86-747c5c62518a',
-                                                  );
-                                                  if ((_model.apiResultc17Copy
-                                                          ?.succeeded ??
-                                                      true)) {
-                                                    logFirebaseEvent(
-                                                        'Column_alert_dialog');
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return WebViewAware(
-                                                          child: AlertDialog(
-                                                            title: Text((_model
-                                                                    .apiResultc17Copy
-                                                                    ?.bodyText ??
-                                                                '')),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child:
-                                                                    const Text('Ok'),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        );
-                                                      },
-                                                    );
-                                                  }
-
-                                                  setState(() {});
-                                                },
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Text(
-                                                      (String var1) {
-                                                        return var1.replaceAll(
-                                                            ' ago', '');
-                                                      }(dateTimeFormat(
-                                                          'relative',
-                                                          columnPairsRow!
-                                                              .pairSince!)),
+                                              Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Text(
+                                                    (String var1) {
+                                                      return var1.replaceAll(
+                                                          ' ago', '');
+                                                    }(dateTimeFormat(
+                                                        'relative',
+                                                        columnPairsRow!
+                                                            .pairSince!)),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                          lineHeight: 1.4,
+                                                        ),
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 4.0,
+                                                                0.0, 0.0),
+                                                    child: Text(
+                                                      'Together',
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily:
                                                                 'Nuckle',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
+                                                            color: const Color(
+                                                                0x9AFFFFFF),
                                                             fontSize: 12.0,
                                                             letterSpacing: 0.0,
                                                             fontWeight:
-                                                                FontWeight.bold,
+                                                                FontWeight.w500,
                                                             useGoogleFonts:
                                                                 false,
                                                             lineHeight: 1.4,
                                                           ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Together',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Nuckle',
-                                                              color: const Color(
-                                                                  0x9AFFFFFF),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                              lineHeight: 1.4,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                ],
                                               ),
                                               InkWell(
                                                 splashColor: Colors.transparent,
