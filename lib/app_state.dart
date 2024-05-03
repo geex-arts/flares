@@ -127,6 +127,12 @@ class FFAppState extends ChangeNotifier {
   set secondNoteSwitch(bool value) {
     _secondNoteSwitch = value;
   }
+
+  String _pairCodeState = '';
+  String get pairCodeState => _pairCodeState;
+  set pairCodeState(String value) {
+    _pairCodeState = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

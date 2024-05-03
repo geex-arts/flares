@@ -204,6 +204,7 @@ Future authRoutine(
       );
       logFirebaseEvent('authRoutine_update_app_state');
       FFAppState().pairID = foundPairingRow.first.pair!;
+      FFAppState().pairCodeState = '';
       logFirebaseEvent('authRoutine_navigate_to');
 
       context.goNamed('My_Profile');
@@ -315,6 +316,7 @@ Future signinRoutine(
       );
       logFirebaseEvent('signinRoutine_update_app_state');
       FFAppState().pairID = foundPairingRow.first.pair!;
+      FFAppState().pairCodeState = '';
       logFirebaseEvent('signinRoutine_bottom_sheet');
       await showModalBottomSheet(
         isScrollControlled: true,

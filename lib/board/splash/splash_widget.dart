@@ -44,6 +44,8 @@ class _SplashWidgetState extends State<SplashWidget>
       await Future.delayed(const Duration(milliseconds: 2000));
       if (currentUserUid != '') {
         if (widget.pairCode != null && widget.pairCode != '') {
+          logFirebaseEvent('Splash_update_app_state');
+          FFAppState().pairCodeState = widget.pairCode!;
           logFirebaseEvent('Splash_backend_call');
           _model.foundPairingRow2 = await PairsInvitationsTable().queryRows(
             queryFn: (q) => q
@@ -83,6 +85,7 @@ class _SplashWidgetState extends State<SplashWidget>
             );
             logFirebaseEvent('Splash_update_app_state');
             FFAppState().pairID = _model.foundPairingRow2!.first.pair!;
+            FFAppState().pairCodeState = '';
           }
           logFirebaseEvent('Splash_navigate_to');
 
@@ -96,7 +99,15 @@ class _SplashWidgetState extends State<SplashWidget>
 
           return;
         }
+      } else {
+        if (widget.pairCode != null && widget.pairCode != '') {
+          logFirebaseEvent('Splash_update_app_state');
+          setState(() {
+            FFAppState().pairCodeState = widget.pairCode!;
+          });
+        }
       }
+
       logFirebaseEvent('Splash_navigate_to');
 
       context.goNamed(

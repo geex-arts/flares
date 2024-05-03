@@ -7,7 +7,9 @@ import 'dart:ui';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'onboarding_model.dart';
 export 'onboarding_model.dart';
 
@@ -37,6 +39,17 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
     _model = createModel(context, () => OnboardingModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Onboarding'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('ONBOARDING_PAGE_Onboarding_ON_INIT_STATE');
+      if (widget.pairCode != null && widget.pairCode != '') {
+        logFirebaseEvent('Onboarding_update_app_state');
+        setState(() {
+          FFAppState().pairCodeState = widget.pairCode!;
+        });
+      }
+    });
+
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -233,6 +246,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -405,9 +420,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
-                                              widget.pairCode != null &&
-                                                      widget.pairCode != ''
-                                                  ? widget.pairCode
+                                              FFAppState()
+                                                              .pairCodeState !=
+                                                          ''
+                                                  ? FFAppState().pairCodeState
                                                   : 'Wishlist',
                                               'Wishlist',
                                             ),
@@ -966,9 +982,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                 'Sign_In',
                                 queryParameters: {
                                   'pairCode': serializeParam(
-                                    widget.pairCode != null &&
-                                            widget.pairCode != ''
-                                        ? widget.pairCode
+                                    FFAppState().pairCodeState != ''
+                                        ? FFAppState().pairCodeState
                                         : '',
                                     ParamType.String,
                                   ),
@@ -989,9 +1004,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                               'Sign_Up',
                               queryParameters: {
                                 'pairCode': serializeParam(
-                                  widget.pairCode != null &&
-                                          widget.pairCode != ''
-                                      ? widget.pairCode
+                                  FFAppState().pairCodeState != ''
+                                      ? FFAppState().pairCodeState
                                       : '',
                                   ParamType.String,
                                 ),
