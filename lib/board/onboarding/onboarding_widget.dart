@@ -308,9 +308,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                           'Sign_In',
                                           queryParameters: {
                                             'pairCode': serializeParam(
-                                              widget.pairCode != null &&
-                                                      widget.pairCode != ''
-                                                  ? widget.pairCode
+                                              FFAppState()
+                                                              .pairCodeState !=
+                                                          ''
+                                                  ? FFAppState().pairCodeState
                                                   : '',
                                               ParamType.String,
                                             ),
