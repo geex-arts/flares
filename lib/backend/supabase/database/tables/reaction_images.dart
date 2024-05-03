@@ -20,4 +20,7 @@ class ReactionImagesRow extends SupabaseDataRow {
 
   String? get imageLink => getField<String>('image_link');
   set imageLink(String? value) => setField<String>('image_link', value);
+
+  String? get name => getField<String>('name');
+  set name(String? value) => setField<String>('name', value);
 }

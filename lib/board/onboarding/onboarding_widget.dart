@@ -293,7 +293,10 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                           'Sign_In',
                                           queryParameters: {
                                             'pairCode': serializeParam(
-                                              '',
+                                              widget.pairCode != null &&
+                                                      widget.pairCode != ''
+                                                  ? widget.pairCode
+                                                  : '',
                                               ParamType.String,
                                             ),
                                           }.withoutNulls,
@@ -401,7 +404,13 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'Wishlist',
+                                            valueOrDefault<String>(
+                                              widget.pairCode != null &&
+                                                      widget.pairCode != ''
+                                                  ? widget.pairCode
+                                                  : 'Wishlist',
+                                              'Wishlist',
+                                            ),
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(

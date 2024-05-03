@@ -1,5 +1,4 @@
 import '/auth/supabase_auth/auth_util.dart';
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:provider/provider.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'pair_header_model.dart';
 export 'pair_header_model.dart';
 
@@ -488,198 +486,113 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'PAIR_HEADER_COMP_Column_vjhsg0hv_ON_TAP');
-                              logFirebaseEvent('Column_backend_call');
-                              _model.apiResultc17Copy =
-                                  await GenerateAiSimiliarWishCall.call(
-                                budget: 'elite',
-                                city: 'Almaty',
-                                collectionId:
-                                    '8e367689-4000-48dc-9c86-747c5c62518a',
-                              );
-                              if ((_model.apiResultc17Copy?.succeeded ??
-                                  true)) {
-                                logFirebaseEvent('Column_alert_dialog');
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                      child: AlertDialog(
-                                        title: Text((_model
-                                                .apiResultc17Copy?.bodyText ??
-                                            '')),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
-
-                              setState(() {});
-                            },
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  (String var1) {
-                                    return var1.replaceAll(' ago', '');
-                                  }(dateTimeFormat(
-                                      'relative', columnPairsRow.pairSince!)),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                (String var1) {
+                                  return var1.replaceAll(' ago', '');
+                                }(dateTimeFormat(
+                                    'relative', columnPairsRow.pairSince!)),
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 12.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                      lineHeight: 1.4,
+                                    ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 0.0),
+                                child: Text(
+                                  'Together',
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Nuckle',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                        color: const Color(0x9AFFFFFF),
                                         fontSize: 12.0,
                                         letterSpacing: 0.0,
-                                        fontWeight: FontWeight.bold,
+                                        fontWeight: FontWeight.w500,
                                         useGoogleFonts: false,
                                         lineHeight: 1.4,
                                       ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Together',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Nuckle',
-                                          color: const Color(0x9AFFFFFF),
-                                          fontSize: 12.0,
-                                          letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
-                                          useGoogleFonts: false,
-                                          lineHeight: 1.4,
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              logFirebaseEvent(
-                                  'PAIR_HEADER_COMP_Column_jyc1spug_ON_TAP');
-                              logFirebaseEvent('Column_backend_call');
-                              _model.apiResultc16Copy =
-                                  await GenerateAiWishCall.call(
-                                city: 'Moscow',
-                                budget: 'friendly',
-                                interest: 'any',
-                              );
-                              if ((_model.apiResultc16Copy?.succeeded ??
-                                  true)) {
-                                logFirebaseEvent('Column_alert_dialog');
-                                await showDialog(
-                                  context: context,
-                                  builder: (alertDialogContext) {
-                                    return WebViewAware(
-                                      child: AlertDialog(
-                                        title: Text((_model
-                                                .apiResultc16Copy?.bodyText ??
-                                            '')),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: const Text('Ok'),
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                );
-                              }
-
-                              setState(() {});
-                            },
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FutureBuilder<List<DatesRow>>(
-                                  future: DatesTable().queryRows(
-                                    queryFn: (q) => q.eq(
-                                      'pair',
-                                      FFAppState().pairID,
-                                    ),
+                          Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              FutureBuilder<List<DatesRow>>(
+                                future: DatesTable().queryRows(
+                                  queryFn: (q) => q.eq(
+                                    'pair',
+                                    FFAppState().pairID,
                                   ),
-                                  builder: (context, snapshot) {
-                                    // Customize what your widget looks like when it's loading.
-                                    if (!snapshot.hasData) {
-                                      return Center(
-                                        child: SizedBox(
-                                          width: 50.0,
-                                          height: 50.0,
-                                          child: SpinKitPulse(
-                                            color: FlutterFlowTheme.of(context)
-                                                .pinkButton,
-                                            size: 50.0,
-                                          ),
-                                        ),
-                                      );
-                                    }
-                                    List<DatesRow> textDatesRowList =
-                                        snapshot.data!;
-                                    return Text(
-                                      valueOrDefault<String>(
-                                        textDatesRowList.length.toString(),
-                                        '0',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            fontSize: 12.0,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                            lineHeight: 1.4,
-                                          ),
-                                    );
-                                  },
                                 ),
-                                Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 4.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Dates',
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: SpinKitPulse(
+                                          color: FlutterFlowTheme.of(context)
+                                              .pinkButton,
+                                          size: 50.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  List<DatesRow> textDatesRowList =
+                                      snapshot.data!;
+                                  return Text(
+                                    valueOrDefault<String>(
+                                      textDatesRowList.length.toString(),
+                                      '0',
+                                    ),
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Nuckle',
-                                          color: const Color(0x98FFFFFF),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
                                           fontSize: 12.0,
                                           letterSpacing: 0.0,
-                                          fontWeight: FontWeight.w500,
+                                          fontWeight: FontWeight.bold,
                                           useGoogleFonts: false,
                                           lineHeight: 1.4,
                                         ),
-                                  ),
+                                  );
+                                },
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 4.0, 0.0, 0.0),
+                                child: Text(
+                                  'Dates',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        color: const Color(0x98FFFFFF),
+                                        fontSize: 12.0,
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
+                                      ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ],
                       ),

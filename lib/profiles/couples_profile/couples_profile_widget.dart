@@ -1257,10 +1257,13 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                       ),
                     ),
                   ),
-                  wrapWithModel(
-                    model: _model.floatingBtnModel,
-                    updateCallback: () => setState(() {}),
-                    child: const FloatingBtnWidget(),
+                  Align(
+                    alignment: const AlignmentDirectional(0.0, 0.0),
+                    child: wrapWithModel(
+                      model: _model.floatingBtnModel,
+                      updateCallback: () => setState(() {}),
+                      child: const FloatingBtnWidget(),
+                    ),
                   ),
                 ],
               ),
