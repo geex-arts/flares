@@ -10,7 +10,9 @@ import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'create_couple_profile_model.dart';
 export 'create_couple_profile_model.dart';
@@ -38,6 +40,19 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Create_Couple_Profile'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('CREATE_COUPLE_PROFILE_Create_Couple_Prof');
+      if (FFAppState().pairID == '') {
+        logFirebaseEvent('Create_Couple_Profile_backend_call');
+        _model.createdPairRow = await PairsTable().insert({
+          'visibility': false,
+        });
+        logFirebaseEvent('Create_Couple_Profile_update_app_state');
+        FFAppState().pairID = _model.createdPairRow!.uuid;
+      }
+    });
+
     _model.namesFieldTextController ??= TextEditingController();
     _model.namesFieldFocusNode ??= FocusNode();
     _model.namesFieldFocusNode!.addListener(() => setState(() {}));
@@ -99,6 +114,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -646,7 +663,6 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                               currentAction: () async {
                                 logFirebaseEvent(
                                     'CREATE_COUPLE_PROFILE_CreateCouple_CALLB');
-                                var shouldSetState = false;
                                 logFirebaseEvent('CreateCouple_validate_form');
                                 if (_model.formKey.currentState == null ||
                                     !_model.formKey.currentState!.validate()) {
@@ -694,7 +710,6 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                   setState(() {
                                     _model.borderColor = true;
                                   });
-                                  if (shouldSetState) setState(() {});
                                   return;
                                 }
                                 logFirebaseEvent(
@@ -743,31 +758,23 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 }
 
                                 logFirebaseEvent('CreateCouple_backend_call');
-                                _model.newPairRow = await PairsTable().insert({
-                                  'pair_name':
-                                      _model.namesFieldTextController.text,
-                                  'photo': _model.uploadedFileUrl2,
-                                  'pair_since': supaSerialize<DateTime>(
-                                      _model.datePicked),
-                                });
-                                shouldSetState = true;
-                                logFirebaseEvent('CreateCouple_backend_call');
                                 unawaited(
                                   () async {
-                                    await UsersTable().update(
+                                    await PairsTable().update(
                                       data: {
-                                        'pair': _model.newPairRow?.uuid,
+                                        'pair_name': _model
+                                            .namesFieldTextController.text,
+                                        'photo': _model.uploadedFileUrl2,
+                                        'pair_since': supaSerialize<DateTime>(
+                                            _model.datePicked),
                                       },
                                       matchingRows: (rows) => rows.eq(
-                                        'email',
-                                        currentUserEmail,
+                                        'uuid',
+                                        FFAppState().pairID,
                                       ),
                                     );
                                   }(),
                                 );
-                                logFirebaseEvent(
-                                    'CreateCouple_update_app_state');
-                                FFAppState().pairID = _model.newPairRow!.uuid;
                                 logFirebaseEvent('CreateCouple_navigate_to');
 
                                 context.goNamed(
@@ -779,8 +786,6 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     ),
                                   }.withoutNulls,
                                 );
-
-                                if (shouldSetState) setState(() {});
                               },
                             ),
                           ),

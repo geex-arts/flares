@@ -115,6 +115,18 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
   }
+
+  bool _firstNoteSwitch = true;
+  bool get firstNoteSwitch => _firstNoteSwitch;
+  set firstNoteSwitch(bool value) {
+    _firstNoteSwitch = value;
+  }
+
+  bool _secondNoteSwitch = true;
+  bool get secondNoteSwitch => _secondNoteSwitch;
+  set secondNoteSwitch(bool value) {
+    _secondNoteSwitch = value;
+  }
 }
 
 void _safeInit(Function() initializeField) {

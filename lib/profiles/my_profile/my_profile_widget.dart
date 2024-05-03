@@ -1314,9 +1314,15 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                   padding:
                                                       MediaQuery.viewInsetsOf(
                                                           context),
-                                                  child:
-                                                      const BSSaveToCollection2Widget(
-                                                    isManagement: true,
+                                                  child: SizedBox(
+                                                    height: MediaQuery.sizeOf(
+                                                                context)
+                                                            .height *
+                                                        0.6,
+                                                    child:
+                                                        const BSSaveToCollection2Widget(
+                                                      isManagement: true,
+                                                    ),
                                                   ),
                                                 ),
                                               ),

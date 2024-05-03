@@ -49,7 +49,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
       if (widget.isMyProfile) {
         logFirebaseEvent('wishesListMain_backend_call');
         _model.reactionImagesRows = await ReactionImagesTable().queryRows(
-          queryFn: (q) => q,
+          queryFn: (q) => q.order('rating', ascending: true),
         );
       }
       logFirebaseEvent('wishesListMain_update_app_state');

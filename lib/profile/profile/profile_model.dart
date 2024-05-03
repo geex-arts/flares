@@ -9,6 +9,8 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Query Rows] action in EditCoupleProfileContainer widget.
   List<PairsRow>? myPairRow;
+  // Stores action output result for [Backend Call - Query Rows] action in NotificationsContainer widget.
+  List<UsersRow>? userRow;
 
   @override
   void initState(BuildContext context) {}

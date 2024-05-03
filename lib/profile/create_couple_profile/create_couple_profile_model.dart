@@ -19,6 +19,8 @@ class CreateCoupleProfileModel
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  // Stores action output result for [Backend Call - Insert Row] action in Create_Couple_Profile widget.
+  PairsRow? createdPairRow;
   bool isDataUploading1 = false;
   FFUploadedFile uploadedLocalFile1 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
@@ -50,9 +52,6 @@ class CreateCoupleProfileModel
   FFUploadedFile uploadedLocalFile2 =
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl2 = '';
-
-  // Stores action output result for [Backend Call - Insert Row] action in CreateCouple widget.
-  PairsRow? newPairRow;
 
   @override
   void initState(BuildContext context) {

@@ -749,9 +749,27 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             logFirebaseEvent(
                                 'PROFILE_NotificationsContainer_ON_TAP');
                             logFirebaseEvent(
+                                'NotificationsContainer_backend_call');
+                            _model.userRow = await UsersTable().queryRows(
+                              queryFn: (q) => q.eq(
+                                'id',
+                                currentUserUid,
+                              ),
+                            );
+                            logFirebaseEvent(
                                 'NotificationsContainer_navigate_to');
 
-                            context.pushNamed('Notify_Settings');
+                            context.pushNamed(
+                              'Notify_Settings',
+                              queryParameters: {
+                                'userRow': serializeParam(
+                                  _model.userRow?.first,
+                                  ParamType.SupabaseRow,
+                                ),
+                              }.withoutNulls,
+                            );
+
+                            setState(() {});
                           },
                           child: Container(
                             width: double.infinity,

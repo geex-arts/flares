@@ -81,14 +81,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => _RouteErrorBuilder(
         state: state,
-        child: appStateNotifier.loggedIn ? const SplashWidget() : const SplashWidget(),
+        child: appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
       ),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const SplashWidget() : const SplashWidget(),
+              appStateNotifier.loggedIn ? const MyProfileWidget() : const SplashWidget(),
           routes: [
             FFRoute(
               name: 'My_Profile',
@@ -198,7 +198,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Notify_Settings',
               path: 'notifySettings',
-              builder: (context, params) => const NotifySettingsWidget(),
+              builder: (context, params) => NotifySettingsWidget(
+                userRow: params.getParam<UsersRow>(
+                  'userRow',
+                  ParamType.SupabaseRow,
+                ),
+              ),
             ),
             FFRoute(
               name: 'Ask_For_Date',

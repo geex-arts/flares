@@ -5,6 +5,7 @@ import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/actions/actions.dart' as action_blocks;
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
@@ -135,6 +136,7 @@ Future authRoutine(
   String? fcmToken;
   List<PairsInvitationsRow>? foundPairingRow;
   List<UsersRow>? userAuthCopyCopy;
+  List<PairsRow>? foundPairRow;
 
   logFirebaseEvent('authRoutine_custom_action');
   await actions.getPushPermission();
@@ -220,14 +222,25 @@ Future authRoutine(
       userAuthCopyCopy.first.pair != '') {
     logFirebaseEvent('authRoutine_update_app_state');
     FFAppState().pairID = userAuthCopyCopy.first.pair!;
-    logFirebaseEvent('authRoutine_navigate_to');
+    logFirebaseEvent('authRoutine_backend_call');
+    foundPairRow = await PairsTable().queryRows(
+      queryFn: (q) => q.eq(
+        'uuid',
+        userAuthCopyCopy?.first.pair,
+      ),
+    );
+    if (foundPairRow.first.pairName != null &&
+        foundPairRow.first.pairName != '') {
+      logFirebaseEvent('authRoutine_navigate_to');
 
-    context.goNamed('Explore');
-  } else {
-    logFirebaseEvent('authRoutine_navigate_to');
+      context.goNamed('Explore');
 
-    context.pushNamed('More');
+      return;
+    }
   }
+  logFirebaseEvent('authRoutine_navigate_to');
+
+  context.pushNamed('More');
 }
 
 Future signinRoutine(
@@ -236,6 +249,7 @@ Future signinRoutine(
 }) async {
   String? fcmToken;
   List<PairsInvitationsRow>? foundPairingRow;
+  PairsRow? newPairRow;
 
   logFirebaseEvent('signinRoutine_custom_action');
   await actions.getPushPermission();
@@ -257,8 +271,6 @@ Future signinRoutine(
   await actions.identifyRevenueCat(
     currentUserUid,
   );
-  logFirebaseEvent('signinRoutine_update_app_state');
-  FFAppState().pairID = '';
   if (pairCode != null && pairCode != '') {
     logFirebaseEvent('signinRoutine_backend_call');
     foundPairingRow = await PairsInvitationsTable().queryRows(
@@ -324,15 +336,29 @@ Future signinRoutine(
       return;
     }
   }
-  logFirebaseEvent('signinRoutine_navigate_to');
-
-  context.goNamed(
-    'Invite_Partner_Onb',
-    queryParameters: {
-      'isFromProfile': serializeParam(
-        false,
-        ParamType.bool,
-      ),
-    }.withoutNulls,
+  logFirebaseEvent('signinRoutine_backend_call');
+  newPairRow = await PairsTable().insert({
+    'visibility': false,
+  });
+  logFirebaseEvent('signinRoutine_backend_call');
+  unawaited(
+    () async {
+      await UsersTable().update(
+        data: {
+          'pair': newPairRow?.uuid,
+        },
+        matchingRows: (rows) => rows.eq(
+          'id',
+          currentUserUid,
+        ),
+      );
+    }(),
+  );
+  logFirebaseEvent('signinRoutine_update_app_state');
+  FFAppState().pairID = newPairRow.uuid;
+  logFirebaseEvent('signinRoutine_action_block');
+  await action_blocks.pairInvitationRowAction(
+    context,
+    isFromProfile: false,
   );
 }

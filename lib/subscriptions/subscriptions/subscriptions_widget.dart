@@ -161,6 +161,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                     .primaryBackground,
                                 barrierColor: FlutterFlowTheme.of(context)
                                     .primaryBackground,
+                                isDismissible: false,
                                 context: context,
                                 builder: (context) {
                                   return WebViewAware(

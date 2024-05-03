@@ -1,4 +1,3 @@
-import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'notify_settings_widget.dart' show NotifySettingsWidget;
 import 'package:flutter/material.dart';
@@ -7,12 +6,10 @@ class NotifySettingsModel extends FlutterFlowModel<NotifySettingsWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // Stores action output result for [Backend Call - Query Rows] action in Notify_Settings widget.
-  List<UsersRow>? userRow;
-  // State field(s) for DateinvItationsSwitch widget.
-  bool dateinvItationsSwitchValue = false;
-  // State field(s) for ReactionsSwitch widget.
-  bool reactionsSwitchValue = false;
+  // State field(s) for Switch1 widget.
+  bool switch1Value = false;
+  // State field(s) for Switch2 widget.
+  bool switch2Value = false;
   // State field(s) for AddedNewWishSwitch widget.
   bool addedNewWishSwitchValue = false;
   // State field(s) for PushRecommendationsSwitch widget.

@@ -6,12 +6,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'notify_settings_model.dart';
 export 'notify_settings_model.dart';
 
 class NotifySettingsWidget extends StatefulWidget {
-  const NotifySettingsWidget({super.key});
+  const NotifySettingsWidget({
+    super.key,
+    required this.userRow,
+  });
+
+  final UsersRow? userRow;
 
   @override
   State<NotifySettingsWidget> createState() => _NotifySettingsWidgetState();
@@ -35,15 +39,14 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('NOTIFY_SETTINGS_Notify_Settings_ON_INIT_');
-      logFirebaseEvent('Notify_Settings_backend_call');
-      _model.userRow = await UsersTable().queryRows(
-        queryFn: (q) => q.eq(
-          'id',
-          currentUserUid,
-        ),
-      );
-      logFirebaseEvent('Notify_Settings_update_app_state');
-      setState(() {});
+      logFirebaseEvent('Notify_Settings_set_form_field');
+      setState(() {
+        _model.switch1Value = widget.userRow!.pushPartnerUpdates!;
+      });
+      logFirebaseEvent('Notify_Settings_set_form_field');
+      setState(() {
+        _model.switch2Value = widget.userRow!.pushRelationshipReminders!;
+      });
     });
 
     animationsMap.addAll({
@@ -71,8 +74,6 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -250,21 +251,15 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
-                                        value: _model
-                                                .dateinvItationsSwitchValue ??=
-                                            _model.userRow!.isNotEmpty
-                                                ? _model.userRow!.first
-                                                    .pushPartnerUpdates!
-                                                : false,
+                                        value: _model.switch1Value ??= false,
                                         onChanged: (newValue) async {
-                                          setState(() => _model
-                                                  .dateinvItationsSwitchValue =
-                                              newValue);
+                                          setState(() =>
+                                              _model.switch1Value = newValue);
                                           if (newValue) {
                                             logFirebaseEvent(
-                                                'NOTIFY_SETTINGS_DateinvItationsSwitch_ON');
+                                                'NOTIFY_SETTINGS_Switch1_ON_TOGGLE_ON');
                                             logFirebaseEvent(
-                                                'DateinvItationsSwitch_backend_call');
+                                                'Switch1_backend_call');
                                             await UsersTable().update(
                                               data: {
                                                 'push_partner_updates': true,
@@ -274,14 +269,11 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                 currentUserUid,
                                               ),
                                             );
-                                            logFirebaseEvent(
-                                                'DateinvItationsSwitch_update_app_state');
-                                            setState(() {});
                                           } else {
                                             logFirebaseEvent(
-                                                'NOTIFY_SETTINGS_DateinvItationsSwitch_ON');
+                                                'NOTIFY_SETTINGS_Switch1_ON_TOGGLE_OFF');
                                             logFirebaseEvent(
-                                                'DateinvItationsSwitch_backend_call');
+                                                'Switch1_backend_call');
                                             await UsersTable().update(
                                               data: {
                                                 'push_partner_updates': false,
@@ -291,9 +283,6 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                 currentUserUid,
                                               ),
                                             );
-                                            logFirebaseEvent(
-                                                'DateinvItationsSwitch_update_app_state');
-                                            setState(() {});
                                           }
                                         },
                                         activeColor:
@@ -375,20 +364,15 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
-                                        value: _model.reactionsSwitchValue ??=
-                                            _model.userRow!.isNotEmpty
-                                                ? _model.userRow!.first
-                                                    .pushRelationshipReminders!
-                                                : false,
+                                        value: _model.switch2Value ??= false,
                                         onChanged: (newValue) async {
                                           setState(() =>
-                                              _model.reactionsSwitchValue =
-                                                  newValue);
+                                              _model.switch2Value = newValue);
                                           if (newValue) {
                                             logFirebaseEvent(
-                                                'NOTIFY_SETTINGS_ReactionsSwitch_ON_TOGGL');
+                                                'NOTIFY_SETTINGS_Switch2_ON_TOGGLE_ON');
                                             logFirebaseEvent(
-                                                'ReactionsSwitch_backend_call');
+                                                'Switch2_backend_call');
                                             await UsersTable().update(
                                               data: {
                                                 'push_relationship_reminders':
@@ -399,14 +383,11 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                 currentUserUid,
                                               ),
                                             );
-                                            logFirebaseEvent(
-                                                'ReactionsSwitch_update_app_state');
-                                            setState(() {});
                                           } else {
                                             logFirebaseEvent(
-                                                'NOTIFY_SETTINGS_ReactionsSwitch_ON_TOGGL');
+                                                'NOTIFY_SETTINGS_Switch2_ON_TOGGLE_OFF');
                                             logFirebaseEvent(
-                                                'ReactionsSwitch_backend_call');
+                                                'Switch2_backend_call');
                                             await UsersTable().update(
                                               data: {
                                                 'push_relationship_reminders':
@@ -417,9 +398,6 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                                 currentUserUid,
                                               ),
                                             );
-                                            logFirebaseEvent(
-                                                'ReactionsSwitch_update_app_state');
-                                            setState(() {});
                                           }
                                         },
                                         activeColor:

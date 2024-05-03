@@ -47,7 +47,7 @@ class _EmptyCollectionsWidgetWidgetState
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Column(
-          mainAxisSize: MainAxisSize.max,
+          mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
