@@ -647,10 +647,27 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
+                                                  TextSpan(
+                                                    text: ' on ${getJsonField(
+                                                      currentNotificationItem
+                                                          .details,
+                                                      r'''$.date''',
+                                                    ).toString()} at ${getJsonField(
+                                                      currentNotificationItem
+                                                          .details,
+                                                      r'''$.time''',
+                                                    ).toString()}',
+                                                    style: const TextStyle(
+                                                      color: Color(0x19FFFFFF),
+                                                    ),
+                                                  ),
                                                   const TextSpan(
                                                     text: ' • ',
                                                     style: TextStyle(
-                                                      color: Color(0x19FFFFFF),
+                                                      color: Color(0x65FFFFFF),
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontSize: 13.0,
                                                     ),
                                                   ),
                                                   TextSpan(
@@ -661,12 +678,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                         'relative',
                                                         currentNotificationItem
                                                             .createdAt!)),
-                                                    style: const TextStyle(
-                                                      color: Color(0x65FFFFFF),
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontSize: 13.0,
-                                                    ),
+                                                    style: const TextStyle(),
                                                   )
                                                 ],
                                                 style:

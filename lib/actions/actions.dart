@@ -143,6 +143,10 @@ Future authRoutine(
   logFirebaseEvent('authRoutine_custom_action');
   fcmToken = await actions.getFCMToken();
   logFirebaseEvent('authRoutine_custom_action');
+  await actions.initializeCustomerIo(
+    currentUserEmail,
+  );
+  logFirebaseEvent('authRoutine_custom_action');
   await actions.identifyRevenueCat(
     currentUserUid,
   );
@@ -258,7 +262,6 @@ Future signinRoutine(
     'created_at': supaSerialize<DateTime>(getCurrentTimestamp),
     'email': currentUserEmail,
     'fcmToken': fcmToken,
-    'notifications_last_visited': supaSerialize<DateTime>(getCurrentTimestamp),
   });
   logFirebaseEvent('signinRoutine_custom_action');
   await actions.initializeCustomerIo(
