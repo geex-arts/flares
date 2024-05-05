@@ -18,6 +18,8 @@ Future<void> initializeCustomerIo(String email, String id) async {
     config: CustomerIOConfig(
       siteId: "07abf751adc533b92581",
       apiKey: "27bb4a87e8881a2b2aa8",
+      autoTrackDeviceAttributes: true,
+      enableInApp: true,
     // Region is optional, defaults to Region.US.
     // Use Region.EU for EU-based workspaces.
     ),

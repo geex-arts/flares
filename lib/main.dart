@@ -28,17 +28,23 @@ import 'dart:async';
 import 'package:flutter_sharing_intent/flutter_sharing_intent.dart';
 import 'package:flutter_sharing_intent/model/sharing_file.dart';
 import '/backend/firebase_dynamic_links/firebase_dynamic_links.dart';
+import 'package:customer_io/customer_io.dart';
 
+
+@pragma('vm:entry-point')
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  await initFirebase();
+  CustomerIO.messagingPush().onBackgroundMessageReceived(message.toMap()).then((handled) {
+    // handled is true if notification was handled by Customer.io SDK; false otherwise
+    return handled;
+  });
+}
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   GoRouter.optionURLReflectsImperativeAPIs = true;
   usePathUrlStrategy();
   await initFirebase();
-
-  // Start initial custom actions code
-  await actions.setForegroundMessages();
-  // End initial custom actions code
 
   await SupaFlow.initialize();
 
@@ -88,23 +94,14 @@ void main() async {
     ticker: 'ticker',
   );
 
-
-if (Platform.isAndroid) {
-
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message}');
-
-    print(message.notification!.title);
-    print(message.notification!.body);
-    notificationsPlugin.show(
-      message.notification!.hashCode,
-      message.notification!.title,
-      message.notification!.body,
-      NotificationDetails(android: android),
-    );
+      CustomerIO.messagingPush().onMessageReceived(message.toMap()).then((handled) {
+        // handled is true if notification was handled by Customer.io SDK; false otherwise
+        return handled;
+      });
   });
-}
+
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),
