@@ -485,28 +485,6 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                       currentUserUid,
                                     ),
                               );
-                              if (_model.partnerRow!.isNotEmpty) {
-                                logFirebaseEvent('Image_backend_call');
-                                unawaited(
-                                  () async {
-                                    await NotificationsTable().insert({
-                                      'from_user': currentUserUid,
-                                      'to_user': _model.partnerRow?.first.id,
-                                      'type': 'reaction',
-                                      'details': <String, String>{
-                                        'wish_id': widget.selectedWishRow!.uuid,
-                                        'wish_image':
-                                            widget.selectedWishRow!.photo!,
-                                        'reaction_id': rowReactionImagesRow
-                                            .rating
-                                            .toString(),
-                                      },
-                                      'created_at': supaSerialize<DateTime>(
-                                          getCurrentTimestamp),
-                                    });
-                                  }(),
-                                );
-                              }
                               logFirebaseEvent('Image_update_app_state');
                               FFAppState().update(() {});
                               logFirebaseEvent('Image_navigate_back');
