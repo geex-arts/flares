@@ -880,7 +880,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           await UsersTable().queryRows(
                                         queryFn: (q) => q.eq(
                                           'id',
-                                          currentUserUid,
+                                          getJsonField(
+                                            _model.authResponse,
+                                            r'''$.user.id''',
+                                          ).toString(),
                                         ),
                                       );
                                       if (_model.foundUserRow2!.isNotEmpty) {
