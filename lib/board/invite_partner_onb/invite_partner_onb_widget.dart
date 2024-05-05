@@ -7,8 +7,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_onb_model.dart';
@@ -43,6 +45,15 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Invite_Partner_Onb'});
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('INVITE_PARTNER_ONB_Invite_Partner_Onb_ON');
+      logFirebaseEvent('Invite_Partner_Onb_wait__delay');
+      await Future.delayed(const Duration(milliseconds: 1000));
+      logFirebaseEvent('Invite_Partner_Onb_update_app_state');
+      FFAppState().isProfileSet = true;
+    });
+
     _model.sendCodeFieldTextController ??= TextEditingController();
     _model.sendCodeFieldFocusNode ??= FocusNode();
 
@@ -71,6 +82,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)

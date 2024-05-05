@@ -28,6 +28,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _colorsList;
     });
+    _safeInit(() {
+      _isProfileSet = prefs.getBool('ff_isProfileSet') ?? _isProfileSet;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -132,6 +135,13 @@ class FFAppState extends ChangeNotifier {
   String get pairCodeState => _pairCodeState;
   set pairCodeState(String value) {
     _pairCodeState = value;
+  }
+
+  bool _isProfileSet = false;
+  bool get isProfileSet => _isProfileSet;
+  set isProfileSet(bool value) {
+    _isProfileSet = value;
+    prefs.setBool('ff_isProfileSet', value);
   }
 }
 

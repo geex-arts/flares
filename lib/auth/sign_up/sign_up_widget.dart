@@ -653,6 +653,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                           if (shouldSetState) setState(() {});
                                           return;
                                         }
+                                        logFirebaseEvent(
+                                            'nextButton_update_app_state');
+                                        FFAppState().isProfileSet = false;
                                         logFirebaseEvent('nextButton_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model.passwordFieldTextController
@@ -769,6 +772,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     logFirebaseEvent(
                                         'GoogleButton_haptic_feedback');
                                     HapticFeedback.lightImpact();
+                                    logFirebaseEvent(
+                                        'GoogleButton_update_app_state');
+                                    FFAppState().isProfileSet = false;
                                     logFirebaseEvent('GoogleButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
@@ -870,6 +876,9 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       logFirebaseEvent(
                                           'AppleButton_haptic_feedback');
                                       HapticFeedback.lightImpact();
+                                      logFirebaseEvent(
+                                          'AppleButton_update_app_state');
+                                      FFAppState().isProfileSet = false;
                                       logFirebaseEvent(
                                           'AppleButton_custom_action');
                                       _model.authResponse =

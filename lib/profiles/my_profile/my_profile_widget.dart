@@ -54,12 +54,47 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
-      if (!(currentUserUid != '')) {
+      if ((currentUserUid != '') &&
+          (FFAppState().pairID != '')) {
+        logFirebaseEvent('My_Profile_backend_call');
+        _model.pairRow = await PairsTable().queryRows(
+          queryFn: (q) => q.eq(
+            'uuid',
+            FFAppState().pairID,
+          ),
+        );
+      } else {
         logFirebaseEvent('My_Profile_navigate_to');
 
-        context.goNamed('Onboarding');
+        context.goNamed(
+          'Onboarding',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: const TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
+          },
+        );
 
         return;
+      }
+
+      if (FFAppState().isProfileSet &&
+          (_model.pairRow?.first.pairName == null ||
+              _model.pairRow?.first.pairName == '')) {
+        logFirebaseEvent('My_Profile_navigate_to');
+
+        context.goNamed(
+          'Create_Couple_Profile',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: const TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
+          },
+        );
       }
     });
 

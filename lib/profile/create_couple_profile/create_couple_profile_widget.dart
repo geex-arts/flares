@@ -775,6 +775,11 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     );
                                   }(),
                                 );
+                                logFirebaseEvent(
+                                    'CreateCouple_update_app_state');
+                                setState(() {
+                                  FFAppState().isProfileSet = true;
+                                });
                                 logFirebaseEvent('CreateCouple_navigate_to');
 
                                 context.goNamed(
