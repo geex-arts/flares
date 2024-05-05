@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'add_wish_reaction_widget.dart' show AddWishReactionWidget;
+import 'privacy_policy_copy_widget.dart' show PrivacyPolicyCopyWidget;
 import 'package:flutter/material.dart';
 
-class AddWishReactionModel extends FlutterFlowModel<AddWishReactionWidget> {
+class PrivacyPolicyCopyModel extends FlutterFlowModel<PrivacyPolicyCopyWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

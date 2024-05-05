@@ -1075,82 +1075,89 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 10.0, 16.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'PROFILE_PAGE_ReferralContainer_ON_TAP');
-                            logFirebaseEvent('ReferralContainer_navigate_to');
+                      if (responsiveVisibility(
+                        context: context,
+                        phone: false,
+                      ))
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 10.0, 16.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'PROFILE_PAGE_ReferralContainer_ON_TAP');
+                              logFirebaseEvent('ReferralContainer_navigate_to');
 
-                            context.pushNamed('Official_Referral');
-                          },
-                          child: Container(
-                            width: double.infinity,
-                            height: 48.0,
-                            decoration: BoxDecoration(
-                              color: const Color(0x0FFFFFFF),
-                              borderRadius: BorderRadius.circular(14.0),
-                            ),
-                            child: Padding(
-                              padding: const EdgeInsets.all(4.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Container(
-                                    width: 40.0,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0x1AFFFFFF),
-                                      borderRadius: BorderRadius.circular(11.0),
-                                    ),
-                                    child: Icon(
-                                      FFIcons.kmail,
-                                      color: FlutterFlowTheme.of(context).info,
-                                      size: 16.0,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          12.0, 0.0, 0.0, 0.0),
-                                      child: Text(
-                                        'Referral',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                              fontWeight: FontWeight.w500,
-                                              useGoogleFonts: false,
-                                            ),
+                              context.pushNamed('Official_Referral');
+                            },
+                            child: Container(
+                              width: double.infinity,
+                              height: 48.0,
+                              decoration: BoxDecoration(
+                                color: const Color(0x0FFFFFFF),
+                                borderRadius: BorderRadius.circular(14.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(4.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Container(
+                                      width: 40.0,
+                                      height: 40.0,
+                                      decoration: BoxDecoration(
+                                        color: const Color(0x1AFFFFFF),
+                                        borderRadius:
+                                            BorderRadius.circular(11.0),
+                                      ),
+                                      child: Icon(
+                                        FFIcons.kmail,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        size: 16.0,
                                       ),
                                     ),
-                                  ),
-                                  Container(
-                                    width: 35.0,
-                                    height: 35.0,
-                                    decoration: const BoxDecoration(),
-                                    child: Icon(
-                                      Icons.navigate_next_sharp,
-                                      color: FlutterFlowTheme.of(context).info,
-                                      size: 24.0,
+                                    Expanded(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            12.0, 0.0, 0.0, 0.0),
+                                        child: Text(
+                                          'Referral',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                fontWeight: FontWeight.w500,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
+                                    Container(
+                                      width: 35.0,
+                                      height: 35.0,
+                                      decoration: const BoxDecoration(),
+                                      child: Icon(
+                                        Icons.navigate_next_sharp,
+                                        color:
+                                            FlutterFlowTheme.of(context).info,
+                                        size: 24.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 10.0, 16.0, 0.0),
@@ -1401,61 +1408,74 @@ class _ProfileWidgetState extends State<ProfileWidget>
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 10.0, 16.0, 0.0),
-                        child: Container(
-                          width: double.infinity,
-                          height: 48.0,
-                          decoration: BoxDecoration(
-                            color: const Color(0x0FFFFFFF),
-                            borderRadius: BorderRadius.circular(14.0),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Container(
-                                  width: 40.0,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0x1AFFFFFF),
-                                    borderRadius: BorderRadius.circular(11.0),
-                                  ),
-                                  child: Icon(
-                                    FFIcons.kfile,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 16.0,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        12.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      'Help',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            letterSpacing: 0.0,
-                                            fontWeight: FontWeight.w500,
-                                            useGoogleFonts: false,
-                                          ),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'PROFILE_PAGE_HelpContainer_ON_TAP');
+                            logFirebaseEvent('HelpContainer_launch_u_r_l');
+                            await launchURL('mailto:hello@flaresapp.com');
+                          },
+                          child: Container(
+                            width: double.infinity,
+                            height: 48.0,
+                            decoration: BoxDecoration(
+                              color: const Color(0x0FFFFFFF),
+                              borderRadius: BorderRadius.circular(14.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Container(
+                                    width: 40.0,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0x1AFFFFFF),
+                                      borderRadius: BorderRadius.circular(11.0),
+                                    ),
+                                    child: Icon(
+                                      FFIcons.kfile,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 16.0,
                                     ),
                                   ),
-                                ),
-                                Container(
-                                  width: 35.0,
-                                  height: 35.0,
-                                  decoration: const BoxDecoration(),
-                                  child: Icon(
-                                    Icons.navigate_next_sharp,
-                                    color: FlutterFlowTheme.of(context).info,
-                                    size: 24.0,
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          12.0, 0.0, 0.0, 0.0),
+                                      child: Text(
+                                        'Email us: hello@flaresapp.com',
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Nuckle',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              letterSpacing: 0.0,
+                                              fontWeight: FontWeight.w500,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ],
+                                  Container(
+                                    width: 35.0,
+                                    height: 35.0,
+                                    decoration: const BoxDecoration(),
+                                    child: Icon(
+                                      Icons.navigate_next_sharp,
+                                      color: FlutterFlowTheme.of(context).info,
+                                      size: 24.0,
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

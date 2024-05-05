@@ -356,6 +356,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ParamType.String,
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'Privacy_PolicyCopy',
+              path: 'privacyPolicyCopy',
+              builder: (context, params) => const PrivacyPolicyCopyWidget(),
+            ),
+            FFRoute(
+              name: 'Terms_ConditionsCopy',
+              path: 'termsConditionsCopy',
+              builder: (context, params) => const TermsConditionsCopyWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

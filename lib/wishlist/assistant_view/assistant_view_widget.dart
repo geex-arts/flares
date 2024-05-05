@@ -5,6 +5,7 @@ import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:share_plus/share_plus.dart';
 import 'assistant_view_model.dart';
 export 'assistant_view_model.dart';
 
@@ -61,7 +62,19 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
           ),
         ],
       ),
-      'stackOnPageLoadAnimation': AnimationInfo(
+      'stackOnPageLoadAnimation1': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'stackOnPageLoadAnimation2': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
         effectsBuilder: () => [
           FadeEffect(
@@ -156,7 +169,7 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               8.0, 4.0, 8.0, 0.0),
                           child: Text(
-                            'AI Assistant',
+                            'Ask AI Assistant',
                             style: FlutterFlowTheme.of(context)
                                 .titleSmall
                                 .override(
@@ -204,7 +217,62 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
                         ],
                       ),
                     ).animateOnPageLoad(
-                        animationsMap['stackOnPageLoadAnimation']!),
+                        animationsMap['stackOnPageLoadAnimation1']!),
+                    Align(
+                      alignment: const AlignmentDirectional(1.0, 0.0),
+                      child: Builder(
+                        builder: (context) => Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              logFirebaseEvent(
+                                  'ASSISTANT_VIEW_PAGE_Share_ON_TAP');
+                              logFirebaseEvent('Share_share');
+                              await Share.share(
+                                '',
+                                sharePositionOrigin:
+                                    getWidgetBoundingBox(context),
+                              );
+                            },
+                            child: Stack(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              children: [
+                                Image.asset(
+                                  'assets/images/Rectangle.webp',
+                                  width: 38.0,
+                                  height: 38.0,
+                                  fit: BoxFit.cover,
+                                ),
+                                Container(
+                                  width: 34.0,
+                                  height: 34.0,
+                                  decoration: BoxDecoration(
+                                    color: const Color(0x4D000000),
+                                    borderRadius: BorderRadius.circular(12.0),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 2.0),
+                                  child: Image.asset(
+                                    'assets/images/Share.webp',
+                                    width: 18.0,
+                                    height: 18.0,
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ).animateOnPageLoad(
+                              animationsMap['stackOnPageLoadAnimation2']!),
+                        ),
+                      ),
+                    ),
                   ],
                 ),
               ),

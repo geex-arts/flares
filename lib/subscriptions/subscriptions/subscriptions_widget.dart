@@ -92,6 +92,94 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                   height: 38.0,
                   child: Stack(
                     children: [
+                      Align(
+                        alignment: const AlignmentDirectional(1.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent('SUBSCRIPTIONS_PAGE_Close_ON_TAP');
+                            logFirebaseEvent('Close_bottom_sheet');
+                            await showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Colors.transparent,
+                              context: context,
+                              builder: (context) {
+                                return WebViewAware(
+                                  child: GestureDetector(
+                                    onTap: () => _model
+                                            .unfocusNode.canRequestFocus
+                                        ? FocusScope.of(context)
+                                            .requestFocus(_model.unfocusNode)
+                                        : FocusScope.of(context).unfocus(),
+                                    child: Padding(
+                                      padding: MediaQuery.viewInsetsOf(context),
+                                      child: const NOfferWidget(),
+                                    ),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+
+                            if (widget.isFIrstTime) {
+                              logFirebaseEvent('Close_bottom_sheet');
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                barrierColor: FlutterFlowTheme.of(context)
+                                    .primaryBackground,
+                                isDismissible: false,
+                                context: context,
+                                builder: (context) {
+                                  return WebViewAware(
+                                    child: GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: const BSTurnNotificationsWidget(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
+                            } else {
+                              logFirebaseEvent('Close_navigate_back');
+                              context.safePop();
+                            }
+                          },
+                          child: Stack(
+                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            children: [
+                              Container(
+                                width: 38.0,
+                                height: 38.0,
+                                decoration: BoxDecoration(
+                                  color: const Color(0x9A000000),
+                                  borderRadius: BorderRadius.circular(14.0),
+                                  border: Border.all(
+                                    color: const Color(0x33FFFFFF),
+                                  ),
+                                ),
+                              ),
+                              Icon(
+                                Icons.close,
+                                color: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                size: 20.0,
+                              ),
+                            ],
+                          ),
+                        ).animateOnPageLoad(
+                            animationsMap['stackOnPageLoadAnimation']!),
+                      ),
                       if (responsiveVisibility(
                         context: context,
                         phone: false,
@@ -121,95 +209,6 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             ),
                           ),
                         ),
-                      Align(
-                        alignment: const AlignmentDirectional(-1.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'SUBSCRIPTIONS_PAGE_NavBack_ON_TAP');
-                            logFirebaseEvent('NavBack_bottom_sheet');
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              context: context,
-                              builder: (context) {
-                                return WebViewAware(
-                                  child: GestureDetector(
-                                    onTap: () => _model
-                                            .unfocusNode.canRequestFocus
-                                        ? FocusScope.of(context)
-                                            .requestFocus(_model.unfocusNode)
-                                        : FocusScope.of(context).unfocus(),
-                                    child: Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: const NOfferWidget(),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
-
-                            if (widget.isFIrstTime) {
-                              logFirebaseEvent('NavBack_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                barrierColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                isDismissible: false,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                    child: GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: const BSTurnNotificationsWidget(),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => safeSetState(() {}));
-                            } else {
-                              logFirebaseEvent('NavBack_navigate_back');
-                              context.safePop();
-                            }
-                          },
-                          child: Stack(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
-                            children: [
-                              Container(
-                                width: 38.0,
-                                height: 38.0,
-                                decoration: BoxDecoration(
-                                  color: const Color(0x9A000000),
-                                  borderRadius: BorderRadius.circular(14.0),
-                                  border: Border.all(
-                                    color: const Color(0x33FFFFFF),
-                                  ),
-                                ),
-                              ),
-                              Icon(
-                                Icons.chevron_left,
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                size: 24.0,
-                              ),
-                            ],
-                          ),
-                        ).animateOnPageLoad(
-                            animationsMap['stackOnPageLoadAnimation']!),
-                      ),
                     ],
                   ),
                 ),

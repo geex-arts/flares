@@ -23,4 +23,7 @@ class ReactionImagesRow extends SupabaseDataRow {
 
   String? get name => getField<String>('name');
   set name(String? value) => setField<String>('name', value);
+
+  String? get emoji => getField<String>('emoji');
+  set emoji(String? value) => setField<String>('emoji', value);
 }

@@ -45,3 +45,7 @@ export '/wishlist/official_referral/official_referral_widget.dart'
 export '/wishlist/stories_view/stories_view_widget.dart' show StoriesViewWidget;
 export '/wishlist/assistant_view/assistant_view_widget.dart'
     show AssistantViewWidget;
+export '/profile/privacy_policy_copy/privacy_policy_copy_widget.dart'
+    show PrivacyPolicyCopyWidget;
+export '/profile/terms_conditions_copy/terms_conditions_copy_widget.dart'
+    show TermsConditionsCopyWidget;

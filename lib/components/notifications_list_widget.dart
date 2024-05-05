@@ -321,58 +321,27 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                 width: 1.0,
                                               ),
                                             ),
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(6.0),
-                                              child: FutureBuilder<
-                                                  List<ReactionImagesRow>>(
-                                                future: ReactionImagesTable()
-                                                    .querySingleRow(
-                                                  queryFn: (q) => q.eq(
-                                                    'rating',
-                                                    int.parse(getJsonField(
-                                                      currentNotificationItem
-                                                          .details!,
-                                                      r'''$.reaction_id''',
-                                                    ).toString()),
-                                                  ),
-                                                ),
-                                                builder: (context, snapshot) {
-                                                  // Customize what your widget looks like when it's loading.
-                                                  if (!snapshot.hasData) {
-                                                    return Center(
-                                                      child: SizedBox(
-                                                        width: 10.0,
-                                                        height: 10.0,
-                                                        child:
-                                                            CircularProgressIndicator(
-                                                          valueColor:
-                                                              AlwaysStoppedAnimation<
-                                                                  Color>(
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .pink,
-                                                          ),
-                                                        ),
+                                            child: Align(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              child: Padding(
+                                                padding: const EdgeInsets.all(6.0),
+                                                child: Text(
+                                                  getJsonField(
+                                                    currentNotificationItem
+                                                        .details!,
+                                                    r'''$.reaction_emoji''',
+                                                  ).toString(),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        fontSize: 12.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
                                                       ),
-                                                    );
-                                                  }
-                                                  List<ReactionImagesRow>
-                                                      imageReactionImagesRowList =
-                                                      snapshot.data!;
-                                                  final imageReactionImagesRow =
-                                                      imageReactionImagesRowList
-                                                              .isNotEmpty
-                                                          ? imageReactionImagesRowList
-                                                              .first
-                                                          : null;
-                                                  return Image.network(
-                                                    imageReactionImagesRow!
-                                                        .imageLink!,
-                                                    width: 14.0,
-                                                    height: 14.0,
-                                                    fit: BoxFit.cover,
-                                                  );
-                                                },
+                                                ),
                                               ),
                                             ),
                                           ),

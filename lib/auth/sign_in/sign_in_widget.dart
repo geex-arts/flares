@@ -923,7 +923,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     logFirebaseEvent(
                                         'RichTextSpan_navigate_to');
 
-                                    context.pushNamed('Terms_Conditions');
+                                    context.pushNamed('Terms_ConditionsCopy');
                                   },
                               ),
                               const TextSpan(
@@ -948,7 +948,7 @@ class _SignInWidgetState extends State<SignInWidget>
                                     logFirebaseEvent(
                                         'RichTextSpan_navigate_to');
 
-                                    context.pushNamed('Privacy_Policy');
+                                    context.pushNamed('Privacy_PolicyCopy');
                                   },
                               )
                             ],

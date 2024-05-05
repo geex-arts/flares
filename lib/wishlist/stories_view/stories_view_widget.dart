@@ -332,10 +332,7 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                         }
                       }(),
                       bypass: true,
-                      height: widget.aiAssistantLink != null &&
-                              widget.aiAssistantLink != ''
-                          ? MediaQuery.sizeOf(context).height
-                          : (MediaQuery.sizeOf(context).height * 0.85),
+                      height: MediaQuery.sizeOf(context).height * 1.0,
                       verticalScroll: false,
                       horizontalScroll: false,
                     ),

@@ -1075,7 +1075,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             'RichTextSpan_navigate_to');
 
                                                         context.pushNamed(
-                                                            'Terms_Conditions');
+                                                            'Terms_ConditionsCopy');
                                                       },
                                               ),
                                               const TextSpan(
@@ -1105,7 +1105,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                             'RichTextSpan_navigate_to');
 
                                                         context.pushNamed(
-                                                            'Privacy_Policy');
+                                                            'Privacy_PolicyCopy');
                                                       },
                                               )
                                             ],

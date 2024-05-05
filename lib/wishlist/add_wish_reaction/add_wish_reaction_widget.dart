@@ -473,24 +473,10 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                 );
                               }
 
-                              logFirebaseEvent('Image_backend_call');
-                              _model.partnerRow = await UsersTable().queryRows(
-                                queryFn: (q) => q
-                                    .eq(
-                                      'pair',
-                                      FFAppState().pairID,
-                                    )
-                                    .neq(
-                                      'id',
-                                      currentUserUid,
-                                    ),
-                              );
                               logFirebaseEvent('Image_update_app_state');
                               FFAppState().update(() {});
                               logFirebaseEvent('Image_navigate_back');
                               context.safePop();
-
-                              setState(() {});
                             },
                             child: CachedNetworkImage(
                               fadeInDuration: const Duration(milliseconds: 300),
