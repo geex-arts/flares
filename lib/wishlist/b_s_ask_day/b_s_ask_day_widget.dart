@@ -955,26 +955,6 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                   });
                                 }(),
                               );
-                              logFirebaseEvent('pinkButton_backend_call');
-                              unawaited(
-                                () async {
-                                  await NotificationsTable().insert({
-                                    'from_user': currentUserUid,
-                                    'to_user': widget.partnerID,
-                                    'type': 'date',
-                                    'details': <String, String>{
-                                      'link': widget.selectedWishRow!.link!,
-                                      'wish_id': widget.selectedWishRow!.uuid,
-                                      'wish_name':
-                                          widget.selectedWishRow!.name!,
-                                      'wish_image':
-                                          widget.selectedWishRow!.photo!,
-                                    },
-                                    'created_at': supaSerialize<DateTime>(
-                                        getCurrentTimestamp),
-                                  });
-                                }(),
-                              );
                               logFirebaseEvent('pinkButton_alert_dialog');
                               showDialog(
                                 context: context,

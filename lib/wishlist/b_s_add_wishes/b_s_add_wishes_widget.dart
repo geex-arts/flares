@@ -5,6 +5,8 @@ import 'dart:ui';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 import 'b_s_add_wishes_model.dart';
 export 'b_s_add_wishes_model.dart';
 
@@ -28,6 +30,13 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => BSAddWishesModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      logFirebaseEvent('B_S_ADD_WISHES_BS_Add_Wishes_ON_INIT_STA');
+      logFirebaseEvent('BS_Add_Wishes_update_app_state');
+      setState(() {});
+    });
   }
 
   @override
@@ -39,6 +48,8 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.watch<FFAppState>();
+
     return Align(
       alignment: const AlignmentDirectional(0.0, 1.0),
       child: ClipRRect(
