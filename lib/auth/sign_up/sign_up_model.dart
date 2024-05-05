@@ -60,7 +60,7 @@ class SignUpModel extends FlutterFlowModel<SignUpWidget> {
   // Stores action output result for [Backend Call - Query Rows] action in GoogleButton widget.
   List<UsersRow>? foundUserRow;
   // Stores action output result for [Custom Action - appleSignin] action in AppleButton widget.
-  dynamic authResponse;
+  String? authResponse;
   // Stores action output result for [Backend Call - Query Rows] action in AppleButton widget.
   List<UsersRow>? foundUserRow2;
 

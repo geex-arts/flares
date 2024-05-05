@@ -18,7 +18,7 @@ import 'dart:convert';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-Future<dynamic> appleSignin() async {
+Future<String?> appleSignin() async {
   final supabase = Supabase.instance.client;
   print(2332);
 
@@ -41,7 +41,7 @@ Future<dynamic> appleSignin() async {
     idToken: idToken,
   );
 
-  return response;
+  return response.user?.id;
 }
 // Set your action name, define your arguments and return parameter,
 // and then add the boilerplate code using the green button on the right!
