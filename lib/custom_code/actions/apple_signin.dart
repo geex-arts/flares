@@ -20,6 +20,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 Future<dynamic> appleSignin() async {
   final supabase = Supabase.instance.client;
+  print(2332);
 
   final credential = await SignInWithApple.getAppleIDCredential(
     scopes: [
@@ -40,15 +41,6 @@ Future<dynamic> appleSignin() async {
     idToken: idToken,
   );
 
-  // Update user profile with display name
-  final firstName = credential.givenName ?? '';
-  final lastName = credential.familyName ?? '';
-  final displayName = '$firstName $lastName';
-  await supabase.from('auth.users').upsert(
-    {
-      'display_name': displayName,
-    },
-  );
   return response;
 }
 // Set your action name, define your arguments and return parameter,
