@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_model.dart';
@@ -62,8 +61,6 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -368,7 +365,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                             logFirebaseEvent(
                                                 'Sharemyinvitelink_share');
                                             await Share.share(
-                                              'https://flaresapp.page.link/myProfile?pairCode=${FFAppState().pairID}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
+                                              'https://flaresapp.page.link/myProfile?pairCode=${_model.code}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
