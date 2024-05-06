@@ -15,7 +15,7 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
 
   final formKey = GlobalKey<FormState>();
   // State field(s) for Switch widget.
-  bool switchValue = true;
+  bool? switchValue;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

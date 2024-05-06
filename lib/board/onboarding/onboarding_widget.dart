@@ -420,14 +420,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            valueOrDefault<String>(
-                                              FFAppState()
-                                                              .pairCodeState !=
-                                                          ''
-                                                  ? FFAppState().pairCodeState
-                                                  : 'Wishlist',
-                                              'Wishlist',
-                                            ),
+                                            'Wishlist',
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(

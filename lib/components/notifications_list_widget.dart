@@ -755,7 +755,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                               ],
                             ),
                           );
-                        } else {
+                        } else if (currentNotificationItem.type == 'pair') {
                           return Container(
                             width: double.infinity,
                             height: 84.0,
@@ -926,6 +926,202 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                           ),
                                         ),
                                       ].divide(const SizedBox(height: 10.0)),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        } else {
+                          return Container(
+                            width: double.infinity,
+                            height: 84.0,
+                            decoration: const BoxDecoration(),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                FutureBuilder<List<UsersRow>>(
+                                  future: UsersTable().querySingleRow(
+                                    queryFn: (q) => q.eq(
+                                      'id',
+                                      currentNotificationItem.fromUser,
+                                    ),
+                                  ),
+                                  builder: (context, snapshot) {
+                                    // Customize what your widget looks like when it's loading.
+                                    if (!snapshot.hasData) {
+                                      return Center(
+                                        child: SizedBox(
+                                          width: 64.0,
+                                          height: 64.0,
+                                          child: CircularProgressIndicator(
+                                            valueColor:
+                                                AlwaysStoppedAnimation<Color>(
+                                              FlutterFlowTheme.of(context).pink,
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    }
+                                    List<UsersRow>
+                                        conditionalBuilderUsersRowList =
+                                        snapshot.data!;
+                                    final conditionalBuilderUsersRow =
+                                        conditionalBuilderUsersRowList
+                                                .isNotEmpty
+                                            ? conditionalBuilderUsersRowList
+                                                .first
+                                            : null;
+                                    return Builder(
+                                      builder: (context) {
+                                        if (conditionalBuilderUsersRow
+                                                    ?.avatar !=
+                                                null &&
+                                            conditionalBuilderUsersRow
+                                                    ?.avatar !=
+                                                '') {
+                                          return Container(
+                                            width: 64.0,
+                                            height: 64.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                            child: Image.network(
+                                              conditionalBuilderUsersRow!
+                                                  .avatar!,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          );
+                                        } else {
+                                          return Container(
+                                            width: 64.0,
+                                            height: 64.0,
+                                            decoration: const BoxDecoration(
+                                              shape: BoxShape.circle,
+                                            ),
+                                          );
+                                        }
+                                      },
+                                    );
+                                  },
+                                ),
+                                Expanded(
+                                  child: Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        12.0, 8.0, 0.0, 8.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.start,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 12.0, 0.0, 0.0),
+                                          child: Text(
+                                            'New Wish',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 16.0,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.0,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 8.0, 0.0),
+                                          child: RichText(
+                                            textScaler: MediaQuery.of(context)
+                                                .textScaler,
+                                            text: TextSpan(
+                                              children: [
+                                                TextSpan(
+                                                  text:
+                                                      'Partner just added a new wish for${getJsonField(
+                                                    currentNotificationItem
+                                                        .details,
+                                                    r'''$.wish_name''',
+                                                  ).toString()}',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            const Color(0x9AFFFFFF),
+                                                        fontSize: 13.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                const TextSpan(
+                                                  text: ' • ',
+                                                  style: TextStyle(
+                                                    color: Color(0x19FFFFFF),
+                                                  ),
+                                                ),
+                                                TextSpan(
+                                                  text: (String var1) {
+                                                    return var1.replaceAll(
+                                                        ' ago', '');
+                                                  }(dateTimeFormat(
+                                                      'relative',
+                                                      currentNotificationItem
+                                                          .createdAt!)),
+                                                  style: const TextStyle(
+                                                    color: Color(0x65FFFFFF),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 13.0,
+                                                  ),
+                                                )
+                                              ],
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            const Color(0x9AFFFFFF),
+                                                        fontSize: 13.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                        lineHeight: 1.0,
+                                                      ),
+                                            ),
+                                            textAlign: TextAlign.start,
+                                          ),
+                                        ),
+                                      ].divide(const SizedBox(height: 10.0)),
+                                    ),
+                                  ),
+                                ),
+                                Align(
+                                  alignment: const AlignmentDirectional(1.0, 0.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(4.0),
+                                    child: Image.network(
+                                      getJsonField(
+                                        currentNotificationItem.details!,
+                                        r'''$.wish_image''',
+                                      ).toString(),
+                                      width: 42.0,
+                                      height: 64.0,
+                                      fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),

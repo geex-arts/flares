@@ -7,21 +7,21 @@ class NotifySettingsModel extends FlutterFlowModel<NotifySettingsWidget> {
 
   final unfocusNode = FocusNode();
   // State field(s) for Switch1 widget.
-  bool switch1Value = false;
+  bool? switch1Value;
   // State field(s) for Switch2 widget.
-  bool switch2Value = false;
+  bool? switch2Value;
   // State field(s) for AddedNewWishSwitch widget.
-  bool addedNewWishSwitchValue = false;
+  bool? addedNewWishSwitchValue;
   // State field(s) for PushRecommendationsSwitch widget.
-  bool pushRecommendationsSwitchValue = false;
+  bool? pushRecommendationsSwitchValue;
   // State field(s) for PartnerActivitySwitch widget.
-  bool partnerActivitySwitchValue = false;
+  bool? partnerActivitySwitchValue;
   // State field(s) for DailyConversationsSwitch widget.
-  bool dailyConversationsSwitchValue = false;
+  bool? dailyConversationsSwitchValue;
   // State field(s) for StreakRemindersSwitch widget.
-  bool streakRemindersSwitchValue = false;
+  bool? streakRemindersSwitchValue;
   // State field(s) for RecommendationsSwitch widget.
-  bool recommendationsSwitchValue = false;
+  bool? recommendationsSwitchValue;
 
   @override
   void initState(BuildContext context) {}
