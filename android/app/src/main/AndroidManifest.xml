@@ -116,11 +116,11 @@
             android:name="flutterEmbedding"
             android:value="2" />
 
-<!--        <meta-data-->
+        <meta-data
 
-<!--                android:name="com.google.firebase.messaging.default_notification_icon"-->
+                android:name="com.google.firebase.messaging.default_notification_icon"
 
-<!--                android:resource="@drawable/ic_notification" />-->
+                android:resource="@drawable/logo72.jpg" />
 
         <meta-data
 
