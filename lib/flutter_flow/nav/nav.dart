@@ -99,8 +99,8 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'url',
                   ParamType.String,
                 ),
-                pair: params.getParam(
-                  'pair',
+                pairCode: params.getParam(
+                  'pairCode',
                   ParamType.String,
                 ),
               ),

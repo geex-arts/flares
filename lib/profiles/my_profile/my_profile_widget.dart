@@ -29,11 +29,11 @@ class MyProfileWidget extends StatefulWidget {
   const MyProfileWidget({
     super.key,
     this.url,
-    this.pair,
+    this.pairCode,
   });
 
   final String? url;
-  final String? pair;
+  final String? pairCode;
 
   @override
   State<MyProfileWidget> createState() => _MyProfileWidgetState();
@@ -232,11 +232,19 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             logFirebaseEvent('MY_PROFILE_Container_u4xvpnm3_ON_TAP');
             var shouldSetState = false;
             if ((FFAppState().pairID == '') &&
-                (widget.pair != null && widget.pair != '')) {
+                (widget.pairCode != null && widget.pairCode != '')) {
+              logFirebaseEvent('Container_backend_call');
+              _model.pairInvatitation = await PairsInvitationsTable().queryRows(
+                queryFn: (q) => q.eq(
+                  'pair_code',
+                  widget.pairCode,
+                ),
+              );
+              shouldSetState = true;
               logFirebaseEvent('Container_backend_call');
               await UsersTable().update(
                 data: {
-                  'pair': widget.pair,
+                  'pair': _model.pairInvatitation?.first.pair,
                 },
                 matchingRows: (rows) => rows.eq(
                   'id',

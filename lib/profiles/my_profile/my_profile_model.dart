@@ -20,6 +20,8 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Query Rows] action in My_Profile widget.
   List<PairsRow>? pairRow;
+  // Stores action output result for [Backend Call - Query Rows] action in Container widget.
+  List<PairsInvitationsRow>? pairInvatitation;
   // Stores action output result for [Backend Call - Update Row(s)] action in Container widget.
   List<UsersRow>? pairRowCopy;
   // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
