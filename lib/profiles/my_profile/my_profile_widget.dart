@@ -58,7 +58,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
       if ((currentUserUid != '') &&
-          (FFAppState().pairID != '')) {
+          (FFAppState().pairID != '') &&
+          (widget.pairCode == null || widget.pairCode == '')) {
         logFirebaseEvent('My_Profile_backend_call');
         _model.pairRow = await PairsTable().queryRows(
           queryFn: (q) => q.eq(
@@ -233,7 +234,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
             logFirebaseEvent('MY_PROFILE_Container_u4xvpnm3_ON_TAP');
             var shouldSetState = false;
             if ((FFAppState().pairID == '') &&
-                (widget.pairCode != null && widget.pairCode != '')) {
+                (widget.pairCode == null || widget.pairCode == '')) {
               logFirebaseEvent('Container_backend_call');
               _model.pairInvatitation = await PairsInvitationsTable().queryRows(
                 queryFn: (q) => q.eq(
