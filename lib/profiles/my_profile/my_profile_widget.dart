@@ -58,8 +58,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('MY_PROFILE_PAGE_My_Profile_ON_INIT_STATE');
       if ((currentUserUid != '') &&
-          (FFAppState().pairID != '') &&
-          (widget.pairCode == null || widget.pairCode == '')) {
+          (FFAppState().pairID != '')) {
         logFirebaseEvent('My_Profile_backend_call');
         _model.pairRow = await PairsTable().queryRows(
           queryFn: (q) => q.eq(
@@ -86,7 +85,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
 
       if (FFAppState().isProfileSet &&
           (_model.pairRow?.first.pairName == null ||
-              _model.pairRow?.first.pairName == '')) {
+              _model.pairRow?.first.pairName == '') &&
+          (widget.pairCode == null || widget.pairCode == '')) {
         logFirebaseEvent('My_Profile_navigate_to');
 
         context.goNamed(
