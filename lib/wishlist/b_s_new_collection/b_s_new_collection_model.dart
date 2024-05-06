@@ -13,12 +13,25 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
 
   ///  State fields for stateful widgets in this component.
 
+  final formKey = GlobalKey<FormState>();
   // State field(s) for Switch widget.
   bool switchValue = true;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
+  String? _textControllerValidator(BuildContext context, String? val) {
+    if (val == null || val.isEmpty) {
+      return 'Field is required';
+    }
+
+    if (val.length > 14) {
+      return 'Name must be less then 15 characters';
+    }
+
+    return null;
+  }
+
   // Model for pinkButton component.
   late PinkButtonModel pinkButtonModel;
   // Stores action output result for [Backend Call - Query Rows] action in pinkButton widget.
@@ -28,6 +41,7 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
 
   @override
   void initState(BuildContext context) {
+    textControllerValidator = _textControllerValidator;
     pinkButtonModel = createModel(context, () => PinkButtonModel());
   }
 

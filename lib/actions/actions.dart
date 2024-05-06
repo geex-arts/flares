@@ -143,11 +143,6 @@ Future authRoutine(
   logFirebaseEvent('authRoutine_custom_action');
   fcmToken = await actions.getFCMToken();
   logFirebaseEvent('authRoutine_custom_action');
-  await actions.initializeCustomerIo(
-    currentUserEmail,
-    currentUserUid,
-  );
-  logFirebaseEvent('authRoutine_custom_action');
   await actions.identifyRevenueCat(
     currentUserUid,
   );

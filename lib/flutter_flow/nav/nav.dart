@@ -99,6 +99,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   'url',
                   ParamType.String,
                 ),
+                pair: params.getParam(
+                  'pair',
+                  ParamType.String,
+                ),
               ),
             ),
             FFRoute(

@@ -205,107 +205,96 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
-                child: TextFormField(
-                  controller: _model.textController,
-                  focusNode: _model.textFieldFocusNode,
-                  onChanged: (_) => EasyDebounce.debounce(
-                    '_model.textController',
-                    const Duration(milliseconds: 200),
-                    () => setState(() {}),
-                  ),
-                  autofocus: false,
-                  textCapitalization: TextCapitalization.words,
-                  textInputAction: TextInputAction.next,
-                  obscureText: false,
-                  decoration: InputDecoration(
-                    isDense: false,
-                    hintText: 'Fashion',
-                    hintStyle:
-                        FlutterFlowTheme.of(context).labelMedium.override(
-                              fontFamily: 'Nuckle',
-                              color: const Color(0x98FFFFFF),
-                              letterSpacing: 0.0,
-                              useGoogleFonts: false,
-                            ),
-                    errorStyle:
-                        FlutterFlowTheme.of(context).bodyMedium.override(
-                              fontFamily: 'Nuckle',
-                              color: FlutterFlowTheme.of(context).error,
-                              letterSpacing: 0.0,
-                              useGoogleFonts: false,
-                            ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                        color: Color(0x00000000),
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0),
+              Form(
+                key: _model.formKey,
+                autovalidateMode: AutovalidateMode.disabled,
+                child: Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 24.0, 16.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.textController,
+                    focusNode: _model.textFieldFocusNode,
+                    onChanged: (_) => EasyDebounce.debounce(
+                      '_model.textController',
+                      const Duration(milliseconds: 200),
+                      () => setState(() {}),
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).pinkButton,
-                        width: 1.0,
+                    autofocus: false,
+                    textCapitalization: TextCapitalization.words,
+                    textInputAction: TextInputAction.next,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      isDense: false,
+                      hintText: 'Fashion',
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Nuckle',
+                                color: const Color(0x98FFFFFF),
+                                letterSpacing: 0.0,
+                                useGoogleFonts: false,
+                              ),
+                      errorStyle:
+                          FlutterFlowTheme.of(context).bodyMedium.override(
+                                fontFamily: 'Nuckle',
+                                color: FlutterFlowTheme.of(context).error,
+                                fontSize: 11.0,
+                                letterSpacing: 0.0,
+                                useGoogleFonts: false,
+                              ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: const BorderSide(
+                          color: Color(0x00000000),
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      borderRadius: BorderRadius.circular(30.0),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).pinkButton,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: FlutterFlowTheme.of(context).error,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      filled: true,
+                      fillColor: const Color(0x0FFFFFFF),
+                      contentPadding:
+                          const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                     ),
-                    errorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: FlutterFlowTheme.of(context).error,
-                        width: 1.0,
-                      ),
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    filled: true,
-                    fillColor: const Color(0x0FFFFFFF),
-                    contentPadding:
-                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                  ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Nuckle',
-                        color: FlutterFlowTheme.of(context).info,
-                        letterSpacing: 0.0,
-                        useGoogleFonts: false,
-                      ),
-                  maxLength: 14,
-                  maxLengthEnforcement: MaxLengthEnforcement.enforced,
-                  buildCounter: (context,
-                          {required currentLength,
-                          required isFocused,
-                          maxLength}) =>
-                      null,
-                  cursorColor: FlutterFlowTheme.of(context).pinkButton,
-                  validator:
-                      _model.textControllerValidator.asValidator(context),
-                ),
-              ),
-              if (_model.isEmptyName)
-                Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                  child: Text(
-                    _model.textController.text == ''
-                        ? 'Field is required'
-                        : 'Name must be less then 15 characters',
-                    textAlign: TextAlign.end,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Nuckle',
-                          color: FlutterFlowTheme.of(context).error,
-                          fontSize: 11.0,
+                          color: FlutterFlowTheme.of(context).info,
                           letterSpacing: 0.0,
                           useGoogleFonts: false,
                         ),
+                    maxLength: 14,
+                    maxLengthEnforcement: MaxLengthEnforcement.enforced,
+                    buildCounter: (context,
+                            {required currentLength,
+                            required isFocused,
+                            maxLength}) =>
+                        null,
+                    cursorColor: FlutterFlowTheme.of(context).pinkButton,
+                    validator:
+                        _model.textControllerValidator.asValidator(context),
                   ),
                 ),
+              ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),
@@ -315,10 +304,11 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       logFirebaseEvent(
                           'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
                       var shouldSetState = false;
-                      logFirebaseEvent('pinkButton_update_component_state');
-                      setState(() {
-                        _model.isEmptyName = false;
-                      });
+                      logFirebaseEvent('pinkButton_validate_form');
+                      if (_model.formKey.currentState == null ||
+                          !_model.formKey.currentState!.validate()) {
+                        return;
+                      }
                       if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
                         logFirebaseEvent('pinkButton_backend_call');
@@ -399,13 +389,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                         FFAppState().update(() {});
                         logFirebaseEvent('pinkButton_bottom_sheet');
                         Navigator.pop(context);
-                      } else {
-                        logFirebaseEvent('pinkButton_update_component_state');
-                        setState(() {
-                          _model.isEmptyName = true;
-                        });
                       }
-
                       if (shouldSetState) setState(() {});
                     },
                   ),
