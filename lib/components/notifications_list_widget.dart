@@ -1050,7 +1050,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                               children: [
                                                 TextSpan(
                                                   text:
-                                                      'Partner just added a new wish for${getJsonField(
+                                                      'Partner just added a new wish for ${getJsonField(
                                                     currentNotificationItem
                                                         .details,
                                                     r'''$.wish_name''',
