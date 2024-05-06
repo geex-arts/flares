@@ -245,7 +245,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 ),
                           ),
                         ),
-                        if (widget.pairInvitationRow != null)
+                        if (isAndroid && (widget.pairInvitationRow != null))
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
@@ -380,7 +380,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                               ),
                             ),
                           ),
-                        if (widget.pairInvitationRow != null)
+                        if (isAndroid && (widget.pairInvitationRow != null))
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 0.0, 0.0),
