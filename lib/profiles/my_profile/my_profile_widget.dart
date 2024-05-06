@@ -12,6 +12,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/wishlist/b_s_feeling/b_s_feeling_widget.dart';
 import '/wishlist/b_s_save_to_collection2/b_s_save_to_collection2_widget.dart';
+import 'dart:async';
 import 'dart:ui';
 import '/actions/actions.dart' as action_blocks;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -241,6 +242,20 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                 ),
               );
               shouldSetState = true;
+              logFirebaseEvent('Container_backend_call');
+              unawaited(
+                () async {
+                  await PairsInvitationsTable().update(
+                    data: {
+                      'status': 'accepted',
+                    },
+                    matchingRows: (rows) => rows.eq(
+                      'pair_code',
+                      widget.pairCode,
+                    ),
+                  );
+                }(),
+              );
               logFirebaseEvent('Container_backend_call');
               await UsersTable().update(
                 data: {
