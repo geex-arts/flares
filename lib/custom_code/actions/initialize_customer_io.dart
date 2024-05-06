@@ -30,7 +30,7 @@ Future<void> initializeCustomerIo(String email, String id) async {
   if (token != null) {
     CustomerIO.registerDeviceToken(deviceToken: token);
   }
-  CustomerIO.identify(identifier: id, attributes: {email: email});
+  CustomerIO.identify(identifier: id, attributes: {"email": email});
 }
 
 // Set your action name, define your arguments and return parameter,
