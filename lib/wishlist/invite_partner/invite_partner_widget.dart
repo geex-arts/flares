@@ -368,7 +368,7 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                             logFirebaseEvent(
                                                 'Sharemyinvitelink_share');
                                             await Share.share(
-                                              'https://flaresapp.page.link/myProfile?pairCode=${FFAppState().pairCodeState}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
+                                              'https://flaresapp.page.link/splash?pairCode=${FFAppState().pairCodeState}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
