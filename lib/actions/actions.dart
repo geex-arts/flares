@@ -145,6 +145,7 @@ Future authRoutine(
   logFirebaseEvent('authRoutine_custom_action');
   await actions.initializeCustomerIo(
     currentUserEmail,
+    currentUserUid,
   );
   logFirebaseEvent('authRoutine_custom_action');
   await actions.identifyRevenueCat(
@@ -266,6 +267,7 @@ Future signinRoutine(
   logFirebaseEvent('signinRoutine_custom_action');
   await actions.initializeCustomerIo(
     currentUserEmail,
+    currentUserUid,
   );
   logFirebaseEvent('signinRoutine_custom_action');
   await actions.identifyRevenueCat(

@@ -13,7 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:customer_io/customer_io.dart';
 import 'package:customer_io/customer_io_config.dart';
 
-Future<void> initializeCustomerIo(String email) async {
+Future<void> initializeCustomerIo(String email, String id) async {
   await CustomerIO.initialize(
     config: CustomerIOConfig(
       siteId: "07abf751adc533b92581",
@@ -28,7 +28,7 @@ Future<void> initializeCustomerIo(String email) async {
   if (token != null) {
     CustomerIO.registerDeviceToken(deviceToken: token);
   }
-  CustomerIO.identify(identifier: email);
+  CustomerIO.identify(identifier: id, attributes: {email: email});
 }
 
 // Set your action name, define your arguments and return parameter,
