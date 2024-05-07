@@ -1996,6 +1996,20 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
+                                            logFirebaseEvent(
+                                                'Share_generate_current_page_link');
+                                            _model.currentPageLink =
+                                                await generateCurrentPageLink(
+                                              context,
+                                              isShortLink: false,
+                                            );
+
+                                            logFirebaseEvent('Share_share');
+                                            await Share.share(
+                                              _model.currentPageLink,
+                                              sharePositionOrigin:
+                                                  getWidgetBoundingBox(context),
+                                            );
                                           },
                                           child: Stack(
                                             alignment:

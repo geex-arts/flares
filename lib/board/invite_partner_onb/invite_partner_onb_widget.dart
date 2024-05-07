@@ -363,35 +363,6 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               logFirebaseEvent(
                                                   'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
                                               logFirebaseEvent(
-                                                  'Sharemyinvitelink_generate_current_page_');
-                                              _model.currentPageLink =
-                                                  await generateCurrentPageLink(
-                                                context,
-                                                isShortLink: false,
-                                              );
-
-                                              logFirebaseEvent(
-                                                  'Sharemyinvitelink_alert_dialog');
-                                              await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return WebViewAware(
-                                                    child: AlertDialog(
-                                                      title: Text(_model
-                                                          .currentPageLink),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: const Text('Ok'),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  );
-                                                },
-                                              );
-                                              logFirebaseEvent(
                                                   'Sharemyinvitelink_share');
                                               await Share.share(
                                                 'https://flaresapp.page.link/?link=https://flaresapp.page.link/splash?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
