@@ -16,6 +16,7 @@ class InvitePartnerOnbModel extends FlutterFlowModel<InvitePartnerOnbWidget> {
   final unfocusNode = FocusNode();
   // Model for Sharemyinvitelink.
   late PinkButtonModel sharemyinvitelinkModel;
+  String currentPageLink = '';
   // State field(s) for SendCodeField widget.
   FocusNode? sendCodeFieldFocusNode;
   TextEditingController? sendCodeFieldTextController;
