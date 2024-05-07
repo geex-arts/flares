@@ -4,12 +4,18 @@ import Flutter
 
 import flutter_sharing_intent
 
+import FirebaseDynamicLinks
+import FirebaseCore
+
 @UIApplicationMain
 @objc class AppDelegate: FlutterAppDelegate {
   override func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+      FirebaseApp.configure()
+      FirebaseOptions.defaultOptions()?.deepLinkURLScheme = "com.geex.arts.flares"
+    DynamicLinks.performDiagnostics(completion: nil)
     GeneratedPluginRegistrant.register(with: self)
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
