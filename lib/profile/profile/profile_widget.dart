@@ -10,6 +10,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 import 'profile_model.dart';
 export 'profile_model.dart';
 
@@ -108,20 +109,46 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             color: const Color(0x9A000000),
                             borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                8.0, 4.0, 8.0, 0.0),
-                            child: Text(
-                              'Profile',
-                              style: FlutterFlowTheme.of(context)
-                                  .titleSmall
-                                  .override(
-                                    fontFamily: 'Nuckle',
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    useGoogleFonts: false,
-                                    lineHeight: 1.4,
-                                  ),
+                          child: Builder(
+                            builder: (context) => Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  8.0, 4.0, 8.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  logFirebaseEvent(
+                                      'PROFILE_PAGE_Text_0qyx4q2i_ON_TAP');
+                                  logFirebaseEvent(
+                                      'Text_generate_current_page_link');
+                                  _model.currentPageLink =
+                                      await generateCurrentPageLink(
+                                    context,
+                                    isShortLink: false,
+                                  );
+
+                                  logFirebaseEvent('Text_share');
+                                  await Share.share(
+                                    _model.currentPageLink,
+                                    sharePositionOrigin:
+                                        getWidgetBoundingBox(context),
+                                  );
+                                },
+                                child: Text(
+                                  'Profile',
+                                  style: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Nuckle',
+                                        letterSpacing: 0.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                        lineHeight: 1.4,
+                                      ),
+                                ),
+                              ),
                             ),
                           ),
                         ),

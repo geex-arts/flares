@@ -7,6 +7,7 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  String currentPageLink = '';
   // Stores action output result for [Backend Call - Query Rows] action in EditCoupleProfileContainer widget.
   List<PairsRow>? myPairRow;
   // Stores action output result for [Backend Call - Query Rows] action in NotificationsContainer widget.
