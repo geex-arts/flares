@@ -1990,12 +1990,6 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           onTap: () async {
                                             logFirebaseEvent(
                                                 'MY_PROFILE_PAGE_Share_ON_TAP');
-                                            logFirebaseEvent('Share_share');
-                                            await Share.share(
-                                              'https://flaresapp.page.link/?link=https://flaresapp.page.link/couplesProfile?selectedPairID=${FFAppState().pairID}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
-                                              sharePositionOrigin:
-                                                  getWidgetBoundingBox(context),
-                                            );
                                             logFirebaseEvent(
                                                 'Share_generate_current_page_link');
                                             _model.currentPageLink =
@@ -2007,6 +2001,12 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             logFirebaseEvent('Share_share');
                                             await Share.share(
                                               _model.currentPageLink,
+                                              sharePositionOrigin:
+                                                  getWidgetBoundingBox(context),
+                                            );
+                                            logFirebaseEvent('Share_share');
+                                            await Share.share(
+                                              'https://flaresapp.page.link/?link=https://flaresapp.page.link/couplesProfile?selectedPairID=${FFAppState().pairID}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
                                               sharePositionOrigin:
                                                   getWidgetBoundingBox(context),
                                             );
