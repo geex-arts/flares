@@ -1,7 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
-import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
@@ -318,23 +317,9 @@ Future signinRoutine(
       logFirebaseEvent('signinRoutine_update_app_state');
       FFAppState().pairID = foundPairingRow.first.pair!;
       FFAppState().pairCodeState = '';
-      logFirebaseEvent('signinRoutine_bottom_sheet');
-      await showModalBottomSheet(
-        isScrollControlled: true,
-        backgroundColor: Colors.transparent,
-        context: context,
-        builder: (context) {
-          return WebViewAware(
-            child: Padding(
-              padding: MediaQuery.viewInsetsOf(context),
-              child: SizedBox(
-                height: MediaQuery.sizeOf(context).height * 0.85,
-                child: const BSTurnNotificationsWidget(),
-              ),
-            ),
-          );
-        },
-      );
+      logFirebaseEvent('signinRoutine_navigate_to');
+
+      context.goNamed('My_Profile');
 
       return;
     }

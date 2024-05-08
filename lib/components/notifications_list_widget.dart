@@ -251,13 +251,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                   ),
                                                 ),
                                                 TextSpan(
-                                                  text: (String var1) {
-                                                    return var1.replaceAll(
-                                                        ' ago', '');
-                                                  }(dateTimeFormat(
+                                                  text: dateTimeFormat(
                                                       'relative',
                                                       currentNotificationItem
-                                                          .createdAt!)),
+                                                          .createdAt!),
                                                   style: const TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,
@@ -489,13 +486,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                 ),
                                               ),
                                               TextSpan(
-                                                text: (String var1) {
-                                                  return var1.replaceAll(
-                                                      ' ago', '');
-                                                }(dateTimeFormat(
+                                                text: dateTimeFormat(
                                                     'relative',
                                                     currentNotificationItem
-                                                        .createdAt!)),
+                                                        .createdAt!),
                                                 style: const TextStyle(
                                                   color: Color(0x65FFFFFF),
                                                   fontWeight: FontWeight.w500,
@@ -677,13 +671,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                     ),
                                                   ),
                                                   TextSpan(
-                                                    text: (String var1) {
-                                                      return var1.replaceAll(
-                                                          ' ago', '');
-                                                    }(dateTimeFormat(
+                                                    text: dateTimeFormat(
                                                         'relative',
                                                         currentNotificationItem
-                                                            .createdAt!)),
+                                                            .createdAt!),
                                                     style: const TextStyle(
                                                       color: Color(0x65FFFFFF),
                                                       fontWeight:
@@ -895,13 +886,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                   ),
                                                 ),
                                                 TextSpan(
-                                                  text: (String var1) {
-                                                    return var1.replaceAll(
-                                                        ' ago', '');
-                                                  }(dateTimeFormat(
+                                                  text: dateTimeFormat(
                                                       'relative',
                                                       currentNotificationItem
-                                                          .createdAt!)),
+                                                          .createdAt!),
                                                   style: const TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,
@@ -1076,13 +1064,10 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                                   ),
                                                 ),
                                                 TextSpan(
-                                                  text: (String var1) {
-                                                    return var1.replaceAll(
-                                                        ' ago', '');
-                                                  }(dateTimeFormat(
+                                                  text: dateTimeFormat(
                                                       'relative',
                                                       currentNotificationItem
-                                                          .createdAt!)),
+                                                          .createdAt!),
                                                   style: const TextStyle(
                                                     color: Color(0x65FFFFFF),
                                                     fontWeight: FontWeight.w500,

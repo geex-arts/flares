@@ -1,4 +1,3 @@
-import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -8,7 +7,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_model.dart';
 export 'invite_partner_model.dart';
 
@@ -106,33 +104,9 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                             onTap: () async {
                               logFirebaseEvent(
                                   'INVITE_PARTNER_PAGE_Skip_ON_TAP');
-                              logFirebaseEvent('Skip_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: Colors.transparent,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                    child: GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: SizedBox(
-                                          height: MediaQuery.sizeOf(context)
-                                                  .height *
-                                              0.85,
-                                          child: const BSTurnNotificationsWidget(),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => safeSetState(() {}));
+                              logFirebaseEvent('Skip_navigate_to');
+
+                              context.goNamed('My_Profile');
                             },
                             child: Container(
                               height: 38.0,

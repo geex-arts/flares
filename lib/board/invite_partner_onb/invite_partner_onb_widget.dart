@@ -1,6 +1,5 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
-import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -12,7 +11,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:webviewx_plus/webviewx_plus.dart';
 import 'invite_partner_onb_model.dart';
 export 'invite_partner_onb_model.dart';
 
@@ -230,9 +228,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 8.0, 0.0, 0.0),
                           child: Text(
-                            widget.pairInvitationRow != null
-                                ? 'Your partner will receive a link to  download to the Flares app. He\'ll then use the code to pair your profiles'
-                                : 'Enter your partner\'s code to pair your profiles',
+                            'Your partner will receive a link to \ndownload to the Flares app. He\'ll then use the code to pair your profiles',
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
@@ -245,127 +241,133 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 ),
                           ),
                         ),
-                        if (widget.pairInvitationRow != null)
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 30.0, 0.0, 0.0),
-                            child: Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: const Color(0x0DFFFFFF),
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    16.0, 10.0, 16.0, 16.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Share your pairing code',
-                                      style: FlutterFlowTheme.of(context)
-                                          .titleMedium
-                                          .override(
-                                            fontFamily: 'Nuckle',
-                                            letterSpacing: 0.0,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 10.0, 0.0, 8.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          RichText(
-                                            textScaler: MediaQuery.of(context)
-                                                .textScaler,
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: 'My code: ',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color:
-                                                            const Color(0x98FFFFFF),
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                                TextSpan(
-                                                  text: valueOrDefault<String>(
-                                                    widget.pairInvitationRow
-                                                        ?.pairCode,
-                                                    'FLARES990',
-                                                  ),
-                                                  style: const TextStyle(
-                                                    color: Color(0xFFFF2C96),
-                                                  ),
-                                                )
-                                              ],
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 0.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                logFirebaseEvent(
-                                                    'INVITE_PARTNER_ONB_PAGE_CopyIcon_ON_TAP');
-                                                logFirebaseEvent(
-                                                    'CopyIcon_copy_to_clipboard');
-                                                await Clipboard.setData(
-                                                    ClipboardData(
-                                                        text: widget
-                                                            .pairInvitationRow!
-                                                            .pairCode!));
-                                              },
-                                              child: const Icon(
-                                                Icons.content_copy,
-                                                color: Color(0xFFFF2C96),
-                                                size: 18.0,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 30.0, 0.0, 0.0),
+                          child: Container(
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              color: const Color(0x0DFFFFFF),
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 10.0, 16.0, 16.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Share your pairing code',
+                                    style: FlutterFlowTheme.of(context)
+                                        .titleMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 8.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        RichText(
+                                          textScaler:
+                                              MediaQuery.of(context).textScaler,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text: 'My code: ',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color:
+                                                              const Color(0x98FFFFFF),
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          useGoogleFonts: false,
+                                                        ),
                                               ),
-                                            ),
+                                              TextSpan(
+                                                text: valueOrDefault<String>(
+                                                  widget.pairInvitationRow
+                                                      ?.pairCode,
+                                                  'FLARES990',
+                                                ),
+                                                style: const TextStyle(
+                                                  color: Color(0xFFFF2C96),
+                                                ),
+                                              )
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
-                                        ],
-                                      ),
-                                    ),
-                                    if (isAndroid)
-                                      Builder(
-                                        builder: (context) => Padding(
+                                        ),
+                                        Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 0.0, 0.0),
-                                          child: wrapWithModel(
-                                            model:
-                                                _model.sharemyinvitelinkModel,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: PinkButtonWidget(
-                                              text: 'Share my invite link',
-                                              currentAction: () async {
+                                                  5.0, 0.0, 0.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              logFirebaseEvent(
+                                                  'INVITE_PARTNER_ONB_PAGE_CopyIcon_ON_TAP');
+                                              logFirebaseEvent(
+                                                  'CopyIcon_copy_to_clipboard');
+                                              await Clipboard.setData(
+                                                  ClipboardData(
+                                                      text: widget
+                                                          .pairInvitationRow!
+                                                          .pairCode!));
+                                            },
+                                            child: const Icon(
+                                              Icons.content_copy,
+                                              color: Color(0xFFFF2C96),
+                                              size: 18.0,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  if (widget.pairInvitationRow != null)
+                                    Builder(
+                                      builder: (context) => Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 8.0, 0.0, 0.0),
+                                        child: wrapWithModel(
+                                          model: _model.sharemyinvitelinkModel,
+                                          updateCallback: () => setState(() {}),
+                                          child: PinkButtonWidget(
+                                            text: 'Share my invite link',
+                                            currentAction: () async {
+                                              logFirebaseEvent(
+                                                  'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
+                                              if (isiOS) {
                                                 logFirebaseEvent(
-                                                    'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
+                                                    'Sharemyinvitelink_share');
+                                                await Share.share(
+                                                  (String var1) {
+                                                    return '''Your partner has invited you to join Flares! Start exploring together, discover shared interests, and plan your next adventure.  Use the partner code: **$var1** to get started and let the journey of togetherness begin!''';
+                                                  }(widget.pairInvitationRow!.pairCode!),
+                                                  sharePositionOrigin:
+                                                      getWidgetBoundingBox(
+                                                          context),
+                                                );
+                                              } else {
                                                 logFirebaseEvent(
                                                     'Sharemyinvitelink_share');
                                                 await Share.share(
@@ -374,16 +376,17 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                       getWidgetBoundingBox(
                                                           context),
                                                 );
-                                              },
-                                            ),
+                                              }
+                                            },
                                           ),
                                         ),
                                       ),
-                                  ],
-                                ),
+                                    ),
+                                ],
                               ),
                             ),
                           ),
+                        ),
                         if (widget.pairInvitationRow != null)
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
@@ -664,44 +667,9 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               context.safePop();
                                             } else {
                                               logFirebaseEvent(
-                                                  'SendPairingCode_bottom_sheet');
-                                              await showModalBottomSheet(
-                                                isScrollControlled: true,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                context: context,
-                                                builder: (context) {
-                                                  return WebViewAware(
-                                                    child: GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child: Padding(
-                                                        padding: MediaQuery
-                                                            .viewInsetsOf(
-                                                                context),
-                                                        child: SizedBox(
-                                                          height:
-                                                              MediaQuery.sizeOf(
-                                                                          context)
-                                                                      .height *
-                                                                  0.85,
-                                                          child:
-                                                              const BSTurnNotificationsWidget(),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  );
-                                                },
-                                              ).then((value) =>
-                                                  safeSetState(() {}));
+                                                  'SendPairingCode_navigate_to');
+
+                                              context.goNamed('My_Profile');
                                             }
                                           } else {
                                             logFirebaseEvent(

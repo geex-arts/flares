@@ -1,4 +1,3 @@
-import '/board/b_s_turn_notifications/b_s_turn_notifications_widget.dart';
 import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -124,32 +123,9 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             ).then((value) => safeSetState(() {}));
 
                             if (widget.isFIrstTime) {
-                              logFirebaseEvent('Close_bottom_sheet');
-                              await showModalBottomSheet(
-                                isScrollControlled: true,
-                                backgroundColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                barrierColor: FlutterFlowTheme.of(context)
-                                    .primaryBackground,
-                                isDismissible: false,
-                                context: context,
-                                builder: (context) {
-                                  return WebViewAware(
-                                    child: GestureDetector(
-                                      onTap: () => _model
-                                              .unfocusNode.canRequestFocus
-                                          ? FocusScope.of(context)
-                                              .requestFocus(_model.unfocusNode)
-                                          : FocusScope.of(context).unfocus(),
-                                      child: Padding(
-                                        padding:
-                                            MediaQuery.viewInsetsOf(context),
-                                        child: const BSTurnNotificationsWidget(),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ).then((value) => safeSetState(() {}));
+                              logFirebaseEvent('Close_navigate_to');
+
+                              context.goNamed('My_Profile');
                             } else {
                               logFirebaseEvent('Close_navigate_back');
                               context.safePop();
