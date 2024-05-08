@@ -245,7 +245,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                 ),
                           ),
                         ),
-                        if (isAndroid && (widget.pairInvitationRow != null))
+                        if (widget.pairInvitationRow != null)
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 30.0, 0.0, 0.0),
@@ -350,95 +350,97 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                         ],
                                       ),
                                     ),
-                                    Builder(
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 16.0, 0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model: _model.sharemyinvitelinkModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: PinkButtonWidget(
-                                            text: 'Share my invite link',
-                                            currentAction: () async {
-                                              logFirebaseEvent(
-                                                  'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
-                                              logFirebaseEvent(
-                                                  'Sharemyinvitelink_share');
-                                              await Share.share(
-                                                'https://flaresapp.page.link/?link=https://flaresapp.page.link/splash?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
-                                                sharePositionOrigin:
-                                                    getWidgetBoundingBox(
-                                                        context),
-                                              );
-                                            },
+                                    if (isAndroid)
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: wrapWithModel(
+                                            model:
+                                                _model.sharemyinvitelinkModel,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: PinkButtonWidget(
+                                              text: 'Share my invite link',
+                                              currentAction: () async {
+                                                logFirebaseEvent(
+                                                    'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
+                                                logFirebaseEvent(
+                                                    'Sharemyinvitelink_share');
+                                                await Share.share(
+                                                  'https://flaresapp.page.link/?link=https://flaresapp.page.link/splash?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
+                                                  sharePositionOrigin:
+                                                      getWidgetBoundingBox(
+                                                          context),
+                                                );
+                                              },
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
                                   ],
                                 ),
                               ),
                             ),
                           ),
-                        if (isAndroid && (widget.pairInvitationRow != null))
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0.0, 12.0, 0.0, 0.0),
-                            child: SizedBox(
-                              height: 24.0,
-                              child: Stack(
-                                alignment: const AlignmentDirectional(0.0, 0.0),
-                                children: [
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 1.0,
-                                          decoration: const BoxDecoration(
-                                            color: Color(0x19FFFFFF),
-                                          ),
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              0.0, 12.0, 0.0, 0.0),
+                          child: SizedBox(
+                            height: 24.0,
+                            child: Stack(
+                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 1.0,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0x19FFFFFF),
                                         ),
                                       ),
-                                      Container(
-                                        height: double.infinity,
-                                        decoration: const BoxDecoration(),
-                                        child: Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  16.0, 6.0, 16.0, 0.0),
-                                          child: Text(
-                                            'Or',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  fontSize: 12.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                                    ),
+                                    Container(
+                                      height: double.infinity,
+                                      decoration: const BoxDecoration(),
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            16.0, 6.0, 16.0, 0.0),
+                                        child: Text(
+                                          'Or',
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                fontSize: 12.0,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
                                       ),
-                                      Expanded(
-                                        child: Container(
-                                          width: double.infinity,
-                                          height: 1.0,
-                                          decoration: const BoxDecoration(
-                                            color: Color(0x19FFFFFF),
-                                          ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 1.0,
+                                        decoration: const BoxDecoration(
+                                          color: Color(0x19FFFFFF),
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
+                        ),
                         Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 30.0, 0.0, 0.0),
