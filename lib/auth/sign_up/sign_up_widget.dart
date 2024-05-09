@@ -656,6 +656,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         logFirebaseEvent(
                                             'nextButton_update_app_state');
                                         FFAppState().isProfileSet = false;
+                                        FFAppState().pairID = '';
                                         logFirebaseEvent('nextButton_auth');
                                         GoRouter.of(context).prepareAuthEvent();
                                         if (_model.passwordFieldTextController
@@ -775,6 +776,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     logFirebaseEvent(
                                         'GoogleButton_update_app_state');
                                     FFAppState().isProfileSet = false;
+                                    FFAppState().pairID = '';
                                     logFirebaseEvent('GoogleButton_auth');
                                     GoRouter.of(context).prepareAuthEvent();
                                     final user = await authManager
@@ -879,6 +881,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                       logFirebaseEvent(
                                           'AppleButton_update_app_state');
                                       FFAppState().isProfileSet = false;
+                                      FFAppState().pairID = '';
                                       logFirebaseEvent(
                                           'AppleButton_custom_action');
                                       _model.authResponse =

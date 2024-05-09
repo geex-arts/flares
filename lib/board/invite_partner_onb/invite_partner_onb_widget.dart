@@ -343,45 +343,44 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                       ],
                                     ),
                                   ),
-                                  if (widget.pairInvitationRow != null)
-                                    Builder(
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 8.0, 0.0, 0.0),
-                                        child: wrapWithModel(
-                                          model: _model.sharemyinvitelinkModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: PinkButtonWidget(
-                                            text: 'Share my invite link',
-                                            currentAction: () async {
+                                  Builder(
+                                    builder: (context) => Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 8.0, 0.0, 0.0),
+                                      child: wrapWithModel(
+                                        model: _model.sharemyinvitelinkModel,
+                                        updateCallback: () => setState(() {}),
+                                        child: PinkButtonWidget(
+                                          text: 'Share my invite link',
+                                          currentAction: () async {
+                                            logFirebaseEvent(
+                                                'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
+                                            if (isiOS) {
                                               logFirebaseEvent(
-                                                  'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
-                                              if (isiOS) {
-                                                logFirebaseEvent(
-                                                    'Sharemyinvitelink_share');
-                                                await Share.share(
-                                                  (String var1) {
-                                                    return '''Your partner has invited you to join Flares! Start exploring together, discover shared interests, and plan your next adventure.  Use the partner code: **$var1** to get started and let the journey of togetherness begin!''';
-                                                  }(widget.pairInvitationRow!.pairCode!),
-                                                  sharePositionOrigin:
-                                                      getWidgetBoundingBox(
-                                                          context),
-                                                );
-                                              } else {
-                                                logFirebaseEvent(
-                                                    'Sharemyinvitelink_share');
-                                                await Share.share(
-                                                  'https://flaresapp.page.link/?link=https://flaresapp.page.link/splash?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
-                                                  sharePositionOrigin:
-                                                      getWidgetBoundingBox(
-                                                          context),
-                                                );
-                                              }
-                                            },
-                                          ),
+                                                  'Sharemyinvitelink_share');
+                                              await Share.share(
+                                                (String var1) {
+                                                  return '''Your partner has invited you to join Flares! Start exploring together, discover shared interests, and plan your next adventure.  Use the partner code: **$var1** to get started and let the journey of togetherness begin!''';
+                                                }(widget.pairInvitationRow!.pairCode!),
+                                                sharePositionOrigin:
+                                                    getWidgetBoundingBox(
+                                                        context),
+                                              );
+                                            } else {
+                                              logFirebaseEvent(
+                                                  'Sharemyinvitelink_share');
+                                              await Share.share(
+                                                'https://flaresapp.page.link/?link=https://flaresapp.page.link/splash?pairCode=${widget.pairInvitationRow?.pairCode}&apn=com.geex.arts.flares&ibi=com.geex.arts.flares',
+                                                sharePositionOrigin:
+                                                    getWidgetBoundingBox(
+                                                        context),
+                                              );
+                                            }
+                                          },
                                         ),
                                       ),
                                     ),
+                                  ),
                                 ],
                               ),
                             ),

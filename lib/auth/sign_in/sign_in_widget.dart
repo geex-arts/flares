@@ -664,6 +664,10 @@ class _SignInWidgetState extends State<SignInWidget>
                                     );
                                   } else {
                                     logFirebaseEvent(
+                                        'GoogleButton_update_app_state');
+                                    FFAppState().isProfileSet = false;
+                                    FFAppState().pairID = '';
+                                    logFirebaseEvent(
                                         'GoogleButton_action_block');
                                     await action_blocks.signinRoutine(
                                       context,
@@ -762,6 +766,10 @@ class _SignInWidgetState extends State<SignInWidget>
                                               : '',
                                         );
                                       } else {
+                                        logFirebaseEvent(
+                                            'Row_update_app_state');
+                                        FFAppState().isProfileSet = false;
+                                        FFAppState().pairID = '';
                                         logFirebaseEvent('Row_action_block');
                                         await action_blocks.signinRoutine(
                                           context,
