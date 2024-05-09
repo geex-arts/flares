@@ -67,19 +67,6 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
           ),
         );
       } else {
-        logFirebaseEvent('My_Profile_navigate_to');
-
-        context.goNamed(
-          'Onboarding',
-          extra: <String, dynamic>{
-            kTransitionInfoKey: const TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
-          },
-        );
-
         return;
       }
 

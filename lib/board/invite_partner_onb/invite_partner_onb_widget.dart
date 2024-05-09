@@ -658,6 +658,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                 'SendPairingCode_update_app_state');
                                             FFAppState().pairID = _model
                                                 .foundPairingRow!.first.pair!;
+                                            FFAppState().isProfileSet = true;
                                             if (widget.isFromProfile) {
                                               logFirebaseEvent(
                                                   'SendPairingCode_navigate_back');

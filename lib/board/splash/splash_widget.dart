@@ -86,6 +86,7 @@ class _SplashWidgetState extends State<SplashWidget>
             logFirebaseEvent('Splash_update_app_state');
             FFAppState().pairID = _model.foundPairingRow2!.first.pair!;
             FFAppState().pairCodeState = '';
+            FFAppState().isProfileSet = true;
           }
           logFirebaseEvent('Splash_navigate_to');
 
