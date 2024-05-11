@@ -273,14 +273,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               _model.carouselController1 ??=
                                                   CarouselController(),
                                           options: CarouselOptions(
-                                            initialPage: min(
-                                                valueOrDefault<int>(
-                                                  int.parse(dateTimeFormat('d',
-                                                          getCurrentTimestamp)) -
-                                                      1,
-                                                  0,
-                                                ),
-                                                currentDay.length - 1),
+                                            initialPage: max(
+                                                0,
+                                                min(
+                                                    valueOrDefault<int>(
+                                                      int.parse(dateTimeFormat(
+                                                              'd',
+                                                              getCurrentTimestamp)) -
+                                                          1,
+                                                      0,
+                                                    ),
+                                                    currentDay.length - 1)),
                                             viewportFraction: 0.22,
                                             disableCenter: false,
                                             enlargeCenterPage: true,
@@ -371,14 +374,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               _model.carouselController2 ??=
                                                   CarouselController(),
                                           options: CarouselOptions(
-                                            initialPage: min(
-                                                valueOrDefault<int>(
-                                                  int.parse(dateTimeFormat('M',
-                                                          getCurrentTimestamp)) -
-                                                      1,
-                                                  0,
-                                                ),
-                                                currentMonth.length - 1),
+                                            initialPage: max(
+                                                0,
+                                                min(
+                                                    valueOrDefault<int>(
+                                                      int.parse(dateTimeFormat(
+                                                              'M',
+                                                              getCurrentTimestamp)) -
+                                                          1,
+                                                      0,
+                                                    ),
+                                                    currentMonth.length - 1)),
                                             viewportFraction: 0.22,
                                             disableCenter: false,
                                             enlargeCenterPage: true,
@@ -469,17 +475,20 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               _model.carouselController3 ??=
                                                   CarouselController(),
                                           options: CarouselOptions(
-                                            initialPage: min(
-                                                valueOrDefault<int>(
-                                                  functions
-                                                      .returnYears()
-                                                      .toList()
-                                                      .indexOf(int.parse(
-                                                          dateTimeFormat('yyyy',
-                                                              getCurrentTimestamp))),
-                                                  0,
-                                                ),
-                                                currentYear.length - 1),
+                                            initialPage: max(
+                                                0,
+                                                min(
+                                                    valueOrDefault<int>(
+                                                      functions
+                                                          .returnYears()
+                                                          .toList()
+                                                          .indexOf(int.parse(
+                                                              dateTimeFormat(
+                                                                  'yyyy',
+                                                                  getCurrentTimestamp))),
+                                                      0,
+                                                    ),
+                                                    currentYear.length - 1)),
                                             viewportFraction: 0.22,
                                             disableCenter: true,
                                             enlargeCenterPage: true,
@@ -592,20 +601,22 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               _model.hoursController ??=
                                                   CarouselController(),
                                           options: CarouselOptions(
-                                            initialPage: min(
-                                                valueOrDefault<int>(
-                                                  (String var1) {
-                                                    return int.parse(var1
-                                                            .replaceAll(
-                                                                'PM', '')
-                                                            .replaceAll(
-                                                                'AM', '')) -
-                                                        1;
-                                                  }(dateTimeFormat('j',
-                                                      getCurrentTimestamp)),
-                                                  0,
-                                                ),
-                                                curentHour.length - 1),
+                                            initialPage: max(
+                                                0,
+                                                min(
+                                                    valueOrDefault<int>(
+                                                      (String var1) {
+                                                        return int.parse(var1
+                                                                .replaceAll(
+                                                                    'PM', '')
+                                                                .replaceAll(
+                                                                    'AM', '')) -
+                                                            1;
+                                                      }(dateTimeFormat('j',
+                                                          getCurrentTimestamp)),
+                                                      0,
+                                                    ),
+                                                    curentHour.length - 1)),
                                             viewportFraction: 0.22,
                                             disableCenter: false,
                                             enlargeCenterPage: true,
@@ -696,14 +707,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               _model.carouselController4 ??=
                                                   CarouselController(),
                                           options: CarouselOptions(
-                                            initialPage: min(
-                                                valueOrDefault<int>(
-                                                  int.parse(dateTimeFormat('mm',
-                                                          getCurrentTimestamp)) -
-                                                      1,
-                                                  0,
-                                                ),
-                                                currentMinute.length - 1),
+                                            initialPage: max(
+                                                0,
+                                                min(
+                                                    valueOrDefault<int>(
+                                                      int.parse(dateTimeFormat(
+                                                              'mm',
+                                                              getCurrentTimestamp)) -
+                                                          1,
+                                                      0,
+                                                    ),
+                                                    currentMinute.length - 1)),
                                             viewportFraction: 0.22,
                                             disableCenter: false,
                                             enlargeCenterPage: true,
@@ -803,15 +817,17 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                           _model.carouselController5 ??=
                                               CarouselController(),
                                       options: CarouselOptions(
-                                        initialPage: min(
-                                            valueOrDefault<int>(
-                                              (String var1) {
-                                                return var1 == 'AM' ? 0 : 1;
-                                              }(dateTimeFormat(
-                                                  's', getCurrentTimestamp)),
-                                              0,
-                                            ),
-                                            1),
+                                        initialPage: max(
+                                            0,
+                                            min(
+                                                valueOrDefault<int>(
+                                                  (String var1) {
+                                                    return var1 == 'AM' ? 0 : 1;
+                                                  }(dateTimeFormat('s',
+                                                      getCurrentTimestamp)),
+                                                  0,
+                                                ),
+                                                1)),
                                         viewportFraction: 0.22,
                                         disableCenter: true,
                                         enlargeCenterPage: true,

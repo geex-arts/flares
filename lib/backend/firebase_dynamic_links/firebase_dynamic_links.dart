@@ -76,7 +76,7 @@ class _DynamicLinksHandlerState extends State<DynamicLinksHandler> {
     final link = linkData.link.toString();
     final host = linkData.link.host;
     final location = link.split(host).last;
-    if (GoRouterState.of(context).uri.toString() != location) {
+    if (widget.router.getCurrentLocation() != location) {
       widget.router.push(location);
     }
   }

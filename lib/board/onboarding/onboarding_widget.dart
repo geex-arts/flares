@@ -937,6 +937,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                     duration: const Duration(milliseconds: 500),
                                     curve: Curves.ease,
                                   );
+                                  setState(() {});
                                 },
                                 effect: smooth_page_indicator.SlideEffect(
                                   spacing: 3.0,

@@ -158,7 +158,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                                 ),
                           ),
                           FlutterFlowTimer(
-                            initialTime: _model.timerMilliseconds,
+                            initialTime: _model.timerInitialTimeMs,
                             getDisplayTime: (value) =>
                                 StopWatchTimer.getDisplayTime(
                               value,

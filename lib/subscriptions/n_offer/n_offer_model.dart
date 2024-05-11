@@ -9,6 +9,7 @@ class NOfferModel extends FlutterFlowModel<NOfferWidget> {
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for Timer widget.
+  final timerInitialTimeMs = 60000;
   int timerMilliseconds = 60000;
   String timerValue = StopWatchTimer.getDisplayTime(
     60000,
