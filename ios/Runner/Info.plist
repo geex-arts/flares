@@ -64,11 +64,11 @@
 	<true/>
 
 	<key>NSCameraUsageDescription</key>
-    <string>In order to take a picture or video, this app requires permission to access the camera.</string>
+    <string>This app requires access to the photo library to upload your profile photo.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
     <string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>PermissionGroupNotification</key>
-    <string>Need permission to send you notifications</string>
+    <string>To receive notifications from the app, you must grant permission.</string>
 
 
 	<key>UILaunchStoryboardName</key>

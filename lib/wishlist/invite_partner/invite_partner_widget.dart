@@ -316,6 +316,27 @@ class _InvitePartnerWidgetState extends State<InvitePartnerWidget>
                                                 _model.code,
                                                 'fut2',
                                               )));
+                                              logFirebaseEvent(
+                                                  'CopyIcon_show_snack_bar');
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    'Your pair code is copied',
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                    ),
+                                                  ),
+                                                  duration: const Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .pinkButton,
+                                                ),
+                                              );
                                             },
                                             child: const Icon(
                                               Icons.content_copy,

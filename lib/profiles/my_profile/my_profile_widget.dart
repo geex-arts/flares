@@ -1406,15 +1406,9 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     padding:
                                                         MediaQuery.viewInsetsOf(
                                                             context),
-                                                    child: SizedBox(
-                                                      height: MediaQuery.sizeOf(
-                                                                  context)
-                                                              .height *
-                                                          0.6,
-                                                      child:
-                                                          const BSSaveToCollection2Widget(
-                                                        isManagement: true,
-                                                      ),
+                                                    child:
+                                                        const BSSaveToCollection2Widget(
+                                                      isManagement: true,
                                                     ),
                                                   ),
                                                 ),
@@ -1433,11 +1427,30 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                           ),
                                           alignment:
                                               const AlignmentDirectional(0.0, 0.0),
-                                          child: Icon(
-                                            FFIcons.kaddCircle,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            size: 18.0,
+                                          child: Stack(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, 0.0),
+                                            children: [
+                                              Icon(
+                                                Icons.folder,
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                size: 22.0,
+                                              ),
+                                              Padding(
+                                                padding: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 2.0, 0.0, 0.0),
+                                                child: Icon(
+                                                  Icons.mode_edit_rounded,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .primaryBackground,
+                                                  size: 11.0,
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ),

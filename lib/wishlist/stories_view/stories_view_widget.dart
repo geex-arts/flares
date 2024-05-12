@@ -125,7 +125,7 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   if (widget.aiAssistantLink == null ||
                       widget.aiAssistantLink == '')
@@ -320,21 +320,23 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                       (widget.selectedArticle != null) ||
                       (widget.aiAssistantLink != null &&
                           widget.aiAssistantLink != ''))
-                    FlutterFlowWebView(
-                      content: () {
-                        if (widget.selectedStories != null) {
-                          return widget.selectedStories!.link!;
-                        } else if (widget.aiAssistantLink != null &&
-                            widget.aiAssistantLink != '') {
-                          return widget.aiAssistantLink!;
-                        } else {
-                          return widget.selectedArticle!.link!;
-                        }
-                      }(),
-                      bypass: true,
-                      height: MediaQuery.sizeOf(context).height * 1.0,
-                      verticalScroll: false,
-                      horizontalScroll: false,
+                    Expanded(
+                      child: FlutterFlowWebView(
+                        content: () {
+                          if (widget.selectedStories != null) {
+                            return widget.selectedStories!.link!;
+                          } else if (widget.aiAssistantLink != null &&
+                              widget.aiAssistantLink != '') {
+                            return widget.aiAssistantLink!;
+                          } else {
+                            return widget.selectedArticle!.link!;
+                          }
+                        }(),
+                        bypass: true,
+                        height: MediaQuery.sizeOf(context).height * 1.0,
+                        verticalScroll: false,
+                        horizontalScroll: false,
+                      ),
                     ),
                 ],
               ),
