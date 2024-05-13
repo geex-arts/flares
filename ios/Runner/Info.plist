@@ -32,7 +32,6 @@
             <key>CFBundleURLSchemes</key>
             <array>
                 <string>com.googleusercontent.apps.949217339794-gs0ei22efg0nievtsnghtgeeee0n8vn9</string>
-
             </array>
         </dict>
 		<dict>
@@ -41,6 +40,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
                 <string>com.googleusercontent.apps.536053787180-o9040q4o6npi8sgvle08m8oo3fflvant</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+                <string>SharingMedia-$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 			</array>
 		</dict>
 		<dict>
@@ -66,7 +73,7 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>PermissionGroupNotification</key>
-	<string>Need access to send you notifications</string>
+    <string>To receive notifications from the app, you must grant permission.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
