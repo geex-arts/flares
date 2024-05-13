@@ -123,9 +123,7 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                   ).image,
                 ),
               ),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.start,
+              child: Stack(
                 children: [
                   if (widget.aiAssistantLink == null ||
                       widget.aiAssistantLink == '')
@@ -320,7 +318,9 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                       (widget.selectedArticle != null) ||
                       (widget.aiAssistantLink != null &&
                           widget.aiAssistantLink != ''))
-                    Expanded(
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 53.0, 0.0, 0.0),
                       child: FlutterFlowWebView(
                         content: () {
                           if (widget.selectedStories != null) {
