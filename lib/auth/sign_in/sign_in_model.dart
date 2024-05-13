@@ -38,6 +38,8 @@ class SignInModel extends FlutterFlowModel<SignInWidget> {
   String? Function(BuildContext, String?)? passwordFieldTextControllerValidator;
   // Model for nextButton.
   late PinkButtonModel nextButtonModel;
+  // Stores action output result for [Backend Call - Query Rows] action in nextButton widget.
+  List<UsersRow>? currentUserRow;
   // Stores action output result for [Backend Call - Query Rows] action in GoogleButton widget.
   List<UsersRow>? foundUserRow;
   // Stores action output result for [Custom Action - appleSignin] action in Row widget.

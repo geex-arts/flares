@@ -10,8 +10,7 @@ Future initFirebase() async {
             projectId: "eday-7c14d",
             storageBucket: "eday-7c14d.appspot.com",
             messagingSenderId: "949217339794",
-            appId: "1:949217339794:web:64f549a28542fe904ef94b",
-            measurementId: "G-7E24M5VZB6"));
+            appId: "1:949217339794:web:64f549a28542fe904ef94b"));
   } else {
     await Firebase.initializeApp();
   }

@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/subscriptions/n_offer/n_offer_widget.dart';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
@@ -245,35 +246,245 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             children: [
                               Align(
                                 alignment: const AlignmentDirectional(0.0, 1.0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 0.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14.0),
-                                  ),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context).pink,
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_a4emnsf1_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
+                                    setState(() {
+                                      _model.selectedPlan = 1;
+                                    });
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 0.0,
+                                    shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(14.0),
-                                      border: Border.all(
-                                        color: const Color(0xFFFF2C96),
-                                        width: 1.0,
+                                    ),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: _model.selectedPlan == 1
+                                            ? FlutterFlowTheme.of(context).pink
+                                            : const Color(0x00000000),
+                                        borderRadius:
+                                            BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: const Color(0xFFFF2C96),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Yearly + 7 Days Free Trial ',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                RichText(
+                                                  textScaler:
+                                                      MediaQuery.of(context)
+                                                          .textScaler,
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text: '\$ 74.99 / year',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nuckle',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: ' for 2 users',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 18.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                                Text(
+                                                  '\$ 3.12 / user / month. Cancel anytime',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ].divide(const SizedBox(height: 14.0)),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, -1.0),
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  child: Image.asset(
+                                                    'assets/images/disco.webp',
+                                                    width: 64.0,
+                                                    height: 35.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 2.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    '70% Off',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
                                       ),
                                     ),
-                                    child: Stack(
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.all(16.0),
-                                          child: Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                'Yearly + 7 Days Free Trial ',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
+                                  ),
+                                ),
+                              ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_ulbjnjx5_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
+                                    setState(() {
+                                      _model.selectedPlan = 0;
+                                    });
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 0.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14.0),
+                                    ),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: _model.selectedPlan == 0
+                                            ? FlutterFlowTheme.of(context).pink
+                                            : const Color(0x00000000),
+                                        borderRadius:
+                                            BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: const Color(0xFFFF2C96),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.min,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              'Monthly',
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Nuckle',
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    fontSize: 18.0,
+                                                    letterSpacing: 0.0,
+                                                    fontWeight: FontWeight.w600,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                            ),
+                                            RichText(
+                                              textScaler: MediaQuery.of(context)
+                                                  .textScaler,
+                                              text: TextSpan(
+                                                children: [
+                                                  TextSpan(
+                                                    text: '\$ 14.99 / month',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Nuckle',
@@ -286,211 +497,43 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                                               FontWeight.w600,
                                                           useGoogleFonts: false,
                                                         ),
-                                              ),
-                                              RichText(
-                                                textScaler:
-                                                    MediaQuery.of(context)
-                                                        .textScaler,
-                                                text: TextSpan(
-                                                  children: [
-                                                    TextSpan(
-                                                      text: '\$ 74.99 / year',
-                                                      style: FlutterFlowTheme
+                                                  ),
+                                                  TextSpan(
+                                                    text: ' for 2 users',
+                                                    style: TextStyle(
+                                                      color: FlutterFlowTheme
                                                               .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Nuckle',
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
-                                                            fontSize: 18.0,
-                                                            letterSpacing: 0.0,
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
+                                                          .secondaryBackground,
+                                                      fontSize: 18.0,
                                                     ),
-                                                    TextSpan(
-                                                      text: ' for 2 users',
-                                                      style: TextStyle(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 18.0,
-                                                      ),
-                                                    )
-                                                  ],
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        letterSpacing: 0.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ),
-                                              Text(
-                                                '\$ 3.12 / user / month. Cancel anytime',
+                                                  )
+                                                ],
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium
                                                         .override(
                                                           fontFamily: 'Nuckle',
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .secondaryBackground,
                                                           letterSpacing: 0.0,
                                                           useGoogleFonts: false,
                                                         ),
                                               ),
-                                            ].divide(const SizedBox(height: 14.0)),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(1.0, -1.0),
-                                          child: Stack(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, 0.0),
-                                            children: [
-                                              Padding(
-                                                padding: const EdgeInsets.all(16.0),
-                                                child: Image.asset(
-                                                  'assets/images/disco.webp',
-                                                  width: 64.0,
-                                                  height: 35.0,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 2.0, 0.0, 0.0),
-                                                child: Text(
-                                                  '70% Off',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 12.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Align(
-                                alignment: const AlignmentDirectional(0.0, 1.0),
-                                child: Material(
-                                  color: Colors.transparent,
-                                  elevation: 0.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(14.0),
-                                  ),
-                                  child: Container(
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0x0DFFFFFF),
-                                      borderRadius: BorderRadius.circular(14.0),
-                                      border: Border.all(
-                                        color: const Color(0xFFFF2C96),
-                                        width: 1.0,
-                                      ),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            'Monthly',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  fontSize: 18.0,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.w600,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                          RichText(
-                                            textScaler: MediaQuery.of(context)
-                                                .textScaler,
-                                            text: TextSpan(
-                                              children: [
-                                                TextSpan(
-                                                  text: '\$ 14.99 / month',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Nuckle',
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        fontSize: 18.0,
-                                                        letterSpacing: 0.0,
-                                                        fontWeight:
-                                                            FontWeight.w600,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                                TextSpan(
-                                                  text: ' for 2 users',
-                                                  style: TextStyle(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    fontSize: 18.0,
-                                                  ),
-                                                )
-                                              ],
+                                            ),
+                                            Text(
+                                              '\$ 6.99 / user / month. Cancel anytime',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Nuckle',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
                                                         letterSpacing: 0.0,
                                                         useGoogleFonts: false,
                                                       ),
                                             ),
-                                          ),
-                                          Text(
-                                            '\$ 6.99 / user / month. Cancel anytime',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .secondaryBackground,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(height: 14.0)),
+                                          ].divide(const SizedBox(height: 14.0)),
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -524,17 +567,10 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   _model.annuallyResult = await revenue_cat
                                       .purchasePackage(revenue_cat.offerings!
                                           .current!.annual!.identifier);
-                                } else {
-                                  logFirebaseEvent(
-                                      'ContinueButton_revenue_cat');
-                                  _model.lifetimeResult = await revenue_cat
-                                      .purchasePackage(revenue_cat.offerings!
-                                          .current!.lifetime!.identifier);
                                 }
 
                                 if (_model.monthlyResult! ||
-                                    _model.annuallyResult! ||
-                                    _model.lifetimeResult!) {
+                                    _model.annuallyResult!) {
                                   logFirebaseEvent(
                                       'ContinueButton_alert_dialog');
                                   await showDialog(
@@ -615,19 +651,32 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                       Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: Text(
-                          'Restore Purchase',
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Nuckle',
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    fontSize: 17.0,
-                                    letterSpacing: 0.0,
-                                    fontWeight: FontWeight.w500,
-                                    decoration: TextDecoration.underline,
-                                    useGoogleFonts: false,
-                                  ),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            logFirebaseEvent(
+                                'SUBSCRIPTIONS_PAGE_Text_pu6bhftt_ON_TAP');
+                            logFirebaseEvent('Text_revenue_cat');
+                            await revenue_cat.restorePurchases();
+                          },
+                          child: Text(
+                            'Restore Purchase',
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Nuckle',
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  fontSize: 17.0,
+                                  letterSpacing: 0.0,
+                                  fontWeight: FontWeight.w500,
+                                  decoration: TextDecoration.underline,
+                                  useGoogleFonts: false,
+                                ),
+                          ),
                         ),
                       ),
                       Padding(
@@ -650,9 +699,19 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                       useGoogleFonts: false,
                                     ),
                               ),
-                              const TextSpan(
+                              TextSpan(
                                 text: 'Terms Of Use',
-                                style: TextStyle(),
+                                style: const TextStyle(),
+                                mouseCursor: SystemMouseCursors.click,
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_RichTextSpan_dxdfe5cv_ON_T');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
+                                    context.pushNamed('Terms_ConditionsCopy');
+                                  },
                               ),
                               const TextSpan(
                                 text:
@@ -662,9 +721,19 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   fontSize: 11.0,
                                 ),
                               ),
-                              const TextSpan(
+                              TextSpan(
                                 text: 'Privacy Policy',
-                                style: TextStyle(),
+                                style: const TextStyle(),
+                                mouseCursor: SystemMouseCursors.click,
+                                recognizer: TapGestureRecognizer()
+                                  ..onTap = () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_RichTextSpan_vx3d4kf4_ON_T');
+                                    logFirebaseEvent(
+                                        'RichTextSpan_navigate_to');
+
+                                    context.pushNamed('Privacy_PolicyCopy');
+                                  },
                               )
                             ],
                             style: FlutterFlowTheme.of(context)

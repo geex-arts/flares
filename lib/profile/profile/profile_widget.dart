@@ -1518,8 +1518,24 @@ class _ProfileWidgetState extends State<ProfileWidget>
                           onTap: () async {
                             logFirebaseEvent(
                                 'PROFILE_PAGE_DeleteAccount_ON_TAP');
-                            logFirebaseEvent('DeleteAccount_launch_u_r_l');
-                            await launchURL('mailto:hello@flaresapp.com');
+                            logFirebaseEvent('DeleteAccount_backend_call');
+                            await UsersTable().update(
+                              data: {
+                                'isDeleted': true,
+                              },
+                              matchingRows: (rows) => rows.eq(
+                                'id',
+                                currentUserUid,
+                              ),
+                            );
+                            logFirebaseEvent('DeleteAccount_update_app_state');
+                            FFAppState().pairID = '';
+                            logFirebaseEvent('DeleteAccount_auth');
+                            GoRouter.of(context).prepareAuthEvent();
+                            await authManager.signOut();
+                            GoRouter.of(context).clearRedirectLocation();
+
+                            context.goNamedAuth('Splash', context.mounted);
                           },
                           child: Container(
                             width: double.infinity,

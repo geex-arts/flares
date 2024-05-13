@@ -68,4 +68,7 @@ class UsersRow extends SupabaseDataRow {
       getListField<String>('dismissed_banners');
   set dismissedBanners(List<String>? value) =>
       setListField<String>('dismissed_banners', value);
+
+  bool get isDeleted => getField<bool>('isDeleted')!;
+  set isDeleted(bool value) => setField<bool>('isDeleted', value);
 }

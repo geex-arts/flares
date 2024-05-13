@@ -759,114 +759,10 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                   ),
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'SIGN_UP_PAGE_GoogleButton_ON_TAP');
-                                    logFirebaseEvent(
-                                        'GoogleButton_haptic_feedback');
-                                    HapticFeedback.lightImpact();
-                                    logFirebaseEvent(
-                                        'GoogleButton_update_app_state');
-                                    FFAppState().isProfileSet = false;
-                                    FFAppState().pairID = '';
-                                    logFirebaseEvent('GoogleButton_auth');
-                                    GoRouter.of(context).prepareAuthEvent();
-                                    final user = await authManager
-                                        .signInWithGoogle(context);
-                                    if (user == null) {
-                                      return;
-                                    }
-                                    logFirebaseEvent(
-                                        'GoogleButton_backend_call');
-                                    _model.foundUserRow =
-                                        await UsersTable().queryRows(
-                                      queryFn: (q) => q.eq(
-                                        'id',
-                                        currentUserUid,
-                                      ),
-                                    );
-                                    if (_model.foundUserRow!.isNotEmpty) {
-                                      logFirebaseEvent(
-                                          'GoogleButton_action_block');
-                                      await action_blocks.authRoutine(
-                                        context,
-                                        pairCode: widget.pairCode != null &&
-                                                widget.pairCode != ''
-                                            ? widget.pairCode
-                                            : '',
-                                      );
-                                    } else {
-                                      logFirebaseEvent(
-                                          'GoogleButton_action_block');
-                                      await action_blocks.signinRoutine(
-                                        context,
-                                        pairCode: widget.pairCode != null &&
-                                                widget.pairCode != ''
-                                            ? widget.pairCode
-                                            : '',
-                                      );
-                                    }
-
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 40.0,
-                                    decoration: BoxDecoration(
-                                      color: const Color(0x1AFFFFFF),
-                                      borderRadius: BorderRadius.circular(30.0),
-                                    ),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/google.webp',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.cover,
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  3.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Continue with Google',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              if (isiOS)
-                                Padding(
+                              Builder(
+                                builder: (context) => Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 10.0, 0.0, 0.0),
+                                      0.0, 12.0, 0.0, 0.0),
                                   child: InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -874,30 +770,89 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
                                       logFirebaseEvent(
-                                          'SIGN_UP_PAGE_AppleButton_ON_TAP');
+                                          'SIGN_UP_PAGE_GoogleButton_ON_TAP');
+                                      var shouldSetState = false;
+                                      Function() navigate = () {};
                                       logFirebaseEvent(
-                                          'AppleButton_haptic_feedback');
+                                          'GoogleButton_haptic_feedback');
                                       HapticFeedback.lightImpact();
                                       logFirebaseEvent(
-                                          'AppleButton_update_app_state');
+                                          'GoogleButton_update_app_state');
                                       FFAppState().isProfileSet = false;
                                       FFAppState().pairID = '';
+                                      logFirebaseEvent('GoogleButton_auth');
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final user = await authManager
+                                          .signInWithGoogle(context);
+                                      if (user == null) {
+                                        return;
+                                      }
+                                      navigate = () => context.goNamedAuth(
+                                          'My_Profile', context.mounted);
                                       logFirebaseEvent(
-                                          'AppleButton_custom_action');
-                                      _model.authResponse =
-                                          await actions.appleSignin();
-                                      logFirebaseEvent(
-                                          'AppleButton_backend_call');
-                                      _model.foundUserRow2 =
+                                          'GoogleButton_backend_call');
+                                      _model.foundUserRow =
                                           await UsersTable().queryRows(
                                         queryFn: (q) => q.eq(
                                           'id',
-                                          _model.authResponse,
+                                          currentUserUid,
                                         ),
                                       );
-                                      if (_model.foundUserRow2!.isNotEmpty) {
+                                      shouldSetState = true;
+                                      if (_model.foundUserRow!.isNotEmpty) {
+                                        if (_model
+                                            .foundUserRow!.first.isDeleted) {
+                                          logFirebaseEvent('GoogleButton_auth');
+                                          GoRouter.of(context)
+                                              .prepareAuthEvent();
+                                          await authManager.signOut();
+                                          GoRouter.of(context)
+                                              .clearRedirectLocation();
+
+                                          navigate = () => context.goNamedAuth(
+                                              'Splash', context.mounted);
+                                          logFirebaseEvent(
+                                              'GoogleButton_alert_dialog');
+                                          await showDialog(
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return Dialog(
+                                                elevation: 0,
+                                                insetPadding: EdgeInsets.zero,
+                                                backgroundColor:
+                                                    Colors.transparent,
+                                                alignment: const AlignmentDirectional(
+                                                        0.0, -1.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                                child: WebViewAware(
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child:
+                                                        const AlertDialogWarningWidget(
+                                                      title: 'Warning',
+                                                      subtitle:
+                                                          'You don\'t have an account',
+                                                    ),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+
+                                          navigate();
+                                          if (shouldSetState) setState(() {});
+                                          return;
+                                        }
                                         logFirebaseEvent(
-                                            'AppleButton_action_block');
+                                            'GoogleButton_action_block');
                                         await action_blocks.authRoutine(
                                           context,
                                           pairCode: widget.pairCode != null &&
@@ -907,7 +862,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         );
                                       } else {
                                         logFirebaseEvent(
-                                            'AppleButton_action_block');
+                                            'GoogleButton_action_block');
                                         await action_blocks.signinRoutine(
                                           context,
                                           pairCode: widget.pairCode != null &&
@@ -917,7 +872,8 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                         );
                                       }
 
-                                      setState(() {});
+                                      navigate();
+                                      if (shouldSetState) setState(() {});
                                     },
                                     child: Container(
                                       width: double.infinity,
@@ -936,7 +892,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.asset(
-                                              'assets/images/apple.webp',
+                                              'assets/images/google.webp',
                                               width: 24.0,
                                               height: 24.0,
                                               fit: BoxFit.cover,
@@ -947,7 +903,7 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     3.0, 0.0, 0.0, 0.0),
                                             child: Text(
-                                              'Continue with Apple',
+                                              'Continue with Google',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium
@@ -964,6 +920,176 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                             ),
                                           ),
                                         ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              if (isiOS)
+                                Builder(
+                                  builder: (context) => Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        logFirebaseEvent(
+                                            'SIGN_UP_PAGE_AppleButton_ON_TAP');
+                                        var shouldSetState = false;
+                                        Function() navigate = () {};
+                                        logFirebaseEvent(
+                                            'AppleButton_haptic_feedback');
+                                        HapticFeedback.lightImpact();
+                                        logFirebaseEvent(
+                                            'AppleButton_update_app_state');
+                                        FFAppState().isProfileSet = false;
+                                        FFAppState().pairID = '';
+                                        logFirebaseEvent(
+                                            'AppleButton_custom_action');
+                                        _model.authResponse =
+                                            await actions.appleSignin();
+                                        shouldSetState = true;
+                                        logFirebaseEvent(
+                                            'AppleButton_backend_call');
+                                        _model.foundUserRow2 =
+                                            await UsersTable().queryRows(
+                                          queryFn: (q) => q.eq(
+                                            'id',
+                                            _model.authResponse,
+                                          ),
+                                        );
+                                        shouldSetState = true;
+                                        if (_model.foundUserRow2!.isNotEmpty) {
+                                          if (_model
+                                              .foundUserRow2!.first.isDeleted) {
+                                            logFirebaseEvent(
+                                                'AppleButton_auth');
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
+
+                                            navigate = () =>
+                                                context.goNamedAuth(
+                                                    'Splash', context.mounted);
+                                            logFirebaseEvent(
+                                                'AppleButton_alert_dialog');
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                              0.0, -1.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child:
+                                                          const AlertDialogWarningWidget(
+                                                        title: 'Warning',
+                                                        subtitle:
+                                                            'You don\'t have an account',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            navigate();
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
+                                            return;
+                                          }
+                                          logFirebaseEvent(
+                                              'AppleButton_action_block');
+                                          await action_blocks.authRoutine(
+                                            context,
+                                            pairCode: widget.pairCode != null &&
+                                                    widget.pairCode != ''
+                                                ? widget.pairCode
+                                                : '',
+                                          );
+                                        } else {
+                                          logFirebaseEvent(
+                                              'AppleButton_action_block');
+                                          await action_blocks.signinRoutine(
+                                            context,
+                                            pairCode: widget.pairCode != null &&
+                                                    widget.pairCode != ''
+                                                ? widget.pairCode
+                                                : '',
+                                          );
+                                        }
+
+                                        navigate();
+                                        if (shouldSetState) setState(() {});
+                                      },
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 40.0,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0x1AFFFFFF),
+                                          borderRadius:
+                                              BorderRadius.circular(30.0),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(8.0),
+                                              child: Image.asset(
+                                                'assets/images/apple.webp',
+                                                width: 24.0,
+                                                height: 24.0,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(3.0, 0.0, 0.0, 0.0),
+                                              child: Text(
+                                                'Continue with Apple',
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          fontSize: 11.0,
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   ),

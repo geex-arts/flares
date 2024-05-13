@@ -360,7 +360,7 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                                   'Sharemyinvitelink_share');
                                               await Share.share(
                                                 (String var1) {
-                                                  return '''Your partner has invited you to join Flares! Start exploring together, discover shared interests, and plan your next adventure.  Use the partner code: **$var1** to get started and let the journey of togetherness begin!''';
+                                                  return '''Hey ❤️ I've found an app called Flares. This app is designed for couples like us. I want to start exploring it together, discover new places, and plan our next adventure. 😉 Download at http://flaresapp.com/link then input my pairing code: $var1''';
                                                 }(widget.pairInvitationRow!.pairCode!),
                                                 sharePositionOrigin:
                                                     getWidgetBoundingBox(

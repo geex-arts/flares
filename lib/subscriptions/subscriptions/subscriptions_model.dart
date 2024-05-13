@@ -17,8 +17,6 @@ class SubscriptionsModel extends FlutterFlowModel<SubscriptionsWidget> {
   bool? monthlyResult;
   // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
   bool? annuallyResult;
-  // Stores action output result for [RevenueCat - Purchase] action in ContinueButton widget.
-  bool? lifetimeResult;
 
   @override
   void initState(BuildContext context) {

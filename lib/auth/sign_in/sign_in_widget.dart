@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -13,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'sign_in_model.dart';
 export 'sign_in_model.dart';
 
@@ -460,106 +462,181 @@ class _SignInWidgetState extends State<SignInWidget>
                                   ),
                                 ),
                               ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 26.0, 0.0, 0.0),
-                              child: wrapWithModel(
-                                model: _model.nextButtonModel,
-                                updateCallback: () => setState(() {}),
-                                child: PinkButtonWidget(
-                                  text: 'Next',
-                                  currentAction: () async {
-                                    logFirebaseEvent(
-                                        'SIGN_IN_PAGE_nextButton_CALLBACK');
-                                    logFirebaseEvent(
-                                        'nextButton_haptic_feedback');
-                                    HapticFeedback.lightImpact();
-                                    logFirebaseEvent(
-                                        'nextButton_validate_form');
-                                    if (_model.formKey.currentState == null ||
-                                        !_model.formKey.currentState!
-                                            .validate()) {
-                                      return;
-                                    }
-                                    if ((_model.emailFieldTextController
-                                                    .text ==
-                                                '') &&
-                                        (_model.passwordFieldTextController
-                                                    .text ==
-                                                '')) {
+                            Builder(
+                              builder: (context) => Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 26.0, 0.0, 0.0),
+                                child: wrapWithModel(
+                                  model: _model.nextButtonModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: PinkButtonWidget(
+                                    text: 'Next',
+                                    currentAction: () async {
                                       logFirebaseEvent(
-                                          'nextButton_update_page_state');
-                                      setState(() {
-                                        _model.emptyFields = 2;
-                                      });
+                                          'SIGN_IN_PAGE_nextButton_CALLBACK');
+                                      var shouldSetState = false;
+                                      Function() navigate = () {};
                                       logFirebaseEvent(
-                                          'nextButton_update_page_state');
-                                      setState(() {
-                                        _model.passLength = false;
-                                      });
-                                      return;
-                                    } else {
-                                      if (_model.emailFieldTextController
-                                                  .text ==
-                                              '') {
+                                          'nextButton_haptic_feedback');
+                                      HapticFeedback.lightImpact();
+                                      logFirebaseEvent(
+                                          'nextButton_validate_form');
+                                      if (_model.formKey.currentState == null ||
+                                          !_model.formKey.currentState!
+                                              .validate()) {
+                                        return;
+                                      }
+                                      if ((_model.emailFieldTextController
+                                                      .text ==
+                                                  '') &&
+                                          (_model.passwordFieldTextController
+                                                      .text ==
+                                                  '')) {
                                         logFirebaseEvent(
                                             'nextButton_update_page_state');
                                         setState(() {
-                                          _model.emptyFields = 0;
+                                          _model.emptyFields = 2;
                                         });
                                         logFirebaseEvent(
                                             'nextButton_update_page_state');
                                         setState(() {
                                           _model.passLength = false;
                                         });
+                                        if (shouldSetState) setState(() {});
                                         return;
                                       } else {
-                                        if (_model.passwordFieldTextController
+                                        if (_model.emailFieldTextController
                                                     .text ==
                                                 '') {
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
                                           setState(() {
-                                            _model.emptyFields = 1;
+                                            _model.emptyFields = 0;
                                           });
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
                                           setState(() {
                                             _model.passLength = false;
                                           });
+                                          if (shouldSetState) setState(() {});
                                           return;
+                                        } else {
+                                          if (_model.passwordFieldTextController
+                                                      .text ==
+                                                  '') {
+                                            logFirebaseEvent(
+                                                'nextButton_update_page_state');
+                                            setState(() {
+                                              _model.emptyFields = 1;
+                                            });
+                                            logFirebaseEvent(
+                                                'nextButton_update_page_state');
+                                            setState(() {
+                                              _model.passLength = false;
+                                            });
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
+                                            return;
+                                          }
                                         }
+
+                                        logFirebaseEvent(
+                                            'nextButton_update_page_state');
+                                        setState(() {
+                                          _model.emptyFields = null;
+                                        });
                                       }
 
+                                      logFirebaseEvent('nextButton_auth');
+                                      GoRouter.of(context).prepareAuthEvent();
+
+                                      final user =
+                                          await authManager.signInWithEmail(
+                                        context,
+                                        _model.emailFieldTextController.text,
+                                        _model.passwordFieldTextController.text,
+                                      );
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      navigate = () => context.goNamedAuth(
+                                          'My_Profile', context.mounted);
                                       logFirebaseEvent(
-                                          'nextButton_update_page_state');
-                                      setState(() {
-                                        _model.emptyFields = null;
-                                      });
-                                    }
+                                          'nextButton_backend_call');
+                                      _model.currentUserRow =
+                                          await UsersTable().queryRows(
+                                        queryFn: (q) => q.eq(
+                                          'id',
+                                          currentUserUid,
+                                        ),
+                                      );
+                                      shouldSetState = true;
+                                      if (_model
+                                          .currentUserRow!.first.isDeleted) {
+                                        logFirebaseEvent('nextButton_auth');
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await authManager.signOut();
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
 
-                                    logFirebaseEvent('nextButton_auth');
-                                    GoRouter.of(context).prepareAuthEvent();
+                                        navigate = () => context.goNamedAuth(
+                                            'Splash', context.mounted);
+                                        logFirebaseEvent(
+                                            'nextButton_alert_dialog');
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment: const AlignmentDirectional(
+                                                      0.0, -1.0)
+                                                  .resolve(Directionality.of(
+                                                      context)),
+                                              child: WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child:
+                                                      const AlertDialogWarningWidget(
+                                                    title: 'Warning',
+                                                    subtitle:
+                                                        'You don\'t have an account',
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
 
-                                    final user =
-                                        await authManager.signInWithEmail(
-                                      context,
-                                      _model.emailFieldTextController.text,
-                                      _model.passwordFieldTextController.text,
-                                    );
-                                    if (user == null) {
-                                      return;
-                                    }
+                                        navigate();
+                                        if (shouldSetState) setState(() {});
+                                        return;
+                                      }
+                                      logFirebaseEvent(
+                                          'nextButton_action_block');
+                                      await action_blocks.authRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
 
-                                    logFirebaseEvent('nextButton_action_block');
-                                    await action_blocks.authRoutine(
-                                      context,
-                                      pairCode: widget.pairCode != null &&
-                                              widget.pairCode != ''
-                                          ? widget.pairCode
-                                          : '',
-                                    );
-                                  },
+                                      navigate();
+                                      if (shouldSetState) setState(() {});
+                                    },
+                                  ),
                                 ),
                               ),
                             ),
@@ -623,103 +700,164 @@ class _SignInWidgetState extends State<SignInWidget>
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 12.0, 0.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'SIGN_IN_PAGE_GoogleButton_ON_TAP');
-                                  logFirebaseEvent(
-                                      'GoogleButton_haptic_feedback');
-                                  HapticFeedback.lightImpact();
-                                  logFirebaseEvent('GoogleButton_auth');
-                                  GoRouter.of(context).prepareAuthEvent();
-                                  final user = await authManager
-                                      .signInWithGoogle(context);
-                                  if (user == null) {
-                                    return;
-                                  }
-                                  logFirebaseEvent('GoogleButton_backend_call');
-                                  _model.foundUserRow =
-                                      await UsersTable().queryRows(
-                                    queryFn: (q) => q.eq(
-                                      'id',
-                                      currentUserUid,
-                                    ),
-                                  );
-                                  if (_model.foundUserRow!.isNotEmpty) {
+                            Builder(
+                              builder: (context) => Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 12.0, 0.0, 0.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
                                     logFirebaseEvent(
-                                        'GoogleButton_action_block');
-                                    await action_blocks.authRoutine(
-                                      context,
-                                      pairCode: widget.pairCode != null &&
-                                              widget.pairCode != ''
-                                          ? widget.pairCode
-                                          : '',
+                                        'SIGN_IN_PAGE_GoogleButton_ON_TAP');
+                                    var shouldSetState = false;
+                                    Function() navigate = () {};
+                                    logFirebaseEvent(
+                                        'GoogleButton_haptic_feedback');
+                                    HapticFeedback.lightImpact();
+                                    logFirebaseEvent('GoogleButton_auth');
+                                    GoRouter.of(context).prepareAuthEvent();
+                                    final user = await authManager
+                                        .signInWithGoogle(context);
+                                    if (user == null) {
+                                      return;
+                                    }
+                                    navigate = () => context.goNamedAuth(
+                                        'My_Profile', context.mounted);
+                                    logFirebaseEvent(
+                                        'GoogleButton_backend_call');
+                                    _model.foundUserRow =
+                                        await UsersTable().queryRows(
+                                      queryFn: (q) => q.eq(
+                                        'id',
+                                        currentUserUid,
+                                      ),
                                     );
-                                  } else {
-                                    logFirebaseEvent(
-                                        'GoogleButton_update_app_state');
-                                    FFAppState().isProfileSet = false;
-                                    FFAppState().pairID = '';
-                                    logFirebaseEvent(
-                                        'GoogleButton_action_block');
-                                    await action_blocks.signinRoutine(
-                                      context,
-                                      pairCode: widget.pairCode != null &&
-                                              widget.pairCode != ''
-                                          ? widget.pairCode
-                                          : '',
-                                    );
-                                  }
+                                    shouldSetState = true;
+                                    if (_model.foundUserRow!.isNotEmpty) {
+                                      if (_model
+                                          .foundUserRow!.first.isDeleted) {
+                                        logFirebaseEvent('GoogleButton_auth');
+                                        GoRouter.of(context).prepareAuthEvent();
+                                        await authManager.signOut();
+                                        GoRouter.of(context)
+                                            .clearRedirectLocation();
 
-                                  setState(() {});
-                                },
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 40.0,
-                                  decoration: BoxDecoration(
-                                    color: const Color(0x1AFFFFFF),
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/google.webp',
-                                          width: 24.0,
-                                          height: 24.0,
-                                          fit: BoxFit.cover,
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            3.0, 0.0, 0.0, 0.0),
-                                        child: Text(
-                                          'Continue with Google',
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Nuckle',
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                fontSize: 11.0,
-                                                letterSpacing: 0.0,
-                                                useGoogleFonts: false,
+                                        navigate = () => context.goNamedAuth(
+                                            'Splash', context.mounted);
+                                        logFirebaseEvent(
+                                            'GoogleButton_alert_dialog');
+                                        await showDialog(
+                                          context: context,
+                                          builder: (dialogContext) {
+                                            return Dialog(
+                                              elevation: 0,
+                                              insetPadding: EdgeInsets.zero,
+                                              backgroundColor:
+                                                  Colors.transparent,
+                                              alignment: const AlignmentDirectional(
+                                                      0.0, -1.0)
+                                                  .resolve(Directionality.of(
+                                                      context)),
+                                              child: WebViewAware(
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child:
+                                                      const AlertDialogWarningWidget(
+                                                    title: 'Warning',
+                                                    subtitle:
+                                                        'You don\'t have an account',
+                                                  ),
+                                                ),
                                               ),
+                                            );
+                                          },
+                                        ).then((value) => setState(() {}));
+
+                                        navigate();
+                                        if (shouldSetState) setState(() {});
+                                        return;
+                                      }
+                                      logFirebaseEvent(
+                                          'GoogleButton_action_block');
+                                      await action_blocks.authRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
+                                    } else {
+                                      logFirebaseEvent(
+                                          'GoogleButton_update_app_state');
+                                      FFAppState().isProfileSet = false;
+                                      FFAppState().pairID = '';
+                                      logFirebaseEvent(
+                                          'GoogleButton_action_block');
+                                      await action_blocks.signinRoutine(
+                                        context,
+                                        pairCode: widget.pairCode != null &&
+                                                widget.pairCode != ''
+                                            ? widget.pairCode
+                                            : '',
+                                      );
+                                    }
+
+                                    navigate();
+                                    if (shouldSetState) setState(() {});
+                                  },
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: 40.0,
+                                    decoration: BoxDecoration(
+                                      color: const Color(0x1AFFFFFF),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/google.webp',
+                                            width: 24.0,
+                                            height: 24.0,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
-                                      ),
-                                    ],
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  3.0, 0.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Continue with Google',
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  fontSize: 11.0,
+                                                  letterSpacing: 0.0,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -735,88 +873,155 @@ class _SignInWidgetState extends State<SignInWidget>
                                     color: const Color(0x1AFFFFFF),
                                     borderRadius: BorderRadius.circular(30.0),
                                   ),
-                                  child: InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      logFirebaseEvent(
-                                          'SIGN_IN_PAGE_Row_ifrmzuny_ON_TAP');
-                                      logFirebaseEvent('Row_haptic_feedback');
-                                      HapticFeedback.lightImpact();
-                                      logFirebaseEvent('Row_custom_action');
-                                      _model.authResponse =
-                                          await actions.appleSignin();
-                                      logFirebaseEvent('Row_backend_call');
-                                      _model.foundUserRow2 =
-                                          await UsersTable().queryRows(
-                                        queryFn: (q) => q.eq(
-                                          'id',
-                                          _model.authResponse,
-                                        ),
-                                      );
-                                      if (_model.foundUserRow2!.isNotEmpty) {
-                                        logFirebaseEvent('Row_action_block');
-                                        await action_blocks.authRoutine(
-                                          context,
-                                          pairCode: widget.pairCode != null &&
-                                                  widget.pairCode != ''
-                                              ? widget.pairCode
-                                              : '',
-                                        );
-                                      } else {
+                                  child: Builder(
+                                    builder: (context) => InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
                                         logFirebaseEvent(
-                                            'Row_update_app_state');
-                                        FFAppState().isProfileSet = false;
-                                        FFAppState().pairID = '';
-                                        logFirebaseEvent('Row_action_block');
-                                        await action_blocks.signinRoutine(
-                                          context,
-                                          pairCode: widget.pairCode != null &&
-                                                  widget.pairCode != ''
-                                              ? widget.pairCode
-                                              : '',
+                                            'SIGN_IN_PAGE_Row_ifrmzuny_ON_TAP');
+                                        var shouldSetState = false;
+                                        Function() navigate = () {};
+                                        logFirebaseEvent('Row_haptic_feedback');
+                                        HapticFeedback.lightImpact();
+                                        logFirebaseEvent('Row_custom_action');
+                                        _model.authResponse =
+                                            await actions.appleSignin();
+                                        shouldSetState = true;
+                                        logFirebaseEvent('Row_backend_call');
+                                        _model.foundUserRow2 =
+                                            await UsersTable().queryRows(
+                                          queryFn: (q) => q.eq(
+                                            'id',
+                                            _model.authResponse,
+                                          ),
                                         );
-                                      }
+                                        shouldSetState = true;
+                                        if (_model.foundUserRow2!.isNotEmpty) {
+                                          if (_model
+                                              .foundUserRow2!.first.isDeleted) {
+                                            logFirebaseEvent('Row_auth');
+                                            GoRouter.of(context)
+                                                .prepareAuthEvent();
+                                            await authManager.signOut();
+                                            GoRouter.of(context)
+                                                .clearRedirectLocation();
 
-                                      setState(() {});
-                                    },
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            'assets/images/apple.webp',
-                                            width: 24.0,
-                                            height: 24.0,
-                                            fit: BoxFit.cover,
+                                            navigate = () =>
+                                                context.goNamedAuth(
+                                                    'Splash', context.mounted);
+                                            logFirebaseEvent(
+                                                'Row_alert_dialog');
+                                            await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  elevation: 0,
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor:
+                                                      Colors.transparent,
+                                                  alignment:
+                                                      const AlignmentDirectional(
+                                                              0.0, -1.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  child: WebViewAware(
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child:
+                                                          const AlertDialogWarningWidget(
+                                                        title: 'Warning',
+                                                        subtitle:
+                                                            'You don\'t have an account',
+                                                      ),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            navigate();
+                                            if (shouldSetState) {
+                                              setState(() {});
+                                            }
+                                            return;
+                                          }
+                                          logFirebaseEvent('Row_action_block');
+                                          await action_blocks.authRoutine(
+                                            context,
+                                            pairCode: widget.pairCode != null &&
+                                                    widget.pairCode != ''
+                                                ? widget.pairCode
+                                                : '',
+                                          );
+                                        } else {
+                                          logFirebaseEvent(
+                                              'Row_update_app_state');
+                                          FFAppState().isProfileSet = false;
+                                          FFAppState().pairID = '';
+                                          logFirebaseEvent('Row_action_block');
+                                          await action_blocks.signinRoutine(
+                                            context,
+                                            pairCode: widget.pairCode != null &&
+                                                    widget.pairCode != ''
+                                                ? widget.pairCode
+                                                : '',
+                                          );
+                                        }
+
+                                        navigate();
+                                        if (shouldSetState) setState(() {});
+                                      },
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(8.0),
+                                            child: Image.asset(
+                                              'assets/images/apple.webp',
+                                              width: 24.0,
+                                              height: 24.0,
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  3.0, 0.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Continue with Apple',
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  fontSize: 11.0,
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                ),
+                                          Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    3.0, 0.0, 0.0, 0.0),
+                                            child: Text(
+                                              'Continue with Apple',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        fontSize: 11.0,
+                                                        letterSpacing: 0.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

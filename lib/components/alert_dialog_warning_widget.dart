@@ -95,6 +95,7 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
                             const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 0.0, 0.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
@@ -112,27 +113,26 @@ class _AlertDialogWarningWidgetState extends State<AlertDialogWarningWidget> {
                                     useGoogleFonts: false,
                                   ),
                             ),
-                            Flexible(
-                              child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 12.0, 0.0, 0.0),
-                                child: Text(
-                                  valueOrDefault<String>(
-                                    widget.subtitle,
-                                    'Please sign in from the login screen',
+                            if (widget.subtitle != null &&
+                                widget.subtitle != '')
+                              Flexible(
+                                child: Padding(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 12.0, 0.0, 0.0),
+                                  child: Text(
+                                    widget.subtitle!,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x98FFFFFF),
+                                          fontSize: 11.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Nuckle',
-                                        color: const Color(0x98FFFFFF),
-                                        fontSize: 11.0,
-                                        letterSpacing: 0.0,
-                                        useGoogleFonts: false,
-                                      ),
                                 ),
                               ),
-                            ),
                           ],
                         ),
                       ),

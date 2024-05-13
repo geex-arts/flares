@@ -125,6 +125,30 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
               ),
               child: Stack(
                 children: [
+                  if ((widget.selectedStories != null) ||
+                      (widget.selectedArticle != null) ||
+                      (widget.aiAssistantLink != null &&
+                          widget.aiAssistantLink != ''))
+                    Padding(
+                      padding:
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 47.0, 0.0, 0.0),
+                      child: FlutterFlowWebView(
+                        content: () {
+                          if (widget.selectedStories != null) {
+                            return widget.selectedStories!.link!;
+                          } else if (widget.aiAssistantLink != null &&
+                              widget.aiAssistantLink != '') {
+                            return widget.aiAssistantLink!;
+                          } else {
+                            return widget.selectedArticle!.link!;
+                          }
+                        }(),
+                        bypass: true,
+                        height: MediaQuery.sizeOf(context).height * 1.0,
+                        verticalScroll: false,
+                        horizontalScroll: false,
+                      ),
+                    ),
                   if (widget.aiAssistantLink == null ||
                       widget.aiAssistantLink == '')
                     Padding(
@@ -312,30 +336,6 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
                             ),
                           ],
                         ),
-                      ),
-                    ),
-                  if ((widget.selectedStories != null) ||
-                      (widget.selectedArticle != null) ||
-                      (widget.aiAssistantLink != null &&
-                          widget.aiAssistantLink != ''))
-                    Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 53.0, 0.0, 0.0),
-                      child: FlutterFlowWebView(
-                        content: () {
-                          if (widget.selectedStories != null) {
-                            return widget.selectedStories!.link!;
-                          } else if (widget.aiAssistantLink != null &&
-                              widget.aiAssistantLink != '') {
-                            return widget.aiAssistantLink!;
-                          } else {
-                            return widget.selectedArticle!.link!;
-                          }
-                        }(),
-                        bypass: true,
-                        height: MediaQuery.sizeOf(context).height * 1.0,
-                        verticalScroll: false,
-                        horizontalScroll: false,
                       ),
                     ),
                 ],
