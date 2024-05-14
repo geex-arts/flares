@@ -12,6 +12,7 @@ import '/flutter_flow/upload_data.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:async';
 import 'dart:ui';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -915,11 +916,19 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   child: Builder(
                                                     builder: (context) {
                                                       final currentImage =
-                                                          getJsonField(
-                                                        containerParseSiteResponse
-                                                            .jsonBody,
-                                                        r'''$.images''',
-                                                      ).toList();
+                                                          functions
+                                                              .uniqueListElements(
+                                                                  (getJsonField(
+                                                                containerParseSiteResponse
+                                                                    .jsonBody,
+                                                                r'''$.images''',
+                                                                true,
+                                                              ) as List)
+                                                                      .map<String>(
+                                                                          (s) =>
+                                                                              s.toString())
+                                                                      .toList())
+                                                              .toList();
                                                       return ListView.separated(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -940,7 +949,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                           return Visibility(
                                                             visible:
                                                                 currentImageItem !=
-                                                                    null,
+                                                                        '',
                                                             child: Container(
                                                               decoration:
                                                                   const BoxDecoration(),
@@ -955,8 +964,8 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                               8.0),
                                                                       child: Image
                                                                           .network(
-                                                                        currentImageItem
-                                                                            .toString(),
+                                                                        functions
+                                                                            .stringToImagePath(currentImageItem),
                                                                         width:
                                                                             119.0,
                                                                         height:
@@ -1082,7 +1091,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                             logFirebaseEvent('ADD_FROM_BROWSER_ConditionalBuilder_3l2r');
                                                                             logFirebaseEvent('ConditionalBuilder_update_page_state');
                                                                             setState(() {
-                                                                              _model.selectedImage = currentImageItem.toString();
+                                                                              _model.selectedImage = currentImageItem;
                                                                             });
                                                                           },
                                                                           child:
