@@ -14,6 +14,8 @@ class InvitePartnerOnbModel extends FlutterFlowModel<InvitePartnerOnbWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Custom Action - appTrackingTransparencyRequest] action in Invite_Partner_Onb widget.
+  bool? result;
   // Model for Sharemyinvitelink.
   late PinkButtonModel sharemyinvitelinkModel;
   // State field(s) for SendCodeField widget.
