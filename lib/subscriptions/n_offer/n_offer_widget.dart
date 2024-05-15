@@ -6,9 +6,6 @@ import 'dart:ui';
 import '/flutter_flow/revenue_cat_util.dart' as revenue_cat;
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'n_offer_model.dart';
 export 'n_offer_model.dart';
 
@@ -46,7 +43,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: AlignmentDirectional(0.0, 0.0),
+      alignment: const AlignmentDirectional(0.0, 0.0),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32.0),
         child: BackdropFilter(
@@ -55,19 +52,19 @@ class _NOfferWidgetState extends State<NOfferWidget> {
             sigmaY: 70.0,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
             child: Container(
               decoration: BoxDecoration(
-                color: Color(0x16F2F1F3),
+                color: const Color(0x16F2F1F3),
                 borderRadius: BorderRadius.circular(32.0),
               ),
               child: Padding(
-                padding: EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(20.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(1.0, -1.0),
+                      alignment: const AlignmentDirectional(1.0, -1.0),
                       child: InkWell(
                         splashColor: Colors.transparent,
                         focusColor: Colors.transparent,
@@ -78,7 +75,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                           logFirebaseEvent('Icon_bottom_sheet');
                           Navigator.pop(context);
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.close,
                           color: Color(0x32FFFFFF),
                           size: 20.0,
@@ -87,13 +84,13 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 4.0, 0.0, 0.0),
                       child: Text(
                         'Just for you',
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'Nuckle',
-                              color: Color(0x99FFFFFF),
+                              color: const Color(0x99FFFFFF),
                               letterSpacing: 0.0,
                               useGoogleFonts: false,
                             ),
@@ -101,7 +98,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: Text(
                         'Special Offer',
                         textAlign: TextAlign.center,
@@ -117,22 +114,22 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: Container(
                         width: 163.0,
                         height: 85.0,
                         decoration: BoxDecoration(
-                          color: Color(0x19FFFFFF),
+                          color: const Color(0x19FFFFFF),
                           borderRadius: BorderRadius.circular(20.0),
                           border: Border.all(
-                            color: Color(0x32FFFFFF),
+                            color: const Color(0x32FFFFFF),
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               38.0, 26.0, 38.0, 24.0),
                           child: Image.asset(
-                            'assets/images/offerimg.webp',
+                            'assets/images/Group_6345006.png',
                             width: 86.0,
                             height: 35.0,
                             fit: BoxFit.contain,
@@ -142,7 +139,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 21.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 21.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -169,7 +166,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                               milliSecond: false,
                             ),
                             controller: _model.timerController,
-                            updateStateInterval: Duration(milliseconds: 1000),
+                            updateStateInterval: const Duration(milliseconds: 1000),
                             onChanged: (value, displayTime, shouldUpdate) {
                               _model.timerMilliseconds = value;
                               _model.timerValue = displayTime;
@@ -180,7 +177,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                                 .headlineSmall
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: Color(0xFFFF2C96),
+                                  color: const Color(0xFFFF2C96),
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
@@ -193,7 +190,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                                 .bodyMedium
                                 .override(
                                   fontFamily: 'Nuckle',
-                                  color: Color(0xFFFF2C96),
+                                  color: const Color(0xFFFF2C96),
                                   fontSize: 12.0,
                                   letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
@@ -205,72 +202,61 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 58.0,
+                        height: 80.0,
                         decoration: BoxDecoration(
-                          color: Color(0x19FFFFFF),
+                          color: const Color(0x19FFFFFF),
                           borderRadius: BorderRadius.circular(14.0),
                           border: Border.all(
-                            color: Color(0x32FFFFFF),
+                            color: const Color(0x32FFFFFF),
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.all(16.0),
+                          padding: const EdgeInsets.all(16.0),
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'Lifetime Acces',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: Color(0x98FFFFFF),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    Text(
-                                      '\$29.99',
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Lifetime Acces',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: Colors.white,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 0.0),
+                                    child: Text(
+                                      '1 time for 2 users',
+                                      textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: Color(0x99FFFFFF),
-                                            fontSize: 16.0,
+                                            color: Colors.white,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
-                                            decoration:
-                                                TextDecoration.lineThrough,
                                             useGoogleFonts: false,
                                           ),
                                     ),
-                                    Align(
-                                      alignment: AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: 48.0,
-                                        height: 1.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                               Text(
-                                '\$14.99',
+                                '\$124.99',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
@@ -289,7 +275,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                       child: wrapWithModel(
                         model: _model.continueBtnModel,
                         updateCallback: () => setState(() {}),
