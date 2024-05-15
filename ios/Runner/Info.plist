@@ -69,7 +69,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-    <string>This app requires access to the photo library to upload your profile photo.</string>
+	<string>Flares requires access to the photo library to share pictures with your partner.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>PermissionGroupNotification</key>

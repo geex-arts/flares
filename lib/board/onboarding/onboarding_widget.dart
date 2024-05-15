@@ -63,177 +63,6 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
           ),
         ],
       ),
-      'imageOnPageLoadAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: const Offset(1.2, 1.2),
-            end: const Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1600.0.ms,
-            begin: const Offset(0.0, 100.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation3': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 2400.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-        ],
-      ),
-      'circleImageOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          FadeEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: 0.0,
-            end: 1.0,
-          ),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1200.0.ms,
-            begin: const Offset(1.2, 1.2),
-            end: const Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation1': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(-200.0, 0.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'containerOnPageLoadAnimation2': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(200.0, 0.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'iconOnPageLoadAnimation': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 2400.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(1.0, 1.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation4': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 2000.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(1.0, 1.0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 2000.0.ms,
-            begin: const Offset(-64.0, -128.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation5': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1600.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(1.0, 1.0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1600.0.ms,
-            begin: const Offset(128.0, -128.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
-      'imageOnPageLoadAnimation6': AnimationInfo(
-        trigger: AnimationTrigger.onPageLoad,
-        effectsBuilder: () => [
-          VisibilityEffect(duration: 1.ms),
-          ScaleEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(2.0, 2.0),
-            end: const Offset(1.0, 1.0),
-          ),
-          MoveEffect(
-            curve: Curves.easeInOut,
-            delay: 0.0.ms,
-            duration: 1800.0.ms,
-            begin: const Offset(128.0, 128.0),
-            end: const Offset(0.0, 0.0),
-          ),
-        ],
-      ),
     });
   }
 
@@ -373,7 +202,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                 Expanded(
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
                     child: SizedBox(
                       width: double.infinity,
                       child: Stack(
@@ -403,16 +232,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         Align(
                                           alignment:
                                               const AlignmentDirectional(0.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 45.0, 0.0, 0.0),
-                                            child: Image.asset(
-                                              'assets/images/logo.webp',
-                                              width: 61.0,
-                                              height: 35.0,
-                                              fit: BoxFit.cover,
-                                            ),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Padding(
@@ -420,7 +244,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'Wishlist',
+                                            'Find something you\nboth want to do\ntogether',
+                                            textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
@@ -431,344 +256,24 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 11.0, 0.0, 0.0),
-                                          child: Text(
-                                            'You can find the pairing code in \nthe message your partner sent \nyou',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 16.0, 0.0, 0.0),
-                                              child: Image.asset(
-                                                'assets/images/board1.webp',
-                                                fit: BoxFit.contain,
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'imageOnPageLoadAnimation1']!),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          13.0, 0.0, 17.0, 0.0),
-                                      child: Image.asset(
-                                        'assets/images/field.webp',
-                                        width: double.infinity,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 45.0, 0.0, 0.0),
-                                            child: Image.asset(
-                                              'assets/images/logo.webp',
-                                              width: 61.0,
-                                              height: 35.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 16.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Wishlist',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineSmall
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 11.0, 0.0, 0.0),
-                                          child: Text(
-                                            'You can find the pairing code in \nthe message your partner sent \nyou',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
-                                          ),
-                                        ),
-                                        Expanded(
-                                          child: Align(
-                                            alignment:
-                                                const AlignmentDirectional(0.0, -1.0),
-                                            child: Padding(
-                                              padding: const EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 16.0, 0.0, 0.0),
-                                              child: Image.asset(
-                                                'assets/images/board2.webp',
-                                                fit: BoxFit.contain,
-                                              ).animateOnPageLoad(animationsMap[
-                                                  'imageOnPageLoadAnimation2']!),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                                Stack(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          13.0, 0.0, 17.0, 0.0),
-                                      child: Image.asset(
-                                        'assets/images/field.webp',
-                                        width: double.infinity,
-                                        fit: BoxFit.contain,
-                                      ),
-                                    ),
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 45.0, 0.0, 0.0),
-                                            child: Image.asset(
-                                              'assets/images/logo.webp',
-                                              width: 61.0,
-                                              height: 35.0,
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 16.0, 0.0, 0.0),
-                                          child: Text(
-                                            'Wishlist',
-                                            style: FlutterFlowTheme.of(context)
-                                                .headlineSmall
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .info,
-                                                  letterSpacing: 0.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 8.0, 0.0, 0.0),
-                                          child: Text(
-                                            'You can find the pairing code in \nthe message your partner sent \nyou',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
+                                                  lineHeight: 1.2,
                                                 ),
                                           ),
                                         ),
                                         const Spacer(),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
-                                          child: SizedBox(
-                                            width: double.infinity,
-                                            height: 130.0,
-                                            child: Stack(
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Image.asset(
-                                                    'assets/images/vinie.webp',
-                                                    width: double.infinity,
-                                                    fit: BoxFit.cover,
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'imageOnPageLoadAnimation3']!),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Container(
-                                                    width: 134.0,
-                                                    height: 134.0,
-                                                    clipBehavior:
-                                                        Clip.antiAlias,
-                                                    decoration: const BoxDecoration(
-                                                      shape: BoxShape.circle,
-                                                    ),
-                                                    child: Image.asset(
-                                                      'assets/images/Profile.webp',
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ).animateOnPageLoad(animationsMap[
-                                                      'circleImageOnPageLoadAnimation']!),
-                                                ),
-                                                Align(
-                                                  alignment:
-                                                      const AlignmentDirectional(
-                                                          0.0, 0.0),
-                                                  child: Row(
-                                                    mainAxisSize:
-                                                        MainAxisSize.min,
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .spaceBetween,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    0.0,
-                                                                    106.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 34.0,
-                                                          height: 34.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.asset(
-                                                                'assets/images/prof1.webp',
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100.0),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              width: 1.0,
-                                                            ),
-                                                          ),
-                                                        ).animateOnPageLoad(
-                                                            animationsMap[
-                                                                'containerOnPageLoadAnimation1']!),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            const EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    106.0,
-                                                                    0.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Container(
-                                                          width: 34.0,
-                                                          height: 34.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.asset(
-                                                                'assets/images/prof2.webp',
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        100.0),
-                                                            border: Border.all(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .primaryText,
-                                                              width: 1.0,
-                                                            ),
-                                                          ),
-                                                        ).animateOnPageLoad(
-                                                            animationsMap[
-                                                                'containerOnPageLoadAnimation2']!),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        Align(
-                                          alignment:
-                                              const AlignmentDirectional(0.0, 1.0),
+                                        Expanded(
+                                          flex: 6,
                                           child: Padding(
                                             padding:
                                                 const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 20.0, 0.0, 0.0),
-                                            child: const Icon(
-                                              FFIcons.klike,
-                                              color: Color(0xFFFF2C96),
-                                              size: 22.0,
-                                            ).animateOnPageLoad(animationsMap[
-                                                'iconOnPageLoadAnimation']!),
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Image.asset(
+                                              'assets/images/fra3.png',
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
-                                        const Spacer(flex: 3),
+                                        const Spacer(),
                                       ],
                                     ),
                                   ],
@@ -790,16 +295,11 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                         Align(
                                           alignment:
                                               const AlignmentDirectional(0.0, -1.0),
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 45.0, 0.0, 0.0),
-                                            child: Image.asset(
-                                              'assets/images/logo.webp',
-                                              width: 61.0,
-                                              height: 35.0,
-                                              fit: BoxFit.cover,
-                                            ),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
                                           ),
                                         ),
                                         Padding(
@@ -807,7 +307,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                               const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 16.0, 0.0, 0.0),
                                           child: Text(
-                                            'Wishlist',
+                                            'Discover New Ideas\nfrom 1000+ Couples',
+                                            textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)
                                                 .headlineSmall
                                                 .override(
@@ -818,101 +319,349 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                                                   letterSpacing: 0.0,
                                                   fontWeight: FontWeight.bold,
                                                   useGoogleFonts: false,
+                                                  lineHeight: 1.2,
                                                 ),
                                           ),
                                         ),
                                         Padding(
                                           padding:
                                               const EdgeInsetsDirectional.fromSTEB(
-                                                  0.0, 11.0, 0.0, 0.0),
-                                          child: Text(
-                                            'You can find the pairing code in \nthe message your partner sent \nyou',
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelLarge
-                                                .override(
-                                                  fontFamily: 'Nuckle',
-                                                  color: const Color(0x9AFFFFFF),
-                                                  letterSpacing: 0.0,
-                                                  useGoogleFonts: false,
-                                                  lineHeight: 1.4,
-                                                ),
+                                                  36.0, 42.0, 36.0, 0.0),
+                                          child: Image.asset(
+                                            'assets/images/fra6.png',
+                                            fit: BoxFit.contain,
                                           ),
                                         ),
-                                        Flexible(
-                                          child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    40.0, 24.0, 40.0, 0.0),
-                                            child: Container(
-                                              height: 360.0,
-                                              decoration: const BoxDecoration(),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  Expanded(
-                                                    flex: 2,
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: Image.asset(
-                                                        'assets/images/Mask_4.webp',
-                                                        height: double.infinity,
-                                                        fit: BoxFit.cover,
-                                                      ),
-                                                    ).animateOnPageLoad(
-                                                        animationsMap[
-                                                            'imageOnPageLoadAnimation4']!),
-                                                  ),
-                                                  Expanded(
-                                                    flex: 1,
-                                                    child: Column(
-                                                      mainAxisSize:
-                                                          MainAxisSize.min,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .center,
-                                                      children: [
-                                                        Expanded(
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Image.asset(
-                                                              'assets/images/box4.webp',
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ).animateOnPageLoad(
-                                                              animationsMap[
-                                                                  'imageOnPageLoadAnimation5']!),
-                                                        ),
-                                                        Expanded(
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        8.0),
-                                                            child: Image.asset(
-                                                              'assets/images/box3.webp',
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ).animateOnPageLoad(
-                                                              animationsMap[
-                                                                  'imageOnPageLoadAnimation6']!),
-                                                        ),
-                                                      ].divide(const SizedBox(
-                                                          height: 10.0)),
-                                                    ),
-                                                  ),
-                                                ].divide(const SizedBox(width: 10.0)),
+                                        Expanded(
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 44.0, 16.0, 0.0),
+                                              child: Image.asset(
+                                                'assets/images/fra4.png',
+                                                fit: BoxFit.contain,
                                               ),
                                             ),
                                           ),
                                         ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          13.0, 0.0, 17.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/field.webp',
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Tips and advice from\nExperts',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.2,
+                                                ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          flex: 4,
+                                          child: Image.asset(
+                                            'assets/images/fra5.png',
+                                            height: 308.0,
+                                            fit: BoxFit.fitHeight,
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          13.0, 0.0, 17.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/field.webp',
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Text(
+                                            'All your dating ideas\nin one place ',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.2,
+                                                ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          flex: 5,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Image.asset(
+                                              'assets/images/fra2.png',
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          13.0, 0.0, 17.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/field.webp',
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Plan fun days with \nyour partner',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.2,
+                                                ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          flex: 4,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Image.asset(
+                                              'assets/images/Frame_2087326099.png',
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          13.0, 0.0, 17.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/field.webp',
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Stay connected to\nyour partner feelings',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.2,
+                                                ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          flex: 8,
+                                          child: Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 0.0, 16.0, 0.0),
+                                            child: Image.asset(
+                                              'assets/images/fra9.png',
+                                              fit: BoxFit.fitHeight,
+                                            ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Stack(
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          13.0, 0.0, 17.0, 0.0),
+                                      child: Image.asset(
+                                        'assets/images/field.webp',
+                                        width: double.infinity,
+                                        fit: BoxFit.contain,
+                                      ),
+                                    ),
+                                    Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Align(
+                                          alignment:
+                                              const AlignmentDirectional(0.0, -1.0),
+                                          child: Image.asset(
+                                            'assets/images/logo.webp',
+                                            width: 61.0,
+                                            height: 35.0,
+                                            fit: BoxFit.cover,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 16.0, 0.0, 0.0),
+                                          child: Text(
+                                            'Discover existing\nspots and reeive\nrelationship advice\nfrom AI\n',
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .headlineSmall
+                                                .override(
+                                                  fontFamily: 'Nuckle',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .info,
+                                                  letterSpacing: 0.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                  lineHeight: 1.2,
+                                                ),
+                                          ),
+                                        ),
+                                        const Spacer(),
+                                        Expanded(
+                                          flex: 16,
+                                          child: Align(
+                                            alignment:
+                                                const AlignmentDirectional(0.0, -1.0),
+                                            child: Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      46.0, 0.0, 0.0, 0.0),
+                                              child: Image.asset(
+                                                'assets/images/Frame_2087326095.png',
+                                                fit: BoxFit.contain,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        const Spacer(),
                                       ],
                                     ),
                                   ],
@@ -928,7 +677,7 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
                               child: smooth_page_indicator.SmoothPageIndicator(
                                 controller: _model.pageViewController ??=
                                     PageController(initialPage: 0),
-                                count: 4,
+                                count: 7,
                                 axisDirection: Axis.horizontal,
                                 onDotClicked: (i) async {
                                   await _model.pageViewController!

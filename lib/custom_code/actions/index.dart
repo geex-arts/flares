@@ -8,3 +8,5 @@ export 'hide_keyboard.dart' show hideKeyboard;
 export 'identify_revenue_cat.dart' show identifyRevenueCat;
 export 'reorder_collections.dart' show reorderCollections;
 export 'apple_signin.dart' show appleSignin;
+export 'app_tracking_transparency_request.dart'
+    show appTrackingTransparencyRequest;

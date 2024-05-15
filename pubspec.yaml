@@ -26,6 +26,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   app_links: 3.4.1
+  app_tracking_transparency: ^2.0.5
   auto_size_text: 3.0.0
   cached_network_image: 3.3.1
   carousel_slider: 4.2.1

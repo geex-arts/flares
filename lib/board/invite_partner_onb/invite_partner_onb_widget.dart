@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:async';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -50,6 +51,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
       await Future.delayed(const Duration(milliseconds: 1000));
       logFirebaseEvent('Invite_Partner_Onb_update_app_state');
       FFAppState().isProfileSet = true;
+      logFirebaseEvent('Invite_Partner_Onb_custom_action');
+      _model.result = await actions.appTrackingTransparencyRequest();
     });
 
     _model.sendCodeFieldTextController ??= TextEditingController();
@@ -356,16 +359,19 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                             logFirebaseEvent(
                                                 'INVITE_PARTNER_ONB_Sharemyinvitelink_CAL');
                                             if (isiOS) {
-                                              logFirebaseEvent(
-                                                  'Sharemyinvitelink_share');
-                                              await Share.share(
-                                                (String var1) {
-                                                  return '''Hey ❤️ I've found an app called Flares. This app is designed for couples like us. I want to start exploring it together, discover new places, and plan our next adventure. 😉 Download at http://flaresapp.com/link then input my pairing code: $var1''';
-                                                }(widget.pairInvitationRow!.pairCode!),
-                                                sharePositionOrigin:
-                                                    getWidgetBoundingBox(
-                                                        context),
-                                              );
+                                              if ((_model.result != null) &&
+                                                  _model.result!) {
+                                                logFirebaseEvent(
+                                                    'Sharemyinvitelink_share');
+                                                await Share.share(
+                                                  (String var1) {
+                                                    return '''Hey ❤️ I've found an app called Flares. This app is designed for couples like us. I want to start exploring it together, discover new places, and plan our next adventure. 😉 Download at http://flaresapp.com/link then input my pairing code: $var1''';
+                                                  }(widget.pairInvitationRow!.pairCode!),
+                                                  sharePositionOrigin:
+                                                      getWidgetBoundingBox(
+                                                          context),
+                                                );
+                                              }
                                             } else {
                                               logFirebaseEvent(
                                                   'Sharemyinvitelink_share');
