@@ -13,26 +13,26 @@ import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 
-Future<bool> appTrackingTransparencyRequest() async {
+Future appTrackingTransparencyRequest() async {
   // Add your function code here!
   if (Platform.isIOS) {
-    final TrackingStatus status =
-        await AppTrackingTransparency.trackingAuthorizationStatus;
-    if (status == TrackingStatus.notDetermined) {
-      await Future.delayed(const Duration(milliseconds: 200));
-      final TrackingStatus finalStatus =
-          await AppTrackingTransparency.requestTrackingAuthorization();
-      if (finalStatus == TrackingStatus.authorized) {
-        return true;
-      } else {
-        return false;
-      }
-    } else if (status == TrackingStatus.authorized) {
-      return true;
-    } else {
-      return false;
-    }
-  } else {
-    return true;
+    //   final TrackingStatus status =
+    //       await AppTrackingTransparency.trackingAuthorizationStatus;
+    //   if (status == TrackingStatus.notDetermined) {
+    //     await Future.delayed(const Duration(milliseconds: 200));
+    final TrackingStatus finalStatus =
+        await AppTrackingTransparency.requestTrackingAuthorization();
+    //     if (finalStatus == TrackingStatus.authorized) {
+    //       return true;
+    //     } else {
+    //       return false;
+    //     }
+    //   } else if (status == TrackingStatus.authorized) {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // } else {
+    //   return true;
   }
 }

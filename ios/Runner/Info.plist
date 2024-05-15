@@ -20,6 +20,7 @@
 	<string>Flares</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+
 	<key>CFBundleShortVersionString</key>
 	<string>$(FLUTTER_BUILD_NAME)</string>
 	<key>CFBundleSignature</key>
@@ -68,10 +69,11 @@
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+
 	<key>NSCameraUsageDescription</key>
 	<string>Flares requires access to the photo library to share pictures with your partner.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>In order to upload data, this app requires permission to access the photo library.</string>
+    <string>Flares requires access to the photo library to share pictures with your partner.</string>
 	<key>PermissionGroupNotification</key>
     <string>To receive notifications from the app, you must grant permission.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -81,6 +83,10 @@
 		<string>fetch</string>
 		<string>remote-notification</string>
 	</array>
+	<key>NSUserTrackingUsageDescription</key>
+    <string>Tracking allows our pairing links to work, so we can read you or your partner's pairing code from the link you installed Paired with and automatically pair your accounts.</string>
+
+
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
