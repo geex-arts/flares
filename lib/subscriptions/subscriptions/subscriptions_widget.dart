@@ -539,219 +539,294 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                   ),
                                 ),
                               ),
+                              Align(
+                                alignment: const AlignmentDirectional(0.0, 1.0),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    logFirebaseEvent(
+                                        'SUBSCRIPTIONS_Container_rx4nmgun_ON_TAP');
+                                    logFirebaseEvent(
+                                        'Container_update_page_state');
+                                    setState(() {
+                                      _model.selectedPlan = 2;
+                                    });
+                                  },
+                                  child: Material(
+                                    color: Colors.transparent,
+                                    elevation: 0.0,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(14.0),
+                                    ),
+                                    child: Container(
+                                      width: double.infinity,
+                                      decoration: BoxDecoration(
+                                        color: _model.selectedPlan == 2
+                                            ? FlutterFlowTheme.of(context).pink
+                                            : const Color(0x00000000),
+                                        borderRadius:
+                                            BorderRadius.circular(14.0),
+                                        border: Border.all(
+                                          color: const Color(0xFFFF2C96),
+                                          width: 1.0,
+                                        ),
+                                      ),
+                                      child: Stack(
+                                        children: [
+                                          Padding(
+                                            padding: const EdgeInsets.all(16.0),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.min,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  'Livetime',
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Nuckle',
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        fontSize: 18.0,
+                                                        letterSpacing: 0.0,
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                RichText(
+                                                  textScaler:
+                                                      MediaQuery.of(context)
+                                                          .textScaler,
+                                                  text: TextSpan(
+                                                    children: [
+                                                      TextSpan(
+                                                        text:
+                                                            '\$ 124.99 /1 time',
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Nuckle',
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  fontSize:
+                                                                      18.0,
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  useGoogleFonts:
+                                                                      false,
+                                                                ),
+                                                      ),
+                                                      TextSpan(
+                                                        text: ' for 2 users',
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 18.0,
+                                                        ),
+                                                      )
+                                                    ],
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          letterSpacing: 0.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ].divide(const SizedBox(height: 14.0)),
+                                            ),
+                                          ),
+                                          Align(
+                                            alignment:
+                                                const AlignmentDirectional(1.0, -1.0),
+                                            child: Stack(
+                                              alignment: const AlignmentDirectional(
+                                                  0.0, 0.0),
+                                              children: [
+                                                Padding(
+                                                  padding: const EdgeInsets.all(16.0),
+                                                  child: Image.asset(
+                                                    'assets/images/disco.webp',
+                                                    width: 64.0,
+                                                    height: 35.0,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                                Padding(
+                                                  padding: const EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 2.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    '90% Off',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Nuckle',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          fontSize: 12.0,
+                                                          letterSpacing: 0.0,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ].divide(const SizedBox(height: 12.0)),
-                          ),
-                        ),
-                      ),
-                      Builder(
-                        builder: (context) => Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 20.0, 16.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.continueButtonModel,
-                            updateCallback: () => setState(() {}),
-                            child: PinkButtonWidget(
-                              text: 'Try 7 days + Subscribe',
-                              currentAction: () async {
-                                logFirebaseEvent(
-                                    'SUBSCRIPTIONS_ContinueButton_CALLBACK');
-                                if (_model.selectedPlan == 0) {
-                                  logFirebaseEvent(
-                                      'ContinueButton_revenue_cat');
-                                  _model.monthlyResult = await revenue_cat
-                                      .purchasePackage(revenue_cat.offerings!
-                                          .current!.monthly!.identifier);
-                                } else if (_model.selectedPlan == 1) {
-                                  logFirebaseEvent(
-                                      'ContinueButton_revenue_cat');
-                                  _model.annuallyResult = await revenue_cat
-                                      .purchasePackage(revenue_cat.offerings!
-                                          .current!.annual!.identifier);
-                                }
-
-                                if (_model.monthlyResult! ||
-                                    _model.annuallyResult!) {
-                                  logFirebaseEvent(
-                                      'ContinueButton_alert_dialog');
-                                  await showDialog(
-                                    context: context,
-                                    builder: (dialogContext) {
-                                      return Dialog(
-                                        elevation: 0,
-                                        insetPadding: EdgeInsets.zero,
-                                        backgroundColor: Colors.transparent,
-                                        alignment:
-                                            const AlignmentDirectional(0.0, -1.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        child: WebViewAware(
-                                          child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: const AlertDialogWarningWidget(
-                                              title: 'Success !',
-                                              subtitle:
-                                                  'Thank you, your subscription is activated !',
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => setState(() {}));
-
-                                  logFirebaseEvent(
-                                      'ContinueButton_navigate_back');
-                                  context.safePop();
-                                } else {
-                                  logFirebaseEvent(
-                                      'ContinueButton_alert_dialog');
-                                  await showDialog(
-                                    context: context,
-                                    builder: (dialogContext) {
-                                      return Dialog(
-                                        elevation: 0,
-                                        insetPadding: EdgeInsets.zero,
-                                        backgroundColor: Colors.transparent,
-                                        alignment:
-                                            const AlignmentDirectional(0.0, -1.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        child: WebViewAware(
-                                          child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: const AlertDialogWarningWidget(
-                                              title: 'Something went wrong ',
-                                              subtitle:
-                                                  'Please try again later',
-                                            ),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => setState(() {}));
-                                }
-
-                                setState(() {});
-                              },
-                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            logFirebaseEvent(
-                                'SUBSCRIPTIONS_PAGE_Text_pu6bhftt_ON_TAP');
-                            logFirebaseEvent('Text_revenue_cat');
-                            await revenue_cat.restorePurchases();
-                          },
-                          child: Text(
-                            'Restore Purchase',
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  fontSize: 17.0,
-                                  letterSpacing: 0.0,
-                                  fontWeight: FontWeight.w500,
-                                  decoration: TextDecoration.underline,
-                                  useGoogleFonts: false,
-                                ),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 12.0, 0.0, 0.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                logFirebaseEvent(
+                                    'SUBSCRIPTIONS_PAGE_Text_pu6bhftt_ON_TAP');
+                                logFirebaseEvent('Text_revenue_cat');
+                                await revenue_cat.restorePurchases();
+                              },
+                              child: Text(
+                                'Restore Purchase',
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      fontSize: 17.0,
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      decoration: TextDecoration.underline,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
                           ),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsetsDirectional.fromSTEB(
-                            16.0, 16.0, 16.0, 40.0),
-                        child: RichText(
-                          textScaler: MediaQuery.of(context).textScaler,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: 'By Continiuing You Agree To ',
+                            16.0, 12.0, 16.0, 40.0),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(24.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: RichText(
+                              textScaler: MediaQuery.of(context).textScaler,
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: 'By Continiuing You Agree To ',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: const Color(0x9AFFFFFF),
+                                          fontSize: 11.0,
+                                          letterSpacing: 0.0,
+                                          fontWeight: FontWeight.normal,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Terms Of Use',
+                                    style: const TextStyle(),
+                                    mouseCursor: SystemMouseCursors.click,
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        logFirebaseEvent(
+                                            'SUBSCRIPTIONS_RichTextSpan_dxdfe5cv_ON_T');
+                                        logFirebaseEvent(
+                                            'RichTextSpan_navigate_to');
+
+                                        context
+                                            .pushNamed('Terms_ConditionsCopy');
+                                      },
+                                  ),
+                                  const TextSpan(
+                                    text:
+                                        ' And Confirm That You Have Read The Runway\'s ',
+                                    style: TextStyle(
+                                      color: Color(0x9AFFFFFF),
+                                      fontSize: 11.0,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Privacy Policy',
+                                    style: const TextStyle(),
+                                    mouseCursor: SystemMouseCursors.click,
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () async {
+                                        logFirebaseEvent(
+                                            'SUBSCRIPTIONS_RichTextSpan_vx3d4kf4_ON_T');
+                                        logFirebaseEvent(
+                                            'RichTextSpan_navigate_to');
+
+                                        context.pushNamed('Privacy_PolicyCopy');
+                                      },
+                                  )
+                                ],
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Nuckle',
-                                      color: const Color(0x9AFFFFFF),
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
                                       fontSize: 11.0,
                                       letterSpacing: 0.0,
-                                      fontWeight: FontWeight.normal,
                                       useGoogleFonts: false,
+                                      lineHeight: 1.4,
                                     ),
                               ),
-                              TextSpan(
-                                text: 'Terms Of Use',
-                                style: const TextStyle(),
-                                mouseCursor: SystemMouseCursors.click,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    logFirebaseEvent(
-                                        'SUBSCRIPTIONS_RichTextSpan_dxdfe5cv_ON_T');
-                                    logFirebaseEvent(
-                                        'RichTextSpan_navigate_to');
-
-                                    context.pushNamed('Terms_ConditionsCopy');
-                                  },
-                              ),
-                              const TextSpan(
-                                text:
-                                    ' And Confirm That You Have Read The Runway\'s ',
-                                style: TextStyle(
-                                  color: Color(0x9AFFFFFF),
-                                  fontSize: 11.0,
-                                ),
-                              ),
-                              TextSpan(
-                                text: 'Privacy Policy',
-                                style: const TextStyle(),
-                                mouseCursor: SystemMouseCursors.click,
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () async {
-                                    logFirebaseEvent(
-                                        'SUBSCRIPTIONS_RichTextSpan_vx3d4kf4_ON_T');
-                                    logFirebaseEvent(
-                                        'RichTextSpan_navigate_to');
-
-                                    context.pushNamed('Privacy_PolicyCopy');
-                                  },
-                              )
-                            ],
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Nuckle',
-                                  color: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  fontSize: 11.0,
-                                  letterSpacing: 0.0,
-                                  useGoogleFonts: false,
-                                  lineHeight: 1.4,
-                                ),
+                              textAlign: TextAlign.center,
+                            ),
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ),
-                    ].addToStart(const SizedBox(height: 67.0)),
+                    ]
+                        .addToStart(const SizedBox(height: 67.0))
+                        .addToEnd(const SizedBox(height: 100.0)),
                   ),
                 ),
               ),
@@ -882,6 +957,129 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             ),
                       ),
                     ),
+                  ),
+                ),
+              ),
+              Align(
+                alignment: const AlignmentDirectional(0.0, 1.0),
+                child: Padding(
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 40.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Builder(
+                        builder: (context) => Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 20.0, 16.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.continueButtonModel,
+                            updateCallback: () => setState(() {}),
+                            child: PinkButtonWidget(
+                              text: 'Try 7 days + Subscribe',
+                              currentAction: () async {
+                                logFirebaseEvent(
+                                    'SUBSCRIPTIONS_ContinueButton_CALLBACK');
+                                if (_model.selectedPlan == 0) {
+                                  logFirebaseEvent(
+                                      'ContinueButton_revenue_cat');
+                                  _model.monthlyResult = await revenue_cat
+                                      .purchasePackage(revenue_cat.offerings!
+                                          .current!.monthly!.identifier);
+                                } else if (_model.selectedPlan == 1) {
+                                  logFirebaseEvent(
+                                      'ContinueButton_revenue_cat');
+                                  _model.annuallyResult = await revenue_cat
+                                      .purchasePackage(revenue_cat.offerings!
+                                          .current!.annual!.identifier);
+                                } else if (_model.selectedPlan == 2) {
+                                  logFirebaseEvent(
+                                      'ContinueButton_revenue_cat');
+                                  _model.lifetimeResult = await revenue_cat
+                                      .purchasePackage(revenue_cat.offerings!
+                                          .current!.lifetime!.identifier);
+                                }
+
+                                if (_model.monthlyResult! ||
+                                    _model.annuallyResult! ||
+                                    _model.lifetimeResult!) {
+                                  logFirebaseEvent(
+                                      'ContinueButton_alert_dialog');
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: const AlertDialogWarningWidget(
+                                              title: 'Success !',
+                                              subtitle:
+                                                  'Thank you, your subscription is activated !',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+
+                                  logFirebaseEvent(
+                                      'ContinueButton_navigate_back');
+                                  context.safePop();
+                                } else {
+                                  logFirebaseEvent(
+                                      'ContinueButton_alert_dialog');
+                                  await showDialog(
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        elevation: 0,
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            const AlignmentDirectional(0.0, -1.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: WebViewAware(
+                                          child: GestureDetector(
+                                            onTap: () => _model
+                                                    .unfocusNode.canRequestFocus
+                                                ? FocusScope.of(context)
+                                                    .requestFocus(
+                                                        _model.unfocusNode)
+                                                : FocusScope.of(context)
+                                                    .unfocus(),
+                                            child: const AlertDialogWarningWidget(
+                                              title: 'Something went wrong ',
+                                              subtitle:
+                                                  'Please try again later',
+                                            ),
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                }
+
+                                setState(() {});
+                              },
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
