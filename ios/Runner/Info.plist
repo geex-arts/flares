@@ -69,6 +69,8 @@
     <string>Flares requires access to the photo library to share pictures with your partner.</string>
 	<key>PermissionGroupNotification</key>
     <string>To receive notifications from the app, you must grant permission.</string>
+	<key>NSUserTrackingUsageDescription</key>
+    <string>Tracking allows our pairing links to work, so we can read you or your partner's pairing code from the link you installed Paired with and automatically pair your accounts.</string>
 
 
 	<key>UILaunchStoryboardName</key>
