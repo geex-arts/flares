@@ -129,7 +129,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                           padding: const EdgeInsetsDirectional.fromSTEB(
                               38.0, 26.0, 38.0, 24.0),
                           child: Image.asset(
-                            'assets/images/offerimg.webp',
+                            'assets/images/Group_6345006.png',
                             width: 86.0,
                             height: 35.0,
                             fit: BoxFit.contain,
@@ -205,7 +205,7 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                           const EdgeInsetsDirectional.fromSTEB(0.0, 32.0, 0.0, 0.0),
                       child: Container(
                         width: double.infinity,
-                        height: 58.0,
+                        height: 80.0,
                         decoration: BoxDecoration(
                           color: const Color(0x19FFFFFF),
                           borderRadius: BorderRadius.circular(14.0),
@@ -218,56 +218,45 @@ class _NOfferWidgetState extends State<NOfferWidget> {
                           child: Row(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text(
-                                'Lifetime Acces',
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Nuckle',
-                                      color: const Color(0x98FFFFFF),
-                                      fontSize: 16.0,
-                                      letterSpacing: 0.0,
-                                      useGoogleFonts: false,
-                                    ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 4.0, 0.0, 0.0),
-                                child: Stack(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    Text(
-                                      '\$29.99',
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Lifetime Acces',
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Nuckle',
+                                          color: Colors.white,
+                                          fontSize: 16.0,
+                                          letterSpacing: 0.0,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 12.0, 0.0, 0.0),
+                                    child: Text(
+                                      '1 time for 2 users',
+                                      textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Nuckle',
-                                            color: const Color(0x99FFFFFF),
-                                            fontSize: 16.0,
+                                            color: Colors.white,
+                                            fontSize: 12.0,
                                             letterSpacing: 0.0,
-                                            decoration:
-                                                TextDecoration.lineThrough,
                                             useGoogleFonts: false,
                                           ),
                                     ),
-                                    Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
-                                      child: Container(
-                                        width: 48.0,
-                                        height: 1.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                               Text(
-                                '\$14.99',
+                                '\$124.99',
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
