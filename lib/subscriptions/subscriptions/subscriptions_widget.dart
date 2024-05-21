@@ -289,7 +289,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  'Yearly + 7 Days Free Trial ',
+                                                  'Yearly',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -975,7 +975,7 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                             model: _model.continueButtonModel,
                             updateCallback: () => setState(() {}),
                             child: PinkButtonWidget(
-                              text: 'Try 7 days + Subscribe',
+                              text: 'Subscribe',
                               currentAction: () async {
                                 logFirebaseEvent(
                                     'SUBSCRIPTIONS_ContinueButton_CALLBACK');
