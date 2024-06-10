@@ -55,9 +55,8 @@ class _AlertDialogCancelCollectionWidgetState
             return;
           }
           logFirebaseEvent('alertDialogCancelCollection_update_compo');
-          setState(() {
-            _model.currentSecond = _model.currentSecond + -1;
-          });
+          _model.currentSecond = _model.currentSecond + -1;
+          setState(() {});
         },
         startImmediately: true,
       );

@@ -206,9 +206,8 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                       logFirebaseEvent(
                           'B_S_EDIT_COLLECTION_Container_tesekevs_C');
                       logFirebaseEvent('pinkButton_update_component_state');
-                      setState(() {
-                        _model.isEmptyName = false;
-                      });
+                      _model.isEmptyName = false;
+                      setState(() {});
                       if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
                         logFirebaseEvent('pinkButton_backend_call');
@@ -224,14 +223,14 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                           ),
                         );
                         logFirebaseEvent('pinkButton_update_app_state');
+
                         FFAppState().update(() {});
                         logFirebaseEvent('pinkButton_bottom_sheet');
                         Navigator.pop(context);
                       } else {
                         logFirebaseEvent('pinkButton_update_component_state');
-                        setState(() {
-                          _model.isEmptyName = true;
-                        });
+                        _model.isEmptyName = true;
+                        setState(() {});
                       }
                     },
                   ),

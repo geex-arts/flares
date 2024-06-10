@@ -423,15 +423,13 @@ class _NewPasswordWidgetState extends State<NewPasswordWidget>
                               (_model.passwordFieldTextController.text.length <
                                   8)) {
                             logFirebaseEvent('pinkButton_update_page_state');
-                            setState(() {
-                              _model.isWrongPassword = true;
-                            });
+                            _model.isWrongPassword = true;
+                            setState(() {});
                           } else if (_model.passwordFieldTextController.text !=
                               _model.rePasswordFieldTextController.text) {
                             logFirebaseEvent('pinkButton_update_page_state');
-                            setState(() {
-                              _model.isNotMatch = true;
-                            });
+                            _model.isNotMatch = true;
+                            setState(() {});
                           } else {
                             logFirebaseEvent('pinkButton_custom_action');
                             _model.isSuccess = await actions.changePassword(

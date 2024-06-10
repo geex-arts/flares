@@ -494,14 +494,12 @@ class _SignInWidgetState extends State<SignInWidget>
                                                   '')) {
                                         logFirebaseEvent(
                                             'nextButton_update_page_state');
-                                        setState(() {
-                                          _model.emptyFields = 2;
-                                        });
+                                        _model.emptyFields = 2;
+                                        setState(() {});
                                         logFirebaseEvent(
                                             'nextButton_update_page_state');
-                                        setState(() {
-                                          _model.passLength = false;
-                                        });
+                                        _model.passLength = false;
+                                        setState(() {});
                                         if (shouldSetState) setState(() {});
                                         return;
                                       } else {
@@ -510,14 +508,12 @@ class _SignInWidgetState extends State<SignInWidget>
                                                 '') {
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
-                                          setState(() {
-                                            _model.emptyFields = 0;
-                                          });
+                                          _model.emptyFields = 0;
+                                          setState(() {});
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
-                                          setState(() {
-                                            _model.passLength = false;
-                                          });
+                                          _model.passLength = false;
+                                          setState(() {});
                                           if (shouldSetState) setState(() {});
                                           return;
                                         } else {
@@ -526,14 +522,12 @@ class _SignInWidgetState extends State<SignInWidget>
                                                   '') {
                                             logFirebaseEvent(
                                                 'nextButton_update_page_state');
-                                            setState(() {
-                                              _model.emptyFields = 1;
-                                            });
+                                            _model.emptyFields = 1;
+                                            setState(() {});
                                             logFirebaseEvent(
                                                 'nextButton_update_page_state');
-                                            setState(() {
-                                              _model.passLength = false;
-                                            });
+                                            _model.passLength = false;
+                                            setState(() {});
                                             if (shouldSetState) {
                                               setState(() {});
                                             }
@@ -543,9 +537,8 @@ class _SignInWidgetState extends State<SignInWidget>
 
                                         logFirebaseEvent(
                                             'nextButton_update_page_state');
-                                        setState(() {
-                                          _model.emptyFields = null;
-                                        });
+                                        _model.emptyFields = null;
+                                        setState(() {});
                                       }
 
                                       logFirebaseEvent('nextButton_auth');

@@ -339,6 +339,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                           }
                                           logFirebaseEvent(
                                               'Container_update_app_state');
+
                                           _model.updatePage(() {});
                                           logFirebaseEvent(
                                               'Container_bottom_sheet');

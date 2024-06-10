@@ -601,9 +601,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                               'INVITE_PARTNER_ONB_SendPairingCode_CALLB');
                                           logFirebaseEvent(
                                               'SendPairingCode_update_page_state');
-                                          setState(() {
-                                            _model.codeNotFound = false;
-                                          });
+                                          _model.codeNotFound = false;
+                                          setState(() {});
                                           logFirebaseEvent(
                                               'SendPairingCode_backend_call');
                                           _model.foundPairingRow =
@@ -679,9 +678,8 @@ class _InvitePartnerOnbWidgetState extends State<InvitePartnerOnbWidget>
                                           } else {
                                             logFirebaseEvent(
                                                 'SendPairingCode_update_page_state');
-                                            setState(() {
-                                              _model.codeNotFound = true;
-                                            });
+                                            _model.codeNotFound = true;
+                                            setState(() {});
                                           }
 
                                           setState(() {});

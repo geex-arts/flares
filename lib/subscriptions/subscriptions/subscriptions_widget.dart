@@ -256,9 +256,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                         'SUBSCRIPTIONS_Container_a4emnsf1_ON_TAP');
                                     logFirebaseEvent(
                                         'Container_update_page_state');
-                                    setState(() {
-                                      _model.selectedPlan = 1;
-                                    });
+                                    _model.selectedPlan = 1;
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -430,9 +429,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                         'SUBSCRIPTIONS_Container_ulbjnjx5_ON_TAP');
                                     logFirebaseEvent(
                                         'Container_update_page_state');
-                                    setState(() {
-                                      _model.selectedPlan = 0;
-                                    });
+                                    _model.selectedPlan = 0;
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,
@@ -551,9 +549,8 @@ class _SubscriptionsWidgetState extends State<SubscriptionsWidget>
                                         'SUBSCRIPTIONS_Container_rx4nmgun_ON_TAP');
                                     logFirebaseEvent(
                                         'Container_update_page_state');
-                                    setState(() {
-                                      _model.selectedPlan = 2;
-                                    });
+                                    _model.selectedPlan = 2;
+                                    setState(() {});
                                   },
                                   child: Material(
                                     color: Colors.transparent,

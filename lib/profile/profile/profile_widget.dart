@@ -1611,9 +1611,8 @@ class _ProfileWidgetState extends State<ProfileWidget>
                             onTap: () async {
                               logFirebaseEvent('PROFILE_PAGE_Logout_ON_TAP');
                               logFirebaseEvent('Logout_update_app_state');
-                              setState(() {
-                                FFAppState().pairID = '';
-                              });
+                              FFAppState().pairID = '';
+                              setState(() {});
                               logFirebaseEvent('Logout_auth');
                               GoRouter.of(context).prepareAuthEvent();
                               await authManager.signOut();

@@ -313,6 +313,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                             );
                                                             logFirebaseEvent(
                                                                 'DismissForeverButton_update_app_state');
+
                                                             setState(() {});
                                                           },
                                                           text:

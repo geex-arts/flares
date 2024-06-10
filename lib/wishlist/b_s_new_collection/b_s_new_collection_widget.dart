@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/alert_dialog_warning_widget.dart';
 import '/components/pink_button_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -9,6 +10,7 @@ import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:webviewx_plus/webviewx_plus.dart';
 import 'b_s_new_collection_model.dart';
 export 'b_s_new_collection_model.dart';
 
@@ -18,12 +20,15 @@ class BSNewCollectionWidget extends StatefulWidget {
     this.selectedWishRow,
     bool? isFromBrowser,
     bool? isFromWebview,
+    bool? isFromEdit,
   })  : isFromBrowser = isFromBrowser ?? false,
-        isFromWebview = isFromWebview ?? false;
+        isFromWebview = isFromWebview ?? false,
+        isFromEdit = isFromEdit ?? false;
 
   final WishesRow? selectedWishRow;
   final bool isFromBrowser;
   final bool isFromWebview;
+  final bool isFromEdit;
 
   @override
   State<BSNewCollectionWidget> createState() => _BSNewCollectionWidgetState();
@@ -43,6 +48,7 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
     super.initState();
     _model = createModel(context, () => BSNewCollectionModel());
 
+    _model.switchValue = _model.isSwitch;
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
     _model.textFieldFocusNode!.addListener(() => setState(() {}));
@@ -159,23 +165,21 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                       padding:
                           const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                       child: Switch.adaptive(
-                        value: _model.switchValue ??= _model.isSwitch,
+                        value: _model.switchValue!,
                         onChanged: (newValue) async {
                           setState(() => _model.switchValue = newValue);
                           if (newValue) {
                             logFirebaseEvent(
                                 'B_S_NEW_COLLECTION_Switch_df70li1i_ON_TO');
                             logFirebaseEvent('Switch_update_component_state');
-                            setState(() {
-                              _model.isSwitch = true;
-                            });
+                            _model.isSwitch = true;
+                            setState(() {});
                           } else {
                             logFirebaseEvent(
                                 'B_S_NEW_COLLECTION_Switch_df70li1i_ON_TO');
                             logFirebaseEvent('Switch_update_component_state');
-                            setState(() {
-                              _model.isSwitch = false;
-                            });
+                            _model.isSwitch = false;
+                            setState(() {});
                           }
                         },
                         activeColor: FlutterFlowTheme.of(context).info,
@@ -293,105 +297,137 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 45.0),
-                child: wrapWithModel(
-                  model: _model.pinkButtonModel,
-                  updateCallback: () => setState(() {}),
-                  child: PinkButtonWidget(
-                    text: 'Create',
-                    currentAction: () async {
-                      logFirebaseEvent(
-                          'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
-                      var shouldSetState = false;
-                      logFirebaseEvent('pinkButton_validate_form');
-                      if (_model.formKey.currentState == null ||
-                          !_model.formKey.currentState!.validate()) {
-                        return;
-                      }
-                      if ((_model.textController.text != '') &&
-                          (_model.textController.text.length < 15)) {
-                        logFirebaseEvent('pinkButton_backend_call');
-                        _model.collectionsRows =
-                            await CollectionsTable().queryRows(
-                          queryFn: (q) => q
-                              .eq(
-                                'pair',
-                                FFAppState().pairID,
-                              )
-                              .order('order'),
-                        );
-                        shouldSetState = true;
-                        logFirebaseEvent('pinkButton_backend_call');
-                        _model.newCollectionRowCopy =
-                            await CollectionsTable().insert({
-                          'name': _model.textController.text,
-                          'visibility': !_model.isSwitch,
-                          'created_by': currentUserUid,
-                          'lowercase_name':
-                              _model.textController.text.toLowerCase(),
-                          'pair': FFAppState().pairID,
-                          'order': _model.collectionsRows!.isNotEmpty
-                              ? ((_model.collectionsRows!.first.order!) + 1)
-                              : 0,
-                        });
-                        shouldSetState = true;
-                        if (widget.selectedWishRow != null) {
-                          if (widget.isFromBrowser) {
-                            logFirebaseEvent('pinkButton_backend_call');
-                            unawaited(
-                              () async {
-                                await WishesTable().update(
-                                  data: {
-                                    'collection':
-                                        _model.newCollectionRowCopy?.uuid,
-                                    'visibily':
-                                        _model.newCollectionRowCopy?.visibility,
-                                  },
-                                  matchingRows: (rows) => rows.eq(
-                                    'uuid',
-                                    widget.selectedWishRow?.uuid,
-                                  ),
-                                );
-                              }(),
-                            );
-                            logFirebaseEvent('pinkButton_bottom_sheet');
-                            Navigator.pop(context);
-                            logFirebaseEvent('pinkButton_navigate_to');
-
-                            context.goNamed('My_Profile');
-
-                            if (shouldSetState) setState(() {});
-                            return;
-                          } else {
-                            logFirebaseEvent('pinkButton_backend_call');
-                            await WishesTable().insert({
-                              'collection': _model.newCollectionRowCopy?.uuid,
-                              'pair': FFAppState().pairID,
-                              'created_by': currentUserUid,
-                              'name': widget.selectedWishRow?.name,
-                              'description':
-                                  widget.selectedWishRow?.description,
-                              'photo': widget.selectedWishRow?.photo,
-                              'link': widget.selectedWishRow?.link,
-                              'parent_uuid':
-                                  widget.selectedWishRow?.parentUuid != null &&
-                                          widget.selectedWishRow?.parentUuid !=
-                                              ''
-                                      ? widget.selectedWishRow?.parentUuid
-                                      : widget.selectedWishRow?.uuid,
-                              'visibily':
-                                  _model.newCollectionRowCopy?.visibility,
-                            });
-                          }
+              Builder(
+                builder: (context) => Padding(
+                  padding:
+                      const EdgeInsetsDirectional.fromSTEB(16.0, 16.0, 16.0, 45.0),
+                  child: wrapWithModel(
+                    model: _model.pinkButtonModel,
+                    updateCallback: () => setState(() {}),
+                    child: PinkButtonWidget(
+                      text: 'Create',
+                      currentAction: () async {
+                        logFirebaseEvent(
+                            'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
+                        var shouldSetState = false;
+                        logFirebaseEvent('pinkButton_validate_form');
+                        if (_model.formKey.currentState == null ||
+                            !_model.formKey.currentState!.validate()) {
+                          return;
                         }
-                        logFirebaseEvent('pinkButton_update_app_state');
-                        FFAppState().update(() {});
-                        logFirebaseEvent('pinkButton_bottom_sheet');
-                        Navigator.pop(context);
-                      }
-                      if (shouldSetState) setState(() {});
-                    },
+                        if ((_model.textController.text != '') &&
+                            (_model.textController.text.length < 15)) {
+                          logFirebaseEvent('pinkButton_backend_call');
+                          _model.collectionsRows =
+                              await CollectionsTable().queryRows(
+                            queryFn: (q) => q
+                                .eq(
+                                  'pair',
+                                  FFAppState().pairID,
+                                )
+                                .order('order'),
+                          );
+                          shouldSetState = true;
+                          logFirebaseEvent('pinkButton_backend_call');
+                          _model.newCollectionRowCopy =
+                              await CollectionsTable().insert({
+                            'name': _model.textController.text,
+                            'visibility': !_model.isSwitch,
+                            'created_by': currentUserUid,
+                            'lowercase_name':
+                                _model.textController.text.toLowerCase(),
+                            'pair': FFAppState().pairID,
+                            'order': _model.collectionsRows!.isNotEmpty
+                                ? ((_model.collectionsRows!.first.order!) + 1)
+                                : 0,
+                          });
+                          shouldSetState = true;
+                          if (widget.selectedWishRow != null) {
+                            if (widget.isFromBrowser) {
+                              logFirebaseEvent('pinkButton_backend_call');
+                              unawaited(
+                                () async {
+                                  await WishesTable().update(
+                                    data: {
+                                      'collection':
+                                          _model.newCollectionRowCopy?.uuid,
+                                      'visibily': _model
+                                          .newCollectionRowCopy?.visibility,
+                                    },
+                                    matchingRows: (rows) => rows.eq(
+                                      'uuid',
+                                      widget.selectedWishRow?.uuid,
+                                    ),
+                                  );
+                                }(),
+                              );
+                              if (widget.isFromEdit) {
+                                logFirebaseEvent('pinkButton_update_app_state');
+
+                                FFAppState().update(() {});
+                                logFirebaseEvent('pinkButton_bottom_sheet');
+                                Navigator.pop(context);
+                                logFirebaseEvent('pinkButton_alert_dialog');
+                                showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      elevation: 0,
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: const AlignmentDirectional(0.0, -1.0)
+                                          .resolve(Directionality.of(context)),
+                                      child: const WebViewAware(
+                                        child: AlertDialogWarningWidget(
+                                          title: 'Success !',
+                                          subtitle:
+                                              'Your wish has been updated',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+                              } else {
+                                logFirebaseEvent('pinkButton_bottom_sheet');
+                                Navigator.pop(context);
+                                logFirebaseEvent('pinkButton_navigate_to');
+
+                                context.goNamed('My_Profile');
+                              }
+
+                              if (shouldSetState) setState(() {});
+                              return;
+                            } else {
+                              logFirebaseEvent('pinkButton_backend_call');
+                              await WishesTable().insert({
+                                'collection': _model.newCollectionRowCopy?.uuid,
+                                'pair': FFAppState().pairID,
+                                'created_by': currentUserUid,
+                                'name': widget.selectedWishRow?.name,
+                                'description':
+                                    widget.selectedWishRow?.description,
+                                'photo': widget.selectedWishRow?.photo,
+                                'link': widget.selectedWishRow?.link,
+                                'parent_uuid': widget
+                                                .selectedWishRow?.parentUuid !=
+                                            null &&
+                                        widget.selectedWishRow?.parentUuid != ''
+                                    ? widget.selectedWishRow?.parentUuid
+                                    : widget.selectedWishRow?.uuid,
+                                'visibily':
+                                    _model.newCollectionRowCopy?.visibility,
+                              });
+                            }
+                          }
+                          logFirebaseEvent('pinkButton_update_app_state');
+
+                          FFAppState().update(() {});
+                          logFirebaseEvent('pinkButton_bottom_sheet');
+                          Navigator.pop(context);
+                        }
+                        if (shouldSetState) setState(() {});
+                      },
+                    ),
                   ),
                 ),
               ),

@@ -53,6 +53,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
         );
       }
       logFirebaseEvent('wishesListMain_update_app_state');
+
       setState(() {});
     });
 

@@ -48,9 +48,8 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('B_S_ASK_DAY_BS_Ask_Day_ON_INIT_STATE');
       logFirebaseEvent('BS_Ask_Day_update_component_state');
-      setState(() {
-        _model.selectedDate = getCurrentTimestamp;
-      });
+      _model.selectedDate = getCurrentTimestamp;
+      setState(() {});
     });
   }
 
@@ -126,9 +125,8 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                 'B_S_ASK_DAY_Container_2rha1orp_ON_TAP');
                             logFirebaseEvent(
                                 'Container_update_component_state');
-                            setState(() {
-                              _model.checkedField = false;
-                            });
+                            _model.checkedField = false;
+                            setState(() {});
                           },
                           child: Container(
                             decoration: BoxDecoration(
@@ -172,9 +170,8 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                   'B_S_ASK_DAY_Container_k1lea5b4_ON_TAP');
                               logFirebaseEvent(
                                   'Container_update_component_state');
-                              setState(() {
-                                _model.checkedField = true;
-                              });
+                              _model.checkedField = true;
+                              setState(() {});
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -298,34 +295,23 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                   'B_S_ASK_DAY_Carousel_gp6z7zu2_ON_WIDGET_');
                                               logFirebaseEvent(
                                                   'Carousel_update_component_state');
-                                              setState(() {
-                                                _model.selectedDate = functions
-                                                    .returnSelectedDate(
-                                                        (int var1) {
-                                                          return '${var1 + 1}';
-                                                        }(_model
-                                                            .carouselCurrentIndex1),
-                                                        dateTimeFormat(
-                                                            'M',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'yyyy',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'h',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'mm',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'a',
-                                                            _model
-                                                                .selectedDate));
-                                              });
+                                              _model.selectedDate =
+                                                  functions.returnSelectedDate(
+                                                      (int var1) {
+                                                        return '${var1 + 1}';
+                                                      }(_model
+                                                          .carouselCurrentIndex1),
+                                                      dateTimeFormat('M',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('yyyy',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('h',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('mm',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('a',
+                                                          _model.selectedDate));
+                                              setState(() {});
                                             },
                                           ),
                                         ),
@@ -399,34 +385,23 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                   'B_S_ASK_DAY_Carousel_9h00zoyd_ON_WIDGET_');
                                               logFirebaseEvent(
                                                   'Carousel_update_component_state');
-                                              setState(() {
-                                                _model.selectedDate = functions
-                                                    .returnSelectedDate(
-                                                        dateTimeFormat(
-                                                            'd',
-                                                            _model
-                                                                .selectedDate),
-                                                        (int var1) {
-                                                          return '${var1 + 1}';
-                                                        }(_model
-                                                            .carouselCurrentIndex2),
-                                                        dateTimeFormat(
-                                                            'yyyy',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'h',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'mm',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'a',
-                                                            _model
-                                                                .selectedDate));
-                                              });
+                                              _model.selectedDate =
+                                                  functions.returnSelectedDate(
+                                                      dateTimeFormat('d',
+                                                          _model.selectedDate),
+                                                      (int var1) {
+                                                        return '${var1 + 1}';
+                                                      }(_model
+                                                          .carouselCurrentIndex2),
+                                                      dateTimeFormat('yyyy',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('h',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('mm',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('a',
+                                                          _model.selectedDate));
+                                              setState(() {});
                                             },
                                           ),
                                         ),
@@ -503,41 +478,29 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                   'B_S_ASK_DAY_Carousel_u1wngzs3_ON_WIDGET_');
                                               logFirebaseEvent(
                                                   'Carousel_update_component_state');
-                                              setState(() {
-                                                _model.selectedDate = functions
-                                                    .returnSelectedDate(
-                                                        dateTimeFormat(
-                                                            'd',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'M',
-                                                            _model
-                                                                .selectedDate),
-                                                        ((int var1,
-                                                                    List<int>
-                                                                        var2) {
-                                                          return var2[var1];
-                                                        }(
-                                                                _model
-                                                                    .carouselCurrentIndex3,
-                                                                functions
-                                                                    .returnYears()
-                                                                    .toList()))
-                                                            .toString(),
-                                                        dateTimeFormat(
-                                                            'h',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'mm',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'a',
-                                                            _model
-                                                                .selectedDate));
-                                              });
+                                              _model.selectedDate =
+                                                  functions.returnSelectedDate(
+                                                      dateTimeFormat('d',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('M',
+                                                          _model.selectedDate),
+                                                      ((int var1,
+                                                                  List<int> var2) {
+                                                        return var2[var1];
+                                                      }(
+                                                              _model
+                                                                  .carouselCurrentIndex3,
+                                                              functions
+                                                                  .returnYears()
+                                                                  .toList()))
+                                                          .toString(),
+                                                      dateTimeFormat('h',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('mm',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('a',
+                                                          _model.selectedDate));
+                                              setState(() {});
                                             },
                                           ),
                                         ),
@@ -630,34 +593,23 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                   'B_S_ASK_DAY_COMP_Hours_ON_WIDGET_SWIPE');
                                               logFirebaseEvent(
                                                   'Hours_update_component_state');
-                                              setState(() {
-                                                _model.selectedDate = functions
-                                                    .returnSelectedDate(
-                                                        dateTimeFormat(
-                                                            'd',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'M',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'yyyy',
-                                                            _model
-                                                                .selectedDate),
-                                                        (int var1) {
-                                                          return '${var1 + 1}';
-                                                        }(_model
-                                                            .hoursCurrentIndex),
-                                                        dateTimeFormat(
-                                                            'mm',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'a',
-                                                            _model
-                                                                .selectedDate));
-                                              });
+                                              _model.selectedDate =
+                                                  functions.returnSelectedDate(
+                                                      dateTimeFormat('d',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('M',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('yyyy',
+                                                          _model.selectedDate),
+                                                      (int var1) {
+                                                        return '${var1 + 1}';
+                                                      }(_model
+                                                          .hoursCurrentIndex),
+                                                      dateTimeFormat('mm',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('a',
+                                                          _model.selectedDate));
+                                              setState(() {});
                                             },
                                           ),
                                         ),
@@ -732,34 +684,23 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                                   'B_S_ASK_DAY_Carousel_xgy3g02f_ON_WIDGET_');
                                               logFirebaseEvent(
                                                   'Carousel_update_component_state');
-                                              setState(() {
-                                                _model.selectedDate = functions
-                                                    .returnSelectedDate(
-                                                        dateTimeFormat(
-                                                            'd',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'M',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'yyyy',
-                                                            _model
-                                                                .selectedDate),
-                                                        dateTimeFormat(
-                                                            'h',
-                                                            _model
-                                                                .selectedDate),
-                                                        (int var1) {
-                                                          return '${var1 + 1}';
-                                                        }(_model
-                                                            .carouselCurrentIndex4),
-                                                        dateTimeFormat(
-                                                            'a',
-                                                            _model
-                                                                .selectedDate));
-                                              });
+                                              _model.selectedDate =
+                                                  functions.returnSelectedDate(
+                                                      dateTimeFormat('d',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('M',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('yyyy',
+                                                          _model.selectedDate),
+                                                      dateTimeFormat('h',
+                                                          _model.selectedDate),
+                                                      (int var1) {
+                                                        return '${var1 + 1}';
+                                                      }(_model
+                                                          .carouselCurrentIndex4),
+                                                      dateTimeFormat('a',
+                                                          _model.selectedDate));
+                                              setState(() {});
                                             },
                                           ),
                                         ),
@@ -841,26 +782,25 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                               'B_S_ASK_DAY_Carousel_x7aw11mx_ON_WIDGET_');
                                           logFirebaseEvent(
                                               'Carousel_update_component_state');
-                                          setState(() {
-                                            _model.selectedDate =
-                                                functions.returnSelectedDate(
-                                                    dateTimeFormat('d',
-                                                        _model.selectedDate),
-                                                    dateTimeFormat('M',
-                                                        _model.selectedDate),
-                                                    dateTimeFormat('yyyy',
-                                                        _model.selectedDate),
-                                                    dateTimeFormat('h',
-                                                        _model.selectedDate),
-                                                    dateTimeFormat('mm',
-                                                        _model.selectedDate),
-                                                    (int var1) {
-                                                      return var1 == 0
-                                                          ? 'AM'
-                                                          : 'PM';
-                                                    }(_model
-                                                        .carouselCurrentIndex5));
-                                          });
+                                          _model.selectedDate =
+                                              functions.returnSelectedDate(
+                                                  dateTimeFormat(
+                                                      'd', _model.selectedDate),
+                                                  dateTimeFormat(
+                                                      'M', _model.selectedDate),
+                                                  dateTimeFormat('yyyy',
+                                                      _model.selectedDate),
+                                                  dateTimeFormat(
+                                                      'h', _model.selectedDate),
+                                                  dateTimeFormat('mm',
+                                                      _model.selectedDate),
+                                                  (int var1) {
+                                                    return var1 == 0
+                                                        ? 'AM'
+                                                        : 'PM';
+                                                  }(_model
+                                                      .carouselCurrentIndex5));
+                                          setState(() {});
                                         },
                                       ),
                                     ),

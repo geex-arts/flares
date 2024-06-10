@@ -97,6 +97,7 @@ class _NSaveToCollectionWidgetState extends State<NSaveToCollectionWidget> {
                           }(),
                         );
                         logFirebaseEvent('Allow_update_app_state');
+
                         _model.updatePage(() {});
                         logFirebaseEvent('Allow_bottom_sheet');
                         Navigator.pop(context, true);

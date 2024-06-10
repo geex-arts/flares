@@ -44,9 +44,8 @@ class _OnboardingWidgetState extends State<OnboardingWidget>
       logFirebaseEvent('ONBOARDING_PAGE_Onboarding_ON_INIT_STATE');
       if (widget.pairCode != null && widget.pairCode != '') {
         logFirebaseEvent('Onboarding_update_app_state');
-        setState(() {
-          FFAppState().pairCodeState = widget.pairCode!;
-        });
+        FFAppState().pairCodeState = widget.pairCode!;
+        setState(() {});
       }
     });
 
