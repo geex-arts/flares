@@ -49,6 +49,14 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
       });
     });
 
+    _model.switch1Value = false;
+    _model.switch2Value = false;
+    _model.addedNewWishSwitchValue = false;
+    _model.pushRecommendationsSwitchValue = false;
+    _model.partnerActivitySwitchValue = false;
+    _model.dailyConversationsSwitchValue = false;
+    _model.streakRemindersSwitchValue = false;
+    _model.recommendationsSwitchValue = false;
     animationsMap.addAll({
       'stackOnPageLoadAnimation': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -251,7 +259,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
-                                        value: _model.switch1Value ??= false,
+                                        value: _model.switch1Value!,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.switch1Value = newValue);
@@ -364,7 +372,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           4.0, 0.0, 0.0, 0.0),
                                       child: Switch.adaptive(
-                                        value: _model.switch2Value ??= false,
+                                        value: _model.switch2Value!,
                                         onChanged: (newValue) async {
                                           setState(() =>
                                               _model.switch2Value = newValue);
@@ -481,8 +489,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value:
-                                              _model.addedNewWishSwitchValue ??=
-                                                  false,
+                                              _model.addedNewWishSwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() =>
                                                 _model.addedNewWishSwitchValue =
@@ -569,8 +576,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value: _model
-                                                  .pushRecommendationsSwitchValue ??=
-                                              false,
+                                              .pushRecommendationsSwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() => _model
                                                     .pushRecommendationsSwitchValue =
@@ -769,8 +775,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value: _model
-                                                  .partnerActivitySwitchValue ??=
-                                              false,
+                                              .partnerActivitySwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() => _model
                                                     .partnerActivitySwitchValue =
@@ -860,8 +865,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value: _model
-                                                  .dailyConversationsSwitchValue ??=
-                                              false,
+                                              .dailyConversationsSwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() => _model
                                                     .dailyConversationsSwitchValue =
@@ -951,8 +955,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value: _model
-                                                  .streakRemindersSwitchValue ??=
-                                              false,
+                                              .streakRemindersSwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() => _model
                                                     .streakRemindersSwitchValue =
@@ -1042,8 +1045,7 @@ class _NotifySettingsWidgetState extends State<NotifySettingsWidget>
                                             4.0, 0.0, 0.0, 0.0),
                                         child: Switch.adaptive(
                                           value: _model
-                                                  .recommendationsSwitchValue ??=
-                                              false,
+                                              .recommendationsSwitchValue!,
                                           onChanged: (newValue) async {
                                             setState(() => _model
                                                     .recommendationsSwitchValue =

@@ -350,10 +350,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
 
                                       logFirebaseEvent(
                                           'Container_update_page_state');
-                                      setState(() {
-                                        _model.uplImg =
-                                            _model.uploadedLocalFile1;
-                                      });
+                                      _model.uplImg = _model.uploadedLocalFile1;
+                                      setState(() {});
                                     },
                                     child: Container(
                                       width: 30.0,
@@ -518,10 +516,9 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                     logFirebaseEvent('Date_custom_action');
                                     await actions.hideKeyboard();
                                     logFirebaseEvent('Date_update_page_state');
-                                    setState(() {
-                                      _model.dateOn = true;
-                                      _model.borderColor = true;
-                                    });
+                                    _model.dateOn = true;
+                                    _model.borderColor = true;
+                                    setState(() {});
                                     logFirebaseEvent('Date_date_time_picker');
                                     await showModalBottomSheet<bool>(
                                         context: context,
@@ -585,10 +582,9 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                           );
                                         });
                                     logFirebaseEvent('Date_update_page_state');
-                                    setState(() {
-                                      _model.dateOn = false;
-                                      _model.borderColor = false;
-                                    });
+                                    _model.dateOn = false;
+                                    _model.borderColor = false;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: double.infinity,
@@ -707,9 +703,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 if (!(_model.datePicked != null)) {
                                   logFirebaseEvent(
                                       'CreateCouple_update_page_state');
-                                  setState(() {
-                                    _model.borderColor = true;
-                                  });
+                                  _model.borderColor = true;
+                                  setState(() {});
                                   return;
                                 }
                                 logFirebaseEvent(
@@ -777,9 +772,8 @@ class _CreateCoupleProfileWidgetState extends State<CreateCoupleProfileWidget>
                                 );
                                 logFirebaseEvent(
                                     'CreateCouple_update_app_state');
-                                setState(() {
-                                  FFAppState().isProfileSet = true;
-                                });
+                                FFAppState().isProfileSet = true;
+                                setState(() {});
                                 logFirebaseEvent('CreateCouple_navigate_to');
 
                                 context.goNamed(

@@ -51,25 +51,21 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
       logFirebaseEvent('B_S_FEELING_BS_Feeling_ON_INIT_STATE');
       if (widget.currentUserFeelingRow != null) {
         logFirebaseEvent('BS_Feeling_update_component_state');
-        setState(() {
-          _model.selectedColor = valueOrDefault<Color>(
-            Color(int.parse((widget.currentUserFeelingRow!.color!))),
-            FlutterFlowTheme.of(context).error,
-          );
-        });
+        _model.selectedColor = valueOrDefault<Color>(
+          Color(int.parse((widget.currentUserFeelingRow!.color!))),
+          FlutterFlowTheme.of(context).error,
+        );
+        setState(() {});
         if (widget.currentUserFeelingRow?.customFeeling != null &&
             widget.currentUserFeelingRow?.customFeeling != '') {
           logFirebaseEvent('BS_Feeling_update_component_state');
-          setState(() {
-            _model.selectedFeeling =
-                widget.currentUserFeelingRow!.customFeeling!;
-          });
+          _model.selectedFeeling = widget.currentUserFeelingRow!.customFeeling!;
+          setState(() {});
         } else {
           if (widget.currentFeelingRow != null) {
             logFirebaseEvent('BS_Feeling_update_component_state');
-            setState(() {
-              _model.selectedFeeling = widget.currentFeelingRow!.name!;
-            });
+            _model.selectedFeeling = widget.currentFeelingRow!.name!;
+            setState(() {});
           }
         }
       }
@@ -240,9 +236,8 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                                 'B_S_FEELING_COMP_Stack_ejt99s1e_ON_TAP');
                                             logFirebaseEvent(
                                                 'Stack_update_component_state');
-                                            setState(() {
-                                              _model.selectedColor = colorItem;
-                                            });
+                                            _model.selectedColor = colorItem;
+                                            setState(() {});
                                           },
                                           child: SizedBox(
                                             width: 45.0,
@@ -397,12 +392,10 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                                             'B_S_FEELING_Container_g58x1qnh_ON_TAP');
                                                         logFirebaseEvent(
                                                             'Container_update_component_state');
-                                                        setState(() {
-                                                          _model.selectedFeeling =
-                                                              feelingNameItem;
-                                                          _model.isCustom =
-                                                              false;
-                                                        });
+                                                        _model.selectedFeeling =
+                                                            feelingNameItem;
+                                                        _model.isCustom = false;
+                                                        setState(() {});
                                                       },
                                                       child: Container(
                                                         decoration:
@@ -684,9 +677,8 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                         'B_S_FEELING_Container_varrkv9p_ON_TAP');
                                     logFirebaseEvent(
                                         'emptyAddTourOwn_update_component_state');
-                                    setState(() {
-                                      _model.isCustom = true;
-                                    });
+                                    _model.isCustom = true;
+                                    setState(() {});
                                   },
                                   child: wrapWithModel(
                                     model: _model.emptyAddTourOwnModel,
@@ -913,6 +905,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                           );
                         }
                         logFirebaseEvent('pinkButton_update_app_state');
+
                         _model.updatePage(() {});
                         logFirebaseEvent('pinkButton_bottom_sheet');
                         Navigator.pop(context);

@@ -148,17 +148,15 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                                   _model.selectedAICategories.toList())!) {
                                 logFirebaseEvent(
                                     'Container_update_component_state');
-                                setState(() {
-                                  _model.removeFromSelectedAICategories(
-                                      wrapAiCategoryRow);
-                                });
+                                _model.removeFromSelectedAICategories(
+                                    wrapAiCategoryRow);
+                                setState(() {});
                               } else {
                                 logFirebaseEvent(
                                     'Container_update_component_state');
-                                setState(() {
-                                  _model.addToSelectedAICategories(
-                                      wrapAiCategoryRow);
-                                });
+                                _model.addToSelectedAICategories(
+                                    wrapAiCategoryRow);
+                                setState(() {});
                               }
                             },
                             child: Container(

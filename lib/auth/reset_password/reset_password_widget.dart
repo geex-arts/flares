@@ -320,9 +320,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 HapticFeedback.vibrate();
                                 logFirebaseEvent(
                                     'sendLinkButton_update_page_state');
-                                setState(() {
-                                  _model.isLinkSent = false;
-                                });
+                                _model.isLinkSent = false;
+                                setState(() {});
                                 logFirebaseEvent('sendLinkButton_backend_call');
                                 _model.foundUserRow =
                                     await UsersTable().queryRows(
@@ -351,9 +350,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                   );
                                   logFirebaseEvent(
                                       'sendLinkButton_update_page_state');
-                                  setState(() {
-                                    _model.isLinkSent = true;
-                                  });
+                                  _model.isLinkSent = true;
+                                  setState(() {});
                                 } else {
                                   logFirebaseEvent(
                                       'sendLinkButton_alert_dialog');

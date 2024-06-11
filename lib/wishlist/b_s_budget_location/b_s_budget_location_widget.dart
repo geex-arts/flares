@@ -524,9 +524,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                             'B_S_BUDGET_LOCATION_Text_64xf91pa_ON_TAP');
                                         logFirebaseEvent(
                                             'Text_update_component_state');
-                                        setState(() {
-                                          _model.budget = 'friendly';
-                                        });
+                                        _model.budget = 'friendly';
+                                        setState(() {});
                                       },
                                       child: Text(
                                         'Friendly',
@@ -555,9 +554,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                             'B_S_BUDGET_LOCATION_Text_mu2edy3j_ON_TAP');
                                         logFirebaseEvent(
                                             'Text_update_component_state');
-                                        setState(() {
-                                          _model.budget = 'moderate';
-                                        });
+                                        _model.budget = 'moderate';
+                                        setState(() {});
                                       },
                                       child: Text(
                                         'Moderate',
@@ -586,9 +584,8 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                                             'B_S_BUDGET_LOCATION_Text_42rbkjmv_ON_TAP');
                                         logFirebaseEvent(
                                             'Text_update_component_state');
-                                        setState(() {
-                                          _model.budget = 'luxury';
-                                        });
+                                        _model.budget = 'luxury';
+                                        setState(() {});
                                       },
                                       child: Text(
                                         'Luxury',

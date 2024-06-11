@@ -288,10 +288,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                               false)) {
                                         logFirebaseEvent(
                                             'Container_update_page_state');
-                                        setState(() {
-                                          _model.photoPS =
-                                              _model.uploadedLocalFile1;
-                                        });
+                                        _model.photoPS =
+                                            _model.uploadedLocalFile1;
+                                        setState(() {});
                                       }
                                     },
                                     child: Container(
@@ -453,10 +452,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                     logFirebaseEvent(
                                         'EDIT_COUPLE_PROFILE_PAGE_Date_ON_TAP');
                                     logFirebaseEvent('Date_update_page_state');
-                                    setState(() {
-                                      _model.dateOn = true;
-                                      _model.borderOn = true;
-                                    });
+                                    _model.dateOn = true;
+                                    _model.borderOn = true;
+                                    setState(() {});
                                     logFirebaseEvent('Date_date_time_picker');
                                     await showModalBottomSheet<bool>(
                                         context: context,
@@ -520,10 +518,9 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                           );
                                         });
                                     logFirebaseEvent('Date_update_page_state');
-                                    setState(() {
-                                      _model.dateOn = false;
-                                      _model.borderOn = false;
-                                    });
+                                    _model.dateOn = false;
+                                    _model.borderOn = false;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: double.infinity,

@@ -5,9 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'dart:ui';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'b_s_edit_collection_model.dart';
 export 'b_s_edit_collection_model.dart';
 
@@ -53,7 +50,7 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
         bottomLeft: Radius.circular(0.0),
         bottomRight: Radius.circular(0.0),
         topLeft: Radius.circular(32.0),
@@ -66,7 +63,7 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
         ),
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Color(0x18F2F1F3),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
@@ -79,17 +76,17 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                 child: Container(
                   width: 33.0,
                   height: 4.0,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0x3AF2F1F3),
                   ),
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0.0, 14.0, 0.0, 12.0),
                 child: Text(
                   'Edit Collection Name',
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
@@ -102,18 +99,18 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                       ),
                 ),
               ),
-              Divider(
+              const Divider(
                 thickness: 1.0,
                 color: Color(0x0CF2F1F3),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 34.0, 16.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 34.0, 16.0, 0.0),
                 child: TextFormField(
                   controller: _model.textController,
                   focusNode: _model.textFieldFocusNode,
                   onChanged: (_) => EasyDebounce.debounce(
                     '_model.textController',
-                    Duration(milliseconds: 200),
+                    const Duration(milliseconds: 200),
                     () => setState(() {}),
                   ),
                   autofocus: false,
@@ -126,7 +123,7 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                     hintStyle:
                         FlutterFlowTheme.of(context).labelMedium.override(
                               fontFamily: 'Nuckle',
-                              color: Color(0x98FFFFFF),
+                              color: const Color(0x98FFFFFF),
                               letterSpacing: 0.0,
                               useGoogleFonts: false,
                             ),
@@ -138,7 +135,7 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                               useGoogleFonts: false,
                             ),
                     enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(
+                      borderSide: const BorderSide(
                         color: Color(0x00000000),
                         width: 1.0,
                       ),
@@ -166,9 +163,9 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                       borderRadius: BorderRadius.circular(30.0),
                     ),
                     filled: true,
-                    fillColor: Color(0x0FFFFFFF),
+                    fillColor: const Color(0x0FFFFFFF),
                     contentPadding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   ),
                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                         fontFamily: 'Nuckle',
@@ -183,10 +180,9 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
               ),
               if (_model.isEmptyName)
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
                   child: Text(
-                    _model.textController.text == null ||
-                            _model.textController.text == ''
+                    _model.textController.text == ''
                         ? 'Field is required'
                         : 'Name must be less then 15 characters',
                     textAlign: TextAlign.end,
@@ -200,7 +196,7 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                   ),
                 ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 10.0, 16.0, 45.0),
                 child: wrapWithModel(
                   model: _model.pinkButtonModel,
                   updateCallback: () => setState(() {}),
@@ -210,11 +206,9 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                       logFirebaseEvent(
                           'B_S_EDIT_COLLECTION_Container_tesekevs_C');
                       logFirebaseEvent('pinkButton_update_component_state');
-                      setState(() {
-                        _model.isEmptyName = false;
-                      });
-                      if ((_model.textController.text != null &&
-                              _model.textController.text != '') &&
+                      _model.isEmptyName = false;
+                      setState(() {});
+                      if ((_model.textController.text != '') &&
                           (_model.textController.text.length < 15)) {
                         logFirebaseEvent('pinkButton_backend_call');
                         await CollectionsTable().update(
@@ -229,14 +223,14 @@ class _BSEditCollectionWidgetState extends State<BSEditCollectionWidget> {
                           ),
                         );
                         logFirebaseEvent('pinkButton_update_app_state');
+
                         FFAppState().update(() {});
                         logFirebaseEvent('pinkButton_bottom_sheet');
                         Navigator.pop(context);
                       } else {
                         logFirebaseEvent('pinkButton_update_component_state');
-                        setState(() {
-                          _model.isEmptyName = true;
-                        });
+                        _model.isEmptyName = true;
+                        setState(() {});
                       }
                     },
                   ),

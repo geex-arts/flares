@@ -35,6 +35,7 @@ class _BSAddWishesWidgetState extends State<BSAddWishesWidget> {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       logFirebaseEvent('B_S_ADD_WISHES_BS_Add_Wishes_ON_INIT_STA');
       logFirebaseEvent('BS_Add_Wishes_update_app_state');
+
       setState(() {});
     });
   }

@@ -47,9 +47,8 @@ class _StoriesViewWidgetState extends State<StoriesViewWidget>
       logFirebaseEvent('Stories_View_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
       logFirebaseEvent('Stories_View_update_page_state');
-      setState(() {
-        _model.isLoading = false;
-      });
+      _model.isLoading = false;
+      setState(() {});
     });
 
     animationsMap.addAll({

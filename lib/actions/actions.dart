@@ -85,9 +85,8 @@ Future loadFromBrowserAction(
   while (true) {
     if (url != null && url != '') {
       logFirebaseEvent('loadFromBrowserAction_update_app_state');
-      FFAppState().update(() {
-        FFAppState().currentUrl = url;
-      });
+      FFAppState().currentUrl = url;
+      FFAppState().update(() {});
       if (true) {
         logFirebaseEvent('loadFromBrowserAction_backend_call');
         apiParseResult = await ParseSiteCall.call(

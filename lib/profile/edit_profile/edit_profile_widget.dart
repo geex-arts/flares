@@ -387,10 +387,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
                                             logFirebaseEvent(
                                                 'Container_update_page_state');
-                                            setState(() {
-                                              _model.photoPS =
-                                                  _model.uploadedLocalFile1;
-                                            });
+                                            _model.photoPS =
+                                                _model.uploadedLocalFile1;
+                                            setState(() {});
                                           },
                                           child: Container(
                                             width: 30.0,
@@ -899,6 +898,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
                                         logFirebaseEvent(
                                             'SaveProfile_update_app_state');
+
                                         FFAppState().update(() {});
                                         logFirebaseEvent(
                                             'SaveProfile_navigate_back');

@@ -772,9 +772,8 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                             'COUPLES_PROFILE_Container_5echtx3o_ON_TA');
                                         logFirebaseEvent(
                                             'Container_update_page_state');
-                                        setState(() {
-                                          _model.selectedCollectionID = null;
-                                        });
+                                        _model.selectedCollectionID = null;
+                                        setState(() {});
                                       },
                                       child: Container(
                                         height: 37.0,
@@ -879,11 +878,10 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                     'COUPLES_PROFILE_Container_r0xv75vw_ON_TA');
                                                 logFirebaseEvent(
                                                     'Container_update_page_state');
-                                                setState(() {
-                                                  _model.selectedCollectionID =
-                                                      categoryRowCollectionsRow
-                                                          .uuid;
-                                                });
+                                                _model.selectedCollectionID =
+                                                    categoryRowCollectionsRow
+                                                        .uuid;
+                                                setState(() {});
                                               },
                                               child: Container(
                                                 height: 37.0,

@@ -576,18 +576,16 @@ class _SignUpWidgetState extends State<SignUpWidget>
                                                 .text) {
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
-                                          setState(() {
-                                            _model.passNotMatch = true;
-                                          });
+                                          _model.passNotMatch = true;
+                                          setState(() {});
                                           logFirebaseEvent(
                                               'nextButton_wait__delay');
                                           await Future.delayed(const Duration(
                                               milliseconds: 5000));
                                           logFirebaseEvent(
                                               'nextButton_update_page_state');
-                                          setState(() {
-                                            _model.passNotMatch = false;
-                                          });
+                                          _model.passNotMatch = false;
+                                          setState(() {});
                                           if (shouldSetState) setState(() {});
                                           return;
                                         }

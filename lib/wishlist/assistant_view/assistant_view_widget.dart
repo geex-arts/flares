@@ -42,9 +42,8 @@ class _AssistantViewWidgetState extends State<AssistantViewWidget>
       logFirebaseEvent('Assistant_View_wait__delay');
       await Future.delayed(const Duration(milliseconds: 2000));
       logFirebaseEvent('Assistant_View_update_page_state');
-      setState(() {
-        _model.isLoading = false;
-      });
+      _model.isLoading = false;
+      setState(() {});
     });
 
     animationsMap.addAll({

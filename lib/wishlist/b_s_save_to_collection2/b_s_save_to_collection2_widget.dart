@@ -60,9 +60,8 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
       if (widget.currentCollectionID != null &&
           widget.currentCollectionID != '') {
         logFirebaseEvent('BS_Save_To_Collection2_update_component_');
-        setState(() {
-          _model.selectedCollectionID = widget.currentCollectionID;
-        });
+        _model.selectedCollectionID = widget.currentCollectionID;
+        setState(() {});
       }
     });
 
@@ -338,11 +337,10 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                 if (!widget.isManagement) {
                                                   logFirebaseEvent(
                                                       'Container_update_component_state');
-                                                  setState(() {
-                                                    _model.selectedCollectionID =
-                                                        currentCollectionItem
-                                                            .uuid;
-                                                  });
+                                                  _model.selectedCollectionID =
+                                                      currentCollectionItem
+                                                          .uuid;
+                                                  setState(() {});
                                                   logFirebaseEvent(
                                                       'Container_backend_call');
                                                   await WishesTable().update(
@@ -363,6 +361,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                   );
                                                   logFirebaseEvent(
                                                       'Container_update_app_state');
+
                                                   FFAppState().update(() {});
                                                   logFirebaseEvent(
                                                       'Container_bottom_sheet');
@@ -396,11 +395,10 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                                   'B_S_SAVE_TO_COLLECTION2_ConditionalBuild');
                                                               logFirebaseEvent(
                                                                   'ConditionalBuilder_update_component_stat');
-                                                              setState(() {
-                                                                _model.selectedCollectionID =
-                                                                    currentCollectionItem
-                                                                        .uuid;
-                                                              });
+                                                              _model.selectedCollectionID =
+                                                                  currentCollectionItem
+                                                                      .uuid;
+                                                              setState(() {});
                                                               logFirebaseEvent(
                                                                   'ConditionalBuilder_backend_call');
                                                               _model.updatedRow =
@@ -427,6 +425,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                               );
                                                               logFirebaseEvent(
                                                                   'ConditionalBuilder_update_app_state');
+
                                                               FFAppState()
                                                                   .update(
                                                                       () {});
@@ -700,6 +699,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                                                 .result!) {
                                                               logFirebaseEvent(
                                                                   'Container_update_component_state');
+
                                                               _model.updatePage(
                                                                   () {});
                                                               logFirebaseEvent(
@@ -744,9 +744,8 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                               'B_S_SAVE_TO_COLLECTION2_ListView_0sqpsac');
                                           logFirebaseEvent(
                                               'ListView_update_component_state');
-                                          setState(() {
-                                            _model.isLoading = true;
-                                          });
+                                          _model.isLoading = true;
+                                          setState(() {});
                                           logFirebaseEvent(
                                               'ListView_custom_action');
                                           await actions.reorderCollections(
@@ -757,11 +756,11 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                           );
                                           logFirebaseEvent(
                                               'ListView_update_component_state');
-                                          setState(() {
-                                            _model.isLoading = false;
-                                          });
+                                          _model.isLoading = false;
+                                          setState(() {});
                                           logFirebaseEvent(
                                               'ListView_update_app_state');
+
                                           _model.updatePage(() {});
 
                                           setState(() {});

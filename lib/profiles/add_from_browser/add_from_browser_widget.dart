@@ -640,7 +640,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                   ? _model
                                                                       .selectedImage
                                                                   : _model
-                                                                      .uploadedFileUrl3,
+                                                                      .uploadedFileUrl1,
                                                               'link':
                                                                   getJsonField(
                                                                 containerParseSiteResponse
@@ -1090,9 +1090,9 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                               () async {
                                                                             logFirebaseEvent('ADD_FROM_BROWSER_ConditionalBuilder_3l2r');
                                                                             logFirebaseEvent('ConditionalBuilder_update_page_state');
-                                                                            setState(() {
-                                                                              _model.selectedImage = currentImageItem;
-                                                                            });
+                                                                            _model.selectedImage =
+                                                                                currentImageItem;
+                                                                            setState(() {});
                                                                           },
                                                                           child:
                                                                               Builder(
@@ -1325,11 +1325,10 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                         'ADD_FROM_BROWSER_ConditionalBuilder_djo9');
                                                                     logFirebaseEvent(
                                                                         'ConditionalBuilder_update_page_state');
+                                                                    _model.selectedImage =
+                                                                        null;
                                                                     setState(
-                                                                        () {
-                                                                      _model.selectedImage =
-                                                                          null;
-                                                                    });
+                                                                        () {});
                                                                   },
                                                                   child:
                                                                       Builder(
@@ -1479,13 +1478,12 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                     false)) {
                                                               logFirebaseEvent(
                                                                   'IconButton_update_page_state');
-                                                              setState(() {
-                                                                _model.uploadedFile =
-                                                                    _model
-                                                                        .uploadedLocalFile2;
-                                                                _model.selectedImage =
-                                                                    null;
-                                                              });
+                                                              _model.uploadedFile =
+                                                                  _model
+                                                                      .uploadedLocalFile2;
+                                                              _model.selectedImage =
+                                                                  null;
+                                                              setState(() {});
                                                             }
                                                           },
                                                         ),

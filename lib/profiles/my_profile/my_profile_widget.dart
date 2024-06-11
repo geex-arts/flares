@@ -1465,9 +1465,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                             'MY_PROFILE_Container_4ube1o5r_ON_TAP');
                                         logFirebaseEvent(
                                             'Container_update_page_state');
-                                        setState(() {
-                                          _model.selectedCollectionID = null;
-                                        });
+                                        _model.selectedCollectionID = null;
+                                        setState(() {});
                                       },
                                       child: Container(
                                         height: 37.0,
@@ -1568,11 +1567,10 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     'MY_PROFILE_Container_5nfqvym8_ON_TAP');
                                                 logFirebaseEvent(
                                                     'Container_update_page_state');
-                                                setState(() {
-                                                  _model.selectedCollectionID =
-                                                      categoryRowCollectionsRow
-                                                          .uuid;
-                                                });
+                                                _model.selectedCollectionID =
+                                                    categoryRowCollectionsRow
+                                                        .uuid;
+                                                setState(() {});
                                               },
                                               child: Container(
                                                 height: 37.0,

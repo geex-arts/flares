@@ -103,9 +103,8 @@ class _SplashWidgetState extends State<SplashWidget>
       } else {
         if (widget.pairCode != null && widget.pairCode != '') {
           logFirebaseEvent('Splash_update_app_state');
-          setState(() {
-            FFAppState().pairCodeState = widget.pairCode!;
-          });
+          FFAppState().pairCodeState = widget.pairCode!;
+          setState(() {});
         }
       }
 
