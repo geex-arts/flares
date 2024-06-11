@@ -9,7 +9,7 @@ class PinkButtonWidget extends StatefulWidget {
   const PinkButtonWidget({
     super.key,
     required this.text,
-    required this.currentAction,
+    this.currentAction,
   });
 
   final String? text;

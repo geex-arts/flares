@@ -10,3 +10,4 @@ export 'reorder_collections.dart' show reorderCollections;
 export 'apple_signin.dart' show appleSignin;
 export 'app_tracking_transparency_request.dart'
     show appTrackingTransparencyRequest;
+export 'upload_image_to_supabase.dart' show uploadImageToSupabase;

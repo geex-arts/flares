@@ -586,237 +586,485 @@ class _WishMainWidgetState extends State<WishMainWidget>
                             ),
                           ),
                         ),
-                        Builder(
-                          builder: (context) => Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                16.0, 0.0, 16.0, 45.0),
-                            child: FutureBuilder<List<WishesRow>>(
-                              future: WishesTable().querySingleRow(
-                                queryFn: (q) => q
-                                    .eq(
-                                      'pair',
-                                      FFAppState().pairID,
-                                    )
-                                    .eq(
-                                      'parent_uuid',
-                                      wishMainWishesRow.parentUuid != null &&
-                                              wishMainWishesRow.parentUuid !=
-                                                  ''
-                                          ? wishMainWishesRow.parentUuid
-                                          : wishMainWishesRow.uuid,
-                                    ),
-                              ),
-                              builder: (context, snapshot) {
-                                // Customize what your widget looks like when it's loading.
-                                if (!snapshot.hasData) {
-                                  return Center(
-                                    child: SizedBox(
-                                      width: 50.0,
-                                      height: 50.0,
-                                      child: SpinKitPulse(
-                                        color: FlutterFlowTheme.of(context)
-                                            .pinkButton,
-                                        size: 50.0,
-                                      ),
-                                    ),
-                                  );
-                                }
-                                List<WishesRow> askForADateWishesRowList =
-                                    snapshot.data!;
-                                final askForADateWishesRow =
-                                    askForADateWishesRowList.isNotEmpty
-                                        ? askForADateWishesRowList.first
-                                        : null;
-                                return wrapWithModel(
-                                  model: _model.askForADateModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: PinkButtonWidget(
-                                    text: () {
-                                      if (widget.isFromAI) {
-                                        return 'Add to Wishlist';
-                                      } else if (widget.isProfile ||
-                                          (askForADateWishesRow != null) ||
-                                          (wishMainWishesRow.pair ==
-                                              FFAppState().pairID)) {
-                                        return 'Ask for a Date';
-                                      } else {
-                                        return 'Add to Wishlist';
-                                      }
-                                    }(),
-                                    currentAction: () async {
-                                      logFirebaseEvent(
-                                          'WISH_MAIN_PAGE_AskForADate_CALLBACK');
-                                      var shouldSetState = false;
-                                      if (widget.isFromAI) {
-                                        logFirebaseEvent(
-                                            'AskForADate_bottom_sheet');
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          barrierColor: Colors.transparent,
-                                          context: context,
-                                          builder: (context) {
-                                            return WebViewAware(
-                                              child: GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child:
-                                                      BSSaveToCollectionWidget(
-                                                    selectedWishRow:
-                                                        wishMainWishesRow,
-                                                    isFromWebview: true,
-                                                    isFromAI: widget.isFromAI,
+                        Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              16.0, 0.0, 16.0, 45.0),
+                          child: FutureBuilder<List<DatesRow>>(
+                            future: DatesTable().querySingleRow(
+                              queryFn: (q) => q
+                                  .eq(
+                                    'pair',
+                                    FFAppState().pairID,
+                                  )
+                                  .eq(
+                                    'wish',
+                                    widget.selectedWishID,
+                                  )
+                                  .eq(
+                                    'status',
+                                    'visited',
+                                  ),
+                            ),
+                            builder: (context, snapshot) {
+                              // Customize what your widget looks like when it's loading.
+                              if (!snapshot.hasData) {
+                                return PinkButtonWidget(
+                                  text: '',
+                                  currentAction: () async {},
+                                );
+                              }
+                              List<DatesRow> stackDatesRowList = snapshot.data!;
+                              final stackDatesRow = stackDatesRowList.isNotEmpty
+                                  ? stackDatesRowList.first
+                                  : null;
+                              return SizedBox(
+                                width: double.infinity,
+                                height: 40.0,
+                                child: Stack(
+                                  children: [
+                                    if (stackDatesRow == null)
+                                      Builder(
+                                        builder: (context) =>
+                                            FutureBuilder<List<WishesRow>>(
+                                          future: WishesTable().querySingleRow(
+                                            queryFn: (q) => q
+                                                .eq(
+                                                  'pair',
+                                                  FFAppState().pairID,
+                                                )
+                                                .eq(
+                                                  'parent_uuid',
+                                                  wishMainWishesRow
+                                                                  .parentUuid !=
+                                                              null &&
+                                                          wishMainWishesRow
+                                                                  .parentUuid !=
+                                                              ''
+                                                      ? wishMainWishesRow
+                                                          .parentUuid
+                                                      : wishMainWishesRow.uuid,
+                                                ),
+                                          ),
+                                          builder: (context, snapshot) {
+                                            // Customize what your widget looks like when it's loading.
+                                            if (!snapshot.hasData) {
+                                              return Center(
+                                                child: SizedBox(
+                                                  width: 50.0,
+                                                  height: 50.0,
+                                                  child: SpinKitPulse(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .pinkButton,
+                                                    size: 50.0,
                                                   ),
                                                 ),
+                                              );
+                                            }
+                                            List<WishesRow>
+                                                askForADateWishesRowList =
+                                                snapshot.data!;
+                                            final askForADateWishesRow =
+                                                askForADateWishesRowList
+                                                        .isNotEmpty
+                                                    ? askForADateWishesRowList
+                                                        .first
+                                                    : null;
+                                            return wrapWithModel(
+                                              model: _model.askForADateModel,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: PinkButtonWidget(
+                                                text: () {
+                                                  if (widget.isFromAI) {
+                                                    return 'Add to Wishlist';
+                                                  } else if (widget.isProfile ||
+                                                      (askForADateWishesRow !=
+                                                          null) ||
+                                                      (wishMainWishesRow
+                                                              .pair ==
+                                                          FFAppState()
+                                                              .pairID)) {
+                                                    return 'Ask for a Date';
+                                                  } else {
+                                                    return 'Add to Wishlist';
+                                                  }
+                                                }(),
+                                                currentAction: () async {
+                                                  logFirebaseEvent(
+                                                      'WISH_MAIN_PAGE_AskForADate_CALLBACK');
+                                                  var shouldSetState = false;
+                                                  if (widget.isFromAI) {
+                                                    logFirebaseEvent(
+                                                        'AskForADate_bottom_sheet');
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      barrierColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  BSSaveToCollectionWidget(
+                                                                selectedWishRow:
+                                                                    wishMainWishesRow,
+                                                                isFromWebview:
+                                                                    true,
+                                                                isFromAI: widget
+                                                                    .isFromAI,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+
+                                                    if (shouldSetState) {
+                                                      setState(() {});
+                                                    }
+                                                    return;
+                                                  }
+                                                  if (widget.isProfile ||
+                                                      (askForADateWishesRow !=
+                                                          null)) {
+                                                    logFirebaseEvent(
+                                                        'AskForADate_backend_call');
+                                                    _model.partnerRow =
+                                                        await UsersTable()
+                                                            .queryRows(
+                                                      queryFn: (q) => q
+                                                          .eq(
+                                                            'pair',
+                                                            FFAppState().pairID,
+                                                          )
+                                                          .neq(
+                                                            'id',
+                                                            currentUserUid,
+                                                          ),
+                                                    );
+                                                    shouldSetState = true;
+                                                    if (_model.partnerRow!.isNotEmpty) {
+                                                      logFirebaseEvent(
+                                                          'AskForADate_bottom_sheet');
+                                                      await showModalBottomSheet(
+                                                        isScrollControlled:
+                                                            true,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        barrierColor:
+                                                            Colors.transparent,
+                                                        context: context,
+                                                        builder: (context) {
+                                                          return WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child: Padding(
+                                                                padding: MediaQuery
+                                                                    .viewInsetsOf(
+                                                                        context),
+                                                                child:
+                                                                    BSAskDayWidget(
+                                                                  selectedWishRow:
+                                                                      wishMainWishesRow,
+                                                                  partnerID: _model
+                                                                      .partnerRow!
+                                                                      .first
+                                                                      .id,
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          safeSetState(() {}));
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'AskForADate_alert_dialog');
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: const AlignmentDirectional(
+                                                                    0.0, -1.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                            child: WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    const AlertDialogWarningWidget(
+                                                                  title:
+                                                                      'No partner selected !',
+                                                                  subtitle:
+                                                                      'Please add your partner from the profile',
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    }
+                                                  } else {
+                                                    logFirebaseEvent(
+                                                        'AskForADate_bottom_sheet');
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      barrierColor:
+                                                          Colors.transparent,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return WebViewAware(
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child: Padding(
+                                                              padding: MediaQuery
+                                                                  .viewInsetsOf(
+                                                                      context),
+                                                              child:
+                                                                  BSSaveToCollectionWidget(
+                                                                selectedWishRow:
+                                                                    wishMainWishesRow,
+                                                                isFromWebview:
+                                                                    true,
+                                                                isFromAI: widget
+                                                                    .isFromAI,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
+                                                  }
+
+                                                  if (shouldSetState) {
+                                                    setState(() {});
+                                                  }
+                                                },
                                               ),
                                             );
                                           },
-                                        ).then((value) => safeSetState(() {}));
-
-                                        if (shouldSetState) setState(() {});
-                                        return;
-                                      }
-                                      if (widget.isProfile ||
-                                          (askForADateWishesRow != null)) {
-                                        logFirebaseEvent(
-                                            'AskForADate_backend_call');
-                                        _model.partnerRow =
-                                            await UsersTable().queryRows(
+                                        ),
+                                      ),
+                                    if (stackDatesRow == null)
+                                      FutureBuilder<List<DatesRow>>(
+                                        future: DatesTable().querySingleRow(
                                           queryFn: (q) => q
                                               .eq(
                                                 'pair',
                                                 FFAppState().pairID,
                                               )
-                                              .neq(
-                                                'id',
-                                                currentUserUid,
+                                              .eq(
+                                                'wish',
+                                                widget.selectedWishID,
+                                              )
+                                              .eq(
+                                                'status',
+                                                'pending',
+                                              )
+                                              .lt(
+                                                'date_time',
+                                                supaSerialize<DateTime>(
+                                                    getCurrentTimestamp),
                                               ),
-                                        );
-                                        shouldSetState = true;
-                                        if (_model.partnerRow!.isNotEmpty) {
-                                          logFirebaseEvent(
-                                              'AskForADate_bottom_sheet');
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Colors.transparent,
-                                            barrierColor: Colors.transparent,
-                                            context: context,
-                                            builder: (context) {
-                                              return WebViewAware(
-                                                child: GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: BSAskDayWidget(
-                                                      selectedWishRow:
-                                                          wishMainWishesRow,
-                                                      partnerID: _model
-                                                          .partnerRow!.first.id,
-                                                    ),
+                                        ),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return PinkButtonWidget(
+                                              text: '',
+                                              currentAction: () async {
+                                                logFirebaseEvent(
+                                                    'WISH_MAIN_PAGE_MarkAsVisited_CALLBACK');
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_backend_call');
+                                                _model.selectedDate =
+                                                    await DatesTable()
+                                                        .queryRows(
+                                                  queryFn: (q) => q
+                                                      .eq(
+                                                        'pair',
+                                                        FFAppState().pairID,
+                                                      )
+                                                      .eq(
+                                                        'wish',
+                                                        widget.selectedWishID,
+                                                      )
+                                                      .eq(
+                                                        'status',
+                                                        'pending',
+                                                      )
+                                                      .lt(
+                                                        'date_time',
+                                                        supaSerialize<DateTime>(
+                                                            getCurrentTimestamp),
+                                                      ),
+                                                );
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_backend_call');
+                                                await DatesTable().update(
+                                                  data: {
+                                                    'status': 'visited',
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'uuid',
+                                                    _model.selectedDate?.first
+                                                        .uuid,
                                                   ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        } else {
-                                          logFirebaseEvent(
-                                              'AskForADate_alert_dialog');
-                                          await showDialog(
-                                            context: context,
-                                            builder: (dialogContext) {
-                                              return Dialog(
-                                                elevation: 0,
-                                                insetPadding: EdgeInsets.zero,
-                                                backgroundColor:
-                                                    Colors.transparent,
-                                                alignment: const AlignmentDirectional(
-                                                        0.0, -1.0)
-                                                    .resolve(Directionality.of(
-                                                        context)),
-                                                child: WebViewAware(
-                                                  child: GestureDetector(
-                                                    onTap: () => _model
-                                                            .unfocusNode
-                                                            .canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                            .requestFocus(_model
-                                                                .unfocusNode)
-                                                        : FocusScope.of(context)
-                                                            .unfocus(),
-                                                    child:
-                                                        const AlertDialogWarningWidget(
-                                                      title:
-                                                          'No partner selected !',
-                                                      subtitle:
-                                                          'Please add your partner from the profile',
-                                                    ),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then((value) => setState(() {}));
-                                        }
-                                      } else {
-                                        logFirebaseEvent(
-                                            'AskForADate_bottom_sheet');
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Colors.transparent,
-                                          barrierColor: Colors.transparent,
-                                          context: context,
-                                          builder: (context) {
-                                            return WebViewAware(
-                                              child: GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child:
-                                                      BSSaveToCollectionWidget(
-                                                    selectedWishRow:
-                                                        wishMainWishesRow,
-                                                    isFromWebview: true,
-                                                    isFromAI: widget.isFromAI,
-                                                  ),
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        ).then((value) => safeSetState(() {}));
-                                      }
+                                                );
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_update_app_state');
 
-                                      if (shouldSetState) setState(() {});
-                                    },
-                                  ),
-                                );
-                              },
-                            ),
+                                                FFAppState().update(() {});
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_navigate_back');
+                                                context.safePop();
+
+                                                setState(() {});
+                                              },
+                                            );
+                                          }
+                                          List<DatesRow>
+                                              markAsVisitedDatesRowList =
+                                              snapshot.data!;
+                                          // Return an empty Container when the item does not exist.
+                                          if (snapshot.data!.isEmpty) {
+                                            return Container();
+                                          }
+                                          final markAsVisitedDatesRow =
+                                              markAsVisitedDatesRowList
+                                                      .isNotEmpty
+                                                  ? markAsVisitedDatesRowList
+                                                      .first
+                                                  : null;
+                                          return wrapWithModel(
+                                            model: _model.markAsVisitedModel,
+                                            updateCallback: () =>
+                                                setState(() {}),
+                                            child: PinkButtonWidget(
+                                              text: 'Mark as visited',
+                                              currentAction: () async {
+                                                logFirebaseEvent(
+                                                    'WISH_MAIN_PAGE_MarkAsVisited_CALLBACK');
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_backend_call');
+                                                _model.selectedDate =
+                                                    await DatesTable()
+                                                        .queryRows(
+                                                  queryFn: (q) => q
+                                                      .eq(
+                                                        'pair',
+                                                        FFAppState().pairID,
+                                                      )
+                                                      .eq(
+                                                        'wish',
+                                                        widget.selectedWishID,
+                                                      )
+                                                      .eq(
+                                                        'status',
+                                                        'pending',
+                                                      )
+                                                      .lt(
+                                                        'date_time',
+                                                        supaSerialize<DateTime>(
+                                                            getCurrentTimestamp),
+                                                      ),
+                                                );
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_backend_call');
+                                                await DatesTable().update(
+                                                  data: {
+                                                    'status': 'visited',
+                                                  },
+                                                  matchingRows: (rows) =>
+                                                      rows.eq(
+                                                    'uuid',
+                                                    _model.selectedDate?.first
+                                                        .uuid,
+                                                  ),
+                                                );
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_update_app_state');
+
+                                                FFAppState().update(() {});
+                                                logFirebaseEvent(
+                                                    'MarkAsVisited_navigate_back');
+                                                context.safePop();
+
+                                                setState(() {});
+                                              },
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                  ],
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ],

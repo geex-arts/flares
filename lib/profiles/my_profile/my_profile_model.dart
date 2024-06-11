@@ -1,4 +1,3 @@
-import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/new_list_widget.dart';
@@ -24,8 +23,6 @@ class MyProfileModel extends FlutterFlowModel<MyProfileWidget> {
   List<PairsInvitationsRow>? pairInvatitation;
   // Stores action output result for [Backend Call - Update Row(s)] action in Container widget.
   List<UsersRow>? pairRowCopy;
-  // Stores action output result for [Backend Call - API (generateAiWish)] action in Column widget.
-  ApiCallResponse? apiResultc16Copy;
   // Model for wishesListMain component.
   late WishesListMainModel wishesListMainModel;
   // Model for newList component.

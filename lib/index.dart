@@ -49,3 +49,4 @@ export '/profile/privacy_policy_copy/privacy_policy_copy_widget.dart'
     show PrivacyPolicyCopyWidget;
 export '/profile/terms_conditions_copy/terms_conditions_copy_widget.dart'
     show TermsConditionsCopyWidget;
+export '/profiles/past_dates/past_dates_widget.dart' show PastDatesWidget;

@@ -11,6 +11,8 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
 
   bool isSwitch = true;
 
+  bool isBlocked = false;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();
@@ -38,11 +40,14 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
   List<CollectionsRow>? collectionsRows;
   // Stores action output result for [Backend Call - Insert Row] action in pinkButton widget.
   CollectionsRow? newCollectionRowCopy;
+  // Model for pinkButton2.
+  late PinkButtonModel pinkButton2Model;
 
   @override
   void initState(BuildContext context) {
     textControllerValidator = _textControllerValidator;
     pinkButtonModel = createModel(context, () => PinkButtonModel());
+    pinkButton2Model = createModel(context, () => PinkButtonModel());
   }
 
   @override
@@ -51,5 +56,6 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
     textController?.dispose();
 
     pinkButtonModel.dispose();
+    pinkButton2Model.dispose();
   }
 }

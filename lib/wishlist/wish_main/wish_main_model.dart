@@ -13,12 +13,17 @@ class WishMainModel extends FlutterFlowModel<WishMainWidget> {
   late PinkButtonModel askForADateModel;
   // Stores action output result for [Backend Call - Query Rows] action in AskForADate widget.
   List<UsersRow>? partnerRow;
+  // Model for MarkAsVisited.
+  late PinkButtonModel markAsVisitedModel;
+  // Stores action output result for [Backend Call - Query Rows] action in MarkAsVisited widget.
+  List<DatesRow>? selectedDate;
   // Model for loader component.
   late LoaderModel loaderModel;
 
   @override
   void initState(BuildContext context) {
     askForADateModel = createModel(context, () => PinkButtonModel());
+    markAsVisitedModel = createModel(context, () => PinkButtonModel());
     loaderModel = createModel(context, () => LoaderModel());
   }
 
@@ -26,6 +31,7 @@ class WishMainModel extends FlutterFlowModel<WishMainWidget> {
   void dispose() {
     unfocusNode.dispose();
     askForADateModel.dispose();
+    markAsVisitedModel.dispose();
     loaderModel.dispose();
   }
 }

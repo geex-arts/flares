@@ -12,6 +12,7 @@ import '/flutter_flow/upload_data.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:async';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -1502,284 +1503,426 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                       ),
                                     ),
                                     Builder(
-                                      builder: (context) => Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            16.0, 28.0, 16.0, 45.0),
-                                        child: wrapWithModel(
-                                          model: _model.saveToCollectionModel,
-                                          updateCallback: () => setState(() {}),
-                                          child: PinkButtonWidget(
-                                            text: 'Save To Collection',
-                                            currentAction: () async {
-                                              logFirebaseEvent(
-                                                  'ADD_FROM_BROWSER_SaveToCollection_CALLBA');
-                                              var shouldSetState = false;
-                                              logFirebaseEvent(
-                                                  'SaveToCollection_validate_form');
-                                              if (_model.formKey.currentState ==
-                                                      null ||
-                                                  !_model.formKey.currentState!
-                                                      .validate()) {
-                                                return;
-                                              }
-                                              if (_model.dropDownValue !=
-                                                      null &&
-                                                  _model.dropDownValue != '') {
-                                                if ((_model.selectedImage ==
+                                      builder: (context) {
+                                        if (!_model.isBlocked) {
+                                          return Builder(
+                                            builder: (context) => Padding(
+                                              padding: const EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      16.0, 28.0, 16.0, 45.0),
+                                              child: wrapWithModel(
+                                                model: _model
+                                                    .saveToCollectionModel,
+                                                updateCallback: () =>
+                                                    setState(() {}),
+                                                child: PinkButtonWidget(
+                                                  text: 'Save To Collection',
+                                                  currentAction: () async {
+                                                    logFirebaseEvent(
+                                                        'ADD_FROM_BROWSER_SaveToCollection_CALLBA');
+                                                    var shouldSetState = false;
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_validate_form');
+                                                    if (_model.formKey
+                                                                .currentState ==
                                                             null ||
-                                                        _model.selectedImage ==
-                                                            '') &&
-                                                    (_model.uploadedFile !=
-                                                            null &&
-                                                        (_model
-                                                                .uploadedFile
-                                                                ?.bytes
-                                                                ?.isNotEmpty ??
-                                                            false))) {
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_upload_file_to_supabase');
-                                                  {
-                                                    setState(() => _model
-                                                            .isDataUploading3 =
-                                                        true);
-                                                    var selectedUploadedFiles =
-                                                        <FFUploadedFile>[];
-                                                    var selectedFiles =
-                                                        <SelectedFile>[];
-                                                    var downloadUrls =
-                                                        <String>[];
-                                                    try {
-                                                      selectedUploadedFiles =
-                                                          _model
-                                                                  .uploadedFile!
-                                                                  .bytes!
-                                                                  .isNotEmpty
-                                                              ? [
-                                                                  _model
-                                                                      .uploadedFile!
-                                                                ]
-                                                              : <FFUploadedFile>[];
-                                                      selectedFiles =
-                                                          selectedFilesFromUploadedFiles(
-                                                        selectedUploadedFiles,
-                                                        storageFolderPath:
-                                                            'wishImages',
-                                                      );
-                                                      downloadUrls =
-                                                          await uploadSupabaseStorageFiles(
-                                                        bucketName:
-                                                            'EdayBucket',
-                                                        selectedFiles:
-                                                            selectedFiles,
-                                                      );
-                                                    } finally {
-                                                      _model.isDataUploading3 =
-                                                          false;
-                                                    }
-                                                    if (selectedUploadedFiles
-                                                                .length ==
-                                                            selectedFiles
-                                                                .length &&
-                                                        downloadUrls.length ==
-                                                            selectedFiles
-                                                                .length) {
-                                                      setState(() {
-                                                        _model.uploadedLocalFile3 =
-                                                            selectedUploadedFiles
-                                                                .first;
-                                                        _model.uploadedFileUrl3 =
-                                                            downloadUrls.first;
-                                                      });
-                                                    } else {
-                                                      setState(() {});
+                                                        !_model.formKey
+                                                            .currentState!
+                                                            .validate()) {
                                                       return;
                                                     }
-                                                  }
-                                                } else if (_model
-                                                            .selectedImage !=
-                                                        null &&
-                                                    _model.selectedImage !=
-                                                        '') {
-                                                } else {
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_alert_dialog');
-                                                  showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        elevation: 0,
-                                                        insetPadding:
-                                                            EdgeInsets.zero,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        alignment:
-                                                            const AlignmentDirectional(
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_update_page_state');
+                                                    _model.isBlocked = true;
+                                                    setState(() {});
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_wait__delay');
+                                                    await Future.delayed(
+                                                        const Duration(
+                                                            milliseconds: 100));
+                                                    if (_model.dropDownValue !=
+                                                            null &&
+                                                        _model.dropDownValue !=
+                                                            '') {
+                                                      if ((_model.selectedImage ==
+                                                                  null ||
+                                                              _model.selectedImage ==
+                                                                  '') &&
+                                                          (_model.uploadedFile !=
+                                                                  null &&
+                                                              (_model
+                                                                      .uploadedFile
+                                                                      ?.bytes
+                                                                      ?.isNotEmpty ??
+                                                                  false))) {
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_upload_file_to_supabase');
+                                                        {
+                                                          setState(() => _model
+                                                                  .isDataUploading3 =
+                                                              true);
+                                                          var selectedUploadedFiles =
+                                                              <FFUploadedFile>[];
+                                                          var selectedFiles =
+                                                              <SelectedFile>[];
+                                                          var downloadUrls =
+                                                              <String>[];
+                                                          try {
+                                                            selectedUploadedFiles = _model
+                                                                    .uploadedFile!
+                                                                    .bytes!
+                                                                    .isNotEmpty
+                                                                ? [
+                                                                    _model
+                                                                        .uploadedFile!
+                                                                  ]
+                                                                : <FFUploadedFile>[];
+                                                            selectedFiles =
+                                                                selectedFilesFromUploadedFiles(
+                                                              selectedUploadedFiles,
+                                                              storageFolderPath:
+                                                                  'wishImages',
+                                                            );
+                                                            downloadUrls =
+                                                                await uploadSupabaseStorageFiles(
+                                                              bucketName:
+                                                                  'EdayBucket',
+                                                              selectedFiles:
+                                                                  selectedFiles,
+                                                            );
+                                                          } finally {
+                                                            _model.isDataUploading3 =
+                                                                false;
+                                                          }
+                                                          if (selectedUploadedFiles
+                                                                      .length ==
+                                                                  selectedFiles
+                                                                      .length &&
+                                                              downloadUrls
+                                                                      .length ==
+                                                                  selectedFiles
+                                                                      .length) {
+                                                            setState(() {
+                                                              _model.uploadedLocalFile3 =
+                                                                  selectedUploadedFiles
+                                                                      .first;
+                                                              _model.uploadedFileUrl3 =
+                                                                  downloadUrls
+                                                                      .first;
+                                                            });
+                                                          } else {
+                                                            setState(() {});
+                                                            return;
+                                                          }
+                                                        }
+                                                      } else if (_model
+                                                                  .selectedImage !=
+                                                              null &&
+                                                          _model.selectedImage !=
+                                                              '') {
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_custom_action');
+                                                        _model.result =
+                                                            await actions
+                                                                .uploadImageToSupabase(
+                                                          _model.selectedImage!,
+                                                        );
+                                                        shouldSetState = true;
+                                                        if (_model.result !=
+                                                                null &&
+                                                            _model.result !=
+                                                                '') {
+                                                          logFirebaseEvent(
+                                                              'SaveToCollection_update_page_state');
+                                                          _model.customUploadResult =
+                                                              _model.result;
+                                                        } else {
+                                                          logFirebaseEvent(
+                                                              'SaveToCollection_alert_dialog');
+                                                          showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Dialog(
+                                                                elevation: 0,
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: const AlignmentDirectional(
+                                                                        0.0,
+                                                                        -1.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                                child:
+                                                                    WebViewAware(
+                                                                  child:
+                                                                      GestureDetector(
+                                                                    onTap: () => _model
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
+                                                                    child:
+                                                                        const AlertDialogWarningWidget(
+                                                                      title:
+                                                                          'Error !',
+                                                                      subtitle:
+                                                                          'There was an error uploading the image. Please try again later.',
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              setState(() {}));
+
+                                                          if (shouldSetState) {
+                                                            setState(() {});
+                                                          }
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_update_page_state');
+                                                        _model.isBlocked =
+                                                            false;
+                                                        setState(() {});
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_alert_dialog');
+                                                        showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Dialog(
+                                                              elevation: 0,
+                                                              insetPadding:
+                                                                  EdgeInsets
+                                                                      .zero,
+                                                              backgroundColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              alignment: const AlignmentDirectional(
+                                                                      0.0, -1.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                              child:
+                                                                  WebViewAware(
+                                                                child:
+                                                                    GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      const AlertDialogWarningWidget(
+                                                                    title:
+                                                                        'No image selected!',
+                                                                    subtitle:
+                                                                        'Please select the image from the list below or upload your own',
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        if (shouldSetState) {
+                                                          setState(() {});
+                                                        }
+                                                        return;
+                                                      }
+
+                                                      logFirebaseEvent(
+                                                          'SaveToCollection_backend_call');
+                                                      _model.createdWishRow =
+                                                          await WishesTable()
+                                                              .insert({
+                                                        'visibily': true,
+                                                        'collection':
+                                                            _model.dropDownValue !=
+                                                                        null &&
+                                                                    _model.dropDownValue !=
+                                                                        ''
+                                                                ? _model
+                                                                    .dropDownValue
+                                                                : null,
+                                                        'pair':
+                                                            FFAppState().pairID,
+                                                        'created_by':
+                                                            currentUserUid,
+                                                        'name': _model
+                                                            .nameFieldTextController
+                                                            .text,
+                                                        'description': _model
+                                                            .descriptionFieldTextController
+                                                            .text,
+                                                        'photo': () {
+                                                          if ((_model.selectedImage !=
+                                                                      null &&
+                                                                  _model.selectedImage !=
+                                                                      '') &&
+                                                              (_model.customUploadResult !=
+                                                                      null &&
+                                                                  _model.customUploadResult !=
+                                                                      '')) {
+                                                            return _model
+                                                                .customUploadResult;
+                                                          } else if (_model
+                                                                      .selectedImage !=
+                                                                  null &&
+                                                              _model.selectedImage !=
+                                                                  '') {
+                                                            return _model
+                                                                .selectedImage;
+                                                          } else {
+                                                            return _model
+                                                                .uploadedFileUrl3;
+                                                          }
+                                                        }(),
+                                                        'link': getJsonField(
+                                                          containerParseSiteResponse
+                                                              .jsonBody,
+                                                          r'''$.link''',
+                                                        ).toString(),
+                                                      });
+                                                      shouldSetState = true;
+                                                      if (true) {
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_backend_call');
+                                                        _model.selectedCollection =
+                                                            await CollectionsTable()
+                                                                .queryRows(
+                                                          queryFn: (q) => q.eq(
+                                                            'uuid',
+                                                            _model
+                                                                .dropDownValue,
+                                                          ),
+                                                        );
+                                                        shouldSetState = true;
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_backend_call');
+                                                        unawaited(
+                                                          () async {
+                                                            await WishesTable()
+                                                                .update(
+                                                              data: {
+                                                                'visibily': _model
+                                                                    .selectedCollection
+                                                                    ?.first
+                                                                    .visibility,
+                                                              },
+                                                              matchingRows:
+                                                                  (rows) =>
+                                                                      rows.eq(
+                                                                'uuid',
+                                                                _model
+                                                                    .createdWishRow
+                                                                    ?.uuid,
+                                                              ),
+                                                            );
+                                                          }(),
+                                                        );
+                                                        shouldSetState = true;
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_bottom_sheet');
+                                                        Navigator.pop(context);
+                                                        logFirebaseEvent(
+                                                            'SaveToCollection_navigate_to');
+
+                                                        context.goNamed(
+                                                            'My_Profile');
+                                                      }
+                                                    } else {
+                                                      logFirebaseEvent(
+                                                          'SaveToCollection_update_page_state');
+                                                      _model.isBlocked = false;
+                                                      setState(() {});
+                                                      logFirebaseEvent(
+                                                          'SaveToCollection_alert_dialog');
+                                                      showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Dialog(
+                                                            elevation: 0,
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: const AlignmentDirectional(
                                                                     0.0, -1.0)
                                                                 .resolve(
                                                                     Directionality.of(
                                                                         context)),
-                                                        child: WebViewAware(
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
+                                                            child: WebViewAware(
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
                                                                             .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
-                                                            child:
-                                                                const AlertDialogWarningWidget(
-                                                              title:
-                                                                  'No image selected!',
-                                                              subtitle:
-                                                                  'Please select the image from the list below or upload your own',
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    const AlertDialogWarningWidget(
+                                                                  title:
+                                                                      'No category selected !',
+                                                                  subtitle:
+                                                                      'Please select category from the dropdown or add new',
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-
-                                                  if (shouldSetState) {
-                                                    setState(() {});
-                                                  }
-                                                  return;
-                                                }
-
-                                                logFirebaseEvent(
-                                                    'SaveToCollection_backend_call');
-                                                _model.createdWishRow =
-                                                    await WishesTable().insert({
-                                                  'visibily': true,
-                                                  'collection': _model
-                                                                  .dropDownValue !=
-                                                              null &&
-                                                          _model.dropDownValue !=
-                                                              ''
-                                                      ? _model.dropDownValue
-                                                      : null,
-                                                  'pair': FFAppState().pairID,
-                                                  'created_by': currentUserUid,
-                                                  'name': _model
-                                                      .nameFieldTextController
-                                                      .text,
-                                                  'description': _model
-                                                      .descriptionFieldTextController
-                                                      .text,
-                                                  'photo': _model.selectedImage !=
-                                                              null &&
-                                                          _model.selectedImage !=
-                                                              ''
-                                                      ? _model.selectedImage
-                                                      : _model.uploadedFileUrl3,
-                                                  'link': getJsonField(
-                                                    containerParseSiteResponse
-                                                        .jsonBody,
-                                                    r'''$.link''',
-                                                  ).toString(),
-                                                });
-                                                shouldSetState = true;
-                                                if (true) {
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_backend_call');
-                                                  _model.selectedCollection =
-                                                      await CollectionsTable()
-                                                          .queryRows(
-                                                    queryFn: (q) => q.eq(
-                                                      'uuid',
-                                                      _model.dropDownValue,
-                                                    ),
-                                                  );
-                                                  shouldSetState = true;
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_backend_call');
-                                                  unawaited(
-                                                    () async {
-                                                      await WishesTable()
-                                                          .update(
-                                                        data: {
-                                                          'visibily': _model
-                                                              .selectedCollection
-                                                              ?.first
-                                                              .visibility,
+                                                          );
                                                         },
-                                                        matchingRows: (rows) =>
-                                                            rows.eq(
-                                                          'uuid',
-                                                          _model.createdWishRow
-                                                              ?.uuid,
-                                                        ),
-                                                      );
-                                                    }(),
-                                                  );
-                                                  shouldSetState = true;
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_bottom_sheet');
-                                                  Navigator.pop(context);
-                                                  logFirebaseEvent(
-                                                      'SaveToCollection_navigate_to');
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    }
 
-                                                  context.goNamed('My_Profile');
-                                                }
-                                              } else {
-                                                logFirebaseEvent(
-                                                    'SaveToCollection_alert_dialog');
-                                                showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      elevation: 0,
-                                                      insetPadding:
-                                                          EdgeInsets.zero,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      alignment:
-                                                          const AlignmentDirectional(
-                                                                  0.0, -1.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: WebViewAware(
-                                                        child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child:
-                                                              const AlertDialogWarningWidget(
-                                                            title:
-                                                                'No category selected !',
-                                                            subtitle:
-                                                                'Please select category from the dropdown or add new',
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
+                                                    if (shouldSetState) {
+                                                      setState(() {});
+                                                    }
                                                   },
-                                                ).then(
-                                                    (value) => setState(() {}));
-                                              }
-
-                                              if (shouldSetState) {
-                                                setState(() {});
-                                              }
-                                            },
-                                          ),
-                                        ),
-                                      ),
+                                                ),
+                                              ),
+                                            ),
+                                          );
+                                        } else {
+                                          return Padding(
+                                            padding:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 28.0, 16.0, 45.0),
+                                            child: wrapWithModel(
+                                              model:
+                                                  _model.saveToCollection2Model,
+                                              updateCallback: () =>
+                                                  setState(() {}),
+                                              child: PinkButtonWidget(
+                                                text: 'Save To Collection',
+                                                currentAction: () async {},
+                                              ),
+                                            ),
+                                          );
+                                        }
+                                      },
                                     ),
                                   ],
                                 ),

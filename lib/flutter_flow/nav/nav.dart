@@ -370,6 +370,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'Terms_ConditionsCopy',
               path: 'termsConditionsCopy',
               builder: (context, params) => const TermsConditionsCopyWidget(),
+            ),
+            FFRoute(
+              name: 'Past_Dates',
+              path: 'pastDates',
+              builder: (context, params) => PastDatesWidget(
+                pastDatesWishes: params.getParam<String>(
+                  'pastDatesWishes',
+                  ParamType.String,
+                  isList: true,
+                ),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

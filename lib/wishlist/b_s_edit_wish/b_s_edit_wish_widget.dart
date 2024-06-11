@@ -93,7 +93,7 @@ class _BSEditWishWidgetState extends State<BSEditWishWidget> {
         child: Container(
           width: double.infinity,
           decoration: const BoxDecoration(
-            color: Color(0x34969699),
+            color: Color(0xB31D1919),
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
