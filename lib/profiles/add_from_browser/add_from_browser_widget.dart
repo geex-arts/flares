@@ -559,6 +559,75 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                     null &&
                                                                 _model.selectedImage !=
                                                                     '') {
+                                                              logFirebaseEvent(
+                                                                  'Container_custom_action');
+                                                              _model.result2 =
+                                                                  await actions
+                                                                      .uploadImageToSupabase(
+                                                                _model
+                                                                    .selectedImage!,
+                                                              );
+                                                              shouldSetState =
+                                                                  true;
+                                                              if (_model.result2 !=
+                                                                      null &&
+                                                                  _model.result2 !=
+                                                                      '') {
+                                                                logFirebaseEvent(
+                                                                    'Container_update_page_state');
+                                                                _model.customUploadResult =
+                                                                    _model
+                                                                        .result2;
+                                                              } else {
+                                                                logFirebaseEvent(
+                                                                    'Container_alert_dialog');
+                                                                showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      elevation:
+                                                                          0,
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: const AlignmentDirectional(
+                                                                              0.0,
+                                                                              -1.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          WebViewAware(
+                                                                        child:
+                                                                            GestureDetector(
+                                                                          onTap: () => _model.unfocusNode.canRequestFocus
+                                                                              ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                              : FocusScope.of(context).unfocus(),
+                                                                          child:
+                                                                              const AlertDialogWarningWidget(
+                                                                            title:
+                                                                                'Error !',
+                                                                            subtitle:
+                                                                                'There was an error uploading the image. Please try again later.',
+                                                                          ),
+                                                                        ),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+
+                                                                if (shouldSetState) {
+                                                                  setState(
+                                                                      () {});
+                                                                }
+                                                                return;
+                                                              }
                                                             } else {
                                                               logFirebaseEvent(
                                                                   'Container_alert_dialog');
@@ -634,14 +703,29 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                               'description': _model
                                                                   .descriptionFieldTextController
                                                                   .text,
-                                                              'photo': _model.selectedImage !=
-                                                                          null &&
-                                                                      _model.selectedImage !=
-                                                                          ''
-                                                                  ? _model
-                                                                      .selectedImage
-                                                                  : _model
-                                                                      .uploadedFileUrl1,
+                                                              'photo': () {
+                                                                if ((_model.selectedImage !=
+                                                                            null &&
+                                                                        _model.selectedImage !=
+                                                                            '') &&
+                                                                    (_model.customUploadResult !=
+                                                                            null &&
+                                                                        _model.customUploadResult !=
+                                                                            '')) {
+                                                                  return _model
+                                                                      .customUploadResult;
+                                                                } else if (_model
+                                                                            .selectedImage !=
+                                                                        null &&
+                                                                    _model.selectedImage !=
+                                                                        '') {
+                                                                  return _model
+                                                                      .selectedImage;
+                                                                } else {
+                                                                  return _model
+                                                                      .uploadedFileUrl1;
+                                                                }
+                                                              }(),
                                                               'link':
                                                                   getJsonField(
                                                                 containerParseSiteResponse

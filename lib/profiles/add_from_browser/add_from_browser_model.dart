@@ -47,6 +47,8 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl1 = '';
 
+  // Stores action output result for [Custom Action - uploadImageToSupabase] action in Container widget.
+  String? result2;
   // Stores action output result for [Backend Call - Insert Row] action in Container widget.
   WishesRow? createdWishRowCopy;
   // State field(s) for DescriptionField widget.

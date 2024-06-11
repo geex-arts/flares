@@ -53,8 +53,7 @@ class FFAppState extends ChangeNotifier {
     _test = value;
   }
 
-  String _testUrl =
-      'https://wrenjapan.com/yaponiya/kak-otdyhat-v-yaponii-letom/';
+  String _testUrl = '';
   String get testUrl => _testUrl;
   set testUrl(String value) {
     _testUrl = value;
