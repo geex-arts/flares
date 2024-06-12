@@ -19,6 +19,8 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
 
   bool isSwitch = true;
 
+  bool isBlocked = false;
+
   ///  State fields for stateful widgets in this component.
 
   final formKey = GlobalKey<FormState>();

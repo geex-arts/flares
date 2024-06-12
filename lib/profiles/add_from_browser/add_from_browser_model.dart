@@ -27,6 +27,10 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
 
   FFUploadedFile? uploadedFile;
 
+  bool isBlocked = false;
+
+  String? customUploadResult;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -58,7 +62,9 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl1 = '';
 
-  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  // Stores action output result for [Custom Action - uploadImageToSupabase] action in IconButton widget.
+  String? result2;
+  // Stores action output result for [Backend Call - Insert Row] action in IconButton widget.
   WishesRow? createdWishRowCopy;
   // State field(s) for DescriptionField widget.
   FocusNode? descriptionFieldFocusNode;
@@ -89,6 +95,8 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl3 = '';
 
+  // Stores action output result for [Custom Action - uploadImageToSupabase] action in SaveToCollection widget.
+  String? result;
   // Stores action output result for [Backend Call - Insert Row] action in SaveToCollection widget.
   WishesRow? createdWishRow;
   // Stores action output result for [Backend Call - Query Rows] action in SaveToCollection widget.

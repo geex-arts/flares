@@ -86,6 +86,12 @@ class _NDeleteWishWidgetState extends State<NDeleteWishWidget> {
                       child: FFButtonWidget(
                         onPressed: () async {
                           logFirebaseEvent('N_DELETE_WISH_COMP_Allow_ON_TAP');
+                          if (widget.selectedWishRow?.photo != null &&
+                              widget.selectedWishRow?.photo != '') {
+                            logFirebaseEvent('Allow_delete_data');
+                            await deleteSupabaseFileFromPublicUrl(
+                                widget.selectedWishRow!.photo!);
+                          }
                           logFirebaseEvent('Allow_backend_call');
                           await WishesTable().delete(
                             matchingRows: (rows) => rows.eq(
@@ -126,9 +132,10 @@ class _NDeleteWishWidgetState extends State<NDeleteWishWidget> {
                         },
                         text: 'Delete',
                         options: FFButtonOptions(
+                          width: 100.0,
                           height: 40.0,
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              16.0, 0.0, 16.0, 0.0),
+                              0.0, 0.0, 0.0, 0.0),
                           iconPadding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
                           color: FlutterFlowTheme.of(context).pinkButton,

@@ -127,6 +127,25 @@ class GenerateAiSimiliarWishCall {
   }
 }
 
+class DownloadImageCall {
+  static Future<ApiCallResponse> call({
+    String? url = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'downloadImage',
+      apiUrl: '$url',
+      callType: ApiCallType.GET,
+      headers: {},
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

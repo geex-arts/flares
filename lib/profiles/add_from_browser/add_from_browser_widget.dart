@@ -12,6 +12,7 @@ import '/flutter_flow/upload_data.dart';
 import '/wishlist/b_s_new_collection/b_s_new_collection_widget.dart';
 import 'dart:async';
 import 'dart:ui';
+import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -456,280 +457,287 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                     ),
                                                     Builder(
                                                       builder: (context) =>
-                                                          InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          logFirebaseEvent(
-                                                              'ADD_FROM_BROWSER_Container_fci69r5l_ON_T');
-                                                          var shouldSetState =
-                                                              false;
-                                                          logFirebaseEvent(
-                                                              'Container_validate_form');
-                                                          if (_model.formKey
-                                                                      .currentState ==
-                                                                  null ||
-                                                              !_model.formKey
-                                                                  .currentState!
-                                                                  .validate()) {
-                                                            return;
-                                                          }
-                                                          if (true) {
-                                                            if ((_model.selectedImage ==
-                                                                        null ||
-                                                                    _model.selectedImage ==
-                                                                        '') &&
-                                                                (_model.uploadedFile !=
-                                                                        null &&
-                                                                    (_model
-                                                                            .uploadedFile
-                                                                            ?.bytes
-                                                                            ?.isNotEmpty ??
-                                                                        false))) {
-                                                              logFirebaseEvent(
-                                                                  'Container_upload_file_to_supabase');
-                                                              {
-                                                                setState(() =>
-                                                                    _model.isDataUploading1 =
-                                                                        true);
-                                                                var selectedUploadedFiles =
-                                                                    <FFUploadedFile>[];
-                                                                var selectedFiles =
-                                                                    <SelectedFile>[];
-                                                                var downloadUrls =
-                                                                    <String>[];
-                                                                try {
-                                                                  selectedUploadedFiles = _model
-                                                                          .uploadedFile!
-                                                                          .bytes!
-                                                                          .isNotEmpty
-                                                                      ? [
-                                                                          _model
-                                                                              .uploadedFile!
-                                                                        ]
-                                                                      : <FFUploadedFile>[];
-                                                                  selectedFiles =
-                                                                      selectedFilesFromUploadedFiles(
-                                                                    selectedUploadedFiles,
-                                                                    storageFolderPath:
-                                                                        'wishImages',
-                                                                  );
-                                                                  downloadUrls =
-                                                                      await uploadSupabaseStorageFiles(
-                                                                    bucketName:
-                                                                        'EdayBucket',
-                                                                    selectedFiles:
-                                                                        selectedFiles,
-                                                                  );
-                                                                } finally {
-                                                                  _model.isDataUploading1 =
-                                                                      false;
-                                                                }
-                                                                if (selectedUploadedFiles
-                                                                            .length ==
-                                                                        selectedFiles
-                                                                            .length &&
-                                                                    downloadUrls
-                                                                            .length ==
-                                                                        selectedFiles
-                                                                            .length) {
-                                                                  setState(() {
-                                                                    _model.uploadedLocalFile1 =
-                                                                        selectedUploadedFiles
-                                                                            .first;
-                                                                    _model.uploadedFileUrl1 =
-                                                                        downloadUrls
-                                                                            .first;
-                                                                  });
-                                                                } else {
-                                                                  setState(
-                                                                      () {});
-                                                                  return;
-                                                                }
-                                                              }
-                                                            } else if (_model
-                                                                        .selectedImage !=
-                                                                    null &&
-                                                                _model.selectedImage !=
-                                                                    '') {
-                                                            } else {
-                                                              logFirebaseEvent(
-                                                                  'Container_alert_dialog');
-                                                              showDialog(
-                                                                context:
-                                                                    context,
-                                                                builder:
-                                                                    (dialogContext) {
-                                                                  return Dialog(
-                                                                    elevation:
-                                                                        0,
-                                                                    insetPadding:
-                                                                        EdgeInsets
-                                                                            .zero,
-                                                                    backgroundColor:
-                                                                        Colors
-                                                                            .transparent,
-                                                                    alignment: const AlignmentDirectional(
-                                                                            0.0,
-                                                                            -1.0)
-                                                                        .resolve(
-                                                                            Directionality.of(context)),
-                                                                    child:
-                                                                        WebViewAware(
-                                                                      child:
-                                                                          GestureDetector(
-                                                                        onTap: () => _model.unfocusNode.canRequestFocus
-                                                                            ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                            : FocusScope.of(context).unfocus(),
-                                                                        child:
-                                                                            const AlertDialogWarningWidget(
-                                                                          title:
-                                                                              'No image selected!',
-                                                                          subtitle:
-                                                                              'Please select the image from the list below or upload your own',
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  );
-                                                                },
-                                                              ).then((value) =>
-                                                                  setState(
-                                                                      () {}));
-
-                                                              if (shouldSetState) {
-                                                                setState(() {});
-                                                              }
-                                                              return;
-                                                            }
-
-                                                            logFirebaseEvent(
-                                                                'Container_backend_call');
-                                                            _model.createdWishRowCopy =
-                                                                await WishesTable()
-                                                                    .insert({
-                                                              'visibily': true,
-                                                              'collection': _model
-                                                                              .dropDownValue !=
-                                                                          null &&
-                                                                      _model.dropDownValue !=
-                                                                          ''
-                                                                  ? _model
-                                                                      .dropDownValue
-                                                                  : null,
-                                                              'pair':
-                                                                  FFAppState()
-                                                                      .pairID,
-                                                              'created_by':
-                                                                  currentUserUid,
-                                                              'name': _model
-                                                                  .nameFieldTextController
-                                                                  .text,
-                                                              'description': _model
-                                                                  .descriptionFieldTextController
-                                                                  .text,
-                                                              'photo': _model.selectedImage !=
-                                                                          null &&
-                                                                      _model.selectedImage !=
-                                                                          ''
-                                                                  ? _model
-                                                                      .selectedImage
-                                                                  : _model
-                                                                      .uploadedFileUrl1,
-                                                              'link':
-                                                                  getJsonField(
-                                                                containerParseSiteResponse
-                                                                    .jsonBody,
-                                                                r'''$.link''',
-                                                              ).toString(),
-                                                            });
-                                                            shouldSetState =
-                                                                true;
-                                                            logFirebaseEvent(
-                                                                'Container_bottom_sheet');
-                                                            Navigator.pop(
-                                                                context);
-                                                            logFirebaseEvent(
-                                                                'Container_bottom_sheet');
-                                                            await showModalBottomSheet(
-                                                              isScrollControlled:
-                                                                  true,
-                                                              backgroundColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              isDismissible:
-                                                                  false,
-                                                              enableDrag: false,
-                                                              context: context,
-                                                              builder:
-                                                                  (context) {
-                                                                return WebViewAware(
-                                                                  child:
-                                                                      GestureDetector(
-                                                                    onTap: () => _model
-                                                                            .unfocusNode
-                                                                            .canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model
-                                                                            .unfocusNode)
-                                                                        : FocusScope.of(context)
-                                                                            .unfocus(),
-                                                                    child:
-                                                                        Padding(
-                                                                      padding: MediaQuery
-                                                                          .viewInsetsOf(
-                                                                              context),
-                                                                      child:
-                                                                          SizedBox(
-                                                                        height: MediaQuery.sizeOf(context).height *
-                                                                            0.65,
-                                                                        child:
-                                                                            BSNewCollectionWidget(
-                                                                          selectedWishRow:
-                                                                              _model.createdWishRowCopy,
-                                                                          isFromBrowser:
-                                                                              true,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ).then((value) =>
-                                                                safeSetState(
-                                                                    () {}));
-                                                          }
-                                                          if (shouldSetState) {
-                                                            setState(() {});
-                                                          }
-                                                        },
-                                                        child: Container(
-                                                          width: 46.0,
-                                                          height: 46.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: const Color(
-                                                                0x2AFFFFFF),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        12.0),
-                                                          ),
-                                                          alignment:
-                                                              const AlignmentDirectional(
-                                                                  0.0, 0.0),
-                                                          child: Icon(
-                                                            FFIcons.kaddCircle,
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
+                                                          FlutterFlowIconButton(
+                                                        borderColor:
+                                                            const Color(0x004B39EF),
+                                                        borderRadius: 12.0,
+                                                        borderWidth: 1.0,
+                                                        buttonSize: 46.0,
+                                                        fillColor:
+                                                            const Color(0x2AFFFFFF),
+                                                        disabledColor:
+                                                            const Color(0x2AFFFFFF),
+                                                        disabledIconColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
                                                                 .secondaryBackground,
-                                                            size: 22.0,
-                                                          ),
+                                                        icon: Icon(
+                                                          FFIcons.kaddCircle,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          size: 22.0,
                                                         ),
+                                                        showLoadingIndicator:
+                                                            true,
+                                                        onPressed:
+                                                            _model.isBlocked
+                                                                ? null
+                                                                : () async {
+                                                                    logFirebaseEvent(
+                                                                        'ADD_FROM_BROWSER_addCircle_ICN_ON_TAP');
+                                                                    var shouldSetState =
+                                                                        false;
+                                                                    logFirebaseEvent(
+                                                                        'IconButton_validate_form');
+                                                                    if (_model.formKey.currentState ==
+                                                                            null ||
+                                                                        !_model
+                                                                            .formKey
+                                                                            .currentState!
+                                                                            .validate()) {
+                                                                      return;
+                                                                    }
+                                                                    logFirebaseEvent(
+                                                                        'IconButton_update_page_state');
+                                                                    _model.isBlocked =
+                                                                        true;
+                                                                    setState(
+                                                                        () {});
+                                                                    if (true) {
+                                                                      if ((_model.selectedImage == null ||
+                                                                              _model.selectedImage ==
+                                                                                  '') &&
+                                                                          (_model.uploadedFile != null &&
+                                                                              (_model.uploadedFile?.bytes?.isNotEmpty ??
+                                                                                  false))) {
+                                                                        logFirebaseEvent(
+                                                                            'IconButton_upload_file_to_supabase');
+                                                                        {
+                                                                          setState(() =>
+                                                                              _model.isDataUploading1 = true);
+                                                                          var selectedUploadedFiles =
+                                                                              <FFUploadedFile>[];
+                                                                          var selectedFiles =
+                                                                              <SelectedFile>[];
+                                                                          var downloadUrls =
+                                                                              <String>[];
+                                                                          try {
+                                                                            selectedUploadedFiles = _model.uploadedFile!.bytes!.isNotEmpty
+                                                                                ? [
+                                                                                    _model.uploadedFile!
+                                                                                  ]
+                                                                                : <FFUploadedFile>[];
+                                                                            selectedFiles =
+                                                                                selectedFilesFromUploadedFiles(
+                                                                              selectedUploadedFiles,
+                                                                              storageFolderPath: 'wishImages',
+                                                                            );
+                                                                            downloadUrls =
+                                                                                await uploadSupabaseStorageFiles(
+                                                                              bucketName: 'EdayBucket',
+                                                                              selectedFiles: selectedFiles,
+                                                                            );
+                                                                          } finally {
+                                                                            _model.isDataUploading1 =
+                                                                                false;
+                                                                          }
+                                                                          if (selectedUploadedFiles.length == selectedFiles.length &&
+                                                                              downloadUrls.length == selectedFiles.length) {
+                                                                            setState(() {
+                                                                              _model.uploadedLocalFile1 = selectedUploadedFiles.first;
+                                                                              _model.uploadedFileUrl1 = downloadUrls.first;
+                                                                            });
+                                                                          } else {
+                                                                            setState(() {});
+                                                                            return;
+                                                                          }
+                                                                        }
+                                                                      } else if (_model.selectedImage !=
+                                                                              null &&
+                                                                          _model.selectedImage !=
+                                                                              '') {
+                                                                        logFirebaseEvent(
+                                                                            'IconButton_custom_action');
+                                                                        _model.result2 =
+                                                                            await actions.uploadImageToSupabase(
+                                                                          _model
+                                                                              .selectedImage!,
+                                                                        );
+                                                                        shouldSetState =
+                                                                            true;
+                                                                        if (_model.result2 !=
+                                                                                null &&
+                                                                            _model.result2 !=
+                                                                                '') {
+                                                                          logFirebaseEvent(
+                                                                              'IconButton_update_page_state');
+                                                                          _model.customUploadResult =
+                                                                              _model.result2;
+                                                                        } else {
+                                                                          logFirebaseEvent(
+                                                                              'IconButton_update_page_state');
+                                                                          _model.isBlocked =
+                                                                              false;
+                                                                          setState(
+                                                                              () {});
+                                                                          logFirebaseEvent(
+                                                                              'IconButton_alert_dialog');
+                                                                          showDialog(
+                                                                            context:
+                                                                                context,
+                                                                            builder:
+                                                                                (dialogContext) {
+                                                                              return Dialog(
+                                                                                elevation: 0,
+                                                                                insetPadding: EdgeInsets.zero,
+                                                                                backgroundColor: Colors.transparent,
+                                                                                alignment: const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
+                                                                                child: WebViewAware(
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                    child: const AlertDialogWarningWidget(
+                                                                                      title: 'Error !',
+                                                                                      subtitle: 'There was an error uploading the image. Please try again later.',
+                                                                                    ),
+                                                                                  ),
+                                                                                ),
+                                                                              );
+                                                                            },
+                                                                          ).then((value) =>
+                                                                              setState(() {}));
+
+                                                                          if (shouldSetState) {
+                                                                            setState(() {});
+                                                                          }
+                                                                          return;
+                                                                        }
+                                                                      } else {
+                                                                        logFirebaseEvent(
+                                                                            'IconButton_update_page_state');
+                                                                        _model.isBlocked =
+                                                                            false;
+                                                                        setState(
+                                                                            () {});
+                                                                        logFirebaseEvent(
+                                                                            'IconButton_alert_dialog');
+                                                                        showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Dialog(
+                                                                              elevation: 0,
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: const AlignmentDirectional(0.0, -1.0).resolve(Directionality.of(context)),
+                                                                              child: WebViewAware(
+                                                                                child: GestureDetector(
+                                                                                  onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                  child: const AlertDialogWarningWidget(
+                                                                                    title: 'No image selected!',
+                                                                                    subtitle: 'Please select the image from the list below or upload your own',
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+
+                                                                        if (shouldSetState) {
+                                                                          setState(
+                                                                              () {});
+                                                                        }
+                                                                        return;
+                                                                      }
+
+                                                                      logFirebaseEvent(
+                                                                          'IconButton_backend_call');
+                                                                      _model.createdWishRowCopy =
+                                                                          await WishesTable()
+                                                                              .insert({
+                                                                        'visibily':
+                                                                            true,
+                                                                        'collection': _model.dropDownValue != null &&
+                                                                                _model.dropDownValue != ''
+                                                                            ? _model.dropDownValue
+                                                                            : null,
+                                                                        'pair':
+                                                                            FFAppState().pairID,
+                                                                        'created_by':
+                                                                            currentUserUid,
+                                                                        'name': _model
+                                                                            .nameFieldTextController
+                                                                            .text,
+                                                                        'description': _model
+                                                                            .descriptionFieldTextController
+                                                                            .text,
+                                                                        'photo':
+                                                                            () {
+                                                                          if ((_model.selectedImage != null && _model.selectedImage != '') &&
+                                                                              (_model.customUploadResult != null && _model.customUploadResult != '')) {
+                                                                            return _model.customUploadResult;
+                                                                          } else if (_model.selectedImage != null && _model.selectedImage != '') {
+                                                                            return _model.selectedImage;
+                                                                          } else {
+                                                                            return _model.uploadedFileUrl1;
+                                                                          }
+                                                                        }(),
+                                                                        'link':
+                                                                            getJsonField(
+                                                                          containerParseSiteResponse
+                                                                              .jsonBody,
+                                                                          r'''$.link''',
+                                                                        ).toString(),
+                                                                      });
+                                                                      shouldSetState =
+                                                                          true;
+                                                                      logFirebaseEvent(
+                                                                          'IconButton_bottom_sheet');
+                                                                      Navigator.pop(
+                                                                          context);
+                                                                      logFirebaseEvent(
+                                                                          'IconButton_bottom_sheet');
+                                                                      await showModalBottomSheet(
+                                                                        isScrollControlled:
+                                                                            true,
+                                                                        backgroundColor:
+                                                                            Colors.transparent,
+                                                                        isDismissible:
+                                                                            false,
+                                                                        enableDrag:
+                                                                            false,
+                                                                        context:
+                                                                            context,
+                                                                        builder:
+                                                                            (context) {
+                                                                          return WebViewAware(
+                                                                            child:
+                                                                                GestureDetector(
+                                                                              onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                              child: Padding(
+                                                                                padding: MediaQuery.viewInsetsOf(context),
+                                                                                child: SizedBox(
+                                                                                  height: MediaQuery.sizeOf(context).height * 0.65,
+                                                                                  child: BSNewCollectionWidget(
+                                                                                    selectedWishRow: _model.createdWishRowCopy,
+                                                                                    isFromBrowser: true,
+                                                                                  ),
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                          );
+                                                                        },
+                                                                      ).then((value) =>
+                                                                          safeSetState(
+                                                                              () {}));
+                                                                    }
+                                                                    if (shouldSetState) {
+                                                                      setState(
+                                                                          () {});
+                                                                    }
+                                                                  },
                                                       ),
                                                     ),
                                                   ].divide(
@@ -1508,8 +1516,10 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                         child: wrapWithModel(
                                           model: _model.saveToCollectionModel,
                                           updateCallback: () => setState(() {}),
+                                          updateOnChange: true,
                                           child: PinkButtonWidget(
                                             text: 'Save To Collection',
+                                            isDisabled: _model.isBlocked,
                                             currentAction: () async {
                                               logFirebaseEvent(
                                                   'ADD_FROM_BROWSER_SaveToCollection_CALLBA');
@@ -1522,6 +1532,15 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                       .validate()) {
                                                 return;
                                               }
+                                              logFirebaseEvent(
+                                                  'SaveToCollection_update_page_state');
+                                              _model.isBlocked = true;
+                                              setState(() {});
+                                              logFirebaseEvent(
+                                                  'SaveToCollection_wait__delay');
+                                              await Future.delayed(
+                                                  const Duration(
+                                                      milliseconds: 100));
                                               if (_model.dropDownValue !=
                                                       null &&
                                                   _model.dropDownValue != '') {
@@ -1600,7 +1619,79 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                         null &&
                                                     _model.selectedImage !=
                                                         '') {
+                                                  logFirebaseEvent(
+                                                      'SaveToCollection_custom_action');
+                                                  _model.result = await actions
+                                                      .uploadImageToSupabase(
+                                                    _model.selectedImage!,
+                                                  );
+                                                  shouldSetState = true;
+                                                  if (_model.result != null &&
+                                                      _model.result != '') {
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_update_page_state');
+                                                    _model.customUploadResult =
+                                                        _model.result;
+                                                  } else {
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_update_page_state');
+                                                    _model.isBlocked = false;
+                                                    setState(() {});
+                                                    logFirebaseEvent(
+                                                        'SaveToCollection_alert_dialog');
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: const AlignmentDirectional(
+                                                                  0.0, -1.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child: WebViewAware(
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child:
+                                                                  const AlertDialogWarningWidget(
+                                                                title:
+                                                                    'Error !',
+                                                                subtitle:
+                                                                    'There was an error uploading the image. Please try again later.',
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        setState(() {}));
+
+                                                    if (shouldSetState) {
+                                                      setState(() {});
+                                                    }
+                                                    return;
+                                                  }
                                                 } else {
+                                                  logFirebaseEvent(
+                                                      'SaveToCollection_update_page_state');
+                                                  _model.isBlocked = false;
+                                                  setState(() {});
                                                   logFirebaseEvent(
                                                       'SaveToCollection_alert_dialog');
                                                   showDialog(
@@ -1672,12 +1763,29 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   'description': _model
                                                       .descriptionFieldTextController
                                                       .text,
-                                                  'photo': _model.selectedImage !=
-                                                              null &&
-                                                          _model.selectedImage !=
-                                                              ''
-                                                      ? _model.selectedImage
-                                                      : _model.uploadedFileUrl3,
+                                                  'photo': () {
+                                                    if ((_model.selectedImage !=
+                                                                null &&
+                                                            _model.selectedImage !=
+                                                                '') &&
+                                                        (_model.customUploadResult !=
+                                                                null &&
+                                                            _model.customUploadResult !=
+                                                                '')) {
+                                                      return _model
+                                                          .customUploadResult;
+                                                    } else if (_model
+                                                                .selectedImage !=
+                                                            null &&
+                                                        _model.selectedImage !=
+                                                            '') {
+                                                      return _model
+                                                          .selectedImage;
+                                                    } else {
+                                                      return _model
+                                                          .uploadedFileUrl3;
+                                                    }
+                                                  }(),
                                                   'link': getJsonField(
                                                     containerParseSiteResponse
                                                         .jsonBody,
@@ -1728,6 +1836,10 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                   context.goNamed('My_Profile');
                                                 }
                                               } else {
+                                                logFirebaseEvent(
+                                                    'SaveToCollection_update_page_state');
+                                                _model.isBlocked = false;
+                                                setState(() {});
                                                 logFirebaseEvent(
                                                     'SaveToCollection_alert_dialog');
                                                 showDialog(

@@ -304,8 +304,10 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                   child: wrapWithModel(
                     model: _model.pinkButtonModel,
                     updateCallback: () => setState(() {}),
+                    updateOnChange: true,
                     child: PinkButtonWidget(
                       text: 'Create',
+                      isDisabled: _model.isBlocked,
                       currentAction: () async {
                         logFirebaseEvent(
                             'B_S_NEW_COLLECTION_Container_nqn54wif_CA');
@@ -315,6 +317,11 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                             !_model.formKey.currentState!.validate()) {
                           return;
                         }
+                        logFirebaseEvent('pinkButton_update_component_state');
+                        _model.isBlocked = true;
+                        setState(() {});
+                        logFirebaseEvent('pinkButton_wait__delay');
+                        await Future.delayed(const Duration(milliseconds: 100));
                         if ((_model.textController.text != '') &&
                             (_model.textController.text.length < 15)) {
                           logFirebaseEvent('pinkButton_backend_call');
