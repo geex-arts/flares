@@ -47,9 +47,9 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
       FFUploadedFile(bytes: Uint8List.fromList([]));
   String uploadedFileUrl1 = '';
 
-  // Stores action output result for [Custom Action - uploadImageToSupabase] action in Container widget.
+  // Stores action output result for [Custom Action - uploadImageToSupabase] action in IconButton widget.
   String? result2;
-  // Stores action output result for [Backend Call - Insert Row] action in Container widget.
+  // Stores action output result for [Backend Call - Insert Row] action in IconButton widget.
   WishesRow? createdWishRowCopy;
   // State field(s) for DescriptionField widget.
   FocusNode? descriptionFieldFocusNode;
@@ -88,8 +88,6 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
   List<CollectionsRow>? selectedCollection;
   // Stores action output result for [Backend Call - Update Row(s)] action in SaveToCollection widget.
   List<WishesRow>? updatedRow;
-  // Model for SaveToCollection2.
-  late PinkButtonModel saveToCollection2Model;
 
   @override
   void initState(BuildContext context) {
@@ -97,7 +95,6 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
     descriptionFieldTextControllerValidator =
         _descriptionFieldTextControllerValidator;
     saveToCollectionModel = createModel(context, () => PinkButtonModel());
-    saveToCollection2Model = createModel(context, () => PinkButtonModel());
   }
 
   @override
@@ -110,6 +107,5 @@ class AddFromBrowserModel extends FlutterFlowModel<AddFromBrowserWidget> {
     descriptionFieldTextController?.dispose();
 
     saveToCollectionModel.dispose();
-    saveToCollection2Model.dispose();
   }
 }

@@ -10,10 +10,12 @@ class PinkButtonWidget extends StatefulWidget {
     super.key,
     required this.text,
     this.currentAction,
-  });
+    bool? isDisabled,
+  }) : isDisabled = isDisabled ?? false;
 
   final String? text;
   final Future Function()? currentAction;
+  final bool isDisabled;
 
   @override
   State<PinkButtonWidget> createState() => _PinkButtonWidgetState();
@@ -44,11 +46,13 @@ class _PinkButtonWidgetState extends State<PinkButtonWidget> {
   @override
   Widget build(BuildContext context) {
     return FFButtonWidget(
-      onPressed: () async {
-        logFirebaseEvent('PINK_BUTTON_COMP_NextButton_ON_TAP');
-        logFirebaseEvent('NextButton_execute_callback');
-        await widget.currentAction?.call();
-      },
+      onPressed: widget.isDisabled
+          ? null
+          : () async {
+              logFirebaseEvent('PINK_BUTTON_COMP_NextButton_ON_TAP');
+              logFirebaseEvent('NextButton_execute_callback');
+              await widget.currentAction?.call();
+            },
       text: widget.text!,
       options: FFButtonOptions(
         width: double.infinity,
@@ -68,6 +72,8 @@ class _PinkButtonWidgetState extends State<PinkButtonWidget> {
           color: Colors.transparent,
         ),
         borderRadius: BorderRadius.circular(30.0),
+        disabledColor: FlutterFlowTheme.of(context).pinkButton,
+        disabledTextColor: FlutterFlowTheme.of(context).secondaryBackground,
       ),
     );
   }

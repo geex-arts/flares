@@ -18,31 +18,39 @@ Future<String> uploadImageToSupabase(String url) async {
   // Add your function code here!
   //final uri = Uri.parse(url);
 
-  final result = await DownloadImageCall.call(
-    url: url,
-  );
-
-  if (result.succeeded && result.response?.bodyBytes != null) {
-    final bytes = result.response?.bodyBytes;
-    final selectedUploadedFiles = bytes!.isNotEmpty
-        ? <FFUploadedFile>[new FFUploadedFile(bytes: bytes)]
-        : <FFUploadedFile>[];
-    final selectedFiles = selectedFilesFromUploadedFiles(
-      selectedUploadedFiles,
-      storageFolderPath: 'wishImages',
-    );
-    final downloadUrls = await uploadSupabaseStorageFiles(
-      bucketName: 'EdayBucket',
-      selectedFiles: selectedFiles,
+  try {
+    final result = await DownloadImageCall.call(
+      url: url,
     );
 
-    if (selectedUploadedFiles.length == selectedFiles.length &&
-        downloadUrls.length == selectedFiles.length) {
-      return downloadUrls.first;
+    if (result.succeeded && result.response?.bodyBytes != null) {
+      final bytes = result.response?.bodyBytes;
+      final name = url.substring(url.lastIndexOf('/') + 1);
+      //print(name);
+      final uploadedFile = new FFUploadedFile(bytes: bytes, name: name);
+      final selectedUploadedFiles = bytes!.isNotEmpty
+          ? <FFUploadedFile>[uploadedFile]
+          : <FFUploadedFile>[];
+      final selectedFiles = selectedFilesFromUploadedFiles(
+        selectedUploadedFiles,
+        storageFolderPath: 'wishImages',
+      );
+      final downloadUrls = await uploadSupabaseStorageFiles(
+        bucketName: 'EdayBucket',
+        selectedFiles: selectedFiles,
+      );
+
+      if (selectedUploadedFiles.length == selectedFiles.length &&
+          downloadUrls.length == selectedFiles.length) {
+        //print(downloadUrls.first);
+        return downloadUrls.first;
+      } else {
+        return '';
+      }
     } else {
       return '';
     }
-  } else {
+  } catch (e) {
     return '';
   }
 }

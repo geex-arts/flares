@@ -335,9 +335,15 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                                                       .viewInsetsOf(
                                                                           context),
                                                                   child:
-                                                                      BSEditWishWidget(
-                                                                    currentWishRow:
-                                                                        wishMainWishesRow!,
+                                                                      SizedBox(
+                                                                    height:
+                                                                        MediaQuery.sizeOf(context).height *
+                                                                            0.9,
+                                                                    child:
+                                                                        BSEditWishWidget(
+                                                                      currentWishRow:
+                                                                          wishMainWishesRow!,
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),

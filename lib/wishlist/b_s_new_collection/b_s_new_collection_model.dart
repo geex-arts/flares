@@ -40,14 +40,11 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
   List<CollectionsRow>? collectionsRows;
   // Stores action output result for [Backend Call - Insert Row] action in pinkButton widget.
   CollectionsRow? newCollectionRowCopy;
-  // Model for pinkButton2.
-  late PinkButtonModel pinkButton2Model;
 
   @override
   void initState(BuildContext context) {
     textControllerValidator = _textControllerValidator;
     pinkButtonModel = createModel(context, () => PinkButtonModel());
-    pinkButton2Model = createModel(context, () => PinkButtonModel());
   }
 
   @override
@@ -56,6 +53,5 @@ class BSNewCollectionModel extends FlutterFlowModel<BSNewCollectionWidget> {
     textController?.dispose();
 
     pinkButtonModel.dispose();
-    pinkButton2Model.dispose();
   }
 }
