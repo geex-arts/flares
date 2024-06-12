@@ -86,36 +86,36 @@ class FFAppState extends ChangeNotifier {
   }
 
   void addToColorsList(Color value) {
-    _colorsList.add(value);
-    prefs.setStringList(
-        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+    colorsList.add(value);
+    prefs.setStringList('ff_colorsList',
+        _colorsList.map((x) => x._colorsList.toString()).toList());
   }
 
   void removeFromColorsList(Color value) {
-    _colorsList.remove(value);
-    prefs.setStringList(
-        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+    colorsList.remove(value);
+    prefs.setStringList('ff_colorsList',
+        _colorsList.map((x) => x._colorsList.toString()).toList());
   }
 
   void removeAtIndexFromColorsList(int index) {
-    _colorsList.removeAt(index);
-    prefs.setStringList(
-        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+    colorsList.removeAt(index);
+    prefs.setStringList('ff_colorsList',
+        _colorsList.map((x) => x._colorsList.toString()).toList());
   }
 
   void updateColorsListAtIndex(
     int index,
     Color Function(Color) updateFn,
   ) {
-    _colorsList[index] = updateFn(_colorsList[index]);
-    prefs.setStringList(
-        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+    colorsList[index] = updateFn(_colorsList[index]);
+    prefs.setStringList('ff_colorsList',
+        _colorsList.map((x) => x._colorsList.toString()).toList());
   }
 
   void insertAtIndexInColorsList(int index, Color value) {
-    _colorsList.insert(index, value);
-    prefs.setStringList(
-        'ff_colorsList', _colorsList.map((x) => x.value.toString()).toList());
+    colorsList.insert(index, value);
+    prefs.setStringList('ff_colorsList',
+        _colorsList.map((x) => x._colorsList.toString()).toList());
   }
 
   bool _firstNoteSwitch = true;

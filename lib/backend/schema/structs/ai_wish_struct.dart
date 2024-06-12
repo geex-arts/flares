@@ -28,48 +28,56 @@ class AiWishStruct extends BaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "category" field.
   String? _category;
   String get category => _category ?? '';
   set category(String? val) => _category = val;
+
   bool hasCategory() => _category != null;
 
   // "budget" field.
   String? _budget;
   String get budget => _budget ?? '';
   set budget(String? val) => _budget = val;
+
   bool hasBudget() => _budget != null;
 
   // "description" field.
   String? _description;
   String get description => _description ?? '';
   set description(String? val) => _description = val;
+
   bool hasDescription() => _description != null;
 
   // "city" field.
   String? _city;
   String get city => _city ?? '';
   set city(String? val) => _city = val;
+
   bool hasCity() => _city != null;
 
   // "address" field.
   String? _address;
   String get address => _address ?? '';
   set address(String? val) => _address = val;
+
   bool hasAddress() => _address != null;
 
   // "image" field.
   String? _image;
   String get image => _image ?? '';
   set image(String? val) => _image = val;
+
   bool hasImage() => _image != null;
 
   // "link" field.
   String? _link;
   String get link => _link ?? '';
   set link(String? val) => _link = val;
+
   bool hasLink() => _link != null;
 
   static AiWishStruct fromMap(Map<String, dynamic> data) => AiWishStruct(

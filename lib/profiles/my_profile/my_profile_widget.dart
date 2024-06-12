@@ -1244,7 +1244,8 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                         .toList(),
                                                                     ParamType
                                                                         .String,
-                                                                    true,
+                                                                    isList:
+                                                                        true,
                                                                   ),
                                                                 }.withoutNulls,
                                                               );
