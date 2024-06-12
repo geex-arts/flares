@@ -382,273 +382,291 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: [
-                              Opacity(
-                                opacity:
-                                    _model.budget == 'friendly' ? 1.0 : 0.0,
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'B_S_BUDGET_LOCATION_Column_vwj4tyc2_ON_T');
-                                    logFirebaseEvent(
-                                        'Column_update_component_state');
-                                    _model.budget = 'friendly';
-                                    setState(() {});
-                                  },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 29.0,
-                                        height: 11.0,
-                                        decoration: const BoxDecoration(),
-                                      ),
-                                      Container(
-                                        width: 26.0,
-                                        height: 18.0,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              FlutterFlowTheme.of(context).pink,
-                                          borderRadius:
-                                              BorderRadius.circular(9.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                      ),
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/slide.webp',
+                              Expanded(
+                                child: Opacity(
+                                  opacity:
+                                      _model.budget == 'friendly' ? 1.0 : 0.0,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Column_vwj4tyc2_ON_T');
+                                      logFirebaseEvent(
+                                          'Column_update_component_state');
+                                      _model.budget = 'friendly';
+                                      setState(() {});
+                                    },
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Container(
                                           width: 29.0,
                                           height: 11.0,
-                                          fit: BoxFit.contain,
+                                          decoration: const BoxDecoration(),
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                        ),
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/slide.webp',
+                                            width: 29.0,
+                                            height: 11.0,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                              Opacity(
-                                opacity:
-                                    _model.budget == 'moderate' ? 1.0 : 0.0,
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'B_S_BUDGET_LOCATION_Column_gcx7xadz_ON_T');
-                                    logFirebaseEvent(
-                                        'Column_update_component_state');
-                                    _model.budget = 'moderate';
-                                    setState(() {});
-                                  },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 29.0,
-                                        height: 11.0,
-                                        decoration: const BoxDecoration(),
-                                      ),
-                                      Container(
-                                        width: 26.0,
-                                        height: 18.0,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              FlutterFlowTheme.of(context).pink,
-                                          borderRadius:
-                                              BorderRadius.circular(9.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                      ),
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/slide.webp',
+                              Expanded(
+                                child: Opacity(
+                                  opacity:
+                                      _model.budget == 'moderate' ? 1.0 : 0.0,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Column_gcx7xadz_ON_T');
+                                      logFirebaseEvent(
+                                          'Column_update_component_state');
+                                      _model.budget = 'moderate';
+                                      setState(() {});
+                                    },
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Container(
                                           width: 29.0,
                                           height: 11.0,
-                                          fit: BoxFit.contain,
+                                          decoration: const BoxDecoration(),
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                        ),
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/slide.webp',
+                                            width: 29.0,
+                                            height: 11.0,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
-                              Opacity(
-                                opacity: _model.budget == 'luxury' ? 1.0 : 0.0,
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    logFirebaseEvent(
-                                        'B_S_BUDGET_LOCATION_Column_oxar3rdl_ON_T');
-                                    logFirebaseEvent(
-                                        'Column_update_component_state');
-                                    _model.budget = 'luxury';
-                                    setState(() {});
-                                  },
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Container(
-                                        width: 29.0,
-                                        height: 11.0,
-                                        decoration: const BoxDecoration(),
-                                      ),
-                                      Container(
-                                        width: 26.0,
-                                        height: 18.0,
-                                        decoration: BoxDecoration(
-                                          color:
-                                              FlutterFlowTheme.of(context).pink,
-                                          borderRadius:
-                                              BorderRadius.circular(9.0),
-                                          border: Border.all(
-                                            color: FlutterFlowTheme.of(context)
-                                                .info,
-                                            width: 2.0,
-                                          ),
-                                        ),
-                                      ),
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        child: Image.asset(
-                                          'assets/images/slide.webp',
+                              Expanded(
+                                child: Opacity(
+                                  opacity:
+                                      _model.budget == 'luxury' ? 1.0 : 0.0,
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      logFirebaseEvent(
+                                          'B_S_BUDGET_LOCATION_Column_oxar3rdl_ON_T');
+                                      logFirebaseEvent(
+                                          'Column_update_component_state');
+                                      _model.budget = 'luxury';
+                                      setState(() {});
+                                    },
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Container(
                                           width: 29.0,
                                           height: 11.0,
-                                          fit: BoxFit.contain,
+                                          decoration: const BoxDecoration(),
                                         ),
-                                      ),
-                                    ],
+                                        Container(
+                                          width: 26.0,
+                                          height: 18.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .pink,
+                                            borderRadius:
+                                                BorderRadius.circular(9.0),
+                                            border: Border.all(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .info,
+                                              width: 2.0,
+                                            ),
+                                          ),
+                                        ),
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          child: Image.asset(
+                                            'assets/images/slide.webp',
+                                            width: 29.0,
+                                            height: 11.0,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
                             ],
                           ),
-                          Container(
-                            decoration: const BoxDecoration(),
-                            child: Align(
-                              alignment: const AlignmentDirectional(0.0, -1.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'B_S_BUDGET_LOCATION_Text_64xf91pa_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Text_update_component_state');
-                                        _model.budget = 'friendly';
-                                        setState(() {});
-                                      },
-                                      child: Text(
-                                        'Friendly',
-                                        textAlign: TextAlign.start,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
+                          Align(
+                            alignment: const AlignmentDirectional(0.0, -1.0),
+                            child: Container(
+                              height: 16.0,
+                              decoration: const BoxDecoration(),
+                              child: Align(
+                                alignment: const AlignmentDirectional(0.0, -1.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'B_S_BUDGET_LOCATION_Text_64xf91pa_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Text_update_component_state');
+                                          _model.budget = 'friendly';
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          'Friendly',
+                                          textAlign: TextAlign.start,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'B_S_BUDGET_LOCATION_Text_mu2edy3j_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Text_update_component_state');
-                                        _model.budget = 'moderate';
-                                        setState(() {});
-                                      },
-                                      child: Text(
-                                        'Moderate',
-                                        textAlign: TextAlign.center,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
+                                    Expanded(
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'B_S_BUDGET_LOCATION_Text_mu2edy3j_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Text_update_component_state');
+                                          _model.budget = 'moderate';
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          'Moderate',
+                                          textAlign: TextAlign.center,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        logFirebaseEvent(
-                                            'B_S_BUDGET_LOCATION_Text_42rbkjmv_ON_TAP');
-                                        logFirebaseEvent(
-                                            'Text_update_component_state');
-                                        _model.budget = 'luxury';
-                                        setState(() {});
-                                      },
-                                      child: Text(
-                                        'Luxury',
-                                        textAlign: TextAlign.end,
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Nuckle',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .info,
-                                              letterSpacing: 0.0,
-                                              useGoogleFonts: false,
-                                            ),
+                                    Expanded(
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          logFirebaseEvent(
+                                              'B_S_BUDGET_LOCATION_Text_42rbkjmv_ON_TAP');
+                                          logFirebaseEvent(
+                                              'Text_update_component_state');
+                                          _model.budget = 'luxury';
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          'Luxury',
+                                          textAlign: TextAlign.end,
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Nuckle',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .info,
+                                                letterSpacing: 0.0,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

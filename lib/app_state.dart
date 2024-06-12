@@ -22,13 +22,6 @@ class FFAppState extends ChangeNotifier {
       _pairID = prefs.getString('ff_pairID') ?? _pairID;
     });
     _safeInit(() {
-      _colorsList = prefs
-              .getStringList('ff_colorsList')
-              ?.map((x) => Color(int.tryParse(x) ?? 0))
-              .toList() ??
-          _colorsList;
-    });
-    _safeInit(() {
       _isProfileSet = prefs.getBool('ff_isProfileSet') ?? _isProfileSet;
     });
   }
@@ -71,53 +64,6 @@ class FFAppState extends ChangeNotifier {
     _currentUrl = value;
   }
 
-  List<Color> _colorsList = [
-    const Color(0xff182def),
-    const Color(0xff931293),
-    const Color(0xffe81542),
-    const Color(0xffff2c96),
-    const Color(0xffe38dba)
-  ];
-  List<Color> get colorsList => _colorsList;
-  set colorsList(List<Color> value) {
-    _colorsList = value;
-    prefs.setStringList(
-        'ff_colorsList', value.map((x) => x.value.toString()).toList());
-  }
-
-  void addToColorsList(Color value) {
-    colorsList.add(value);
-    prefs.setStringList('ff_colorsList',
-        _colorsList.map((x) => x._colorsList.toString()).toList());
-  }
-
-  void removeFromColorsList(Color value) {
-    colorsList.remove(value);
-    prefs.setStringList('ff_colorsList',
-        _colorsList.map((x) => x._colorsList.toString()).toList());
-  }
-
-  void removeAtIndexFromColorsList(int index) {
-    colorsList.removeAt(index);
-    prefs.setStringList('ff_colorsList',
-        _colorsList.map((x) => x._colorsList.toString()).toList());
-  }
-
-  void updateColorsListAtIndex(
-    int index,
-    Color Function(Color) updateFn,
-  ) {
-    colorsList[index] = updateFn(_colorsList[index]);
-    prefs.setStringList('ff_colorsList',
-        _colorsList.map((x) => x._colorsList.toString()).toList());
-  }
-
-  void insertAtIndexInColorsList(int index, Color value) {
-    colorsList.insert(index, value);
-    prefs.setStringList('ff_colorsList',
-        _colorsList.map((x) => x._colorsList.toString()).toList());
-  }
-
   bool _firstNoteSwitch = true;
   bool get firstNoteSwitch => _firstNoteSwitch;
   set firstNoteSwitch(bool value) {
@@ -154,11 +100,4 @@ Future _safeInitAsync(Function() initializeField) async {
   try {
     await initializeField();
   } catch (_) {}
-}
-
-Color? _colorFromIntValue(int? val) {
-  if (val == null) {
-    return null;
-  }
-  return Color(val);
 }
