@@ -26,32 +26,26 @@ class BSAskDayModel extends FlutterFlowModel<BSAskDayWidget> {
 
   // State field(s) for Carousel widget.
   CarouselController? carouselController1;
-
   int carouselCurrentIndex1 = 1;
 
   // State field(s) for Carousel widget.
   CarouselController? carouselController2;
-
   int carouselCurrentIndex2 = 1;
 
   // State field(s) for Carousel widget.
   CarouselController? carouselController3;
-
   int carouselCurrentIndex3 = 0;
 
   // State field(s) for Hours widget.
   CarouselController? hoursController;
-
   int hoursCurrentIndex = 1;
 
   // State field(s) for Carousel widget.
   CarouselController? carouselController4;
-
   int carouselCurrentIndex4 = 1;
 
   // State field(s) for Carousel widget.
   CarouselController? carouselController5;
-
   int carouselCurrentIndex5 = 0;
 
   // Model for pinkButton component.

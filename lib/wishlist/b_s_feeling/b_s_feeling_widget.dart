@@ -218,7 +218,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                 child: Builder(
                                   builder: (context) {
                                     final color =
-                                        FFAppState().colorsList.toList();
+                                        FFAppConstants.colorsList.toList();
                                     return Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:

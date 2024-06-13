@@ -1,5 +1,6 @@
 import '/auth/supabase_auth/auth_util.dart';
 import '/backend/supabase/supabase.dart';
+import '/components/dates_loading_widget_widget.dart';
 import '/components/floating_btn_widget.dart';
 import '/components/new_list_widget.dart';
 import '/components/nf_icon_placeholder_widget.dart';
@@ -1174,146 +1175,136 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     ),
                                                   ],
                                                 ),
-                                                Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    FutureBuilder<
-                                                        List<DatesRow>>(
-                                                      future: DatesTable()
-                                                          .queryRows(
-                                                        queryFn: (q) => q
-                                                            .eq(
-                                                              'pair',
-                                                              FFAppState()
-                                                                  .pairID,
-                                                            )
-                                                            .eq(
-                                                              'status',
-                                                              'visited',
-                                                            )
-                                                            .order('date_time'),
-                                                      ),
-                                                      builder:
-                                                          (context, snapshot) {
-                                                        // Customize what your widget looks like when it's loading.
-                                                        if (!snapshot.hasData) {
-                                                          return Center(
-                                                            child: SizedBox(
-                                                              width: 50.0,
-                                                              height: 50.0,
-                                                              child:
-                                                                  SpinKitPulse(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .pinkButton,
-                                                                size: 50.0,
+                                                FutureBuilder<List<DatesRow>>(
+                                                  future:
+                                                      DatesTable().queryRows(
+                                                    queryFn: (q) => q
+                                                        .eq(
+                                                          'pair',
+                                                          FFAppState().pairID,
+                                                        )
+                                                        .eq(
+                                                          'status',
+                                                          'visited',
+                                                        )
+                                                        .order('date_time'),
+                                                  ),
+                                                  builder: (context, snapshot) {
+                                                    // Customize what your widget looks like when it's loading.
+                                                    if (!snapshot.hasData) {
+                                                      return const DatesLoadingWidgetWidget();
+                                                    }
+                                                    List<DatesRow>
+                                                        containerDatesRowList =
+                                                        snapshot.data!;
+                                                    return InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        logFirebaseEvent(
+                                                            'MY_PROFILE_Container_ifroeibs_ON_TAP');
+                                                        if (containerDatesRowList.isNotEmpty) {
+                                                          logFirebaseEvent(
+                                                              'Container_navigate_to');
+
+                                                          context.pushNamed(
+                                                            'Past_Dates',
+                                                            queryParameters: {
+                                                              'pastDatesWishes':
+                                                                  serializeParam(
+                                                                containerDatesRowList
+                                                                    .map((e) =>
+                                                                        e.wish)
+                                                                    .withoutNulls
+                                                                    .toList(),
+                                                                ParamType
+                                                                    .String,
+                                                                isList: true,
                                                               ),
-                                                            ),
+                                                            }.withoutNulls,
                                                           );
                                                         }
-                                                        List<DatesRow>
-                                                            textDatesRowList =
-                                                            snapshot.data!;
-                                                        return InkWell(
-                                                          splashColor: Colors
-                                                              .transparent,
-                                                          focusColor: Colors
-                                                              .transparent,
-                                                          hoverColor: Colors
-                                                              .transparent,
-                                                          highlightColor: Colors
-                                                              .transparent,
-                                                          onTap: () async {
-                                                            logFirebaseEvent(
-                                                                'MY_PROFILE_PAGE_Text_t4ktappo_ON_TAP');
-                                                            if (textDatesRowList.isNotEmpty) {
-                                                              logFirebaseEvent(
-                                                                  'Text_navigate_to');
-
-                                                              context.pushNamed(
-                                                                'Past_Dates',
-                                                                queryParameters:
-                                                                    {
-                                                                  'pastDatesWishes':
-                                                                      serializeParam(
-                                                                    textDatesRowList
-                                                                        .map((e) =>
-                                                                            e.wish)
-                                                                        .withoutNulls
-                                                                        .toList(),
-                                                                    ParamType
-                                                                        .String,
-                                                                    true,
-                                                                  ),
-                                                                }.withoutNulls,
-                                                              );
-                                                            }
-                                                          },
-                                                          child: Text(
-                                                            valueOrDefault<
-                                                                String>(
-                                                              textDatesRowList
-                                                                  .length
-                                                                  .toString(),
-                                                              '0',
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Nuckle',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .secondaryBackground,
-                                                                  fontSize:
-                                                                      12.0,
-                                                                  letterSpacing:
-                                                                      0.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                  lineHeight:
-                                                                      1.4,
-                                                                ),
-                                                          ),
-                                                        );
                                                       },
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          const EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  4.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        'Dates',
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Nuckle',
-                                                              color: const Color(
-                                                                  0x98FFFFFF),
-                                                              fontSize: 12.0,
-                                                              letterSpacing:
-                                                                  0.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w500,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                              lineHeight: 1.4,
+                                                      child: Container(
+                                                        decoration:
+                                                            const BoxDecoration(),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              valueOrDefault<
+                                                                  String>(
+                                                                containerDatesRowList
+                                                                    .length
+                                                                    .toString(),
+                                                                '0',
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Nuckle',
+                                                                    color: FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .secondaryBackground,
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                    lineHeight:
+                                                                        1.4,
+                                                                  ),
                                                             ),
+                                                            Padding(
+                                                              padding:
+                                                                  const EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          4.0,
+                                                                          0.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                'Dates',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Nuckle',
+                                                                      color: const Color(
+                                                                          0x98FFFFFF),
+                                                                      fontSize:
+                                                                          12.0,
+                                                                      letterSpacing:
+                                                                          0.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w500,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                      lineHeight:
+                                                                          1.4,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    );
+                                                  },
                                                 ),
                                               ],
                                             ),

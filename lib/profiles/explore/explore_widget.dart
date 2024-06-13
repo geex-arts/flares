@@ -617,7 +617,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                         serializeParam(
                                                       containerPopularWishesRowList,
                                                       ParamType.SupabaseRow,
-                                                      true,
+                                                      isList: true,
                                                     ),
                                                   }.withoutNulls,
                                                 );
