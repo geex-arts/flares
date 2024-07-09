@@ -587,6 +587,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       budget: 'friendly',
                                                       interest: 'any',
                                                     );
+
                                                     if ((_model.apiResultc16Copy
                                                             ?.succeeded ??
                                                         true)) {

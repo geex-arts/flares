@@ -60,6 +60,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
         budget: widget.budget,
         interest: widget.categories,
       );
+
       if ((_model.apiResultohpCopy?.succeeded ?? true)) {
         logFirebaseEvent('BS_AI_Wishlist_update_component_state');
         _model.wishesAIGeneratedList = functions
@@ -245,6 +246,7 @@ class _BSAIWishlistWidgetState extends State<BSAIWishlistWidget>
                                     .map((e) => e.name)
                                     .toList()),
                               );
+
                               if ((_model.apiResultohp?.succeeded ?? true)) {
                                 logFirebaseEvent(
                                     'Generate_update_component_state');

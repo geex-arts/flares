@@ -96,7 +96,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         brightness: Brightness.light,
         scrollbarTheme: ScrollbarThemeData(
-          thickness: MaterialStateProperty.all(0.1),
+          thickness: WidgetStateProperty.all(0.1),
         ),
         useMaterial3: false,
       ),

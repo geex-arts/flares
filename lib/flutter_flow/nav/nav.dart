@@ -210,11 +210,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'Ask_For_Date',
-              path: 'askForDate',
-              builder: (context, params) => const AskForDateWidget(),
-            ),
-            FFRoute(
               name: 'Couples_Profile',
               path: 'couplesProfile',
               builder: (context, params) => CouplesProfileWidget(
