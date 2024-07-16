@@ -220,6 +220,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           );
                         }
                         List<UsersRow> columnUsersRowList = snapshot.data!;
+
                         final columnUsersRow = columnUsersRowList.isNotEmpty
                             ? columnUsersRowList.first
                             : null;

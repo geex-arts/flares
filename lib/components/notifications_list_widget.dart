@@ -91,6 +91,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
             Builder(
               builder: (context) {
                 final currentNotification = widget.parameter8!.toList();
+
                 return ListView.builder(
                   padding: const EdgeInsets.fromLTRB(
                     0,
@@ -142,6 +143,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     List<UsersRow>
                                         conditionalBuilderUsersRowList =
                                         snapshot.data!;
+
                                     final conditionalBuilderUsersRow =
                                         conditionalBuilderUsersRowList
                                                 .isNotEmpty
@@ -390,6 +392,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     List<UsersRow>
                                         conditionalBuilderUsersRowList =
                                         snapshot.data!;
+
                                     final conditionalBuilderUsersRow =
                                         conditionalBuilderUsersRowList
                                                 .isNotEmpty
@@ -781,6 +784,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     List<UsersRow>
                                         conditionalBuilderUsersRowList =
                                         snapshot.data!;
+
                                     final conditionalBuilderUsersRow =
                                         conditionalBuilderUsersRowList
                                                 .isNotEmpty
@@ -955,6 +959,7 @@ class _NotificationsListWidgetState extends State<NotificationsListWidget> {
                                     List<UsersRow>
                                         conditionalBuilderUsersRowList =
                                         snapshot.data!;
+
                                     final conditionalBuilderUsersRow =
                                         conditionalBuilderUsersRowList
                                                 .isNotEmpty

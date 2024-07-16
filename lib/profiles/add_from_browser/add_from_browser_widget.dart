@@ -114,6 +114,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                       );
                     }
                     final containerParseSiteResponse = snapshot.data!;
+
                     return Container(
                       width: double.infinity,
                       decoration: const BoxDecoration(
@@ -361,6 +362,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                           List<CollectionsRow>
                                               blurCollectionsRowList =
                                               snapshot.data!;
+
                                           return ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
@@ -937,6 +939,7 @@ class _AddFromBrowserWidgetState extends State<AddFromBrowserWidget> {
                                                                               s.toString())
                                                                       .toList())
                                                               .toList();
+
                                                       return ListView.separated(
                                                         padding:
                                                             EdgeInsets.zero,

@@ -73,6 +73,7 @@ class _WishesListAIWidgetState extends State<WishesListAIWidget>
       child: Builder(
         builder: (context) {
           final currentWish = widget.wishesRowsAI!.toList();
+
           return GridView.builder(
             padding: const EdgeInsets.fromLTRB(
               0,

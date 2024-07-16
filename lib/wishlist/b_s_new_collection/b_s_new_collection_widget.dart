@@ -80,7 +80,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: widget.isFromWebview ? const Color(0xFF33393C) : const Color(0x18F2F1F3),
+            color:
+                widget.isFromWebview ? const Color(0xFF33393C) : const Color(0x18F2F1F3),
             borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(0.0),
               bottomRight: Radius.circular(0.0),
@@ -418,7 +419,8 @@ class _BSNewCollectionWidgetState extends State<BSNewCollectionWidget> {
                                 'parent_uuid': widget
                                                 .selectedWishRow?.parentUuid !=
                                             null &&
-                                        widget.selectedWishRow?.parentUuid != ''
+                                        widget.selectedWishRow?.parentUuid !=
+                                            ''
                                     ? widget.selectedWishRow?.parentUuid
                                     : widget.selectedWishRow?.uuid,
                                 'visibily':

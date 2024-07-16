@@ -112,6 +112,7 @@ class _NotificationsWidgetState extends State<NotificationsWidget>
             }
             List<NotificationsRow> backgroundContainerNotificationsRowList =
                 snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,

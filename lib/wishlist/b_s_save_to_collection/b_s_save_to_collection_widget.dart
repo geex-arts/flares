@@ -101,6 +101,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
               );
             }
             List<CollectionsRow> containerCollectionsRowList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               decoration: BoxDecoration(
@@ -259,6 +260,7 @@ class _BSSaveToCollectionWidgetState extends State<BSSaveToCollectionWidget> {
                                               .toList()
                                           : containerCollectionsRowList)
                                       .toList();
+
                                   return ListView.builder(
                                     padding: EdgeInsets.zero,
                                     scrollDirection: Axis.vertical,

@@ -954,10 +954,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                           logFirebaseEvent('Row_action_block');
                                           await action_blocks.authRoutine(
                                             context,
-                                            pairCode: widget.pairCode != null &&
-                                                    widget.pairCode != ''
-                                                ? widget.pairCode
-                                                : '',
+                                            pairCode:
+                                                widget.pairCode != null &&
+                                                        widget.pairCode != ''
+                                                    ? widget.pairCode
+                                                    : '',
                                           );
                                         } else {
                                           logFirebaseEvent(
@@ -967,10 +968,11 @@ class _SignInWidgetState extends State<SignInWidget>
                                           logFirebaseEvent('Row_action_block');
                                           await action_blocks.signinRoutine(
                                             context,
-                                            pairCode: widget.pairCode != null &&
-                                                    widget.pairCode != ''
-                                                ? widget.pairCode
-                                                : '',
+                                            pairCode:
+                                                widget.pairCode != null &&
+                                                        widget.pairCode != ''
+                                                    ? widget.pairCode
+                                                    : '',
                                           );
                                         }
 

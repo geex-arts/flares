@@ -122,6 +122,7 @@ class _BSCreateCoupleIdeasWithAIWidgetState
                       }
                       List<AiCategoryRow> wrapAiCategoryRowList =
                           snapshot.data!;
+
                       return Wrap(
                         spacing: 5.0,
                         runSpacing: 5.0,

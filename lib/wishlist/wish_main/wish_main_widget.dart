@@ -130,6 +130,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
           );
         }
         List<WishesRow> wishMainWishesRowList = snapshot.data!;
+
         final wishMainWishesRow = wishMainWishesRowList.isNotEmpty
             ? wishMainWishesRowList.first
             : null;
@@ -620,6 +621,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                 );
                               }
                               List<DatesRow> stackDatesRowList = snapshot.data!;
+
                               final stackDatesRow = stackDatesRowList.isNotEmpty
                                   ? stackDatesRowList.first
                                   : null;
@@ -670,6 +672,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                             List<WishesRow>
                                                 askForADateWishesRowList =
                                                 snapshot.data!;
+
                                             final askForADateWishesRow =
                                                 askForADateWishesRowList
                                                         .isNotEmpty
@@ -684,7 +687,8 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                                 text: () {
                                                   if (widget.isFromAI) {
                                                     return 'Add to Wishlist';
-                                                  } else if (widget.isProfile ||
+                                                  } else if (widget
+                                                          .isProfile ||
                                                       (askForADateWishesRow !=
                                                           null) ||
                                                       (wishMainWishesRow
@@ -997,6 +1001,7 @@ class _WishMainWidgetState extends State<WishMainWidget>
                                           List<DatesRow>
                                               markAsVisitedDatesRowList =
                                               snapshot.data!;
+
                                           // Return an empty Container when the item does not exist.
                                           if (snapshot.data!.isEmpty) {
                                             return Container();

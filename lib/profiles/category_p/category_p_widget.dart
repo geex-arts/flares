@@ -115,6 +115,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
             }
             List<WishesCollectionsRow> containerWishesCollectionsRowList =
                 snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -256,6 +257,7 @@ class _CategoryPWidgetState extends State<CategoryPWidget>
                             }
                             List<WishesRow> wishesListMainWishesRowList =
                                 snapshot.data!;
+
                             return wrapWithModel(
                               model: _model.wishesListMainModel,
                               updateCallback: () => setState(() {}),

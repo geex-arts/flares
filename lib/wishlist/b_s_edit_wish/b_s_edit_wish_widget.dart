@@ -295,6 +295,7 @@ class _BSEditWishWidgetState extends State<BSEditWishWidget> {
                               }
                               List<CollectionsRow> blurCollectionsRowList =
                                   snapshot.data!;
+
                               return ClipRRect(
                                 borderRadius: BorderRadius.circular(0.0),
                                 child: BackdropFilter(
@@ -534,7 +535,8 @@ class _BSEditWishWidgetState extends State<BSEditWishWidget> {
                                                   matchingRows: (rows) =>
                                                       rows.eq(
                                                     'uuid',
-                                                    widget.currentWishRow?.uuid,
+                                                    widget
+                                                        .currentWishRow?.uuid,
                                                   ),
                                                   returnRows: true,
                                                 );

@@ -589,13 +589,14 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                   controller:
                                       _model.dropDownValueController1 ??=
                                           FormFieldController<String>(
-                                    _model.dropDownValue1 ??= widget.myPairRow
-                                                    ?.liveWithPartner !=
-                                                null &&
-                                            widget.myPairRow?.liveWithPartner !=
-                                                ''
-                                        ? widget.myPairRow?.liveWithPartner
-                                        : '',
+                                    _model.dropDownValue1 ??=
+                                        widget.myPairRow?.liveWithPartner !=
+                                                    null &&
+                                                widget.myPairRow
+                                                        ?.liveWithPartner !=
+                                                    ''
+                                            ? widget.myPairRow?.liveWithPartner
+                                            : '',
                                   ),
                                   options: const [
                                     'Yes, we live together',
@@ -747,7 +748,8 @@ class _EditCoupleProfileWidgetState extends State<EditCoupleProfileWidget>
                                           FormFieldController<String>(
                                     _model.dropDownValue3 ??=
                                         widget.myPairRow?.haveKids != null &&
-                                                widget.myPairRow?.haveKids != ''
+                                                widget.myPairRow?.haveKids !=
+                                                    ''
                                             ? widget.myPairRow?.haveKids
                                             : '',
                                   ),

@@ -237,6 +237,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     builder: (context) {
                                       final currentDay =
                                           functions.returnDays(31).toList();
+
                                       return SizedBox(
                                         width: 40.0,
                                         height: 156.0,
@@ -327,6 +328,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     builder: (context) {
                                       final currentMonth =
                                           functions.returnMonths().toList();
+
                                       return SizedBox(
                                         width: 40.0,
                                         height: 156.0,
@@ -417,6 +419,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     builder: (context) {
                                       final currentYear =
                                           functions.returnYears().toList();
+
                                       return SizedBox(
                                         width: 40.0,
                                         height: 156.0,
@@ -531,6 +534,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     builder: (context) {
                                       final curentHour =
                                           functions.returnDays(12).toList();
+
                                       return SizedBox(
                                         width: 40.0,
                                         height: 156.0,
@@ -625,6 +629,7 @@ class _BSAskDayWidgetState extends State<BSAskDayWidget> {
                                     builder: (context) {
                                       final currentMinute =
                                           functions.returnDays(59).toList();
+
                                       return SizedBox(
                                         width: 40.0,
                                         height: 156.0,

@@ -103,6 +103,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                           );
                         }
                         List<UsersRow> containerUsersRowList = snapshot.data!;
+
                         final containerUsersRow =
                             containerUsersRowList.isNotEmpty
                                 ? containerUsersRowList.first
@@ -135,6 +136,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                               }
                               List<BannersRow> containerBannersRowList =
                                   snapshot.data!;
+
                               final containerBannersRow =
                                   containerBannersRowList.isNotEmpty
                                       ? containerBannersRowList.first
@@ -413,6 +415,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                             }
                             List<StoriesRow> listViewStoriesRowList =
                                 snapshot.data!;
+
                             return ListView.separated(
                               padding: const EdgeInsets.fromLTRB(
                                 16.0,
@@ -543,6 +546,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                           }
                           List<PopularWishesRow> containerPopularWishesRowList =
                               snapshot.data!;
+
                           return Container(
                             decoration: const BoxDecoration(),
                             child: FutureBuilder<List<WishesRow>>(
@@ -572,6 +576,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                 }
                                 List<WishesRow> containerWishesRowList =
                                     snapshot.data!;
+
                                 return Container(
                                   decoration: const BoxDecoration(),
                                   child: Column(
@@ -692,6 +697,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                                   containerPopularWishesRowList
                                                       .take(10)
                                                       .toList();
+
                                               return ListView.separated(
                                                 padding: const EdgeInsets.fromLTRB(
                                                   16.0,
@@ -816,6 +822,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                     }
                                     List<AiQuestionsRow>
                                         wrapAiQuestionsRowList = snapshot.data!;
+
                                     return Wrap(
                                       spacing: 16.0,
                                       runSpacing: 16.0,
@@ -1050,6 +1057,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                           List<DiscoveryCategoriesRow>
                               containerDiscoveryCategoriesRowList =
                               snapshot.data!;
+
                           return Container(
                             decoration: const BoxDecoration(),
                             child: Column(
@@ -1087,6 +1095,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                           containerDiscoveryCategoriesRowList
                                               .take(4)
                                               .toList();
+
                                       return SingleChildScrollView(
                                         scrollDirection: Axis.horizontal,
                                         child: Row(
@@ -1211,6 +1220,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                             containerDiscoveryCategoriesRowList
                                                 .where((e) => e.order! > 4)
                                                 .toList();
+
                                         return SingleChildScrollView(
                                           scrollDirection: Axis.horizontal,
                                           child: Row(
@@ -1355,6 +1365,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                           }
                           List<ArticlesRow> containerArticlesRowList =
                               snapshot.data!;
+
                           return Container(
                             decoration: const BoxDecoration(),
                             child: Column(
@@ -1394,6 +1405,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                             containerArticlesRowList
                                                 .where((e) => e.featured)
                                                 .toList();
+
                                         return ListView.separated(
                                           padding: const EdgeInsets.fromLTRB(
                                             16.0,
@@ -1583,6 +1595,7 @@ class _ExploreWidgetState extends State<ExploreWidget> {
                                             containerArticlesRowList
                                                 .where((e) => !e.featured)
                                                 .toList();
+
                                         return GridView.builder(
                                           padding: EdgeInsets.zero,
                                           gridDelegate:

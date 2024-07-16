@@ -297,6 +297,7 @@ class _CardAIWidgetState extends State<CardAIWidget> {
                     );
                   }
                   List<WishesRow> addToCollectionWishesRowList = snapshot.data!;
+
                   return Container(
                     width: 30.0,
                     height: 30.0,

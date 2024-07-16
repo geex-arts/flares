@@ -59,7 +59,8 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
         if (widget.currentUserFeelingRow?.customFeeling != null &&
             widget.currentUserFeelingRow?.customFeeling != '') {
           logFirebaseEvent('BS_Feeling_update_component_state');
-          _model.selectedFeeling = widget.currentUserFeelingRow!.customFeeling!;
+          _model.selectedFeeling =
+              widget.currentUserFeelingRow!.customFeeling!;
           setState(() {});
         } else {
           if (widget.currentFeelingRow != null) {
@@ -219,6 +220,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                   builder: (context) {
                                     final color =
                                         FFAppConstants.colorsList.toList();
+
                                     return Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -307,6 +309,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                     }
                                     List<FeelingsRow> containerFeelingsRowList =
                                         snapshot.data!;
+
                                     return Container(
                                       width: double.infinity,
                                       decoration: const BoxDecoration(),
@@ -343,6 +346,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                           List<UserFeelingsRow>
                                               containerUserFeelingsRowList =
                                               snapshot.data!;
+
                                           return Container(
                                             decoration: const BoxDecoration(),
                                             child: Builder(
@@ -359,6 +363,7 @@ class _BSFeelingWidgetState extends State<BSFeelingWidget> {
                                                             .withoutNulls
                                                             .toList())
                                                     .toList();
+
                                                 return Wrap(
                                                   spacing: 12.0,
                                                   runSpacing: 12.0,
