@@ -32,6 +32,7 @@ async function makeApiRequest({
   params,
   body,
   returnBody,
+  isStreamingApi,
 }) {
   return axios
     .request({
@@ -39,6 +40,7 @@ async function makeApiRequest({
       url: url,
       headers: headers,
       params: params,
+      responseType: isStreamingApi ? "stream" : "json",
       ...(body && { data: body }),
     })
     .then((response) => {
@@ -46,6 +48,7 @@ async function makeApiRequest({
         statusCode: response.status,
         headers: response.headers,
         ...(returnBody && { body: response.data }),
+        isStreamingApi: isStreamingApi,
       };
     })
     .catch(function (error) {

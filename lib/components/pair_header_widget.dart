@@ -194,6 +194,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
             );
           }
           List<PairsRow> columnPairsRowList = snapshot.data!;
+
           // Return an empty Container when the item does not exist.
           if (snapshot.data!.isEmpty) {
             return Container();
@@ -271,6 +272,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                     }
                                     List<UsersRow> containerUsersRowList =
                                         snapshot.data!;
+
                                     return Container(
                                       decoration: const BoxDecoration(),
                                       child: Padding(
@@ -554,6 +556,7 @@ class _PairHeaderWidgetState extends State<PairHeaderWidget>
                                   }
                                   List<DatesRow> textDatesRowList =
                                       snapshot.data!;
+
                                   return Text(
                                     valueOrDefault<String>(
                                       textDatesRowList.length.toString(),

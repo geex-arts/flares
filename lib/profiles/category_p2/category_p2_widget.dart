@@ -137,6 +137,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
               );
             }
             List<WishesRow> containerWishesRowList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -161,6 +162,7 @@ class _CategoryP2WidgetState extends State<CategoryP2Widget>
                             builder: (context) {
                               final currentWish =
                                   widget.popularWishes!.toList();
+
                               return GridView.builder(
                                 padding: const EdgeInsets.fromLTRB(
                                   0,

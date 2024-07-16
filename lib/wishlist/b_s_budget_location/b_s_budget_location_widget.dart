@@ -150,6 +150,7 @@ class _BSBudgetLocationWidgetState extends State<BSBudgetLocationWidget> {
                             }
                             final textFieldSearchCitiesResponse =
                                 snapshot.data!;
+
                             return Autocomplete<String>(
                               initialValue: const TextEditingValue(),
                               optionsBuilder: (textEditingValue) {

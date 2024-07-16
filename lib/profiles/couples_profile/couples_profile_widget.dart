@@ -219,6 +219,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
               );
             }
             List<UsersRow> containerUsersRowList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               height: double.infinity,
@@ -271,6 +272,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                 }
                                 List<PairsRow> columnPairsRowList =
                                     snapshot.data!;
+
                                 // Return an empty Container when the item does not exist.
                                 if (snapshot.data!.isEmpty) {
                                   return Container();
@@ -587,6 +589,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                       budget: 'friendly',
                                                       interest: 'any',
                                                     );
+
                                                     if ((_model.apiResultc16Copy
                                                             ?.succeeded ??
                                                         true)) {
@@ -655,6 +658,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                                           List<DatesRow>
                                                               textDatesRowList =
                                                               snapshot.data!;
+
                                                           return Text(
                                                             valueOrDefault<
                                                                 String>(
@@ -859,6 +863,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                                         List<CollectionsRow>
                                             categoryRowCollectionsRowList =
                                             snapshot.data!;
+
                                         return Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: List.generate(
@@ -988,6 +993,7 @@ class _CouplesProfileWidgetState extends State<CouplesProfileWidget>
                               }
                               List<WishesRow> wishesListWishesRowList =
                                   snapshot.data!;
+
                               return wrapWithModel(
                                 model: _model.wishesListModel,
                                 updateCallback: () => setState(() {}),

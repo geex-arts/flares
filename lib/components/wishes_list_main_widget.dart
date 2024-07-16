@@ -99,6 +99,7 @@ class _WishesListMainWidgetState extends State<WishesListMainWidget>
       child: Builder(
         builder: (context) {
           final currentWish = widget.wishesRowsParam!.toList();
+
           return GridView.builder(
             padding: EdgeInsets.fromLTRB(
               0,

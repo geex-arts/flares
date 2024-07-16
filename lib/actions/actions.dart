@@ -92,6 +92,7 @@ Future loadFromBrowserAction(
         apiParseResult = await ParseSiteCall.call(
           url: url,
         );
+
         if (!(apiParseResult.succeeded ?? true)) {
           logFirebaseEvent('loadFromBrowserAction_alert_dialog');
           await showDialog(

@@ -305,6 +305,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               );
                             }
                             List<PairsRow> columnPairsRowList = snapshot.data!;
+
                             // Return an empty Container when the item does not exist.
                             if (snapshot.data!.isEmpty) {
                               return Container();
@@ -418,6 +419,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                       List<UsersRow>
                                                           containerUsersRowList =
                                                           snapshot.data!;
+
                                                       return Container(
                                                         width: 200.0,
                                                         decoration:
@@ -485,6 +487,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                       stackUserFeelingsRowList =
                                                                       snapshot
                                                                           .data!;
+
                                                                   final stackUserFeelingsRow = stackUserFeelingsRowList
                                                                           .isNotEmpty
                                                                       ? stackUserFeelingsRowList
@@ -631,6 +634,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                                   );
                                                                                 }
                                                                                 List<FeelingsRow> containerFeelingsRowList = snapshot.data!;
+
                                                                                 final containerFeelingsRow = containerFeelingsRowList.isNotEmpty ? containerFeelingsRowList.first : null;
                                                                                 return Container(
                                                                                   height: 17.0,
@@ -716,6 +720,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                       containerUserFeelingsRowList =
                                                                       snapshot
                                                                           .data!;
+
                                                                   final containerUserFeelingsRow = containerUserFeelingsRowList
                                                                           .isNotEmpty
                                                                       ? containerUserFeelingsRowList
@@ -758,6 +763,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                                         List<FeelingsRow>
                                                                             stackFeelingsRowList =
                                                                             snapshot.data!;
+
                                                                         final stackFeelingsRow = stackFeelingsRowList.isNotEmpty
                                                                             ? stackFeelingsRowList.first
                                                                             : null;
@@ -1197,6 +1203,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                     List<DatesRow>
                                                         containerDatesRowList =
                                                         snapshot.data!;
+
                                                     return InkWell(
                                                       splashColor:
                                                           Colors.transparent,
@@ -1526,6 +1533,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                         List<CollectionsRow>
                                             categoryRowCollectionsRowList =
                                             snapshot.data!;
+
                                         return Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: List.generate(
@@ -1648,6 +1656,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                               }
                               List<WishesRow> wishesListMainWishesRowList =
                                   snapshot.data!;
+
                               return wrapWithModel(
                                 model: _model.wishesListMainModel,
                                 updateCallback: () => setState(() {}),
@@ -1696,6 +1705,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                 }
                                 List<WishesRow> newListWishesRowList =
                                     snapshot.data!;
+
                                 return wrapWithModel(
                                   model: _model.newListModel,
                                   updateCallback: () => setState(() {}),
@@ -1764,6 +1774,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                   }
                                   List<UsersRow> notifyUsersRowList =
                                       snapshot.data!;
+
                                   final notifyUsersRow =
                                       notifyUsersRowList.isNotEmpty
                                           ? notifyUsersRowList.first
@@ -1849,6 +1860,7 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                                                 List<NotificationsRow>
                                                     containerNotificationsRowList =
                                                     snapshot.data!;
+
                                                 return Container(
                                                   decoration: const BoxDecoration(),
                                                   child: Visibility(
@@ -2040,40 +2052,17 @@ class _MyProfileWidgetState extends State<MyProfileWidget>
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   8.0, 4.0, 8.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  logFirebaseEvent(
-                                      'MY_PROFILE_PAGE_Text_mj0sgy9s_ON_TAP');
-                                  if (FFAppState().testUrl != '') {
-                                    logFirebaseEvent('Text_navigate_to');
-
-                                    context.pushNamed(
-                                      'addFromBrowser',
-                                      queryParameters: {
-                                        'url': serializeParam(
-                                          FFAppState().testUrl,
-                                          ParamType.String,
-                                        ),
-                                      }.withoutNulls,
-                                    );
-                                  }
-                                },
-                                child: Text(
-                                  'Wishlist',
-                                  style: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Nuckle',
-                                        letterSpacing: 0.0,
-                                        fontWeight: FontWeight.w500,
-                                        useGoogleFonts: false,
-                                        lineHeight: 1.4,
-                                      ),
-                                ),
+                              child: Text(
+                                'Wishlist',
+                                style: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'Nuckle',
+                                      letterSpacing: 0.0,
+                                      fontWeight: FontWeight.w500,
+                                      useGoogleFonts: false,
+                                      lineHeight: 1.4,
+                                    ),
                               ),
                             ),
                           ),

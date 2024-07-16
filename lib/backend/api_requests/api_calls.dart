@@ -30,6 +30,7 @@ class ParseSiteCall {
       encodeBodyUtf8: true,
       decodeUtf8: true,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -65,6 +66,7 @@ class GenerateAiWishCall {
       encodeBodyUtf8: true,
       decodeUtf8: true,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -90,6 +92,7 @@ class SearchCitiesCall {
       encodeBodyUtf8: true,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -122,6 +125,7 @@ class GenerateAiSimiliarWishCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -141,6 +145,7 @@ class DownloadImageCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }

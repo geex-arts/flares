@@ -144,6 +144,7 @@ class _CardWidgetState extends State<CardWidget> {
                         }
                         List<CollectionsRow> textCollectionsRowList =
                             snapshot.data!;
+
                         // Return an empty Container when the item does not exist.
                         if (snapshot.data!.isEmpty) {
                           return Container();
@@ -270,6 +271,7 @@ class _CardWidgetState extends State<CardWidget> {
                   );
                 }
                 List<UsersRow> userInfoUsersRowList = snapshot.data!;
+
                 // Return an empty Container when the item does not exist.
                 if (snapshot.data!.isEmpty) {
                   return Container();
@@ -369,6 +371,7 @@ class _CardWidgetState extends State<CardWidget> {
                   }
                   List<WishReactionsRow> containerWishReactionsRowList =
                       snapshot.data!;
+
                   return Container(
                     width: 62.0,
                     height: 44.0,
@@ -608,8 +611,8 @@ class _CardWidgetState extends State<CardWidget> {
                                         child: BSSaveToCollection2Widget(
                                           selectedWishRow:
                                               widget.currentWishRow,
-                                          currentCollectionID:
-                                              widget.currentWishRow?.collection,
+                                          currentCollectionID: widget
+                                              .currentWishRow?.collection,
                                         ),
                                       ),
                                     );
@@ -696,6 +699,7 @@ class _CardWidgetState extends State<CardWidget> {
                         }
                         List<WishesRow> addToCollectionWishesRowList =
                             snapshot.data!;
+
                         return Container(
                           width: 30.0,
                           height: 30.0,

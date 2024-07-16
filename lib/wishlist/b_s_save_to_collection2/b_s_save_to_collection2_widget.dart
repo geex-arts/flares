@@ -135,6 +135,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
               );
             }
             List<CollectionsRow> containerCollectionsRowList = snapshot.data!;
+
             return Container(
               width: double.infinity,
               decoration: const BoxDecoration(
@@ -312,6 +313,7 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                           child: EmptyCollectionsWidgetWidget(),
                                         );
                                       }
+
                                       return ReorderableListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -842,7 +844,8 @@ class _BSSaveToCollection2WidgetState extends State<BSSaveToCollection2Widget>
                                     child: Padding(
                                       padding: MediaQuery.viewInsetsOf(context),
                                       child: BSNewCollectionWidget(
-                                        selectedWishRow: widget.selectedWishRow,
+                                        selectedWishRow:
+                                            widget.selectedWishRow,
                                         isFromBrowser: true,
                                       ),
                                     ),

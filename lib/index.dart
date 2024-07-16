@@ -20,7 +20,6 @@ export '/profile/edit_couple_profile/edit_couple_profile_widget.dart'
     show EditCoupleProfileWidget;
 export '/profile/notify_settings/notify_settings_widget.dart'
     show NotifySettingsWidget;
-export '/ai/ask_for_date/ask_for_date_widget.dart' show AskForDateWidget;
 export '/profiles/couples_profile/couples_profile_widget.dart'
     show CouplesProfileWidget;
 export '/profiles/category_p2/category_p2_widget.dart' show CategoryP2Widget;

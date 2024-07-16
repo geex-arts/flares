@@ -245,6 +245,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                               }
                               List<UsersRow> userInfoUsersRowList =
                                   snapshot.data!;
+
                               final userInfoUsersRow =
                                   userInfoUsersRowList.isNotEmpty
                                       ? userInfoUsersRowList.first
@@ -332,6 +333,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                   }
                                   List<CollectionsRow> textCollectionsRowList =
                                       snapshot.data!;
+
                                   // Return an empty Container when the item does not exist.
                                   if (snapshot.data!.isEmpty) {
                                     return Container();
@@ -377,7 +379,8 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                                         ),
                                   ),
                                 ),
-                              if (widget.selectedWishRow?.description != null &&
+                              if (widget.selectedWishRow?.description !=
+                                      null &&
                                   widget.selectedWishRow?.description != '')
                                 Padding(
                                   padding: const EdgeInsetsDirectional.fromSTEB(
@@ -428,6 +431,7 @@ class _AddWishReactionWidgetState extends State<AddWishReactionWidget>
                     }
                     List<ReactionImagesRow> rowReactionImagesRowList =
                         snapshot.data!;
+
                     return SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
                       child: Row(
